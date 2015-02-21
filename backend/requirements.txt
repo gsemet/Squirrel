@@ -2,3 +2,5 @@ pyyaml
 anyjson
 twisted
 crochet
+sqlalchemy
+alembic

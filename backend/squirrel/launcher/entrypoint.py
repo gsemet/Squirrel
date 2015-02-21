@@ -1,4 +1,5 @@
-from crochet import setup, run_in_reactor
+from crochet import setup
+from crochet import run_in_reactor
 from twisted.internet import defer
 
 setup()
