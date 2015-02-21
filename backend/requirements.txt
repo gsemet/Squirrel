@@ -1,6 +1,6 @@
-pyyaml
-anyjson
-twisted
-crochet
-sqlalchemy
 alembic
+anyjson
+crochet
+pyyaml
+sqlalchemy
+twisted
