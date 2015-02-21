@@ -17,11 +17,13 @@ print "installation dir: {}".format(install_path)
 print "workdir: {}".format(workdir_path)
 
 print "Installing dependencies..."
-subprocess.check_call(["pip", "install", "-r", os.path.join(install_path, "backend", "requirements.txt")])
+subprocess.check_call(["pip", "install", "-r", os.path.join(install_path, "backend",
+                                                            "requirements.txt")])
 
 if sys.platform == 'win32':
     print "Installing Windows dependencies"
-    subprocess.check_call(["pip", "install", "-r", os.path.join(install_path, "backend", "requirements-win32.txt")])
+    subprocess.check_call(["pip", "install", "-r", os.path.join(install_path, "backend",
+                                                                "requirements-win32.txt")])
 
 print "Installing backend"
 subprocess.check_call(["pip", "install", "-e", os.path.join(install_path, "backend")])
