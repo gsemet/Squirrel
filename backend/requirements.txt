@@ -1,6 +1,12 @@
 alembic
 anyjson
 crochet
+enum34
+jinja
+klein
 pyyaml
+requests
+sphinx
 sqlalchemy
+treq
 twisted

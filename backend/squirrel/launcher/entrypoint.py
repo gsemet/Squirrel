@@ -1,21 +1,9 @@
-from crochet import setup
-from crochet import run_in_reactor
-from twisted.internet import defer
-
-setup()
-
-
-@defer.inlineCallbacks
-def mainEntryPoint():
-    print "I run from a deferred"
-    yield defer.succeed(0)
-
-
-@run_in_reactor
-def runInCrochet():
-    return mainEntryPoint()
+from squirrel.routes import app
+from squirrel.routes import *
 
 
 def run():
-    runInCrochet()
-    return 0
+    print "Loading configuration"
+    print "Connecting to DB"
+    print "Starging web service on 8080"
+    app.run("localhost", 8080)
