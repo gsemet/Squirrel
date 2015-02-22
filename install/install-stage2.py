@@ -2,8 +2,6 @@ import os
 import sys
 import subprocess
 
-print sys.argv
-
 install_path = sys.argv[1]
 install_path = os.path.abspath(install_path)
 
@@ -24,6 +22,7 @@ if sys.platform == 'win32':
     print "Installing Windows dependencies"
     subprocess.check_call(["pip", "install", "-r", os.path.join(install_path, "backend",
                                                                 "requirements-win32.txt")])
+    print "Ensure you have win32api installed"
 
 print "Installing backend"
 subprocess.check_call(["pip", "install", "-e", os.path.join(install_path, "backend")])

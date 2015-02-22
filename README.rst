@@ -10,6 +10,8 @@ Installation
 
 Installation is done using the scripts located in the ``install`` directory.
 
+Squirrel runs its own virtuelenv, to avoid
+
 Prerequisits
 ------------
 
@@ -20,7 +22,7 @@ $ pip
 $ pip install virtualenv
 
 Windows
-~~~~~~~
+-------
 
 Please ensure you have pywin32 installed:
 
@@ -44,3 +46,7 @@ Building documentation::
     cd doc
     make.bat html
 
+
+
+Linux
+-----

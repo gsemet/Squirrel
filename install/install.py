@@ -1,5 +1,12 @@
 #!/bin/env python
 
+# Beware:
+#  - this script is executed using the system's python, so with not easy control on which
+#    packages are available. Same, we cannot directly install new ones using pip.
+#  - the role of the first stage of this installer is just to install a fresh new virtualenv
+#    with a *controled* version of python, pip and virtualenv, and launch the second part of
+#    the installer, 'install-stage2.py', which will run in the virtualenv.
+
 import sys
 import os
 import subprocess
