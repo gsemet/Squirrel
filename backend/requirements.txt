@@ -1,9 +1,11 @@
 alembic
 anyjson
+autobahn
 crochet
 enum34
 jinja
 klein
+mock
 pyyaml
 requests
 sphinx
