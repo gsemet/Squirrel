@@ -38,4 +38,4 @@ echo "Install path: %INSTALL_PATH%"
 echo "Workdir path: %WORKDIR_PATH%"
 
 
-%STAGE2% %INSTALL_PATH% %WORKDIR_PATH%
+start /WAIT cmd.exe /k cmd /c %STAGE2% %INSTALL_PATH% %WORKDIR_PATH%
