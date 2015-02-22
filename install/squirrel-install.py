@@ -23,7 +23,7 @@ if sys.platform == 'win32':
     activate = os.path.join(workdir_path, "Scripts", "activate.bat")
 
     if not os.path.exists(os.path.join(workdir_path, "Scripts", "pip.exe")):
-        subprocess.check_call([virtualenv, workdir_path])
+        subprocess.check_call([virtualenv, "--system-site-packages", workdir_path])
 
     activate_this = os.path.join(workdir_path, "Scripts", "activate.bat")
     launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
