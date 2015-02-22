@@ -28,3 +28,19 @@ Choose in http://sourceforge.net/projects/pywin32/files/pywin32/Build%20219/ the
 matching your version of python (2.7, 3.4, ...) and 32 or 64 bits.
 
 Windows virtualenv uses ``--system-site-packages`` to access to the win32api module.
+
+Installation::
+
+    python.exe -u install\\squirrel-install.py
+
+
+Launching unit tests (from outside of virtualenv)::
+
+    install\\unittest.bat squirrel
+
+
+Building documentation::
+
+    cd doc
+    make.bat html
+
