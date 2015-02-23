@@ -50,3 +50,15 @@ Building documentation::
 
 Linux
 -----
+
+Installation::
+
+    python install/install.py
+
+Switch to environment (activate virtualenv)::
+
+    source tosource
+
+Leave virtualenv::
+
+    deactivate

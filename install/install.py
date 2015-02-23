@@ -32,9 +32,31 @@ if sys.platform == 'win32':
     if not os.path.exists(os.path.join(workdir_path, "Scripts", "pip.exe")):
         subprocess.check_call([virtualenv, "--system-site-packages", workdir_path])
 
-    activate_this = os.path.join(workdir_path, "Scripts", "activate.bat")
+    activate = os.path.join(workdir_path, "Scripts", "activate.bat")
     launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 
     print "Activating virtualenv in {}".format(workdir_path)
-    # subprocess.check_call([python_exe, stage2_path, activate_this, install_path])
-    subprocess.check_call(["cmd", "/K", launcher_bat, activate_this, stage2_path, install_path, workdir_path])
+    # subprocess.check_call([python_exe, stage2_path, activate, install_path])
+    subprocess.check_call(["cmd", "/K", launcher_bat, activate, stage2_path, install_path, workdir_path])
+
+elif sys.platform == "linux2":
+    activate = os.path.join(workdir_path, "bin", "activate")
+    launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
+
+    if not os.path.exists(os.path.join(workdir_path, "bin", "pip")):
+        subprocess.check_call(['virtualenv', workdir_path])
+
+    print "Activating virtualenv in {}".format(workdir_path)
+    # subprocess.check_call([python_exe, stage2_path, activate, install_path])
+    subprocess.check_call(['bash',
+                           '-c',
+                           'source {activate} && python {stage2} {install_path} {workdir_path}'
+                           .format(activate=activate,
+                                   stage2=stage2_path,
+                                   install_path=install_path,
+                                   workdir_path=workdir_path)])
+
+    os.symlink(os.path.join(workdir_path, "bin", "activate", "tosource"))
+
+else:
+    raise Exception("Unsupported environment: {}".format(sys.platform))

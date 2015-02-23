@@ -27,7 +27,10 @@ if sys.platform == 'win32':
 print "Installing backend"
 subprocess.check_call(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
-backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-backend.exe")
+if sys.platform == 'win32':
+    backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-backend.exe")
+else:
+    backend_launcher = "squirrel-backend"
 print "Launching Squirrel-backend {}".format(backend_launcher)
 sys.stdout.flush()
 sys.stderr.flush()

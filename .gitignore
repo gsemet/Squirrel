@@ -56,3 +56,4 @@ workdir/
 _trial_temp/
 _trial_temp.lock/
 doc/build/
+tosource
