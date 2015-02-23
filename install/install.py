@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 
 # Beware:
 #  - this script is executed using the system's python, so with not easy control on which
