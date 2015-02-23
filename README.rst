@@ -62,3 +62,7 @@ Switch to environment (activate virtualenv)::
 Leave virtualenv::
 
     deactivate
+
+Clean Virtualenv::
+
+    python install/uninstall.py
