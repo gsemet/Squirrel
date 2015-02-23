@@ -9,9 +9,9 @@ Welcome to Squirrel Assets Management's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-
+   rest-api/index
 
 Indices and tables
 ==================
