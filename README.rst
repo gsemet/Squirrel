@@ -15,11 +15,11 @@ Squirrel runs its own virtuelenv, to avoid
 Prerequisits
 ************
 
-Have python 2.7, pip and virtualenv installed on your system.
+Have python 2.7, pip and virtualenv installed on your system::
 
-$ python
-$ pip
-$ pip install virtualenv
+    $ python
+    $ pip
+    $ pip install virtualenv
 
 Windows
 *******
@@ -54,16 +54,11 @@ Fontend
 
 Please ensure you have the following tools installed:
 
- - npm
- - yeoman (only used to generate the gulp file)  (``npm instal -g yo``)
- - bower (``npm install -g bower``)
- - gulp (``npm install -g gulp``)
- - Gulp Angular Generator for Yeoman (``npm install -g generator-gulp-angular``)
-
-Gulp file generation: See https://github.com/Swiip/generator-gulp-angular
-
-``yo gulp-angular squirrel``
-
+- npm
+- yeoman (only used to generate the gulp file)  (``npm instal -g yo``)
+- bower (``npm install -g bower``)
+- gulp (``npm install -g gulp``)
+- Gulp Angular Generator for Yeoman (``npm install -g generator-gulp-angular``)
 
 Linux
 *****
@@ -83,3 +78,27 @@ Leave virtualenv::
 Clean Virtualenv::
 
     python install/uninstall.py
+
+Development
+***********
+
+Frontend
+--------
+
+Gulp file (re)generation::
+
+    cd frontend
+    yo gulp-angular squirrel
+
+See https://github.com/Swiip/generator-gulp-angular
+
+Development::
+
+- ``gulp`` or ``gulp build`` to build an optimized version of your application in /dist
+- ``gulp serve`` to launch a browser sync server on your source files
+- ``gulp serve:dist`` to launch a server on your optimized application
+- ``gulp test`` to launch your unit tests with Karma
+- ``gulp test``:auto to launch your unit tests with Karma in watch mode
+- ``gulp protractor`` to launch your e2e tests with Protractor
+- ``gulp protractor``:dist to launch your e2e tests with Protractor on the dist files
+
