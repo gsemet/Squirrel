@@ -13,7 +13,7 @@ Installation is done using the scripts located in the ``install`` directory.
 Squirrel runs its own virtuelenv, to avoid
 
 Prerequisits
-------------
+************
 
 Have python 2.7, pip and virtualenv installed on your system.
 
@@ -22,6 +22,9 @@ $ pip
 $ pip install virtualenv
 
 Windows
+*******
+
+Backend
 -------
 
 Please ensure you have pywin32 installed:
@@ -46,10 +49,24 @@ Building documentation::
     cd doc
     make.bat html
 
+Fontend
+-------
+
+Please ensure you have the following tools installed:
+
+ - npm
+ - yeoman (only used to generate the gulp file)  (``npm instal -g yo``)
+ - bower (``npm install -g bower``)
+ - gulp (``npm install -g gulp``)
+ - Gulp Angular Generator for Yeoman (``npm install -g generator-gulp-angular``)
+
+Gulp file generation: See https://github.com/Swiip/generator-gulp-angular
+
+``yo gulp-angular squirrel``
 
 
 Linux
------
+*****
 
 Installation::
 
