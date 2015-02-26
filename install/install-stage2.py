@@ -27,6 +27,9 @@ if sys.platform == 'win32':
 print "Installing backend"
 subprocess.check_call(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
+print "Compiling frontend website"
+subprocess.check_call(["gulp", "build"], shell=True, cwd=os.path.join(install_path, "frontend"))
+
 if sys.platform == 'win32':
     backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-backend.exe")
 else:
