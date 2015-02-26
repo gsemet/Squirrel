@@ -1,0 +1,2 @@
+frontend:
+    root_path: ../frontend/dist/

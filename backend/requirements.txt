@@ -2,6 +2,7 @@ alembic
 anyjson
 autobahn
 crochet
+dictns
 enum34
 jinja
 klein
