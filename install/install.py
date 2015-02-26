@@ -7,6 +7,10 @@
 #    with a *controled* version of python, pip and virtualenv, and launch the second part of
 #    the installer, 'install-stage2.py', which will run in the virtualenv.
 
+# Note:
+#  - I try to keep this installer python-2.6 friendly, but I really encourage you to install
+#    Python 2.7
+
 import sys
 import os
 import subprocess
@@ -21,21 +25,22 @@ with open(config_path) as f:
 workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
 requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "requirements.txt"))
 
-print "Installing in {}".format(workdir_path)
-print "Requirements: {}".format(requirements_txt)
+print "Installing in {0}".format(workdir_path)
+print "Requirements: {0}".format(requirements_txt)
 
 if sys.platform == 'win32':
-    virtualenv = "C:\\Python27\\Scripts\\virtualenv.exe"
-    python_exe = "C:\\Python27\\python.exe"
+    virtualenv = "virtualenv.exe"
+    python_exe = "python.exe"
     activate = os.path.join(workdir_path, "Scripts", "activate.bat")
 
     if not os.path.exists(os.path.join(workdir_path, "Scripts", "pip.exe")):
+        print "Installing virtualenv in: {0}".format(workdir_path)
         subprocess.check_call([virtualenv, "--system-site-packages", workdir_path])
 
     activate = os.path.join(workdir_path, "Scripts", "activate.bat")
     launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 
-    print "Activating virtualenv in {}".format(workdir_path)
+    print "Activating virtualenv in {0}".format(workdir_path)
     # subprocess.check_call([python_exe, stage2_path, activate, install_path])
     subprocess.check_call(["cmd", "/K", launcher_bat, activate, stage2_path, install_path, workdir_path])
 
@@ -46,7 +51,7 @@ elif sys.platform == "linux2":
     if not os.path.exists(os.path.join(workdir_path, "bin", "pip")):
         subprocess.check_call(['virtualenv', workdir_path])
 
-    print "Activating virtualenv in {}".format(workdir_path)
+    print "Activating virtualenv in {0}".format(workdir_path)
     # subprocess.check_call([python_exe, stage2_path, activate, install_path])
     subprocess.check_call(['bash',
                            '-c',
@@ -59,4 +64,4 @@ elif sys.platform == "linux2":
     os.symlink(os.path.join(workdir_path, "bin", "activate", "tosource"))
 
 else:
-    raise Exception("Unsupported environment: {}".format(sys.platform))
+    raise Exception("Unsupported environment: {0}".format(sys.platform))

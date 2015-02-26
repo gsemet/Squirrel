@@ -24,6 +24,8 @@ Have python 2.7, pip and virtualenv installed on your system::
 Windows
 *******
 
+``python.exe`` and ``virtualenv.exe`` should be accessible through your path.
+
 Backend
 -------
 
@@ -32,7 +34,7 @@ Please ensure you have pywin32 installed:
 Choose in http://sourceforge.net/projects/pywin32/files/pywin32/Build%20219/ the version
 matching your version of python (2.7, 3.4, ...) and 32 or 64 bits.
 
-Windows virtualenv uses ``--system-site-packages`` to access to the win32api module.
+Windows virtualenv uses ``--system-site-packages`` to access to the ``win32api`` module.
 
 Installation::
 
@@ -82,6 +84,8 @@ Clean Virtualenv::
 Development
 ***********
 
+Basically, you just need to run ``install/install.py`` and let all the magic happen.
+
 Frontend
 --------
 
@@ -102,3 +106,36 @@ Development::
 - ``gulp protractor`` to launch your e2e tests with Protractor
 - ``gulp protractor``:dist to launch your e2e tests with Protractor on the dist files
 
+Editor configuration
+--------------------
+
+I use Sublime Text 3 as my main development environment. Here are the custom build command I
+have used in this project::
+
+    "build_systems":
+    [
+        {
+            "name": "Squirrel - Install and launch",
+            "cmd": ["python", "-u", "install\\install.py"],
+            "shell": true,
+            "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel"
+        },
+        {
+            "name": "Squirrel - Unit test",
+            "cmd": ["install\\unittest.bat", "squirrel"],
+            "shell": true,
+            "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel"
+        },
+        {
+            "name": "Squirrel - Build documentation",
+            "cmd": ["make.bat", "html"],
+            "shell": true,
+            "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel\\doc"
+        },
+        {
+            "name": "Squirrel - Build Frontend",
+            "cmd": ["gulp", "build"],
+            "shell": true,
+            "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel\\frontend"
+        }
+    ]
