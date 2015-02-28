@@ -2,7 +2,7 @@
 Squirrel
 ========
 
-Asset Portfolio Management System
+Asset Portfolio Management System.
 
 
 Installation
@@ -31,8 +31,10 @@ Backend
 
 Please ensure you have pywin32 installed:
 
-Choose in http://sourceforge.net/projects/pywin32/files/pywin32/Build%20219/ the version
-matching your version of python (2.7, 3.4, ...) and 32 or 64 bits.
+Choose in the `Pywin32 website`_ the version matching your version of python (2.7, 3.4, ...) and 32
+or 64 bits.
+
+.. _Pywin32 website: http://sourceforge.net/projects/pywin32/files/pywin32/Build%20219/
 
 Windows virtualenv uses ``--system-site-packages`` to access to the ``win32api`` module.
 
@@ -99,7 +101,9 @@ Gulp file (re)generation::
     cd frontend
     yo gulp-angular squirrel
 
-See https://github.com/Swiip/generator-gulp-angular
+See `generator-gulp-angular`_
+
+.. _generator-gulp-angular: https://github.com/Swiip/generator-gulp-angular
 
 Development:
 
