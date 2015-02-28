@@ -1,4 +1,5 @@
-from mock import patch, Mock
+from mock import Mock
+from mock import patch
 
 from squirrel.common.unittest import TestCase
 from squirrel.launcher.entrypoint import run

@@ -2,7 +2,8 @@ from twisted.web.util import redirectTo
 
 from squirrel.config.config import Config
 from squirrel.config.constants import FRONTEND_INDEX_FILE
-from squirrel.routes import app, serve_url
+from squirrel.routes import app
+from squirrel.routes import serve_url
 
 
 @app.route('/<path:path1>', methods=['GET'])

@@ -1,8 +1,10 @@
 from twisted.web.util import redirectTo
 
 from squirrel.config.config import Config
-from squirrel.config.constants import DOC_INDEX_FILE, HELP_ENTRY_POINT
-from squirrel.routes import app, serve_url
+from squirrel.config.constants import DOC_INDEX_FILE
+from squirrel.config.constants import HELP_ENTRY_POINT
+from squirrel.routes import app
+from squirrel.routes import serve_url
 
 
 @app.route(HELP_ENTRY_POINT, methods=['GET'])

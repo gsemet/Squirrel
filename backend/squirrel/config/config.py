@@ -1,6 +1,7 @@
 import yaml
 
-from dictns import Namespace, documentNamespace
+from dictns import Namespace
+from dictns import documentNamespace
 
 from squirrel.common.singleton import singleton
 

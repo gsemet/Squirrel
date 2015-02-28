@@ -1,5 +1,5 @@
-import os
 import glob
+import os
 
 # injecting all *.py file other than __init__.py in this file
 modules = glob.glob(os.path.dirname(__file__) + "/*.py")

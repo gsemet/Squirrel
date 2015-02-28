@@ -2,6 +2,7 @@ import os
 
 from squirrel.config.config import Config
 from squirrel.routes import app
+
 from squirrel.routes import *
 
 

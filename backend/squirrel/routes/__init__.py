@@ -1,13 +1,12 @@
-import sys
-import os
 import glob
-
-from twisted.web.static import File, DirectoryLister
+import os
+import sys
 
 from klein import Klein
-app = Klein()
+from twisted.web.static import DirectoryLister
+from twisted.web.static import File
 
-from squirrel.routes import app
+app = Klein()
 
 
 def autoroute(python_file, **kwargs):
