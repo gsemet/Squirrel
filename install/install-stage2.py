@@ -1,6 +1,6 @@
 import os
-import sys
 import subprocess
+import sys
 
 install_path = sys.argv[1]
 install_path = os.path.abspath(install_path)
@@ -29,6 +29,9 @@ subprocess.check_call(["pip", "install", "-e", os.path.join(install_path, "backe
 
 print "Compiling frontend website"
 subprocess.check_call(["gulp", "build"], shell=True, cwd=os.path.join(install_path, "frontend"))
+
+print "Building online documentation"
+subprocess.check_call(["make.bat", "html"], shell=True, cwd=os.path.join(install_path, "doc"))
 
 if sys.platform == 'win32':
     backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-backend.exe")

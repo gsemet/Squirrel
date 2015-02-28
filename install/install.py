@@ -11,9 +11,9 @@
 #  - I try to keep this installer python-2.6 friendly, but I really encourage you to install
 #    Python 2.7
 
-import sys
 import os
 import subprocess
+import sys
 
 install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs", "default.conf"))
