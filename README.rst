@@ -84,7 +84,12 @@ Clean Virtualenv::
 Development
 ***********
 
-Basically, you just need to run ``install/install.py`` and let all the magic happen.
+Basically, you just need to run ``install/install.py`` and let all the magic happen. Everything
+will be automatically regenerated:
+
+- frontend (Web UI using Angular)
+- backend (Python based)
+- online documentation (using sphinx)
 
 Frontend
 --------
@@ -96,7 +101,7 @@ Gulp file (re)generation::
 
 See https://github.com/Swiip/generator-gulp-angular
 
-Development::
+Development:
 
 - ``gulp`` or ``gulp build`` to build an optimized version of your application in /dist
 - ``gulp serve`` to launch a browser sync server on your source files
@@ -109,7 +114,7 @@ Development::
 Editor configuration
 --------------------
 
-I use Sublime Text 3 as my main development environment. Here are the custom build command I
+I use `SublimeText 3`_  as my main development environment. Here are the custom build command I
 have used in this project::
 
     "build_systems":
@@ -139,3 +144,6 @@ have used in this project::
             "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel\\frontend"
         }
     ]
+
+
+.. _SublimeText 3: http://www.sublimetext.com/3
