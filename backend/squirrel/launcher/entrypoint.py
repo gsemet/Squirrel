@@ -9,10 +9,10 @@ def dumpConfig():
     c = Config()
     print "Configuration: "
     print "  backend root dir: {}".format(c.frontend['root_path'])
-    c.frontend['root__full_path'] = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                                                 os.pardir,
-                                                                 os.pardir,
-                                                                 c.frontend['root_path']))
+    c.frontend['root_full_path'] = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                                                os.pardir,
+                                                                os.pardir,
+                                                                c.frontend['root_path']))
 
     print ""
     print "Listing all available keys:"
@@ -29,5 +29,5 @@ def run():
     dumpConfig()
     print "Connecting to DB"
     print "Starging web service on 8080"
-    print "Serving : {}".format(Config().frontend['root__full_path'])
+    print "Serving : {}".format(Config().frontend['root_full_path'])
     app.run("localhost", 8080)
