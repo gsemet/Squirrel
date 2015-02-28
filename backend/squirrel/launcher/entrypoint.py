@@ -5,14 +5,19 @@ from squirrel.routes import app
 from squirrel.routes import *
 
 
+def makeFullPath(relPath):
+    return os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                        os.pardir,
+                                        os.pardir,
+                                        relPath))
+
+
 def dumpConfig():
     c = Config()
     print "Configuration: "
     print "  backend root dir: {}".format(c.frontend['root_path'])
-    c.frontend['root_full_path'] = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                                                os.pardir,
-                                                                os.pardir,
-                                                                c.frontend['root_path']))
+    c.frontend['root_full_path'] = makeFullPath(c.frontend['root_path'])
+    c.frontend['doc_full_path'] = makeFullPath(c.frontend['doc_path'])
 
     print ""
     print "Listing all available keys:"
