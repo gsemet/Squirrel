@@ -1,3 +1,4 @@
 frontend:
     root_path: ../frontend/dist/
     doc_path: ../doc/build/html/
+    port: 8080

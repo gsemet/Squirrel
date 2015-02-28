@@ -19,7 +19,7 @@ class singleton:
     def __init__(self, decorated):
         self._decorated = decorated
 
-    def instance(self):
+    def instance(self, *args, **kwargs):
         """
         Returns the singleton instance. Upon its first call, it creates a
         new instance of the decorated class and calls its `__init__` method.
@@ -29,11 +29,12 @@ class singleton:
         try:
             return self._instance
         except AttributeError:
-            self._instance = self._decorated()
+            print "self._decorated", self._decorated
+            self._instance = self._decorated(*args, **kwargs)
             return self._instance
 
-    def __call__(self):
-        return self.instance()
+    def __call__(self, *args, **kwargs):
+        return self.instance(*args, **kwargs)
 
     def unload(self):
         delattr(self, "_decorated")

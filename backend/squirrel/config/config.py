@@ -1,29 +1,45 @@
 import yaml
 
 from dictns import Namespace
-from dictns import documentNamespace
+from dictns import _appendToParent
 
 from squirrel.common.singleton import singleton
+
+
+def _dumpFlat(n, parent=None):
+    s = ""
+    for k, v in n.items():
+        me = _appendToParent(parent, k)
+
+        def do_item(me, v):
+            t = type(v).__name__
+            if t == "Namespace":
+                t = "dict"
+            s = me + " = " + str(v) + "\n"
+            if isinstance(v, dict):
+                v = Namespace(v)
+                s += _dumpFlat(v, me)
+            elif type(v) == list:
+                if len(v) > 0:
+                    v = v[0]
+                    s += do_item(me + "[i]", v)
+            return s
+        s += do_item(me, v)
+    return s
 
 
 @singleton
 class Config(Namespace):
 
-    def __init__(self, dic=None):
-        if dic is None:
-            dic = {}
-        Namespace.__init__(self, dic)
+    def dumpFlat(self, parent=None):
+        return _dumpFlat(self)
 
-    def _loadYaml(self, yamlPath):
-        with open(yamlPath) as f:
-            return yaml.load(f)
 
-    def loadConfig(self, configPath):
-        cfg = self._loadYaml(configPath)
-        self.update(cfg)
+def _loadYaml(yamlpath):
+    with open(yamlpath) as f:
+        return yaml.load(f)
 
-    def unload(self):
-        self .clear()
 
-    def documentNamespace(self):
-        return documentNamespace(self)
+def loadConfig(configPath):
+    cfg = _loadYaml(configPath)
+    Config(cfg)
