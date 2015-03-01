@@ -1,3 +1,7 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 from twisted.web.util import redirectTo
 
 from squirrel.config.config import Config
@@ -29,5 +33,5 @@ def index4(request, path1, path2, path3, path4):
 
 @app.route('/', methods=['GET'], branch=True)
 def get_root(request):
-    print "request root"
+    print("request root")
     return redirectTo(FRONTEND_INDEX_FILE, request)

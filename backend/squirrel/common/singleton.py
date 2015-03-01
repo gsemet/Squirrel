@@ -1,3 +1,8 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+
 class singleton:
 
     """
@@ -29,7 +34,7 @@ class singleton:
         try:
             return self._instance
         except AttributeError:
-            print "self._decorated", self._decorated
+            print("self._decorated", self._decorated)
             self._instance = self._decorated(*args, **kwargs)
             return self._instance
 

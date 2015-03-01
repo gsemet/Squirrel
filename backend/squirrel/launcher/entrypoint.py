@@ -1,3 +1,8 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+
 import os
 
 from squirrel.config.config import Config
@@ -16,37 +21,37 @@ def makeFullPath(relPath):
 
 def dumpConfig():
     c = Config()
-    print "c", type(c)
-    print "c.frontend", type(c.frontend)
+    print("c", type(c))
+    print("c.frontend", type(c.frontend))
 
-    print "Configuration: "
-    print "  backend root dir: {}".format(c.frontend.root_path)
+    print("Configuration: ")
+    print("  backend root dir: {}".format(c.frontend.root_path))
     c.frontend.root_full_path = makeFullPath(c.frontend.root_path)
     c.frontend.doc_full_path = makeFullPath(c.frontend.doc_path)
 
-    print ""
-    print "Listing all available keys:"
-    print c.dumpFlat()
+    print("")
+    print("Listing all available keys:")
+    print(c.dumpFlat())
 
 
 def initializeConfig():
     config_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                os.pardir,
                                                "config.yaml"))
-    print "Loading configuration {}".format(config_path)
+    print("Loading configuration {}".format(config_path))
     loadConfig(config_path)
     dumpConfig()
 
 
 def serveBackend():
     port = Config().frontend.port
-    print "Starging web service on {}".format(port)
-    print "Serving front end located at: {}".format(Config().frontend.root_full_path)
+    print("Starging web service on {}".format(port))
+    print("Serving front end located at: {}".format(Config().frontend.root_full_path))
     app.run("localhost", port)
 
 
 def connectDatabase():
-    print "Connecting to DB"
+    print("Connecting to DB")
 
 
 def run():

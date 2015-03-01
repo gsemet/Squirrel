@@ -1,3 +1,7 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 from twisted.web.util import redirectTo
 
 from squirrel.config.config import Config

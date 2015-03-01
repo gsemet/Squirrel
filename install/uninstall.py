@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
 import os
 import shutil
@@ -11,16 +14,16 @@ with open(config_path) as f:
 workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
 
 if os.path.isdir(workdir_path):
-    print "Removing workdir..."
+    print("Removing workdir...")
     shutil.rmtree(workdir_path)
 if os.path.isdir("_trial_temp"):
-    print "Removing _trial_temp..."
+    print("Removing _trial_temp...")
     shutil.rmtree("_trial_temp")
 if os.path.isdir("_trial_temp.lock"):
-    print "Removing _trial_temp.lock..."
+    print("Removing _trial_temp.lock...")
     shutil.rmtree("_trial_temp.lock")
 if os.path.isfile("tosource"):
-    print "Removing tosource..."
+    print("Removing tosource...")
     os.unlink("tosource")
 
-print "Uninstall done"
+print("Uninstall done")
