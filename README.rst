@@ -137,7 +137,7 @@ Editor configuration
 --------------------
 
 I use `SublimeText 3`_  as my main development environment. Here are the custom build command I
-have used in this project::
+have used in this project:
 
 .. code-block:: javascript
 
