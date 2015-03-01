@@ -15,7 +15,9 @@ Squirrel runs its own virtuelenv, to avoid
 Prerequisits
 ************
 
-Have python 2.7, pip and virtualenv installed on your system::
+Have python 2.7, pip and virtualenv installed on your system:
+
+.. code-block:: bash
 
     $ python
     $ pip
@@ -38,17 +40,23 @@ or 64 bits.
 
 Windows virtualenv uses ``--system-site-packages`` to access to the ``win32api`` module.
 
-Installation::
+Installation:
+
+.. code-block:: bash
 
     python.exe -u install\\squirrel-install.py
 
 
-Launching unit tests (from outside of virtualenv)::
+Launching unit tests (from outside of virtualenv):
+
+.. code-block:: bash
 
     install\\unittest.bat squirrel
 
 
-Building documentation::
+Building documentation:
+
+.. code-block:: bash
 
     cd doc
     make.bat html
@@ -67,19 +75,27 @@ Please ensure you have the following tools installed:
 Linux
 *****
 
-Installation::
+Installation:
+
+.. code-block:: bash
 
     python install/install.py
 
-Switch to environment (activate virtualenv)::
+Switch to environment (activate virtualenv):
+
+.. code-block:: bash
 
     source tosource
 
-Leave virtualenv::
+Leave virtualenv with:
+
+.. code-block:: bash
 
     deactivate
 
-Clean Virtualenv::
+Clean Virtualenv:
+
+.. code-block:: bash
 
     python install/uninstall.py
 
@@ -96,7 +112,9 @@ will be automatically regenerated:
 Frontend
 --------
 
-Gulp file (re)generation::
+Gulp file (re)generation:
+
+.. code-block:: bash
 
     cd frontend
     yo gulp-angular squirrel
@@ -120,6 +138,8 @@ Editor configuration
 
 I use `SublimeText 3`_  as my main development environment. Here are the custom build command I
 have used in this project::
+
+.. code-block:: javascript
 
     "build_systems":
     [
