@@ -37,9 +37,6 @@ class TestConfig(TestCase):
         })
         self.assertMultiLineEqual(dedent('''
             a = value
-            another = {
-                "nested": "value here !"
-            }
             another.nested = value here !
             '''), Config().dumpFlat())
         Config().unload()
