@@ -15,6 +15,7 @@ def _loadYaml(yamlpath):
 
 def _loadConfig(configPath):
     cfg = _loadYaml(configPath)
+    Config().unload()
     Config(cfg)
 
 

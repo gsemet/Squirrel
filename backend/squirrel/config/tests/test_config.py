@@ -11,8 +11,9 @@ from squirrel.config.config import Config
 class TestConfig(TestCase):
 
     def testSingleton(self):
+        Config().unload()
         Config()
-        # Config().unload()
+        Config().unload()
 
     def testNamespace(self):
         s = Namespace({'a': {'b': {'c': 'd'}}})

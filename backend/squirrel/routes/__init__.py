@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 import glob
 import os
-import sys
 
 from klein import Klein
 from twisted.web.static import DirectoryLister
@@ -22,8 +21,7 @@ def autoroute(python_file, **kwargs):
 
 def serve_url(wanted_url, root_path):
     print "root: {!r}".format(root_path)
-    if sys.platform == "win32":
-        wanted_url = wanted_url.replace("/", "\\")
+    wanted_url = os.path.normpath(wanted_url)
     print "wanted_url", wanted_url
     full_file_path = os.path.join(root_path, wanted_url)
     # Seems like twisted DirectoryLister doesn't like unicode input
