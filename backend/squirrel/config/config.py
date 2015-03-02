@@ -32,7 +32,13 @@ def _dumpFlat(n, parent=None):
 
 
 @singleton
-class Config(Namespace):
+class Config(object):
+
+    def __init__(self, *args, **kwargs):
+        self.cfg = Namespace(*args, **kwargs)
 
     def dumpFlat(self, parent=None):
         return _dumpFlat(self)
+
+    def __getattr__(self, name):
+        return getattr(self.cfg, name)
