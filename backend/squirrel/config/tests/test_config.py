@@ -12,7 +12,7 @@ class TestConfig(TestCase):
 
     def testSingleton(self):
         Config()
-        Config().unload()
+        # Config().unload()
 
     def testNamespace(self):
         s = Namespace({'a': {'b': {'c': 'd'}}})

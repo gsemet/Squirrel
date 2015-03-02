@@ -2,7 +2,6 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import yaml
 
 from dictns import Namespace
 from dictns import _appendToParent
@@ -37,13 +36,3 @@ class Config(Namespace):
 
     def dumpFlat(self, parent=None):
         return _dumpFlat(self)
-
-
-def _loadYaml(yamlpath):
-    with open(yamlpath) as f:
-        return yaml.load(f)
-
-
-def loadConfig(configPath):
-    cfg = _loadYaml(configPath)
-    Config(cfg)

@@ -12,6 +12,6 @@ from squirrel.launcher.entrypoint import run
 
 class TestEntryPoint(TestCase):
 
-    @patch("squirrel.launcher.entrypoint.app", new=Mock())
+    @patch("squirrel.services.serve_backend.app", new=Mock())
     def testRun(self):
         run()

@@ -36,6 +36,11 @@ class singleton:
         except AttributeError:
             print("self._decorated", self._decorated)
             self._instance = self._decorated(*args, **kwargs)
+
+            def unload(inst):
+                inst.__singleton.unload()
+            self._instance.unload = unload
+            self._instance.__singleton = self
             return self._instance
 
     def __call__(self, *args, **kwargs):
