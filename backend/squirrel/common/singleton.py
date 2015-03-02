@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 from __future__ import division
-from __future__ import print_function
+
+import types
 
 
 class singleton:
@@ -31,15 +32,16 @@ class singleton:
         On all subsequent calls, the already created instance is returned.
 
         """
+        # Do not use a test here for performance sake. The first call has the exception penalty
         try:
             return self._instance
         except AttributeError:
-            print("self._decorated", self._decorated)
             self._instance = self._decorated(*args, **kwargs)
 
             def unload(inst):
                 inst.__singleton.unload()
-            self._instance.unload = unload
+            # Magically bind "unload" as a method
+            self._instance.unload = types.MethodType(unload, self._instance)
             self._instance.__singleton = self
             return self._instance
 
@@ -47,4 +49,5 @@ class singleton:
         return self.instance(*args, **kwargs)
 
     def unload(self):
-        delattr(self, "_decorated")
+        if hasattr(self, "_instance"):
+            delattr(self, "_instance")
