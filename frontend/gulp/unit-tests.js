@@ -17,9 +17,7 @@ function runTests (singleRun, done) {
   });
 
   var testFiles = bowerDeps.js.concat([
-    paths.tmp + '/serve/{app,components}/**/*.js',
-    paths.src + '/{app,components}/**/*.spec.js',
-    paths.src + '/{app,components}/**/*.mock.js'
+    paths.src + '/{app,components}/**/*.js'
   ]);
 
   gulp.src(testFiles)
@@ -33,5 +31,5 @@ function runTests (singleRun, done) {
     });
 }
 
-gulp.task('test', ['scripts'], function (done) { runTests(true /* singleRun */, done) });
-gulp.task('test:auto', ['scripts'], function (done) { runTests(false /* singleRun */, done) });
+gulp.task('test', function (done) { runTests(true /* singleRun */, done) });
+gulp.task('test:auto', function (done) { runTests(false /* singleRun */, done) });

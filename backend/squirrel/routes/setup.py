@@ -5,7 +5,7 @@ from __future__ import print_function
 from squirrel.routes import app
 
 
-@app.route('/setup.html', methods=['GET'])
+@app.route('/setup', methods=['GET'])
 def setup(request):
     print(request.args)
     s = "Setuping your environment"

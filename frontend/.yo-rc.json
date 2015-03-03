@@ -57,11 +57,11 @@
         "version": "~1.3.6"
       },
       "jsPreprocessor": {
-        "key": "coffee",
-        "extension": "coffee",
-        "srcExtension": "coffee",
-        "module": "gulp-coffee",
-        "version": "~2.2.0"
+        "key": "none",
+        "extension": "js",
+        "srcExtension": "js",
+        "module": null,
+        "version": null
       },
       "htmlPreprocessor": {
         "key": "jade",
