@@ -6,7 +6,7 @@ var paths = gulp.paths;
 
 var $ = require('gulp-load-plugins')();
 
-gulp.task('styles', function () {
+gulp.task('styles', function() {
 
   var lessOptions = {
     paths: [
@@ -18,9 +18,11 @@ gulp.task('styles', function () {
 
   var injectFiles = gulp.src([
     paths.src + '/{app,components}/**/*.less',
-    '!' + paths.src + '/app/index.less',
-    '!' + paths.src + '/app/vendor.less'
-  ], { read: false });
+    '!' + paths.src + '/index.less',
+    '!' + paths.src + '/vendor.less'
+  ], {
+    read: false
+  });
 
   var injectOptions = {
     transform: function(filePath) {
@@ -36,9 +38,9 @@ gulp.task('styles', function () {
   var indexFilter = $.filter('index.less');
 
   return gulp.src([
-    paths.src + '/app/index.less',
-    paths.src + '/app/vendor.less'
-  ])
+      paths.src + '/index.less',
+      paths.src + '/vendor.less'
+    ])
     .pipe(indexFilter)
     .pipe($.inject(injectFiles, injectOptions))
     .pipe(indexFilter.restore())

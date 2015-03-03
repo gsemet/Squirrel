@@ -9,10 +9,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
         <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.title}}')"> <a href='#/{{navLink.title}}'>{{navLink.linktext}}</a></li>
-        <!-- <li ng-class="{ active: {{ isActive('#/') }} }"><a ng-href="#/">Home</a></li>
-        <li ng-class="{ active: {{ isActive('#/info') }} }"><a ng-href="#/info">Info</a></li>
-        <li ><a ng-href="/doc">Documentation</a></li>
-        <li ng-class="{ active: {{ isActive('#/contact') }} }"><a ng-href="#/contact">Contact</a></li> -->
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

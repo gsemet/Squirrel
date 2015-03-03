@@ -4,11 +4,13 @@ var gulp = require('gulp');
 
 var paths = gulp.paths;
 
-gulp.task('watch', ['markups', 'inject'], function () {
+gulp.task('watch', ['markups', 'inject'], function() {
   gulp.watch([
     paths.src + '/*.html',
     paths.src + '/{app,components}/**/*.less',
     paths.src + '/{app,components}/**/*.js',
+    paths.src + '/index.js',
+    paths.src + '/index.less',
     'bower.json'
   ], ['inject']);
   gulp.watch(paths.src + '/{app,components}/**/*.jade', ['markups']);

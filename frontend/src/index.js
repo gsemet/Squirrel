@@ -21,10 +21,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controller: "ContactCtrl"
     })
     .when("/doc", {
-      controller : function() {
+      controller: function() {
         window.location.replace('/doc');
       },
-      template : "<div></div>"
+      template: "<div></div>"
     })
     .otherwise({
       redirectTo: "/"
