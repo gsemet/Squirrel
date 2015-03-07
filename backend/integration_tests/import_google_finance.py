@@ -7,7 +7,8 @@ import logging
 from twisted.internet import defer
 
 from squirrel.common.unittest import TestCase
-from squirrel.dam.google_finance import GoogleFinance
+from squirrel.model.ticker import Ticker
+from squirrel.plugins.importers.google_finance.google_finance import GoogleFinance
 
 # Uncomment this to true to debug unclean reactor
 # from twisted.internet.base import DelayedCall
@@ -17,13 +18,12 @@ from squirrel.dam.google_finance import GoogleFinance
 log = logging.getLogger(__name__)
 
 
-class IntegrationTest(TestCase):
+class IntegrationTestGoogleFinance(TestCase):
 
     @defer.inlineCallbacks
     def test_GoodTicker_DataIsNotEmpty(self):
         log.debug("requesting google finance AAPL")
-        res = yield GoogleFinance().getTicks(ticker="AAPL",
-                                             exchange="NASDAQ",
+        res = yield GoogleFinance().getTicks(Ticker("AAPL", "NASDAQ"),
                                              intervalMin=60 * 24,
                                              nbIntervals=2)
         self.assertNotEmpty(res)
@@ -36,7 +36,6 @@ class IntegrationTest(TestCase):
     def test_BadTicker_ExceptionOccurs(self):
         yield self.assertInlineCallbacksRaises(Exception,
                                                GoogleFinance().getTicks,
-                                               ticker="BAD_TICKER",
-                                               exchange="NASDAQ",
+                                               Ticker("BAD_TICKER", "NASDAQ"),
                                                intervalMin=60 * 24,
                                                nbIntervals=2)

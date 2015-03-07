@@ -12,7 +12,8 @@ from squirrel.common.downloader import get
 from squirrel.common.text import dateTimeToEpoch
 from squirrel.common.text import epochTimeStringToDatatime
 from squirrel.common.text import getTodayEpoch
-from squirrel.dam.tick import Tick
+from squirrel.model.tick import Tick
+from squirrel.model.ticker import Ticker
 
 
 log = logging.getLogger(__name__)
@@ -30,18 +31,18 @@ class GoogleFinance(object):
         defer.returnValue(content)
 
     @defer.inlineCallbacks
-    def getTicks(self, ticker, exchange, intervalMin, nbIntervals):
+    def getTicks(self, ticker, intervalMin, nbIntervals):
         """
         Get tick prices for the given ticker ticker.
 
-        @param ticker: stock google ticker (ex: 'GOOG')
-        @param exchnage: stock exchnage (ex: 'NASD')
+        @param ticker: stock google ticker (ex: 'GOOG:NASDAQS')
         @param intervalMin: interval in mins(google finance only support query till 1 min)
         @param nbIntervals: nb of intervals to retrieve, starting today
 
         @return a list of tick
         """
-        # TODO, parameter checking
+        assert isinstance(ticker, Ticker), "ticker should be Ticker"
+
         DATE = 'd'
         CLOSE = 'c'
         VOLUME = 'v'
@@ -51,8 +52,8 @@ class GoogleFinance(object):
         LOW = 'l'
         interval_sec = intervalMin * 60
         request = Namespace({
-            'ticker': ticker,
-            'exchange': exchange,
+            'ticker': ticker.symbol,
+            'exchange': ticker.exchange,
             'interval': interval_sec,
             'period': str(nbIntervals) + 'd',
             'format': ",".join([
@@ -140,12 +141,15 @@ class GoogleFinance(object):
                 t = epochTimeStringToDatatime(cur_epoch_time[0] + int(t) * interval_sec)
             try:
                 data.append(Tick(
-                    time=t,
+                    ticker=ticker,
+                    date=t,
                     open=sd[column_order["OPEN"]],
                     high=sd[column_order["HIGH"]],
                     low=sd[column_order["LOW"]],
                     close=sd[column_order["CLOSE"]],
-                    volume=sd[column_order["VOLUME"]]))
+                    volume=sd[column_order["VOLUME"]],
+                    cdays=sd[column_order["CDAYS"]],
+                ))
             except IndexError as e:
                 raise IndexError("Cannot parse line: {!r}. Exception: {}".format(line, e))
 

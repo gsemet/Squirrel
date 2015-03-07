@@ -14,9 +14,8 @@ class Portfolios(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    fullname = Column(String)
-    password = Column(String)
+    exchange = Column(String)
 
     def __repr__(self):
-        return "<{}(name='{}', fullname='{}', password='{}')>".format(
-            self.__tablename__, self.name, self.fullname, self.password)
+        return "<{}(name='{}', exchange='{}')>".format(
+            self.__tablename__, self.name, self.exchange)

@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 
 import os
+import sys
 import yaml
 
 from squirrel.config.config import Config
@@ -26,6 +27,12 @@ def _makeFullPath(relPath):
                                         relPath))
 
 
+def _makeSqlLitePath(url):
+    if url.startswith("sqlite://"):
+        return "sqlite://" + _makeFullPath(url[len("sqlite://"):])
+    return url
+
+
 def _dumpConfig():
     c = Config()
     print("c", type(c))
@@ -35,6 +42,10 @@ def _dumpConfig():
     print("  backend root dir: {}".format(c.frontend.root_path))
     c.frontend.root_full_path = _makeFullPath(c.frontend.root_path)
     c.frontend.doc_full_path = _makeFullPath(c.frontend.doc_path)
+    c.backend.db.full_url = _makeSqlLitePath(c.backend.db.url)
+    if sys.platform == "win32":
+        c.backend.db.full_url = c.backend.db.full_url.replace("\\", "\\\\")
+        c.backend.db.full_url = c.backend.db.full_url.replace("sqlite://", "sqlite:///")
 
     print("")
     print("Listing all available keys:")
