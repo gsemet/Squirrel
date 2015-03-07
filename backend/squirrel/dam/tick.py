@@ -2,7 +2,7 @@ import json
 
 # namedtuple are used to handle data getting from csv or internet
 TICK_FIELDS = ['time', 'open', 'high', 'low', 'close', 'volume']
-#QUOTE_FIELDS = ['time', 'open', 'high', 'low', 'close', 'volume', 'adjClose']
+# QUOTE_FIELDS = ['time', 'open', 'high', 'low', 'close', 'volume', 'adjClose']
 QUOTE_FIELDS = ['time', 'close', 'volume', 'low', 'high']
 
 
@@ -10,7 +10,7 @@ class Tick(object):
 
     ''' tick class '''
 
-    def __init__(self, time, open, high, low, close, volume):
+    def __init__(self, time=None, open=None, high=None, low=None, close=None, volume=None):
         ''' constructor '''
         self.time = time
         self.open = float(open)
@@ -21,12 +21,23 @@ class Tick(object):
 
     def __str__(self):
         ''' convert to string '''
-        return json.dumps({"time": self.time,
-                           "open": self.open,
-                           "high": self.high,
-                           "low": self.low,
-                           "close": self.close,
-                           "volume": self.volume})
+        return "Tick" + json.dumps({"time": self.time,
+                                    "open": self.open,
+                                    "high": self.high,
+                                    "low": self.low,
+                                    "close": self.close,
+                                    "volume": self.volume})
+
+    def __repr__(self):
+        return ("Tick(time={time}, open={open}, high={high}, low={low}, "
+                "close={close}, volume={volume})"
+                .format(time=self.time,
+                        open=self.open,
+                        high=self.high,
+                        low=self.low,
+                        close=self.close,
+                        volume=self.volume,
+                        ))
 
     @staticmethod
     def fromStr(string):

@@ -13,3 +13,4 @@ sphinx
 sqlalchemy
 treq
 twisted
+txrequests

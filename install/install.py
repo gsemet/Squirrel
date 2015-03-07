@@ -34,6 +34,7 @@ print("Requirements: {0}".format(requirements_txt))
 if sys.platform == 'win32':
     virtualenv = "virtualenv.exe"
     python_exe = "python.exe"
+    launch_in_new_window = True
     activate = os.path.join(workdir_path, "Scripts", "activate.bat")
 
     if not os.path.exists(os.path.join(workdir_path, "Scripts", "pip.exe")):
@@ -45,7 +46,10 @@ if sys.platform == 'win32':
 
     print("Activating virtualenv in {0}".format(workdir_path))
     # subprocess.check_call([python_exe, stage2_path, activate, install_path])
-    subprocess.check_call(["cmd", "/K", launcher_bat, activate, stage2_path, install_path, workdir_path])
+    subprocess.check_call([
+        "cmd", "/K",
+        launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
+        workdir_path, stage2_path, install_path, workdir_path])
 
 elif sys.platform == "linux2":
     activate = os.path.join(workdir_path, "bin", "activate")

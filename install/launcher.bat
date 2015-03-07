@@ -1,12 +1,18 @@
 @echo off
-echo "Launching stage2"
+set NEW_WINDOW=%1
+shift
+set WORKDIR_PATH=%1
+shift
+:: %* doesn't work!!!
+set COMMAND=%1 %2 %3 %4 %5 %6 %7 %8 %9
 
-set ACTIVATE=%1
-set STAGE2=%2
-set INSTALL_PATH=%3
-set WORKDIR_PATH=%4
+echo "Custom activate of the virtualenv (Windows):"
 
-echo "Custom activate: %ACTIVATE%"
+echo "Executing Command: %COMMAND%"
+echo "NEW_WINDOW: %NEW_WINDOW%"
+echo "Workdir path: %WORKDIR_PATH%"
+:: echo "PATH=%PATH%"
+:: echo "VIRTUAL_ENV=%VIRTUAL_ENV%"
 
 set "VIRTUAL_ENV=%WORKDIR_PATH%"
 
@@ -33,9 +39,8 @@ if defined _OLD_VIRTUAL_PATH (
 set "PATH=%VIRTUAL_ENV%\Scripts;%PATH%"
 
 
-echo "Executing stage2 %STAGE2%"
-echo "Install path: %INSTALL_PATH%"
-echo "Workdir path: %WORKDIR_PATH%"
-
-
-start /WAIT cmd.exe /k cmd /c %STAGE2% %INSTALL_PATH% %WORKDIR_PATH%
+if "%NEW_WINDOW%" == "new_window" (
+    start /WAIT cmd.exe /k cmd /c %COMMAND%
+) else (
+    cmd /C %COMMAND%
+)

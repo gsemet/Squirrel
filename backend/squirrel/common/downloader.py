@@ -4,6 +4,9 @@ from __future__ import print_function
 
 import requests
 
+from twisted.internet import defer
+from txrequests import Session
+
 
 def download(remote_url, local_path):
     r = requests.get(remote_url)
@@ -13,3 +16,10 @@ def download(remote_url, local_path):
             f.write(chunk)
     f.close()
     return
+
+
+@defer.inlineCallbacks
+def get(url):
+    with Session() as session:
+        response = yield session.get(url)
+        defer.returnValue((response.status_code, response.content))
