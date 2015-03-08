@@ -4,8 +4,12 @@ from __future__ import print_function
 
 import requests
 
+import treq
+
 from twisted.internet import defer
 from txrequests import Session
+
+enable_txrequest = False
 
 
 def download(remote_url, local_path):
@@ -19,7 +23,19 @@ def download(remote_url, local_path):
 
 
 @defer.inlineCallbacks
-def get(url):
+def get_treq(url):
+    r = yield treq.get(url)
+    c = yield treq.text_content(r)
+    defer.returnValue((r.code, c))
+
+
+@defer.inlineCallbacks
+def get_txrequest(url):
     with Session() as session:
         response = yield session.get(url)
         defer.returnValue((response.status_code, response.content))
+
+if enable_txrequest:
+    get = get_txrequest
+else:
+    get = get_treq
