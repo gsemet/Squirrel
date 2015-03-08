@@ -28,8 +28,9 @@ def _makeFullPath(relPath):
 
 
 def _makeSqlLitePath(url):
-    if url.startswith("sqlite://"):
-        return "sqlite://" + _makeFullPath(url[len("sqlite://"):])
+    sqlite_proto = "sqlite:///"
+    if url.startswith(sqlite_proto):
+        return sqlite_proto + _makeFullPath(url[len(sqlite_proto):])
     return url
 
 
@@ -45,7 +46,6 @@ def _dumpConfig():
     c.backend.db.full_url = _makeSqlLitePath(c.backend.db.url)
     if sys.platform == "win32":
         c.backend.db.full_url = c.backend.db.full_url.replace("\\", "\\\\")
-        c.backend.db.full_url = c.backend.db.full_url.replace("sqlite://", "sqlite:///")
 
     print("")
     print("Listing all available keys:")

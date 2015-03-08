@@ -18,6 +18,12 @@ import os
 import subprocess
 import sys
 
+if sys.version_info < (2, 7):
+    raise "must use python 2.7.x. Current version is: {}.".format(sys.version_info)
+
+if sys.version_info >= (3, 0):
+    raise "must use python 2.7.x. Current version is: {}.".format(sys.version_info)
+
 install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs", "default.conf"))
 stage2_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "install-stage2.py"))
@@ -51,12 +57,17 @@ if sys.platform == 'win32':
         launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
         workdir_path, stage2_path, install_path, workdir_path])
 
-elif sys.platform == "linux2":
+elif sys.platform == "linux2" or sys.platform == "darwin":
     activate = os.path.join(workdir_path, "bin", "activate")
     launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 
     if not os.path.exists(os.path.join(workdir_path, "bin", "pip")):
         subprocess.check_call(['virtualenv', workdir_path])
+
+    if not os.path.exists(os.path.join(install_path, "tosource")):
+        print("Creating symblink tosource")
+        os.symlink(os.path.join(workdir_path, "bin", "activate"), os.path.join(install_path,
+                                                                               "tosource"))
 
     print("Activating virtualenv in {0}".format(workdir_path))
     # subprocess.check_call([python_exe, stage2_path, activate, install_path])
@@ -68,7 +79,6 @@ elif sys.platform == "linux2":
                                    install_path=install_path,
                                    workdir_path=workdir_path)])
 
-    os.symlink(os.path.join(workdir_path, "bin", "activate", "tosource"))
 
 else:
     raise Exception("Unsupported environment: {0}".format(sys.platform))

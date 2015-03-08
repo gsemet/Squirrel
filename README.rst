@@ -10,7 +10,7 @@ Installation
 
 Installation is done using the scripts located in the ``install`` directory.
 
-Squirrel runs its own virtuelenv, to avoid
+Squirrel runs its own virtuelenv, to avoid conflict with installed libraries.
 
 Prerequisits
 ************
@@ -19,12 +19,26 @@ Have python 2.7, pip and virtualenv installed on your system:
 
 .. code-block:: bash
 
-    $ python
-    $ pip
+    $ python   # Python 2.7.9
+    $ pip  # pip 6.0.8
     $ pip install virtualenv
 
-Windows
-*******
+To build the frontend UI (HTML), you'll need node, bower and gulp.
+
+    $ npm install -g gulp
+    $ npm install -g bower
+
+Installation under Mac OS X
+***************************
+
+In the squirrel directory, execute the following command:
+
+.. code-block:: bash
+    python install/install.py
+
+
+Installation under Windows
+**************************
 
 ``python.exe`` and ``virtualenv.exe`` should be accessible through your path.
 
