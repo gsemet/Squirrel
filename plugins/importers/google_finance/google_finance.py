@@ -2,33 +2,18 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-
-import logging
-
 from dictns import Namespace
 from twisted.internet import defer
 
-from squirrel.common.downloader import get
 from squirrel.common.text import dateTimeToEpoch
 from squirrel.common.text import epochTimeStringToDatatime
 from squirrel.common.text import getTodayEpoch
 from squirrel.model.tick import Tick
 from squirrel.model.ticker import Ticker
+from squirrel.plugin_loader.pugin_importer_base import PluginImporterBase
 
 
-log = logging.getLogger(__name__)
-
-
-class GoogleFinance(object):
-
-    @defer.inlineCallbacks
-    def _request(self, url):
-        log.debug("Requesting url:", url)
-        code, content = yield get(url)
-        if code != 200:
-            raise Exception("Error received: code = {}".format(code))
-
-        defer.returnValue(content)
+class GoogleFinance(PluginImporterBase):
 
     @defer.inlineCallbacks
     def getTicks(self, ticker, intervalMin, nbIntervals):
@@ -106,12 +91,12 @@ class GoogleFinance(object):
                'f={request.format}&'
                'ts={request.today}'
                .format(request=request))
-        page = yield self._request(url)
+        page = yield self.httpRequest(url)
         page = page.split("\n")
 
-        log.debug("len=", len(page))
+        self.log.debug("len=", len(page))
         if len(page) <= 7:
-            log.debug("No data, raising")
+            self.log.debug("No data, raising")
             raise Exception("No data!")
 
         column_order = {}
@@ -121,7 +106,7 @@ class GoogleFinance(object):
             _, _, columns = line.partition('=')
             for i, column_name in enumerate(columns.split(",")):
                 column_order[column_name] = i
-            log.debug("column_order", column_order)
+            self.log.debug("column_order", column_order)
         # using a mutable here or else we cannot set cur_epoch_time from within parse_data
         cur_epoch_time = [0]
 
@@ -130,7 +115,7 @@ class GoogleFinance(object):
             if len(line) == 0:
                 return
             sd = line.split(",")
-            log.debug("parsing data:", sd)
+            self.log.debug("parsing data:", sd)
             t = sd[column_order["DATE"]]
             if t.startswith("a"):
                 t = epochTimeStringToDatatime(t[1:])

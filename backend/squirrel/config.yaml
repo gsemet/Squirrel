@@ -1,3 +1,5 @@
+# Note
+# relative paths in this file should use the relative path from the "backend" subdirectory
 frontend:
     root_path: ../frontend/dist/
     doc_path: ../doc/build/html/
@@ -6,3 +8,6 @@ frontend:
 backend:
     db:
         url: sqlite:///../workdir/db.sqlite
+
+plugins:
+    dir: ../plugins/
