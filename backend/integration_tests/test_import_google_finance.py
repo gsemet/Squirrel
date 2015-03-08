@@ -5,12 +5,9 @@ from __future__ import print_function
 import logging
 
 from twisted.internet import defer
-from twisted.web.client import HTTPConnectionPool
-from twisted.internet import reactor
-from twisted.internet.tcp import Client
-from twisted.internet.task import deferLater
 
 from squirrel.common.unittest import TestCase
+from squirrel.common.downloader import prepareReactorForUnitTest, cleanupReactorForUnitTest
 from squirrel.model.ticker import Ticker
 from squirrel.plugins.importers.google_finance.google_finance import GoogleFinance
 
@@ -25,20 +22,10 @@ log = logging.getLogger(__name__)
 class IntegrationTestGoogleFinance(TestCase):
 
     def setUp(self):
-        self.pool = HTTPConnectionPool(reactor, False)
+        prepareReactorForUnitTest(self)
 
     def tearDown(self):
-        def _check_fds(_):
-            # This appears to only be necessary for HTTPS tests.
-            # For the normal HTTP tests then closeCachedConnections is
-            # sufficient.
-            fds = set(reactor.getReaders() + reactor.getReaders())
-            if not [fd for fd in fds if isinstance(fd, Client)]:
-                return
-
-            return deferLater(reactor, 0, _check_fds, None)
-
-        return self.pool.closeCachedConnections().addBoth(_check_fds)
+        cleanupReactorForUnitTest(self)
 
     @defer.inlineCallbacks
     def test_GoodTicker_DataIsNotEmpty(self):

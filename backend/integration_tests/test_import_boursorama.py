@@ -18,6 +18,7 @@ class IntegrationTestBoursorama(TestCase):
     @defer.inlineCallbacks
     def test_GoodTicker_DataIsNotEmpty(self):
         raise NotImplementedError
+    test_GoodTicker_DataIsNotEmpty.skip = "not implemented"
 
     @defer.inlineCallbacks
     def test_BadTicker_ExceptionOccurs(self):
@@ -26,3 +27,4 @@ class IntegrationTestBoursorama(TestCase):
                                                Ticker("BAD_TICKER", "NASDAQ"),
                                                intervalMin=60 * 24,
                                                nbIntervals=2)
+    test_BadTicker_ExceptionOccurs.skip = "not implemented"
