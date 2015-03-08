@@ -55,7 +55,7 @@ class GoogleFinance(object):
             'ticker': ticker.symbol,
             'exchange': ticker.exchange,
             'interval': interval_sec,
-            'period': str(nbIntervals) + 'd',
+            'period': '10Y',
             'format': ",".join([
                 DATE,
                 OPEN,
