@@ -7,7 +7,6 @@ from sqlalchemy import Column
 from sqlalchemy import Float
 from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
-from sqlalchemy import String
 
 from squirrel.db.model import Base
 
@@ -17,7 +16,6 @@ class TableTick(Base):
 
     id = Column(Integer, primary_key=True)
     symbol_id = Column(Integer,  ForeignKey('symbols.id'))
-    exchange = Column(String(10))
     date = Column(Integer)
     open = Column(Float)
     high = Column(Float)

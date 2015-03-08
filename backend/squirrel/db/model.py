@@ -14,7 +14,7 @@ class Model(object):
 
     def __init__(self, dburl=None):
         if dburl is None:
-            dburl = 'sqlite:///:memory:'
+            dburl = 'sqlite://'  # in memory DB
         self._engine = sa.create_engine(dburl, echo=True)
 
     def start(self, create=True):

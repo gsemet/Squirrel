@@ -15,6 +15,7 @@ def _loadYaml(yamlpath):
 
 
 def _loadConfig(configPath):
+    print("Loading configuration: {}".format(configPath))
     cfg = _loadYaml(configPath)
     Config().unload()
     Config(cfg)
@@ -36,11 +37,6 @@ def _makeSqlLitePath(url):
 
 def _dumpConfig():
     c = Config()
-    print("c", type(c))
-    print("c.frontend", type(c.frontend))
-
-    print("Configuration: ")
-    print("  backend root dir: {}".format(c.frontend.root_path))
     c.frontend.root_full_path = _makeFullPath(c.frontend.root_path)
     c.frontend.doc_full_path = _makeFullPath(c.frontend.doc_path)
     c.backend.db.full_url = _makeSqlLitePath(c.backend.db.url)
@@ -56,6 +52,5 @@ def initializeConfig():
     config_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                os.pardir,
                                                "config.yaml"))
-    print("Loading configuration {}".format(config_path))
     _loadConfig(config_path)
     _dumpConfig()
