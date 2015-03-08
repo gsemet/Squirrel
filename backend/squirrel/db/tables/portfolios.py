@@ -6,10 +6,12 @@ from __future__ import print_function
 from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
-from squirrel.db.model import Base
 
 
-class Portfolios(Base):
+from squirrel.db.tables import TableBase
+
+
+class Portfolios(TableBase):
     __tablename__ = 'portfolios'
 
     id = Column(Integer, primary_key=True)

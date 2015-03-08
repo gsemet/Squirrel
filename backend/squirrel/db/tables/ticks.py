@@ -2,16 +2,15 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-
 from sqlalchemy import Column
 from sqlalchemy import Float
 from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
 
-from squirrel.db.model import Base
+from squirrel.db.tables.table_base import TableBase
 
 
-class TableTick(Base):
+class TableTick(TableBase):
     __tablename__ = 'ticks'
 
     id = Column(Integer, primary_key=True)
