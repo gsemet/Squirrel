@@ -54,8 +54,8 @@ coverage.xml
 docs/_build/
 
 workdir/
-_trial_temp/
-_trial_temp.lock/
+_trial_temp*/
+_trial_temp.lock*/
 doc/build/
 tosource
 _trial_temp.lock
