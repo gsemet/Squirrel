@@ -34,6 +34,8 @@ with open(config_path) as f:
 workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
 requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "requirements.txt"))
 
+print("Squirrel Installer stage 1")
+print("Setting up virtualenv and start stage 2.")
 print("Installing in {0}".format(workdir_path))
 print("Requirements: {0}".format(requirements_txt))
 

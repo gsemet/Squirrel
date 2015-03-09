@@ -18,12 +18,12 @@ workdir_path = os.path.abspath(workdir_path)
 if not os.environ['VIRTUAL_ENV']:
     raise Exception("VIRTUAL_ENV environment variable is empty. We are not in a virtualenv.")
 
-print("=======================================================================")
+print("===============================================================================")
 print("[INFO] Squirrel Installer Stage 2")
 print("[INFO] We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
 print("[INFO] installation dir: {}".format(install_path))
 print("[INFO] workdir: {}".format(workdir_path))
-print("=======================================================================")
+print("===============================================================================")
 print("")
 
 
@@ -38,7 +38,7 @@ def call(cmd, cwd=None, shell=False):
 
 
 if sys.platform.startswith("linux"):
-    print("=======================================================================")
+    print("===============================================================================")
     pip_version_str = subprocess.check_output(["pip", "--versio"])
     pip_version_str = pip_version_str.split(" ")[1]
     pip_version_str = pip_version_str.split("-")[0]
@@ -60,20 +60,20 @@ if sys.platform.startswith("linux"):
         else:
             print("[INFO] Already applied. Skipping patch")
 
-print("=======================================================================")
+print("===============================================================================")
 print("[INFO] Installing backend requirements")
 run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                           "requirements.txt")])
 
 if sys.platform.startswith('win32'):
-    print("=======================================================================")
+    print("===============================================================================")
     print("[INFO] Installing Windows dependencies")
     run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                               "requirements-win32.txt")])
     print("[INFO] Ensure you have win32api installed")
 
 
-print("=======================================================================")
+print("===============================================================================")
 print("[INFO] Installing backend")
 run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
@@ -82,7 +82,7 @@ if sys.platform.startswith('win32'):
 else:
     shell = False
 
-print("=======================================================================")
+print("===============================================================================")
 print("[INFO] Compiling frontend website")
 if "http_proxy" in os.environ:
     print("[INFO] Behind a proxy: npm --proxy")
@@ -98,15 +98,15 @@ run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shel
 run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 
-print("=======================================================================")
+print("===============================================================================")
 print("[INFO] Building online documentation")
 if sys.platform.startswith('win32'):
-    run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"))
+    run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
 else:
     run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
 
 
-print("=======================================================================")
+print("===============================================================================")
 # Launching Squirrel-backend
 if sys.platform.startswith('win32'):
     backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-backend.exe")
@@ -119,4 +119,4 @@ sys.stderr.flush()
 run([backend_launcher])
 
 print("[INFO] Done")
-print("=======================================================================")
+print("===============================================================================")
