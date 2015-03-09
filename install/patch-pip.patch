@@ -1,0 +1,11 @@
+--- workdir/lib/python2.7/site-packages/pip/_vendor/requests/adapters.py	2015-03-09 11:47:54.293626718 +0100
++++ workdir/lib/python2.7/site-packages/pip/_vendor/requests/adapters.py	2015-03-10 11:48:06.541769222 +0100
+@@ -206,7 +206,7 @@
+             proxy = prepend_scheme_if_needed(proxy, 'http')
+             proxy_headers = self.proxy_headers(proxy)
+
+-            if not proxy in self.proxy_manager:
++            if True:
+                 self.proxy_manager[proxy] = proxy_from_url(
+                                                 proxy,
+                                                 proxy_headers=proxy_headers,

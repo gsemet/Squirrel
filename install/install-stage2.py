@@ -6,6 +6,7 @@ from __future__ import division
 from __future__ import print_function
 
 import os
+import re
 import subprocess
 import sys
 
@@ -24,12 +25,43 @@ print("[INFO] We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
 print("[INFO] installation dir: {}".format(install_path))
 print("[INFO] workdir: {}".format(workdir_path))
 print("=======================================================================")
+print("")
 
 
 def run(cmd, cwd=None, shell=False):
     print("[CMD ] {}".format(" ".join(cmd)))
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
 
+
+def call(cmd, cwd=None, shell=False):
+    print("[CMD ] {}".format(" ".join(cmd)))
+    return subprocess.call(cmd, shell=shell, cwd=cwd)
+
+
+if sys.platform == "linux2":
+    print("=======================================================================")
+    pip_version_str = subprocess.check_output(["pip", "--versio"])
+    pip_version_str = pip_version_str.split(" ")[1]
+    pip_version_str = pip_version_str.split("-")[0]
+    pip_version_str = pip_version_str.split("_")[0]
+    pip_version_str = pip_version_str.rpartition(".")[0]
+    pip_major, _, pip_minor = pip_version_str.partition(".")
+    pip_version = int(pip_major) * 100 + int(pip_minor)
+    if pip_version <= 105:
+        print("[INFO] Patching this pip (version) {}.{}), to fix proxy issue (fixed in pip 1.6)".format(pip_major,
+                                                                                                        pip_minor))
+        print("[INFO] See: https://github.com/pypa/pip/issues/1805")
+        # Patching the installed pip to fix the following bug with proxy
+        # See http://www.irvingc.com/posts/10
+        patch_path = os.path.join(install_path, "install", "patch-pip.patch")
+        c = call(["bash", "-c", "patch -p0 -N --dry-run --silent < {} 2>/dev/null".format(patch_path)])
+        if not c:
+            print("[INFO] Applying patch")
+            run(["bash", "-c", "patch -p0 < {}".format(patch_path)])
+        else:
+            print("[INFO] Already applied. Skipping patch")
+
+print("=======================================================================")
 print("[INFO] Installing backend requirements")
 run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                           "requirements.txt")])

@@ -11,19 +11,31 @@ config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs",
 with open(config_path) as f:
     config = f.readlines()
 
+# todo: read this config file (we are in a virtualenv, can import yaml package)
+root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
+frontend_dist_path = os.path.abspath(os.path.join(root_path,
+                                                  "frontend",
+                                                  "dist"))
+frontend_node_modules_path = os.path.abspath(os.path.join(root_path,
+                                                          "frontend",
+                                                          "node_modules"))
 
-if os.path.isdir(workdir_path):
-    print("Removing workdir...")
-    shutil.rmtree(workdir_path)
-if os.path.isdir("_trial_temp"):
-    print("Removing _trial_temp...")
-    shutil.rmtree("_trial_temp")
-if os.path.isdir("_trial_temp.lock"):
-    print("Removing _trial_temp.lock...")
-    shutil.rmtree("_trial_temp.lock")
-if os.path.isfile("tosource"):
-    print("Removing tosource...")
-    os.unlink("tosource")
+paths_to_remove = [(workdir_path, "workdir"),
+                   (os.path.join(root_path, "_trial_temp"), "_trial_temp"),
+                   (os.path.join(root_path, "_trial_temp.lock"), "_trial_temp.lock"),
+                   (os.path.join(root_path, "tosource"), "tosource"),
+                   (frontend_dist_path, "frontend/dist"),
+                   (frontend_node_modules_path, "frontend/node_modules"),
+                   ]
+
+print("Uninstalling files in {}".format(root_path))
+for path, name in paths_to_remove:
+    if os.path.isdir(path):
+        print("Removing {}...".format(name))
+        shutil.rmtree(path)
+    elif os.path.isfile(path):
+        print("Removing {}...".format(name))
+        os.unlink(path)
 
 print("Uninstall done")
