@@ -37,7 +37,7 @@ requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pa
 print("Installing in {0}".format(workdir_path))
 print("Requirements: {0}".format(requirements_txt))
 
-if sys.platform == 'win32':
+if sys.platform.startswith('win32'):
     virtualenv = "virtualenv.exe"
     python_exe = "python.exe"
     launch_in_new_window = True
@@ -57,7 +57,7 @@ if sys.platform == 'win32':
         launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
         workdir_path, stage2_path, install_path, workdir_path])
 
-elif sys.platform == "linux2" or sys.platform == "darwin":
+elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
     activate = os.path.join(workdir_path, "bin", "activate")
     launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 

@@ -24,7 +24,7 @@ def _loadConfig(configPath):
 def _makeFullPath(relPath):
     if os.path.isabs(relPath):
         return relPath
-    if sys.platform == "win32":
+    if sys.platform.startswith("win32"):
         relPath = os.path.normpath(relPath)
     backend_root = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                 os.pardir,
@@ -44,7 +44,7 @@ def _dumpConfig():
     c.frontend.root_full_path = _makeFullPath(c.frontend.root_path)
     c.frontend.doc_full_path = _makeFullPath(c.frontend.doc_path)
     c.backend.db.full_url = _makeSqlLitePath(c.backend.db.url)
-    if sys.platform == "win32":
+    if sys.platform.startswith("win32"):
         c.backend.db.full_url = c.backend.db.full_url.replace("\\", "\\\\")
     c.plugins.full_default_path = _makeFullPath(c.plugins.default_path)
 

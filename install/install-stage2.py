@@ -37,7 +37,7 @@ def call(cmd, cwd=None, shell=False):
     return subprocess.call(cmd, shell=shell, cwd=cwd)
 
 
-if sys.platform == "linux2":
+if sys.platform.startswith("linux"):
     print("=======================================================================")
     pip_version_str = subprocess.check_output(["pip", "--versio"])
     pip_version_str = pip_version_str.split(" ")[1]
@@ -65,7 +65,7 @@ print("[INFO] Installing backend requirements")
 run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                           "requirements.txt")])
 
-if sys.platform == 'win32':
+if sys.platform.startswith('win32'):
     print("=======================================================================")
     print("[INFO] Installing Windows dependencies")
     run(["pip", "install", "-r", os.path.join(install_path, "backend",
@@ -77,7 +77,7 @@ print("=======================================================================")
 print("[INFO] Installing backend")
 run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
-if sys.platform == 'win32':
+if sys.platform.startswith('win32'):
     shell = True
 else:
     shell = False
@@ -85,6 +85,7 @@ else:
 print("=======================================================================")
 print("[INFO] Compiling frontend website")
 if "http_proxy" in os.environ:
+    print("[INFO] Behind a proxy: npm --proxy")
     run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
                                                                           "frontend"),
         shell=shell)
@@ -99,7 +100,7 @@ run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 print("=======================================================================")
 print("[INFO] Building online documentation")
-if sys.platform == 'win32':
+if sys.platform.startswith('win32'):
     run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"))
 else:
     run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
@@ -107,7 +108,7 @@ else:
 
 print("=======================================================================")
 # Launching Squirrel-backend
-if sys.platform == 'win32':
+if sys.platform.startswith('win32'):
     backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-backend.exe")
 else:
     backend_launcher = "squirrel-backend"
