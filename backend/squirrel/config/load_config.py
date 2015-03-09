@@ -6,6 +6,7 @@ import os
 import sys
 import yaml
 
+from squirrel.common.i18n import _
 from squirrel.config.config import Config
 
 
@@ -15,7 +16,7 @@ def _loadYaml(yamlpath):
 
 
 def _loadConfig(configPath):
-    print("Loading configuration: {}".format(configPath))
+    print(_("Loading configuration: {}").format(configPath))
     cfg = _loadYaml(configPath)
     Config().unload()
     Config(cfg)
@@ -49,7 +50,7 @@ def _dumpConfig():
     c.plugins.full_default_path = _makeFullPath(c.plugins.default_path)
 
     print("")
-    print("Listing all available keys:")
+    print(_("Listing all available keys:"))
     print(c.dumpFlat())
 
 
