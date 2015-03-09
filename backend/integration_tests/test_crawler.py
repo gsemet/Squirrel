@@ -8,6 +8,7 @@ from twisted.internet import defer
 
 from squirrel.common.unittest import TestCase
 from squirrel.config.load_config import initializeConfig
+from squirrel.config.load_config import unloadConfig
 from squirrel.model.ticker import Ticker
 from squirrel.procedures.crawler import Crawler
 
@@ -26,3 +27,9 @@ class IntegrationTestCrawler(TestCase):
             Ticker("GOOG", "NASDAQ"),
         ])
         yield crawler.run()
+
+    def setUp(self):
+        initializeConfig()
+
+    def tearDown(self):
+        unloadConfig()

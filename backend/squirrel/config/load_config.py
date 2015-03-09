@@ -22,10 +22,14 @@ def _loadConfig(configPath):
 
 
 def _makeFullPath(relPath):
-    return os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                        os.pardir,
-                                        os.pardir,
-                                        relPath))
+    if os.path.isabs(relPath):
+        return relPath
+    if sys.platform == "win32":
+        relPath = os.path.normpath(relPath)
+    backend_root = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                                os.pardir,
+                                                os.pardir))
+    return os.path.abspath(os.path.join(backend_root, relPath))
 
 
 def _makeSqlLitePath(url):
@@ -42,6 +46,7 @@ def _dumpConfig():
     c.backend.db.full_url = _makeSqlLitePath(c.backend.db.url)
     if sys.platform == "win32":
         c.backend.db.full_url = c.backend.db.full_url.replace("\\", "\\\\")
+    c.plugins.full_default_path = _makeFullPath(c.plugins.default_path)
 
     print("")
     print("Listing all available keys:")
@@ -54,3 +59,7 @@ def initializeConfig():
                                                "config.yaml"))
     _loadConfig(config_path)
     _dumpConfig()
+
+
+def unloadConfig():
+    Config().unload()

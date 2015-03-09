@@ -10,10 +10,19 @@ from squirrel.common.text import epochTimeStringToDatatime
 from squirrel.common.text import getTodayEpoch
 from squirrel.model.tick import Tick
 from squirrel.model.ticker import Ticker
-from squirrel.plugin_loader.pugin_importer_base import PluginImporterBase
+from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
 
 
 class GoogleFinance(PluginImporterBase):
+
+    internalName = "GoogleFinance"
+    name = "Google Finance"
+
+    def activate(self):
+        pass
+
+    def deactivate(self):
+        pass
 
     @defer.inlineCallbacks
     def getTicks(self, ticker, intervalMin, nbIntervals):

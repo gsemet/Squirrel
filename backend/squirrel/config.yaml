@@ -10,4 +10,4 @@ backend:
         url: sqlite:///../workdir/db.sqlite
 
 plugins:
-    dir: ../plugins/
+    default_path: ../plugins/
