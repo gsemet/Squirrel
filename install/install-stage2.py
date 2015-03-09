@@ -6,7 +6,6 @@ from __future__ import division
 from __future__ import print_function
 
 import os
-import re
 import subprocess
 import sys
 
@@ -85,7 +84,16 @@ else:
 
 print("=======================================================================")
 print("[INFO] Compiling frontend website")
-run(["npm", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+if "http_proxy" in os.environ:
+    run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
+                                                                          "frontend"),
+        shell=shell)
+    run(["npm", "--proxy", os.environ["http_proxy"], "install"], cwd=os.path.join(install_path,
+                                                                                  "frontend"),
+        shell=shell)
+else:
+    run(["npm", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 
