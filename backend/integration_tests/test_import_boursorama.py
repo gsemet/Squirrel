@@ -6,14 +6,31 @@ import logging
 
 from twisted.internet import defer
 
+from squirrel.common.downloader import cleanupReactorForUnitTest
+from squirrel.common.downloader import prepareReactorForUnitTest
 from squirrel.common.unittest import TestCase
+from squirrel.config.load_config import initializeConfig
+from squirrel.config.load_config import unloadConfig
 from squirrel.model.ticker import Ticker
-from squirrel.plugins.importers.boursorama.boursorama import Boursorama
+from squirrel.services.plugin_loader import PluginRegistry
+from squirrel.services.plugin_loader import loadPlugins
+from squirrel.services.plugin_loader import unloadPlugins
+
 
 log = logging.getLogger(__name__)
 
 
 class IntegrationTestBoursorama(TestCase):
+
+    def setUp(self):
+        prepareReactorForUnitTest(self)
+        initializeConfig()
+        loadPlugins(["GoogleFinance"])
+
+    def tearDown(self):
+        cleanupReactorForUnitTest(self)
+        unloadConfig()
+        unloadPlugins()
 
     @defer.inlineCallbacks
     def test_GoodTicker_DataIsNotEmpty(self):
@@ -23,7 +40,7 @@ class IntegrationTestBoursorama(TestCase):
     @defer.inlineCallbacks
     def test_BadTicker_ExceptionOccurs(self):
         yield self.assertInlineCallbacksRaises(Exception,
-                                               Boursorama().getTicks,
+                                               PluginRegistry().get("Boursorama").getTicks,
                                                Ticker("BAD_TICKER", "NASDAQ"),
                                                intervalMin=60 * 24,
                                                nbIntervals=2)
