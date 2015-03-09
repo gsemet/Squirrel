@@ -11,7 +11,7 @@ from squirrel.db.model import Model
 from squirrel.db.tables.symbols import TableSymbols
 from squirrel.db.tables.ticks import TableTick
 from squirrel.model.ticker import Ticker
-from squirrel.plugins.importers.google_finance.google_finance import GoogleFinance
+from squirrel.services.plugin_loader import PluginRegistry
 
 log = logging.getLogger(__name__)
 
@@ -27,9 +27,9 @@ class Crawler(object):
     def run(self):
         with Model(Config().backend.db.full_url) as model:
             for ticker in self.tickers:
-                ticks = yield GoogleFinance().getTicks(ticker,
-                                                       intervalMin=60 * 24,
-                                                       nbIntervals=10)
+                ticks = yield PluginRegistry().get("Google Finance").getTicks(ticker,
+                                                                              intervalMin=60 * 24,
+                                                                              nbIntervals=10)
                 log.debug("ticks: " + str(ticks[:20]))
                 symbol_row = TableSymbols(None, ticker.symbol, ticker.exchange)
                 symbol_id = symbol_row.addAndGetId(model)

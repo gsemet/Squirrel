@@ -7,22 +7,39 @@ import sqlalchemy as sa
 
 from sqlalchemy.ext.declarative import declarative_base
 
+# force import all table here to register them, so they ll be created with the
+# create_all function.
+from squirrel.db.tables import *
+
 Base = declarative_base()
 
 
 class Model(object):
 
+    naming_convention = {
+        "ix": 'ix_%(column_0_label)s',
+        "uq": "uq_%(table_name)s_%(column_0_name)s",
+        "ck": "ck_%(table_name)s_%(constraint_name)s",
+        "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+        "pk": "pk_%(table_name)s"
+    }
+
     def __init__(self, dburl=None):
         if dburl is None:
             dburl = 'sqlite://'  # in memory DB
-        self._engine = sa.create_engine(dburl, echo=True)
+        verbose = True
+        self._engine = sa.create_engine(dburl, echo=verbose,  pool_reset_on_return=None)
+        self.metadata = Base.metadata
 
     def start(self, create=True):
+        self.metadata.bind = self._engine
+
         Session = sa.orm.sessionmaker()
         Session.configure(bind=self._engine)
         self._session = Session()
         if create:
-            Base.metadata.create_all(self._engine)
+            print("Creating all tables...")
+            self.metadata.create_all(self._engine)
 
     def stop(self):
         self._session.close()
