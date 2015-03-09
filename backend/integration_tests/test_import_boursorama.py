@@ -39,9 +39,8 @@ class IntegrationTestBoursorama(TestCase):
 
     @defer.inlineCallbacks
     def test_BadTicker_ExceptionOccurs(self):
-        yield self.assertInlineCallbacksRaises(Exception,
-                                               PluginRegistry().get("Boursorama").getTicks,
-                                               Ticker("BAD_TICKER", "NASDAQ"),
-                                               intervalMin=60 * 24,
-                                               nbIntervals=2)
+        yield self.assertInlineCallbacksRaises(
+            Exception,
+            PluginRegistry().getByName("Boursorama").getTicks,
+            Ticker("BAD_TICKER", "NASDAQ"), intervalMin=60 * 24, nbIntervals=2)
     test_BadTicker_ExceptionOccurs.skip = "not implemented"

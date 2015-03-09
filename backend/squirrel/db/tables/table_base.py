@@ -3,22 +3,22 @@ from __future__ import division
 from __future__ import print_function
 
 from sqlalchemy.ext.declarative import AbstractConcreteBase
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from squirrel.db.model import Base
 
 
 class TableBase(AbstractConcreteBase, Base):
     __tablename__ = NotImplementedError
 
     def addAndGetId(self, model):
-        rows = model.session.query(type(self)).filter(self.formatSelectUniqCondition()).limit(1)
-        if not rows:
+        row = model.session.query(type(self)).filter(
+            self.formatSelectUniqCondition()).limit(1).one()
+        if not row:
             model.session.add(self)
-            rows = model.session.query(type(self)).filter(self.formatSelectUniqCondition()).limit(1)
-            res = self.rowToMySelf(rows[0]).id
+            row = model.session.query(type(self)).filter(
+                self.formatSelectUniqCondition()).limit(1).one()
+            res = self.rowToMySelf(row).id
         else:
-            res = self.rowToMySelf(rows[0]).id
+            res = self.rowToMySelf(row).id
         return res
 
     def rowToMySelf(self):

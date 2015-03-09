@@ -3,7 +3,7 @@ Name = Google Finance
 Module = google_finance
 
 [Documentation]
-Author = John Smith
+Author = Gaetan Semet
 Version = 0.1
-Website = http://lotsofplugins.com
-Description = Google Finance Import Plugin
+Website = http://www.squirrel-ams.com
+Description = Google Finance Import Plugin for Squirrel Assets Management System

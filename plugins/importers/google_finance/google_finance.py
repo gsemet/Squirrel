@@ -15,7 +15,6 @@ from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
 
 class GoogleFinance(PluginImporterBase):
 
-    internalName = "GoogleFinance"
     name = "Google Finance"
 
     def activate(self):

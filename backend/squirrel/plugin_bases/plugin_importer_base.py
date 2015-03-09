@@ -3,14 +3,14 @@ from __future__ import division
 from __future__ import print_function
 
 import logging
-import yapsy
 
 from twisted.internet import defer
+from yapsy.IPlugin import IPlugin
 
 from squirrel.common.downloader import get
 
 
-class PluginImporterBase(yapsy.IPlugin.IPlugin):
+class PluginImporterBase(IPlugin):
 
     def __init__(self):
         self.log = logging.getLogger(__name__)

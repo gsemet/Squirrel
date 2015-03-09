@@ -39,9 +39,8 @@ class IntegrationTestGoogleFinance(TestCase):
     @defer.inlineCallbacks
     def test_GoodTicker_DataIsNotEmpty(self):
         log.debug("requesting google finance AAPL")
-        res = yield PluginRegistry().get("Google Finance").getTicks(Ticker("AAPL", "NASDAQ"),
-                                                                    intervalMin=60 * 24,
-                                                                    nbIntervals=2)
+        res = yield PluginRegistry().getByName("Google Finance").getTicks(
+            Ticker("AAPL", "NASDAQ"), intervalMin=60 * 24, nbIntervals=2)
         self.assertNotEmpty(res)
         for tick in res[:10]:
             self.assertNotEqual(tick.open, 0)
@@ -50,8 +49,7 @@ class IntegrationTestGoogleFinance(TestCase):
 
     @defer.inlineCallbacks
     def test_BadTicker_ExceptionOccurs(self):
-        yield self.assertInlineCallbacksRaises(Exception,
-                                               PluginRegistry().get("Google Finance").getTicks,
-                                               Ticker("BAD_TICKER", "NASDAQ"),
-                                               intervalMin=60 * 24,
-                                               nbIntervals=2)
+        yield self.assertInlineCallbacksRaises(
+            Exception,
+            PluginRegistry().getByName("Google Finance").getTicks,
+            Ticker("BAD_TICKER", "NASDAQ"), intervalMin=60 * 24, nbIntervals=2)
