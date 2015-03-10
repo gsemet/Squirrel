@@ -11,11 +11,11 @@ class TableBase(AbstractConcreteBase, Base):
 
     def addAndGetId(self, model):
         row = model.session.query(type(self)).filter(
-            self.formatSelectUniqCondition()).limit(1).one()
+            self.formatSelectUniqCondition()).one()
         if not row:
             model.session.add(self)
             row = model.session.query(type(self)).filter(
-                self.formatSelectUniqCondition()).limit(1).one()
+                self.formatSelectUniqCondition()).one()
             res = self.rowToMySelf(row).id
         else:
             res = self.rowToMySelf(row).id
