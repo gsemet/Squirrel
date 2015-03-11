@@ -2,14 +2,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from dictns import Namespace
 from twisted.internet import defer
 
-from squirrel.common.text import dateTimeToEpoch
-from squirrel.common.text import epochTimeStringToDatatime
-from squirrel.common.text import getTodayEpoch
-from squirrel.model.tick import Tick
-from squirrel.model.ticker import Ticker
 from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
 
 
@@ -34,7 +28,7 @@ class GoogleFinance(PluginImporterBase):
 
         @return a list of tick
         """
-        assert isinstance(ticker, Ticker), "ticker should be Ticker"
+        self.checkTicker(ticker)
 
         DATE = 'd'
         CLOSE = 'c'
@@ -44,7 +38,7 @@ class GoogleFinance(PluginImporterBase):
         HIGH = 'h'
         LOW = 'l'
         interval_sec = intervalMin * 60
-        request = Namespace({
+        request = self.createNamespace({
             'ticker': ticker.symbol,
             'exchange': ticker.exchange,
             'interval': interval_sec,
@@ -58,7 +52,7 @@ class GoogleFinance(PluginImporterBase):
                 HIGH,
                 LOW,
             ]),
-            'today': str(getTodayEpoch())
+            'today': str(self.getTodayEpoch())
         })
 
         # Seem like we are only able to retrieve the data from now to a certain interval
@@ -126,14 +120,14 @@ class GoogleFinance(PluginImporterBase):
             self.log.debug("parsing data:", sd)
             t = sd[column_order["DATE"]]
             if t.startswith("a"):
-                t = epochTimeStringToDatatime(t[1:])
-                cur_epoch_time[0] = dateTimeToEpoch(t)
+                t = self.epochTimeStringToDatatime(t[1:])
+                cur_epoch_time[0] = self.dateTimeToEpoch(t)
             else:
                 if cur_epoch_time[0] is None:
                     raise Exception("cur_epoch_time[0] is none!")
-                t = epochTimeStringToDatatime(cur_epoch_time[0] + int(t) * interval_sec)
+                t = self.epochTimeStringToDatatime(cur_epoch_time[0] + int(t) * interval_sec)
             try:
-                data.append(Tick(
+                data.append(self.createTick(
                     ticker=ticker,
                     date=t,
                     open=sd[column_order["OPEN"]],

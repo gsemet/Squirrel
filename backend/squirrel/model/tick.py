@@ -52,6 +52,16 @@ class Tick(object):
                         cdays=self.cdays,
                         ))
 
+    def __cmp__(self, other):
+        return (self.ticker == other.ticker and
+                self.date == other.date and
+                self.open == other.open and
+                self.high == other.high and
+                self.low == other.low and
+                self.close == other.close and
+                self.volume == other.volume and
+                self.cdays == other.cdays)
+
     @staticmethod
     def fromStr(string):
         ''' convert from string'''

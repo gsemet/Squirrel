@@ -21,3 +21,7 @@ class Ticker(object):
                 .format(symbol=self.symbol,
                         exchange=self.exchange,
                         ))
+
+    def __cmp__(self, other):
+        return (self.symbol == other.symbol and
+                self.exchange == other.exchange)
