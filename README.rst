@@ -32,8 +32,12 @@ To build the frontend UI (HTML), you'll need node, bower and gulp.
     $ npm install -g gulp
     $ npm install -g bower
 
-Installation under Mac OS X
-***************************
+Installation under Mac OS X and Linux
+*************************************
+
+.. note::
+
+    On Mac OS X, this project has been developped and validated with Homebrew.
 
 In the squirrel directory, execute the following command:
 

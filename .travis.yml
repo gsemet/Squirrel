@@ -12,8 +12,8 @@ python:
 install:
   - "pip install --upgrade pip"
   - "pip install virtualenv"
-  - npm install -g gulp
-  - npm install -g bower
+  - "npm install -g gulp"
+  - "npm install -g bower"
 
 script:
   - "install/install.py"
