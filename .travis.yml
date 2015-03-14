@@ -3,7 +3,7 @@
 #   - linux
 #   - osx
 
-language: Python
+language: python
 
 python:
   - "2.7"
