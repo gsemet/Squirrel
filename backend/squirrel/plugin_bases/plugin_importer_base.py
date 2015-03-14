@@ -6,6 +6,8 @@ import logging
 
 from dictns import Namespace
 from twisted.internet import defer
+from twisted.protocols.ftp import FTPClient
+from twisted.protocols.ftp import FileConsumer
 from yapsy.IPlugin import IPlugin
 
 from squirrel.common.downloader import get
@@ -35,6 +37,12 @@ class PluginImporterBase(IPlugin):
             raise Exception("Error received: code = {}".format(code))
 
         defer.returnValue(content)
+
+    @defer.inlineCallbacks
+    def ftpRequest(self, url):
+        ftpClient = FTPClient()
+        with open("/tmp/aaaa", "w") as f:
+            yield ftpClient.retrieveFile(url, FileConsumer(f))
 
     def getTodayEpoch(self):
         return getTodayEpoch()
