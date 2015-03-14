@@ -37,7 +37,9 @@ with open(config_path) as f:
     config = f.readlines()
 
 workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
-requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "requirements.txt"))
+requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                                os.pardir,
+                                                "requirements.txt"))
 
 print("===============================================================================")
 print("[BOOT] Squirrel Installer Stage 1")
@@ -64,7 +66,8 @@ if sys.platform.startswith('win32'):
     subprocess.check_call([
         "cmd", "/K",
         launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
-        workdir_path, stage2_path, install_path, workdir_path, "launch" if do_launch else "no_launch"])
+        workdir_path, stage2_path, install_path, workdir_path,
+        "launch" if do_launch else "no_launch"])
 
 elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
 
@@ -84,14 +87,15 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
 
     print("[BOOT] Activating virtualenv in {0}".format(workdir_path))
     # subprocess.check_call([python_exe, stage2_path, activate, install_path])
-    subprocess.check_call(['bash',
-                           '-c',
-                           'source {activate} && python {stage2} {install_path} {workdir_path} {launch}'
-                           .format(activate=activate,
-                                   stage2=stage2_path,
-                                   install_path=install_path,
-                                   workdir_path=workdir_path,
-                                   launch="launch" if do_launch else "no_launch")])
+    subprocess.check_call([
+        'bash',
+        '-c',
+        'source {activate} && python {stage2} {install_path} {workdir_path} {launch}'
+        .format(activate=activate,
+                stage2=stage2_path,
+                install_path=install_path,
+                workdir_path=workdir_path,
+                launch="launch" if do_launch else "no_launch")])
 
 
 else:

@@ -4,6 +4,7 @@ frontend:
     root_path: ../frontend/dist/
     doc_path: ../doc/build/html/
     port: 8080
+    logging_conf_path: ./squirrel/logging.conf
 
 backend:
     db:

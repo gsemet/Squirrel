@@ -47,6 +47,7 @@ def _dumpConfig():
     c = Config()
     c.frontend.root_full_path = _makeFullPath(c.frontend.root_path)
     c.frontend.doc_full_path = _makeFullPath(c.frontend.doc_path)
+    c.frontend.logging_conf_full_path = _makeFullPath(c.frontend.logging_conf_path)
     c.backend.db.full_url = _makeSqlLitePath(c.backend.db.url)
     if sys.platform.startswith("win32"):
         c.backend.db.full_url = c.backend.db.full_url.replace("\\", "\\\\")

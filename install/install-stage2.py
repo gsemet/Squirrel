@@ -50,13 +50,14 @@ if sys.platform.startswith("linux"):
     pip_major, _, pip_minor = pip_version_str.partition(".")
     pip_version = int(pip_major) * 100 + int(pip_minor)
     if pip_version <= 105:
-        print("[INFO] Patching this pip (version) {}.{}), to fix proxy issue (fixed in pip 1.6)".format(pip_major,
-                                                                                                        pip_minor))
+        print("[INFO] Patching this pip (version) {}.{}), to fix proxy issue (fixed in pip 1.6)"
+              .format(pip_major, pip_minor))
         print("[INFO] See: https://github.com/pypa/pip/issues/1805")
         # Patching the installed pip to fix the following bug with proxy
         # See http://www.irvingc.com/posts/10
         patch_path = os.path.join(install_path, "install", "patch-pip.patch")
-        c = call(["bash", "-c", "patch -p0 -N --dry-run --silent < {} 2>/dev/null".format(patch_path)])
+        c = call(["bash", "-c", "patch -p0 -N --dry-run --silent < {} 2>/dev/null"
+                  .format(patch_path)])
         if not c:
             print("[INFO] Applying patch")
             run(["bash", "-c", "patch -p0 < {}".format(patch_path)])

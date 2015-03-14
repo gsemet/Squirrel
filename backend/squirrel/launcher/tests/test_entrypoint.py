@@ -15,6 +15,7 @@ class TestEntryPoint(TestCase):
 
     @patch("squirrel.services.serve_backend.app", new=Mock())
     @patch("squirrel.launcher.entrypoint.initializeConfig", new=Mock())
+    @patch("squirrel.launcher.entrypoint.setupLogger", new=Mock())
     def testRun(self):
         Config().unload()
         Config({
