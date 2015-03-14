@@ -1,7 +1,13 @@
-language: python
+# Multi os support is currenly in beta and not enabled by default
+# os:
+#   - linux
+#   - osx
+
+language: Python
 
 python:
   - "2.7"
+  # - "3.0" # Depends on the support of Python 3 from twisted
 
 install:
   - "pip install --upgrade pip"
@@ -12,6 +18,6 @@ install:
 script:
   - "install/install.py"
 
-test:
+after_script:
   - trial squirrel
   - trial squirrel_integration_tests
