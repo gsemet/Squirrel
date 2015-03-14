@@ -39,11 +39,12 @@ with open(config_path) as f:
 workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
 requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "requirements.txt"))
 
-print("Squirrel Installer stage 1")
-print("Setting up virtualenv and start stage 2.")
-print("Installing in {0}".format(workdir_path))
-print("Requirements: {0}".format(requirements_txt))
-print("Launch server automatically: {0}".format(do_launch))
+print("===============================================================================")
+print("[BOOT] Squirrel Installer Stage 1")
+print("[BOOT] Setting up virtualenv to start Installer Stage 2.")
+print("[BOOT] Installing in {0}".format(workdir_path))
+print("[BOOT] Requirements: {0}".format(requirements_txt))
+print("[BOOT] Launch server automatically: {0}".format(do_launch))
 
 if sys.platform.startswith('win32'):
     virtualenv = "virtualenv.exe"
@@ -58,7 +59,7 @@ if sys.platform.startswith('win32'):
     activate = os.path.join(workdir_path, "Scripts", "activate.bat")
     launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 
-    print("Activating virtualenv in {0}".format(workdir_path))
+    print("[BOOT] Activating virtualenv in {0}".format(workdir_path))
     # subprocess.check_call([python_exe, stage2_path, activate, install_path])
     subprocess.check_call([
         "cmd", "/K",
@@ -68,7 +69,7 @@ if sys.platform.startswith('win32'):
 elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
 
     if "VIRTUAL_ENV" in os.environ and not os.environ['VIRTUAL_ENV']:
-        print("Note: Already in a virtualenv!")
+        print("[BOOT] Note: Already in a virtualenv!")
 
     activate = os.path.join(workdir_path, "bin", "activate")
     launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
@@ -77,11 +78,11 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
         subprocess.check_call(['virtualenv', workdir_path])
 
     if not os.path.exists(os.path.join(install_path, "tosource")):
-        print("Creating symblink tosource")
+        print("[BOOT] Creating symblink tosource")
         os.symlink(os.path.join(workdir_path, "bin", "activate"), os.path.join(install_path,
                                                                                "tosource"))
 
-    print("Activating virtualenv in {0}".format(workdir_path))
+    print("[BOOT] Activating virtualenv in {0}".format(workdir_path))
     # subprocess.check_call([python_exe, stage2_path, activate, install_path])
     subprocess.check_call(['bash',
                            '-c',

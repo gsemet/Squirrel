@@ -111,7 +111,7 @@ else:
 if launch != "launch":
     print("")
     print("===============================================================================")
-    print("Do not start the server. Leaving.")
+    print("Do not start the server. Install is succesful.")
     print("===============================================================================")
     sys.exit(0)
 
