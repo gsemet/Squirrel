@@ -1,0 +1,7 @@
+This directory holds integration tests of the squirrel backend.
+
+This means these tests are **NOT** unit tests and thus are dependending on external systems.
+
+Tests in this folder and subfolders test the main code for:
+- import plugins continuously work against Google / Yahoo servers
+- database connections and migration scripts works
