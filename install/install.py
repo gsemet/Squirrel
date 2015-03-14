@@ -67,7 +67,7 @@ if sys.platform.startswith('win32'):
 
 elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
 
-    if not os.environ['VIRTUAL_ENV']:
+    if "VIRTUAL_ENV" in os.environ and not os.environ['VIRTUAL_ENV']:
         print("Note: Already in a virtualenv!")
 
     activate = os.path.join(workdir_path, "bin", "activate")
