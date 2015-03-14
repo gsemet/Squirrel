@@ -8,8 +8,11 @@ angular.module('squirrel')
       title: '',
       linktext: 'Home',
     }, {
-      title: 'info',
+      title: 'screeners',
       linktext: 'Info'
+    }, {
+      title: 'my-portforlio',
+      linktext: 'My Portfolios'
     }, {
       title: 'doc',
       linktext: 'Documentation'
