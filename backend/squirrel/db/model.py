@@ -3,9 +3,12 @@ from __future__ import division
 from __future__ import print_function
 
 
+import logging
 import sqlalchemy as sa
 
 from sqlalchemy.ext.declarative import declarative_base
+
+log = logging.getLogger(__name__)
 
 naming_convention = {
     "ix": 'ix_%(column_0_label)s',
@@ -38,7 +41,7 @@ class Model(object):
         Session.configure(bind=self._engine)
         self._session = Session()
         if create:
-            print("Creating all tables...")
+            log.debug("Creating all tables...")
             self.metadata.create_all(self._engine)
 
     def stop(self):

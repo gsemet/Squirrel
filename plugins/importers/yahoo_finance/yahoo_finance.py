@@ -3,7 +3,6 @@ from __future__ import division
 from __future__ import print_function
 
 from twisted.internet import defer
-
 from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
 
 
@@ -49,7 +48,7 @@ class YahooFinance(PluginImporterBase):
                'ignore=.csv').format(request=request)
         days = yield self.httpRequest(url)
         days = days.split("\n")
-        print("days", days)
+        self.log.debug("days", days)
         # sample values:[['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Adj Clos'], \
         #              ['2009-12-31', '112.77', '112.80', '111.39', '111.44', '90637900', '109.7']...]
         data = []

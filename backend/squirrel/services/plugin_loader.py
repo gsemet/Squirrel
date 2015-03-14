@@ -2,11 +2,16 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import logging
+
 from yapsy.PluginManager import PluginManager
 
 from squirrel.common.singleton import singleton
 from squirrel.config.config import Config
 from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
+
+
+log = logging.getLogger(__name__)
 
 
 @singleton
@@ -34,11 +39,11 @@ class PluginRegistry(object):
         self.pluginManager.collectPlugins()
         # Loop round the plugins and print their names.
         for plugin_info in self.pluginManager.getAllPlugins():
-            print("Loading plugin {!r}".format(plugin_info.name))
-            print("  Description: {}".format(plugin_info.description))
-            print("  Author: {}".format(plugin_info.author))
-            print("  Website: {}".format(plugin_info.website))
-            print("  Version: {}".format(plugin_info.version))
+            log.info("Loading plugin {!r}".format(plugin_info.name))
+            log.info("  Description: {}".format(plugin_info.description))
+            log.info("  Author: {}".format(plugin_info.author))
+            log.info("  Website: {}".format(plugin_info.website))
+            log.info("  Version: {}".format(plugin_info.version))
             if plugin_info.plugin_object.name in self.loadedPlugins:
                 raise Exception("Plugin {!r} already loaded".format(plugin_info.name))
             self.loadedPlugins[plugin_info.plugin_object.name] = plugin_info.plugin_object
@@ -56,9 +61,9 @@ class PluginRegistry(object):
 
 def loadPlugins(forcePluginNames=None):
     plugin_root = Config().plugins.full_default_path
-    print("Loading plugin located at: {!r}".format([plugin_root]))
+    log.info("Loading plugin located at: {!r}".format([plugin_root]))
     PluginRegistry().loadPlugin([plugin_root])
-    # print(glob.glob(os.path.join(plugin_root, "**", "*.py")))
+    # log.info(glob.glob(os.path.join(plugin_root, "**", "*.py")))
 
     # for dirName, subdirList, fileList in os.walk(plugin_root, topdown=False):
     #     PluginRegistry().loadPlugin(dirName)

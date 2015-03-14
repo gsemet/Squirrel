@@ -5,9 +5,12 @@ from __future__ import print_function
 import os
 import sys
 import yaml
+import logging
 
 from squirrel.common.i18n import _
 from squirrel.config.config import Config
+
+log = logging.getLogger(__name__)
 
 
 def _loadYaml(yamlpath):
@@ -16,7 +19,7 @@ def _loadYaml(yamlpath):
 
 
 def _loadConfig(configPath):
-    print(_("Loading configuration: {}").format(configPath))
+    log.debug(_("Loading configuration: {}").format(configPath))
     cfg = _loadYaml(configPath)
     Config().unload()
     Config(cfg)
@@ -49,9 +52,9 @@ def _dumpConfig():
         c.backend.db.full_url = c.backend.db.full_url.replace("\\", "\\\\")
     c.plugins.full_default_path = _makeFullPath(c.plugins.default_path)
 
-    print("")
-    print(_("Listing all available keys:"))
-    print(c.dumpFlat())
+    log.debug("")
+    log.debug(_("Listing all available keys:"))
+    log.debug(c.dumpFlat())
 
 
 def initializeConfig():

@@ -19,10 +19,13 @@ from squirrel.model.tick import Tick
 from squirrel.model.ticker import Ticker
 
 
+log = logging.getLogger(__name__)
+
+
 class PluginImporterBase(IPlugin):
 
     def __init__(self):
-        self.log = logging.getLogger(__name__)
+        self.log = logging.getLogger(self.__class__.__name__)
 
     @defer.inlineCallbacks
     def httpRequest(self, url):
