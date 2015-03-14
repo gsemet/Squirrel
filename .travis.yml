@@ -17,5 +17,5 @@ install:
 
 script:
   - "install/install.py"
-  - "workdir/bin/activate && trial squirrel"
-  - "workdir/bin/activate && trial squirrel_integration_tests"
+  - "source workdir/bin/activate && trial squirrel"
+  - "source workdir/bin/activate && trial squirrel_integration_tests"
