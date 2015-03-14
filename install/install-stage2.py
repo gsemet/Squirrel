@@ -15,6 +15,8 @@ install_path = os.path.abspath(install_path)
 workdir_path = sys.argv[2]
 workdir_path = os.path.abspath(workdir_path)
 
+launch = sys.argv[3]
+
 if not os.environ['VIRTUAL_ENV']:
     raise Exception("VIRTUAL_ENV environment variable is empty. We are not in a virtualenv.")
 
@@ -23,6 +25,7 @@ print("[INFO] Squirrel Installer Stage 2")
 print("[INFO] We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
 print("[INFO] installation dir: {}".format(install_path))
 print("[INFO] workdir: {}".format(workdir_path))
+print("[INFO] Launch: {}".format(launch))
 print("===============================================================================")
 print("")
 
@@ -105,6 +108,12 @@ if sys.platform.startswith('win32'):
 else:
     run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
 
+if launch != "launch":
+    print("")
+    print("===============================================================================")
+    print("Do not start the server. Leaving.")
+    print("===============================================================================")
+    sys.exit(0)
 
 print("===============================================================================")
 # Launching Squirrel-backend

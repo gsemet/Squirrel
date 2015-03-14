@@ -2,6 +2,10 @@
 Squirrel
 ========
 
+.. image:: https://magnum.travis-ci.com/Stibbons/Squirrel.svg?token=4F6MxyKksGFxCkocCprx&branch=master
+    :target: https://magnum.travis-ci.com/Stibbons/Squirrel
+    :align: right
+
 Asset Portfolio Management System.
 
 

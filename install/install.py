@@ -18,6 +18,11 @@ import os
 import subprocess
 import sys
 
+if len(sys.argv) > 1 and sys.argv[1] == "-l":
+    do_launch = True
+else:
+    do_launch = False
+
 if sys.version_info < (2, 7):
     raise "must use python 2.7.x. Current version is: {}.".format(sys.version_info)
 
@@ -38,6 +43,7 @@ print("Squirrel Installer stage 1")
 print("Setting up virtualenv and start stage 2.")
 print("Installing in {0}".format(workdir_path))
 print("Requirements: {0}".format(requirements_txt))
+print("Launch server automatically: {0}".format(do_launch))
 
 if sys.platform.startswith('win32'):
     virtualenv = "virtualenv.exe"
@@ -57,7 +63,7 @@ if sys.platform.startswith('win32'):
     subprocess.check_call([
         "cmd", "/K",
         launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
-        workdir_path, stage2_path, install_path, workdir_path])
+        workdir_path, stage2_path, install_path, workdir_path, "launch" if do_launch else "no_launch"])
 
 elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
 
@@ -79,11 +85,12 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
     # subprocess.check_call([python_exe, stage2_path, activate, install_path])
     subprocess.check_call(['bash',
                            '-c',
-                           'source {activate} && python {stage2} {install_path} {workdir_path}'
+                           'source {activate} && python {stage2} {install_path} {workdir_path} {launch}'
                            .format(activate=activate,
                                    stage2=stage2_path,
                                    install_path=install_path,
-                                   workdir_path=workdir_path)])
+                                   workdir_path=workdir_path,
+                                   launch="launch" if do_launch else "no_launch")])
 
 
 else:
