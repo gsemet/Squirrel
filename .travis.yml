@@ -11,3 +11,7 @@ install:
 
 script:
   - "install/install.py"
+
+test:
+  - trial squirrel
+  - trial squirrel_integration_tests
