@@ -3,6 +3,8 @@ from __future__ import division
 from __future__ import print_function
 
 from sqlalchemy.ext.declarative import AbstractConcreteBase
+from sqlalchemy.orm.exc import NoResultFound
+
 from squirrel.db.model import Base
 
 
@@ -10,14 +12,14 @@ class TableBase(AbstractConcreteBase, Base):
     __tablename__ = NotImplementedError
 
     def addAndGetId(self, model):
-        row = model.session.query(type(self)).filter(
-            self.formatSelectUniqCondition()).one()
-        if not row:
-            model.session.add(self)
+        try:
             row = model.session.query(type(self)).filter(
                 self.formatSelectUniqCondition()).one()
             res = self.rowToMySelf(row).id
-        else:
+        except NoResultFound:
+            model.session.add(self)
+            row = model.session.query(type(self)).filter(
+                self.formatSelectUniqCondition()).one()
             res = self.rowToMySelf(row).id
         return res
 
