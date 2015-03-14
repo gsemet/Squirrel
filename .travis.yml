@@ -19,5 +19,5 @@ script:
   - "install/install.py"
 
 after_script:
-  - trial squirrel
-  - trial squirrel_integration_tests
+  - "workdir/bin/activate && trial squirrel"
+  - "workdir/bin/activate && trial squirrel_integration_tests"
