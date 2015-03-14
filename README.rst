@@ -159,7 +159,9 @@ Editor configuration
 --------------------
 
 I use `SublimeText 3`_  as my main development environment. Here are the custom build command I
-have used in this project:
+have used in this project.
+
+Windows:
 
 .. code-block:: javascript
 
@@ -167,7 +169,7 @@ have used in this project:
     [
         {
             "name": "Squirrel - Install and launch",
-            "cmd": ["python", "-u", "install\\install.py"],
+            "cmd": ["python", "-u", "install\\install.py"], // add -l to launch Squirrel automatically
             "shell": true,
             "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel"
         },
@@ -188,6 +190,38 @@ have used in this project:
             "cmd": ["gulp", "build"],
             "shell": true,
             "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel\\frontend"
+        }
+    ]
+
+Linux/Mac OS:
+
+.. code-block:: javascript
+
+    "build_systems":
+    [
+        {
+            "name": "Squirrel - Install and launch",
+            "cmd": ["python -u install/install.py "], // add -l to launch Squirrel automatically
+            "shell": true,
+            "working_dir": "/Full/Path/Where/Is/Installed/Squirrel"
+        },
+        {
+            "name": "Squirrel - Unit test",
+            "cmd": ["source workdir/bin/activate && trial squirrel"],
+            "shell": true,
+            "working_dir": "/Full/Path/Where/Is/Installed/Squirrel"
+        },
+        {
+            "name": "Squirrel - Build documentation",
+            "cmd": ["make html"],
+            "shell": true,
+            "working_dir": "/Full/Path/Where/Is/Installed/Squirrel/doc"
+        },
+        {
+            "name": "Squirrel - Build Frontend",
+            "cmd": ["gulp build"],
+            "shell": true,
+            "working_dir": "/Full/Path/Where/Is/Installed/Squirrel/frontend"
         }
     ]
 
