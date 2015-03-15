@@ -23,6 +23,9 @@ class TableBase(AbstractConcreteBase, Base):
             res = self.rowToMySelf(row).id
         return res
 
+    def ensureHasId(self, model):
+        self.id = self.addAndGetId(model)
+
     def rowToMySelf(self):
         raise NotImplementedError
 

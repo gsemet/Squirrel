@@ -24,4 +24,9 @@ class NasdaqList(PluginImporterBase):
         # ftp://ftp.nasdaqtrader.com/symboldirectory/nasdaqlisted.txt
         # http://stackoverflow.com/questions/5246843/how-to-get-a-complete-list-of-ticker-symbols-from-yahoo-finance
 
+        print("ftp request")
         data = yield self.ftpRequest("ftp://ftp.nasdaqtrader.com/symboldirectory/nasdaqlisted.txt")
+        self.log.info("data: {!r}".format(data))
+        # Parse HTML page:
+        # http://www.nasdaq.com/quotes/nasdaq-100-stocks.aspx?render=download
+        # http://www.nasdaq.com/quotes/djia-stocks.aspx

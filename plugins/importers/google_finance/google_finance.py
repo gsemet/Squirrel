@@ -18,6 +18,72 @@ class GoogleFinance(PluginImporterBase):
         pass
 
     @defer.inlineCallbacks
+    def getList(self, start=None, number=None):
+        # Hardcoded query: all stocks from the EPA (Euronext Paris) exchange:
+        # https://www.google.com/finance?output=json&start=0&num=20&noIL=1&q=[%28exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28market_cap%20%3E%3D%200%29%20%26%20%28market_cap%20%3C%3D%20118350000000%29%20%26%20%28pe_ratio%20%3E%3D%200%29%20%26%20%28pe_ratio%20%3C%3D%209932%29%20%26%20%28dividend_yield%20%3E%3D%200%29%20%26%20%28dividend_yield%20%3C%3D%20103%29%20%26%20%28price_change_52week%20%3E%3D%20-91.19%29%20%26%20%28price_change_52week%20%3C%3D%202613%29]&restype=company&ei=NpgFVaGzI-qgwAPVyoGICg
+
+        stocks = []
+        group_by_num = 30  # group by 30
+        retrieved = 0
+        if start is None:
+            start = 0
+        if number is None:
+            num_company_results = -1
+        else:
+            num_company_results = number
+
+        while True:
+            # Origin page:
+            # -> https://www.google.com/finance#stockscreener
+            query = ("https://www.google.com/finance?output=json&start={start}&num={group_by_num}&noIL=1&q="
+                     "[%28exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28market_cap"
+                     "%20%3E%3D%200%29%20%26%20%28market_cap%20%3C%3D%20118350000000"
+                     "%29%20%26%20%28pe_ratio%20%3E%3D%200%29%20%26%20%28pe_ratio"
+                     "%20%3C%3D%209932%29%20%26%20%28dividend_yield%20%3E%3D%200%29%20%26%20%28"
+                     "dividend_yield%20%3C%3D%20103%29%20%26%20%28price_change_52week"
+                     "%20%3E%3D%20-91.19%29%20%26%20%28price_change_52week%20%3C%3D%202613%29]"
+                     "&restype=company&ei=NpgFVaGzI-qgwAPVyoGICg").format(start=start,
+                                                                          group_by_num=group_by_num)
+            # print("query " + str(start) + "/" + str(num_company_results))
+            self.flushStd()
+            data = yield self.httpRequest(query)
+            # The returned data is weird. It got unicode escape sequence in it
+            data = unicode(data, 'utf8')
+            data = data.encode('utf8', 'replace')
+            data = self.repairString(data)
+            jdata = self.jsonDecode(data)
+
+            if num_company_results == -1:
+                num_company_results = int(jdata['num_company_results'])
+
+            def translateCurrency(currencySymbol):
+                dic = {
+                    u"\u20ac": "euro",
+                    '$': "dollar",
+                    u"\xa3": "pound",
+                    u"\xa5": "yen",
+                    u"-": "unknown",
+                }
+                return dic[currencySymbol]
+
+            for soc in jdata['searchresults']:
+                stock = self.createStock(title=str(soc['title']),
+                                         symbol=str(soc['ticker']),
+                                         exchange=str(soc['exchange']),
+                                         currency=translateCurrency(soc['local_currency_symbol']),
+                                         )
+                stocks.append(stock)
+
+            if retrieved + group_by_num < num_company_results:
+                start += group_by_num
+                retrieved += group_by_num
+            else:
+                break
+        if num_company_results > 0:
+            defer.returnValue(stocks[:num_company_results])
+        defer.returnValue([])
+
+    @defer.inlineCallbacks
     def getTicks(self, ticker, intervalMin, nbIntervals):
         """
         Get tick prices for the given ticker ticker.
@@ -84,6 +150,7 @@ class GoogleFinance(PluginImporterBase):
         # below has an interval of 1. You can multiply this number by our interval size (a day, in
         # this example) and add it to the last Unix Timestamp. That gives you the date for the
         # current row. (So our second row is 1 day after the first row. Easy.)
+        #
 
         url = ('http://www.google.com/finance/getprices?'
                'q={request.ticker}&'

@@ -2,16 +2,14 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-
 from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
 
+from squirrel.db.tables.table_base import TableBase
 
-from squirrel.db.tables import TableBase
 
-
-class Portfolios(TableBase):
+class TablePortfolios(TableBase):
     __tablename__ = 'portfolios'
 
     id = Column(Integer, primary_key=True)

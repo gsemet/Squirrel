@@ -14,6 +14,10 @@ QUOTE_FIELDS = ['date', 'close', 'volume', 'low', 'high']
 
 class Tick(object):
 
+    '''
+    Given stock value at a given date
+    '''
+
     def __init__(self, ticker=None, date=None, open=None, high=None, low=None,
                  close=None, volume=None, cdays=None):
         ''' constructor '''

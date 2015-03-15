@@ -2,13 +2,20 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import json
 import logging
+import re
+import sys
 
 from dictns import Namespace
 from twisted.internet import defer
+from twisted.internet import reactor
+from twisted.internet.interfaces import IProtocol
+from twisted.internet.protocol import ClientCreator
 from twisted.protocols.ftp import FTPClient
 from twisted.protocols.ftp import FileConsumer
 from yapsy.IPlugin import IPlugin
+from zope.interface import implements
 
 from squirrel.common.downloader import get
 
@@ -17,6 +24,7 @@ from squirrel.common.text import epochTimeStringToDatatime
 from squirrel.common.text import getTodayEpoch
 from squirrel.common.text import string2EpochTime
 from squirrel.common.text import string2datetime
+from squirrel.model.stock import Stock
 from squirrel.model.tick import Tick
 from squirrel.model.ticker import Ticker
 
@@ -40,9 +48,48 @@ class PluginImporterBase(IPlugin):
 
     @defer.inlineCallbacks
     def ftpRequest(self, url):
+        print("creating ftpclient")
         ftpClient = FTPClient()
-        with open("/tmp/aaaa", "w") as f:
-            yield ftpClient.retrieveFile(url, FileConsumer(f))
+        print("opening file aaa")
+
+        FTPClient.debug = True
+        print("creating ClientCreator")
+        creator = ClientCreator(reactor, FTPClient)
+        print("creating ftpclient")
+        ftpClient = yield creator.connectTCP("ftp.nasdaqtrader.com", 21)
+
+        class FTPFile(object):
+
+            """
+            A consumer for FTP input that writes data to a file.
+
+            @ivar filename: a filename to be opened for writing.
+            """
+
+            implements(IProtocol)
+
+            def __init__(self, filename):
+                self.fObj = None
+                self.filename = filename
+
+            def makeConnection(self, transport):
+                self.fObj = open(self.filename, 'wb')
+                log.info('Opened %s for writing' % self.filename)
+
+            def connectionLost(self, reason):
+                self.fObj.close()
+                log.info('Closed %s' % self.filename)
+
+            def dataReceived(self, bytes):
+                self.fObj.write(bytes)
+
+        with open("aaaa", "w") as f:
+            print("retrieveFile")
+            yield defer.succeed(0)
+            fc = FileConsumer(f)
+            yield ftpClient.retrieveFile(url, fc)
+            fc.close()
+        ftpClient.close()
 
     def getTodayEpoch(self):
         return getTodayEpoch()
@@ -61,6 +108,9 @@ class PluginImporterBase(IPlugin):
 
     def createTick(self, *args, **kwargs):
         return Tick(*args, **kwargs)
+
+    def createStock(self, *args, **kwargs):
+        return Stock(*args, **kwargs)
 
     def createNamespace(self, data=None):
         if not data:
@@ -81,3 +131,25 @@ class PluginImporterBase(IPlugin):
         #    @defer.inlineCallbacks
         #    def getTicks(self, ticker, intervalMin, nbIntervals):
         #          ...
+
+    def jsonDecode(self, data):
+        return json.loads(data)
+
+    def repairString(self, data):
+        '''
+        Use this method if the data you received contains invalid sequence such as "\\x22"
+        that fails json parsing.
+        '''
+        invalid_escape = re.compile(r'\\x([0-7]{1,3})')  # up to 3 digits for byte values up to FF
+
+        def replace_with_byte(match):
+            return "%" + match.group(1)
+
+        def repair(brokenjson):
+            return invalid_escape.sub(replace_with_byte, brokenjson)
+        data = repair(data)
+        return data
+
+    def flushStd(self):
+        sys.stdout.flush()
+        sys.stderr.flush()

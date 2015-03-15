@@ -10,11 +10,11 @@ from sqlalchemy import Integer
 from squirrel.db.tables.table_base import TableBase
 
 
-class TableTick(TableBase):
+class TableTicks(TableBase):
     __tablename__ = 'ticks'
 
     id = Column(Integer, primary_key=True)
-    symbol_id = Column(Integer,  ForeignKey('symbols.id'))
+    stock_id = Column(Integer,  ForeignKey('stocks.id'))
     date = Column(Integer)
     open = Column(Float)
     high = Column(Float)
@@ -22,8 +22,8 @@ class TableTick(TableBase):
     close = Column(Float)
     volume = Column(Integer)
 
-    def __init__(self, symbol_id, date, open, high, low, close, volume):
-        self.symbol_id = symbol_id
+    def __init__(self, stock_id, date, open, high, low, close, volume):
+        self.stock_id = stock_id
         self.date = date
         self.open = open
         self.high = high
@@ -33,7 +33,7 @@ class TableTick(TableBase):
 
     def __repr__(self):
         return ("<{}("
-                "symbol_id={symbol_id!r}, "
+                "stock_id={stock_id!r}, "
                 "date={date!r}, "
                 "open={open!r}, "
                 "high={high!r}, "
@@ -41,7 +41,7 @@ class TableTick(TableBase):
                 "close={close!r}, "
                 "volume={volume!r}"
                 ")>".format(type(self).__name__,
-                            symbol_id=self.symbol_id,
+                            stock_id=self.stock_id,
                             date=self.date,
                             open=self.open,
                             high=self.high,

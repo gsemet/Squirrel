@@ -37,6 +37,14 @@ class IntegrationTestGoogleFinance(TestCase):
         unloadPlugins()
 
     @defer.inlineCallbacks
+    def test_queryPartOfStocks(self):
+        log.debug("request some stocks")
+        res = yield PluginRegistry().getByName("Google Finance").getList(start=0,
+                                                                         number=100)
+        self.assertNotEmpty(res)
+        self.assertLengthEquals(res, 100)
+
+    @defer.inlineCallbacks
     def test_GoodTicker_DataIsNotEmpty(self):
         log.debug("requesting google finance AAPL")
         res = yield PluginRegistry().getByName("Google Finance").getTicks(

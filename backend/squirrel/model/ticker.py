@@ -7,6 +7,10 @@ import json
 
 class Ticker(object):
 
+    '''
+    Stock identifier
+    '''
+
     def __init__(self, symbol, exchange):
         self.exchange = exchange
         self.symbol = symbol

@@ -14,3 +14,7 @@ class TestCase(TestCase):
     @defer.inlineCallbacks
     def assertInlineCallbacksRaises(self, exceptionClass, deferred, *args, **kwargs):
         yield self.assertFailure(deferred(*args, **kwargs), exceptionClass)
+
+    def assertLengthEquals(self, collection, length):
+        self.assertEqual(len(collection), length, msg="Invalid lenght. Expecting: {}. Got: {}"
+                         .format(length, len(collection)))
