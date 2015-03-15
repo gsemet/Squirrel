@@ -22,6 +22,8 @@ def get_root(request):
     # > implicit trailing slash (http://localhost:8000/). That means that the URL path includes an
     # > empty segment. Twisted then looks in the resource for a child named '' (empty string).
     s.putChild('', s)
+
+    request.setHeader("Expires", "Thu, 15 Apr 2010 20:00:00 GMT")
     return s
 
 
