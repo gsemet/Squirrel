@@ -9,16 +9,16 @@ app = angular.module("squirrel", ['ngAnimate', 'ngCookies',
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
     .when("/", {
-      templateUrl: "app/main/main.template.html",
-      controller: "MainCtrl"
+      templateUrl: "app/homepage/homepage.template.html",
+      controller: "HomepageCtrl"
     })
-    .when("/info", {
-      templateUrl: "app/info/info.template.html",
-      controller: "InfoCtrl"
+    .when("/my-portfolios", {
+      templateUrl: "app/my-portfolios/my-portfolios.template.html",
+      controller: "MyPortfoliosCtrl"
     })
-    .when("/contact", {
-      templateUrl: "app/contact/contact.template.html",
-      controller: "ContactCtrl"
+    .when("/screeners", {
+      templateUrl: "app/screeners/screeners.template.html",
+      controller: "MyPortfoliosCtrl"
     })
     .when("/doc", {
       controller: function() {

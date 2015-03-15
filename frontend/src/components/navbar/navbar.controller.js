@@ -4,22 +4,21 @@ angular.module('squirrel')
   .controller('NavbarCtrl', ["$scope", "$location", function($scope, $location) {
     $scope.date = new Date();
 
-    $scope.navLinks = [{
-      title: '',
-      linktext: 'Home',
-    }, {
-      title: 'screeners',
-      linktext: 'Info'
-    }, {
-      title: 'my-portforlio',
-      linktext: 'My Portfolios'
-    }, {
-      title: 'doc',
-      linktext: 'Documentation'
-    }, {
-      title: 'contact',
-      linktext: 'Contact'
-    }];
+    $scope.navLinks = [
+      {
+        title: '',
+        linktext: 'Home',
+      }, {
+        title: 'screeners',
+        linktext: 'Screeners'
+      }, {
+        title: 'my-portfolios',
+        linktext: 'My Portfolios'
+      }, {
+        title: 'doc',
+        linktext: 'Documentation'
+      }
+    ];
 
     $scope.navClass = function(page) {
       console.log("location: " + $location.path());

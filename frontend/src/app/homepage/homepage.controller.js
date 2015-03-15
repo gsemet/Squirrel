@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('squirrel')
-  .controller('MainCtrl', ['$scope', function($scope) {
+  .controller('HomepageCtrl', ['$scope', function($scope) {
     $scope.awesomeThings = [{
       'title': 'AngularJS',
       'url': 'https://angularjs.org/',

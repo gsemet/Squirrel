@@ -10,10 +10,14 @@ var wiredep = require('wiredep').stream;
 
 gulp.task('inject', ['styles'], function() {
 
-  var injectStyles = gulp.src([
-    paths.tmp + '/serve/{app,components}/**/*.css',
-    paths.tmp + '/serve/index.css',
-    '!' + paths.tmp + '/serve/vendor.css'
+  var injectIndexStyles = gulp.src([
+    paths.tmp + '/serve/app/index.css',
+  ], {
+    read: false
+  });
+
+  var injectVendorStyles = gulp.src([
+    paths.tmp + '/serve/app/vendor.css',
   ], {
     read: false
   });
@@ -23,9 +27,19 @@ gulp.task('inject', ['styles'], function() {
     paths.src + '/index.js',
     '!' + paths.src + '/{app,components}/**/*.spec.js',
     '!' + paths.src + '/{app,components}/**/*.mock.js'
-  ]).pipe($.angularFilesort());
+  ])
+    .pipe($.angularFilesort());
 
-  var injectOptions = {
+  var injectIndexOptions = {
+    ignorePath: [paths.src, paths.tmp + '/serve'],
+    addRootSlash: false
+  };
+  var injectVendorOptions = {
+    ignorePath: [paths.src, paths.tmp + '/serve'],
+    addRootSlash: false,
+    name: "vendor",
+  };
+  var injectScriptsOptions = {
     ignorePath: [paths.src, paths.tmp + '/serve'],
     addRootSlash: false
   };
@@ -35,9 +49,14 @@ gulp.task('inject', ['styles'], function() {
     exclude: [/bootstrap\.js/, /bootstrap\.css/, /bootstrap\.css/, /foundation\.css/]
   };
 
+  var indexFilter = $.filter('index.css');
+  var vendorFilter = $.filter('vendor.css');
+
   return gulp.src(paths.src + '/*.html')
-    .pipe($.inject(injectStyles, injectOptions))
-    .pipe($.inject(injectScripts, injectOptions))
+    .pipe($.inject(injectIndexStyles, injectIndexOptions))
+    .pipe($.inject(injectVendorStyles, injectVendorOptions))
+    .pipe(vendorFilter.restore())
+    .pipe($.inject(injectScripts, injectScriptsOptions))
     .pipe(wiredep(wiredepOptions))
     .pipe(gulp.dest(paths.tmp + '/serve'));
 

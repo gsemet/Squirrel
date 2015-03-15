@@ -8,7 +8,11 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
-    <link rel="stylesheet" href="app/vendor.css">
+    <!-- <link rel="stylesheet" href="app/vendor.css"> -->
+    <!-- vendor:css -->
+    <!-- only vendor.css will be injected here -->
+    <!-- endinject -->
+
     <!-- bower:css -->
     <!-- run `gulp wiredep` to automaticaly populate bower styles dependencies -->
     <!-- endbower -->
@@ -25,6 +29,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <base href="/">
+    <div ng-include="'components/navbar/navbar.template.html'"></div>
 
     <div ng-view></div>
 

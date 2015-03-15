@@ -19,7 +19,7 @@ gulp.task('styles', function() {
   var injectFiles = gulp.src([
     paths.src + '/{app,components}/**/*.less',
     '!' + paths.src + '/index.less',
-    '!' + paths.src + '/vendor.less'
+    '!' + paths.src + '/vendor.less',
   ], {
     read: false
   });
@@ -27,7 +27,7 @@ gulp.task('styles', function() {
   var injectOptions = {
     transform: function(filePath) {
       filePath = filePath.replace(paths.src + '/app/', '');
-      filePath = filePath.replace(paths.src + '/components/', '../components/');
+      filePath = filePath.replace(paths.src + '/components/', 'components/');
       return '@import \'' + filePath + '\';';
     },
     starttag: '// injector',
@@ -39,17 +39,16 @@ gulp.task('styles', function() {
 
   return gulp.src([
       paths.src + '/index.less',
-      paths.src + '/vendor.less'
+      paths.src + '/vendor.less',
     ])
     .pipe(indexFilter)
     .pipe($.inject(injectFiles, injectOptions))
     .pipe(indexFilter.restore())
     .pipe($.less())
-
-  .pipe($.autoprefixer())
+    .pipe($.autoprefixer())
     .on('error', function handleError(err) {
       console.error(err.toString());
       this.emit('end');
     })
-    .pipe(gulp.dest(paths.tmp + '/serve/app/'));
+    .pipe(gulp.dest(paths.tmp + '/serve/app'));
 });
