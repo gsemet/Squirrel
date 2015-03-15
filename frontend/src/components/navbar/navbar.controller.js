@@ -6,16 +6,13 @@ angular.module('squirrel')
 
     $scope.navLinks = [
       {
-        title: '',
-        linktext: 'Home',
+        endpoint: 'screeners',
+        linktext: 'Stock Screeners'
       }, {
-        title: 'screeners',
-        linktext: 'Screeners'
-      }, {
-        title: 'my-portfolios',
+        endpoint: 'my-portfolios',
         linktext: 'My Portfolios'
       }, {
-        title: 'doc',
+        endpoint: 'doc',
         linktext: 'Documentation'
       }
     ];

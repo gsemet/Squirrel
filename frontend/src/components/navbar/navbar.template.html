@@ -1,5 +1,7 @@
-<nav class="navbar navbar-default navbar-static-top" data-spy="affix" data-offset-top="121" ng-controller="NavbarCtrl">
-  <div class="container-fluid">
+<div id="yass_top_edge_padding" style="padding: 0px 0px 70px; margin: 0px; border-width: 0px; height: 0px; display: block;"></div>
+
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarCtrl">
+  <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="#/">
         <span class="glyphicon glyphicon-home"></span> Squirrel
@@ -8,7 +10,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.title}}')"> <a href='#/{{navLink.title}}'>{{navLink.linktext}}</a></li>
+        <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')"> <a href='#/{{navLink.endpoint}}'>{{navLink.linktext}}</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

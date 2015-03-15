@@ -18,7 +18,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     })
     .when("/screeners", {
       templateUrl: "app/screeners/screeners.template.html",
-      controller: "MyPortfoliosCtrl"
+      controller: "ScreenersCtrl"
     })
     .when("/doc", {
       controller: function() {
