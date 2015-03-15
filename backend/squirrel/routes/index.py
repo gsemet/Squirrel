@@ -46,7 +46,16 @@ def index4(request, path1, path2, path3, path4):
                      Config().frontend.root_full_path)
 
 
+# localhost:3000/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2
+
 @app.route('/<path:path1>/<path:path2>/<path:path3>/<path:path4>/<path:path5>', methods=['GET'])
 def index5(request, path1, path2, path3, path4, path5):
     return serve_url(path1 + "/" + path2 + "/" + path3 + "/" + path4 + "/" + path5,
+                     Config().frontend.root_full_path)
+
+
+@app.route('/<path:path1>/<path:path2>/<path:path3>/<path:path4>/<path:path5>/<path:path6>',
+           methods=['GET'])
+def index6(request, path1, path2, path3, path4, path5, path6):
+    return serve_url(path1 + "/" + path2 + "/" + path3 + "/" + path4 + "/" + path5 + "/" + path6,
                      Config().frontend.root_full_path)
