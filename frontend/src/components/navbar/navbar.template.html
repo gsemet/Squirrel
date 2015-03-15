@@ -1,9 +1,9 @@
 <div id="yass_top_edge_padding" style="padding: 0px 0px 70px; margin: 0px; border-width: 0px; height: 0px; display: block;"></div>
 
 <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarCtrl">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#/">
+      <a class="navbar-brand" href="#/" ng-class="navClass('')">
         <span class="glyphicon glyphicon-home"></span> Squirrel
       </a>
     </div>
@@ -14,7 +14,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li>Current date: {{ date | date:'yyyy-MM-dd' }}</li>
+        <li><a href="#/login">Log in</a></li>
       </ul>
     </div>
   </div>

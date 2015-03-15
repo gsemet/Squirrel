@@ -18,8 +18,7 @@ angular.module('squirrel')
     ];
 
     $scope.navClass = function(page) {
-      console.log("location: " + $location.path());
-      console.log("page: " + page);
+      console.log("location: " + $location.path() + ", page: " + page);
       if ($location.path() === "/" && page === '') {
         console.log("returning active!")
         return "active";
