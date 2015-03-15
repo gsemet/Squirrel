@@ -78,3 +78,7 @@ class Crawler(object):
                                                  close=tick.close,
                                                  volume=tick.volume))
                 model.session.commit()
+
+    @defer.inlineCallbacks
+    def refreshAllStockList(self):
+        yield self.refreshStockList()

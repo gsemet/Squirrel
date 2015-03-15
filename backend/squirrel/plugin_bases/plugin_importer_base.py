@@ -34,6 +34,18 @@ log = logging.getLogger(__name__)
 
 class PluginImporterBase(IPlugin):
 
+    # Plugin pattern:
+
+    # ./your_plugin_file_name.py
+    # class MyWonderfulImportPlugin(PluginImporterBase):
+    #
+    #     internal_name = "MyWonderfulImportPlugin"
+    #     name = "Human readable wonderful name"
+    #
+    #    @defer.inlineCallbacks
+    #    def getTicks(self, ticker, intervalMin, nbIntervals):
+    #          ...
+
     def __init__(self):
         self.log = logging.getLogger(self.__class__.__name__)
 
@@ -120,18 +132,6 @@ class PluginImporterBase(IPlugin):
     def checkTicker(self, ticker):
         assert isinstance(ticker, Ticker), "ticker should be Ticker"
 
-        # Plugin pattern:
-
-        # ./your_plugin_file_name.py
-        # class MyWonderfulImportPlugin(PluginImporterBase):
-        #
-        #     internal_name = "MyWonderfulImportPlugin"
-        #     name = "Human readable wonderful name"
-        #
-        #    @defer.inlineCallbacks
-        #    def getTicks(self, ticker, intervalMin, nbIntervals):
-        #          ...
-
     def jsonDecode(self, data):
         return json.loads(data)
 
@@ -151,5 +151,9 @@ class PluginImporterBase(IPlugin):
         return data
 
     def flushStd(self):
+        '''
+        Force flush on standard output and error output.
+        Can help debugging
+        '''
         sys.stdout.flush()
         sys.stderr.flush()
