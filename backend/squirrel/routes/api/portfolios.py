@@ -9,7 +9,7 @@ from squirrel.routes import app
 
 
 @app.route("/api/portfolios", methods=['GET'])
-def route(request):
+def route_portfolios(request):
     request.setHeader('Content-Type', 'application/json')
 
     data = [

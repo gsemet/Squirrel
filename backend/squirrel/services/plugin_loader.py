@@ -46,6 +46,11 @@ class PluginRegistry(object):
             log.info("  Version: {}".format(plugin_info.version))
             if plugin_info.plugin_object.name in self.loadedPlugins:
                 raise Exception("Plugin {!r} already loaded".format(plugin_info.name))
+            plugin_info.plugin_object.description = plugin_info.description
+            plugin_info.plugin_object.author = plugin_info.author
+            plugin_info.plugin_object.website = plugin_info.website
+            plugin_info.plugin_object.version = plugin_info.version
+            plugin_info.plugin_object.category = plugin_info.category
             self.loadedPlugins[plugin_info.plugin_object.name] = plugin_info.plugin_object
 
     def getByName(self, name):
@@ -58,15 +63,14 @@ class PluginRegistry(object):
         return [plugin_info.name for plugin_info
                 in self.pluginManager.getPluginsOfCategory(category)]
 
+    def getAllPlugins(self):
+        return self.loadedPlugins.values()
+
 
 def loadPlugins(forcePluginNames=None):
     plugin_root = Config().plugins.full_default_path
     log.info("Loading plugin located at: {!r}".format([plugin_root]))
     PluginRegistry().loadPlugin([plugin_root])
-    # log.info(glob.glob(os.path.join(plugin_root, "**", "*.py")))
-
-    # for dirName, subdirList, fileList in os.walk(plugin_root, topdown=False):
-    #     PluginRegistry().loadPlugin(dirName)
 
 
 def unloadPlugins():
