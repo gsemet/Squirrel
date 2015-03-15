@@ -2,15 +2,20 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import logging
+
 from squirrel.config.config import Config
 from squirrel.config.constants import FRONTEND_INDEX_FILE
 from squirrel.routes import app
 from squirrel.routes import serve_url
 
 
+log = logging.getLogger(__name__)
+
+
 @app.route('/', methods=['GET'])
 def get_root(request):
-    print("request root")
+    log.debug("request root")
     s = serve_url(FRONTEND_INDEX_FILE, Config().frontend.root_full_path)
     # http://stackoverflow.com/questions/22929920/no-such-resource-404-error
     # > Twisted considers a URL at the top level (like your http://localhost:8000) to include an
