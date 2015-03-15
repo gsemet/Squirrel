@@ -63,6 +63,10 @@ gulp.task('html', ['inject', 'partials'], function() {
       spare: true,
       quotes: true
     }))
+    .pipe($.htmlPrettify({
+      indent_char: ' ',
+      indent_size: 2
+    }))
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest(paths.dist + '/'))
     .pipe($.size({
