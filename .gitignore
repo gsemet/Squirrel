@@ -59,3 +59,5 @@ _trial_temp.lock*/
 doc/build/
 tosource
 _trial_temp.lock
+
+logfile.*

@@ -2,7 +2,10 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import json
+
 from twisted.internet import defer
+from urllib import urlencode
 
 from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
 
@@ -18,67 +21,125 @@ class GoogleFinance(PluginImporterBase):
         pass
 
     @defer.inlineCallbacks
-    def getList(self, start=None, number=None):
+    def getList(self, wantedPlaces=None, start=None, number=None):
+        # Origin page:
+        # -> https://www.google.com/finance#stockscreener
+        #
         # Hardcoded query: all stocks from the EPA (Euronext Paris) exchange:
         # https://www.google.com/finance?output=json&start=0&num=20&noIL=1&q=[%28exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28market_cap%20%3E%3D%200%29%20%26%20%28market_cap%20%3C%3D%20118350000000%29%20%26%20%28pe_ratio%20%3E%3D%200%29%20%26%20%28pe_ratio%20%3C%3D%209932%29%20%26%20%28dividend_yield%20%3E%3D%200%29%20%26%20%28dividend_yield%20%3C%3D%20103%29%20%26%20%28price_change_52week%20%3E%3D%20-91.19%29%20%26%20%28price_change_52week%20%3C%3D%202613%29]&restype=company&ei=NpgFVaGzI-qgwAPVyoGICg
+        # https://www.google.com/finance?output=json&start=0&num=20&noIL=1&q=[currency%20%3D%3D%20%22USD%22%20%26%20%28%28exchange%20%3D%3D%20%22OTCMKTS%22%29%20%7C%20%28exchange%20%3D%3D%20%22OTCBB%22%29%20%7C%20%28exchange%20%3D%3D%20%22NYSEMKT%22%29%20%7C%20%28exchange%20%3D%3D%20%22NYSEARCA%22%29%20%7C%20%28exchange%20%3D%3D%20%22NYSE%22%29%20%7C%20%28exchange%20%3D%3D%20%22NASDAQ%22%29%29%20%26%20%28market_cap%20%3E%3D%200%29%20%26%20%28market_cap%20%3C%3D%20722720000000%29%20%26%20%28pe_ratio%20%3E%3D%200%29%20%26%20%28pe_ratio%20%3C%3D%2011649%29%20%26%20%28dividend_yield%20%3E%3D%200%29%20%26%20%28dividend_yield%20%3C%3D%203876%29%20%26%20%28price_change_52week%20%3E%3D%20-101%29%20%26%20%28price_change_52week%20%3C%3D%20333234%29]&restype=company&ei=-0UHVdjuF6OZwwP1xID4CQ
+        #
 
-        stocks = []
-        group_by_num = 30  # group by 30
-        retrieved = 0
-        if start is None:
-            start = 0
-        if number is None:
-            num_company_results = -1
+        if wantedPlaces is None:
+            wanted = ["France", "US"]
         else:
-            num_company_results = number
-
-        while True:
-            # Origin page:
-            # -> https://www.google.com/finance#stockscreener
-            query = ("https://www.google.com/finance?output=json&start={start}&num={group_by_num}&noIL=1&q="
-                     "[%28exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28market_cap"
-                     "%20%3E%3D%200%29%20%26%20%28market_cap%20%3C%3D%20118350000000"
-                     "%29%20%26%20%28pe_ratio%20%3E%3D%200%29%20%26%20%28pe_ratio"
-                     "%20%3C%3D%209932%29%20%26%20%28dividend_yield%20%3E%3D%200%29%20%26%20%28"
-                     "dividend_yield%20%3C%3D%20103%29%20%26%20%28price_change_52week"
-                     "%20%3E%3D%20-91.19%29%20%26%20%28price_change_52week%20%3C%3D%202613%29]"
-                     "&restype=company&ei=NpgFVaGzI-qgwAPVyoGICg").format(start=start,
-                                                                          group_by_num=group_by_num)
-            # print("query " + str(start) + "/" + str(num_company_results))
-            self.flushStd()
-            data = yield self.httpRequest(query)
-            # The returned data is weird. It got unicode escape sequence in it
-            data = unicode(data, 'utf8')
-            data = data.encode('utf8', 'replace')
-            data = self.repairString(data)
-            jdata = self.jsonDecode(data)
-
-            if num_company_results == -1:
-                num_company_results = int(jdata['num_company_results'])
-
-            def translateCurrency(currencySymbol):
-                dic = {
-                    u"\u20ac": "euro",
-                    '$': "dollar",
-                    u"\xa3": "pound",
-                    u"\xa5": "yen",
-                    u"-": "unknown",
-                }
-                return dic[currencySymbol]
-
-            for soc in jdata['searchresults']:
-                stock = self.createStock(title=str(soc['title']),
-                                         symbol=str(soc['ticker']),
-                                         exchange=str(soc['exchange']),
-                                         currency=translateCurrency(soc['local_currency_symbol']),
-                                         )
-                stocks.append(stock)
-
-            if retrieved + group_by_num < num_company_results:
-                start += group_by_num
-                retrieved += group_by_num
+            wanted = wantedPlaces
+        for name in wanted:
+            stocks = []
+            group_by_num = 30  # group by 20
+            retrieved = 0
+            if start is None:
+                start = 0
+            if number is None:
+                num_company_results = -1
             else:
-                break
+                num_company_results = number
+
+            self.log.debug("Refreshing stocks in: {}".format(name))
+            while True:
+                queries = {
+                    "France": (
+                        "https://www.google.com/finance?{}".format(urlencode({
+                            'output': 'json',
+                            'start': start,
+                            'num': group_by_num,
+                            'noIL': 1,
+                            'q': (
+                                '[(exchange == "EPA") & '
+                                '(market_cap >= 0) & '
+                                '(market_cap <= 118710000000) & '
+                                '(pe_ratio >= 0) & '
+                                '(pe_ratio <= 9898) & '
+                                '(dividend_yield >= 0) & '
+                                '(dividend_yield <= 103) & '
+                                '(price_change_52week >= -91.19) & '
+                                '(price_change_52week <= 2613)]'
+                            ),
+                            'restype': 'company',
+                            'ei': '-0UHVdjuF6OZwwP1xID4CQ',
+                        }))
+                    ),
+                    "US": (
+                        'https://www.google.com/finance?{}'.format(urlencode({
+                            'output': 'json',
+                            'start': start,
+                            'num': group_by_num,
+                            'noIL': 1,
+                            'q': (
+                                '[currency == "USD" & '
+                                '((exchange == "OTCMKTS") | '
+                                '(exchange == "OTCBB") | '
+                                '(exchange == "NYSEMKT") | '
+                                '(exchange == "NYSEARCA") | '
+                                '(exchange == "NYSE") | '
+                                '(exchange == "NASDAQ")) & '
+                                '(market_cap >= 0) &'
+                                ' (market_cap <= 722720000000) &'
+                                ' (pe_ratio >= 0) &'
+                                ' (pe_ratio <= 11649) &'
+                                ' (dividend_yield >= 0) &'
+                                ' (dividend_yield <= 3876) &'
+                                ' (price_change_52week >= -101) &'
+                                ' (price_change_52week <= 333234)]'
+                            ),
+                            'restype': 'company',
+                            'ei': '-0UHVdjuF6OZwwP1xID4CQ',
+                        }))
+                    ),
+                }
+                query = queries[name]
+                self.flushStd()
+                data = yield self.httpRequest(query)
+                self.log.debug("Data received. Length: {} bytes".format(len(data)))
+                self.flushStd()
+                # The returned data is weird. It got unicode escape sequence in it
+                data = unicode(data, 'utf8')
+                data = data.encode('utf8', 'replace')
+                data = self.repairString(data)
+                jdata = self.jsonDecode(data)
+
+                if num_company_results == -1:
+                    num_company_results = int(jdata['num_company_results'])
+
+                def translateCurrency(currencySymbol):
+                    dic = {
+                        u"\u20ac": "euro",
+                        '$': "dollar",
+                        u"\xa3": "pound",
+                        u"\xa5": "yen",
+                        u"-": "unknown",
+                    }
+                    return dic[currencySymbol]
+
+                self.log.debug("Inserting {} stocks".format(len(jdata['searchresults'])))
+
+                for soc in jdata['searchresults']:
+                    title = str(self.repairString(soc['title']))
+                    self.log.debug("Inserting stock: {!r}".format(title))
+                    # Some company names has weird characters in it!
+                    # Ex: u'Brookfield Incorpora\\xe7\\xf5es SA'
+                    stock = self.createStock(title=title,
+                                             symbol=str(soc['ticker']),
+                                             exchange=str(soc['exchange']),
+                                             currency=translateCurrency(soc['local_currency_symbol']),
+                                             )
+                    stocks.append(stock)
+
+                if retrieved + group_by_num < num_company_results:
+                    start += group_by_num
+                    retrieved += group_by_num
+                else:
+                    break
         if num_company_results > 0:
             defer.returnValue(stocks[:num_company_results])
         defer.returnValue([])

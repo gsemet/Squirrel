@@ -2,17 +2,21 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import logging
 import requests
+import sys
 import treq
 
 from twisted.internet import defer
-from txrequests import Session
-from twisted.web.client import HTTPConnectionPool
 from twisted.internet import reactor
-from twisted.internet.tcp import Client
 from twisted.internet.task import deferLater
+from twisted.internet.tcp import Client
+from twisted.web.client import HTTPConnectionPool
+from txrequests import Session
+
 
 enable_txrequest = True
+log = logging.getLogger(__name__)
 
 
 def download(remote_url, local_path):
@@ -54,6 +58,7 @@ def cleanupReactorForUnitTest_treq(test):
 
 @defer.inlineCallbacks
 def get_treq(url):
+    log.debug("treq: {}".format(url))
     r = yield treq.get(url)
     c = yield treq.text_content(r)
     defer.returnValue((r.code, c))

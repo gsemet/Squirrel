@@ -4,8 +4,7 @@ from __future__ import print_function
 
 import logging
 import logging.config as logging_config
-
-from twisted.internet import defer
+import sys
 
 from squirrel.config.load_config import Config
 from squirrel.config.load_config import initializeConfig
@@ -15,8 +14,8 @@ from squirrel.procedures.crawler import Crawler
 from squirrel.services.plugin_loader import loadPlugins
 from squirrel.services.plugin_loader import unloadPlugins
 
-from crochet import run_in_reactor
 from crochet import setup
+from crochet import wait_for
 
 # Uncomment this to true to debug unclean reactor
 # from twisted.internet.base import DelayedCall
@@ -31,28 +30,43 @@ def setupLogger():
     logging.debug("Logger configured by: {}".format(Config().frontend.logging_conf_full_path))
 
 
-@defer.inlineCallbacks
-def runInlineCallbacks():
+# Do not write it in inlinecallback or we will lose traceback in case of exception
+def crawlAllStocks():
+    crawler = Crawler()
+    log.debug("refreshing stock list")
+    wanted_places = None
+    d = crawler.refreshStockList(wantedPlaces=wanted_places)
+
+    @d.addCallback
+    def d1(_):
+        log.debug("requesting google finance AAPL + GOOG")
+        return crawler.refreshStockHistory([
+            Ticker("AAPL", "NASDAQ"),
+            Ticker("GOOG", "NASDAQ"),
+        ])
+
+    return d
+
+
+# wait_for ensure correct exception to be display
+@wait_for(24 * 60 * 60)
+def runCrochet():
     initializeConfig()
     setupLogger()
     loadPlugins(["GoogleFinance"])
+    d = crawlAllStocks()
 
-    crawler = Crawler()
-    log.debug("refreshing stock list")
-    yield crawler.refreshStockList()
+    @d.addCallback
+    def d2(_):
+        unloadConfig()
+        unloadPlugins()
 
-    log.debug("requesting google finance AAPL + GOOG")
-    yield crawler.refreshStockHistory([
-        Ticker("AAPL", "NASDAQ"),
-        Ticker("GOOG", "NASDAQ"),
-    ])
-    unloadConfig()
-    unloadPlugins()
+    @d.addErrback
+    def err(failure):
+        log.exception("Exception received: {}".format(failure))
+        sys.exit(1)
 
-
-@run_in_reactor
-def runCrochet():
-    return runInlineCallbacks()
+    return d
 
 
 def run():

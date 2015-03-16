@@ -22,14 +22,21 @@ log = logging.getLogger(__name__)
 class Crawler(object):
 
     @defer.inlineCallbacks
-    def refreshStockList(self, number=None):
+    def refreshStockList(self, wantedPlaces=None, number=None):
         importer_name = "Google Finance"
         with Model(Config().backend.db.full_url) as model:
             importer = TablePluginImporters(id=None,
                                             name=importer_name)
             importer.ensureHasId(model)
-            log.debug("Getting {} first stocks".format(number))
-            stocks = yield PluginRegistry().getByName(importer.name).getList(number=number)
+            if number is None:
+                log.debug("Getting list of all stocks")
+            else:
+                log.debug("Getting {} first stocks".format(number))
+            log.debug("Wanted places: {}".format(wantedPlaces
+                                                 if wantedPlaces is not None else "All"))
+            stocks = yield PluginRegistry().getByName(importer.name).getList(
+                number=number,
+                wantedPlaces=wantedPlaces)
             for stock in stocks:
                 currency = TableCurrencies(id=None,
                                            name=stock.currency)

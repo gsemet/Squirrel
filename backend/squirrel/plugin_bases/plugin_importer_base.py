@@ -53,6 +53,7 @@ class PluginImporterBase(IPlugin):
     def httpRequest(self, url):
         self.log.debug("Requesting url: {}".format(url))
         code, content = yield get(url)
+        self.log.debug("Received response: {}".format(code))
         if code != 200:
             raise Exception("Error received: code = {}".format(code))
 
