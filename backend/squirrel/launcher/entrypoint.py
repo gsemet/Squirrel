@@ -8,8 +8,10 @@ import logging.config as logging_config
 from squirrel.common.i18n import setupI18n
 from squirrel.config.load_config import Config
 from squirrel.config.load_config import initializeConfig
+from squirrel.config.load_config import unloadConfig
 from squirrel.services.db import connectDatabase
 from squirrel.services.plugin_loader import loadPlugins
+from squirrel.services.plugin_loader import unloadPlugins
 from squirrel.services.serve_backend import serveBackend
 
 log = logging.getLogger(__name__)
@@ -26,4 +28,8 @@ def run():
     setupI18n()
     loadPlugins()
     connectDatabase()
+
     serveBackend()
+
+    unloadConfig()
+    unloadPlugins()

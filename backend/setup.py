@@ -12,6 +12,7 @@ setup_args = {
     'entry_points': {
         'console_scripts': [
             'squirrel-backend = squirrel.launcher.entrypoint:run',
+            'squirrel-cli = squirrel.launcher.cli:run',
         ],
     },
 }

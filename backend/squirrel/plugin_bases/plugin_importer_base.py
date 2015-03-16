@@ -51,7 +51,7 @@ class PluginImporterBase(IPlugin):
 
     @defer.inlineCallbacks
     def httpRequest(self, url):
-        self.log.debug("Requesting url:", url)
+        self.log.debug("Requesting url: {}".format(url))
         code, content = yield get(url)
         if code != 200:
             raise Exception("Error received: code = {}".format(code))
@@ -60,14 +60,14 @@ class PluginImporterBase(IPlugin):
 
     @defer.inlineCallbacks
     def ftpRequest(self, url):
-        print("creating ftpclient")
+        log.debug("creating ftpclient")
         ftpClient = FTPClient()
-        print("opening file aaa")
+        log.debug("opening file aaa")
 
         FTPClient.debug = True
-        print("creating ClientCreator")
+        log.debug("creating ClientCreator")
         creator = ClientCreator(reactor, FTPClient)
-        print("creating ftpclient")
+        log.debug("creating ftpclient")
         ftpClient = yield creator.connectTCP("ftp.nasdaqtrader.com", 21)
 
         class FTPFile(object):
@@ -96,7 +96,7 @@ class PluginImporterBase(IPlugin):
                 self.fObj.write(bytes)
 
         with open("aaaa", "w") as f:
-            print("retrieveFile")
+            log.debug("retrieveFile")
             yield defer.succeed(0)
             fc = FileConsumer(f)
             yield ftpClient.retrieveFile(url, fc)
