@@ -14,11 +14,11 @@ from twisted.internet.interfaces import IProtocol
 from twisted.internet.protocol import ClientCreator
 from twisted.protocols.ftp import FTPClient
 from twisted.protocols.ftp import FileConsumer
+from urllib import urlencode
 from yapsy.IPlugin import IPlugin
 from zope.interface import implements
 
 from squirrel.common.downloader import get
-
 from squirrel.common.text import dateTimeToEpoch
 from squirrel.common.text import epochTimeStringToDatatime
 from squirrel.common.text import getTodayEpoch
@@ -136,15 +136,15 @@ class PluginImporterBase(IPlugin):
     def jsonDecode(self, data):
         return json.loads(data)
 
-    def repairString(self, data):
+    def fixHexEscapeString(self, data):
         '''
         Use this method if the data you received contains invalid sequence such as "\\x22"
         that fails json parsing.
         '''
-        invalid_escape = re.compile(r'\\x([0-7]{1,3})')  # up to 3 digits for byte values up to FF
+        invalid_escape = re.compile(r"\\x([0-9a-zA-Z]{2})")  # up to 3 digits for byte values up to FF
 
         def replace_with_byte(match):
-            return "%" + match.group(1)
+            return "%0x" + match.group(1)
 
         def repair(brokenjson):
             return invalid_escape.sub(replace_with_byte, brokenjson)
@@ -158,3 +158,16 @@ class PluginImporterBase(IPlugin):
         '''
         sys.stdout.flush()
         sys.stderr.flush()
+
+    def urlencode(self, query):
+        """Encode a sequence of two-element tuples or dictionary into a URL query string.
+
+        If any values in the query arg are sequences and doseq is true, each
+        sequence element is converted to a separate parameter.
+
+        If the query arg is a sequence of two-element tuples, the order of the
+        parameters in the output will match the order of parameters in the
+        input.
+        """
+
+        return urlencode(query)

@@ -2,10 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import json
-
 from twisted.internet import defer
-from urllib import urlencode
 
 from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
 
@@ -101,11 +98,10 @@ class GoogleFinance(PluginImporterBase):
                 self.flushStd()
                 data = yield self.httpRequest(query)
                 self.log.debug("Data received. Length: {} bytes".format(len(data)))
-                self.flushStd()
-                # The returned data is weird. It got unicode escape sequence in it
-                data = unicode(data, 'utf8')
-                data = data.encode('utf8', 'replace')
-                data = self.repairString(data)
+                data = data.decode('utf8', 'replace')
+                data = self.fixHexEscapeString(data)
+                self.log.debug(u"type: {}".format(type(data)))
+                self.log.debug(u"data: {!r}".format(data))
                 jdata = self.jsonDecode(data)
 
                 if num_company_results == -1:
@@ -114,7 +110,7 @@ class GoogleFinance(PluginImporterBase):
                 def translateCurrency(currencySymbol):
                     dic = {
                         u"\u20ac": "euro",
-                        '$': "dollar",
+                        u'$': "dollar",
                         u"\xa3": "pound",
                         u"\xa5": "yen",
                         u"-": "unknown",
@@ -124,11 +120,11 @@ class GoogleFinance(PluginImporterBase):
                 self.log.debug("Inserting {} stocks".format(len(jdata['searchresults'])))
 
                 for soc in jdata['searchresults']:
-                    title = str(self.repairString(soc['title']))
-                    self.log.debug("Inserting stock: {!r}".format(title))
+                    title = soc['title'].encode('ascii', 'replace')
+                    self.log.info("Updating stock: {!r}".format(title))
                     # Some company names has weird characters in it!
                     # Ex: u'Brookfield Incorpora\\xe7\\xf5es SA'
-                    stock = self.createStock(title=title,
+                    stock = self.createStock(title=str(title),
                                              symbol=str(soc['ticker']),
                                              exchange=str(soc['exchange']),
                                              currency=translateCurrency(soc['local_currency_symbol']),

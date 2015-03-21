@@ -6,6 +6,10 @@ import logging
 import logging.config as logging_config
 import sys
 
+from crochet import setup
+from crochet import wait_for
+
+from squirrel.common.downloader import get
 from squirrel.config.load_config import Config
 from squirrel.config.load_config import initializeConfig
 from squirrel.config.load_config import unloadConfig
@@ -14,8 +18,6 @@ from squirrel.procedures.crawler import Crawler
 from squirrel.services.plugin_loader import loadPlugins
 from squirrel.services.plugin_loader import unloadPlugins
 
-from crochet import setup
-from crochet import wait_for
 
 # Uncomment this to true to debug unclean reactor
 # from twisted.internet.base import DelayedCall
@@ -35,15 +37,17 @@ def crawlAllStocks():
     crawler = Crawler()
     log.debug("refreshing stock list")
     wanted_places = None
+
     d = crawler.refreshStockList(wantedPlaces=wanted_places)
 
     @d.addCallback
-    def d1(_):
-        log.debug("requesting google finance AAPL + GOOG")
-        return crawler.refreshStockHistory([
-            Ticker("AAPL", "NASDAQ"),
-            Ticker("GOOG", "NASDAQ"),
-        ])
+    def d1(c):
+        log.debug("c {!r}".format(c))
+    #    log.debug("requesting google finance AAPL + GOOG")
+    #     return crawler.refreshStockHistory([
+    #         Ticker("AAPL", "NASDAQ"),
+    #         Ticker("GOOG", "NASDAQ"),
+    #     ])
 
     return d
 

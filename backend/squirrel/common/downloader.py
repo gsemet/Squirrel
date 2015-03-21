@@ -4,7 +4,6 @@ from __future__ import print_function
 
 import logging
 import requests
-import sys
 import treq
 
 from twisted.internet import defer
@@ -16,6 +15,7 @@ from txrequests import Session
 
 
 enable_txrequest = True
+
 log = logging.getLogger(__name__)
 
 
@@ -56,12 +56,16 @@ def cleanupReactorForUnitTest_treq(test):
     test.pool = HTTPConnectionPool(reactor, False)
 
 
-@defer.inlineCallbacks
 def get_treq(url):
     log.debug("treq: {}".format(url))
-    r = yield treq.get(url)
-    c = yield treq.text_content(r)
-    defer.returnValue((r.code, c))
+    d = treq.get(url)
+
+    @d.addCallback
+    def cb(r):
+        log.debug("Callback :{!r}".format(r))
+        return treq.text_content(r)
+
+    return d
 
 
 @defer.inlineCallbacks
