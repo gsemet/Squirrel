@@ -18,10 +18,15 @@ import os
 import subprocess
 import sys
 
-if len(sys.argv) > 1 and sys.argv[1] == "-l":
-    do_launch = True
+if len(sys.argv) > 1:
+    if sys.argv[1] == "-l":
+        do_launch = "server"
+    elif sys.argv[1] == "-d":
+        do_launch = "dev-server"
+    else:
+        raise Exception("Invalid parameter: {!r}".format(sys.argv[1]))
 else:
-    do_launch = False
+    do_launch = "only_install"
 
 if sys.version_info < (2, 7):
     raise "must use python 2.7.x. Current version is: {}.".format(sys.version_info)
@@ -48,6 +53,7 @@ print("[BOOT] Installing in {0}".format(workdir_path))
 print("[BOOT] Requirements: {0}".format(requirements_txt))
 print("[BOOT] Launch server automatically: {0}".format(do_launch))
 
+
 if sys.platform.startswith('win32'):
     virtualenv = "virtualenv.exe"
     python_exe = "python.exe"
@@ -67,7 +73,7 @@ if sys.platform.startswith('win32'):
         "cmd", "/K",
         launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
         workdir_path, stage2_path, install_path, workdir_path,
-        "launch" if do_launch else "no_launch"])
+        do_launch])
 
 elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
 
@@ -95,7 +101,7 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
                 stage2=stage2_path,
                 install_path=install_path,
                 workdir_path=workdir_path,
-                launch="launch" if do_launch else "no_launch")])
+                launch=do_launch)])
 
 
 else:
