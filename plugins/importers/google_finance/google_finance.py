@@ -101,7 +101,6 @@ class GoogleFinance(PluginImporterBase):
                 data = data.decode('utf8', 'replace')
                 data = self.fixHexEscapeString(data)
                 self.log.debug(u"type: {}".format(type(data)))
-                self.log.debug(u"data: {!r}".format(data))
                 jdata = self.jsonDecode(data)
 
                 if num_company_results == -1:
