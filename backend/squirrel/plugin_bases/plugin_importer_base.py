@@ -169,5 +169,4 @@ class PluginImporterBase(IPlugin):
         parameters in the output will match the order of parameters in the
         input.
         """
-
         return urlencode(query)

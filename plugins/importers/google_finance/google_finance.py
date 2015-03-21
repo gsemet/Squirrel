@@ -46,7 +46,7 @@ class GoogleFinance(PluginImporterBase):
             while True:
                 queries = {
                     "France": (
-                        "https://www.google.com/finance?{}".format(urlencode({
+                        "https://www.google.com/finance?{}".format(self.urlencode({
                             'output': 'json',
                             'start': start,
                             'num': group_by_num,
@@ -67,7 +67,7 @@ class GoogleFinance(PluginImporterBase):
                         }))
                     ),
                     "US": (
-                        'https://www.google.com/finance?{}'.format(urlencode({
+                        'https://www.google.com/finance?{}'.format(self.urlencode({
                             'output': 'json',
                             'start': start,
                             'num': group_by_num,
