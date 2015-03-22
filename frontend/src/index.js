@@ -11,19 +11,19 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     .when("/", {
       templateUrl: "app/homepage/homepage.template.html",
       controller: "HomepageCtrl",
-      resolve: {
-        auth: ["$q", "AuthenticationService", function($q, AuthenticationService) {
-          var userInfo = AuthenticationService.getUserInfo();
+      /*      resolve: {
+              auth: ["$q", "AuthenticationService", function($q, AuthenticationService) {
+                var userInfo = AuthenticationService.getUserInfo();
 
-          if (userInfo) {
-            return $q.when(userInfo);
-          } else {
-            return $q.reject({
-              authenticated: false
-            });
-          }
-        }]
-      }
+                if (userInfo) {
+                  return $q.when(userInfo);
+                } else {
+                  return $q.reject({
+                    authenticated: false
+                  });
+                }
+              }]
+            }*/
     })
     .when("/my-portfolios", {
       templateUrl: "app/my-portfolios/my-portfolios.template.html",
@@ -40,6 +40,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     .when("/register", {
       templateUrl: "app/register/register.template.html",
       controller: "RegisterCtrl"
+    })
+    .when("/settings", {
+      templateUrl: "app/settings/settings.template.html",
+      controller: "SettingsCtrl"
     })
     .when("/doc", {
       controller: function() {

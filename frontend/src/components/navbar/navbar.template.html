@@ -1,5 +1,3 @@
-<div id="yass_top_edge_padding" style="padding: 0px 0px 70px; margin: 0px; border-width: 0px; height: 0px; display: block;"></div>
-
 <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarCtrl">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -14,13 +12,23 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-if="login_username.length <= 0"><a href="#/login"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
-        <li ng-if="login_username.length <= 0"><a href="#/register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
-        <li ng-if="login_username.length > 0"><p class="navbar-text">Hello, {{username}}</p></li>
-        <li ng-if="login_username.length > 0">
+        <li ng-if="login_username.length <= 0" ng-class="navClass('login')"><a href="#/login"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+        <li ng-if="login_username.length <= 0" ng-class="navClass('register')"><a href="#/register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
+<!--         <li ng-if="login_username.length > 0">
           <button class="btn btn-primary navbar-btn" type="button" ng-click="logout()">
             <span class="glyphicon glyphicon-remove"></span> Logout
-          </button>
+          </button> -->
+        <li ng-if="login_username.length > 0" dropdown>
+          <a href="#" dropdown-toggle>{{login_username}} <span class="caret"></span></a>
+          <!-- <button class="dropdown-toggle" type="button" id="dropdownUserMenu" dropdown-toggle>
+            {{login_username}}
+            <span class="caret"></span>
+          </button> -->
+          <ul class="dropdown-menu" role="menu">
+            <!-- <li role="presentation" class="dropdown-header">General</li> -->
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/settings">Settings</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/logout" ng-click="logout()">Log out</a></li>
+          </ul>
         </li>
       </ul>
     </div>

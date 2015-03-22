@@ -21,13 +21,23 @@
 // injector
 // endinjector
 
+@import 'components/common/common.less';
 
 .btn-primary{
-  background-color: #6D1616;
-  border-color: #6D1616;
+  background-color: @colHeaderHighlight;
+  border-color: @colHeaderHighlight;
 }
 
 .btn-primary:hover{
-  background-color: #3E0D0D;
-  border-color: #3E0D0D;
+  background-color: @colHeaderHighlight;
+  border-color: @colHeaderHighlight;
+}
+
+// required for fixed navbar
+body {
+  padding-top: 70px;
+}
+
+.dropdown-header {
+  color: @colHeaderHighlight;
 }

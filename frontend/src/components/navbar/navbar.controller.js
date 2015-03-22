@@ -16,9 +16,16 @@ angular.module('squirrel').controller('NavbarCtrl',
         }, {
           endpoint: 'my-portfolios',
           linktext: 'My Portfolios'
+        }
+      ];
+
+      $scope.loginLinks = [
+        {
+          endpoint: 'login',
+          linktext: 'Login'
         }, {
-          endpoint: 'doc',
-          linktext: 'Documentation'
+          endpoint: 'register',
+          linktext: 'Register'
         }
       ];
 
@@ -27,13 +34,18 @@ angular.module('squirrel').controller('NavbarCtrl',
         $scope.login_username = userName;
       });
 
+      $rootScope.$on("logoutSuccesful", function(event) {
+        console.log("navbar on logout");
+        $scope.login_username = "";
+      });
+
       $rootScope.$on("loginError", function(event, error) {
         console.log("navbar on loginError:" + error);
         $scope.login_username = "";
       });
 
       $scope.logout = function() {
-        $scope.login_username = "";
+        console.log("log out !!!");
         AuthenticationService.logout();
       }
 
