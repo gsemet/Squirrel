@@ -17,18 +17,8 @@ def getLoginData():
     }
 
 
-@app.route("/api/login", methods=['POST'])
-def route_login_post(request):
-    request.setHeader('Content-Type', 'application/json')
-    request.setHeader('Access-Control-Allow-Origin', '*')
-
-    data = getLoginData()
-
-    return json.dumps(data)
-
-
-@app.route("/api/login", methods=['OPTIONS'])
-def route_login_options(request):
+@app.route("/api/profile", methods=['GET'])
+def route_profile_post(request):
     request.setHeader('Content-Type', 'application/json')
     request.setHeader('Access-Control-Allow-Origin', '*')
     request.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')

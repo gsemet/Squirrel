@@ -2,9 +2,9 @@
 
 angular.module('squirrel').controller('NavbarCtrl',
 
-  ["$scope", "$location", "$rootScope", "AuthenticationService",
+  ["$scope", "$location", "$rootScope", "AuthenticationService", "AUTH_EVENTS",
 
-    function($scope, $location, $rootScope, AuthenticationService) {
+    function($scope, $location, $rootScope, AuthenticationService, AUTH_EVENTS) {
 
       $scope.date = new Date();
       $scope.login_username = "";
@@ -29,17 +29,17 @@ angular.module('squirrel').controller('NavbarCtrl',
         }
       ];
 
-      $rootScope.$on("loginSuccesful", function(event, userName) {
+      $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
         console.log("navbar on loginSuccesful1:" + userName);
         $scope.login_username = userName;
       });
 
-      $rootScope.$on("logoutSuccesful", function(event) {
+      $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(event) {
         console.log("navbar on logout");
         $scope.login_username = "";
       });
 
-      $rootScope.$on("loginError", function(event, error) {
+      $rootScope.$on(AUTH_EVENTS.loginFailed, function(event, error) {
         console.log("navbar on loginError:" + error);
         $scope.login_username = "";
       });

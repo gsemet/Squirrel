@@ -2,12 +2,14 @@
   <ol class="breadcrumb">
     <li class="active">Home</li>
   </ol>
+
   <div class="jumbotron text-center">
-
-  </div>
-
-  <div class="row">
-
+    <div class="row" ng-if="login_username">
+    when user is logged, he sees a summary of his portofolios here.
+    </div>
+    <div class="row" ng-if="!login_username">
+    public display: trailer, make people wants to register!
+    </div>
   </div>
 
   <hr>
@@ -15,5 +17,4 @@
   <div class="footer">
     <p></p>
   </div>
-
 </div>

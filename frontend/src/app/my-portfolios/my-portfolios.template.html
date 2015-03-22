@@ -5,8 +5,15 @@
   </ol>
   <hr />
 
-  <div>
-    My Portfolios!
+  <div class="jumbotron text-center" ng-if="is_logged">
+    <div>
+      Display user portfolio details when logged in.
+    </div>
+  </div>
+  <div class="jumbotron text-center" ng-if="!is_logged">
+    <div>
+      When user is not logged, he sees a message inviting him to register.
+    </div>
   </div>
 
   <div class="footer">

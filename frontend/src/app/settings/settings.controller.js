@@ -1,4 +1,11 @@
-angular.module("squirrel")
-  .controller("SettingsCtrl", ["$scope", function($scope) {
+'use strict';
 
-  }]);
+angular.module("squirrel").controller("SettingsCtrl",
+
+  ["$scope",
+
+    function($scope) {
+
+    }
+  ]
+);
