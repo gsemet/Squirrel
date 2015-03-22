@@ -102,6 +102,24 @@ angular.module('squirrel').factory('AuthenticationService',
         return deferred.promise;
       };
 
+      authService.register = function(userName, email, password) {
+        var deferred = $q.defer();
+
+        $http.post("http://localhost:8080/api/register", {
+          userName: userName,
+          email: email,
+          password: password
+        }).then(function(result) {
+          deferred.resolve(userName);
+        }, function(error) {
+          console.log("Login error = " + JSON.stringify(error));
+          $rootScope.$emit("loginFailed", error);
+          deferred.reject(error);
+        });
+
+        return deferred.promise;
+      };
+
       authService.isAuthenticated = function() {
         return !!Session.userId;
       };
