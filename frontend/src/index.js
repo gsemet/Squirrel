@@ -10,7 +10,20 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $routeProvider
     .when("/", {
       templateUrl: "app/homepage/homepage.template.html",
-      controller: "HomepageCtrl"
+      controller: "HomepageCtrl",
+      resolve: {
+        auth: ["$q", "AuthenticationService", function($q, AuthenticationService) {
+          var userInfo = AuthenticationService.getUserInfo();
+
+          if (userInfo) {
+            return $q.when(userInfo);
+          } else {
+            return $q.reject({
+              authenticated: false
+            });
+          }
+        }]
+      }
     })
     .when("/my-portfolios", {
       templateUrl: "app/my-portfolios/my-portfolios.template.html",
@@ -19,6 +32,14 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     .when("/screeners", {
       templateUrl: "app/screeners/screeners.template.html",
       controller: "ScreenersCtrl"
+    })
+    .when("/login", {
+      templateUrl: "app/login/login.template.html",
+      controller: "LoginCtrl"
+    })
+    .when("/register", {
+      templateUrl: "app/register/register.template.html",
+      controller: "RegisterCtrl"
     })
     .when("/doc", {
       controller: function() {

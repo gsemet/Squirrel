@@ -11,8 +11,10 @@ gulp.task('markups', function() {
     path.extname = '.html';
   }
 
-  return gulp.src(paths.src + '/{app,components}/**/*.jade')
-    .pipe($.consolidate('jade', { pretty: '  ' }))
+  return gulp.src(paths.src + '/{app,components,services}/**/*.jade')
+    .pipe($.consolidate('jade', {
+      pretty: '  '
+    }))
     .on('error', function handleError(err) {
       console.error(err.toString());
       this.emit('end');

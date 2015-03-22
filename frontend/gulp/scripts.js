@@ -6,8 +6,8 @@ var paths = gulp.paths;
 
 var $ = require('gulp-load-plugins')();
 
-gulp.task('scripts', function () {
-  return gulp.src(paths.src + '/{app,components}/**/*.coffee')
+gulp.task('scripts', function() {
+  return gulp.src(paths.src + '/{app,components,services}/**/*.coffee')
     .pipe($.coffeelint())
     .pipe($.coffeelint.reporter())
     .pipe($.coffee())
@@ -18,4 +18,3 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest(paths.tmp + '/serve/'))
     .pipe($.size())
 });
-

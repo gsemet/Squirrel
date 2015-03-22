@@ -12,12 +12,13 @@ gulp.task('styles', function() {
     paths: [
       'bower_components',
       paths.src + '/app',
-      paths.src + '/components'
+      paths.src + '/services',
+      paths.src + '/components',
     ]
   };
 
   var injectFiles = gulp.src([
-    paths.src + '/{app,components}/**/*.less',
+    paths.src + '/{app,services,components}/**/*.less',
     '!' + paths.src + '/index.less',
     '!' + paths.src + '/vendor.less',
   ], {
@@ -27,6 +28,7 @@ gulp.task('styles', function() {
   var injectOptions = {
     transform: function(filePath) {
       filePath = filePath.replace(paths.src + '/app/', '');
+      filePath = filePath.replace(paths.src + '/services/', 'services/');
       filePath = filePath.replace(paths.src + '/components/', 'components/');
       return '@import \'' + filePath + '\';';
     },

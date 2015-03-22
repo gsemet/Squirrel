@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#/" ng-class="navClass('')">
-        <span class="glyphicon glyphicon-home"></span> Squirrel
+        <span class="squirrel-brand"> <img src="assets/images/logo-256.png" style="max-width: 30px; margin-top: -5px"></img> Squirrel-AMS</span>
       </a>
     </div>
 
@@ -14,7 +14,14 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/login"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+        <li ng-if="login_username.length <= 0"><a href="#/login"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+        <li ng-if="login_username.length <= 0"><a href="#/register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
+        <li ng-if="login_username.length > 0"><p class="navbar-text">Hello, {{username}}</p></li>
+        <li ng-if="login_username.length > 0">
+          <button class="btn btn-primary navbar-btn" type="button" ng-click="logout()">
+            <span class="glyphicon glyphicon-remove"></span> Logout
+          </button>
+        </li>
       </ul>
     </div>
   </div>
