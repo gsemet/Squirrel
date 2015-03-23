@@ -1,0 +1,20 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li class="active">Home</li>
+  </ol>
+
+  <div class="jumbotron text-center">
+    <div class="row" ng-if="!is_admin">
+    normal users don't have access to this page
+    </div>
+    <div class="row" ng-if="is_admin">
+    admin user can see this page
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer">
+    <p></p>
+  </div>
+</div>

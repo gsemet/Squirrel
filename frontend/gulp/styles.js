@@ -27,7 +27,7 @@ gulp.task('styles', function() {
 
   var injectOptions = {
     transform: function(filePath) {
-      filePath = filePath.replace(paths.src + '/app/', '');
+      filePath = filePath.replace(paths.src + '/app/', 'app/');
       filePath = filePath.replace(paths.src + '/services/', 'services/');
       filePath = filePath.replace(paths.src + '/components/', 'components/');
       return '@import \'' + filePath + '\';';

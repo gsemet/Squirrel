@@ -7,9 +7,9 @@
 
 angular.module('squirrel').factory('AuthenticationService',
 
-  ["$http", "$q", "$window", "$rootScope", "Session", "AUTH_EVENTS", '$timeout', 'ipCookie',
+  ["$http", "$q", "$window", "$rootScope", "Session", "AUTH_EVENTS", '$timeout', 'ipCookie', "USER_ROLES",
 
-    function($http, $q, $window, $rootScope, Session, AUTH_EVENTS, $timeout, ipCookie) {
+    function($http, $q, $window, $rootScope, Session, AUTH_EVENTS, $timeout, ipCookie, USER_ROLES) {
 
       var authService = {};
 
@@ -122,6 +122,10 @@ angular.module('squirrel').factory('AuthenticationService',
 
       authService.isAuthenticated = function() {
         return !!Session.userId;
+      };
+
+      authService.isAdmin = function() {
+        return Session.userRole == USER_ROLES.admin;
       };
 
       authService.getUserName = function() {

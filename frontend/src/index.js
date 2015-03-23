@@ -44,6 +44,14 @@ app.config(
           templateUrl: "app/settings/settings.template.html",
           controller: "SettingsCtrl"
         })
+        .when("/help", {
+          templateUrl: "app/help/help.template.html",
+          controller: "HelpCtrl"
+        })
+        .when("/contact", {
+          templateUrl: "app/contact/contact.template.html",
+          controller: "ContactCtrl"
+        })
         .when("/doc", {
           controller: function() {
             window.location.replace('/doc');

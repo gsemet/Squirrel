@@ -1,15 +1,31 @@
-<div class="container">
+<div ng-if="!logged_in">
+  <div class="intro-header">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                  <h1>Squirrel Assets Management System</h1>
+                  <h3>The more advanced, free Portfolio Manager</h3>
+                  <hr class="intro-divider">
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  <div class="container">
+    <div class="jumbotron text-center">
+    public display: trailer, make people wants to register!
+    </div>
+  </div>
+</div>
+
+<div class="container" ng-if="logged_in">
   <ol class="breadcrumb">
     <li class="active">Home</li>
   </ol>
 
   <div class="jumbotron text-center">
-    <div class="row" ng-if="login_username">
-    when user is logged, he sees a summary of his portofolios here.
-    </div>
-    <div class="row" ng-if="!login_username">
-    public display: trailer, make people wants to register!
-    </div>
+      <p>when user is logged, he sees a summary of his portofolios here.</p>
   </div>
 
   <hr>
