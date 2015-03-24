@@ -3,13 +3,14 @@
 var app;
 
 app = angular.module("squirrel", [
+  "highcharts-ng",
+  'ipCookie',
   'ngAnimate',
   'ngCookies',
-  'ipCookie',
-  'ngTouch',
-  'ngSanitize',
   'ngResource',
   'ngRoute',
+  'ngSanitize',
+  'ngTouch',
   'ui.bootstrap',
   'underscore',
 ]);
