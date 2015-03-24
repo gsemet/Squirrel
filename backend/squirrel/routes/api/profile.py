@@ -13,7 +13,7 @@ def getLoginData():
         "userId": "987654",
         "userName": "Gaetan",
         "email": "email@adress.com",
-        "role": "registered",
+        "role": "admin",
     }
 
 

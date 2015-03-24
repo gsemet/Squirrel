@@ -27,6 +27,7 @@
           <ul class="dropdown-menu" role="menu">
             <!-- <li role="presentation" class="dropdown-header">General</li> -->
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#/settings">Settings</a></li>
+            <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="#/admin">Administrator page</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#/logout" ng-click="logout()">Log out</a></li>
           </ul>
         </li>

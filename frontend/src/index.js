@@ -11,6 +11,7 @@ app = angular.module("squirrel", [
   'ngResource',
   'ngRoute',
   'ui.bootstrap',
+  'underscore',
 ]);
 
 app.config(
@@ -51,6 +52,10 @@ app.config(
         .when("/contact", {
           templateUrl: "app/contact/contact.template.html",
           controller: "ContactCtrl"
+        })
+        .when("/admin", {
+          templateUrl: "app/admin/admin.template.html",
+          controller: "AdminCtrl"
         })
         .when("/doc", {
           controller: function() {

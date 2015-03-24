@@ -8,6 +8,7 @@ angular.module('squirrel').controller('NavbarCtrl',
 
       $scope.date = new Date();
       $scope.login_username = "";
+      $scope.is_admin = AuthenticationService.isAdmin();
 
       $scope.navLinks = [
         {
@@ -32,16 +33,19 @@ angular.module('squirrel').controller('NavbarCtrl',
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
         console.log("navbar on loginSuccesful1:" + userName);
         $scope.login_username = userName;
+        $scope.is_admin = AuthenticationService.isAdmin();
       });
 
       $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(event) {
         console.log("navbar on logout");
         $scope.login_username = "";
+        $scope.is_admin = false;
       });
 
       $rootScope.$on(AUTH_EVENTS.loginFailed, function(event, error) {
         console.log("navbar on loginError:" + error);
         $scope.login_username = "";
+        $scope.is_admin = false;
       });
 
       $scope.logout = function() {
