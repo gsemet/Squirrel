@@ -45,10 +45,21 @@ workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                 os.pardir,
                                                 "requirements.txt"))
+if sys.platform.startswith('win32'):
+    activate = os.path.join(workdir_path, "Scripts", "activate.bat")
+    activate_info = activate
+    os_str = "Windows"
+else:
+    activate = os.path.join(workdir_path, "bin", "activate")
+    activate_info = "source {0}".format(activate)
+    os_str = "Posix"
 
 print("===============================================================================")
 print("[BOOT] Squirrel Installer Stage 1")
+print("[BOOT] Environment: {0}".format(os_str))
 print("[BOOT] Setting up virtualenv to start Installer Stage 2.")
+print("[BOOT] You can activate this environment with the following command:")
+print("[BOOT]     {0}".format(activate_info))
 print("[BOOT] Installing in {0}".format(workdir_path))
 print("[BOOT] Requirements: {0}".format(requirements_txt))
 print("[BOOT] Launch server automatically: {0}".format(do_launch))
@@ -58,17 +69,15 @@ if sys.platform.startswith('win32'):
     virtualenv = "virtualenv.exe"
     python_exe = "python.exe"
     launch_in_new_window = True
-    activate = os.path.join(workdir_path, "Scripts", "activate.bat")
 
     if not os.path.exists(os.path.join(workdir_path, "Scripts", "pip.exe")):
         print("Installing virtualenv in: {0}".format(workdir_path))
         subprocess.check_call([virtualenv, "--system-site-packages", workdir_path])
 
-    activate = os.path.join(workdir_path, "Scripts", "activate.bat")
+    # using launcher instead of activate.bat because we want to launch custom commands
     launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 
     print("[BOOT] Activating virtualenv in {0}".format(workdir_path))
-    # subprocess.check_call([python_exe, stage2_path, activate, install_path])
     subprocess.check_call([
         "cmd", "/K",
         launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
@@ -81,7 +90,6 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
         print("[BOOT] Note: Already in a virtualenv!")
 
     activate = os.path.join(workdir_path, "bin", "activate")
-    launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 
     if not os.path.exists(os.path.join(workdir_path, "bin", "pip")):
         subprocess.check_call(['virtualenv', workdir_path])
