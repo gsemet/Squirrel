@@ -28,6 +28,10 @@ print("[INFO] We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
 print("[INFO] installation dir: {}".format(install_path))
 print("[INFO] workdir: {}".format(workdir_path))
 print("[INFO] Launch: {}".format(do_launch))
+print("[INFO] Environment:")
+for k, v in sorted(os.environ.items()):
+    print("[INFO]   {0}:{1}".format(k, v))
+
 print("===============================================================================")
 print("")
 
@@ -73,6 +77,7 @@ if sys.platform.startswith("linux"):
 
 print("===============================================================================")
 print("[INFO] Installing backend requirements")
+print("[INFO] cd backend")
 run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                           "requirements.txt")])
 
@@ -86,6 +91,7 @@ if sys.platform.startswith('win32'):
 
 print("===============================================================================")
 print("[INFO] Installing backend")
+print("[INFO] cd backend")
 run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
 if sys.platform.startswith('win32'):
@@ -97,17 +103,23 @@ print("=========================================================================
 print("[INFO] Compiling frontend website")
 if "http_proxy" in os.environ:
     print("[INFO] Behind a proxy: npm --proxy")
+    print("[INFO] cd frontend")
     run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
                                                                           "frontend"),
         shell=shell)
+    print("[INFO] cd frontend")
     run(["npm", "--proxy", os.environ["http_proxy"], "install"], cwd=os.path.join(install_path,
                                                                                   "frontend"),
         shell=shell)
 else:
+    print("[INFO] cd frontend")
     run(["npm", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+
+print("[INFO] cd frontend")
 run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 if do_launch != "dev-server":
+    print("[INFO] cd frontend")
     run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 
