@@ -10,9 +10,9 @@ mock
 pyyaml
 logging
 requests
-sphinx
+sphinx >= 1.2.3
 sqlalchemy
 treq
-twisted
+twisted >= 14.0.0
 txrequests
 yapsy
