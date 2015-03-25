@@ -10,31 +10,30 @@ angular.module('squirrel').controller('AdminCtrl',
     function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS, ADMIN_PAGES, $location, _) {
 
       $scope.is_admin = AuthenticationService.isAdmin();
-      $scope.isPageDashboard = function() {
+
+      $scope.currentPage = function(page) {
         var s = $location.search();
-        console.log("admin page query = " + JSON.stringify(s));
-        console.log("s.length = " + JSON.stringify(s.length));
-        console.log("!s = " + JSON.stringify(!s));
-        console.log("!!s = " + JSON.stringify(!!s));
-        console.log("_.isEmpty(s) = " + JSON.stringify(_.isEmpty(s)));
-        if (_.isEmpty(s)) {
-          console.log("returning true");
-          return true;
+        if (_.isEmpty(s['p'])) {
+          return "dashboard";
         }
-        if (s['p'] === ADMIN_PAGES.dashboard) {
-          return true;
-        }
-        return false;
+        return s['p'];
       };
 
-      $scope.isPageCharts = function() {
+      $scope.activeIfCurrentPageIs = function(page) {
         var s = $location.search();
-        console.log("admin page query = " + JSON.stringify(s));
-        console.log("s['p'] == ADMIN_PAGES.charts = " + JSON.stringify(s['p'] == ADMIN_PAGES.charts));
-        if (s['p'] == ADMIN_PAGES.charts) {
-          return true;
+        var current_page;
+        if (_.isEmpty(s['p'])) {
+          current_page = "dashboard";
+        } else {
+          current_page = s['p'];
         }
-        return false;
+        console.log("activeIfCurrentPageIs");
+        console.log("current_page = " + JSON.stringify(current_page));
+        console.log("page = " + JSON.stringify(page));
+        if (current_page == page) {
+          return "active";
+        }
+        return "";
       };
 
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {

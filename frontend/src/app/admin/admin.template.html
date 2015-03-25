@@ -7,113 +7,16 @@
 
   <nav class="navbar-inverse">
     <ul class="nav navbar-nav side-nav">
-      <li class="active">
+      <li ng-class="activeIfCurrentPageIs('dashboard')">
         <a href="#/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
       </li>
-      <li>
+      <li ng-class="activeIfCurrentPageIs('charts')">
         <a href="#/admin?p=charts"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
       </li>
     </ul>
   </nav>
   <div class="container-fluid">
-
-    <div class="row" ng-if="isPageDashboard()">
-
-      <h1 class="page-header">
-        Administrator Dashboard <small>Overview of the website</small>
-      </h1>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-xs-3">
-                <i class="fa fa-comments fa-5x"></i>
-              </div>
-              <div class="col-xs-9 text-right">
-                <div class="huge">26</div>
-                <div>New Comments!</div>
-              </div>
-            </div>
-          </div>
-          <a href="#">
-            <div class="panel-footer">
-              <span class="pull-left">View Details</span>
-              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-              <div class="clearfix"></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="panel panel-green">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-xs-3">
-                <i class="fa fa-tasks fa-5x"></i>
-              </div>
-              <div class="col-xs-9 text-right">
-                <div class="huge">12</div>
-                <div>New Tasks!</div>
-              </div>
-            </div>
-          </div>
-          <a href="#">
-            <div class="panel-footer">
-              <span class="pull-left">View Details</span>
-              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-              <div class="clearfix"></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-          <div class="panel panel-yellow">
-              <div class="panel-heading">
-                  <div class="row">
-                      <div class="col-xs-3">
-                          <i class="fa fa-shopping-cart fa-5x"></i>
-                      </div>
-                      <div class="col-xs-9 text-right">
-                          <div class="huge">124</div>
-                          <div>New Orders!</div>
-                      </div>
-                  </div>
-              </div>
-              <a href="#">
-                  <div class="panel-footer">
-                      <span class="pull-left">View Details</span>
-                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                      <div class="clearfix"></div>
-                  </div>
-              </a>
-          </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-          <div class="panel panel-red">
-              <div class="panel-heading">
-                  <div class="row">
-                      <div class="col-xs-3">
-                          <i class="fa fa-support fa-5x"></i>
-                      </div>
-                      <div class="col-xs-9 text-right">
-                          <div class="huge">13</div>
-                          <div>Support Tickets!</div>
-                      </div>
-                  </div>
-              </div>
-              <a href="#">
-                  <div class="panel-footer">
-                      <span class="pull-left">View Details</span>
-                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                      <div class="clearfix"></div>
-                  </div>
-              </a>
-          </div>
-      </div>
-    </div>
-    <div class="row" ng-if="isPageChart()">
-      charts!
-    </div>
+    <div class="row" ng-if="currentPage() == 'dashboard'" ng-include="'app/admin/admin.dashboard.template.html'" ng-controller="AdminDashboardCtrl"></div>
+    <div class="row" ng-if="currentPage() == 'charts'" ng-include="'app/admin/admin.charts.template.html'" ng-controller="AdminChartsCtrl"></div>
   </div>
 </div>
