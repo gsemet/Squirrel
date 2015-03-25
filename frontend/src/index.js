@@ -3,6 +3,9 @@
 var app;
 
 app = angular.module("squirrel", [
+  'duScroll',
+  'duParallax',
+  'angular-parallax',
   "highcharts-ng",
   'ipCookie',
   'ngAnimate',
