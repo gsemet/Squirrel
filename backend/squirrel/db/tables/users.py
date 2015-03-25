@@ -14,8 +14,8 @@ class TableUsers(TableBase):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
-    pseudo = Column(String(256))
-    full_name = Column(String(256))
+    pseudo = Column(String(256), index=True)
+    full_name = Column(String(256), index=True)
 
     def __init__(self, id, pseudo, full_name):
         self.id = id

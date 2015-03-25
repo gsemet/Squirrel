@@ -15,12 +15,12 @@ class TableTicks(TableBase):
 
     id = Column(Integer, primary_key=True)
     stock_id = Column(Integer,  ForeignKey('stocks.id'))
-    date = Column(Integer)
-    open = Column(Float)
-    high = Column(Float)
-    low = Column(Float)
-    close = Column(Float)
-    volume = Column(Integer)
+    date = Column(Integer, index=True)
+    open = Column(Float, index=True)
+    high = Column(Float, index=True)
+    low = Column(Float, index=True)
+    close = Column(Float, index=True)
+    volume = Column(Integer, index=True)
 
     def __init__(self, stock_id, date, open, high, low, close, volume):
         self.stock_id = stock_id

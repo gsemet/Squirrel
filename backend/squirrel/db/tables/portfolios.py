@@ -13,8 +13,8 @@ class TablePortfolios(TableBase):
     __tablename__ = 'portfolios'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    exchange = Column(String)
+    name = Column(String(50), index=True)
+    exchange = Column(String(50), index=True)
 
     def __repr__(self):
         return "<{}(name='{}', exchange='{}')>".format(

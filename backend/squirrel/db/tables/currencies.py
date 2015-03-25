@@ -13,7 +13,7 @@ class TableCurrencies(TableBase):
     __tablename__ = 'currencies'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
+    name = Column(String(50), index=True)
 
     def __init__(self, id, name):
         self.id = id

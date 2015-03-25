@@ -13,7 +13,7 @@ class TablePluginImporters(TableBase):
     __tablename__ = 'plugin_importers'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
+    name = Column(String(50), index=True)
 
     def __init__(self, id, name):
         self.id = id

@@ -15,8 +15,8 @@ class TableTickers(TableBase):
     __tablename__ = 'tickers'
 
     id = Column(Integer, primary_key=True)
-    symbol = Column(String(10))
-    exchange = Column(String(10))
+    symbol = Column(String(10), index=True)
+    exchange = Column(String(10), index=True)
     importer_id = Column(Integer, ForeignKey("plugin_importers.id"))
 
     def __init__(self, id, symbol, exchange, importer_id):

@@ -15,10 +15,10 @@ class TableStocks(TableBase):
     __tablename__ = 'stocks'
 
     id = Column(Integer, primary_key=True)
-    symbol = Column(String(10))
-    exchange = Column(String(10))
+    symbol = Column(String(10), index=True)
+    exchange = Column(String(10), index=True)
     importer_id = Column(Integer, ForeignKey("plugin_importers.id"))
-    title = Column(String(200))
+    title = Column(String(200), index=True)
     currency_id = Column(Integer, ForeignKey("currencies.id"))
 
     def __init__(self, id, symbol, exchange, importer_id, title, currency_id):
