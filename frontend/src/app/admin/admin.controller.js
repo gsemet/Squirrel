@@ -11,6 +11,16 @@ angular.module('squirrel').controller('AdminCtrl',
 
       $scope.is_admin = AuthenticationService.isAdmin();
 
+      $scope.sidebar_class = "active";
+      $scope.toggleSidebar = function(){
+        console.log("sidebar toggle");
+        if ($scope.sidebar_class == "active"){
+          $scope.sidebar_class = "";
+        }  else {
+          $scope.sidebar_class = "active";
+        }
+      };
+
       $scope.currentPage = function(page) {
         var s = $location.search();
         if (_.isEmpty(s['p'])) {

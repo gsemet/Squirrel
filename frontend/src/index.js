@@ -16,6 +16,7 @@ app = angular.module("squirrel", [
   'ngTouch',
   'ui.bootstrap',
   'underscore',
+  'picardy.fontawesome',
 ]);
 
 app.config(
