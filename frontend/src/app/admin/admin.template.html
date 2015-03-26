@@ -16,6 +16,7 @@
     <ul class="sidebar-nav" id="sidebar">
       <li><a href="#/admin">Dashboard<span class="sub_icon glyphicon glyphicon-dashboard"></span></a></li>
       <li><a href="#/admin?p=charts">Charts 1<span class="sub_icon fa fa-loading fa-spin"></span></a></li>
+      <li><a href="#/admin?p=crawlers">Crawlers<span class="sub_icon fa fa-loading fa-spin"></span></a></li>
     </ul>
   </div>
   <!--
@@ -37,6 +38,7 @@
       <div class="page-content inset">
         <div class="row" ng-if="currentPage() == 'dashboard'" ng-include="'app/admin/admin.dashboard.template.html'" ng-controller="AdminDashboardCtrl"></div>
         <div class="row" ng-if="currentPage() == 'charts'" ng-include="'app/admin/admin.charts.template.html'" ng-controller="AdminChartsCtrl"></div>
+        <div class="row" ng-if="currentPage() == 'crawlers'" ng-include="'app/admin/admin.crawlers.template.html'" ng-controller="AdminCrawlersCtrl"></div>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
