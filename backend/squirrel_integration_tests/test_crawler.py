@@ -41,7 +41,8 @@ class IntegrationTestCrawler(TestCase):
     @defer.inlineCallbacks
     def testRefreshStockList(self):
         log.debug("refreshing stock list")
-        yield self.crawler.refreshStockList(number=60)
+        yield self.crawler.refreshStockList(importerName="GoogleFinance",
+                                            number=60)
 
     @defer.inlineCallbacks
     def testRefreshStockHistory(self):

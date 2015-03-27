@@ -1,5 +1,5 @@
 [Core]
-Name = Google Finance
+Name = GoogleFinance
 Module = google_finance
 
 [Documentation]

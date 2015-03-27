@@ -6,9 +6,8 @@ import logging
 
 from twisted.internet import defer
 
-from squirrel.db.model import Model
-
 from squirrel.config.config import Config
+from squirrel.db.model import Model
 from squirrel.db.tables.currencies import TableCurrencies
 from squirrel.db.tables.plugin_importers import TablePluginImporters
 from squirrel.db.tables.stocks import TableStocks
@@ -22,11 +21,10 @@ log = logging.getLogger(__name__)
 class Crawler(object):
 
     @defer.inlineCallbacks
-    def refreshStockList(self, wantedPlaces=None, number=None):
-        importer_name = "Google Finance"
+    def refreshStockList(self, importerName,  wantedPlaces=None, number=None):
         with Model(Config().backend.db.full_url) as model:
             importer = TablePluginImporters(id=None,
-                                            name=importer_name)
+                                            name=importerName)
             importer.ensureHasId(model)
             if number is None:
                 log.debug("Getting list of all stocks")
@@ -52,13 +50,12 @@ class Crawler(object):
                 model.session.commit()
 
     @defer.inlineCallbacks
-    def refreshStockHistory(self, tickers):
+    def refreshStockHistory(self, importerName, tickers):
         for t in tickers:
             assert isinstance(t, Ticker), "Crawler expect list of Ticker"
-        importer_name = "Google Finance"
         with Model(Config().backend.db.full_url) as model:
             importer = TablePluginImporters(id=None,
-                                            name=importer_name)
+                                            name=importerName)
             importer.ensureHasId(model)
             for ticker in tickers:
                 ticks = yield PluginRegistry().getByName(importer.name).getTicks(
@@ -88,4 +85,4 @@ class Crawler(object):
 
     @defer.inlineCallbacks
     def refreshAllStockList(self):
-        yield self.refreshStockList()
+        yield self.refreshStockList(importerName="GoogleFinance")

@@ -13,3 +13,20 @@ backend:
 
 plugins:
     default_path: ../plugins/
+
+crawlers:
+    'RefreshGoogleFinance':
+        description: |
+            Refresh the list of stocks provided by Google Finance.
+
+        plugin_name: GoogleFinance
+        refresh_list:
+            manual: enabled
+        refresh:
+            exchanges:
+                wanted: all
+                group_by: 60
+            stocks:
+                'NASDAQ':
+                    - "AAPL"
+                    - "GOOG"

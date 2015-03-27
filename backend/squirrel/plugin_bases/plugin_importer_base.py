@@ -32,7 +32,18 @@ from squirrel.model.ticker import Ticker
 log = logging.getLogger(__name__)
 
 
-class PluginImporterBase(IPlugin):
+class IPluginImporter(IPlugin):
+
+    name = NotImplementedError
+
+    def activate(self):
+        NotImplementedError
+
+    def deactivate(self):
+        NotImplementedError
+
+
+class PluginImporterBase(IPluginImporter):
 
     # Plugin pattern:
 

@@ -36,7 +36,8 @@ def crawlAllStocks():
     log.debug("refreshing stock list")
     wanted_places = None
 
-    d = crawler.refreshStockList(wantedPlaces=wanted_places)
+    d = crawler.refreshStockList(importerName="GoogleFinance",
+                                 wantedPlaces=wanted_places)
 
     @d.addCallback
     def d1(c):

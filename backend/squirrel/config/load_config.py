@@ -43,7 +43,8 @@ def _makeSqlLitePath(url):
     return url
 
 
-def updateFullPaths(c):
+def updateFullPaths():
+    c = Config()
     c.frontend.root_full_path = _makeFullPath(c.frontend.root_path)
     c.frontend.doc_full_path = _makeFullPath(c.frontend.doc_path)
     c.frontend.logging_conf_full_path = _makeFullPath(c.frontend.logging_conf_path)
@@ -54,10 +55,8 @@ def updateFullPaths(c):
     c.plugins.full_default_path = _makeFullPath(c.plugins.default_path)
 
 
-def _dumpConfig():
+def dumpConfig():
     c = Config()
-    updateFullPaths(c)
-
     log.debug("")
     log.debug(_("Listing all available keys:"))
     log.debug(c.dumpFlat())
@@ -68,7 +67,8 @@ def initializeConfig():
                                                os.pardir,
                                                "config.yaml"))
     _loadConfig(config_path)
-    _dumpConfig()
+    updateFullPaths()
+    dumpConfig()
 
 
 def unloadConfig():

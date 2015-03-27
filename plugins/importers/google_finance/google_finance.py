@@ -9,7 +9,7 @@ from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
 
 class GoogleFinance(PluginImporterBase):
 
-    name = "Google Finance"
+    name = "GoogleFinance"
 
     def activate(self):
         pass
