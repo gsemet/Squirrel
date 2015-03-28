@@ -69,6 +69,18 @@ class CrawlerConfig(Service):
             })
         return r
 
+    def start(self, name):
+        log.info("Order received: start crawler {!r}".format(name))
+        pass
+
+    def stop(self, name):
+        log.info("Order received: stop crawler {!r}".format(name))
+        pass
+
+    def getProgress(self, name):
+        log.info("Order received: get crawler progress {!r}".format(name))
+        pass
+
 
 def configureCrawlers():
     log.info("Configuring crawlers")
