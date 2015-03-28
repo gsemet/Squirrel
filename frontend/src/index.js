@@ -18,6 +18,7 @@ app = angular.module("squirrel", [
   'underscore',
   'picardy.fontawesome',
   'toastr',
+  'ngGrid',
 ]);
 
 app.config(
