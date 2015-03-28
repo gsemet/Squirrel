@@ -29,7 +29,7 @@ class IntegrationTestCrawler(TestCase):
         initializeConfig()
         Config().backend.db.url = "sqlite:///{workdir}/db-for-integ-tests.sqlite".format(
             workdir=Config().backend.db.workdir)
-        updateFullPaths(Config())
+        updateFullPaths()
         loadPlugins(["GoogleFinance"])
         self.crawler = Crawler()
 
@@ -47,7 +47,8 @@ class IntegrationTestCrawler(TestCase):
     @defer.inlineCallbacks
     def testRefreshStockHistory(self):
         log.debug("requesting google finance AAPL + GOOG")
-        yield self.crawler.refreshStockHistory([
-            Ticker("AAPL", "NASDAQ"),
-            Ticker("GOOG", "NASDAQ"),
-        ])
+        yield self.crawler.refreshStockHistory("GoogleFinance",
+                                               [
+                                                   Ticker("AAPL", "NASDAQ"),
+                                                   Ticker("GOOG", "NASDAQ"),
+                                               ])
