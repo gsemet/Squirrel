@@ -17,6 +17,7 @@ app = angular.module("squirrel", [
   'ui.bootstrap',
   'underscore',
   'picardy.fontawesome',
+  'toaster',
 ]);
 
 app.config(

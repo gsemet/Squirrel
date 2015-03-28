@@ -46,7 +46,8 @@ gulp.task('inject', ['styles'], function() {
 
   var wiredepOptions = {
     directory: 'bower_components',
-    exclude: [/bootstrap\.js/, /bootstrap\.css/, /bootstrap\.css/, /foundation\.css/, /highcharts\.src\.js/]
+    exclude: [/bootstrap\.js/, /bootstrap\.css/, /bootstrap\.css/,
+              /foundation\.css/, /highcharts\.src\.js/, /toaster.min.js/]
   };
 
   var indexFilter = $.filter('index.css');
