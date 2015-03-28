@@ -23,7 +23,8 @@ class TestEntryPoint(TestCase):
             'frontend': {
                 'root_full_path': 'full/path',
                 'port': 'port',
-            }
+            },
+            'crawlers': {},
         })
         self.assertEqual(Config().frontend.root_full_path, "full/path")
         run()
