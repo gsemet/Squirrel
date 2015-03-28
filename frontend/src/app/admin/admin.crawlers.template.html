@@ -1,11 +1,30 @@
 <h1 class="page-header">
   Crawlers <small> Configure web crawlers</small>
-
 </h1>
 
+
 <div class="row">
-  <div class="col-md-4">
-    List of all crawlers: {{crawlers}}
-    <button type="button" class="btn btn-default" ng-click="getAllCrawlers()">button</button>
+  <div class="col-md-offset-2 col-md-8">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Actions</th>
+          <th>Logs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="crawler in crawlers">
+          <td>{{crawler.name}}</td>
+          <td>{{crawler.description}}</td>
+          <td>{{crawler.status}}</td>
+          <td><button type="button" ng-click="crawlerStart(crawler.name)" class="btn btn-default" ng-if="crawler.status == 'stopped'">Start</button></td>
+          <td><button type="button" ng-click="crawlerStop(crawler.name)" class="btn btn-default" ng-if="crawler.status == 'started'">Stop</button></td>
+          <td><button type="button" ng-click="crawlerShowLogs(crawler.name)" class="btn btn-default">Show logs</button></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

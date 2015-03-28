@@ -17,14 +17,14 @@ app = angular.module("squirrel", [
   'ui.bootstrap',
   'underscore',
   'picardy.fontawesome',
-  'toaster',
+  'toastr',
 ]);
 
 app.config(
 
-  ['$routeProvider', '$locationProvider',
+  ['$routeProvider', '$locationProvider', 'toastrConfig',
 
-    function($routeProvider, $locationProvider) {
+    function($routeProvider, $locationProvider, toastrConfig) {
 
       $routeProvider
         .when("/", {
@@ -75,6 +75,33 @@ app.config(
 
       $locationProvider.html5Mode({
         enabled: false,
+      });
+
+
+      angular.extend(toastrConfig, {
+        allowHtml: false,
+        closeButton: false,
+        closeHtml: '<button>&times;</button>',
+        containerId: 'toast-container',
+        extendedTimeOut: 1000,
+        iconClasses: {
+          error: 'toast-error',
+          info: 'toast-info',
+          success: 'toast-success',
+          warning: 'toast-warning'
+        },
+        maxOpened: 0,
+        messageClass: 'toast-message',
+        newestOnTop: true,
+        onHidden: null,
+        onShown: null,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: false,
+        tapToDismiss: true,
+        target: 'body',
+        timeOut: 5000,
+        titleClass: 'toast-title',
+        toastClass: 'toast'
       });
     }
   ]
