@@ -13,6 +13,7 @@ gulp.task('pot', function() {
       'src/{app,components,services}/**/*.js'])
     .pipe(gettext.extract('template.pot', {
       // options to pass to angular-gettext-tools...
+      verbose: true,
     }))
     .pipe(gulp.dest('src/po/'));
 });

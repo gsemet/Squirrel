@@ -14,6 +14,9 @@ gulp.task('watch', ['markups', 'inject', 'pot', 'translations'], function() {
     paths.src + '/index.less',
     'bower.json',
     'gulp/*.js',
-  ], ['inject', 'pot', 'translations']);
+  ], ['inject', 'pot']);
   gulp.watch(paths.src + '/{app,components,services}/**/*.jade', ['markups']);
+  gulp.watch([
+      paths.src + '/po/*.js',
+    ], ['translations']);
 });

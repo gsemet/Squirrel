@@ -11,6 +11,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 
+#: app\admin\admin.crawlers.template.html:14
+msgid "Actions"
+msgstr "Actions"
+
+#: app\admin\admin.crawlers.template.html:12
+msgid "Description"
+msgstr "Descriptions"
+
+#: app\admin\admin.crawlers.template.html:15
+msgid "Logs"
+msgstr "Logs"
+
+#: app\admin\admin.crawlers.template.html:11
+msgid "Name"
+msgstr "Noms"
+
 #: index.html:5
 msgid "Squirrel AMS"
 msgstr "Squirrel AMS"
@@ -19,6 +35,14 @@ msgstr "Squirrel AMS"
 msgid "Squirrel Assets Management System"
 msgstr "Squirrel Gestionaire de Portefeuille"
 
+#: app\admin\admin.crawlers.template.html:13
+msgid "Status"
+msgstr "Status"
+
 #: app\homepage\homepage.unlogged.template.html:7
 msgid "The more advanced, online Portfolio Manager"
 msgstr "Le plus avancé des gestionnaires de portefeuille en ligne"
+
+#: components\navbar\navbar.template.html:13
+msgid "Toggle Navigation"
+msgstr "Basculer la navigation"
