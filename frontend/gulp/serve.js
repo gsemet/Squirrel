@@ -16,7 +16,8 @@ function browserSyncInit(baseDir, files, browser) {
   var routes = null;
   if (baseDir === paths.src || (util.isArray(baseDir) && baseDir.indexOf(paths.src) !== -1)) {
     routes = {
-      '/bower_components': 'bower_components'
+      '/bower_components': 'bower_components',
+      '/node_modules': 'node_modules',
     };
   }
 
@@ -38,6 +39,7 @@ gulp.task('serve', ['watch'], function() {
   ], [
     paths.tmp + '/serve/{app,components,services}/**/*.css',
     paths.src + '/{app,components,services}/**/*.js',
+    paths.src + '/po/*.js',
     paths.src + '/index.js',
     paths.src + 'src/assets/images/**/*',
     paths.tmp + '/serve/*.html',

@@ -19,6 +19,8 @@ app = angular.module("squirrel", [
   'picardy.fontawesome',
   'toastr',
   'ngGrid',
+  'gettext',
+  'ngCrossfilter',
 ]);
 
 app.config(
