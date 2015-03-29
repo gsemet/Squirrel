@@ -22,6 +22,7 @@ app = angular.module("squirrel", [
   'gettext',
   'ngCrossfilter',
   'angular-timeline',
+  'stpa.morris',
 ]);
 
 app.config(
