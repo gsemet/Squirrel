@@ -7,7 +7,7 @@ from __future__ import print_function
 # request is successful
 SUCCESS = 200
 # request failed normally
-FAILURE = 401
+FAILURE = 400
 # an unexpected event occured
 EXCEPTION = 501
 
