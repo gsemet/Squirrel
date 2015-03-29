@@ -70,7 +70,7 @@ def route_crawlers_action(request, crawler):
             'message': message
         }))
     elif action == "progress":
-        (progr, message) = yield CrawlerConfig().getProgress(crawler)
+        (res, message) = yield CrawlerConfig().getProgress(crawler)
         defer.returnValue(json.dumps({
             'result': resultToString(res),
             'code': res,
