@@ -2,17 +2,16 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import enum
 import json as libjson
+
+from squirrel.common.enum import Enum
 
 
 class EnumEncoder(libjson.JSONEncoder):
 
     def default(self, obj):
-        if isinstance(obj, enum.Enum):
-            return {
-                "__enum__": str(obj)
-            }
+        if isinstance(obj, Enum):
+            return str(obj)
         return libjson.libjsonEncoder.default(self, obj)
 
 
