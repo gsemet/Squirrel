@@ -1,0 +1,48 @@
+<h1 class="page-header">
+  Ng Grid <small> Samples</small>
+</h1>
+
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="gridStyle" ng-grid="gridOptions"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <timeline>
+      <timeline-node side="left">
+        <timeline-badge class="info"><i class="glyphicon glyphicon-check"></i>
+        </timeline-badge>
+        <timeline-panel>
+          <timeline-heading>
+            <timeline-title>Buy: GSZ</timeline-title>
+            <p>
+              <small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago</small>
+            </p>
+          </timeline-heading>
+          <timeline-content>
+            <p>You bought 13 stocks of GDF Suez for <strong>18.05€</strong>.</p>
+            <p>Your URP is 17.95€</p>
+          </timeline-content>
+        </timeline-panel>
+      </timeline-node>
+      <timeline-node side="right">
+        <timeline-badge class="warning"><i class="glyphicon glyphicon-credit-card"></i>
+        </timeline-badge>
+        <timeline-panel>
+          <timeline-heading>
+            <timeline-title>Sold: AIR</timeline-title>
+            <p>
+              <small class="text-muted">12 hours ago via Twitter</small>
+            </p>
+          </timeline-heading>
+          <timeline-content>
+            <p>You closed your position on Airbus, by selling <strong>20 stocks at 51.05€</strong>.</p>
+            <p>You gained 2.18$ per share; in total <strong>you gained 43.6$</strong> (net)</p>
+          </timeline-content>
+        </timeline-panel>
+      </timeline-node>
+    </timeline>
+  </div>
+</div>
