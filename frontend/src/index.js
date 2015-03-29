@@ -21,6 +21,7 @@ app = angular.module("squirrel", [
   'ngGrid',
   'gettext',
   'ngCrossfilter',
+  'angular-timeline',
 ]);
 
 app.config(
