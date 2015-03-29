@@ -2,9 +2,9 @@
 
 angular.module('squirrel').controller('AdminChartsCtrl',
 
-  ['$scope', "_",
+  ['$scope',
 
-    function($scope, _) {
+    function($scope) {
 
       $scope.chartConfig = {
         options: {

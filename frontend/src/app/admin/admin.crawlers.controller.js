@@ -2,9 +2,9 @@
 
 angular.module('squirrel').controller('AdminCrawlersCtrl',
 
-  ['$scope', "_", "$q", "$http", "toastr", "$interval",
+  ['$scope', "$q", "$http", "toastr", "$interval",
 
-    function($scope, _, $q, $http, toastr, $interval) {
+    function($scope, $q, $http, toastr, $interval) {
 
       $scope.crawlers = null;
 

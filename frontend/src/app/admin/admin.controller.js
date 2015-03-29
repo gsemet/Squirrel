@@ -5,18 +5,18 @@
 // http://ironsummitmedia.github.io/startbootstrap-sb-admin/index.html
 angular.module('squirrel').controller('AdminCtrl',
 
-  ["AuthenticationService", "$rootScope", '$scope', "AUTH_EVENTS", "ADMIN_PAGES", "$location", "_",
+  ["AuthenticationService", "$rootScope", '$scope', "AUTH_EVENTS", "ADMIN_PAGES", "$location",
 
-    function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS, ADMIN_PAGES, $location, _) {
+    function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS, ADMIN_PAGES, $location) {
 
       $scope.is_admin = AuthenticationService.isAdmin();
 
       $scope.sidebar_class = "active";
-      $scope.toggleSidebar = function(){
+      $scope.toggleSidebar = function() {
         console.log("sidebar toggle");
-        if ($scope.sidebar_class == "active"){
+        if ($scope.sidebar_class == "active") {
           $scope.sidebar_class = "";
-        }  else {
+        } else {
           $scope.sidebar_class = "active";
         }
       };

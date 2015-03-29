@@ -2,6 +2,7 @@
 
 var app;
 
+// we use lodash is better than undercore: http: //kitcambridge.be/blog/say-hello-to-lo-dash/
 app = angular.module("squirrel", [
   'duScroll',
   'duParallax',
@@ -15,7 +16,6 @@ app = angular.module("squirrel", [
   'ngSanitize',
   'ngTouch',
   'ui.bootstrap',
-  'underscore',
   'picardy.fontawesome',
   'toastr',
   'ngGrid',

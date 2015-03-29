@@ -2,9 +2,9 @@
 
 angular.module('squirrel').controller('AdminDashboardCtrl',
 
-  ['$scope', "_",
+  ['$scope',
 
-    function($scope, _) {
+    function($scope) {
 
     }
   ]
