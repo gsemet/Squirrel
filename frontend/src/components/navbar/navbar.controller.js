@@ -2,9 +2,9 @@
 
 angular.module('squirrel').controller('NavbarCtrl',
 
-  ["$scope", "$location", "$rootScope", "AuthenticationService", "AUTH_EVENTS",
+  ["$scope", "$location", "$rootScope", "AuthenticationService", "AUTH_EVENTS", "gettextCatalog",
 
-    function($scope, $location, $rootScope, AuthenticationService, AUTH_EVENTS) {
+    function($scope, $location, $rootScope, AuthenticationService, AUTH_EVENTS, gettextCatalog) {
 
       $scope.date = new Date();
       $scope.login_username = "";
@@ -13,20 +13,20 @@ angular.module('squirrel').controller('NavbarCtrl',
       $scope.navLinks = [
         {
           endpoint: 'screeners',
-          linktext: 'Stock Screeners'
+          linktext: gettextCatalog.getString('Stock Screeners'),
         }, {
           endpoint: 'my-portfolios',
-          linktext: 'My Portfolios'
+          linktext: gettextCatalog.getString('My Portfolios'),
         }
       ];
 
       $scope.loginLinks = [
         {
           endpoint: 'login',
-          linktext: 'Login'
+          linktext: gettextCatalog.getString('Login'),
         }, {
           endpoint: 'register',
-          linktext: 'Register'
+          linktext: gettextCatalog.getString('Register'),
         }
       ];
 

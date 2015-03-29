@@ -69,12 +69,17 @@ msgid "Log out"
 msgstr "Deconnexion"
 
 #: app\login\login.template.html:10 app\login\login.template.html:26
+#: components\navbar\navbar.controller.js:26
 msgid "Login"
 msgstr "Connexion"
 
 #: app\admin\admin.crawlers.template.html:15
 msgid "Logs"
 msgstr "Logs"
+
+#: components\navbar\navbar.controller.js:19
+msgid "My Portfolios"
+msgstr "Mes Portefeuilles"
 
 #: app\admin\admin.crawlers.template.html:11
 msgid "Name"
@@ -91,6 +96,7 @@ msgid "Password"
 msgstr "Mot de passe"
 
 #: app\register\register.template.html:38
+#: components\navbar\navbar.controller.js:29
 #: components\navbar\navbar.template.html:26
 msgid "Register"
 msgstr "Enregistrement"
@@ -121,6 +127,10 @@ msgstr "Squirrel Gestionaire de Portefeuille"
 #: app\admin\admin.crawlers.template.html:13
 msgid "Status"
 msgstr "Status"
+
+#: components\navbar\navbar.controller.js:16
+msgid "Stock Screeners"
+msgstr "Screeners d'Actions"
 
 #: app\homepage\homepage.unlogged.template.html:7
 msgid "The more advanced, online Portfolio Manager"
