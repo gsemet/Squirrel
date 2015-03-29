@@ -18,7 +18,9 @@ gulp.task('pot', function() {
 });
 
 gulp.task('translations', function() {
-  return gulp.src('src/po/**/*.po')
+  return gulp.src([
+      'src/po/**/fr.po',
+    ])
     .pipe(gettext.compile({}))
     .pipe(gulp.dest('src/po/'));
 });

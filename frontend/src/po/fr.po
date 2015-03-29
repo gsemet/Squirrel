@@ -11,13 +11,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 
-#: app\admin\admin.crawlers.template.html:14
+#: app\admin\admin.crawlers.template.html:15
 msgid "Actions"
 msgstr "Actions"
 
 #: app\admin\admin.template.html:14
 msgid "Admin Panel"
-msgstr "Panneau de configuration"
+msgstr "Configuration"
 
 #: app\admin\admin.dashboard.template.html:3
 msgid "Administrator Dashboard"
@@ -52,6 +52,10 @@ msgstr "Descriptions"
 msgid "Email"
 msgstr "Email"
 
+#: app\screeners\screeners.template.html:9
+msgid "Find your next stock here"
+msgstr "Trouvez vos prochaines actions"
+
 #: app\register\register.template.html:44
 msgid "If you already have an acount, please"
 msgstr "Si vous avez déjà un compte, veuillez"
@@ -59,6 +63,10 @@ msgstr "Si vous avez déjà un compte, veuillez"
 #: app\login\login.template.html:32
 msgid "If you do not already have an acount, please"
 msgstr "Si vous n'avez pas de compte, veuillez"
+
+#: app\admin\admin.crawlers.template.html:14
+msgid "Last run"
+msgstr "Dernière exécution"
 
 #: components\navbar\navbar.template.html:25
 msgid "Log in"
@@ -73,9 +81,13 @@ msgstr "Deconnexion"
 msgid "Login"
 msgstr "Connexion"
 
-#: app\admin\admin.crawlers.template.html:15
+#: app\admin\admin.crawlers.template.html:16
 msgid "Logs"
 msgstr "Logs"
+
+#: app\my-portfolios\my-portfolios.template.html:16
+msgid "My Porfolio"
+msgstr "Mes Portefeuilles"
 
 #: components\navbar\navbar.controller.js:19
 msgid "My Portfolios"
@@ -88,6 +100,10 @@ msgstr "Noms"
 #: app\admin\admin.dashboard.template.html:3
 msgid "Overview of the website"
 msgstr "Vue d'ensemble du site"
+
+#: app\my-portfolios\my-portfolios.template.html:16
+msgid "Overview of your assets"
+msgstr "Vue d'ensemble de de vos actifs"
 
 #: app\login\login.template.html:19 app\login\login.template.html:21
 #: app\register\register.template.html:25
@@ -122,11 +138,15 @@ msgstr "Squirrel AMS"
 
 #: app\homepage\homepage.unlogged.template.html:6
 msgid "Squirrel Assets Management System"
-msgstr "Squirrel Gestionaire de Portefeuille"
+msgstr "Squirrel Gestionnaire de Portefeuille"
 
 #: app\admin\admin.crawlers.template.html:13
 msgid "Status"
 msgstr "Status"
+
+#: app\screeners\screeners.template.html:9
+msgid "Stock Screener"
+msgstr "Screeners"
 
 #: components\navbar\navbar.controller.js:16
 msgid "Stock Screeners"
@@ -159,12 +179,12 @@ msgstr "Votre compte a bien été créé."
 
 #: app\register\register.template.html:44
 msgid "log in"
-msgstr "connexion"
+msgstr "vous connecter"
 
 #: app\login\login.template.html:32
 msgid "register in"
-msgstr "enregistrement"
+msgstr "vous enregistrer"
 
 #: app\register\register.template.html:10
 msgid "your account"
-msgstr "votre compte"
+msgstr "de votre compte"

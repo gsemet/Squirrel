@@ -11,6 +11,7 @@
           <th class="text-center" translate>Name</th>
           <th class="text-center" translate>Description</th>
           <th class="text-center" translate>Status</th>
+          <th class="text-center" translate>Last run</th>
           <th class="text-center" translate>Actions</th>
           <th class="text-center" translate>Logs</th>
         </tr>
@@ -20,6 +21,7 @@
           <td>{{crawler.name}}</td>
           <td>{{crawler.description}}</td>
           <td>{{crawler.status}}</td>
+          <td>{{crawler.last_run}}</td>
           <td><button type="button" ng-click="crawlerStart(crawler.name)" class="btn btn-default" ng-if="crawler.status == 'stopped'">Start</button></td>
           <td><button type="button" ng-click="crawlerStop(crawler.name)" class="btn btn-default" ng-if="crawler.status == 'started'">Stop</button></td>
           <td><button type="button" ng-click="crawlerShowLogs(crawler.name)" class="btn btn-default">Show logs</button></td>

@@ -1,4 +1,11 @@
-<div class="container">
+<div class="container" ng-if="!is_logged">
+  <div class="jumbotron text-center">
+    <div>
+      When user is not logged, he sees a message inviting him to register.
+    </div>
+  </div>
+</div>
+<div class="container" ng-if="is_logged">
   <!-- <ol class="breadcrumb">
     <li><a href="#">Home</a></li>
     <li class="active">My Portfolio</li>
@@ -6,22 +13,18 @@
   <hr /> -->
 
   <h1 class="page-header">
-    My Porfolio <small>Overview of your assets</small>
+    <span translate>My Porfolio</span> <small translate>Overview of your assets</small>
   </h1>
 
-  <div class="jumbotron text-center" ng-if="is_logged">
-    <div>
-      Display user portfolio details when logged in.
+  <div class="row">
+    <div class="col-md-2">
     </div>
-  </div>
-  <div class="jumbotron text-center" ng-if="!is_logged">
-    <div>
-      When user is not logged, he sees a message inviting him to register.
+    <div class="col-md-10">
+      <div class="gridStyle" ng-grid="gridOptions"></div>
     </div>
   </div>
 
   <div class="footer">
     Another footer
   </div>
-
 </div>
