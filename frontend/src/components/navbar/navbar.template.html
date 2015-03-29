@@ -22,8 +22,8 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-if="login_username.length <= 0" ng-class="navClass('login')"><a href="#/login" transalte><span class="glyphicon glyphicon-user"></span> Log in</a></li>
-        <li ng-if="login_username.length <= 0" ng-class="navClass('register')"><a href="#/register" transalte><span class="glyphicon glyphicon-plus"></span> Register</a></li>
+        <li ng-if="login_username.length <= 0" ng-class="navClass('login')"><a href="#/login"><span class="glyphicon glyphicon-user"></span> <span translate>Log in</span></a></li>
+        <li ng-if="login_username.length <= 0" ng-class="navClass('register')"><a href="#/register"><span class="glyphicon glyphicon-plus"></span> <span translate>Register</span></a></li>
         <!-- <li ng-if="login_username.length > 0">
           <button class="btn btn-primary navbar-btn" type="button" ng-click="logout()">
             <span class="glyphicon glyphicon-remove"></span> Logout
@@ -36,9 +36,9 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
           </button> -->
           <ul class="dropdown-menu" role="menu">
             <!-- <li role="presentation" class="dropdown-header">General</li> -->
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/settings" transalte>Settings</a></li>
-            <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="#/admin" transalte>Administrator page</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/logout" ng-click="logout()" transalte>Log out</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/settings" translate>Settings</a></li>
+            <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="#/admin" translate>Administrator page</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/logout" ng-click="logout()" translate>Log out</a></li>
           </ul>
         </li>
       </ul>

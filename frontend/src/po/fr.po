@@ -15,9 +15,62 @@ msgstr ""
 msgid "Actions"
 msgstr "Actions"
 
+#: app\admin\admin.template.html:14
+msgid "Admin Panel"
+msgstr "Panneau de configuration"
+
+#: app\admin\admin.dashboard.template.html:3
+msgid "Administrator Dashboard"
+msgstr "Tableau de bord d'administration"
+
+#: components\navbar\navbar.template.html:40
+msgid "Administrator page"
+msgstr "Page de l'administrateur"
+
+#: app\admin\admin.crawlers.template.html:2
+msgid "Configure web crawlers"
+msgstr "Configuration des Crawlers"
+
+#: app\admin\admin.crawlers.template.html:2 app\admin\admin.template.html:18
+msgid "Crawlers"
+msgstr "Crawlers"
+
+#: app\register\register.template.html:10
+msgid "Create"
+msgstr "Création"
+
+#: app\admin\admin.template.html:17
+msgid "Dashboard"
+msgstr "Tableau de Bord"
+
 #: app\admin\admin.crawlers.template.html:12
 msgid "Description"
 msgstr "Descriptions"
+
+#: app\register\register.template.html:19
+#: app\register\register.template.html:21
+msgid "Email"
+msgstr "Email"
+
+#: app\register\register.template.html:44
+msgid "If you already have an acount, please"
+msgstr "Si vous avez déjà un compte, veuillez"
+
+#: app\login\login.template.html:32
+msgid "If you do not already have an acount, please"
+msgstr "Si vous n'avez pas de compte, veuillez"
+
+#: components\navbar\navbar.template.html:25
+msgid "Log in"
+msgstr "Connexion"
+
+#: components\navbar\navbar.template.html:41
+msgid "Log out"
+msgstr "Deconnexion"
+
+#: app\login\login.template.html:10 app\login\login.template.html:26
+msgid "Login"
+msgstr "Connexion"
 
 #: app\admin\admin.crawlers.template.html:15
 msgid "Logs"
@@ -26,6 +79,36 @@ msgstr "Logs"
 #: app\admin\admin.crawlers.template.html:11
 msgid "Name"
 msgstr "Noms"
+
+#: app\admin\admin.dashboard.template.html:3
+msgid "Overview of the website"
+msgstr "Vue d'ensemble du site"
+
+#: app\login\login.template.html:19 app\login\login.template.html:21
+#: app\register\register.template.html:25
+#: app\register\register.template.html:27
+msgid "Password"
+msgstr "Mot de passe"
+
+#: app\register\register.template.html:38
+#: components\navbar\navbar.template.html:26
+msgid "Register"
+msgstr "Enregistrement"
+
+#: app\register\register.template.html:50
+msgid ""
+"Registration succesfully sent to the following address: "
+"{{registration_email}}."
+msgstr "Enregistremen réussit avec l'adresse suivante: {{registration_email}}."
+
+#: app\register\register.template.html:31
+#: app\register\register.template.html:33
+msgid "Retype your password"
+msgstr "Veuillez retaper votre mot de passe"
+
+#: components\navbar\navbar.template.html:39
+msgid "Settings"
+msgstr "Paramètres"
 
 #: index.html:5
 msgid "Squirrel AMS"
@@ -46,3 +129,32 @@ msgstr "Le plus avancé des gestionnaires de portefeuille en ligne"
 #: components\navbar\navbar.template.html:13
 msgid "Toggle Navigation"
 msgstr "Basculer la navigation"
+
+#: app\register\register.template.html:13
+#: app\register\register.template.html:15
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: app\login\login.template.html:13 app\login\login.template.html:15
+msgid "Username or email"
+msgstr "Nom d'utilisateur ou email"
+
+#: app\register\register.template.html:49
+msgid "Welcome!"
+msgstr "Bienvenue!"
+
+#: app\register\register.template.html:49
+msgid "Your account has been created"
+msgstr "Votre compte a bien été créé."
+
+#: app\register\register.template.html:44
+msgid "log in"
+msgstr "connexion"
+
+#: app\login\login.template.html:32
+msgid "register in"
+msgstr "enregistrement"
+
+#: app\register\register.template.html:10
+msgid "your account"
+msgstr "votre compte"

@@ -7,47 +7,47 @@
 
   <div class="row">
     <div class="col-md-offset-3 col-md-6" ng-if="!registration_sent">
-      <h1>Create<small> your account</small></h1>
+      <h1><span translate>Create</span> <small translate>your account</small></h1>
       <form class="form-horizontal" ng-submit="submit()">
         <div class="form-group">
-          <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+          <label for="inputUsername" class="col-sm-2 control-label" translate>Username</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" ng-model="username" id="inputUsername" placeholder="Username">
+            <input type="text" class="form-control" ng-model="username" id="inputUsername" placeholder="{{'Username' | translate}}">
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+          <label for="inputEmail3" class="col-sm-2 control-label" translate>Email</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" ng-model="email" id="inputEmail3" placeholder="Email">
+            <input type="email" class="form-control" ng-model="email" id="inputEmail3" placeholder="{{'Email' | translate}}">
           </div>
         </div>
         <div class="form-group">
-          <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+          <label for="inputPassword3" class="col-sm-2 control-label" translate>Password</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" ng-model="password" id="inputPassword3" placeholder="Password">
+            <input type="password" class="form-control" ng-model="password" id="inputPassword3" placeholder="{{'Password' | translate}}">
           </div>
         </div>
         <div class="form-group">
-          <label for="inputPassword2" class="col-sm-2 control-label">Retype your password</label>
+          <label for="inputPassword2" class="col-sm-2 control-label" translate>Retype your password</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword2" placeholder="Retype your password">
+            <input type="password" class="form-control" id="inputPassword2" placeholder="{{'Retype your password' | translate}}">
           </div>
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Register</button>
+            <button type="submit" class="btn btn-default" translate>Register</button>
           </div>
         </div>
       </form>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <p>If you already have an acount, please <a href="#/login">log in</a>.</p>
+          <p><span translate>If you already have an acount, please</span> <a href="#/login" translate>log in</a>.</p>
         </div>
       </div>
     </div>
     <div class="col-md-6" ng-if="registration_sent">
-      <h1>Welcome!<small> Your account has been created</small></h1>
-      <p>Registration succesfully sent to the following adress: {{registration_email}}.</p>
+      <h1><span translate>Welcome!</span> <small translate>Your account has been created</small></h1>
+      <p translate>Registration succesfully sent to the following address: {{registration_email}}.</p>
     </div>
   </div>
 </div>
