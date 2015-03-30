@@ -2,9 +2,9 @@
 
 angular.module('squirrel').controller('AdminChartsCtrl',
 
-  ['$scope', '$http',
+  ['$scope', '$http', "$q",
 
-    function($scope, $http) {
+    function($scope, $http, $q) {
 
       $scope.chartConfig = {
         options: {
@@ -630,137 +630,138 @@ angular.module('squirrel').controller('AdminChartsCtrl',
       //////////////////////////////////////////////////////////////////////////////////////////////
 
       // using getJSON to be deferred to the page will be fully created
-      $(function() {
-        $.getJSON('../app/admin/eurusd.json', function(data) {
-          $('#combination_container').highcharts({
-            title: {
-              text: 'Combination chart'
-            },
-            xAxis: {
-              categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
-            },
-            labels: {
-              items: [{
-                html: 'Total fruit consumption',
-                style: {
-                  left: '50px',
-                  top: '18px',
-                  color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
-                }
+      setTimeout(function() {
+        $('#combination_container').highcharts({
+          title: {
+            text: 'Combination chart'
+          },
+          xAxis: {
+            categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+          },
+          labels: {
+            items: [{
+              html: 'Total fruit consumption',
+              style: {
+                left: '50px',
+                top: '18px',
+                color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+              }
             }]
-            },
-            series: [{
-              type: 'column',
+          },
+          series: [{
+            type: 'column',
+            name: 'Jane',
+            data: [3, 2, 1, 3, 4]
+            }, {
+            type: 'column',
+            name: 'John',
+            data: [2, 3, 5, 7, 6]
+            }, {
+            type: 'column',
+            name: 'Joe',
+            data: [4, 3, 3, 9, 0]
+            }, {
+            type: 'spline',
+            name: 'Average',
+            data: [3, 2.67, 3, 6.33, 3.33],
+            marker: {
+              lineWidth: 2,
+              lineColor: Highcharts.getOptions().colors[3],
+              fillColor: 'white'
+            }
+            }, {
+            type: 'pie',
+            name: 'Total consumption',
+            data: [{
               name: 'Jane',
-              data: [3, 2, 1, 3, 4]
-            }, {
-              type: 'column',
+              y: 13,
+              color: Highcharts.getOptions().colors[0] // Jane's color
+              }, {
               name: 'John',
-              data: [2, 3, 5, 7, 6]
-            }, {
-              type: 'column',
+              y: 23,
+              color: Highcharts.getOptions().colors[1] // John's color
+              }, {
               name: 'Joe',
-              data: [4, 3, 3, 9, 0]
-            }, {
-              type: 'spline',
-              name: 'Average',
-              data: [3, 2.67, 3, 6.33, 3.33],
-              marker: {
-                lineWidth: 2,
-                lineColor: Highcharts.getOptions().colors[3],
-                fillColor: 'white'
-              }
-            }, {
-              type: 'pie',
-              name: 'Total consumption',
-              data: [{
-                name: 'Jane',
-                y: 13,
-                color: Highcharts.getOptions().colors[0] // Jane's color
-              }, {
-                name: 'John',
-                y: 23,
-                color: Highcharts.getOptions().colors[1] // John's color
-              }, {
-                name: 'Joe',
-                y: 19,
-                color: Highcharts.getOptions().colors[2] // Joe's color
+              y: 19,
+              color: Highcharts.getOptions().colors[2] // Joe's color
               }],
-              center: [100, 80],
-              size: 100,
-              showInLegend: false,
-              dataLabels: {
-                enabled: false
-              }
-            }]
-          });
+            center: [100, 80],
+            size: 100,
+            showInLegend: false,
+            dataLabels: {
+              enabled: false
+            }
+          }]
         });
-      });
+      }, 100);
 
       //////////////////////////////////////////////////////////////////////////////////////////////
 
-      $(function() {
-        $.getJSON('../app/admin/eurusd.json', function(data) {
+      // betware of the timing, the div is created later
+      setTimeout(function() {
+        $(function() {
+          $.getJSON('../app/admin/eurusd.json', function(data) {
 
-          // create the chart
-          $('#hightstock_container').highcharts('StockChart', {
+            // create the chart
+            $('#hightstock_container').highcharts('StockChart', {
 
 
-            title: {
-              text: 'AAPL stock price by minute'
-            },
-
-            subtitle: {
-              text: 'Using ordinal X axis'
-            },
-
-            xAxis: {
-              gapGridLineWidth: 0
-            },
-
-            rangeSelector: {
-              buttons: [{
-                type: 'hour',
-                count: 1,
-                text: '1h'
-            }, {
-                type: 'day',
-                count: 1,
-                text: '1D'
-            }, {
-                type: 'all',
-                count: 1,
-                text: 'All'
-            }],
-              selected: 1,
-              inputEnabled: false
-            },
-
-            series: [{
-              name: 'AAPL',
-              type: 'area',
-              data: data,
-              gapSize: 5,
-              tooltip: {
-                valueDecimals: 2
+              title: {
+                text: 'AAPL stock price by minute'
               },
-              fillColor: {
-                linearGradient: {
-                  x1: 0,
-                  y1: 0,
-                  x2: 0,
-                  y2: 1
+
+              subtitle: {
+                text: 'Using ordinal X axis'
+              },
+
+              xAxis: {
+                gapGridLineWidth: 0
+              },
+
+              rangeSelector: {
+                buttons: [{
+                  type: 'hour',
+                  count: 1,
+                  text: '1h'
+            }, {
+                  type: 'day',
+                  count: 1,
+                  text: '1D'
+            }, {
+                  type: 'all',
+                  count: 1,
+                  text: 'All'
+            }],
+                selected: 1,
+                inputEnabled: false
+              },
+
+              series: [{
+                name: 'AAPL',
+                type: 'area',
+                data: data,
+                gapSize: 5,
+                tooltip: {
+                  valueDecimals: 2
                 },
-                stops: [
+                fillColor: {
+                  linearGradient: {
+                    x1: 0,
+                    y1: 0,
+                    x2: 0,
+                    y2: 1
+                  },
+                  stops: [
                     [0, Highcharts.getOptions().colors[0]],
                     [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
                 ]
-              },
-              threshold: null
+                },
+                threshold: null
             }]
+            });
           });
         });
-      });
+      }, 100);
 
 
       //////////////////////////////////////////////////////////////////////////////////////////////
