@@ -60,88 +60,137 @@
 </div>
 
 <h2>CrossFilter <small>using the wrapper directive</small></h2>
-  <section class="sidebar">
-      <h1>ngCrossfilter</h1>
+<section class="sidebar">
+    <h1>ngCrossfilter</h1>
 
-      <input type="text" ng-model="word" class="search" placeholder="Filter words, e.g: water, agua, voda." />
+    <input type="text" ng-model="word" class="search" placeholder="Filter words, e.g: water, agua, voda." />
 
-      <div class="btn-group">
-          <button type="button" class="filter"
-                  ng-click="words.filterBy('word', word, words.filters.fuzzy())">
-              Filter
-          </button>
-          <button type="button" class="clear"
-                  ng-click="word = ''; words.unfilterBy('word', word)">
-              Clear
-          </button>
-      </div>
+    <div class="btn-group">
+        <button type="button" class="filter"
+                ng-click="words.filterBy('word', word, words.filters.fuzzy())">
+            Filter
+        </button>
+        <button type="button" class="clear"
+                ng-click="word = ''; words.unfilterBy('word', word)">
+            Clear
+        </button>
+    </div>
 
-      <ul>
-          <li class="statistic">
-              <label>Words:</label>
-              {{words.collection().length | number: 0}}
-          </li>
-          <li class="statistic">
-              <label>First:</label>
-              {{words.first().word}}
-          </li>
-          <li class="statistic">
-              <label>Last:</label>
-              {{words.last().word}}
-          </li>
-          <li class="word-count-title">Filter by length:</li>
-          <li class="count-boxes">
-              <div class="count" ng-repeat="count in countGrouped"
-                                 ng-class="{ 'is-none': count.value == 0, active: currentCountFilter == count.key }"
-                                 ng-click="toggleCountFilter(count.key)">
-                  {{count.key}}
-              </div>
-          </li>
-      </ul>
-  </section>
+    <ul>
+        <li class="statistic">
+            <label>Words:</label>
+            {{words.collection().length | number: 0}}
+        </li>
+        <li class="statistic">
+            <label>First:</label>
+            {{words.first().word}}
+        </li>
+        <li class="statistic">
+            <label>Last:</label>
+            {{words.last().word}}
+        </li>
+        <li class="word-count-title">Filter by length:</li>
+        <li class="count-boxes">
+            <div class="count" ng-repeat="count in countGrouped"
+                               ng-class="{ 'is-none': count.value == 0, active: currentCountFilter == count.key }"
+                               ng-click="toggleCountFilter(count.key)">
+                {{count.key}}
+            </div>
+        </li>
+    </ul>
+</section>
 
-  <section class="words">
-      <table>
-          <tr>
-              <th style="width: 12%;" ng-click="words.sortBy('id')">ID</th>
-              <th style="width: 12%;" ng-click="words.sortBy('wordCount')">Length</th>
-              <th ng-click="words.sortBy('word')">Word</th>
-          </tr>
-          <tr ng-show="loading">
-              <td colspan="3">Downloading 100,000 words &ndash; 3.3mb may take a little while&hellip;</td>
-          </tr>
-          <tr ng-show="!loading && words.collection().length == 0">
-              <td colspan="3">
-                  Oops! Everything disappeared &ndash;
-                  <a ng-click="word = ''; words.unfilterAll()">clear all filters</a>.
-              </td>
-          </tr>
-          <tr class="word" ng-repeat="word in words.collection() | limitTo: pageNumber | limitTo: -50">
-              <td style="width: 12%;">{{word.id}}</td>
-              <td style="width: 12%;">{{word.word.length}}</td>
-              <td>
-                  <button class="btn btn-xs btn-default" ng-click="applyWordFilter(word.word)">
-                      Only
-                  </button>
-                  {{word.word}}
-              </td>
-          </tr>
-          <tr>
-              <td class="etc" colspan="4">
+<section class="words">
+    <table>
+        <tr>
+            <th style="width: 12%;" ng-click="words.sortBy('id')">ID</th>
+            <th style="width: 12%;" ng-click="words.sortBy('wordCount')">Length</th>
+            <th ng-click="words.sortBy('word')">Word</th>
+        </tr>
+        <tr ng-show="loading">
+            <td colspan="3">Downloading 100,000 words &ndash; 3.3mb may take a little while&hellip;</td>
+        </tr>
+        <tr ng-show="!loading && words.collection().length == 0">
+            <td colspan="3">
+                Oops! Everything disappeared &ndash;
+                <a ng-click="word = ''; words.unfilterAll()">clear all filters</a>.
+            </td>
+        </tr>
+        <tr class="word" ng-repeat="word in words.collection() | limitTo: pageNumber | limitTo: -50">
+            <td style="width: 12%;">{{word.id}}</td>
+            <td style="width: 12%;">{{word.word.length}}</td>
+            <td>
+                <button class="btn btn-xs btn-default" ng-click="applyWordFilter(word.word)">
+                    Only
+                </button>
+                {{word.word}}
+            </td>
+        </tr>
+        <tr>
+            <td class="etc" colspan="4">
 
-                  <div class="btn-group">
-                      <button type="button" class="btn btn-xs btn-default"
-                              ng-click="pageNumber = pageNumber - 10">
-                          &lt; Previous Page
-                      </button>
-                      <button type="button" class="btn btn-xs btn-default"
-                              ng-click="pageNumber = pageNumber + 10">
-                          Next Page &gt;
-                      </button>
-                  </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-xs btn-default"
+                            ng-click="pageNumber = pageNumber - 10">
+                        &lt; Previous Page
+                    </button>
+                    <button type="button" class="btn btn-xs btn-default"
+                            ng-click="pageNumber = pageNumber + 10">
+                        Next Page &gt;
+                    </button>
+                </div>
 
-              </td>
-          </tr>
-      </table>
-  </section>
+            </td>
+        </tr>
+    </table>
+</section>
+
 <h2>DC.js <small>the library mixing D3 and crossfilter</small></h2>
+<p>Nasdaq 100 Index 1985/11/01-2012/06/29</p>
+<div class="row">
+  <div dc-chart="bubbleChart" dc-width="990" dc-height="250" dc-transition-duration="1500" dc-margins="{top: 10, right: 50, bottom: 30, left: 40}" dc-dimension="yearlyDimension" dc-group="yearlyPerformanceGroup" dc-colors="colorbrewer.RdYlGn[9]" dc-color-domain="[-500, 500]" dc-max-bubble-relative-size="0.3" dc-x="d3.scale.linear().domain([-2500, 2500])" dc-y="d3.scale.linear().domain([-100, 100])" dc-r="d3.scale.linear().domain([0, 4000])" dc-elastic-y="true" dc-elastic-x="true" dc-y-axis-padding="100" dc-x-axis-padding="500" dc-render-horizontal-grid-lines="true" dc-render-vertical-grid-lines="true" dc-x-axislabel="'Index Gain'" dc-y-axis-label="'Index Gain %'" dc-render-label="true" dc-render-title="true" dc-options="bubbleChartOptions" class="dc-chart"><strong>Yearly Performance</strong>(radius: fluctuation/index ratio, color: gain/loss)<a class="reset">reset</a>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="row">
+  <dc-select dc-dimension="quarter" all-label="All quarters"></dc-select>
+</div>
+<div class="row">
+  <div dc-chart="pieChart" dc-width="180" dc-height="180" dc-radius="80" dc-dimension="gainOrLoss" dc-group="gainOrLossGroup" class="col-xs-3 dc-chart"><strong>Days by Gain/Loss</strong><a class="reset">reset</a>
+    <div class="clearfix"></div>
+  </div>
+  <div dc-chart="pieChart" dc-width="180" dc-height="180" dc-radius="80" dc-inner-radius="30" dc-dimension="quarter" dc-group="quarterGroup" class="col-xs-3 dc-chart"><strong>Quarters</strong><a class="reset">reset</a>
+    <div class="clearfix"></div>
+  </div>
+  <div dc-chart="rowChart" dc-width="180" dc-height="180" dc-margins="{top: 20, left: 10, right: 10, bottom: 20}" dc-group="dayOfWeekGroup" dc-dimension="dayOfWeek" dc-ordinal-colors="['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb']" dc-elastic-x="true" dc-post-setup-chart="dayOfWeekPostSetupChart" class="col-xs-3 dc-chart"><strong>Day of Week</strong><a class="reset">reset</a>
+    <div class="clearfix"></div>
+  </div>
+  <div dc-chart="barChart" dc-width="420" dc-height="180" dc-margins="{top: 10, right: 50, bottom: 30, left: 40}" dc-dimension="fluctuation" dc-group="fluctuationGroup" dc-elastic-y="true" dc-center-bar="true" dc-gap="1" dc-round="dc.round.floor" dc-always-use-rounding="true" dc-x="d3.scale.linear().domain([-25, 25])" dc-render-horizontal-grid-lines="true" dc-options="fluctuationChartOptions" dc-post-setup-chart="fluctuationChartPostSetupChart" class="col-xs-3 dc-chart"><strong>Days by Fluctuation(%)</strong><span class="reset">range:<span class="filter"></span></span><a class="reset">reset</a>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="row">
+  <div dc-chart="lineChart" dc-render-area="true" dc-width="990" dc-height="200" dc-transition-duration="1000" dc-margins="{top: 30, right: 50, bottom: 25, left: 40}" dc-dimension="moveMonths" dc-mouse-zoomable="true" dc-range-chart="volumeChart" dc-x="d3.time.scale().domain([Date(1985, 0, 1), Date(2012, 11, 31)])" dc-round="d3.time.month.round" dc-x-units="d3.time.months" dc-elastic-y="true" dc-render-horizontal-grid-lines="true" dc-legend="dc.legend().x(800).y(10).itemHeight(13).gap(5)" dc-brush-on="false" dc-options="moveChartOptions" dc-post-setup-chart="moveChartPostSetupChart" class="dc-chart"><strong>Monthly Index Abs Move & Volume/500,000 Chart</strong><span style="display: none;" class="reset">range:<span class="filter"></span></span><a class="reset">reset</a>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="row">
+  <div dc-chart="barChart" dc-name="'volumeChart'" dc-width="990" dc-height="40" dc-margins="{top: 0, right: 50, bottom: 20, left: 40}" dc-dimension="moveMonths" dc-group="volumeByMonthGroup" dc-center-bar="true" dc-gap="Date(1985, 0, 1)" dc-x="d3.time.scale().domain([Date(1985, 0, 1), Date(2012, 11, 31)])" dc-round="d3.time.month.round" dc-always-use-rounding="true" dc-x-units="d3.time.months" class="dc-chart"></div>
+  <p class="pull-right">select a time range to zoom in</p>
+</div>
+<div class="row">
+  <div>
+    <div dc-chart="dataCount" dc-dimension="ndx" dc-group="all" class="dc-data-count"><span class="filter-count"></span>&nbsp;selected out of<span class="total-count"></span>&nbsp;records |<a ng-click="resetAll()">Reset All</a></div>
+  </div>
+  <table dc-chart="dataTable" dc-dimension="dateDimension" dc-group="tableGroup" dc-size="10" dc-post-setup-chart="tablePostSetupChart" class="table table-hover dc-data-table">
+    <thead>
+      <tr class="header">
+        <th>Date</th>
+        <th>Open</th>
+        <th>Close</th>
+        <th>Change</th>
+        <th>Volume</th>
+      </tr>
+    </thead>
+  </table>
+</div>

@@ -24,6 +24,7 @@ app = angular.module("squirrel", [
   'angular-timeline',
   'stpa.morris',
   'nvd3',
+  'angularDc',
 ]);
 
 app.config(
