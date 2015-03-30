@@ -23,6 +23,7 @@ app = angular.module("squirrel", [
   'ngCrossfilter',
   'angular-timeline',
   'stpa.morris',
+  'nvd3',
 ]);
 
 app.config(
