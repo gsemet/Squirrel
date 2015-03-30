@@ -57,12 +57,13 @@ else:
 print("===============================================================================")
 print("[BOOT] Squirrel Installer Stage 1")
 print("[BOOT] Environment: {0}".format(os_str))
+print("[BOOT] Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
 print("[BOOT] Setting up virtualenv to start Installer Stage 2.")
 print("[BOOT] You can activate this environment with the following command:")
 print("[BOOT]     {0}".format(activate_info))
 print("[BOOT] Installing in {0}".format(workdir_path))
 print("[BOOT] Requirements: {0}".format(requirements_txt))
-print("[BOOT] Launch server automatically: {0}".format(do_launch))
+print("[BOOT] Post installation option: {0}".format(do_launch))
 
 
 if sys.platform.startswith('win32'):

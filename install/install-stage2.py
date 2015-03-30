@@ -25,15 +25,18 @@ if not os.environ['VIRTUAL_ENV']:
 print("===============================================================================")
 print("[INFO] Squirrel Installer Stage 2")
 print("[INFO] We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
+print("[INFO] Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
 print("[INFO] installation dir: {}".format(install_path))
 print("[INFO] workdir: {}".format(workdir_path))
 print("[INFO] Launch: {}".format(do_launch))
-print("[INFO] Environment:")
+print("[INFO] Environment variables:")
 for k, v in sorted(os.environ.items()):
     print("[INFO]   {0}:{1}".format(k, v))
 
 print("===============================================================================")
-print("")
+print("[INFO] ")
+print("[INFO] Installation really starts...")
+print("[INFO] ")
 
 
 def run(cmd, cwd=None, shell=False):
@@ -52,7 +55,7 @@ def run_background(cmd, cwd=None, shell=False):
 
 
 if sys.platform.startswith("linux"):
-    print("===============================================================================")
+    print("-------------------------------------------------------------------------------")
     pip_version_str = subprocess.check_output(["pip", "--versio"])
     pip_version_str = pip_version_str.split(" ")[1]
     pip_version_str = pip_version_str.split("-")[0]
@@ -75,21 +78,21 @@ if sys.platform.startswith("linux"):
         else:
             print("[INFO] Already applied. Skipping patch")
 
-print("===============================================================================")
+print("-------------------------------------------------------------------------------")
 print("[INFO] Installing backend requirements")
 print("[INFO] cd backend")
 run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                           "requirements.txt")])
 
 if sys.platform.startswith('win32'):
-    print("===============================================================================")
+    print("-------------------------------------------------------------------------------")
     print("[INFO] Installing Windows dependencies")
     run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                               "requirements-win32.txt")])
     print("[INFO] Ensure you have win32api installed")
 
 
-print("===============================================================================")
+print("-------------------------------------------------------------------------------")
 print("[INFO] Installing backend")
 print("[INFO] cd backend")
 run(["pip", "install", "-e", os.path.join(install_path, "backend")])
@@ -99,7 +102,7 @@ if sys.platform.startswith('win32'):
 else:
     shell = False
 
-print("===============================================================================")
+print("-------------------------------------------------------------------------------")
 print("[INFO] Compiling frontend website")
 if "http_proxy" in os.environ:
     print("[INFO] Behind a proxy: npm --proxy")
@@ -123,7 +126,7 @@ if do_launch != "dev-server":
     run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 
-print("===============================================================================")
+print("-------------------------------------------------------------------------------")
 print("[INFO] Building online documentation")
 if sys.platform.startswith('win32'):
     run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
@@ -132,12 +135,12 @@ else:
 
 if do_launch == "only_install":
     print("")
-    print("===============================================================================")
+    print("-------------------------------------------------------------------------------")
     print("Do not start the server. Install is succesful.")
-    print("===============================================================================")
+    print("-------------------------------------------------------------------------------")
     sys.exit(0)
 
-print("===============================================================================")
+print("-------------------------------------------------------------------------------")
 if do_launch == "server":
     # Launching Squirrel-server
     if sys.platform.startswith('win32'):
@@ -172,4 +175,4 @@ elif do_launch == "dev-server":
 
 
 print("[INFO] Done")
-print("===============================================================================")
+print("-------------------------------------------------------------------------------")
