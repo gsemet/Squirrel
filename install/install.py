@@ -33,6 +33,9 @@ if len(sys.argv) > 1:
         elif cmd == "-b":
             do_launch = "install_only_backend"
         elif cmd == "-n":
+            do_launch = "only_install"
+            do_virtualenv = False
+        elif cmd == "-np":
             do_launch = "server"
             do_virtualenv = False
         elif cmd == "-h":
