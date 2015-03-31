@@ -17,14 +17,31 @@ from __future__ import print_function
 import os
 import subprocess
 import sys
+# Do *not* use optparse or argparse here, we are not sure on which version of python we are!
 
 if len(sys.argv) > 1:
-    if sys.argv[1] == "-l":
-        do_launch = "server"
-    elif sys.argv[1] == "-d":
-        do_launch = "dev-server"
-    else:
-        raise Exception("Invalid parameter: {!r}".format(sys.argv[1]))
+    args = sys.argv[:]
+    while args:
+        executable = args.pop(0)
+        cmd = args.pop(0)
+        if cmd == "-l":
+            do_launch = "server"
+        elif cmd == "-d":
+            do_launch = "dev-server"
+        elif cmd == "-b":
+            do_launch = "install_only_backend"
+        elif cmd == "-h":
+            print("Usage: ./install/install.sh [-l|-d|-b|-h]")
+            print("")
+            print("  -l  launch production server")
+            print("  -d  launch developer server (backend served normally but frontend served by 'gulp serve'")
+            print("  -b  only install backend")
+            print("  -h  this help message")
+            print("")
+            print("Uninstall with './install/uninstall.py'")
+            sys.exit(0)
+        else:
+            raise Exception("Invalid parameter: {!r}".format(cmd))
 else:
     do_launch = "only_install"
 

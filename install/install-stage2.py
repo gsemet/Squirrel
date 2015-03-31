@@ -102,36 +102,36 @@ if sys.platform.startswith('win32'):
 else:
     shell = False
 
-print("-------------------------------------------------------------------------------")
-print("[INFO] Compiling frontend website")
-if "http_proxy" in os.environ:
-    print("[INFO] Behind a proxy: npm --proxy")
-    print("[INFO] cd frontend")
-    run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
-                                                                          "frontend"),
-        shell=shell)
-    print("[INFO] cd frontend")
-    run(["npm", "--proxy", os.environ["http_proxy"], "install"], cwd=os.path.join(install_path,
-                                                                                  "frontend"),
-        shell=shell)
-else:
-    print("[INFO] cd frontend")
-    run(["npm", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+if do_launch != "install_only_backend":
+    print("-------------------------------------------------------------------------------")
+    print("[INFO] Compiling frontend website")
+    if "http_proxy" in os.environ:
+        print("[INFO] Behind a proxy: npm --proxy")
+        print("[INFO] cd frontend")
+        run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
+                                                                              "frontend"),
+            shell=shell)
+        print("[INFO] cd frontend")
+        run(["npm", "--proxy", os.environ["http_proxy"], "install"], cwd=os.path.join(install_path,
+                                                                                      "frontend"),
+            shell=shell)
+    else:
+        print("[INFO] cd frontend")
+        run(["npm", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
-print("[INFO] cd frontend")
-run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
-
-if do_launch != "dev-server":
     print("[INFO] cd frontend")
-    run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+    run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
+    if do_launch != "dev-server":
+        print("[INFO] cd frontend")
+        run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
-print("-------------------------------------------------------------------------------")
-print("[INFO] Building online documentation")
-if sys.platform.startswith('win32'):
-    run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
-else:
-    run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
+    print("-------------------------------------------------------------------------------")
+    print("[INFO] Building online documentation")
+    if sys.platform.startswith('win32'):
+        run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
+    else:
+        run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
 
 if do_launch == "only_install":
     print("")
