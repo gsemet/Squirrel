@@ -8,13 +8,13 @@ import re
 import sys
 
 from dictns import Namespace
+from six.moves.urllib.parse import urlencode
 from twisted.internet import defer
 from twisted.internet import reactor
 from twisted.internet.interfaces import IProtocol
 from twisted.internet.protocol import ClientCreator
 from twisted.protocols.ftp import FTPClient
 from twisted.protocols.ftp import FileConsumer
-from urllib import urlencode
 from yapsy.IPlugin import IPlugin
 from zope.interface import implements
 

@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 
 import logging
+import six
 import sys
 
 from functools import wraps
@@ -110,3 +111,18 @@ class TestCase(unittest.TestCase):
         '''
         root = logging.getLogger()
         root.setLevel(logging.CRITICAL + 1)
+
+    #############################
+    # Python 3 compatibility
+    # See: http://pythonhosted.org/six/#unittest-assertions
+
+    def assertCountEqual(self, actual, expected, msg=None):
+        return six.assertCountEqual(actual, expected, msg=msg)
+
+    def assertRaisesRegex(sel, exception, regexp, callable, *args, **kwds):
+        return six.assertRaisesRegex(exception, regexp, callable, *args, **kwds)
+
+    def assertRegex(self, text, regex, msg=None):
+        return six.assertRegex(text, regex, msg=msg)
+
+    #############################

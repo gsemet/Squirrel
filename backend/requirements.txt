@@ -6,10 +6,11 @@ dictns
 enum34
 jinja
 klein
+logging
 mock
 pyyaml
-logging
 requests
+six
 sphinx >= 1.2.3
 sqlalchemy
 treq
