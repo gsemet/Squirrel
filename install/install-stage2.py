@@ -19,8 +19,8 @@ workdir_path = os.path.abspath(workdir_path)
 
 do_launch = sys.argv[3]
 
-if not os.environ['VIRTUAL_ENV']:
-    raise Exception("VIRTUAL_ENV environment variable is empty. We are not in a virtualenv.")
+# if not os.environ['VIRTUAL_ENV']:
+#     raise Exception("VIRTUAL_ENV environment variable is empty. We are not in a virtualenv.")
 
 print("===============================================================================")
 print("[INFO] Squirrel Installer Stage 2")

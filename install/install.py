@@ -19,6 +19,8 @@ import subprocess
 import sys
 # Do *not* use optparse or argparse here, we are not sure on which version of python we are!
 
+do_virtualenv = True
+
 if len(sys.argv) > 1:
     args = sys.argv[:]
     while args:
@@ -30,12 +32,16 @@ if len(sys.argv) > 1:
             do_launch = "dev-server"
         elif cmd == "-b":
             do_launch = "install_only_backend"
+        elif cmd == "-n":
+            do_launch = "server"
+            do_virtualenv = False
         elif cmd == "-h":
             print("Usage: ./install/install.sh [-l|-d|-b|-h]")
             print("")
             print("  -l  launch production server")
             print("  -d  launch developer server (backend served normally but frontend served by 'gulp serve'")
             print("  -b  only install backend")
+            print("  -n  install production without going into virtualenv (Docker/Heroku)")
             print("  -h  this help message")
             print("")
             print("Uninstall with './install/uninstall.py'")
@@ -75,7 +81,10 @@ print("=========================================================================
 print("[BOOT] Squirrel Installer Stage 1")
 print("[BOOT] Environment: {0}".format(os_str))
 print("[BOOT] Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
-print("[BOOT] Setting up virtualenv to start Installer Stage 2.")
+if do_virtualenv:
+    print("[BOOT] Setting up virtualenv to start Installer Stage 2.")
+else:
+    print("[BOOT] Do **NOT** setup a virtual env (-n option). Production on Docker mode.")
 print("[BOOT] You can activate this environment with the following command:")
 print("[BOOT]     {0}".format(activate_info))
 print("[BOOT] Installing in {0}".format(workdir_path))
@@ -104,31 +113,42 @@ if sys.platform.startswith('win32'):
 
 elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
 
-    if "VIRTUAL_ENV" in os.environ and not os.environ['VIRTUAL_ENV']:
-        print("[BOOT] Note: Already in a virtualenv!")
+    if do_virtualenv:
+        if "VIRTUAL_ENV" in os.environ and not os.environ['VIRTUAL_ENV']:
+            print("[BOOT] Note: Already in a virtualenv!")
 
-    activate = os.path.join(workdir_path, "bin", "activate")
+        activate = os.path.join(workdir_path, "bin", "activate")
 
-    if not os.path.exists(os.path.join(workdir_path, "bin", "pip")):
-        subprocess.check_call(['virtualenv', workdir_path])
+        if not os.path.exists(os.path.join(workdir_path, "bin", "pip")):
+            subprocess.check_call(['virtualenv', workdir_path])
 
-    if not os.path.exists(os.path.join(install_path, "tosource")):
-        print("[BOOT] Creating symblink tosource")
-        os.symlink(os.path.join(workdir_path, "bin", "activate"), os.path.join(install_path,
-                                                                               "tosource"))
+        if not os.path.exists(os.path.join(install_path, "tosource")):
+            print("[BOOT] Creating symblink tosource")
+            os.symlink(os.path.join(workdir_path, "bin", "activate"), os.path.join(install_path,
+                                                                                   "tosource"))
 
-    print("[BOOT] Activating virtualenv in {0}".format(workdir_path))
-    # subprocess.check_call([python_exe, stage2_path, activate, install_path])
-    subprocess.check_call([
-        'bash',
-        '-c',
-        'source {activate} && python {stage2} {install_path} {workdir_path} {launch}'
-        .format(activate=activate,
-                stage2=stage2_path,
-                install_path=install_path,
-                workdir_path=workdir_path,
-                launch=do_launch)])
-
+        print("[BOOT] Activating virtualenv in {0}".format(workdir_path))
+        # subprocess.check_call([python_exe, stage2_path, activate, install_path])
+        subprocess.check_call([
+            'bash',
+            '-c',
+            'source {activate} && python {stage2} {install_path} {workdir_path} {launch}'
+            .format(activate=activate,
+                    stage2=stage2_path,
+                    install_path=install_path,
+                    workdir_path=workdir_path,
+                    launch=do_launch)])
+    else:
+        print("[BOOT] Starting stage 2 directly without installing a virtualenv")
+        # subprocess.check_call([python_exe, stage2_path, activate, install_path])
+        subprocess.check_call([
+            'bash',
+            '-c',
+            'python {stage2} {install_path} {workdir_path} {launch}'
+            .format(stage2=stage2_path,
+                    install_path=install_path,
+                    workdir_path=workdir_path,
+                    launch=do_launch)])
 
 else:
     raise Exception("Unsupported environment: {0}".format(sys.platform))
