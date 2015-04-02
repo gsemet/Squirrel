@@ -29,6 +29,8 @@ Have python 2.7, pip and virtualenv installed on your system:
 
 To build the frontend UI (HTML), you'll need node, bower and gulp.
 
+.. code-block:: bash
+
     $ npm install -g gulp
     $ npm install -g bower
 
@@ -42,6 +44,7 @@ Installation under Mac OS X and Linux
 In the squirrel directory, execute the following command:
 
 .. code-block:: bash
+
     python install/install.py
 
 
@@ -153,7 +156,7 @@ Development:
 - ``gulp test`` to launch your unit tests with Karma
 - ``gulp test``:auto to launch your unit tests with Karma in watch mode
 - ``gulp protractor`` to launch your e2e tests with Protractor
-- ``gulp protractor``:dist to launch your e2e tests with Protractor on the dist files
+- ``gulp protractor:dist`` to launch your e2e tests with Protractor on the dist files
 
 Editor configuration
 --------------------
