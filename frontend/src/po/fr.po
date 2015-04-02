@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 
+#: app\homepage\homepage.unlogged.template.html:98
+msgid "Access anywhere, any time"
+msgstr "Accédez depuis n'importe où, n'importe quand."
+
 #: app\admin\admin.crawlers.template.html:15
 msgid "Actions"
 msgstr "Actions"
@@ -26,6 +30,17 @@ msgstr "Tableau de bord d'administration"
 #: components\navbar\navbar.template.html:40
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
+
+#: app\homepage\homepage.unlogged.template.html:39
+msgid ""
+"Analyse and compare quotes. Follow the evolution of your positions, the "
+"value of your\n"
+"          portfolio, forcast the futur yields of your stocks, prepare your "
+"tax declarations."
+msgstr ""
+"Analysez et comparez les valeurs de vos actions. Suivez l'évolution de vos "
+"positions, la valeur de votre portefeuille, prévoyez vos futurs dividendes, "
+"préparez votre déclaration d'impôts."
 
 #: app\admin\admin.crawlers.template.html:2
 msgid "Configure web crawlers"
@@ -55,6 +70,11 @@ msgstr "Email"
 #: app\screeners\screeners.template.html:9
 msgid "Find your next stock here"
 msgstr "Trouvez vos prochaines actions"
+
+#: app\homepage\homepage.unlogged.template.html:16
+msgid "Full Featured Investment Portfolio Management Software."
+msgstr ""
+"Le Système en ligne de Gestion de Portefeuille dédié à vos Investissements."
 
 #: app\register\register.template.html:44
 msgid "If you already have an acount, please"
@@ -111,6 +131,10 @@ msgstr "Vue d'ensemble de de vos actifs"
 msgid "Password"
 msgstr "Mot de passe"
 
+#: app\homepage\homepage.unlogged.template.html:81
+msgid "Prepare and edit your report. Generate professional looking report."
+msgstr "Préparez et éditez vos rapports."
+
 #: app\register\register.template.html:38
 #: components\navbar\navbar.controller.js:29
 #: components\navbar\navbar.template.html:26
@@ -140,6 +164,34 @@ msgstr "Squirrel AMS"
 msgid "Squirrel Assets Management System"
 msgstr "Squirrel Gestionnaire de Portefeuille"
 
+#: app\homepage\homepage.unlogged.template.html:45
+msgid ""
+"Squirrel can automatically retrieves the current value of any stocks, "
+"options or fund\n"
+"          value, from the main stock exchanges up to 15 years back."
+msgstr ""
+"Squirrel peut automatiquement synchroniser les valeurs actuelles de toutes "
+"vos actions, options ou valeurs liquidatives de vos Unités de Compte, depuis "
+"les principales places boursières, jusqu'à 15 ans dans le passé."
+
+#: app\homepage\homepage.unlogged.template.html:70
+msgid ""
+"Squirrel can display a large variety of very professional visualization "
+"graphs. Show your\n"
+"          current allocation, market exposure."
+msgstr ""
+"Squirrel peut générer une très grande quantité de graphique de "
+"visualisation. Affichez et suivez l'évolution de vos allocations actuelles, "
+"expositions aux risques des marchés."
+
+#: app\homepage\homepage.unlogged.template.html:28
+msgid ""
+"Squirrel helps you track your all assets: Stocks, Bonds, Mutual Fund or even "
+"Options."
+msgstr ""
+"Squirrel vous aide à suivre tous vos actifs: actions, obligations, unité de "
+"compte et même options."
+
 #: app\admin\admin.crawlers.template.html:13
 msgid "Status"
 msgstr "Status"
@@ -151,6 +203,14 @@ msgstr "Screeners"
 #: components\navbar\navbar.controller.js:16
 msgid "Stock Screeners"
 msgstr "Screeners d'Actions"
+
+#: app\homepage\homepage.unlogged.template.html:76
+msgid "Technical analysis tools are provided."
+msgstr "Des outils d'Analyse Techniques est fourni."
+
+#: app\homepage\homepage.unlogged.template.html:61
+msgid "The center of your personal finances"
+msgstr "Le Centre de Votre Finance Personnelle."
 
 #: app\homepage\homepage.unlogged.template.html:7
 msgid "The more advanced, online Portfolio Manager"
@@ -172,6 +232,16 @@ msgstr "Nom d'utilisateur ou email"
 #: app\register\register.template.html:49
 msgid "Welcome!"
 msgstr "Bienvenue!"
+
+#: app\homepage\homepage.unlogged.template.html:99
+msgid "When investiment goes in the cloud."
+msgstr "Quand vos investissements vont sur le Nuage."
+
+#: app\homepage\homepage.unlogged.template.html:33
+msgid "You can track almost any kind of investment with this online tool."
+msgstr ""
+"Vous pouvez suivre à peut prèt tout type d'investissement avec cet outil "
+"100% en ligne."
 
 #: app\register\register.template.html:49
 msgid "Your account has been created"
