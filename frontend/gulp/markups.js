@@ -11,7 +11,7 @@ gulp.task('markups', function() {
     path.extname = '.html';
   }
 
-  return gulp.src(paths.src + '/{app,components,services}/**/*.jade')
+  return gulp.src(paths.src + '/{app,components,services,directives}/**/*.jade')
     .pipe($.consolidate('jade', {
       pretty: '  '
     }))
