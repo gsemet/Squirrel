@@ -2,20 +2,23 @@
 
 angular.module('squirrel').controller('FooterCtrl',
 
-  ["$scope",
+  ["$scope", "$location",
 
-    function($scope) {
-
-      $show_footer = true;
-
-      $scope.$show_footer = function(page) {
-        /*console.log("location: " + $location.path() + ", page: " + page);*/
+    function($scope, $location) {
+      $scope.show_footer = function() {
         if ($location.path() === "/" && page === '') {
-          /*console.log("returning active!")*/
-          return "active";
+          console.log("display footer on homepage!")
+          return true;
         }
         var currentRoute = $location.path().substring(1) || '/';
-        return page === currentRoute ? 'active' : '';
+        var hide_in_pages = [
+          "/admin",
+        ];
+        var page = $location.path();
+        /*console.log("page = " + JSON.stringify(page));*/
+        var v = !_.contains(hide_in_pages, page);
+        /*console.log("display footer: " + JSON.stringify(v));*/
+        return v;
       };
     }
   ]
