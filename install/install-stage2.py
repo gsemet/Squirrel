@@ -85,6 +85,13 @@ print("[INFO] cd backend")
 run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                           "requirements.txt")])
 
+if sys.version_info < (3, 4):
+    print("[INFO] Python version {}.{} < 3.4, installing extra requirements"
+          .format(sys.version_info[0], sys.version_info[2]))
+    print("[INFO] cd backend")
+    run(["pip", "install", "-r", os.path.join(install_path, "backend",
+                                              "requirements-py_lt34.txt")])
+
 if sys.platform.startswith('win32'):
     print("-------------------------------------------------------------------------------")
     print("[INFO] Installing Windows dependencies")
