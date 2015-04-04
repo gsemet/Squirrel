@@ -2,11 +2,11 @@
 Squirrel
 ========
 
-.. image:: https://img.shields.io/travis/Stibbons/python-Squirrel/master.svg
-    :target: https://travis-ci.org/Stibbons/python-Squirrel
+.. image:: https://img.shields.io/travis/Stibbons/Squirrel/master.svg
+    :target: https://travis-ci.org/Stibbons/Squirrel
 
-.. image:: https://img.shields.io/coveralls/Stibbons/python-Squirrel.svg
-    :target: https://coveralls.io/r/Stibbons/python-Squirrel
+.. image:: https://img.shields.io/coveralls/Stibbons/Squirrel.svg
+    :target: https://coveralls.io/r/Stibbons/Squirrel
 
 
 Asset Portfolio Management System.
