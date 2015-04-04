@@ -37,6 +37,13 @@ To build the frontend UI (HTML), you'll need node, bower and gulp.
     $ npm install -g gulp
     $ npm install -g bower
 
+Python 3
+--------
+
+Squirrel is not Python 3 compatible, the following dependencies needs to be ported first:
+
+- Twisted
+
 Installation under Mac OS X and Linux
 *************************************
 
