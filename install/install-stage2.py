@@ -57,7 +57,7 @@ def run_background(cmd, cwd=None, shell=False):
 
 if sys.platform.startswith("linux"):
     print("-------------------------------------------------------------------------------")
-    pip_version_str = subprocess.check_output(["pip", "--versio"])
+    pip_version_str = str(subprocess.check_output(["pip", "--versio"]))
     pip_version_str = pip_version_str.split(" ")[1]
     pip_version_str = pip_version_str.split("-")[0]
     pip_version_str = pip_version_str.split("_")[0]
