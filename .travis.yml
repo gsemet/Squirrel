@@ -7,7 +7,7 @@ language: python
 
 python:
   - "2.7"
-  # - "3.0" # Depends on the support of Python 3 from twisted
+  - "3.0"
 
 install:
   - "pip install --upgrade pip"
