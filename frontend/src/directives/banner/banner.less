@@ -1,0 +1,75 @@
+.banner {
+  padding: 10px 40px 9px 20px;
+  position: relative;
+  display: none;
+  min-height: 50px;
+}
+
+@bannerBlue: #428bca;
+@bannerBlueLight: #daebf8;
+
+@bannerYellowLight: #F6F8DA;
+@bannerYellow: #706B26;
+
+.banner-blue {
+  background: @bannerBlueLight;
+  color: @bannerBlue;
+}
+
+.banner-yellow {
+  background: @bannerYellowLight;
+  color: @bannerYellow;
+}
+
+.banner a, .banner a:visited:not(.btn) {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.banner-blue a, .banner-blue a:visited:not(.btn){
+  color: @bannerBlue;
+}
+
+.banner-yellow a, .banner-yellow a:visited:not(.btn){
+  color: @bannerYellow;
+}
+
+
+.banner-close-icon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.banner-blue .banner-close-icon {
+  color: @bannerBlue;
+}
+
+.banner-blue .banner-close-icon {
+  color: @bannerYellow;
+}
+
+.banner-fixed-top{
+  text-align: center;
+  display: block;
+  visibility: visible;
+  margin-top: 0px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1100;
+}
+
+.banner-fixed-bottom{
+  text-align: center;
+  display: block;
+  visibility: visible;
+  margin-bottom: 0px;
+  position: fixed;
+  bottom: 0px;
+  z-index: 1100;
+  right: 0;
+  left: 0;
+}

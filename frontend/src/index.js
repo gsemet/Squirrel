@@ -25,6 +25,7 @@ app = angular.module("squirrel", [
   'stpa.morris',
   'nvd3',
   'angularDc',
+  'angularMoment',
 ]);
 
 app.config(

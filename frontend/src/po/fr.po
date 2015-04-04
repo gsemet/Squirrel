@@ -42,6 +42,16 @@ msgstr ""
 "positions, la valeur de votre portefeuille, prévoyez vos futurs dividendes, "
 "préparez votre déclaration d'impôts."
 
+#: components\banners\banners.template.html:25
+msgid ""
+"By using our website and agreeing to this policy, you consent to our use of "
+"cookies in\n"
+"      accordance with the terms of this policy."
+msgstr ""
+"En continuant d'utiliser notre site, vous donnez votre consentement dans "
+"l'utilisation de ces cookie, dans le cadre des terme de politique "
+"d'utilisation."
+
 #: app\admin\admin.crawlers.template.html:2
 msgid "Configure web crawlers"
 msgstr "Configuration des Crawlers"
@@ -156,10 +166,6 @@ msgstr "Veuillez retaper votre mot de passe"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: index.html:5
-msgid "Squirrel AMS"
-msgstr "Squirrel AMS"
-
 #: app\homepage\homepage.unlogged.template.html:6
 msgid "Squirrel Assets Management System"
 msgstr "Squirrel Gestionnaire de Portefeuille"
@@ -229,6 +235,12 @@ msgstr "Nom d'utilisateur"
 msgid "Username or email"
 msgstr "Nom d'utilisateur ou email"
 
+#: components\banners\banners.template.html:20
+msgid "We use cookies to ensure you get the best experience on our website."
+msgstr ""
+"Nous utilisons des cookies de votre navigateur pour vous offir la meilleure "
+"expérience possible sur notre site internet."
+
 #: app\register\register.template.html:49
 msgid "Welcome!"
 msgstr "Bienvenue!"
@@ -258,3 +270,6 @@ msgstr "vous enregistrer"
 #: app\register\register.template.html:10
 msgid "your account"
 msgstr "de votre compte"
+
+#~ msgid "Squirrel AMS"
+#~ msgstr "Squirrel AMS"
