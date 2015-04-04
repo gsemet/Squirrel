@@ -6,7 +6,6 @@ dictns
 enum34
 jinja2
 klein
-logging
 mock
 pycontracts >= 1.7.1
 pyyaml

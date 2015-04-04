@@ -1,0 +1,8 @@
+[run]
+source = squirrel
+
+[report]
+omit =
+    */python?.?/*
+    */lib-python/?.?/*.py
+    */pypy/*
