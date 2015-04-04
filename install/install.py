@@ -57,8 +57,8 @@ else:
 if sys.version_info < (2, 7):
     raise "must use python 2.7.x. Current version is: {}.".format(sys.version_info)
 
-if sys.version_info >= (3, 0):
-    raise "must use python 2.7.x. Current version is: {}.".format(sys.version_info)
+# if sys.version_info >= (3, 0):
+#    raise "must use python 2.7.x. Current version is: {}.".format(sys.version_info)
 
 install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs", "default.conf"))
