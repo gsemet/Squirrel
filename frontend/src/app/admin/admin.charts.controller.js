@@ -83,7 +83,6 @@ angular.module('squirrel').controller('AdminChartsCtrl',
         chart: {
           plotBackgroundColor: null,
           plotBorderWidth: null,
-          plotShadow: false
         },
         title: {
           text: 'Browser market shares'
@@ -106,19 +105,39 @@ angular.module('squirrel').controller('AdminChartsCtrl',
             type: 'pie',
             name: 'Browser share',
             data: [
-                    ['Firefox', 45.0],
-                    ['IE', 26.8],
               {
+                name: 'Firefox',
+                y: 45.0
+              },
+              {
+                name: 'IE',
+                y: 26.8
+              }, {
                 name: 'Chrome',
                 y: 12.8,
                 sliced: true,
-                selected: true
-                    },
-                    ['Safari', 8.5],
-                    ['Opera', 6.2],
-                    ['Others', 0.7]
-                ]
+                selected: true,
+              },
+              {
+                name: 'Safari',
+                y: 8.5
+              },
+              {
+                name: 'Opera',
+                y: 6.2
+              },
+              {
+                name: 'Others',
+                y: 0.7
+              }
+            ],
+            shadow: {
+              color: 'lightgrey',
+              width: 30,
+              offsetX: 5,
+              offsetY: 5
             }
+          }
         ]
       };
 
@@ -189,9 +208,153 @@ angular.module('squirrel').controller('AdminChartsCtrl',
                   ]
               },
               threshold: null
-              }]
+            }]
           }
-        });
+        }
+      );
+      //////////////////////////////////////////////////////////////////////////////////////////////
+      $http.get("../app/admin/eurusd.json").then(
+
+        function(result) {
+          var data = result.data;
+
+          // Create the chart
+          $('#hightstock_container2').highcharts('StockChart', {
+
+
+            rangeSelector: {
+              selected: 1
+            },
+
+            title: {
+              text: 'USD to EUR exchange rate'
+            },
+
+            tooltip: {
+              style: {
+                width: '200px'
+              },
+              valueDecimals: 4
+            },
+
+            yAxis: {
+              title: {
+                text: 'Exchange rate'
+              }
+            },
+
+            series: [{
+              name: 'USD to EUR',
+              data: data,
+              id: 'dataseries'
+
+              // the event marker flags
+            }, {
+              type: 'flags',
+              data: [
+                {
+                  x: Date.UTC(2014, 10, 8),
+                  title: 'H',
+                  text: 'Euro Contained by Channel Resistance'
+                }, {
+                  x: Date.UTC(2014, 10, 9),
+                  title: 'G',
+                  text: 'EURUSD: Bulls Clear Path to 1.50 Figure'
+                }, {
+                  x: Date.UTC(2014, 10, 10),
+                  title: 'F',
+                  text: 'EURUSD: Rate Decision to End Standstill'
+                }, {
+                  x: Date.UTC(2014, 10, 11),
+                  title: 'E',
+                  text: 'EURUSD: Enter Short on Channel Break'
+                }, {
+                  x: Date.UTC(2014, 10, 12),
+                  title: 'D',
+                  text: 'Forex: U.S. Non-Farm Payrolls Expand 244K, U.S. Dollar Rally Cut Short By Risk Appetite'
+                }, {
+                  x: Date.UTC(2014, 10, 12),
+                  title: 'C',
+                  text: 'US Dollar: Is This the Long-Awaited Recovery or a Temporary Bounce?'
+                }
+                ],
+              onSeries: 'dataseries',
+              shape: 'circlepin',
+              width: 16
+            }]
+          });
+        }
+      );
+      //////////////////////////////////////////////////////////////////////////////////////////////
+
+      $scope.chartConfig4 = {
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Monthly Average Rainfall'
+        },
+        subtitle: {
+          text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+          categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+          crosshair: true
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Rainfall (mm)'
+          }
+        },
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+          }
+        },
+        series: [{
+          name: 'Tokyo',
+          data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+          }, {
+          name: 'New York',
+          data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+          }, {
+          name: 'London',
+          data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+
+          }, {
+          name: 'Berlin',
+          data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+          }]
+      };
+
+      setTimeout(function() {
+        $('#hightstock_container4').highcharts($scope.chartConfig4)
+      }, 100);
+
       //////////////////////////////////////////////////////////////////////////////////////////////
 
       $scope.nvd3Options = {
