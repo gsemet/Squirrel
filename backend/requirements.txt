@@ -4,7 +4,7 @@ autobahn
 crochet
 dictns
 enum34
-jinja
+jinja2
 klein
 logging
 mock
