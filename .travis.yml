@@ -8,7 +8,10 @@ language: python
 
 python:
   - "2.7"
-  - "3.3"
+  # Python 3 support depends on the following tickets:
+  #   * "trial": https://twistedmatrix.com/trac/ticket/5965
+  # Update install-stage2.py accordingly
+  # - "3.3"
 
 install:
   - "pip install --upgrade pip"
