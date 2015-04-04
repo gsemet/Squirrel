@@ -4,12 +4,11 @@
 #   - osx
 
 language: python
-sudo: required
 
 
 python:
   - "2.7"
-  - "3.0"
+  - "3.3"
 
 install:
   - "pip install --upgrade pip"
