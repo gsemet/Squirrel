@@ -4,6 +4,8 @@
 #   - osx
 
 language: python
+sudo: required
+
 
 python:
   - "2.7"
