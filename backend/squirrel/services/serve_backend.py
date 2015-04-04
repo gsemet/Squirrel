@@ -6,8 +6,8 @@ import logging
 
 from dictns import Namespace
 
-from squirrel.config.config import Config
 from squirrel.routes import app
+from squirrel.services.config import Config
 
 # Keep this import group bellow the main "from squirrel" import group
 from squirrel.routes import *

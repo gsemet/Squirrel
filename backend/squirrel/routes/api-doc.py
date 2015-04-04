@@ -3,10 +3,10 @@ from __future__ import division
 from __future__ import print_function
 
 
-from squirrel.config.config import Config
 from squirrel.config.constants import API_DOC_ENTRY_POINT
 from squirrel.routes import app
 from squirrel.routes import serve_url
+from squirrel.services.config import Config
 
 
 @app.route(API_DOC_ENTRY_POINT + '/<path:path1>', methods=['GET'])

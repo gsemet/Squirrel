@@ -5,7 +5,7 @@ from __future__ import print_function
 import logging
 import logging.config as logging_config
 
-from squirrel.config.load_config import Config
+from squirrel.services.config import Config
 
 
 log = logging.getLogger(__name__)

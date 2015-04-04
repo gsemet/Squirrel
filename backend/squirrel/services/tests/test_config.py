@@ -6,7 +6,7 @@ from dictns import Namespace
 
 from squirrel.common.text import dedent
 from squirrel.common.unittest import TestCase
-from squirrel.config.config import Config
+from squirrel.services.config import Config
 
 
 class TestConfig(TestCase):

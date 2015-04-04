@@ -10,7 +10,7 @@ from squirrel.common.enum import Enum
 from squirrel.common.result import FAILURE
 from squirrel.common.result import SUCCESS
 from squirrel.common.singleton import singleton
-from squirrel.config.config import Config
+from squirrel.services.config import Config
 from squirrel.services.plugin_loader import PluginRegistry
 
 log = logging.getLogger(__name__)

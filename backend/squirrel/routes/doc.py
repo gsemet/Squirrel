@@ -4,11 +4,11 @@ from __future__ import print_function
 
 from twisted.web.util import redirectTo
 
-from squirrel.config.config import Config
 from squirrel.config.constants import DOC_ENTRY_POINT
 from squirrel.config.constants import DOC_INDEX_FILE
 from squirrel.routes import app
 from squirrel.routes import serve_url
+from squirrel.services.config import Config
 
 
 @app.route(DOC_ENTRY_POINT, methods=['GET'])

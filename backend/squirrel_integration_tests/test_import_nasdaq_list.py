@@ -9,8 +9,8 @@ from twisted.internet import defer
 from squirrel.common.downloader import cleanupReactorForUnitTest
 from squirrel.common.downloader import prepareReactorForUnitTest
 from squirrel.common.unittest import TestCase
-from squirrel.config.load_config import initializeConfig
-from squirrel.config.load_config import unloadConfig
+from squirrel.services.config import initializeConfig
+from squirrel.services.config import unloadConfig
 from squirrel.services.plugin_loader import PluginRegistry
 from squirrel.services.plugin_loader import loadPlugins
 from squirrel.services.plugin_loader import unloadPlugins

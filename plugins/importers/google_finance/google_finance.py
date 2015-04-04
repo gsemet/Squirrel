@@ -3,19 +3,17 @@ from __future__ import division
 from __future__ import print_function
 
 from twisted.internet import defer
+from zope.interface.declarations import implements
 
+from squirrel.interfaces.plugin_importer import IPluginImporter
 from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
 
 
 class GoogleFinance(PluginImporterBase):
 
+    implements(IPluginImporter)
+
     name = "GoogleFinance"
-
-    def activate(self):
-        pass
-
-    def deactivate(self):
-        pass
 
     @defer.inlineCallbacks
     def getList(self, wantedPlaces=None, start=None, number=None):

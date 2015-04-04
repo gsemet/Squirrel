@@ -7,10 +7,51 @@ import os
 import sys
 import yaml
 
+from dictns import Namespace
+from dictns import _appendToParent
+
 from squirrel.common.i18n import _
-from squirrel.config.config import Config
+from squirrel.common.singleton import singleton
+
 
 log = logging.getLogger(__name__)
+
+
+def _dumpFlat(n, parent=None):
+    s = ""
+    for k, v in n.items():
+        me = _appendToParent(parent, k)
+
+        def do_item(me, v):
+            t = type(v).__name__
+            if t == "Namespace":
+                t = "dict"
+            if isinstance(v, dict):
+                v = Namespace(v)
+                s = _dumpFlat(v, me)
+            elif type(v) == list:
+                s = me + " = " + str(v) + "\n"
+                if len(v) > 0:
+                    v = v[0]
+                    s += do_item(me + "[i]", v)
+            else:
+                s = me + " = " + str(v) + "\n"
+            return s
+        s += do_item(me, v)
+    return s
+
+
+@singleton
+class Config(object):
+
+    def __init__(self, *args, **kwargs):
+        self.cfg = Namespace(*args, **kwargs)
+
+    def dumpFlat(self, parent=None):
+        return _dumpFlat(self)
+
+    def __getattr__(self, name):
+        return getattr(self.cfg, name)
 
 
 def _loadYaml(yamlpath):
@@ -55,20 +96,26 @@ def updateFullPaths():
     c.plugins.full_default_path = _makeFullPath(c.plugins.default_path)
 
 
-def dumpConfig():
+def dumpConfigToLogger(level="info"):
+    """
+    Args:
+        level (str, optional): log level. info/debug/warning
+    """
+    assert level in {'info', 'debug', 'warning'}
     c = Config()
-    log.debug("")
-    log.debug(_("Listing all available keys:"))
-    log.debug(c.dumpFlat())
+    getattr(log, level)("")
+    getattr(log, level)(_("Listing all available keys:"))
+    getattr(log, level)(c.dumpFlat())
 
 
 def initializeConfig():
     config_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                os.pardir,
                                                "config.yaml"))
+    log.debug("Loading configuration: {}".format(config_path))
     _loadConfig(config_path)
     updateFullPaths()
-    dumpConfig()
+    dumpConfigToLogger()
 
 
 def unloadConfig():

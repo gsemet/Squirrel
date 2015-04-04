@@ -15,7 +15,7 @@ from twisted.internet.interfaces import IProtocol
 from twisted.internet.protocol import ClientCreator
 from twisted.protocols.ftp import FTPClient
 from twisted.protocols.ftp import FileConsumer
-from yapsy.IPlugin import IPlugin
+from yapsy.IPlugin import IPlugin as YapsyIPlugin
 from zope.interface import implements
 
 from squirrel.common.downloader import get
@@ -28,22 +28,10 @@ from squirrel.model.stock import Stock
 from squirrel.model.tick import Tick
 from squirrel.model.ticker import Ticker
 
-
 log = logging.getLogger(__name__)
 
 
-class IPluginImporter(IPlugin):
-
-    name = NotImplementedError
-
-    def activate(self):
-        NotImplementedError
-
-    def deactivate(self):
-        NotImplementedError
-
-
-class PluginImporterBase(IPluginImporter):
+class PluginImporterBase(YapsyIPlugin):
 
     # Plugin pattern:
 

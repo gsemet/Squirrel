@@ -6,13 +6,13 @@ import logging
 
 from twisted.internet import defer
 
-from squirrel.config.config import Config
 from squirrel.db.model import Model
 from squirrel.db.tables.currencies import TableCurrencies
 from squirrel.db.tables.plugin_importers import TablePluginImporters
 from squirrel.db.tables.stocks import TableStocks
 from squirrel.db.tables.ticks import TableTicks
 from squirrel.model.ticker import Ticker
+from squirrel.services.config import Config
 from squirrel.services.plugin_loader import PluginRegistry
 
 log = logging.getLogger(__name__)

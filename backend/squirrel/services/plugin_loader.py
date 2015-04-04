@@ -7,8 +7,8 @@ import logging
 from yapsy.PluginManager import PluginManager
 
 from squirrel.common.singleton import singleton
-from squirrel.config.config import Config
 from squirrel.plugin_bases.plugin_importer_base import PluginImporterBase
+from squirrel.services.config import Config
 
 
 log = logging.getLogger(__name__)

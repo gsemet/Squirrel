@@ -4,10 +4,10 @@ from __future__ import print_function
 
 import logging
 
-from squirrel.config.config import Config
 from squirrel.config.constants import FRONTEND_INDEX_FILE
 from squirrel.routes import app
 from squirrel.routes import serve_url
+from squirrel.services.config import Config
 
 
 log = logging.getLogger(__name__)

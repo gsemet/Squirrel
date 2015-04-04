@@ -7,8 +7,8 @@ from mock import Mock
 from mock import patch
 
 from squirrel.common.unittest import TestCase
-from squirrel.config.config import Config
 from squirrel.launcher.complete_server import run
+from squirrel.services.config import Config
 
 
 class TestEntryPoint(TestCase):

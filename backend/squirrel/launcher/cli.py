@@ -9,10 +9,10 @@ import sys
 from crochet import setup
 from crochet import wait_for
 
-from squirrel.config.load_config import Config
-from squirrel.config.load_config import initializeConfig
-from squirrel.config.load_config import unloadConfig
 from squirrel.procedures.crawler import Crawler
+from squirrel.services.config import Config
+from squirrel.services.config import initializeConfig
+from squirrel.services.config import unloadConfig
 from squirrel.services.plugin_loader import loadPlugins
 from squirrel.services.plugin_loader import unloadPlugins
 
