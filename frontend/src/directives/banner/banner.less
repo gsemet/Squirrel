@@ -11,6 +11,9 @@
 @bannerYellowLight: #F6F8DA;
 @bannerYellow: #706B26;
 
+@bannerRedLight: #F8DADA;
+@bannerRed: #712626;
+
 .banner-blue {
   background: @bannerBlueLight;
   color: @bannerBlue;
@@ -19,6 +22,11 @@
 .banner-yellow {
   background: @bannerYellowLight;
   color: @bannerYellow;
+}
+
+.banner-red {
+  background: @bannerRedLight;
+  color: @bannerRed;
 }
 
 .banner a, .banner a:visited:not(.btn) {
@@ -34,6 +42,10 @@
   color: @bannerYellow;
 }
 
+.banner-red a, .banner-red a:visited:not(.btn){
+  color: @bannerRed;
+}
+
 
 .banner-close-icon {
   position: absolute;
@@ -47,8 +59,12 @@
   color: @bannerBlue;
 }
 
-.banner-blue .banner-close-icon {
+.banner-yellow .banner-close-icon {
   color: @bannerYellow;
+}
+
+.banner-red .banner-close-icon {
+  color: @bannerRed;
 }
 
 .banner-fixed-top{

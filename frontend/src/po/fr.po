@@ -31,6 +31,16 @@ msgstr "Tableau de bord d'administration"
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
 
+#: components\banners\banners.template.html:21
+msgid ""
+"An internal error is preventing to refresh the database. There is no quotes "
+"refresh until this\n"
+"      issue has been fixed by our team."
+msgstr ""
+"Une erreur interne empèche actuellement un rafraichissement de la base de "
+"donnée. Il n'y a pas de mise à jour des valeurs des actions et fonds tant "
+"que ce problème ne sera pas fixé par nos équipes."
+
 #: app\homepage\homepage.unlogged.template.html:39
 msgid ""
 "Analyse and compare quotes. Follow the evolution of your positions, the "
@@ -42,7 +52,7 @@ msgstr ""
 "positions, la valeur de votre portefeuille, prévoyez vos futurs dividendes, "
 "préparez votre déclaration d'impôts."
 
-#: components\banners\banners.template.html:25
+#: components\banners\banners.template.html:45
 msgid ""
 "By using our website and agreeing to this policy, you consent to our use of "
 "cookies in\n"
@@ -166,6 +176,14 @@ msgstr "Veuillez retaper votre mot de passe"
 msgid "Settings"
 msgstr "Paramètres"
 
+#: components\banners\banners.template.html:27
+msgid ""
+"Sorry for the inconvenience. We do our best to fix this issue as soon as "
+"possible."
+msgstr ""
+"Veuillez excusez ce désagrément. Nous faisons de notre mieux pour restaurer "
+"le service normal le plus vite possible."
+
 #: app\homepage\homepage.unlogged.template.html:6
 msgid "Squirrel Assets Management System"
 msgstr "Squirrel Gestionnaire de Portefeuille"
@@ -235,7 +253,7 @@ msgstr "Nom d'utilisateur"
 msgid "Username or email"
 msgstr "Nom d'utilisateur ou email"
 
-#: components\banners\banners.template.html:20
+#: components\banners\banners.template.html:40
 msgid "We use cookies to ensure you get the best experience on our website."
 msgstr ""
 "Nous utilisons des cookies de votre navigateur pour vous offir la meilleure "

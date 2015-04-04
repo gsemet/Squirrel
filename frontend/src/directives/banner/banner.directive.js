@@ -18,6 +18,7 @@ angular.module('squirrel').directive('banner',
         scope: {
           bannerName: '@banner',
           bannerShowCount: "@bannerShowCount",
+          bannerEnabled: "@bannerEnabled",
           bannerExpires: "@bannerExpires",
         },
         controllerAs: "page",
