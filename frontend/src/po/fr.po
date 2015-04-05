@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 
-#: app\homepage\homepage.unlogged.template.html:126
+#: app\homepage\homepage.unlogged.template.html:130
 msgid "Access your porfolio anywhere, any time"
 msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 
@@ -41,7 +41,7 @@ msgstr ""
 "donnée. Il n'y a pas de mise à jour des valeurs des actions et fonds tant "
 "que ce problème ne sera pas fixé par nos équipes."
 
-#: app\homepage\homepage.unlogged.template.html:41
+#: app\homepage\homepage.unlogged.template.html:59
 msgid ""
 "Analyse and compare quotes. Follow the evolution of your positions, the "
 "value of your\n"
@@ -78,6 +78,15 @@ msgstr "Tableau de Bord"
 msgid "Description"
 msgstr "Descriptions"
 
+#: app\homepage\homepage.unlogged.template.html:189
+msgid ""
+"Easily show your portfolio to your financial adviser so he can give you "
+"accurate and\n"
+"          valuable advices."
+msgstr ""
+"Montrer votre portefeuille facilement à votre gesionnaire financier, pour "
+"qu'il vous offre les conseils les plus pertinents."
+
 #: app\register\register.template.html:19
 #: app\register\register.template.html:21
 msgid "Email"
@@ -92,7 +101,7 @@ msgid "Full Featured Investment Portfolio Management Software."
 msgstr ""
 "Le Système en ligne de Gestion de Portefeuille dédié à vos Investissements."
 
-#: app\homepage\homepage.unlogged.template.html:143
+#: app\homepage\homepage.unlogged.template.html:144
 msgid "Generate professional looking report."
 msgstr ""
 "Préparez et éditez vos rapports de qualité professionel depuis une large "
@@ -153,6 +162,10 @@ msgstr "Vue d'ensemble de de vos actifs"
 msgid "Password"
 msgstr "Mot de passe"
 
+#: app\homepage\homepage.unlogged.template.html:83
+msgid "Profesionnal data visualizations"
+msgstr "Visualisation de donnée Professionelle"
+
 #: app\register\register.template.html:38
 #: components\navbar\navbar.controller.js:29
 #: components\navbar\navbar.template.html:26
@@ -173,6 +186,18 @@ msgstr "Veuillez retaper votre mot de passe"
 #: components\navbar\navbar.template.html:39
 msgid "Settings"
 msgstr "Paramètres"
+
+#: app\homepage\homepage.unlogged.template.html:178
+msgid "Share part of your portfolio publicly, keep it completely private."
+msgstr "Partager votre portefeuille en ligne, ou gardez le complètement privé."
+
+#: app\homepage\homepage.unlogged.template.html:166
+msgid "Share your Portfolio"
+msgstr "Partagez vos Portefeuilles"
+
+#: app\homepage\homepage.unlogged.template.html:167
+msgid "Social networks also apply to Investments"
+msgstr "Les Réseaux Sociaux s'appliquent également à l'Investissement"
 
 #: components\banners\banners.template.html:27
 msgid ""
@@ -195,7 +220,7 @@ msgstr ""
 "Squirrel vous aide à suivre tous vos actifs en un seul endroit: actions, "
 "obligations, unité de compte et même options."
 
-#: app\homepage\homepage.unlogged.template.html:66
+#: app\homepage\homepage.unlogged.template.html:65
 msgid ""
 "Squirrel automatically retrieves the current value of any stocks, options or "
 "fund\n"
@@ -217,12 +242,11 @@ msgstr "Screeners"
 msgid "Stock Screeners"
 msgstr "Screeners d'Actions"
 
-#: app\homepage\homepage.unlogged.template.html:138
+#: app\homepage\homepage.unlogged.template.html:139
 msgid "Technical analysis tools are also provided."
 msgstr "Des outils d'Analyse Techniques sont également fournis."
 
-#: app\homepage\homepage.unlogged.template.html:57
-#: app\homepage\homepage.unlogged.template.html:84
+#: app\homepage\homepage.unlogged.template.html:50
 msgid "The center of your personal finances"
 msgstr "Le Centre de Votre Finance Personnelle."
 
@@ -243,7 +267,7 @@ msgstr "Nom d'utilisateur"
 msgid "Username or email"
 msgstr "Nom d'utilisateur ou email"
 
-#: app\homepage\homepage.unlogged.template.html:112
+#: app\homepage\homepage.unlogged.template.html:111
 msgid ""
 "Visualize your assets, show your current allocation, market exposure, with "
 "good looking,\n"
@@ -267,7 +291,7 @@ msgstr "Statut des données du web"
 msgid "Welcome!"
 msgstr "Bienvenue!"
 
-#: app\homepage\homepage.unlogged.template.html:127
+#: app\homepage\homepage.unlogged.template.html:131
 msgid "When investiment goes in the cloud."
 msgstr "Quand vos investissements vont sur le Nuage."
 
@@ -280,6 +304,16 @@ msgstr ""
 "Avec cet outil 100% en ligne, vous pouvez suivre tous vos investissements "
 "depuis différentes places boursières, différents courtiers, différentes "
 "enveloppes fiscales."
+
+#: app\homepage\homepage.unlogged.template.html:183
+msgid ""
+"You can easily control what other can see. Create private link to graphs or "
+"table, with\n"
+"          email and password permission, expiration date."
+msgstr ""
+"Vous controllez facilement ce que les personnes externes peuvent voir. Créez "
+"des liens privés vers les graphiques, tableaux ou rapports, avec des "
+"protections par emails et mot de passe, et date d'expiration."
 
 #: app\register\register.template.html:49
 msgid "Your account has been created"

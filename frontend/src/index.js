@@ -81,9 +81,12 @@ app.config(
           redirectTo: "/"
         });
 
-      $locationProvider.html5Mode({
-        enabled: false,
-      });
+      $locationProvider
+        .html5Mode({
+          enabled: false
+        });
+      // todo : enable hashPrefix (SEO friendly)
+      //.hashPrefix('!');
 
 
       angular.extend(toastrConfig, {
