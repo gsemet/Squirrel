@@ -26,6 +26,7 @@ app = angular.module("squirrel", [
   'nvd3',
   'angularDc',
   'angularMoment',
+  'restangular',
 ]);
 
 app.config(
