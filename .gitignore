@@ -61,3 +61,4 @@ tosource
 _trial_temp.lock
 
 logfile.*
+/frontend/src/po/*.js
