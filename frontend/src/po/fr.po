@@ -11,9 +11,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 
-#: app\homepage\homepage.unlogged.template.html:98
-msgid "Access anywhere, any time"
-msgstr "Accédez depuis n'importe où, n'importe quand."
+#: app\homepage\homepage.unlogged.template.html:126
+msgid "Access your porfolio anywhere, any time"
+msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 
 #: app\admin\admin.crawlers.template.html:15
 msgid "Actions"
@@ -41,16 +41,16 @@ msgstr ""
 "donnée. Il n'y a pas de mise à jour des valeurs des actions et fonds tant "
 "que ce problème ne sera pas fixé par nos équipes."
 
-#: app\homepage\homepage.unlogged.template.html:39
+#: app\homepage\homepage.unlogged.template.html:41
 msgid ""
 "Analyse and compare quotes. Follow the evolution of your positions, the "
 "value of your\n"
-"          portfolio, forcast the futur yields of your stocks, prepare your "
-"tax declarations."
+"          portfolio, forcast the yields of your stocks, prepare your tax "
+"declarations."
 msgstr ""
 "Analysez et comparez les valeurs de vos actions. Suivez l'évolution de vos "
-"positions, la valeur de votre portefeuille, prévoyez vos futurs dividendes, "
-"préparez votre déclaration d'impôts."
+"positions, la valeur de votre portefeuille, prévoyez les versements de vos "
+"dividendes, préparez votre déclaration d'impôts."
 
 #: components\banners\banners.template.html:45
 msgid ""
@@ -61,10 +61,6 @@ msgstr ""
 "En continuant d'utiliser notre site, vous donnez votre consentement dans "
 "l'utilisation de ces cookie, dans le cadre des terme de politique "
 "d'utilisation."
-
-#: app\admin\admin.crawlers.template.html:2
-msgid "Configure web crawlers"
-msgstr "Configuration des Crawlers"
 
 #: app\admin\admin.crawlers.template.html:2 app\admin\admin.template.html:18
 msgid "Crawlers"
@@ -95,6 +91,12 @@ msgstr "Trouvez vos prochaines actions"
 msgid "Full Featured Investment Portfolio Management Software."
 msgstr ""
 "Le Système en ligne de Gestion de Portefeuille dédié à vos Investissements."
+
+#: app\homepage\homepage.unlogged.template.html:143
+msgid "Generate professional looking report."
+msgstr ""
+"Préparez et éditez vos rapports de qualité professionel depuis une large "
+"palette de generateurs."
 
 #: app\register\register.template.html:44
 msgid "If you already have an acount, please"
@@ -151,10 +153,6 @@ msgstr "Vue d'ensemble de de vos actifs"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: app\homepage\homepage.unlogged.template.html:81
-msgid "Prepare and edit your report. Generate professional looking report."
-msgstr "Préparez et éditez vos rapports."
-
 #: app\register\register.template.html:38
 #: components\navbar\navbar.controller.js:29
 #: components\navbar\navbar.template.html:26
@@ -188,33 +186,24 @@ msgstr ""
 msgid "Squirrel Assets Management System"
 msgstr "Squirrel Gestionnaire de Portefeuille"
 
-#: app\homepage\homepage.unlogged.template.html:45
-msgid ""
-"Squirrel can automatically retrieves the current value of any stocks, "
-"options or fund\n"
-"          value, from the main stock exchanges up to 15 years back."
-msgstr ""
-"Squirrel peut automatiquement synchroniser les valeurs actuelles de toutes "
-"vos actions, options ou valeurs liquidatives de vos Unités de Compte, depuis "
-"les principales places boursières, jusqu'à 15 ans dans le passé."
-
-#: app\homepage\homepage.unlogged.template.html:70
-msgid ""
-"Squirrel can display a large variety of very professional visualization "
-"graphs. Show your\n"
-"          current allocation, market exposure."
-msgstr ""
-"Squirrel peut générer une très grande quantité de graphique de "
-"visualisation. Affichez et suivez l'évolution de vos allocations actuelles, "
-"expositions aux risques des marchés."
-
 #: app\homepage\homepage.unlogged.template.html:28
 msgid ""
-"Squirrel helps you track your all assets: Stocks, Bonds, Mutual Fund or even "
-"Options."
+"Squirrel allows you track your all assets in one single place: Stocks, "
+"Bonds, Mutual Fund\n"
+"          or even Options."
 msgstr ""
-"Squirrel vous aide à suivre tous vos actifs: actions, obligations, unité de "
-"compte et même options."
+"Squirrel vous aide à suivre tous vos actifs en un seul endroit: actions, "
+"obligations, unité de compte et même options."
+
+#: app\homepage\homepage.unlogged.template.html:66
+msgid ""
+"Squirrel automatically retrieves the current value of any stocks, options or "
+"fund\n"
+"          valorisation, from the main stock exchanges up to 15 years back."
+msgstr ""
+"Squirrel synchronise automatiquement les valeurs actuelles de toutes vos "
+"actions, options et même les valeurs liquidatives de vos Unités de Compte, "
+"depuis les principales places boursières, jusqu'à 15 ans dans le passé."
 
 #: app\admin\admin.crawlers.template.html:13
 msgid "Status"
@@ -228,11 +217,12 @@ msgstr "Screeners"
 msgid "Stock Screeners"
 msgstr "Screeners d'Actions"
 
-#: app\homepage\homepage.unlogged.template.html:76
-msgid "Technical analysis tools are provided."
-msgstr "Des outils d'Analyse Techniques est fourni."
+#: app\homepage\homepage.unlogged.template.html:138
+msgid "Technical analysis tools are also provided."
+msgstr "Des outils d'Analyse Techniques sont également fournis."
 
-#: app\homepage\homepage.unlogged.template.html:61
+#: app\homepage\homepage.unlogged.template.html:57
+#: app\homepage\homepage.unlogged.template.html:84
 msgid "The center of your personal finances"
 msgstr "Le Centre de Votre Finance Personnelle."
 
@@ -253,25 +243,43 @@ msgstr "Nom d'utilisateur"
 msgid "Username or email"
 msgstr "Nom d'utilisateur ou email"
 
+#: app\homepage\homepage.unlogged.template.html:112
+msgid ""
+"Visualize your assets, show your current allocation, market exposure, with "
+"good looking,\n"
+"          extremely efficient and interactive graphs."
+msgstr ""
+"Visualiser vos actifs, affichez et suivez l'évolution de vos allocations, "
+"expositions aux risques de marchés avec de beaux graphiques modernes, "
+"professionels, efficaces et interactifs."
+
 #: components\banners\banners.template.html:40
 msgid "We use cookies to ensure you get the best experience on our website."
 msgstr ""
 "Nous utilisons des cookies de votre navigateur pour vous offir la meilleure "
 "expérience possible sur notre site internet."
 
+#: app\admin\admin.crawlers.template.html:2
+msgid "Web data status"
+msgstr "Statut des données du web"
+
 #: app\register\register.template.html:49
 msgid "Welcome!"
 msgstr "Bienvenue!"
 
-#: app\homepage\homepage.unlogged.template.html:99
+#: app\homepage\homepage.unlogged.template.html:127
 msgid "When investiment goes in the cloud."
 msgstr "Quand vos investissements vont sur le Nuage."
 
-#: app\homepage\homepage.unlogged.template.html:33
-msgid "You can track almost any kind of investment with this online tool."
+#: app\homepage\homepage.unlogged.template.html:34
+msgid ""
+"With this 100% online tool, you can track all your investments from "
+"differents exchanges,\n"
+"          different brokers, different fiscal envelope."
 msgstr ""
-"Vous pouvez suivre à peut prèt tout type d'investissement avec cet outil "
-"100% en ligne."
+"Avec cet outil 100% en ligne, vous pouvez suivre tous vos investissements "
+"depuis différentes places boursières, différents courtiers, différentes "
+"enveloppes fiscales."
 
 #: app\register\register.template.html:49
 msgid "Your account has been created"
@@ -288,6 +296,14 @@ msgstr "vous enregistrer"
 #: app\register\register.template.html:10
 msgid "your account"
 msgstr "de votre compte"
+
+#~ msgid "You can track almost any kind of investment with this online tool."
+#~ msgstr ""
+#~ "Vous pouvez suivre à peut prèt tout type d'investissement avec cet outil "
+#~ "100% en ligne."
+
+#~ msgid "Configure web crawlers"
+#~ msgstr "Configuration des Crawlers"
 
 #~ msgid "Squirrel AMS"
 #~ msgstr "Squirrel AMS"
