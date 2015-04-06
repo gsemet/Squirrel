@@ -36,7 +36,10 @@
     "restangular": "~1.5.1",
     "angular-modal-service": "~0.6.6",
     "angular-strap": "~2.2.1",
-    "angular-ui-select": "~0.11.2"
+    "angular-ui-select": "~0.11.2",
+    "angular-table": "~1.0.0",
+    "ng-table": "~0.5.4",
+    "angular-smart-table": "~2.0.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.3.4"

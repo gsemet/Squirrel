@@ -23,14 +23,7 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <div class="page-content inset">
         <div ng-repeat="page in pages">
-          {{page}} <br/>
-          endpoint: {{page.endpoint}} <br/>
-          page.templateUrl: {{page.templateUrl}}<br/>
-          page.controller: {{page.controller}}<br/>
-          currentPage(): {{currentPage()}}<br/>
-          currentPage() == page.endpoint: {{currentPage() == page.endpoint}}<br/>
-          <div class="row" ng-if="currentPage() == page.endpoint" ng-include="page.templateUrl" ng-controller="page.controller"></div>
-          -----<br/>
+          <div class="row" ng-if="currentPage() == page.endpoint" ng-include="page.templateUrl"></div>
         </div>
       </div>
     </div>

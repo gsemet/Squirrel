@@ -1,1 +1,19 @@
-Overview!
+<div ng-controller="PortfoliosOverviewCtrl">
+  <h1 class="page-header"><span translate>Overview</span> <small translate>of your portfolios</small></h1>
+  <p>
+    Trying ngTable
+  </p>
+  <table ng-table="tablePortfolios" show-filter="true" class="table">
+    <tbody>
+      <tr ng-repeat="user in $data">
+        <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="name">
+          {{user.name}}
+          {{$loading}}
+        </td>
+        <td data-title="'Age'" sortable="age">
+          {{user.age}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -31,6 +31,7 @@ app = angular.module("squirrel", [
   'angularModalService',
   'mgcrea.ngStrap',
   'ui.select',
+  'ngTable',
 ]);
 
 app.config(

@@ -2,27 +2,25 @@
 
 angular.module("squirrel").controller("PortfoliosCtrl",
 
-  ["$scope", "AuthenticationService", "$rootScope", "AUTH_EVENTS", "$location", "gettextCatalog",
-    "PortfoliosOverviewCtrl", "PortfoliosSecuritiesCtrl",
+  ["$scope", "AuthenticationService", "$rootScope", "AUTH_EVENTS", "$location", "gettextCatalog", /*"$controller",*/
 
-    function($scope, AuthenticationService, $rootScope, AUTH_EVENTS, $location, gettextCatalog,
-      PortfoliosOverviewCtrl, PortfoliosSecuritiesCtrl) {
+    function($scope, AuthenticationService, $rootScope, AUTH_EVENTS, $location, gettextCatalog /*, $controller*/ ) {
 
       $scope.pages = [
         {
           endpoint: '',
           href: '#/portfolios',
           text: gettextCatalog.getString('Overview'),
-          spanicon: 'sub_icon glyphicon glyphicon-dashboard',
+          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/overview.template.html',
-          controller: PortfoliosOverviewCtrl
+          /*controller: "PortfoliosOverviewCtrl"  => hard to make it work */
         }, {
           endpoint: 'securities',
           href: '#/portfolios?p=securities',
           text: gettextCatalog.getString('Securities'),
-          spanicon: 'sub_icon glyphicon glyphicon-dashboard',
+          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/securities.template.html',
-          controller: PortfoliosSecuritiesCtrl
+          /*controller: "PortfoliosSecuritiesCtrl"*/
         }
       ];
 
@@ -44,7 +42,6 @@ angular.module("squirrel").controller("PortfoliosCtrl",
 
       $scope.sidebar_class = "active";
       $scope.toggleSidebar = function() {
-        console.log("sidebar toggle");
         if ($scope.sidebar_class == "active") {
           $scope.sidebar_class = "";
         } else {
@@ -68,14 +65,21 @@ angular.module("squirrel").controller("PortfoliosCtrl",
         } else {
           current_page = s['p'];
         }
-        console.log("activeIfCurrentPageIs");
-        console.log("current_page = " + JSON.stringify(current_page));
-        console.log("page = " + JSON.stringify(page));
         if (current_page == page) {
           return "active";
         }
         return "";
       };
+
+      /*
+      $scope.loadController = function(controller) {
+        console.log("controller = " + JSON.stringify(controller));
+        var c = $controller(controller, {
+          $scope: $scope
+        });
+        console.log("$controller = " + c);
+        return c;
+      };*/
     }
   ]
 );

@@ -13,7 +13,7 @@ angular.module('squirrel').controller('AdminCrawlersCtrl',
       $scope.getAllCrawlers = function() {
         var deferred = $q.defer();
 
-        $http.get("http://localhost:8080/api/crawlers").then(function(result) {
+        $http.get("/api/crawlers").then(function(result) {
           var all_crawlers = [];
           console.log("Refreshing crawlers");
           _.forEach(result.data, function(item) {
