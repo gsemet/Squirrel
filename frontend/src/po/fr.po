@@ -224,7 +224,8 @@ msgstr "Enregistrement"
 msgid ""
 "Registration succesfully sent to the following address: "
 "{{registration_email}}."
-msgstr "Enregistremen réussit avec l'adresse suivante: {{registration_email}}."
+msgstr ""
+"Enregistrement réussit avec l'adresse email suivante: {{registration_email}}."
 
 #: app\register\register.template.html:31
 #: app\register\register.template.html:33
@@ -299,6 +300,10 @@ msgstr "Screeners"
 msgid "Stock Screeners"
 msgstr "Screeners d'Actions"
 
+#: app\homepage\homepage.unlogged.template.html:84
+msgid "Take care of your investiment like the apple of your eye."
+msgstr "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
+
 #: app\homepage\homepage.unlogged.template.html:50
 msgid "The center of your personal finances"
 msgstr "Le Centre de Votre Finance Personnelle."
@@ -335,8 +340,8 @@ msgid ""
 "good looking,\n"
 "          extremely efficient and interactive graphs."
 msgstr ""
-"Visualiser vos actifs, affichez et suivez l'évolution de vos allocations, "
-"expositions aux risques de marchés avec de beaux graphiques modernes, "
+"Visualisez vos actifs, affichez et suivez l'évolution de vos allocations, "
+"expositions aux risques de marchés, avec de beaux graphiques modernes, "
 "professionels, efficaces et interactifs."
 
 #: components\banners\banners.template.html:40
