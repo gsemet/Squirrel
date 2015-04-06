@@ -161,7 +161,7 @@ msgstr "Connexion"
 msgid "Logs"
 msgstr "Logs"
 
-#: app\my-portfolios\my-portfolios.template.html:16
+#: app\portfolios\portfolios.template.html:16
 msgid "My Porfolio"
 msgstr "Mes Portefeuilles"
 
@@ -181,7 +181,7 @@ msgstr "OK"
 msgid "Overview of the website"
 msgstr "Vue d'ensemble du site"
 
-#: app\my-portfolios\my-portfolios.template.html:16
+#: app\portfolios\portfolios.template.html:16
 msgid "Overview of your assets"
 msgstr "Vue d'ensemble de de vos actifs"
 

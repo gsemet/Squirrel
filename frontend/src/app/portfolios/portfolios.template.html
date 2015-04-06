@@ -1,0 +1,38 @@
+<div class="container" ng-if="!is_logged">
+  <div class="jumbotron text-center">
+    <div>
+      When user is not logged, he sees a message inviting him to register.
+    </div>
+  </div>
+</div>
+<div class="container-fluid" ng-if="is_logged">
+  <!-- <ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li class="active">My Portfolio</li>
+  </ol>
+  <hr /> -->
+
+  <!-- Layout inspirated by http://getbootstrap.com/examples/dashboard/# -->
+
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li ng-repeat="page in pages" ng-class="activeIfCurrentPageIs(page.endpoint)"><a href="{{page.href}}"><span>{{page.text}}</span><span ng-if="page.spanicon" ng-class="page.spanicon"></span></a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="page-content inset">
+        <div ng-repeat="page in pages">
+          {{page}} <br/>
+          endpoint: {{page.endpoint}} <br/>
+          page.templateUrl: {{page.templateUrl}}<br/>
+          page.controller: {{page.controller}}<br/>
+          currentPage(): {{currentPage()}}<br/>
+          currentPage() == page.endpoint: {{currentPage() == page.endpoint}}<br/>
+          <div class="row" ng-if="currentPage() == page.endpoint" ng-include="page.templateUrl" ng-controller="page.controller"></div>
+          -----<br/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

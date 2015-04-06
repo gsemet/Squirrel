@@ -44,9 +44,9 @@ app.config(
           templateUrl: "app/homepage/homepage.template.html",
           controller: "HomepageCtrl",
         })
-        .when("/my-portfolios", {
-          templateUrl: "app/my-portfolios/my-portfolios.template.html",
-          controller: "MyPortfoliosCtrl"
+        .when("/portfolios", {
+          templateUrl: "app/portfolios/portfolios.template.html",
+          controller: "PortfoliosCtrl"
         })
         .when("/screeners", {
           templateUrl: "app/screeners/screeners.template.html",
