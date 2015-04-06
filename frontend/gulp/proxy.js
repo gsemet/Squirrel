@@ -48,15 +48,16 @@
     * for your needs. If you can, you could also check on a context in the url which
     * may be more reliable but can't be generic.
     */
-   console.log("proxy: " + req.url);
    /* Default test:
     *
     *  /\.(html|css|js|png|jpg|jpeg|gif|ico|xml|rss|txt|eot|svg|ttf|woff|cur)(\?((r|v|rel|rev)=[\-\.\w]*)?)?$/
     */
    if (/^\/api\//.test(req.url)) {
      // route all request to /api/* to backend
+     console.log("[serving w/ proxy] " + req.url);
      proxy.web(req, res);
    } else {
+     console.log("[serving w/o proxy] " + req.url);
      next();
    }
  }

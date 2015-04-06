@@ -4,7 +4,7 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
 
   ["$scope", "$location", "gettextCatalog", "Restangular", "ngTableParams", "$timeout",
 
-    function($scope, $location, gettextCatalog, Restangular, ngTableParams) {
+    function($scope, $location, gettextCatalog, Restangular, ngTableParams, $timeout) {
 
       var basePortfolios = Restangular.all("api/portfolios");
 
