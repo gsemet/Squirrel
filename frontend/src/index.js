@@ -16,6 +16,7 @@ app = angular.module("squirrel", [
   'ngSanitize',
   'ngTouch',
   'ui.bootstrap',
+  'ui.bootstrap.modal',
   'picardy.fontawesome',
   'toastr',
   'ngGrid',
@@ -27,6 +28,9 @@ app = angular.module("squirrel", [
   'angularDc',
   'angularMoment',
   'restangular',
+  'angularModalService',
+  'mgcrea.ngStrap',
+  'ui.select',
 ]);
 
 app.config(

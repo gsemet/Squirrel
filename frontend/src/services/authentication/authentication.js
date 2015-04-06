@@ -21,7 +21,8 @@ angular.module('squirrel').factory('AuthenticationService',
           data.userId,
           data.userName,
           data.email,
-          data.role
+          data.role,
+          data.language
         );
         ipCookie("sessionId", data.id, {
           expires: 15,
@@ -146,6 +147,10 @@ angular.module('squirrel').factory('AuthenticationService',
 
       authService.getUserRole = function() {
         return Session.userRole;
+      };
+
+      authService.getUserLanguage = function() {
+        return Session.language;
       };
 
       return authService;

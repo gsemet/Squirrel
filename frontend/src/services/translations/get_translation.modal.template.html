@@ -1,0 +1,29 @@
+<div class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" translate>Welcome to Squirrel</h4>
+      </div>
+      <div class="modal-body">
+        <p translate>Welcome to Squirrel. Can you tell us in which is your language</p>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-10">
+              <ui-select ng-model="language.selected" theme="bootstrap" title="Choose your language">
+                <ui-select-match placeholder="Select please choose your prefered language">{{$select.selected.language}}</ui-select-match>
+                <ui-select-choices repeat="lang in languages | filter: $select.search">
+                  <div ng-bind-html="lang.language | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+          </div>
+        </form>
+        Selected: {{language.selected}}
+      <div class="modal-footer">
+        <button type="button" ng-click="ok()" class="btn btn-primary" data-dismiss="modal">OK</button>
+        <button type="button" ng-click="cancel()" class="btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

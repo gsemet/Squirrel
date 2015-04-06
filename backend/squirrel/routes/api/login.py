@@ -14,6 +14,7 @@ def getLoginData():
         "userName": "Gaetan",
         "email": "email@adress.com",
         "role": "admin",
+        "language": "fr",
     }
 
 
