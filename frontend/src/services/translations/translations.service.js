@@ -14,10 +14,12 @@ angular.module('squirrel').factory('TranslationService',
       translationService.TRANSLATION_UPDATED = "translation_updated";
 
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
-        console.log("translation service on loginSuccesful:" + userName);
+        console.log("translation service on loginSuccesful: " + userName);
         var lang = AuthenticationService.getUserLanguage();
-        gettextCatalog.setCurrentLanguage(lang);
+        console.log(" lang => " + lang);
         ipCookie("prefered-language", lang);
+        translationService.setLangFromCookie();
+        $rootScope.$emit(translationService.TRANSLATION_UPDATED, lang);
       });
 
       $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(event) {
