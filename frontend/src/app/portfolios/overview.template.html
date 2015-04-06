@@ -1,19 +1,35 @@
 <div ng-controller="PortfoliosOverviewCtrl">
   <h1 class="page-header"><span translate>Overview</span> <small translate>of your portfolios</small></h1>
-  <p>
-    Trying ngTable
+  <p translate>
+    Please find bellow a summary of the portfolios.
   </p>
-  <table ng-table="tablePortfolios" show-filter="true" class="table">
-    <tbody>
-      <tr ng-repeat="user in $data">
-        <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="name">
-          {{user.name}}
-          {{$loading}}
-        </td>
-        <td data-title="'Age'" sortable="age">
-          {{user.age}}
+  <table st-table="displayed" class="table table-striped">
+    <thead>
+      <tr>
+        <th st-ratio="20" st-sort="name" translate>Name</th>
+        <th st-ratio="20" st-sort="broker" translate>Broker</th>
+        <th st-ratio="10" st-sort="description" translate>Description</th>
+        <th st-ratio="10" st-sort="type" translate>Type</th>
+        <th st-ratio="20" st-sort="deposit" translate>Deposit</th>
+        <th st-ratio="20" st-sort="balance" translate>Balance</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="row in displayed">
+        <td st-ratio="20">{{row.name}}</td>
+        <td st-ratio="20">{{row.broker}}</td>
+        <td st-ratio="10">{{row.description}}</td>
+        <td st-ratio="10">{{row.type}}</td>
+        <td st-ratio="20">{{row.deposit}}</td>
+        <td st-ratio="20">{{row.valorisation}}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">
+          <div  st-items-by-page="20" st-pagination=""></div>
         </td>
       </tr>
-    </tbody>
+    </tfoot>
   </table>
 </div>

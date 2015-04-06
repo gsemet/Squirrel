@@ -2,9 +2,9 @@
 
 angular.module('squirrel').controller('AdminChartsCtrl',
 
-  ['$scope', '$http', "$q", "Crossfilter",
+  ['$scope', '$http', "$q", "Crossfilter", "$timeout",
 
-    function($scope, $http, $q, Crossfilter) {
+    function($scope, $http, $q, Crossfilter, $timeout) {
 
       $scope.chartConfig = {
         options: {
@@ -351,7 +351,7 @@ angular.module('squirrel').controller('AdminChartsCtrl',
           }]
       };
 
-      setTimeout(function() {
+      $timeout(function() {
         $('#hightstock_container4').highcharts($scope.chartConfig4)
       }, 100);
 
@@ -793,7 +793,7 @@ angular.module('squirrel').controller('AdminChartsCtrl',
       //////////////////////////////////////////////////////////////////////////////////////////////
 
       // using getJSON to be deferred to the page will be fully created
-      setTimeout(function() {
+      $timeout(function() {
         $('#combination_container').highcharts({
           title: {
             text: 'Combination chart'
@@ -861,7 +861,7 @@ angular.module('squirrel').controller('AdminChartsCtrl',
       //////////////////////////////////////////////////////////////////////////////////////////////
 
       // betware of the timing, the div is created later
-      setTimeout(function() {
+      $timeout(function() {
         $(function() {
           $.getJSON('../app/admin/eurusd.json', function(data) {
 

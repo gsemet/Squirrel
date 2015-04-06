@@ -61,3 +61,28 @@
     </timeline>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <p>
+      ngTable
+    </p>
+    <table ng-table="tablePortfolios" show-filter="true" class="table">
+      <tbody>
+        <tr ng-repeat="portfolio in $data">
+          <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="name">
+            {{portfolio.name}}
+          </td>
+          <td data-title="'Broker'" sortable="broker">
+            {{portfolio.broker}}
+          </td>
+          <td data-title="'description'" sortable="description">
+            {{portfolio.description}}
+          </td>
+          <td data-title="'description'" sortable="description">
+            {{portfolio.description}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

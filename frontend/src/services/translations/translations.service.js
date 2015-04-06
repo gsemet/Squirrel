@@ -3,9 +3,11 @@
 
 angular.module('squirrel').factory('TranslationService',
 
-  ['gettextCatalog', "AUTH_EVENTS", "$rootScope", "AuthenticationService", "ipCookie", "ModalService", "$modal",
+  ['gettextCatalog', "AUTH_EVENTS", "$rootScope", "AuthenticationService", "ipCookie", "ModalService",
+    "$timeout",
 
-    function(gettextCatalog, AUTH_EVENTS, $rootScope, AuthenticationService, ipCookie, ModalService, $modal) {
+    function(gettextCatalog, AUTH_EVENTS, $rootScope, AuthenticationService, ipCookie, ModalService,
+      $timeout) {
 
       var translationService = {};
 
@@ -39,7 +41,7 @@ angular.module('squirrel').factory('TranslationService',
           console.log("Setting to default language 'en'");
           if (!lang) {
             translationService.currentLang = null;
-            setTimeout(function() {
+            $timeout(function() {
               translationService.askUserLanguage();
             }, 1000);
           } else {

@@ -56,6 +56,14 @@ msgstr ""
 msgid "Android and iOS native applications are provided."
 msgstr "Des applications natives Android et iOS sont fournis."
 
+#: app\portfolios\overview.template.html:14
+msgid "Balance"
+msgstr "Balance"
+
+#: app\portfolios\overview.template.html:10
+msgid "Broker"
+msgstr "Courtier"
+
 #: components\banners\banners.template.html:45
 msgid ""
 "By using our website and agreeing to this policy, you consent to our use of "
@@ -99,7 +107,12 @@ msgstr "Création"
 msgid "Dashboard"
 msgstr "Tableau de Bord"
 
+#: app\portfolios\overview.template.html:13
+msgid "Deposit"
+msgstr "Dépot"
+
 #: app\admin\admin.crawlers.template.html:12
+#: app\portfolios\overview.template.html:11
 msgid "Description"
 msgstr "Descriptions"
 
@@ -144,6 +157,10 @@ msgstr "Si vous n'avez pas de compte, veuillez"
 msgid "Last run"
 msgstr "Dernière exécution"
 
+#: app\portfolios\securities.template.html:2
+msgid "List of your securities"
+msgstr "Vue d'ensemble de de vos actions"
+
 #: components\navbar\navbar.template.html:26
 msgid "Log in"
 msgstr "Connexion"
@@ -161,15 +178,12 @@ msgstr "Connexion"
 msgid "Logs"
 msgstr "Logs"
 
-#: app\portfolios\portfolios.template.html:16
-msgid "My Porfolio"
-msgstr "Mes Portefeuilles"
-
 #: components\navbar\navbar.controller.js:21
 msgid "My Portfolios"
 msgstr "Mes Portefeuilles"
 
 #: app\admin\admin.crawlers.template.html:11
+#: app\portfolios\overview.template.html:9
 msgid "Name"
 msgstr "Noms"
 
@@ -177,19 +191,24 @@ msgstr "Noms"
 msgid "OK"
 msgstr "OK"
 
+#: app\portfolios\overview.template.html:2
+#: app\portfolios\portfolios.controller.js:13
+msgid "Overview"
+msgstr "Vue Générale"
+
 #: app\admin\admin.dashboard.template.html:3
 msgid "Overview of the website"
 msgstr "Vue d'ensemble du site"
-
-#: app\portfolios\portfolios.template.html:16
-msgid "Overview of your assets"
-msgstr "Vue d'ensemble de de vos actifs"
 
 #: app\login\login.template.html:19 app\login\login.template.html:21
 #: app\register\register.template.html:25
 #: app\register\register.template.html:27
 msgid "Password"
 msgstr "Mot de passe"
+
+#: app\portfolios\overview.template.html:3
+msgid "Please find bellow a summary of the portfolios."
+msgstr "Veuillez trouver ci-dessous un résumé de vos portefeuilles."
 
 #: app\homepage\homepage.unlogged.template.html:83
 msgid "Profesionnal data visualizations"
@@ -211,6 +230,11 @@ msgstr "Enregistremen réussit avec l'adresse suivante: {{registration_email}}."
 #: app\register\register.template.html:33
 msgid "Retype your password"
 msgstr "Veuillez retaper votre mot de passe"
+
+#: app\portfolios\portfolios.controller.js:20
+#: app\portfolios\securities.template.html:2
+msgid "Securities"
+msgstr "Actions"
 
 #: services\translations\get_translation.modal.template.html:14
 msgid "Select please choose your prefered language"
@@ -286,6 +310,10 @@ msgstr "Le plus avancé des gestionnaires de portefeuille en ligne"
 #: components\navbar\navbar.template.html:13
 msgid "Toggle Navigation"
 msgstr "Basculer la navigation"
+
+#: app\portfolios\overview.template.html:12
+msgid "Type"
+msgstr "Type"
 
 #: app\homepage\homepage.unlogged.template.html:117
 msgid "Use Technical Analysis tools for your investment decisions."
@@ -365,6 +393,10 @@ msgstr "Votre compte a bien été créé."
 msgid "log in"
 msgstr "vous connecter"
 
+#: app\portfolios\overview.template.html:2
+msgid "of your portfolios"
+msgstr "de vos portefeuilles"
+
 #: app\login\login.template.html:32
 msgid "register in"
 msgstr "vous enregistrer"
@@ -372,6 +404,9 @@ msgstr "vous enregistrer"
 #: app\register\register.template.html:10
 msgid "your account"
 msgstr "de votre compte"
+
+#~ msgid "My Porfolio"
+#~ msgstr "Mes Portefeuilles"
 
 #~ msgid "You can track almost any kind of investment with this online tool."
 #~ msgstr ""
