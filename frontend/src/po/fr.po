@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 
+#: components\footer\footer.template.html:22
+msgid "About"
+msgstr "A Propos"
+
 #: app\homepage\homepage.unlogged.template.html:139
 msgid "Access your porfolio anywhere, any time"
 msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
@@ -95,6 +99,18 @@ msgstr ""
 "Consultez, éditez et visualisez vos portefeuille depuis n'importe où, de "
 "votre ordinateur personnel, votre tablette ou votre smartphone."
 
+#: components\footer\footer.template.html:23
+msgid "Contact"
+msgstr "Contact"
+
+#: components\footer\footer.template.html:23
+msgid "Contact the technical team"
+msgstr "Contactez le support technique"
+
+#: components\footer\footer.template.html:32
+msgid "Copyright 2015 all rights reserved."
+msgstr "Copyright 2015 tous drotis réservés."
+
 #: app\admin\admin.crawlers.template.html:2 app\admin\admin.template.html:18
 msgid "Crawlers"
 msgstr "Crawlers"
@@ -134,6 +150,10 @@ msgstr "Email"
 msgid "Find your next stock here"
 msgstr "Trouvez vos prochaines actions"
 
+#: components\footer\footer.template.html:10
+msgid "Find your stocks on the Stock Screener"
+msgstr "Trouvez vos prochaines actions sur le Screener d'Action"
+
 #: app\homepage\homepage.unlogged.template.html:16
 msgid "Full Featured Investment Portfolio Management Software."
 msgstr ""
@@ -144,6 +164,10 @@ msgid "Generate professional looking reports."
 msgstr ""
 "Préparez et éditez vos rapports de qualité professionelle, depuis une large "
 "palette de modèles."
+
+#: components\footer\footer.template.html:14
+msgid "Help"
+msgstr "Aide"
 
 #: app\register\register.template.html:44
 msgid "If you already have an acount, please"
@@ -156,6 +180,10 @@ msgstr "Si vous n'avez pas de compte, veuillez"
 #: app\admin\admin.crawlers.template.html:14
 msgid "Last run"
 msgstr "Dernière exécution"
+
+#: components\footer\footer.template.html:19
+msgid "Legal notes"
+msgstr "Notes légales"
 
 #: app\portfolios\securities.template.html:2
 msgid "List of your securities"
@@ -178,6 +206,15 @@ msgstr "Connexion"
 msgid "Logs"
 msgstr "Logs"
 
+#: components\footer\footer.template.html:18
+msgid "Légal"
+msgstr "Légal"
+
+#: components\footer\footer.template.html:11
+msgid "Manage your portfolios"
+msgstr "Gerez vos portefeuilles"
+
+#: components\footer\footer.template.html:11
 #: components\navbar\navbar.controller.js:21
 msgid "My Portfolios"
 msgstr "Mes Portefeuilles"
@@ -232,6 +269,10 @@ msgstr ""
 msgid "Retype your password"
 msgstr "Veuillez retaper votre mot de passe"
 
+#: components\footer\footer.template.html:10
+msgid "Screeners"
+msgstr "Screeners d'Actions"
+
 #: app\portfolios\portfolios.controller.js:20
 #: app\portfolios\securities.template.html:2
 msgid "Securities"
@@ -240,6 +281,10 @@ msgstr "Actions"
 #: services\translations\get_translation.modal.template.html:14
 msgid "Select please choose your prefered language"
 msgstr "Veuillez sélectionnez votre langue préférée"
+
+#: components\footer\footer.template.html:9
+msgid "Services"
+msgstr "Services"
 
 #: components\navbar\navbar.template.html:40
 msgid "Settings"
@@ -264,6 +309,14 @@ msgid ""
 msgstr ""
 "Veuillez excusez ce désagrément. Nous faisons de notre mieux pour restaurer "
 "le service normal le plus vite possible."
+
+#: components\footer\footer.template.html:15
+msgid "Squirrel AMS"
+msgstr "Squirrel AMS"
+
+#: components\footer\footer.template.html:15
+msgid "Squirrel Asset Management System"
+msgstr "Squirrel Gestionnaire de Portefeuille"
 
 #: app\homepage\homepage.unlogged.template.html:6
 msgid "Squirrel Assets Management System"
@@ -394,6 +447,10 @@ msgstr ""
 msgid "Your account has been created"
 msgstr "Votre compte a bien été créé."
 
+#: components\footer\footer.template.html:19
+msgid "legal notes"
+msgstr "Notes Légales"
+
 #: app\register\register.template.html:44
 msgid "log in"
 msgstr "vous connecter"
@@ -420,6 +477,3 @@ msgstr "de votre compte"
 
 #~ msgid "Configure web crawlers"
 #~ msgstr "Configuration des Crawlers"
-
-#~ msgid "Squirrel AMS"
-#~ msgstr "Squirrel AMS"
