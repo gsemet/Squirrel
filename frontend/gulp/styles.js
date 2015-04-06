@@ -15,11 +15,12 @@ gulp.task('styles', function() {
       paths.src + '/services',
       paths.src + '/components',
       paths.src + '/directives',
+      paths.src + '/filters',
     ]
   };
 
   var injectFiles = gulp.src([
-    paths.src + '/{app,services,components,directives}/**/*.less',
+    paths.src + '/{app,services,components,directives,filters}/**/*.less',
     '!' + paths.src + '/index.less',
     '!' + paths.src + '/vendor.less',
   ], {
@@ -32,6 +33,7 @@ gulp.task('styles', function() {
       filePath = filePath.replace(paths.src + '/services/', 'services/');
       filePath = filePath.replace(paths.src + '/components/', 'components/');
       filePath = filePath.replace(paths.src + '/directives/', 'directives/');
+      filePath = filePath.replace(paths.src + '/filters/', 'filters/');
       return '@import \'' + filePath + '\';';
     },
     starttag: '// injector',

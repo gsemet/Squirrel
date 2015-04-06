@@ -130,7 +130,7 @@ msgstr "Dépot"
 #: app\admin\admin.crawlers.template.html:12
 #: app\portfolios\overview.template.html:11
 msgid "Description"
-msgstr "Descriptions"
+msgstr "Description"
 
 #: app\homepage\homepage.unlogged.template.html:193
 msgid ""
@@ -371,7 +371,7 @@ msgstr "Basculer la navigation"
 
 #: app\portfolios\overview.template.html:12
 msgid "Type"
-msgstr "Type"
+msgstr "Enveloppe Fiscale"
 
 #: app\homepage\homepage.unlogged.template.html:117
 msgid "Use Technical Analysis tools for your investment decisions."

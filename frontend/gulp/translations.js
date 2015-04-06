@@ -9,8 +9,8 @@ var gettext = require('gulp-angular-gettext');
 gulp.task('pot', function() {
   return gulp.src([
       'src/index.html',
-      'src/{app,components,services,directives}/**/*.html',
-      'src/{app,components,services,directives}/**/*.js'])
+      'src/{app,components,services,directives,filters}/**/*.html',
+      'src/{app,components,services,directives,filters}/**/*.js'])
     .pipe(gettext.extract('template.pot', {
       // options to pass to angular-gettext-tools...
     }))
