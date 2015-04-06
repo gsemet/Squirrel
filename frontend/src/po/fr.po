@@ -27,7 +27,7 @@ msgstr "Configuration"
 msgid "Administrator Dashboard"
 msgstr "Tableau de bord d'administration"
 
-#: components\navbar\navbar.template.html:40
+#: components\navbar\navbar.template.html:41
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
 
@@ -65,6 +65,18 @@ msgstr ""
 "En continuant d'utiliser notre site, vous donnez votre consentement dans "
 "l'utilisation de ces cookie, dans le cadre des terme de politique "
 "d'utilisation."
+
+#: services\translations\get_translation.modal.template.html:24
+msgid "Cancel"
+msgstr "Annuler"
+
+#: components\navbar\navbar.template.html:25
+msgid "Change homepage language"
+msgstr "Changer la langue"
+
+#: services\translations\get_translation.modal.template.html:13
+msgid "Choose your language"
+msgstr "Sélectionnez votre langue"
 
 #: app\homepage\homepage.unlogged.template.html:148
 msgid ""
@@ -132,16 +144,16 @@ msgstr "Si vous n'avez pas de compte, veuillez"
 msgid "Last run"
 msgstr "Dernière exécution"
 
-#: components\navbar\navbar.template.html:25
+#: components\navbar\navbar.template.html:26
 msgid "Log in"
 msgstr "Connexion"
 
-#: components\navbar\navbar.template.html:41
+#: components\navbar\navbar.template.html:42
 msgid "Log out"
 msgstr "Deconnexion"
 
 #: app\login\login.template.html:10 app\login\login.template.html:26
-#: components\navbar\navbar.controller.js:26
+#: components\navbar\navbar.controller.js:28
 msgid "Login"
 msgstr "Connexion"
 
@@ -153,13 +165,17 @@ msgstr "Logs"
 msgid "My Porfolio"
 msgstr "Mes Portefeuilles"
 
-#: components\navbar\navbar.controller.js:19
+#: components\navbar\navbar.controller.js:21
 msgid "My Portfolios"
 msgstr "Mes Portefeuilles"
 
 #: app\admin\admin.crawlers.template.html:11
 msgid "Name"
 msgstr "Noms"
+
+#: services\translations\get_translation.modal.template.html:23
+msgid "OK"
+msgstr "OK"
 
 #: app\admin\admin.dashboard.template.html:3
 msgid "Overview of the website"
@@ -180,8 +196,8 @@ msgid "Profesionnal data visualizations"
 msgstr "Visualisation de donnée Professionelle"
 
 #: app\register\register.template.html:38
-#: components\navbar\navbar.controller.js:29
-#: components\navbar\navbar.template.html:26
+#: components\navbar\navbar.controller.js:31
+#: components\navbar\navbar.template.html:27
 msgid "Register"
 msgstr "Enregistrement"
 
@@ -196,7 +212,11 @@ msgstr "Enregistremen réussit avec l'adresse suivante: {{registration_email}}."
 msgid "Retype your password"
 msgstr "Veuillez retaper votre mot de passe"
 
-#: components\navbar\navbar.template.html:39
+#: services\translations\get_translation.modal.template.html:14
+msgid "Select please choose your prefered language"
+msgstr "Veuillez sélectionnez votre langue préférée"
+
+#: components\navbar\navbar.template.html:40
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -251,7 +271,7 @@ msgstr "Status"
 msgid "Stock Screener"
 msgstr "Screeners"
 
-#: components\navbar\navbar.controller.js:16
+#: components\navbar\navbar.controller.js:18
 msgid "Stock Screeners"
 msgstr "Screeners d'Actions"
 
@@ -300,6 +320,14 @@ msgstr ""
 #: app\admin\admin.crawlers.template.html:2
 msgid "Web data status"
 msgstr "Statut des données du web"
+
+#: services\translations\get_translation.modal.template.html:6
+msgid "Welcome to Squirrel"
+msgstr "Bienvenue sur Squirrel"
+
+#: services\translations\get_translation.modal.template.html:9
+msgid "Welcome to Squirrel. Can you tell us in which is your language"
+msgstr "Bienvenue sur Squirrel. Pouvez-vous nous dire quel est votre langue?"
 
 #: app\register\register.template.html:49
 msgid "Welcome!"

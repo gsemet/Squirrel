@@ -1,12 +1,15 @@
 'use strict';
 
-angular.module('squirrel').run(
+
+angular.module('squirrel').factory('TranslationService',
 
   ['gettextCatalog', "AUTH_EVENTS", "$rootScope", "AuthenticationService", "ipCookie", "ModalService", "$modal",
 
     function(gettextCatalog, AUTH_EVENTS, $rootScope, AuthenticationService, ipCookie, ModalService, $modal) {
 
-      var that = {};
+      var translationService = {};
+
+      translationService.TRANSLATION_UPDATED = "translation_updated";
 
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
         console.log("translation service on loginSuccesful:" + userName);
@@ -17,35 +20,38 @@ angular.module('squirrel').run(
 
       $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(event) {
         console.log("translation service on logout");
-        that.setLangFromCookie();
+        translationService.setLangFromCookie();
       });
 
       $rootScope.$on(AUTH_EVENTS.loginFailed, function(event, error) {
         console.log("translation service on loginError:" + error);
       });
 
-      that.setLangFromCookie = function() {
+      translationService.setLangFromCookie = function() {
         var lang = ipCookie("prefered-language");
         if (lang && lang != 'en') {
           console.log("Setting current language to " + lang);
           gettextCatalog.setCurrentLanguage(lang);
           gettextCatalog.debug = true;
+          translationService.currentLang = lang;
         } else {
           gettextCatalog.setCurrentLanguage('en');
           console.log("Setting to default language 'en'");
+          if (!lang) {
+            translationService.currentLang = null;
+            setTimeout(function() {
+              translationService.askUserLanguage();
+            }, 1000);
+          } else {
+            translationService.currentLang = lang;
+          }
           gettextCatalog.debug = false;
-          setTimeout(function() {
-            that.askUserLanguage();
-          }, 1000);
         }
       };
 
-      that.askUserLanguage = function() {
-        /* console.log("askUserLanguage");
-          var myOtherModal = $modal({
-            template: 'services/translations/get_translation.modal.template.html',
-            show: true
-          });*/
+      translationService.askUserLanguage = function() {
+        // Ex:
+        //     http://jsfiddle.net/dwmkerr/8MVLJ/
         ModalService.showModal({
           templateUrl: "services/translations/get_translation.modal.template.html",
           controller: "GetTranslationController"
@@ -58,13 +64,32 @@ angular.module('squirrel').run(
             console.log("You said you wanted language: " + lang);
             if (lang) {
               ipCookie("prefered-language", lang);
-              that.setLangFromCookie();
+              translationService.setLangFromCookie();
+              $rootScope.$emit(translationService.TRANSLATION_UPDATED, lang);
             }
           });
         });
-      }
+      };
 
-      that.setLangFromCookie();
+
+      translationService.getCurrentLang = function() {
+        return translationService.currentLang;
+      };
+
+      return translationService;
+    }
+  ]
+);
+
+
+angular.module('squirrel').run(
+
+  ["TranslationService",
+
+    function(TranslationService) {
+
+      TranslationService.setLangFromCookie();
+
     }
   ]
 );

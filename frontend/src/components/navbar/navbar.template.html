@@ -22,6 +22,7 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+        <li ng-if="login_username.length <= 0 && currentLang"><a href="#/" ng-click='changeLang()'><span class="glyphicon glyphicon-flag"></span> <span translate>Change homepage language</span></a></li>
         <li ng-if="login_username.length <= 0" ng-class="navClass('login')"><a href="#/login"><span class="glyphicon glyphicon-user"></span> <span translate>Log in</span></a></li>
         <li ng-if="login_username.length <= 0" ng-class="navClass('register')"><a href="#/register"><span class="glyphicon glyphicon-plus"></span> <span translate>Register</span></a></li>
         <!-- <li ng-if="login_username.length > 0">

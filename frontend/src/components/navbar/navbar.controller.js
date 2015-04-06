@@ -2,33 +2,44 @@
 
 angular.module('squirrel').controller('NavbarCtrl',
 
-  ["$scope", "$location", "$rootScope", "AuthenticationService", "AUTH_EVENTS", "gettextCatalog",
+  ["$scope", "$location", "$rootScope", "AuthenticationService", "AUTH_EVENTS", "gettextCatalog", "TranslationService",
 
-    function($scope, $location, $rootScope, AuthenticationService, AUTH_EVENTS, gettextCatalog) {
+    function($scope, $location, $rootScope, AuthenticationService, AUTH_EVENTS, gettextCatalog, TranslationService) {
 
       $scope.date = new Date();
       $scope.login_username = "";
       $scope.is_admin = AuthenticationService.isAdmin();
+      $scope.currentLang = TranslationService.getCurrentLang();
 
-      $scope.navLinks = [
-        {
-          endpoint: 'screeners',
-          linktext: gettextCatalog.getString('Stock Screeners'),
-        }, {
-          endpoint: 'my-portfolios',
-          linktext: gettextCatalog.getString('My Portfolios'),
-        }
-      ];
+      $scope.refreshDynamicLinks = function() {
+        $scope.navLinks = [
+          {
+            endpoint: 'screeners',
+            linktext: gettextCatalog.getString('Stock Screeners'),
+          }, {
+            endpoint: 'my-portfolios',
+            linktext: gettextCatalog.getString('My Portfolios'),
+          }
+        ];
 
-      $scope.loginLinks = [
-        {
-          endpoint: 'login',
-          linktext: gettextCatalog.getString('Login'),
-        }, {
-          endpoint: 'register',
-          linktext: gettextCatalog.getString('Register'),
-        }
-      ];
+        $scope.loginLinks = [
+          {
+            endpoint: 'login',
+            linktext: gettextCatalog.getString('Login'),
+          }, {
+            endpoint: 'register',
+            linktext: gettextCatalog.getString('Register'),
+          }
+        ];
+      };
+      $scope.refreshDynamicLinks();
+
+      $rootScope.$on(TranslationService.TRANSLATION_UPDATED, function(event, lang) {
+        console.log("navbar on translation updated:" + lang);
+        $scope.currentLang = TranslationService.getCurrentLang();
+        $scope.refreshDynamicLinks();
+      });
+
 
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
         console.log("navbar on loginSuccesful1:" + userName);
@@ -61,6 +72,10 @@ angular.module('squirrel').controller('NavbarCtrl',
         }
         var currentRoute = $location.path().substring(1) || '/';
         return page === currentRoute ? 'active' : '';
+      };
+
+      $scope.changeLang = function() {
+        TranslationService.askUserLanguage();
       };
     }
   ]

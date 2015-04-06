@@ -10,8 +10,8 @@
         <form class="form-horizontal" role="form">
           <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
-              <ui-select ng-model="language.selected" theme="bootstrap" title="Choose your language">
-                <ui-select-match placeholder="Select please choose your prefered language">{{$select.selected.language}}</ui-select-match>
+              <ui-select ng-model="language.selected" theme="bootstrap" title="{{'Choose your language' | translate}}">
+                <ui-select-match placeholder="{{'Select please choose your prefered language' | translate}}">{{$select.selected.language}}</ui-select-match>
                 <ui-select-choices repeat="lang in languages | filter: $select.search">
                   <div ng-bind-html="lang.language | highlight: $select.search"></div>
                 </ui-select-choices>
@@ -19,10 +19,9 @@
             </div>
           </div>
         </form>
-        Selected: {{language.selected}}
       <div class="modal-footer">
-        <button type="button" ng-click="ok()" class="btn btn-primary" data-dismiss="modal">OK</button>
-        <button type="button" ng-click="cancel()" class="btn">Cancel</button>
+        <button type="button" ng-click="ok()" class="btn btn-primary" data-dismiss="modal" translate>OK</button>
+        <button type="button" ng-click="cancel()" class="btn" data-dismiss="modal" translate>Cancel</button>
       </div>
     </div>
   </div>
