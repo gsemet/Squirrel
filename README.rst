@@ -55,7 +55,7 @@ In the squirrel directory, execute the following command:
 
 .. code-block:: bash
 
-    python install/install.py
+    python install/install.py install
 
 
 Installation under Windows
@@ -114,7 +114,7 @@ Installation:
 
 .. code-block:: bash
 
-    python install/install.py
+    python install/install.py install
 
 Switch to environment (activate virtualenv):
 
