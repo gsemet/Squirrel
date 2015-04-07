@@ -12,24 +12,29 @@ body {
 .ddm() when (@dropDown) {
   > .dropdown-menu {
     background-color: @bgDefault;
-    background-image: url("../assets/images/leather.jpg");
+    /*background-image: url("../assets/images/leather.jpg");*/
     background-repeat: repeat-x;
     > li > a {
       color: @colDefault;
       &:hover,  &:focus {
-        color: @colHighlight;
+        color: @colDefault;
         background-color: @bgHighlight; }}
     .divider {
       background-color: @bgHighlight;}}}
 .navbar-default {
-  background-color: @bgDefault;
-  background-image: url("../assets/images/leather.jpg");
-  background-repeat: repeat-x;
+  /*background-color: @bgDefault;*/
+  /*background-image: url("../assets/images/leather.jpg");*/
+  /*background-repeat: repeat-x;*/
   border-color: @bgHighlight;
+  background: -webkit-linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* Standard syntax (must be last) */
+
   .navbar-brand {
     color: @colDefault;
     &:hover, &:focus {
-      color: @colHighlight; }}
+      color: @colDefault; }}
   .navbar-text {
     color: @colDefault; }
   .navbar-nav {
@@ -37,15 +42,15 @@ body {
       > a {
         color: @colDefault;
         &:hover,  &:focus {
-          color: @colHighlight; }}
+          color: @colDefault; }}
       .ddm }
     > .active {
       > a, > a:hover, > a:focus {
-        color: @colHighlight;
+        color: @colDefault;
         background-color: @bgHighlight; }}
     > .open {
       > a, > a:hover, > a:focus {
-        color: @colHighlight;
+        color: @colDefault;
         background-color: @bgHighlight; }}}
   .navbar-toggle {
     border-color: @bgHighlight;
@@ -65,9 +70,9 @@ body {
     > li > a {
       color: @colDefault;
       &:hover, &:focus {
-        color: @colHighlight; }}
+        color: @colDefault; }}
     > .active {
       > a, > a:hover, > a:focus, {
-        color: @colHighlight;
+        color: @colDefault;
         background-color: @bgHighlight; }}}
 }

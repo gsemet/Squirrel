@@ -39,13 +39,13 @@
   padding-left: 20px;
 }
 
-/*@bgDefault      : #925e2c; */
+@import '../../components/common/common.less';
 
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: rgba(54, 25, 25, .7);
+  color: @colDefault;
+  background-color: @bgDefault;
 }
 
 
@@ -55,7 +55,7 @@
 }
 
 .table-header {
-  background-color: rgba(54, 25, 25, .7);
+  background-color: @bgDefault;
   color: white;
 }
 
