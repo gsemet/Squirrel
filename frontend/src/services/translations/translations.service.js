@@ -9,9 +9,17 @@ angular.module('squirrel').factory('TranslationService',
     function(gettextCatalog, AUTH_EVENTS, $rootScope, AuthenticationService, ipCookie, ModalService,
       $timeout) {
 
-      var translationService = {};
+      var translationService = {
+        languages: [{
+          'language': 'French (France)',
+          'short_lang': 'fr'
+        }, {
+          'language': 'English (US)',
+          'short_lang': 'en'
+        }],
+        TRANSLATION_UPDATED: "translation_updated",
+      };
 
-      translationService.TRANSLATION_UPDATED = "translation_updated";
 
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
         console.log("translation service on loginSuccesful: " + userName);
@@ -58,7 +66,11 @@ angular.module('squirrel').factory('TranslationService',
         //     http://jsfiddle.net/dwmkerr/8MVLJ/
         ModalService.showModal({
           templateUrl: "services/translations/get_translation.modal.template.html",
-          controller: "GetTranslationController"
+          controller: "GetTranslationController",
+          inputs: {
+            languages: translationService.languages,
+            currentLang: translationService.currentLang
+          }
         }).then(function(modal) {
           // The modal object has the element built, if this is a bootstrap modal
           // you can call 'modal' to show it, if it's a custom modal just show or hide
@@ -75,9 +87,21 @@ angular.module('squirrel').factory('TranslationService',
         });
       };
 
-
       translationService.getCurrentLang = function() {
         return translationService.currentLang;
+      };
+
+      translationService.getCurrentLanguage = function() {
+        console.log("translationService.currentLang = " + JSON.stringify(translationService.currentLang));
+        var found = null;
+        _.forEach(translationService.languages, function(lang) {
+          console.log("lang = " + JSON.stringify(lang) + "?");
+          if (translationService.currentLang == lang.short_lang) {
+            console.log("returing = " + JSON.stringify(lang.language));
+            found = lang.language;
+          };
+        });
+        return found;
       };
 
       return translationService;

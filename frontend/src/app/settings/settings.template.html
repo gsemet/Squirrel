@@ -1,13 +1,23 @@
-<div class="container">
-  <!-- <ol class="breadcrumb">
-    <li><a href="#">Home</a></li>
-    <li class="active">Settings</li>
-  </ol>
-  <hr />
-   -->
+<div class="row" ng-if="!logged_in">
+ unlogged user has no access to this page.
+</div>
 
-  <h1 class="page-header">
-    Settings <small></small>
-  </h1>
-  user setting page
+  <div class="row" ng-if="logged_in">
+  <div class="container">
+    <!-- <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li class="active">Settings</li>
+    </ol>
+    <hr />
+     -->
+
+    <h1 class="page-header">
+      <span translate>Settings</span> <small></small>
+    </h1>
+    <h2 translate>Change your Language</h2>
+    <p translate>
+      Current language: {{language}}
+    </p>
+    <button type="button" class="btn btn-default" ng-click="changeLang()" translate>Change Language</button>
+  </div>
 </div>

@@ -82,9 +82,17 @@ msgstr ""
 msgid "Cancel"
 msgstr "Annuler"
 
+#: app\settings\settings.template.html:16
+msgid "Change Language"
+msgstr "Changer la langue courante"
+
 #: components\navbar\navbar.template.html:25
 msgid "Change homepage language"
 msgstr "Changer la langue"
+
+#: app\settings\settings.template.html:12
+msgid "Change your Language"
+msgstr "Sélectionnez votre langue"
 
 #: services\translations\get_translation.modal.template.html:13
 msgid "Choose your language"
@@ -118,6 +126,10 @@ msgstr "Crawlers"
 #: app\register\register.template.html:10
 msgid "Create"
 msgstr "Création"
+
+#: app\settings\settings.template.html:13
+msgid "Current language: {{language}}"
+msgstr "Langue actuelle: {{language}}"
 
 #: app\admin\admin.template.html:17
 msgid "Dashboard"
@@ -290,6 +302,7 @@ msgstr "Veuillez sélectionnez votre langue préférée"
 msgid "Services"
 msgstr "Services"
 
+#: app\settings\settings.template.html:10
 #: components\navbar\navbar.template.html:40
 msgid "Settings"
 msgstr "Paramètres"
