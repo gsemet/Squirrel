@@ -22,6 +22,10 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
       };
 
       $timeout($scope.refresh, 200);
+
+      $scope.removeRow = function(row) {
+        console.log("remove row = " + JSON.stringify(row));
+      }
     }
   ]
 );
