@@ -30,9 +30,6 @@ app = angular.module("squirrel", [
   'ui.bootstrap.modal',
   'ui.select',
   //'angularDc',
-  //'duParallax',
-  //'ngCookies',
-  //'ngCrossfilter',
   //'stpa.morris',
 ]);
 
