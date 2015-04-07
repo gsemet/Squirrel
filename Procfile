@@ -1,1 +1,1 @@
-program: ./install/install.py -l
+program: ./install/install.py serve:novirtualenv
