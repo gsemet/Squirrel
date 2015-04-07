@@ -79,7 +79,7 @@ Installation:
 
 .. code-block:: bash
 
-    python.exe -u install\\squirrel-install.py
+    python.exe -u install\\squirrel-install.py install
 
 
 Launching unit tests (from outside of virtualenv):
