@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import fnmatch
 import os
 import shutil
 
@@ -29,6 +30,7 @@ paths_to_remove = [(workdir_path, "workdir"),
                    (os.path.join(root_path, "_trial_temp.lock"), "_trial_temp.lock"),
                    (os.path.join(root_path, "tosource"), "tosource"),
                    (frontend_dist_path, "frontend/dist"),
+                   (frontend_node_modules_path, "frontend/node_modules"),
                    (frontend_bower_components_path, "frontend/bower_components"),
                    ]
 
@@ -40,5 +42,18 @@ for path, name in paths_to_remove:
     elif os.path.isfile(path):
         print("Removing {}...".format(name))
         os.unlink(path)
+
+file_pattern_to_clean = ['*.pyc']
+print("Cleaning files: {}".format(", ".join(file_pattern_to_clean)))
+matches = []
+for root, dirnames, filenames in os.walk(root_path):
+    for pattern in file_pattern_to_clean:
+        for filename in fnmatch.filter(filenames, pattern):
+            matches.append(os.path.join(root, filename))
+if matches:
+    print("Removing:")
+    for m in matches:
+        print(" - {}".format(m))
+        os.unlink(m)
 
 print("Uninstall done")
