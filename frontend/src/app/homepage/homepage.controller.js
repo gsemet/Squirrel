@@ -2,13 +2,11 @@
 
 angular.module('squirrel').controller('HomepageCtrl',
 
-  ["AuthenticationService", "$rootScope", '$scope', "AUTH_EVENTS", 'parallaxHelper',
+  ["AuthenticationService", "$rootScope", '$scope', "AUTH_EVENTS",
 
-    function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS, parallaxHelper) {
+    function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS) {
 
       $scope.logged_in = AuthenticationService.isAuthenticated();
-
-      $scope.background = parallaxHelper.createAnimator(-0.3);
 
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
         console.log("homepage on loginSuccesful1:" + userName);

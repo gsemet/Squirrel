@@ -15,7 +15,7 @@ msgstr ""
 msgid "About"
 msgstr "A Propos"
 
-#: app\homepage\homepage.unlogged.template.html:139
+#: app\homepage\homepage.unlogged.template.html:143
 msgid "Access your porfolio anywhere, any time"
 msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 
@@ -56,7 +56,7 @@ msgstr ""
 "positions, la valeur de votre portefeuille, prévoyez les versements de vos "
 "dividendes, préparez votre déclaration d'impôts."
 
-#: app\homepage\homepage.unlogged.template.html:154
+#: app\homepage\homepage.unlogged.template.html:158
 msgid "Android and iOS native applications are provided."
 msgstr "Des applications natives Android et iOS sont fournis."
 
@@ -90,7 +90,7 @@ msgstr "Changer la langue"
 msgid "Choose your language"
 msgstr "Sélectionnez votre langue"
 
-#: app\homepage\homepage.unlogged.template.html:148
+#: app\homepage\homepage.unlogged.template.html:152
 msgid ""
 "Consult, edit and visualize your portfolio anywhere, from your personal "
 "computer, tablet\n"
@@ -132,7 +132,7 @@ msgstr "Dépot"
 msgid "Description"
 msgstr "Description"
 
-#: app\homepage\homepage.unlogged.template.html:193
+#: app\homepage\homepage.unlogged.template.html:197
 msgid ""
 "Easily show your portfolio to your financial adviser so he can give you "
 "accurate and\n"
@@ -214,6 +214,10 @@ msgstr "Légal"
 msgid "Manage your portfolios"
 msgstr "Gerez vos portefeuilles"
 
+#: app\homepage\homepage.unlogged.template.html:135
+msgid "Meet Squirrel, your porfolio best friend!"
+msgstr "Découvrez Squirrel, le meilleur ami de votre Portefeuille"
+
 #: components\footer\footer.template.html:11
 #: components\navbar\navbar.controller.js:21
 msgid "My Portfolios"
@@ -290,15 +294,15 @@ msgstr "Services"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: app\homepage\homepage.unlogged.template.html:182
+#: app\homepage\homepage.unlogged.template.html:186
 msgid "Share part of your portfolio publicly, keep it completely private."
 msgstr "Partager votre portefeuille en ligne, ou gardez le complètement privé."
 
-#: app\homepage\homepage.unlogged.template.html:170
+#: app\homepage\homepage.unlogged.template.html:174
 msgid "Share your Portfolio"
 msgstr "Partagez vos Portefeuilles"
 
-#: app\homepage\homepage.unlogged.template.html:171
+#: app\homepage\homepage.unlogged.template.html:175
 msgid "Social networks also apply to Investments"
 msgstr "Les Réseaux Sociaux s'appliquent également à l'Investissement"
 
@@ -419,7 +423,7 @@ msgstr "Bienvenue sur Squirrel. Pouvez-vous nous dire quel est votre langue?"
 msgid "Welcome!"
 msgstr "Bienvenue!"
 
-#: app\homepage\homepage.unlogged.template.html:140
+#: app\homepage\homepage.unlogged.template.html:144
 msgid "When investiment goes in the Cloud."
 msgstr "Quand vos investissements vont dans le Nuage."
 
@@ -433,7 +437,7 @@ msgstr ""
 "depuis différentes places boursières, différents courtiers, différentes "
 "enveloppes fiscales."
 
-#: app\homepage\homepage.unlogged.template.html:187
+#: app\homepage\homepage.unlogged.template.html:191
 msgid ""
 "You can easily control what other can see. Create private link to graphs or "
 "table, with\n"
