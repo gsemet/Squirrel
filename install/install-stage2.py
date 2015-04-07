@@ -115,6 +115,9 @@ if do_launch != "install_only_backend":
     print("[INFO] Compiling frontend website")
     if "http_proxy" in os.environ:
         print("[INFO] Behind a proxy: npm --proxy")
+        print("[INFO] You may want to add the following lines in ~/.gitconfig")
+        print('[INFO]    [url "https://github.com"]')
+        print("[INFO]       insteadOf=git://github.com")
         print("[INFO] cd frontend")
         run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
                                                                               "frontend"),
