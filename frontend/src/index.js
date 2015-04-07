@@ -15,6 +15,7 @@ app = angular.module("squirrel", [
   'ipCookie',
   'mgcrea.ngStrap',
   'ngAnimate',
+  'ngCrossfilter',
   'ngGrid',
   'ngResource',
   'ngRoute',
