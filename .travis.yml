@@ -23,3 +23,4 @@ script:
   - "install/install.py"
   - "source workdir/bin/activate && trial squirrel"
   - "source workdir/bin/activate && trial squirrel_integration_tests"
+  - "install/uninstall.py"
