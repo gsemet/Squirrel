@@ -20,7 +20,7 @@ install:
   - "npm install -g bower"
 
 script:
-  - "install/install.py"
+  - "install/install.py install:all"
   - "source workdir/bin/activate && trial squirrel"
   - "source workdir/bin/activate && trial squirrel_integration_tests"
   - "install/uninstall.py"
