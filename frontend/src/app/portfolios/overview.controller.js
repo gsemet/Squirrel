@@ -23,9 +23,19 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
 
       $timeout($scope.refresh, 200);
 
-      $scope.removeRow = function(row) {
-        console.log("remove row = " + JSON.stringify(row));
-      }
+      $scope.edit = function(row) {
+        console.log("edit row = " + JSON.stringify(row));
+      };
     }
   ]
 );
+
+angular.module('squirrel').filter('portfolio_overview_detail_popover', function() {
+
+  return function(row) {
+    var output;
+    output = "Description: " + row.description + "\n";
+    output += "Name: " + row.name + "\n";
+    return output;
+  }
+});

@@ -3,6 +3,19 @@
   <p translate>
     Please find bellow a summary of the portfolios.
   </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="assets/images/dbg-chart.jpg" class="img-responsive" alt="Responsive image">
+      </div>
+      <div class="col-md-6">
+        <img src="assets/images/dbg-chart.jpg" class="img-responsive" alt="Responsive image">
+      </div>
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+  </div>
   <table st-table="displayed" class="table table-striped" st-select-row="row" st-select-mode="single">
     <thead>
       <tr>
@@ -25,13 +38,13 @@
         <td st-ratio="20">{{row.deposit | json_currency}}</td>
         <td st-ratio="20">{{row.valorisation | json_currency}}</td>
         <td>
-          <button class="btn btn-sm" popover-placement="top" popover="{{row.name}}" type="button">
+          <button class="btn btn-sm" popover-placement="top" popover="{{row | portfolio_overview_detail_popover}}" type="button">
             <i class="glyphicon glyphicon-eye-open"></i>
           </button>
         </td>
         <td>
-          <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">
-            <i class="glyphicon glyphicon-remove-circle">
+          <button type="button" ng-click="edit(row)" class="btn btn-sm">
+            <i class="glyphicon glyphicon-edit">
             </i>
           </button>
         </td>

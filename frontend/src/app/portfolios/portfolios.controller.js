@@ -21,6 +21,37 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/securities.template.html',
           /*controller: "PortfoliosSecuritiesCtrl"*/
+        }, {
+          endpoint: 'allocations',
+          href: '#/portfolios?p=allocations',
+          text: gettextCatalog.getString('Allocations'),
+          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          templateUrl: 'app/portfolios/allocations.template.html',
+          /*controller: "PortfoliosSecuritiesCtrl"*/
+        }, {
+          endpoint: 'timeline',
+          href: '#/portfolios?p=timeline',
+          text: gettextCatalog.getString('Timeline'),
+          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          templateUrl: 'app/portfolios/timeline.template.html',
+        }, {
+          endpoint: 'status_report',
+          href: '#/portfolios?p=status_report',
+          text: gettextCatalog.getString('Status Report'),
+          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          templateUrl: 'app/portfolios/status_report.template.html',
+        }, {
+          endpoint: 'reporting',
+          href: '#/portfolios?p=reporting',
+          text: gettextCatalog.getString('Reporting'),
+          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          templateUrl: 'app/portfolios/reporting.template.html',
+        }, {
+          endpoint: 'annual_reports',
+          href: '#/portfolios?p=annual_reports',
+          text: gettextCatalog.getString('Annual Reports'),
+          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          templateUrl: 'app/portfolios/annual_reports.template.html',
         }
       ];
 
