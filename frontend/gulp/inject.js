@@ -23,11 +23,11 @@ gulp.task('inject', ['styles'], function() {
   });
 
   var injectScripts = gulp.src([
-    paths.src + '/{app,components,services,directives,filters}/**/*.js',
+    paths.src + '/{app,components,services,directives,filters,js}/**/*.js',
     paths.src + '/po/*.js',
     paths.src + '/index.js',
-    '!' + paths.src + '/{app,components,services,directives,filters}/**/*.spec.js',
-    '!' + paths.src + '/{app,components,services,directives,filters}/**/*.mock.js'
+    '!' + paths.src + '/{app,components,services,directives,filters,js}/**/*.spec.js',
+    '!' + paths.src + '/{app,components,services,directives,filters,js}/**/*.mock.js'
   ])
     .pipe($.angularFilesort());
 
@@ -50,7 +50,12 @@ gulp.task('inject', ['styles'], function() {
     // Was exclused:
     //   /bootstrap\.js/ /bootstrap\.css/
     // because https://github.com/Swiip/generator-gulp-angular/issues/385
-    exclude: [/foundation\.css/, /highcharts\.src\.js/, /toaster.min.js/]
+    exclude: [
+      /foundation\.css/,
+      /highcharts\.src\.js/,
+      /toaster.min.js/
+    ],
+    verbose: true,
   };
 
   var indexFilter = $.filter('index.css');
@@ -63,5 +68,4 @@ gulp.task('inject', ['styles'], function() {
     .pipe($.inject(injectScripts, injectScriptsOptions))
     .pipe(wiredep(wiredepOptions))
     .pipe(gulp.dest(paths.tmp + '/serve'));
-
 });
