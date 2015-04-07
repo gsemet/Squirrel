@@ -29,7 +29,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           templateUrl: 'app/portfolios/allocations.template.html',
           /*controller: "PortfoliosSecuritiesCtrl"*/
         }, {
-          endpoint: 'timeline',
+          endpoint: 'timeline', // == move history
           href: '#/portfolios?p=timeline',
           text: gettextCatalog.getString('Timeline'),
           spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
