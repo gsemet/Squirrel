@@ -6,6 +6,7 @@ var app;
 app = angular.module("squirrel", [
   // keep the following lines sorted!
   'angular-parallax',
+  'angular-timeline',
   'angularModalService',
   'angularMoment',
   'duScroll',
@@ -27,7 +28,6 @@ app = angular.module("squirrel", [
   'ui.bootstrap',
   'ui.bootstrap.modal',
   'ui.select',
-  // 'angular-timeline',
   //'angularDc',
   //'duParallax',
   //'ngCookies',
