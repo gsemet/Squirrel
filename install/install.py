@@ -21,38 +21,46 @@ import sys
 
 do_virtualenv = True
 
+allowed_cmd = {
+    "serve:dev": ("install and launch developer server (backend served normally but "
+                  "frontend served by 'gulp serve')"),
+    "serve:prod": "install and launch production server",
+    "serve:novirtualenv": ("install and serve production without going into "
+                           "virtualenv (Docker/Heroku)"),
+    "install:backend": "install only backend (python)",
+    "install:all": "install backend and frontend"}
+aliases = {"serve": "serve:dev",
+           "install": "install:all"}
+
+
+def usage():
+    print("Usage: ./install/install.sh [command]")
+    print("")
+    print("Commands:")
+    for cmd, help in sorted(allowed_cmd.items()):
+        print("  {:20}{}".format(cmd, help))
+    print("")
+    print("Aliases:")
+    for alias, cmd in sorted(aliases.items()):
+        print("  {:10}{}".format(alias, cmd))
+    print("")
+    print("Uninstall with './install/uninstall.py'")
+    sys.exit(0)
+
 if len(sys.argv) > 1:
     args = sys.argv[:]
     while args:
         executable = args.pop(0)
-        cmd = args.pop(0)
-        if cmd == "-l":
-            do_launch = "server"
-        elif cmd == "-d":
-            do_launch = "dev-server"
-        elif cmd == "-b":
-            do_launch = "install_only_backend"
-        elif cmd == "-n":
-            do_launch = "only_install"
-            do_virtualenv = False
-        elif cmd == "-np":
-            do_launch = "server"
-            do_virtualenv = False
-        elif cmd == "-h":
-            print("Usage: ./install/install.sh [-l|-d|-b|-h]")
-            print("")
-            print("  -l  launch production server")
-            print("  -d  launch developer server (backend served normally but frontend served by 'gulp serve'")
-            print("  -b  only install backend")
-            print("  -n  install production without going into virtualenv (Docker/Heroku)")
-            print("  -h  this help message")
-            print("")
-            print("Uninstall with './install/uninstall.py'")
-            sys.exit(0)
-        else:
-            raise Exception("Invalid parameter: {!r}".format(cmd))
+        subcmd = args.pop(0)
+        if subcmd in {"-h", "--help"}:
+            usage()
+        subcmd = aliases.get(subcmd, subcmd)
+        if subcmd not in allowed_cmd.keys():
+            print("Invalid command: {}".format(subcmd))
+            print("See usage with --help")
+            sys.exit(1)
 else:
-    do_launch = "only_install"
+    usage()
 
 if sys.version_info < (2, 7):
     raise Exception("must use python 2.7.x. Current version is: {}.".format(sys.version_info))
@@ -82,6 +90,7 @@ else:
 
 print("===============================================================================")
 print("[BOOT] Squirrel Installer Stage 1")
+print("[BOOT] Install target: {}".format(subcmd))
 print("[BOOT] Environment: {0}".format(os_str))
 print("[BOOT] Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
 if do_virtualenv:
@@ -92,7 +101,6 @@ print("[BOOT] You can activate this environment with the following command:")
 print("[BOOT]     {0}".format(activate_info))
 print("[BOOT] Installing in {0}".format(workdir_path))
 print("[BOOT] Requirements: {0}".format(requirements_txt))
-print("[BOOT] Post installation option: {0}".format(do_launch))
 
 
 if sys.platform.startswith('win32'):
@@ -111,8 +119,7 @@ if sys.platform.startswith('win32'):
     subprocess.check_call([
         "cmd", "/K",
         launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
-        workdir_path, stage2_path, install_path, workdir_path,
-        do_launch])
+        workdir_path, stage2_path, install_path, workdir_path, subcmd])
 
 elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
 
@@ -135,23 +142,23 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
         subprocess.check_call([
             'bash',
             '-c',
-            'source {activate} && python {stage2} {install_path} {workdir_path} {launch}'
+            'source {activate} && python {stage2} {install_path} {workdir_path} {subcmd}'
             .format(activate=activate,
                     stage2=stage2_path,
                     install_path=install_path,
                     workdir_path=workdir_path,
-                    launch=do_launch)])
+                    subcmd=subcmd)])
     else:
         print("[BOOT] Starting stage 2 directly without installing a virtualenv")
         # subprocess.check_call([python_exe, stage2_path, activate, install_path])
         subprocess.check_call([
             'bash',
             '-c',
-            'python {stage2} {install_path} {workdir_path} {launch}'
+            'python {stage2} {install_path} {workdir_path} {subcmd}'
             .format(stage2=stage2_path,
                     install_path=install_path,
                     workdir_path=workdir_path,
-                    launch=do_launch)])
+                    subcmd=subcmd)])
 
 else:
     raise Exception("Unsupported environment: {0}".format(sys.platform))

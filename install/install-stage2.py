@@ -18,18 +18,28 @@ install_path = os.path.abspath(install_path)
 workdir_path = sys.argv[2]
 workdir_path = os.path.abspath(workdir_path)
 
-do_launch = sys.argv[3]
+subcmd = sys.argv[3]
+
+allowed_cmd = {
+    "serve:dev",
+    "serve:prod",
+    "serve:novirtualenv",
+    "install:backend",
+    "install:all"}
 
 # if not os.environ['VIRTUAL_ENV']:
 #     raise Exception("VIRTUAL_ENV environment variable is empty. We are not in a virtualenv.")
 
 print("===============================================================================")
 print("[INFO] Squirrel Installer Stage 2")
+if subcmd not in allowed_cmd:
+    print("[ERROR] Invalid install target: {}. Available: {}".format(subcmd, allowed_cmd))
+    sys.exit(1)
 print("[INFO] We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
 print("[INFO] Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
 print("[INFO] installation dir: {}".format(install_path))
 print("[INFO] workdir: {}".format(workdir_path))
-print("[INFO] Launch: {}".format(do_launch))
+print("[INFO] Install target: {}".format(subcmd))
 print("[INFO] Environment variables:")
 for k, v in sorted(os.environ.items()):
     print("[INFO]   {0}:{1}".format(k, v))
@@ -110,14 +120,14 @@ if sys.platform.startswith('win32'):
 else:
     shell = False
 
-if do_launch != "install_only_backend":
+if subcmd != "install:backend":
     print("-------------------------------------------------------------------------------")
     print("[INFO] Compiling frontend website")
     if "http_proxy" in os.environ:
         print("[INFO] Behind a proxy: npm --proxy")
-        print("[INFO] You may want to add the following lines in ~/.gitconfig")
-        print('[INFO]    [url "https://github.com"]')
-        print("[INFO]       insteadOf=git://github.com")
+        print("[NOTE] You may want to add the following lines in your ~/.gitconfig:")
+        print('[NOTE]    [url "https://github.com"]')
+        print("[NOTE]       insteadOf=git://github.com")
         print("[INFO] cd frontend")
         run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
                                                                               "frontend"),
@@ -133,7 +143,7 @@ if do_launch != "install_only_backend":
     print("[INFO] cd frontend")
     run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
-    if do_launch != "dev-server":
+    if subcmd != "serve:dev":
         print("[INFO] cd frontend")
         run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
@@ -144,7 +154,7 @@ if do_launch != "install_only_backend":
     else:
         run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
 
-if do_launch == "only_install":
+if subcmd.startswith("install"):
     print("")
     print("-------------------------------------------------------------------------------")
     print("Do not start the server. Install is succesful.")
@@ -152,7 +162,7 @@ if do_launch == "only_install":
     sys.exit(0)
 
 print("-------------------------------------------------------------------------------")
-if do_launch == "server":
+if subcmd == "serve:prod":
     # Launching Squirrel-server
     if sys.platform.startswith('win32'):
         backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-server.exe")
@@ -164,7 +174,7 @@ if do_launch == "server":
 
     run([backend_launcher])
 
-elif do_launch == "dev-server":
+elif subcmd == "serve:dev":
     # Launching Squirrel-devbackend, which doesn't serve the front end, and let the front
     # be served by 'gulp serve'
     if sys.platform.startswith('win32'):
