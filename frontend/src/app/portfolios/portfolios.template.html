@@ -17,7 +17,19 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li ng-repeat="page in pages" ng-class="activeIfCurrentPageIs(page.endpoint)"><a href="{{page.href}}"><span>{{page.text}}</span><span ng-if="page.spanicon" ng-class="page.spanicon"></span></a></li>
+        <li ng-repeat="page in pages" ng-class="activeIfCurrentPageIs(page.endpoint)">
+          <a href="{{page.href}}">
+            <span>{{page.text}}</span>
+            <span ng-if="page.spanicon" ng-class="page.spanicon"></span>
+          </a>
+          <ul ng-if="page.endpoint == '' && activeIfCurrentPageIs(page.endpoint) == 'active'">
+            <li ng-repeat="portfolio in portfolios" ng-class="activeIfCurrentPortfolioIdIs(portfolio.id)">
+              <a href="#/portfolios?i={{portfolio.id}}">
+                <span>{{portfolio.name}}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

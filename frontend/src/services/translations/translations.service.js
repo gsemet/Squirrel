@@ -20,7 +20,6 @@ angular.module('squirrel').factory('TranslationService',
         TRANSLATION_UPDATED: "translation_updated",
       };
 
-
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
         console.log("translation service on loginSuccesful: " + userName);
         var lang = AuthenticationService.getUserLanguage();
@@ -46,6 +45,7 @@ angular.module('squirrel').factory('TranslationService',
           gettextCatalog.setCurrentLanguage(lang);
           gettextCatalog.debug = true;
           translationService.currentLang = lang;
+          translationService.setExternalToolLang();
         } else {
           gettextCatalog.setCurrentLanguage('en');
           console.log("Setting to default language 'en'");
@@ -56,6 +56,7 @@ angular.module('squirrel').factory('TranslationService',
             }, 1000);
           } else {
             translationService.currentLang = lang;
+            translationService.setExternalToolLang();
           }
           gettextCatalog.debug = false;
         }
@@ -104,6 +105,60 @@ angular.module('squirrel').factory('TranslationService',
         return found;
       };
 
+      translationService.setExternalToolLang = function() {
+        Highcharts.setOptions({
+          lang: {
+            loading: gettextCatalog.getString('Loading...'),
+            months: [
+              gettextCatalog.getString('January'),
+              gettextCatalog.getString('February'),
+              gettextCatalog.getString('March'),
+              gettextCatalog.getString('April'),
+              gettextCatalog.getString('May'),
+              gettextCatalog.getString('June'),
+              gettextCatalog.getString('July'),
+              gettextCatalog.getString('August'),
+              gettextCatalog.getString('September'),
+              gettextCatalog.getString('October'),
+              gettextCatalog.getString('November'),
+              gettextCatalog.getString('December')
+            ],
+            shortMonths: [
+              gettextCatalog.getString('Jan'),
+              gettextCatalog.getString('Feb'),
+              gettextCatalog.getString('Mar'),
+              gettextCatalog.getString('Apr'),
+              gettextCatalog.getString('May'),
+              gettextCatalog.getString('Jun'),
+              gettextCatalog.getString('Jul'),
+              gettextCatalog.getString('Aug'),
+              gettextCatalog.getString('Sep'),
+              gettextCatalog.getString('Oct'),
+              gettextCatalog.getString('Nov'),
+              gettextCatalog.getString('Dec')
+            ],
+            weekdays: [
+              gettextCatalog.getString('Sunday'),
+              gettextCatalog.getString('Monday'),
+              gettextCatalog.getString('Tuesday'),
+              gettextCatalog.getString('Wednesday'),
+              gettextCatalog.getString('Thursday'),
+              gettextCatalog.getString('Friday'),
+              gettextCatalog.getString('Saturday')
+            ],
+            /// decimal point
+            decimalPoint: gettextCatalog.getString('.'),
+            numericSymbols: ['k', 'M', 'G', 'T', 'P', 'E'], // SI prefixes used in axis labels
+            resetZoom: gettextCatalog.getString('Reset zoom'),
+            resetZoomTitle: gettextCatalog.getString('Reset zoom level 1:1'),
+            /// thousands separator
+            thousandsSep: gettextCatalog.getString(','),
+            rangeSelectorZoom: gettextCatalog.getString('Zoom'),
+            rangeSelectorFrom: gettextCatalog.getString('From'),
+            rangeSelectorTo: gettextCatalog.getString('To')
+          }
+        });
+      }
       return translationService;
     }
   ]

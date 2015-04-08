@@ -2,9 +2,11 @@
 
 angular.module("squirrel").controller("PortfoliosCtrl",
 
-  ["$scope", "AuthenticationService", "$rootScope", "AUTH_EVENTS", "$location", "gettextCatalog", /*"$controller",*/
+  ["$scope", "AuthenticationService", "$rootScope", "AUTH_EVENTS", "$location", "gettextCatalog",
+  'Restangular', '$timeout',
 
-    function($scope, AuthenticationService, $rootScope, AUTH_EVENTS, $location, gettextCatalog /*, $controller*/ ) {
+    function($scope, AuthenticationService, $rootScope, AUTH_EVENTS, $location, gettextCatalog,
+      Restangular, $timeout) {
 
       $scope.pages = [
         {
@@ -70,6 +72,21 @@ angular.module("squirrel").controller("PortfoliosCtrl",
         $scope.is_logged = AuthenticationService.isAuthenticated();
       });
 
+      var basePortfolios = Restangular.all("api/portfolios");
+
+      $scope.portfolios = [];
+      $scope.refresh = function() {
+        $scope.portfolios = [];
+        basePortfolios.getList().then(function(data) {
+          $timeout(function() {
+            console.log("received portfolios data for sidebar: " + JSON.stringify(data));
+            _.forEach(data, function(row) {
+              $scope.portfolios.push(row);
+            });
+          }, 100);
+        });
+      };
+      $timeout($scope.refresh, 100);
 
       $scope.sidebar_class = "active";
       $scope.toggleSidebar = function() {
@@ -100,6 +117,21 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           return "active";
         }
         return "";
+      };
+
+      $scope.activeIfCurrentPortfolioIdIs = function(portfolioId) {
+        var s = $location.search();
+        if (_.isEmpty(s['i'])) {
+          return "";
+        } else {
+          var current_portfolio_id = s['i'];
+          console.log("current_portfolio_id = " + JSON.stringify(+current_portfolio_id));
+          console.log("portfolioId = " + JSON.stringify(+portfolioId));
+          if (+current_portfolio_id == +portfolioId) {
+            return "active";
+          }
+          return "";
+        }
       };
 
       /*

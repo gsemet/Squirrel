@@ -5,6 +5,12 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
   ["$scope", "$location", "gettextCatalog", "Restangular", "ngTableParams", "$timeout",
 
     function($scope, $location, gettextCatalog, Restangular, ngTableParams, $timeout) {
+      var s = $location.search();
+      $scope.portfolio_id = s["i"];
+      console.log("overview page: $scope.portfolio_id = " + JSON.stringify($scope.portfolio_id));
+      if ($scope.portfolio_id) {
+        return;
+      }
 
       var basePortfolios = Restangular.all("api/portfolios");
 
@@ -25,7 +31,7 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
 
       $scope.edit = function(row) {
         console.log("edit row = " + JSON.stringify(row));
-        $location.url("/api/portfolio/details/" + row.id)
+        $location.url("/portfolios/?i=" + row.id)
       };
     }
   ]

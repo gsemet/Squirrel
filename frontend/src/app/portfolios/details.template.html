@@ -1,6 +1,15 @@
 <div ng-controller="PortfoliosDetailsCtrl">
-  <h1 class="page-header"><span translate>Details</span> <small translate>of your portfolio: {{portfolio.name}}</small></h1>
-  <p translate>
-    Please find bellow a summary of the portfolios.
-  </p>
+  <ol class="breadcrumb">
+    <li><a href="#/portfolios">Overview</a></li>
+    <li class="active">{{portfolio.name}}</li>
+  </ol>
+  <h1 class="page-header"><span translate>Details of your portfolio</span> <small>{{portfolio.name}}</small></h1>
+  <div row>
+    <div class="col-md-4">
+      <highchart id="chartAllocation" config="chartConfigAllocation" class="span4"></highchart>
+    </div>
+    <div class="col-md-8">
+      <highchart id="chartHistory" config="chartConfigHistory" class="span8"></highchart>
+    </div>
+  </row>
 </div>
