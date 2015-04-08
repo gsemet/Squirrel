@@ -48,6 +48,10 @@ app.config(
           templateUrl: "app/portfolios/portfolios.template.html",
           controller: "PortfoliosCtrl"
         })
+        .when("/portfolios/details/:portfolioId", {
+          templateUrl: "app/portfolios/details.template.html",
+          controller: "PortfoliosDetailsCtrl"
+        })
         .when("/screeners", {
           templateUrl: "app/screeners/screeners.template.html",
           controller: "ScreenersCtrl"

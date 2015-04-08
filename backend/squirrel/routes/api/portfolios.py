@@ -14,6 +14,7 @@ def route_portfolios(request):
 
     data = [
         {
+            'id': 1,
             'name': "CTO Fortuneo",
             'broker': 'Fortuneo',
             'description': "Compte Titre Ordinaire (uniq. Euronext Paris)",

@@ -25,6 +25,7 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
 
       $scope.edit = function(row) {
         console.log("edit row = " + JSON.stringify(row));
+        $location.url("/api/portfolio/details/" + row.id)
       };
     }
   ]
