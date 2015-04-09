@@ -4,12 +4,44 @@
     <li class="active">{{portfolio.name}}</li>
   </ol>
   <h1 class="page-header"><span translate>Details of your portfolio</span> <small>{{portfolio.name}}</small></h1>
-  <div row>
+  <div class="row">
     <div class="col-md-4">
       <highchart id="chartAllocation" config="chartConfigAllocation" class="span4"></highchart>
     </div>
     <div class="col-md-8">
       <highchart id="chartHistory" config="chartConfigHistory" class="span8"></highchart>
     </div>
-  </row>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <table st-table="displayed" class="table table-striped" st-select-row="row" st-select-mode="single">
+        <thead>
+          <tr>
+            <th class="table-header" st-ratio="20" st-sort="name" translate>Name</th>
+            <th class="table-header" st-ratio="10" st-sort="symbol" translate>Symbol</th>
+            <th class="table-header right-align" st-ratio="10" st-sort="shares" translate>Shares</th>
+            <th class="table-header right-align" st-ratio="10" st-sort="coast_basis" translate>Cost Basis</th>
+            <th class="table-header right-align" st-ratio="10" st-sort="gain" translate>Gain</th>
+            <th class="table-header right-align" st-ratio="10" st-sort="gain_percent" translate>Gain %</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="row in displayed">
+            <td st-ratio="20">{{row.name}}</td>
+            <td st-ratio="10">{{row.ticker.symbol}}</td>
+            <td class="right-align" st-ratio="10">{{row.shares}}</td>
+            <td class="right-align" st-ratio="10">{{row.cost_basis.overall | json_currency}}</td>
+            <td class="right-align" st-ratio="10">{{row.gain.overall | json_currency}}</td>
+            <td class="right-align" st-ratio="10">{{row.gain.percent}}</td>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="5" class="text-center">
+              <div st-items-by-page="20" st-pagination=""></div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
 </div>

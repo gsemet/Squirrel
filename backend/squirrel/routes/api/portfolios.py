@@ -22,26 +22,26 @@ def route_portfolios(request):
             'type': 'CTO',
             'creation_date': '01/03/2014',
             'deposit': {
-                'value': 800.00,
-                'currency': 'euro',
+                'v': 800.00,
+                'c': 'euro',
             },
             'supports': {
                 'quotes': {
-                    'value': 0,
-                    'currency': 'euro',
+                    'v': 0,
+                    'c': 'euro',
                 },
                 'bonds':  {
-                    'value': 755.90,
-                    'currency': 'euro',
+                    'v': 755.90,
+                    'c': 'euro',
                 },
             },
             'valorisation': {
-                'value': 755.90,
-                'currency': 'euro',
+                'v': 755.90,
+                'c': 'euro',
             },
             'profit': {
-                'value': -44.10,
-                'currency': 'euro',
+                'v': -44.10,
+                'c': 'euro',
             },
             'gain': {
                 'percentage': -5.5,
@@ -73,69 +73,198 @@ def route_portfolios_id(request, portfolio_id):
         'class:': 'Actions',
         'type': 'CTO',
         'creation_date': '01/03/2014',
-        'deposit': {
-                'value': 800.00,
-                'currency': 'euro',
-        },
         'supports': {
             'quotes': {
-                'value': 0,
-                'currency': 'euro',
+                'v': 0,
+                'c': 'euro',
             },
             'bonds':  {
-                'value': 755.90,
-                'currency': 'euro',
+                'v': 755.90,
+                'c': 'euro',
             },
         },
-        'valorisation': {
-            'value': 755.90,
-            'currency': 'euro',
-        },
-        'profit': {
-            'value': -44.10,
-            'currency': 'euro',
-        },
-        'gain': {
-            'percentage': -5.5,
-        },
-        'gain_annualisation': {
-            'average': {
-                'percentage': -5.5
+        'portfolio_value': {
+            'valorisation': {
+                'v': 755.90,
+                'c': 'euro',
             },
-            "years": {
-                2014: {
+            'profit': {
+                'v': -44.10,
+                'c': 'euro',
+            },
+            'gain': {
+                'percentage': -5.5,
+            },
+            'gain_annualisation': {
+                'average': {
                     'percentage': -5.5
                 },
-            }
+                "years": {
+                    2014: {
+                        'percentage': -5.5
+                    },
+                }
+            },
+        },
+        'cash': {
+            'deposit': {
+                'v': 5254,
+                'c': 'euro',
+            },
+            'valorisation': {
+                'v': 5764,
+                'c': 'euro',
+            },
+            'gain': {
+                'percent': 2,
+                'value': {
+                    'v': 5,
+                    'c': 'euro',
+                },
+            },
         },
         'details': [
             {
                 'id': 123,
                 'name': 'GDF',
+                'shares': 78,
+                'ticker': {
+                    'source': 'GoogleFinance',
+                    'exchange': 'NYSE',
+                    'symbol': 'GDF',
+                },
                 'valorisation': {
-                    'value': 650.90,
-                    'currency': 'euro',
-                }
+                    'v': 650.90,
+                    'c': 'euro',
+                },
+                'return': {
+                    'percent': 3.3,
+                    'overall': {
+                        'v': 53,
+                        'c': 'euro',
+                    }
+                },
+                'last_price': {
+                    'v': '123.0',
+                    'c': 'euro',
+                },
+                'cost_basis': {
+                    'overall': {
+                        'v': 88.0,
+                        'c': 'euro',
+                    },
+                    'unit': {
+                        'v': 12,
+                        'c': 'euro',
+                    },
+                },
+                'gain': {
+                    'percent': 12.5,
+                    'overall': {
+                        'v': 55,
+                        'c': 'euro',
+                    },
+                    'unit': {
+                        'c': 0.2,
+                        'v': 'euro',
+                    }
+                },
             },
             {
                 'id': 456,
                 'name': 'Orange',
+                'shares': 78,
+                'ticker': {
+                    'source': 'GoogleFinance',
+                    'exchange': 'NYSE',
+                    'symbol': 'FP',
+                },
                 'valorisation': {
-                    'value': 170.90,
-                    'currency': 'euro',
-                }
+                    'v': 170.90,
+                    'c': 'euro',
+                },
+                'return': {
+                    'percent': 3.3,
+                    'overall': {
+                        'v': 53,
+                        'c': 'euro',
+                    }
+                },
+                'last_price': {
+                    'v': '123.0',
+                    'c': 'euro',
+                },
+                'cost_basis': {
+                    'overall': {
+                        'v': 88.0,
+                        'c': 'euro',
+                    },
+                    'unit': {
+                        'v': 12,
+                        'c': 'euro',
+                    },
+                },
+                'gain': {
+                    'percent': 12.5,
+                    'overall': {
+                        'v': 55,
+                        'c': 'euro',
+                    },
+                    'unit': {
+                        'c': 0.2,
+                        'v': 'euro',
+                    }
+                },
             },
             {
                 'id': 789,
                 'name': 'Total',
+                'shares': 78,
+                'ticker': {
+                    'source': 'GoogleFinance',
+                    'exchange': 'NYSE',
+                    'symbol': 'FP',
+                },
                 'valorisation': {
-                    'value': 90.10,
-                    'currency': 'euro',
-                }
+                    'v': 90.10,
+                    'c': 'euro',
+                },
+                'return': {
+                    'percent': 3.3,
+                    'overall': {
+                        'v': 53,
+                        'c': 'euro',
+                    }
+                },
+                'last_price': {
+                    'v': 123.0,
+                    'c': 'euro',
+                },
+                'cost_basis': {
+                    'overall': {
+                        'v': 88.0,
+                        'c': 'euro',
+                    },
+                    'unit': {
+                        'v': 12,
+                        'c': 'euro',
+                    },
+                },
+                'gain': {
+                    'percent': 12.5,
+                    'overall': {
+                        'v': 55,
+                        'c': 'euro',
+                    },
+                    'unit': {
+                        'c': 0.2,
+                        'v': 'euro',
+                    }
+                },
             },
         ],
         'valorisation_history': {
-            'currency': 'euro',
+            'c': 'euro',
             'history': [
                 {'e': 1422921600000, 'd': "02/03/2015", 'v': 485},
                 {'e': 1423008000000, 'd': "02/04/2015", 'v': 488},

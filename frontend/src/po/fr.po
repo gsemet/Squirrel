@@ -21,6 +21,26 @@ msgstr " "
 msgid "."
 msgstr ","
 
+#. 2 letters to say "1 month"
+#: app\portfolios\details.controller.js:66
+msgid "1m"
+msgstr "1m"
+
+#. 2 letters to say "1 year"
+#: app\portfolios\details.controller.js:85
+msgid "1y"
+msgstr "1a"
+
+#. 2 letters to say "3 months"
+#: app\portfolios\details.controller.js:71
+msgid "3m"
+msgstr "3m"
+
+#. 2 letters to say "6 months"
+#: app\portfolios\details.controller.js:76
+msgid "6m"
+msgstr "6m"
+
 #: components\footer\footer.template.html:22
 msgid "About"
 msgstr "A Propos"
@@ -44,6 +64,11 @@ msgstr "Tableau de bord d'administration"
 #: components\navbar\navbar.template.html:41
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
+
+#. 3 letters to say "all"
+#: app\portfolios\details.controller.js:89
+msgid "All"
+msgstr "Tout"
 
 #: app\portfolios\portfolios.controller.js:29
 msgid "Allocations"
@@ -153,6 +178,10 @@ msgstr "Contactez le support technique"
 msgid "Copyright 2015 all rights reserved."
 msgstr "Copyright 2015 tous drotis réservés."
 
+#: app\portfolios\details.template.html:23
+msgid "Cost Basis"
+msgstr "Prix de Revient"
+
 #: app\admin\admin.crawlers.template.html:2 app\admin\admin.template.html:18
 msgid "Crawlers"
 msgstr "Crawlers"
@@ -240,6 +269,14 @@ msgstr "De"
 msgid "Full Featured Investment Portfolio Management Software."
 msgstr ""
 "Le Système en ligne de Gestion de Portefeuille dédié à vos Investissements."
+
+#: app\portfolios\details.template.html:24
+msgid "Gain"
+msgstr "Gain"
+
+#: app\portfolios\details.template.html:25
+msgid "Gain %"
+msgstr "Gain %"
 
 #: app\homepage\homepage.unlogged.template.html:122
 msgid "Generate professional looking reports."
@@ -351,6 +388,7 @@ msgid "My Portfolios"
 msgstr "Mes Portefeuilles"
 
 #: app\admin\admin.crawlers.template.html:11
+#: app\portfolios\details.template.html:20
 #: app\portfolios\overview.template.html:24
 msgid "Name"
 msgstr "Noms"
@@ -441,7 +479,7 @@ msgstr "Screeners d'Actions"
 msgid "Securities"
 msgstr "Actions"
 
-#: app\portfolios\details.controller.js:30
+#: app\portfolios\details.controller.js:33
 msgid "Securities Allocation"
 msgstr "Allocation"
 
@@ -473,6 +511,10 @@ msgstr "Partager votre portefeuille en ligne, ou gardez le complètement privé.
 #: app\homepage\homepage.unlogged.template.html:174
 msgid "Share your Portfolio"
 msgstr "Partagez vos Portefeuilles"
+
+#: app\portfolios\details.template.html:22
+msgid "Shares"
+msgstr "Nbr d'actions"
 
 #: app\homepage\homepage.unlogged.template.html:175
 msgid "Social networks also apply to Investments"
@@ -537,6 +579,10 @@ msgstr "Screeners d'Actions"
 msgid "Sunday"
 msgstr "Dimanche"
 
+#: app\portfolios\details.template.html:21
+msgid "Symbol"
+msgstr "Symboles"
+
 #: app\homepage\homepage.unlogged.template.html:84
 msgid "Take care of your investiment like the apple of your eye."
 msgstr "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
@@ -587,7 +633,7 @@ msgstr "Nom d'utilisateur"
 msgid "Username or email"
 msgstr "Nom d'utilisateur ou email"
 
-#: app\portfolios\details.controller.js:66
+#: app\portfolios\details.controller.js:101
 msgid "Valorisation history"
 msgstr "Historique de Valorisation"
 
@@ -640,6 +686,11 @@ msgstr ""
 "Avec cet outil 100% en ligne, vous pouvez suivre tous vos investissements "
 "depuis différentes places boursières, différents courtiers, différentes "
 "enveloppes fiscales."
+
+#. 3 letters to say "year-to-date"
+#: app\portfolios\details.controller.js:80
+msgid "YTD"
+msgstr "YTD"
 
 #: app\homepage\homepage.unlogged.template.html:191
 msgid ""
