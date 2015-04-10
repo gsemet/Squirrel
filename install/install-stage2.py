@@ -90,6 +90,11 @@ if sys.platform.startswith("linux"):
             print("[INFO] Already applied. Skipping patch")
 
 print("-------------------------------------------------------------------------------")
+print("[INFO] Updating pip (try to always use latest version of pip)")
+print("[INFO] cd backend")
+run(["pip", "install", "--upgrade", "pip"])
+
+print("-------------------------------------------------------------------------------")
 print("[INFO] Installing backend requirements")
 print("[INFO] cd backend")
 run(["pip", "install", "-r", os.path.join(install_path, "backend",
