@@ -7,9 +7,9 @@ var paths = gulp.paths;
 gulp.task('watch', ['markups', 'inject', 'pot', 'translations'], function() {
   gulp.watch([
     paths.src + '/*.html',
-    paths.src + '/{app,components,services,directives,filters}/**/*.less',
-    paths.src + '/{app,components,services,directives,filters}/**/*.html',
-    paths.src + '/{app,components,services,directives,filters}/**/*.js',
+    paths.src + '/{app,components,services,modules}/**/*.less',
+    paths.src + '/{app,components,services,modules}/**/*.html',
+    paths.src + '/{app,components,services,modules}/**/*.js',
     paths.src + '/po/*.js',
     paths.src + '/index.js',
     paths.src + '/index.less',
@@ -18,6 +18,6 @@ gulp.task('watch', ['markups', 'inject', 'pot', 'translations'], function() {
     'bower.json',
     'gulp/*.js',
   ], ['inject', 'pot', 'translations']);
-  gulp.watch(paths.src + '/{app,components,services,directives,filters}/**/*.jade', ['markups']);
+  gulp.watch(paths.src + '/{app,components,services,modules}/**/*.jade', ['markups']);
   gulp.watch(paths.src + '/po/*.po', ['translations']);
 });

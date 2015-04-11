@@ -22,7 +22,7 @@ angular.module('squirrel').directive('banner',
           bannerExpires: "@bannerExpires",
         },
         controllerAs: "page",
-        templateUrl: "directives/banner/banner.template.html",
+        templateUrl: "modules/banner/banner.template.html",
         controller: "BannerCtrl",
       };
     }
