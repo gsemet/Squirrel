@@ -54,6 +54,12 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           text: gettextCatalog.getString('Annual Reports'),
           spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/annual_reports.template.html',
+        }, {
+          endpoint: 'taxation',
+          href: '#/portfolios?p=taxation',
+          text: gettextCatalog.getString('Taxation'),
+          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          templateUrl: 'app/portfolios/taxation.template.html',
         }
       ];
 

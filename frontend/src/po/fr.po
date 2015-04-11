@@ -651,7 +651,8 @@ msgstr ""
 msgid "We use cookies to ensure you get the best experience on our website."
 msgstr ""
 "Nous utilisons des cookies de votre navigateur pour vous offir la meilleure "
-"expérience possible sur notre site internet."
+"expérience possible sur notre site internet. En utilisant ce site, vous "
+"acceptez l'utilisation de ces cookies."
 
 #: app\admin\admin.crawlers.template.html:2
 msgid "Web data status"

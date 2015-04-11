@@ -45,7 +45,7 @@ app.config(
           controller: "HomepageCtrl",
         })
         .when("/portfolios", {
-          templateUrl: "app/portfolios/portfolios.template.html",
+          templateUrl: "app/portfolios/_portfolios.template.html",
           controller: "PortfoliosCtrl"
         })
         .when("/portfolios/details/:portfolioId", {
