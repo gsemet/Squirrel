@@ -24,6 +24,13 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           templateUrl: 'app/portfolios/securities.template.html',
           /*controller: "PortfoliosSecuritiesCtrl"*/
         }, {
+          endpoint: 'cash',
+          href: '#/portfolios?p=cash',
+          text: gettextCatalog.getString('Cash'),
+          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          templateUrl: 'app/portfolios/cash.template.html',
+          /*controller: "PortfoliosSecuritiesCtrl"*/
+        }, {
           endpoint: 'allocations',
           href: '#/portfolios?p=allocations',
           text: gettextCatalog.getString('Allocations'),

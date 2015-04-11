@@ -12,7 +12,6 @@ gulp.task('pot', function() {
       'src/{app,components,services,modules}/**/*.html',
       'src/{app,components,services,modules}/**/*.js'])
     .pipe(gettext.extract('template.pot', {
-      b
       // options to pass to angular-gettext-tools...
     }))
     .pipe(gulp.dest('src/po/'));
