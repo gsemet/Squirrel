@@ -68,6 +68,9 @@ if sys.version_info < (2, 7):
 if sys.version_info >= (3, 0):
     raise Exception("must use python 2.7.x. Current version is: {}.".format(sys.version_info))
 
+if "novirtualenv" in subcmd:
+    do_virtualenv = False
+
 install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs", "default.conf"))
 stage2_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "install-stage2.py"))
@@ -96,7 +99,9 @@ print("[BOOT] Interpreter: {0} - Version: {1}".format(sys.executable, sys.versio
 if do_virtualenv:
     print("[BOOT] Setting up virtualenv to start Installer Stage 2.")
 else:
-    print("[BOOT] Do **NOT** setup a virtual env (-n option). Production on Docker mode.")
+    print("[BOOT] !!!!!!!!!!!!!!!!!!!")
+    print("[BOOT] Do **NOT** setup a virtual env ('novirtualenv' option). Production on Docker mode.")
+    print("[BOOT] !!!!!!!!!!!!!!!!!!!")
 print("[BOOT] You can activate this environment with the following command:")
 print("[BOOT]     {0}".format(activate_info))
 print("[BOOT] Installing in {0}".format(workdir_path))
