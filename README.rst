@@ -30,7 +30,8 @@ Have python 2.7, pip and virtualenv installed on your system:
     $ pip  # pip 6.0.8
     $ pip install virtualenv
 
-To build the frontend UI (HTML), you'll need node, bower and gulp.
+To build the frontend UI (HTML), you'll need node, and bower. The build system uses gulp which will
+be automatically installed by the Squirel Installer.
 
 .. code-block:: bash
 
@@ -143,6 +144,21 @@ will be automatically regenerated:
 - frontend (Web UI using Angular)
 - backend (Python based)
 - online documentation (using sphinx)
+
+Use the following command to start the development server:
+
+.. code-block:: bash
+
+    python install/install serve:dev
+
+Your web browser will automatically opens to ``localhost:3000``, with the HTML (frontend) served
+by ``gulp serve`` and the backend running with ``squirrel-devbackend``.
+
+It is advised to have the `BrowserSync <http://www.browsersync.io/>`_ plugin installed in your
+browser. With it, any modification done in the frontend will be instantaneously applied into your
+web browser.
+
+So sad, it does not work with the backend.
 
 Frontend
 --------
