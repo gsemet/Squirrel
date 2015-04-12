@@ -159,13 +159,12 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
         print("[BOOT] Starting stage 2 directly without installing a virtualenv")
         # subprocess.check_call([python_exe, stage2_path, activate, install_path])
         subprocess.check_call([
-            'bash',
-            '-c',
-            'python {stage2} {install_path} {workdir_path} {subcmd}'
-            .format(stage2=stage2_path,
-                    install_path=install_path,
-                    workdir_path=workdir_path,
-                    subcmd=subcmd)])
+            'python',
+            stage2_path,
+            install_path,
+            workdir_path,
+            subcmd,
+        ])
 
 else:
     raise Exception("Unsupported environment: {0}".format(sys.platform))
