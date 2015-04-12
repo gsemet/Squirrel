@@ -25,7 +25,9 @@ allowed_cmd = {
     "serve:prod",
     "serve:novirtualenv",
     "install:backend",
-    "install:all"}
+    "install:all",
+    "install:novirtualenv",
+}
 
 # if not os.environ['VIRTUAL_ENV']:
 #     raise Exception("VIRTUAL_ENV environment variable is empty. We are not in a virtualenv.")

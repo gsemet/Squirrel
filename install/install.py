@@ -28,7 +28,9 @@ allowed_cmd = {
     "serve:novirtualenv": ("install and serve production without going into "
                            "virtualenv (Docker/Heroku)"),
     "install:backend": "install only backend (python)",
-    "install:all": "install backend and frontend"}
+    "install:all": "install backend and frontend",
+    "install:novirtualenv": "install backend and frontend without virtualenv",
+}
 aliases = {"serve": "serve:dev",
            "install": "install:all"}
 
