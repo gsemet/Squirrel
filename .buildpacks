@@ -1,3 +1,2 @@
-https://github.com/Stibbons/heroku-buildpack-libffi.git
-backend=https://github.com/heroku/heroku-buildpack-python.git
+backend=https://github.com/Stibbons/heroku-buildpack-python-installer.git
 frontend=https://github.com/heroku/heroku-buildpack-nodejs
