@@ -1,2 +1,2 @@
 backend=https://github.com/Stibbons/heroku-buildpack-python-installer.git
-frontend=https://github.com/heroku/heroku-buildpack-nodejs
+frontend=https://github.com/Stibbons/heroku-buildpack-nodejs.git
