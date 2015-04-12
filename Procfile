@@ -1,1 +1,1 @@
-web: ./install/install.py serve:prod
+web: source workdir/bin/activate && squirrel-server
