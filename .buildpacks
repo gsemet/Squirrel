@@ -1,2 +1,4 @@
-backend=https://github.com/heroku/heroku-buildpack-python.git#b3a98641f5d9bbc23503f10858210d6592f55e91
-frontend=https://github.com/heroku/heroku-buildpack-nodejs#f3cbf81b2fdb4e1c1d11c9d5eee67fcdf96a2dd7
+https://github.com/ddollar/heroku-buildpack-apt
+https://github.com/coderanger/heroku-buildpack-cffi
+backend=https://github.com/heroku/heroku-buildpack-python.git
+frontend=https://github.com/heroku/heroku-buildpack-nodejs
