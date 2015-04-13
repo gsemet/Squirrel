@@ -22,7 +22,7 @@ class TestEntryPoint(TestCase):
         Config({
             'frontend': {
                 'root_full_path': 'full/path',
-                'port': 'port',
+                'prod_port': 'port',
             },
             'crawlers': {},
         })
