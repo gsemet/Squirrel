@@ -35,9 +35,9 @@ app = angular.module("squirrel", [
 
 app.config(
 
-  ['$routeProvider', '$locationProvider', 'toastrConfig',
+  ['$routeProvider', '$locationProvider', 'toastrConfig', "environmentProvider",
 
-    function($routeProvider, $locationProvider, toastrConfig) {
+    function($routeProvider, $locationProvider, toastrConfig, environmentProvider) {
 
       $routeProvider
         .when("/", {
@@ -123,6 +123,22 @@ app.config(
         titleClass: 'toast-title',
         toastClass: 'toast'
       });
+
+
+      environmentProvider.setList(
+        [{
+          environment: 'prod',
+          appPort: '80',
+          backendPort: '80',
+          titleTag: "",
+        }, {
+          environment: 'dev',
+          appUrl: "localhost",
+          appPort: '3000',
+          backendPort: '3000', // gulp proxy automatically routes /api requests to port 8080
+          titleTag: "-dev",
+        }]
+      );
     }
   ]
 );

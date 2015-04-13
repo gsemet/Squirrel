@@ -13,7 +13,7 @@ from squirrel.services.plugin_loader import loadPlugins
 from squirrel.services.plugin_loader import unloadPlugins
 
 
-def serverSetup():
+def serverSetup(prod=False):
     initializeConfig()
     setupLogger()
     dumpConfigToLogger()

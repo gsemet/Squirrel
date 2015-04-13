@@ -8,8 +8,10 @@
 angular.module('squirrel').factory('AuthenticationService',
 
   ["$http", "$q", "$window", "$rootScope", "Session", "AUTH_EVENTS", '$timeout', 'ipCookie', "USER_ROLES",
+  "environment",
 
-    function($http, $q, $window, $rootScope, Session, AUTH_EVENTS, $timeout, ipCookie, USER_ROLES) {
+    function($http, $q, $window, $rootScope, Session, AUTH_EVENTS, $timeout, ipCookie, USER_ROLES,
+      environment) {
 
       var authService = {};
 
@@ -45,7 +47,7 @@ angular.module('squirrel').factory('AuthenticationService',
 
         var deferred = $q.defer();
 
-        $http.get("http://localhost:8080/api/profile", {
+        $http.get(environment.getBackendUrl() + "/api/profile", {
           /* can be username or email */
           sessionId: sessionId,
         }).then(function(result) {
@@ -62,7 +64,7 @@ angular.module('squirrel').factory('AuthenticationService',
       authService.login = function(userName, password) {
         var deferred = $q.defer();
 
-        $http.post("http://localhost:8080/api/login", {
+        $http.post(environment.getBackendUrl() + "/api/login", {
           /* can be username or email */
           userName: userName,
           password: password
@@ -89,7 +91,7 @@ angular.module('squirrel').factory('AuthenticationService',
         $rootScope.$emit(AUTH_EVENTS.logoutSuccess);
 
         var deferred = $q.defer();
-        $http.post("http://localhost:8080/api/logout", {
+        $http.post(environment.getBackendUrl() + "/api/logout", {
           sessionId: sessionId
         }).then(function(result) {
           console.log("logout successful for userName = " + userName);
@@ -106,7 +108,7 @@ angular.module('squirrel').factory('AuthenticationService',
       authService.register = function(userName, email, password) {
         var deferred = $q.defer();
 
-        $http.post("http://localhost:8080/api/register", {
+        $http.post(environment.getBackendUrl() + "/api/register", {
           userName: userName,
           email: email,
           password: password

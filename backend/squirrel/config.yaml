@@ -3,7 +3,8 @@
 frontend:
     root_path: ../frontend/dist/
     doc_path: ../doc/build/html/
-    port: 80
+    dev_port: 8080
+    prod_port: 80
     logging_conf_path: ./squirrel/logging.conf
 
 backend:

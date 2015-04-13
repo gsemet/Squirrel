@@ -2,14 +2,18 @@
 
 angular.module('squirrel').controller('NavbarCtrl',
 
-  ["$scope", "$location", "$rootScope", "AuthenticationService", "AUTH_EVENTS", "gettextCatalog", "TranslationService",
+  ["$scope", "$location", "$rootScope", "AuthenticationService", "AUTH_EVENTS", "gettextCatalog",
+   "TranslationService", "environment",
 
-    function($scope, $location, $rootScope, AuthenticationService, AUTH_EVENTS, gettextCatalog, TranslationService) {
+    function($scope, $location, $rootScope, AuthenticationService, AUTH_EVENTS, gettextCatalog,
+     TranslationService, environment) {
 
       $scope.date = new Date();
       $scope.login_username = "";
       $scope.is_admin = AuthenticationService.isAdmin();
       $scope.currentLang = TranslationService.getCurrentLang();
+
+  $scope.title_tag = environment.getTitleTag();
 
       $scope.refreshDynamicLinks = function() {
         $scope.navLinks = [

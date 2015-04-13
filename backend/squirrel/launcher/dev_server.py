@@ -12,6 +12,6 @@ def run():
 
     serverSetup()
 
-    serveBackend(serveFrontEnd=False)
+    serveBackend(serveFrontEnd=False, prod=False)
 
     serverStop()
