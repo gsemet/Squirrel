@@ -38,12 +38,18 @@ angular.module('squirrel').provider('environment',
     this.list = [{
       environment: 'local',
       appUrl: 'localhost',
-      appPort: '3000'
+      appPort: '3000',
+      hasSubDomain: false,
     }];
+    this.defaultSubDomain = "";
 
     this.setList = function(list) {
       this.list = list;
     };
+
+    this.setDefaultSubDomain = function(defaultSubDomain) {
+      this.defaultSubDomain = defaultSubDomain;
+    }
 
 
     this.$get = function($location) {
@@ -51,7 +57,7 @@ angular.module('squirrel').provider('environment',
       var host = $location.host();
       var env = null;
 
-      var currentEnvironment = function() {
+      var findCurrentEnvironment = function() {
         host = host.toLowerCase();
 
         if (!env && _.isArray(list) && list.length > 0) {
@@ -76,13 +82,13 @@ angular.module('squirrel').provider('environment',
       };
 
       var getEnvironment = function() {
-        var enviro = currentEnvironment();
+        var enviro = findCurrentEnvironment();
         console.log('enviro: ' + enviro);
         return (enviro) ? enviro.environment : 'local';
       };
 
       var getAppUrl = function() {
-        var env = currentEnvironment();
+        var env = findCurrentEnvironment();
         var currentSSL = (env.appUseSSL) ? 'https://' : 'http://';
         var currentAppUrl = (env.appUrl) ? env.appUrl : list.appUrl;
         var currentAppPort = (env.appPort) ? ':' + env.appPort : '';
@@ -91,7 +97,7 @@ angular.module('squirrel').provider('environment',
       };
 
       var getBackendUrl = function() {
-        var env = currentEnvironment();
+        var env = findCurrentEnvironment();
         console.log("env = " + JSON.stringify(env));
         var currentSSL = (env.backendUseSSL) ? 'https://' : 'http://';
         var currentbackendUrl = (env.backendUrl) ? env.backendUrl : env.appUrl;
@@ -103,7 +109,7 @@ angular.module('squirrel').provider('environment',
       };
 
       var getTitleTag = function() {
-        var env = currentEnvironment();
+        var env = findCurrentEnvironment();
         var titleTag = env.titleTag;
         if (titleTag) {
           return env.titleTag;
@@ -112,11 +118,25 @@ angular.module('squirrel').provider('environment',
         }
       };
 
+      var getSubDomain = function() {
+        var env = findCurrentEnvironment();
+        if (env.hasSubDomain) {
+          return null;
+        }
+        var host = $location.host();
+        if (host.indexOf('.') < 0) {
+          return this.defaultSubDomain;
+        } else {
+          return host.split('.')[0];
+        }
+      };
+
       return {
         getEnvironment: getEnvironment,
         getAppUrl: getAppUrl,
         getBackendUrl: getBackendUrl,
-        getTitleTag: getTitleTag
+        getTitleTag: getTitleTag,
+        getSubDomain: getSubDomain
       };
     };
   }

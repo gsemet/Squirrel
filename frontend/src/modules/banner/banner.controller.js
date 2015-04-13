@@ -9,6 +9,9 @@ angular.module('squirrel').controller('BannerCtrl',
       // inspirated by:
       //   https://github.com/coursera/js-libraries-snapshot/blob/master/js/lib/readme.js
 
+      if (_.isUndefined($scope.bannerEnabled)) {
+        $scope.bannerEnabled = "true";
+      }
       $scope.staticEnabled = true;
 
       $scope.visible = function() {

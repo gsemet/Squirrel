@@ -131,14 +131,17 @@ app.config(
           appPort: '80',
           backendPort: '80',
           titleTag: "",
+          hasSubDomain: true,
         }, {
           environment: 'dev',
           appUrl: "localhost",
           appPort: '3000',
           backendPort: '3000', // gulp proxy automatically routes /api requests to port 8080
           titleTag: "-dev",
+          hasSubDomain: false,
         }]
       );
+      environmentProvider.setDefaultSubDomain("en");
     }
   ]
 );
