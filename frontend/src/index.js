@@ -25,6 +25,7 @@ app = angular.module("squirrel", [
   'nvd3',
   'picardy.fontawesome',
   'restangular',
+  'slick',
   'toastr',
   'ui.bootstrap',
   'ui.bootstrap.modal',
