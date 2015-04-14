@@ -50,6 +50,14 @@ def usage():
     print("Uninstall with './install/uninstall.py'")
     sys.exit(0)
 
+
+def printBoot(text):
+    print("[BOOT ] " + text)
+
+
+def printSeparator(char="="):
+    print(char * 80)
+
 if len(sys.argv) > 1:
     args = sys.argv[:]
     while args:
@@ -95,21 +103,21 @@ else:
     activate_info = "source {0}".format(activate)
     os_str = "Posix"
 
-print("===============================================================================")
-print("[BOOT] Squirrel Installer Stage 1")
-print("[BOOT] Install target: {}".format(subcmd))
-print("[BOOT] Environment: {0}".format(os_str))
-print("[BOOT] Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
+printSeparator()
+printBoot("Squirrel Installer Stage 1")
+printBoot("Install target: {}".format(subcmd))
+printBoot("Environment: {0}".format(os_str))
+printBoot("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
 if do_virtualenv:
-    print("[BOOT] Setting up virtualenv to start Installer Stage 2.")
+    printBoot("Setting up virtualenv to start Installer Stage 2.")
 else:
-    print("[BOOT] !!!!!!!!!!!!!!!!!!!")
-    print("[BOOT] Do **NOT** setup a virtual env ('novirtualenv' option). Production on Docker mode.")
-    print("[BOOT] !!!!!!!!!!!!!!!!!!!")
-print("[BOOT] You can activate this environment with the following command:")
-print("[BOOT]     {0}".format(activate_info))
-print("[BOOT] Installing in {0}".format(workdir_path))
-print("[BOOT] Requirements: {0}".format(requirements_txt))
+    printBoot("!!!!!!!!!!!!!!!!!!!")
+    printBoot("Do **NOT** setup a virtual env ('novirtualenv' option). Production on Docker mode.")
+    printBoot("!!!!!!!!!!!!!!!!!!!")
+printBoot("You can activate this environment with the following command:")
+printBoot("    {0}".format(activate_info))
+printBoot("Installing in {0}".format(workdir_path))
+printBoot("Requirements: {0}".format(requirements_txt))
 
 
 if sys.platform.startswith('win32'):
@@ -124,7 +132,7 @@ if sys.platform.startswith('win32'):
     # using launcher instead of activate.bat because we want to launch custom commands
     launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 
-    print("[BOOT] Activating virtualenv in {0}".format(workdir_path))
+    printBoot("Activating virtualenv in {0}".format(workdir_path))
     subprocess.check_call([
         "cmd", "/K",
         launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
@@ -134,7 +142,7 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
 
     if do_virtualenv:
         if "VIRTUAL_ENV" in os.environ and not os.environ['VIRTUAL_ENV']:
-            print("[BOOT] Note: Already in a virtualenv!")
+            printBoot("Note: Already in a virtualenv!")
 
         activate = os.path.join(workdir_path, "bin", "activate")
 
@@ -142,11 +150,11 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
             subprocess.check_call(['virtualenv', workdir_path])
 
         if not os.path.exists(os.path.join(install_path, "tosource")):
-            print("[BOOT] Creating symblink tosource")
+            printBoot("Creating symblink tosource")
             os.symlink(os.path.join(workdir_path, "bin", "activate"), os.path.join(install_path,
                                                                                    "tosource"))
 
-        print("[BOOT] Activating virtualenv in {0}".format(workdir_path))
+        printBoot("Activating virtualenv in {0}".format(workdir_path))
         # subprocess.check_call([python_exe, stage2_path, activate, install_path])
         subprocess.check_call([
             'bash',
@@ -158,7 +166,7 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
                     workdir_path=workdir_path,
                     subcmd=subcmd)])
     else:
-        print("[BOOT] Starting stage 2 directly without installing a virtualenv")
+        printBoot("Starting stage 2 directly without installing a virtualenv")
         # subprocess.check_call([python_exe, stage2_path, activate, install_path])
         subprocess.check_call([
             'python',

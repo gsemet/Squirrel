@@ -32,33 +32,34 @@ allowed_cmd = {
 # if not os.environ['VIRTUAL_ENV']:
 #     raise Exception("VIRTUAL_ENV environment variable is empty. We are not in a virtualenv.")
 
-print("===============================================================================")
-print("[INFO] Squirrel Installer Stage 2")
-if subcmd not in allowed_cmd:
-    print("[ERROR] Invalid install target: {}. Available: {}".format(subcmd, allowed_cmd))
-    sys.exit(1)
-print("[INFO] We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
-print("[INFO] Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
-print("[INFO] installation dir: {}".format(install_path))
-print("[INFO] workdir: {}".format(workdir_path))
-print("[INFO] Install target: {}".format(subcmd))
-print("[INFO] Environment variables:")
-for k, v in sorted(os.environ.items()):
-    print("[INFO]   {0}:{1}".format(k, v))
+####################################################################################################
+# Utility functions
+####################################################################################################
 
-print("===============================================================================")
-print("[INFO] ")
-print("[INFO] Installation really starts...")
-print("[INFO] ")
+
+def printInfo(text):
+    print("[INFO ] " + text)
+
+
+def printError(text):
+    print("[ERROR] " + text, file=sys.stderr)
+
+
+def printSeparator(char="-"):
+    print(char * 79)
+
+
+def printNote(text):
+    print("[NOTE ] " + text)
 
 
 def run(cmd, cwd=None, shell=False):
-    print("[CMD ] {}".format(" ".join(cmd)))
+    print("[CMD  ] {}".format(" ".join(cmd)))
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
 
 
 def call(cmd, cwd=None, shell=False):
-    print("[CMD ] {}".format(" ".join(cmd)))
+    print("[CMD  ] {}".format(" ".join(cmd)))
     return subprocess.call(cmd, shell=shell, cwd=cwd)
 
 
@@ -66,9 +67,29 @@ def run_background(cmd, cwd=None, shell=False):
     print("[CMD (background)] {}".format(" ".join(cmd)))
     subprocess.Popen(cmd, cwd=cwd, shell=shell)
 
+####################################################################################################
+
+printSeparator("=")
+printInfo("Squirrel Installer Stage 2")
+if subcmd not in allowed_cmd:
+    printError("Invalid install target: {}. Available: {}".format(subcmd, allowed_cmd))
+    sys.exit(1)
+printInfo("We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
+printInfo("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
+printInfo("installation dir: {}".format(install_path))
+printInfo("workdir: {}".format(workdir_path))
+printInfo("Install target: {}".format(subcmd))
+printInfo("Environment variables:")
+for k, v in sorted(os.environ.items()):
+    printInfo("  {0}:{1}".format(k, v))
+
+printSeparator("=")
+printInfo("")
+printInfo("Installation process really starts here...")
+printInfo("")
+
 
 if sys.platform.startswith("linux"):
-    print("-------------------------------------------------------------------------------")
     pip_version_str = str(subprocess.check_output(["pip", "--versio"]))
     pip_version_str = pip_version_str.split(" ")[1]
     pip_version_str = pip_version_str.split("-")[0]
@@ -77,49 +98,50 @@ if sys.platform.startswith("linux"):
     pip_major, _, pip_minor = pip_version_str.partition(".")
     pip_version = int(pip_major) * 100 + int(pip_minor)
     if pip_version <= 105:
-        print("[INFO] Patching this pip (version) {}.{}), to fix proxy issue (fixed in pip 1.6)"
-              .format(pip_major, pip_minor))
-        print("[INFO] See: https://github.com/pypa/pip/issues/1805")
+        printSeparator()
+        printInfo("Patching this pip (version) {}.{}), to fix proxy issue (fixed in pip 1.6)"
+                  .format(pip_major, pip_minor))
+        printInfo("See: https://github.com/pypa/pip/issues/1805")
         # Patching the installed pip to fix the following bug with proxy
         # See http://www.irvingc.com/posts/10
         patch_path = os.path.join(install_path, "install", "patch-pip.patch")
         c = call(["bash", "-c", "patch -p0 -N --dry-run --silent < {} 2>/dev/null"
                   .format(patch_path)])
         if not c:
-            print("[INFO] Applying patch")
+            printInfo("Applying patch")
             run(["bash", "-c", "patch -p0 < {}".format(patch_path)])
         else:
-            print("[INFO] Already applied. Skipping patch")
+            printInfo("Already applied. Skipping patch")
 
-print("-------------------------------------------------------------------------------")
-print("[INFO] Updating pip (try to always use latest version of pip)")
-print("[INFO] cd backend")
+printSeparator()
+printInfo("Updating pip (try to always use latest version of pip)")
+printInfo("cd backend")
 run(["pip", "install", "--upgrade", "pip"])
 
-print("-------------------------------------------------------------------------------")
-print("[INFO] Installing backend requirements")
-print("[INFO] cd backend")
+printSeparator()
+printInfo("Installing backend requirements")
+printInfo("cd backend")
 run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                           "requirements.txt")])
 
 if sys.version_info < (3, 4):
-    print("[INFO] Python version {}.{} < 3.4, installing extra requirements"
-          .format(sys.version_info[0], sys.version_info[2]))
-    print("[INFO] cd backend")
+    printInfo("Python version {}.{} < 3.4, installing extra requirements"
+              .format(sys.version_info[0], sys.version_info[2]))
+    printInfo("cd backend")
     run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                               "requirements-py_lt34.txt")])
 
 if sys.platform.startswith('win32'):
-    print("-------------------------------------------------------------------------------")
-    print("[INFO] Installing Windows dependencies")
+    printSeparator()
+    printInfo("Installing Windows dependencies")
     run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                               "requirements-win32.txt")])
-    print("[INFO] Ensure you have win32api installed")
+    printInfo("Ensure you have win32api installed")
 
 
-print("-------------------------------------------------------------------------------")
-print("[INFO] Installing backend")
-print("[INFO] cd backend")
+printSeparator()
+printInfo("Installing backend")
+printInfo("cd backend")
 run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
 if sys.platform.startswith('win32'):
@@ -128,34 +150,34 @@ else:
     shell = False
 
 if subcmd != "install:backend":
-    print("-------------------------------------------------------------------------------")
-    print("[INFO] Compiling frontend website")
+    printSeparator()
+    printInfo("Compiling frontend website")
     if "http_proxy" in os.environ:
-        print("[INFO] Behind a proxy: npm --proxy")
-        print("[NOTE] You may want to add the following lines in your ~/.gitconfig:")
-        print('[NOTE]    [url "https://github.com"]')
-        print("[NOTE]       insteadOf=git://github.com")
-        print("[INFO] cd frontend")
+        printInfo("Behind a proxy: npm --proxy")
+        printNote("You may want to add the following lines in your ~/.gitconfig:")
+        printNote("   [url \"https://github.com\"]")
+        printNote("      insteadOf=git://github.com")
+        printInfo("cd frontend")
         run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
                                                                               "frontend"),
             shell=shell)
-        print("[INFO] cd frontend")
+        printInfo("cd frontend")
         run(["npm", "--proxy", os.environ["http_proxy"], "install"], cwd=os.path.join(install_path,
                                                                                       "frontend"),
             shell=shell)
     else:
-        print("[INFO] cd frontend")
+        printInfo("cd frontend")
         run(["npm", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
-    print("[INFO] cd frontend")
+    printInfo("cd frontend")
     run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
     if subcmd != "serve:dev":
-        print("[INFO] cd frontend")
+        printInfo("cd frontend")
         run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
-    print("-------------------------------------------------------------------------------")
-    print("[INFO] Building online documentation")
+    printSeparator()
+    printInfo("Building online documentation")
     if sys.platform.startswith('win32'):
         run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
     else:
@@ -163,19 +185,19 @@ if subcmd != "install:backend":
 
 if subcmd.startswith("install"):
     print("")
-    print("-------------------------------------------------------------------------------")
+    printSeparator()
     print("Do not start the server. Install is succesful.")
-    print("-------------------------------------------------------------------------------")
+    printSeparator()
     sys.exit(0)
 
-print("-------------------------------------------------------------------------------")
+printSeparator()
 if subcmd == "serve:prod":
     # Launching Squirrel-server
     if sys.platform.startswith('win32'):
         backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-server.exe")
     else:
         backend_launcher = "squirrel-server"
-    print("[INFO] Launching Squirrel-server {}".format(backend_launcher))
+    printInfo("Launching Squirrel-server {}".format(backend_launcher))
     sys.stdout.flush()
     sys.stderr.flush()
 
@@ -188,19 +210,19 @@ elif subcmd == "serve:dev":
         devbackend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-devbackend.exe")
     else:
         devbackend_launcher = "squirrel-devbackend"
-    print("[INFO] Launching squirrel-devbackend {}".format(devbackend_launcher))
+    printInfo("Launching squirrel-devbackend {}".format(devbackend_launcher))
     sys.stdout.flush()
     sys.stderr.flush()
 
     run_background([devbackend_launcher])
-    print("[INFO] Sleep 5 seconds")
+    printInfo("Sleep 5 seconds")
     sys.stdout.flush()
     sys.stderr.flush()
     sleep(5)
 
-    print("[INFO] Serving dev frontend")
+    printInfo("Serving dev frontend")
     run(["gulp", "serve"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 
-print("[INFO] Done")
-print("-------------------------------------------------------------------------------")
+printInfo("Done")
+printSeparator()
