@@ -15,7 +15,7 @@ angular.module('squirrel').factory('TranslationService',
           'short_lang': 'fr'
         }, {
           'language': 'English (US)',
-          'short_lang': 'en'
+          'short_lang': 'us'
         }],
         TRANSLATION_UPDATED: "translation_updated",
       };
@@ -26,7 +26,6 @@ angular.module('squirrel').factory('TranslationService',
         console.log(" lang => " + lang);
         ipCookie("prefered-language", lang);
         translationService.setLangFromCookie();
-        $rootScope.$emit(translationService.TRANSLATION_UPDATED, lang);
       });
 
       $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(event) {
@@ -40,15 +39,17 @@ angular.module('squirrel').factory('TranslationService',
 
       translationService.setLangFromCookie = function() {
         var lang = ipCookie("prefered-language");
-        if (lang && lang != 'en') {
+        if (lang && lang != 'us') {
           console.log("Setting current language to " + lang);
           gettextCatalog.setCurrentLanguage(lang);
           gettextCatalog.debug = true;
           translationService.currentLang = lang;
           translationService.setExternalToolLang();
+          $rootScope.$emit(translationService.TRANSLATION_UPDATED, lang);
+          console.log("emiting signal = TRANSLATION_UPDATED " + lang);
         } else {
           gettextCatalog.setCurrentLanguage('en');
-          console.log("Setting to default language 'en'");
+          console.log("Setting to default language 'us' (='en')");
           if (!lang) {
             translationService.currentLang = null;
             $timeout(function() {
@@ -57,6 +58,9 @@ angular.module('squirrel').factory('TranslationService',
           } else {
             translationService.currentLang = lang;
             translationService.setExternalToolLang();
+            console.log("emiting signal = TRANSLATION_UPDATED " + lang);
+            $rootScope.$emit(translationService.TRANSLATION_UPDATED, lang);
+
           }
           gettextCatalog.debug = false;
         }

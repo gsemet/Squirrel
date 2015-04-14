@@ -31,3 +31,67 @@ crawlers:
                 'NASDAQ':
                     - "AAPL"
                     - "GOOG"
+
+marketing:
+    general:
+    country:
+        fr:
+            homepage_accounts:
+                -
+                    name: "Assurance Vie"
+                    icon_type: "fa fa-umbrella fa-3x"
+                -
+                    name: "Compte Titre Ordinaire"
+                    icon_type: "fa fa-bank fa-3x"
+                -
+                    name: "PEA, PEA-PME"
+                    icon_type: "fa fa-book fa-3x"
+                -
+                    name: "PERP, PERCO, Article 83"
+                    icon_type: "fa fa-envelope fa-3x"
+                -
+                    name: "Compte Courant"
+                    icon_type: "fa fa-bank fa-3x"
+                -
+                    name: "Autre"
+                    icon_type: "fa fa-envelope fa-3x"
+        us:
+            homepage_accounts:
+                -
+                    name: "Individual Account"
+                    icon_type: "fa fa-user fa-3x"
+                -
+                    name: "Joint Account"
+                    icon_type: "fa fa-users fa-3x"
+                -
+                    name: "IRA"
+                    icon_type: "fa fa-umbrella fa-3x"
+                -
+                    name: "401(1k)"
+                    icon_type: "fa fa-book fa-3x"
+                -
+                    name: "Stock Account"
+                    icon_type: "fa fa-bank fa-3x"
+                -
+                    name: "Other Type"
+                    icon_type: "fa fa-envelope fa-3x"
+        en:
+            homepage_accounts:
+                -
+                    name: "Individual Account"
+                    icon_type: "fa fa-user fa-3x"
+                -
+                    name: "Joint Account"
+                    icon_type: "fa fa-users fa-3x"
+                -
+                    name: "IRA"
+                    icon_type: "fa fa-umbrella fa-3x"
+                -
+                    name: "401(1k)"
+                    icon_type: "fa fa-book fa-3x"
+                -
+                    name: "Stock Account"
+                    icon_type: "fa fa-bank fa-3x"
+                -
+                    name: "Other Type"
+                    icon_type: "fa fa-envelope fa-3x"

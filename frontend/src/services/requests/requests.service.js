@@ -9,6 +9,7 @@ angular.module('squirrel').factory('request',
       // URL required; rest are optional
       var request = function(url, params, verb, data, cache) {
         var deferred = $q.defer();
+        console.log("Request: url = " + JSON.stringify(url));
         $http({
           method: (verb) ? verb : 'GET',
           url: url,

@@ -61,16 +61,14 @@ angular.module('squirrel').provider('environment',
         host = host.toLowerCase();
 
         if (!env && _.isArray(list) && list.length > 0) {
-          console.log("searching env");
           env = _.find(list, function(environment) {
-            console.log("evaluating = " + JSON.stringify(environment));
             if (environment.appUrl) {
               var lowercaseUrl = environment.appUrl.toLowerCase();
               return (lowercaseUrl == host);
             }
           });
 
-          console.log("found env = " + JSON.stringify(env));
+          console.log("Current environment: " + JSON.stringify(env));
 
           if (!env) {
             //Environment not found fall back to a default.

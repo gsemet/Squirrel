@@ -6,14 +6,14 @@ angular.module('squirrel').controller('NavbarCtrl',
    "TranslationService", "environment",
 
     function($scope, $location, $rootScope, AuthenticationService, AUTH_EVENTS, gettextCatalog,
-     TranslationService, environment) {
+      TranslationService, environment) {
 
       $scope.date = new Date();
       $scope.login_username = "";
       $scope.is_admin = AuthenticationService.isAdmin();
       $scope.currentLang = TranslationService.getCurrentLang();
 
-  $scope.title_tag = environment.getTitleTag();
+      $scope.title_tag = environment.getTitleTag();
 
       $scope.refreshDynamicLinks = function() {
         $scope.navLinks = [
@@ -80,6 +80,15 @@ angular.module('squirrel').controller('NavbarCtrl',
 
       $scope.changeLang = function() {
         TranslationService.askUserLanguage();
+      };
+
+      $scope.goRegister = function() {
+        console.log("goRegister");
+        $location.path("/register")
+      };
+      $scope.goLogin = function() {
+        console.log("goLogin");
+        $location.path("/login")
       };
     }
   ]

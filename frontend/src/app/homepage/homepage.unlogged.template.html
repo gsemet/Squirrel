@@ -3,8 +3,9 @@
       <div class="row">
           <div class="col-lg-12">
               <div class="intro-message">
-                <h1 translate>Squirrel Assets Management System</h1>
-                <h3 translate>The more advanced, online Portfolio Manager</h3>
+                <h1 class="homepage-white-text" translate>Simple, Smart, Unique Investing</h1>
+                <h3 translate>Your Online Portfolio Manager</h3>
+                <h4 translate>Easily follow all your Assets</h4>
                 <hr class="intro-divider">
               </div>
           </div>
@@ -46,7 +47,7 @@
   <div class="container">
     <div class="col-md-offset-1 col-md-3">
       <img src="assets/images/line-chart-4-256.png" class="img-responsive" alt="Responsive image">
-      <h1 class="homepage-triptic-text" translate>Track your different Portfolios in a single place</h1>
+      <h1 class="homepage-triptic-text" translate>Track your different Portfolios at a single place</h1>
     </div>
     <div class="col-md-offset-1 col-md-3">
       <img src="assets/images/line-chart-4-256.png" class="img-responsive" alt="Responsive image">
@@ -99,7 +100,25 @@
   </div>
 </section>
 
-<section class="homepage-section ">
+<section class="homepage-section section-sixtic">
+  <div class="container">
+    <div class="row">
+      <h2 class="text-center homepage-subtitle" translate>Follow these types of Account:</h2>
+    </div>
+    <div class="row">
+      <div ng-repeat="account in accounts" class="col-md-2 text-center">
+        <div class="col-md-2">
+          <div class="homepage-account">
+            <div class="{{account.icon_type}}"></div>
+            <div class="type">{{account.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="homepage-section bg-light-yellow">
   <div class="container">
     <h2 class="text-center" translate>The center of your personal finances</h2>
     <p class="lead text-center">
@@ -136,7 +155,7 @@
 </section>
 
 
-<section class="homepage-section bg-light-brown">
+<section class="homepage-section">
   <div class="container">
     <h2 class="text-center" translate>Profesionnal data visualizations</h2>
     <p class="lead text-center" translate>
@@ -196,7 +215,7 @@
   </div>
 </div>
 
-<section class="homepage-section bg-light-brown">
+<section class="homepage-section">
   <div class="container">
     <h2 class="text-center" translate>Access your porfolio anywhere, any time</h2>
     <p class="lead text-center" translate>
@@ -227,7 +246,7 @@
   </div>
 </section>
 
-<section class="homepage-section">
+<section class="homepage-section bg-light-yellow">
   <div class="container">
     <h2 class="text-center" translate>Share your Portfolio</h2>
     <p class="lead text-center" translate>

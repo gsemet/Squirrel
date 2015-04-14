@@ -22,9 +22,25 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-if="login_username.length <= 0 && currentLang"><a href="#/" ng-click='changeLang()'><span class="glyphicon glyphicon-flag"></span> <span translate>Change language</span></a></li>
-        <li ng-if="login_username.length <= 0" ng-class="navClass('login')"><a href="#/login"><span class="glyphicon glyphicon-user"></span> <span translate>Log in</span></a></li>
-        <li ng-if="login_username.length <= 0" ng-class="navClass('register')"><a href="#/register"><span class="glyphicon glyphicon-plus"></span> <span translate>Free registration</span></a></li>
+        <li ng-if="login_username.length <= 0 && currentLang">
+          <a href="#/" ng-click='changeLang()'>
+            <span class="glyphicon glyphicon-flag"></span> <span translate>Change language</span>
+          </a>
+        </li>
+        <li ng-if="login_username.length <= 0" ng-class="navClass('login')">
+          <button class="btn login-button"
+                  ng-click="goLogin()"
+                  type="button">
+            <span class="glyphicon glyphicon-plus"></span> <span translate>Log in</span>
+          </button>
+        </li>
+        <li ng-if="login_username.length <= 0" ng-class="navClass('register')">
+          <button class="btn signup-button"
+                  ng-click="goRegister()"
+                  type="button">
+            <span class="glyphicon glyphicon-plus"></span> <span translate>Free registration</span>
+          </button>
+        </li>
         <!-- <li ng-if="login_username.length > 0">
           <button class="btn btn-primary navbar-btn" type="button" ng-click="logout()">
             <span class="glyphicon glyphicon-remove"></span> Logout
