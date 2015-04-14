@@ -32,17 +32,43 @@ allowed_cmd = {
 # if not os.environ['VIRTUAL_ENV']:
 #     raise Exception("VIRTUAL_ENV environment variable is empty. We are not in a virtualenv.")
 
+
 ####################################################################################################
 # Utility functions
 ####################################################################################################
 
 
+class bcolors(object):
+    HEADER = '\033[95m'
+    OKBLUE = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    BOOT = '\033[97m'
+
+    ENDC = '\033[0m'
+
+# Do *not* use color when not in a terminal
+if not sys.stdout.isatty():
+    bcolors.HEADER = ''
+    bcolors.OKBLUE = ''
+    bcolors.OKGREEN = ''
+    bcolors.WARNING = ''
+    bcolors.FAIL = ''
+    bcolors.BOLD = ''
+    bcolors.UNDERLINE = ''
+
+    bcolors.ENDC = ''
+
+
 def printInfo(text):
-    print("[INFO ] " + text)
+    print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + text)
 
 
 def printError(text):
-    print("[ERROR] " + text, file=sys.stderr)
+    print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
 
 
 def printSeparator(char="-"):
@@ -50,21 +76,25 @@ def printSeparator(char="-"):
 
 
 def printNote(text):
-    print("[NOTE ] " + text)
+    print(bcolors.HEADER + "[NOTE ] " + bcolors.ENDC + text)
+
+
+def printBoot(text):
+    print(bcolors.BOOT + "[BOOT ] " + bcolors.ENDC + text)
 
 
 def run(cmd, cwd=None, shell=False):
-    print("[CMD  ] {}".format(" ".join(cmd)))
+    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
 
 
 def call(cmd, cwd=None, shell=False):
-    print("[CMD  ] {}".format(" ".join(cmd)))
+    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
     return subprocess.call(cmd, shell=shell, cwd=cwd)
 
 
 def run_background(cmd, cwd=None, shell=False):
-    print("[CMD (background)] {}".format(" ".join(cmd)))
+    print(bcolors.OKGREEN + "[CMD (background)" + bcolors.ENDC + "] {}".format(" ".join(cmd)))
     subprocess.Popen(cmd, cwd=cwd, shell=shell)
 
 ####################################################################################################

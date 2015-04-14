@@ -35,6 +35,72 @@ aliases = {"serve": "serve:dev",
            "install": "install:all"}
 default_cmd = "install:all"
 
+####################################################################################################
+# Utility functions
+####################################################################################################
+
+
+class bcolors(object):
+    HEADER = '\033[95m'
+    OKBLUE = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    BOOT = '\033[97m'
+
+    ENDC = '\033[0m'
+
+# Do *not* use color when not in a terminal
+if not sys.stdout.isatty():
+    bcolors.HEADER = ''
+    bcolors.OKBLUE = ''
+    bcolors.OKGREEN = ''
+    bcolors.WARNING = ''
+    bcolors.FAIL = ''
+    bcolors.BOLD = ''
+    bcolors.UNDERLINE = ''
+
+    bcolors.ENDC = ''
+
+
+def printInfo(text):
+    print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + text)
+
+
+def printError(text):
+    print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
+
+
+def printSeparator(char="-"):
+    print(char * 79)
+
+
+def printNote(text):
+    print(bcolors.HEADER + "[NOTE ] " + bcolors.ENDC + text)
+
+
+def printBoot(text):
+    print(bcolors.BOOT + "[BOOT ] " + bcolors.ENDC + text)
+
+
+def run(cmd, cwd=None, shell=False):
+    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
+    subprocess.check_call(cmd, shell=shell, cwd=cwd)
+
+
+def call(cmd, cwd=None, shell=False):
+    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
+    return subprocess.call(cmd, shell=shell, cwd=cwd)
+
+
+def run_background(cmd, cwd=None, shell=False):
+    print(bcolors.OKGREEN + "[CMD (background)" + bcolors.ENDC + "] {}".format(" ".join(cmd)))
+    subprocess.Popen(cmd, cwd=cwd, shell=shell)
+
+####################################################################################################
+
 
 def usage():
     print("Usage: ./install/install.sh [command]")
@@ -50,13 +116,6 @@ def usage():
     print("Uninstall with './install/uninstall.py'")
     sys.exit(0)
 
-
-def printBoot(text):
-    print("[BOOT ] " + text)
-
-
-def printSeparator(char="="):
-    print(char * 80)
 
 if len(sys.argv) > 1:
     args = sys.argv[:]
@@ -103,7 +162,7 @@ else:
     activate_info = "source {0}".format(activate)
     os_str = "Posix"
 
-printSeparator()
+printSeparator("=")
 printBoot("Squirrel Installer Stage 1")
 printBoot("Install target: {}".format(subcmd))
 printBoot("Environment: {0}".format(os_str))
