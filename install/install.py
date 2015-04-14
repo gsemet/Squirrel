@@ -33,6 +33,7 @@ allowed_cmd = {
 }
 aliases = {"serve": "serve:dev",
            "install": "install:all"}
+default_cmd = "install:all"
 
 
 def usage():
@@ -62,7 +63,8 @@ if len(sys.argv) > 1:
             print("See usage with --help")
             sys.exit(1)
 else:
-    usage()
+    print("No argument in the command line, using default target: {}".format(default_cmd))
+    subcmd = default_cmd
 
 if sys.version_info < (2, 7):
     raise Exception("must use python 2.7.x. Current version is: {}.".format(sys.version_info))
