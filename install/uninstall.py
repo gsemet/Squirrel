@@ -18,6 +18,9 @@ workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 frontend_dist_path = os.path.abspath(os.path.join(root_path,
                                                   "frontend",
                                                   "dist"))
+egg_info = os.path.abspath(os.path.join(root_path,
+                                        "backend",
+                                        "Squirrel.egg-info"))
 frontend_node_modules_path = os.path.abspath(os.path.join(root_path,
                                                           "frontend",
                                                           "node_modules"))
@@ -26,6 +29,7 @@ frontend_bower_components_path = os.path.abspath(os.path.join(root_path,
                                                               "bower_components"))
 
 paths_to_remove = [(workdir_path, "workdir"),
+                   (egg_info, "Squirrel.egg_info"),
                    (os.path.join(root_path, "_trial_temp"), "_trial_temp"),
                    (os.path.join(root_path, "_trial_temp.lock"), "_trial_temp.lock"),
                    (os.path.join(root_path, "tosource"), "tosource"),
@@ -43,7 +47,7 @@ for path, name in paths_to_remove:
         print("Removing {}...".format(name))
         os.unlink(path)
 
-file_pattern_to_clean = ['*.pyc']
+file_pattern_to_clean = ['*.pyc', '*.pyo']
 print("Cleaning files: {}".format(", ".join(file_pattern_to_clean)))
 matches = []
 for root, dirnames, filenames in os.walk(root_path):
