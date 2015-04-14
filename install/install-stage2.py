@@ -51,7 +51,7 @@ class bcolors(object):
     ENDC = '\033[0m'
 
 # Do *not* use color when not in a terminal
-if not sys.stdout.isatty():
+if sys.platform.startswith('win32') or not sys.stdout.isatty():
     bcolors.HEADER = ''
     bcolors.OKBLUE = ''
     bcolors.OKGREEN = ''
