@@ -8,6 +8,7 @@ jinja2
 klein
 mock
 pip >= 1.6.0
+psutil
 pycontracts >= 1.7.1
 pyyaml
 requests
@@ -17,4 +18,5 @@ sqlalchemy
 treq
 twisted >= 14.0.0
 txrequests
+watchdog
 yapsy

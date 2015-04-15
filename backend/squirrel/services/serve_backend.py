@@ -5,6 +5,7 @@ from __future__ import print_function
 import logging
 
 from dictns import Namespace
+from twisted.internet import reactor
 
 from squirrel.routes import app
 from squirrel.services.config import Config
@@ -27,3 +28,8 @@ def serveBackend(serveFrontEnd=True, prod=False):
     Config().runtime = Namespace()
     Config().runtime.serveFrontEnd = True
     app.run("localhost", port)
+
+
+def quitBackend():
+    app.quit()
+    reactor.callLater(0, reactor.stop)

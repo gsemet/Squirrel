@@ -240,11 +240,14 @@ elif subcmd == "serve:dev":
         devbackend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-devbackend.exe")
     else:
         devbackend_launcher = "squirrel-devbackend"
-    printInfo("Launching squirrel-devbackend {}".format(devbackend_launcher))
+    printInfo("Launching squirrel-devbackend with auto relauncher {}".format(devbackend_launcher))
     sys.stdout.flush()
     sys.stderr.flush()
 
-    run_background([devbackend_launcher])
+    run_background(["auto_relauncher", "--directory", "backend", "--recursive",
+                    "--sleep-between-restart", "10", "--patterns", "*.py",
+                    devbackend_launcher],
+                   cwd=install_path)
     printInfo("Sleep 5 seconds")
     sys.stdout.flush()
     sys.stderr.flush()

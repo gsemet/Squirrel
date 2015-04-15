@@ -14,6 +14,7 @@ setup_args = {
             'squirrel-server = squirrel.launcher.complete_server:run',
             'squirrel-devbackend = squirrel.launcher.dev_server:run',
             'squirrel-cli = squirrel.launcher.cli:run',
+            'auto_relauncher = squirrel.launcher.auto_relauncher:run',
         ],
     },
 }
