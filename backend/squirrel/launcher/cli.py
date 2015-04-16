@@ -15,7 +15,7 @@ from squirrel.services.config import initializeConfig
 from squirrel.services.config import unloadConfig
 from squirrel.services.plugin_loader import loadPlugins
 from squirrel.services.plugin_loader import unloadPlugins
-
+from squirrel.services.serve_backend import quitBackend
 
 # Uncomment this to true to debug unclean reactor
 # from twisted.internet.base import DelayedCall
@@ -73,5 +73,10 @@ def runCrochet():
 
 
 def run():
-    setup()
-    runCrochet()
+    try:
+        setup()
+        runCrochet()
+    except KeyboardInterrupt:
+        print("Ctrl-c pressed ...")
+        quitBackend()
+        sys.exit(1)

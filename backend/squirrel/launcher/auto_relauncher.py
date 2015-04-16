@@ -7,6 +7,7 @@ import psutil
 import re
 import signal
 import subprocess
+import sys
 import time
 
 from argh import arg
@@ -35,41 +36,57 @@ class SquirrelAutoRestartTrick(AutoRestartTrick):
     the process.
     """
 
-    def __init__(self, command, patterns=None, ignore_patterns=None,
-                 ignore_directories=False, stop_signal=signal.SIGINT,
-                 kill_after=10, sleep_between_restart=1):
+    def __init__(self,
+                 command,
+                 patterns=None,
+                 ignore_patterns=None,
+                 ignore_directories=False,
+                 stop_signal=signal.SIGINT,
+                 kill_after=10,
+                 sleep_between_restart=1,
+                 shell=False,
+                 win32_safe_kill=False,
+                 ):
         super(SquirrelAutoRestartTrick, self).__init__(
             command=command, patterns=patterns, ignore_patterns=ignore_patterns,
             ignore_directories=ignore_directories, stop_signal=stop_signal,
             kill_after=kill_after)
         self.command = command
+        self.shell = shell
         self.sleep_between_restart = sleep_between_restart
+        self.win32_safe_kill = win32_safe_kill
 
     def start(self):
-        self.process = subprocess.Popen(self.command)
+        self.process = subprocess.Popen(self.command, shell=self.shell)
         print("Starting subprocess pid {}".format(self.process.pid))
 
     def stop(self):
         if self.process is None:
             return
         try:
-            print("Killing subprocess {}".format(self.process.pid))
-            proc = psutil.Process(self.process.pid)
-            proc.kill()
+            if sys.platform.startswith("win32") and self.win32_safe_kill:
+                print("Win32 safe killing: using taskkill /T /F on pid {}".format(self.process.pid))
+                subprocess.check_call("taskkill /PID {} /T /F".format(self.process.pid))
+            else:
+                print("Killing subprocess {}".format(self.process.pid))
+                proc = psutil.Process(self.process.pid)
+                proc.kill()
         except psutil.NoSuchProcess:
             print("Warning: no such process. Continuing")
             # if process already dead, just let the AutoRestartTrick restarts it
             pass
         else:
             kill_time = time.time() + self.kill_after
+            print("Testing if pid {} is still alive".format(self.process.pid))
             while time.time() < kill_time:
                 if self.process.poll() is not None:
                     break
                 time.sleep(0.25)
             else:
+                print("Process still alive, terminating pid {}".format(self.process.pid))
                 try:
                     proc = psutil.Process(self.process.pid)
-                    proc.kill()
+                    proc.terminate()
                 except psutil.NoSuchProcess:
                     print("Warning: no such process. Continuing")
                     # if process already dead, just let the AutoRestartTrick restarts it
@@ -180,6 +197,14 @@ try to interpret them.
      dest="sleep_between_restart",
      default=5,
      help='Time to wait between two restart (default 1 second)')
+@arg('--shell',
+     action='store_true',
+     dest="shell",
+     help="Launch sub command in a shell (cmd under windows)")
+@arg('--win32-safe-kill',
+     action='store_true',
+     dest="win32_safe_kill",
+     help="On Windows, use taskkill /T to kill (needed for twisted application)")
 @arg('--version',
      action='version',
      version='%(prog)s ' + VERSION_STRING)
@@ -195,6 +220,9 @@ def auto_restart(args):
     print("Auto relauncher with the following command:")
     print("  directory: {}".format(args.directories))
     print("  command: {}".format(args.command))
+    print("  shell: {}".format(args.shell))
+    if sys.platform.startswith("win32"):
+        print("  win32 safe kill: {}".format(args.win32_safe_kill))
     print("  Wait time between restart: {} second(s)".format(args.sleep_between_restart))
 
     if not args.directories:
@@ -223,7 +251,10 @@ def auto_restart(args):
                                        ignore_directories=args.ignore_directories,
                                        stop_signal=stop_signal,
                                        kill_after=args.kill_after,
-                                       sleep_between_restart=args.sleep_between_restart)
+                                       sleep_between_restart=args.sleep_between_restart,
+                                       shell=args.shell,
+                                       win32_safe_kill=args.win32_safe_kill,
+                                       )
     handler.start()
     observer = Observer(timeout=args.timeout)
     observe_with(observer, handler, args.directories, args.recursive)

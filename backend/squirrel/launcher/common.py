@@ -34,6 +34,35 @@ def installTrap():
     if hasattr(signal, "SIGBREAK"):
         signal.signal(signal.SIGBREAK, terminate_handler)
 
+from ctypes import WINFUNCTYPE
+from ctypes import windll
+from ctypes.wintypes import BOOL
+from ctypes.wintypes import DWORD
+
+
+# https://github.com/zeromq/pyzmq/pull/559/files
+def install_handler_win32():
+    if not sys.platform.startswith("win32"):
+        return
+
+    kernel32 = windll.LoadLibrary('kernel32')
+    PHANDLER_ROUTINE = WINFUNCTYPE(BOOL, DWORD)
+    SetConsoleCtrlHandler = kernel32.SetConsoleCtrlHandler
+    SetConsoleCtrlHandler.argtypes = (PHANDLER_ROUTINE, BOOL)
+    SetConsoleCtrlHandler.restype = BOOL
+
+    CTRL_C_EVENT = 0
+
+    @PHANDLER_ROUTINE
+    def console_handler(ctrl_type):
+        print("Console handler", ctrl_type)
+        if ctrl_type == CTRL_C_EVENT:
+            print('ctrl + c')
+        return False
+
+    if not SetConsoleCtrlHandler(console_handler, True):
+        raise RuntimeError('SetConsoleCtrlHandler failed.')
+
 
 def serverSetup(prod=False):
     installTrap()

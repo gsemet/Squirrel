@@ -317,18 +317,16 @@ elif "serve_dev" in current_capabilities:
 
         sleep_sec = 1
         if sys.platform.startswith('win32'):
-            sleep_sec = 5
+            sleep_sec = 1
+
+        auto_rel_cmd = ["auto_relauncher", "--directory", "backend", "--recursive",
+                        "--sleep-between-restart", str(sleep_sec), "--patterns", "*.py",
+                        "--win32-safe-kill", devbackend_launcher]
 
         if "serve_dev_frontend" in current_capabilities:
-            run_background(["auto_relauncher", "--directory", "backend", "--recursive",
-                            "--sleep-between-restart", str(sleep_sec), "--patterns", "*.py",
-                            devbackend_launcher],
-                           cwd=install_path)
+            run_background(auto_rel_cmd, cwd=install_path)
         else:
-            run(["auto_relauncher", "--directory", "backend", "--recursive",
-                 "--sleep-between-restart", str(sleep_sec), "--patterns", "*.py",
-                 devbackend_launcher],
-                cwd=install_path)
+            run(auto_rel_cmd, cwd=install_path)
     if (("serve_dev_frontend" in current_capabilities)
             and ("serve_dev_backend" in current_capabilities)):
         printInfo("Sleep 5 seconds")
