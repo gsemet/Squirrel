@@ -46,7 +46,7 @@ class bcolors(object):
     FAIL = '\033[91m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-    BOOT = '\033[97m'
+    BOOT = '\033[94m'
 
     ENDC = '\033[0m'
 
@@ -71,8 +71,8 @@ def printError(text):
     print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
 
 
-def printSeparator(char="-"):
-    print(char * 79)
+def printSeparator(char="-", color=bcolors.OKGREEN):
+    print(color + char * 79 + bcolors.ENDC)
 
 
 def printNote(text):
@@ -183,7 +183,7 @@ if subcmd != "install:backend":
     printSeparator()
     printInfo("Compiling frontend website")
     if "http_proxy" in os.environ:
-        printInfo("Behind a proxy: npm --proxy")
+        printNote("Behind a proxy: npm --proxy")
         printNote("You may want to add the following lines in your ~/.gitconfig:")
         printNote("   [url \"https://github.com\"]")
         printNote("      insteadOf=git://github.com")

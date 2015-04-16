@@ -48,7 +48,7 @@ class bcolors(object):
     FAIL = '\033[91m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-    BOOT = '\033[97m'
+    BOOT = '\033[94m'
 
     ENDC = '\033[0m'
 
@@ -73,8 +73,8 @@ def printError(text):
     print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
 
 
-def printSeparator(char="-"):
-    print(char * 79)
+def printSeparator(char="-", color=bcolors.OKGREEN):
+    print(color + char * 79 + bcolors.ENDC)
 
 
 def printNote(text):
