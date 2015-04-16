@@ -20,13 +20,49 @@ workdir_path = os.path.abspath(workdir_path)
 
 subcmd = sys.argv[3]
 
-allowed_cmd = {
-    "serve:dev",
-    "serve:prod",
-    "serve:novirtualenv",
-    "install:backend",
-    "install:all",
-    "install:novirtualenv",
+cmd_capabilities = {
+    "serve:dev": {
+        "backend_install",
+        "frontend_install",
+        "serve",
+        "serve_dev",
+        "serve_dev_backend",
+        "serve_dev_frontend",
+    },
+    "serve:devbackend": {
+        "backend_install",
+        "serve",
+        "serve_dev",
+        "serve_dev_backend",
+    },
+    "serve:prod": {
+        "backend_install",
+        "frontend_install",
+        "frontend_gulp_build",
+        "serve",
+        "serve_prod",
+    },
+    "serve:novirtualenv": {
+        "backend_install",
+        "frontend_install",
+        "frontend_gulp_build",
+        "serve",
+        "serve_prod",
+    },
+    "install:backend": {
+        "backend_install",
+        "frontend_install"
+    },
+    "install:all": {
+        "backend_install",
+        "frontend_install",
+        "frontend_gulp_build",
+    },
+    "install:novirtualenv": {
+        "backend_install",
+        "frontend_install",
+        "frontend_gulp_build",
+    },
 }
 
 # if not os.environ['VIRTUAL_ENV']:
@@ -67,50 +103,68 @@ if sys.platform.startswith('win32') or (not os.environ.get("TRAVIS") and not sys
 
 def printInfo(text):
     print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + text)
+    sys.stdout.flush()
+    sys.stderr.flush()
 
 
 def printError(text):
     print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
+    sys.stdout.flush()
+    sys.stderr.flush()
 
 
 def printSeparator(char="-", color=bcolors.OKGREEN):
     print(color + char * 79 + bcolors.ENDC)
+    sys.stdout.flush()
+    sys.stderr.flush()
 
 
 def printNote(text):
     print(bcolors.HEADER + "[NOTE ] " + bcolors.ENDC + text)
+    sys.stdout.flush()
+    sys.stderr.flush()
 
 
 def printBoot(text):
     print(bcolors.BOOT + "[BOOT ] " + bcolors.ENDC + text)
+    sys.stdout.flush()
+    sys.stderr.flush()
 
 
 def run(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
+    sys.stdout.flush()
+    sys.stderr.flush()
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
 
 
 def call(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
+    sys.stdout.flush()
+    sys.stderr.flush()
     return subprocess.call(cmd, shell=shell, cwd=cwd)
 
 
 def run_background(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD (background)" + bcolors.ENDC + "] {}".format(" ".join(cmd)))
+    sys.stdout.flush()
+    sys.stderr.flush()
     subprocess.Popen(cmd, cwd=cwd, shell=shell)
 
 ####################################################################################################
 
 printSeparator("=")
 printInfo("Squirrel Installer Stage 2")
-if subcmd not in allowed_cmd:
-    printError("Invalid install target: {}. Available: {}".format(subcmd, allowed_cmd))
+if subcmd not in cmd_capabilities.keys():
+    printError("Invalid install target: {}. Available: {}".format(subcmd, cmd_capabilities.keys()))
     sys.exit(1)
+current_capabilities = cmd_capabilities[subcmd]
 printInfo("We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
 printInfo("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
 printInfo("installation dir: {}".format(install_path))
 printInfo("workdir: {}".format(workdir_path))
 printInfo("Install target: {}".format(subcmd))
+printInfo("Install Capabilities: {}".format(", ".join(sorted(list(current_capabilities)))))
 printInfo("Environment variables:")
 for k, v in sorted(os.environ.items()):
     printInfo("  {0}:{1}".format(k, v))
@@ -181,7 +235,7 @@ if sys.platform.startswith('win32'):
 else:
     shell = False
 
-if subcmd != "install:backend":
+if "frontend_install" in current_capabilities:
     printSeparator()
     printInfo("Compiling frontend website")
     if "http_proxy" in os.environ:
@@ -204,7 +258,7 @@ if subcmd != "install:backend":
     printInfo("cd frontend")
     run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
-    if subcmd != "serve:dev":
+    if "frontend_gulp_build" in current_capabilities:
         printInfo("cd frontend")
         run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
@@ -215,7 +269,7 @@ if subcmd != "install:backend":
     else:
         run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
 
-if subcmd.startswith("install"):
+if "serve" not in current_capabilities:
     print("")
     printSeparator()
     print("Do not start the server. Install is succesful.")
@@ -223,40 +277,52 @@ if subcmd.startswith("install"):
     sys.exit(0)
 
 printSeparator()
-if subcmd == "serve:prod":
+if "serve_prod" in current_capabilities:
     # Launching Squirrel-server
     if sys.platform.startswith('win32'):
         backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-server.exe")
     else:
         backend_launcher = "squirrel-server"
     printInfo("Launching Squirrel-server {}".format(backend_launcher))
-    sys.stdout.flush()
-    sys.stderr.flush()
 
     run([backend_launcher])
 
-elif subcmd == "serve:dev":
+elif "serve_dev" in current_capabilities:
     # Launching Squirrel-devbackend, which doesn't serve the front end, and let the front
     # be served by 'gulp serve'
     if sys.platform.startswith('win32'):
         devbackend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-devbackend.exe")
     else:
         devbackend_launcher = "squirrel-devbackend"
-    printInfo("Launching squirrel-devbackend with auto relauncher {}".format(devbackend_launcher))
-    sys.stdout.flush()
-    sys.stderr.flush()
+    if "serve_dev_backend" in current_capabilities:
+        printInfo("Launching squirrel-devbackend with auto relauncher {}".format(devbackend_launcher))
+        sys.stdout.flush()
+        sys.stderr.flush()
 
-    run_background(["auto_relauncher", "--directory", "backend", "--recursive",
-                    "--sleep-between-restart", "10", "--patterns", "*.py",
-                    devbackend_launcher],
-                   cwd=install_path)
-    printInfo("Sleep 5 seconds")
-    sys.stdout.flush()
-    sys.stderr.flush()
-    sleep(5)
+        sleep_sec = 1
+        if sys.platform.startswith('win32'):
+            sleep_sec = 5
 
-    printInfo("Serving dev frontend")
-    run(["gulp", "serve"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+        if "serve_dev_frontend" in current_capabilities:
+            run_background(["auto_relauncher", "--directory", "backend", "--recursive",
+                            "--sleep-between-restart", str(sleep_sec), "--patterns", "*.py",
+                            devbackend_launcher],
+                           cwd=install_path)
+        else:
+            run(["auto_relauncher", "--directory", "backend", "--recursive",
+                 "--sleep-between-restart", str(sleep_sec), "--patterns", "*.py",
+                 devbackend_launcher],
+                cwd=install_path)
+    if (("serve_dev_frontend" in current_capabilities)
+            and ("serve_dev_backend" in current_capabilities)):
+        printInfo("Sleep 5 seconds")
+        sys.stdout.flush()
+        sys.stderr.flush()
+        sleep(5)
+
+    if "serve_dev_frontend":
+        printInfo("Serving dev frontend")
+        run(["gulp", "serve"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 
 printInfo("Done")

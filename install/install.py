@@ -22,8 +22,9 @@ import sys
 do_virtualenv = True
 
 allowed_cmd = {
-    "serve:dev": ("install and launch developer server (backend served normally but "
+    "serve:dev": ("install and launch developer server (backend served with auto_relauncher and "
                   "frontend served by 'gulp serve')"),
+    "serve:devbackend": ("install and launch only the dev backend (with auto relauncher))"),
     "serve:prod": "install and launch production server",
     "serve:novirtualenv": ("install and serve production without going into "
                            "virtualenv (Docker/Heroku)"),
