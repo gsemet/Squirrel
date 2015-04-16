@@ -3,12 +3,10 @@ from __future__ import division
 from __future__ import print_function
 
 import logging
-import os
 import psutil
 import re
 import signal
 import subprocess
-import sys
 import time
 
 from argh import arg
