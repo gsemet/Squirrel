@@ -14,6 +14,7 @@ def getLoginData():
         "userName": "Gaetan",
         "email": "email@adress.com",
         "role": "admin",
+        "lang": "fr",
     }
 
 
@@ -21,7 +22,6 @@ def getLoginData():
 def route_profile_post(request):
     request.setHeader('Content-Type', 'application/json')
     request.setHeader('Access-Control-Allow-Origin', '*')
-    request.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
 
     data = getLoginData()
 

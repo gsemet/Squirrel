@@ -4,6 +4,7 @@ from __future__ import print_function
 
 import logging
 import logging.config as logging_config
+import sys
 
 from StringIO import StringIO
 from colorlog import ColoredFormatter
@@ -41,22 +42,24 @@ def setupLogger():
 
         def __init__(self, termWidth=-1, *args, **kwargs):
             super(SplitFormatter, self).__init__(*args, **kwargs)
-
             # Try to retrieve the terminal width:
-            term_width = -1
-            try:
-                # redirecting the stderr to an unused PIPE, to avoid the following issue:
-                #     'stty: standard input: Invalid argument'
-                # when executed from a step ShellCommand
-                data = check_output(['stty', 'size'], stderr=PIPE)
-                _, columns = data.split()
-                if columns > 0:
-                    term_width = columns
-            except:
-                pass
-            termWidth = (int(term_width) -
-                         align_level_width -
-                         extra_char_width)
+            if termWidth == -1:
+                if sys.platform.startswith("win32"):
+                    w = self.getWin32TerminalSize()
+                    if w:
+                        termWidth = w[0] - align_level_width - extra_char_width - 1
+                else:
+                    try:
+                        # redirecting the stderr to an unused PIPE, to avoid the following issue:
+                        #     'stty: standard input: Invalid argument'
+                        # when executed from a step ShellCommand
+                        data = check_output(['stty', 'size'], stderr=PIPE)
+                        _, columns = data.split()
+                        if columns > 0:
+                            termWidth = columns
+                    except:
+                        pass
+                    termWidth = int(termWidth) - align_level_width - extra_char_width
             self.termWidth = termWidth
 
         def format(self, record):
@@ -79,6 +82,31 @@ def setupLogger():
                         s = super(SplitFormatter, self).format(record)
                         formatted_lines.append(s)
             return "\n".join(formatted_lines)
+
+        # http://stackoverflow.com/questions/566746/how-to-get-console-window-width-in-python
+        def getWin32TerminalSize(self):
+            res = None
+            try:
+                from ctypes import windll, create_string_buffer
+
+                # stdin handle is -10
+                # stdout handle is -11
+                # stderr handle is -12
+
+                h = windll.kernel32.GetStdHandle(-12)
+                csbi = create_string_buffer(22)
+                res = windll.kernel32.GetConsoleScreenBufferInfo(h, csbi)
+            except:
+                return None
+            if res:
+                import struct
+                (bufx, bufy, curx, cury, wattr,
+                 left, top, right, bottom, maxx, maxy) = struct.unpack("hhhhHhhhhhh", csbi.raw)
+                sizex = right - left + 1
+                sizey = bottom - top + 1
+                return sizex, sizey
+            else:
+                return None
 
     align_level_width = 6
     extra_char_width = 3

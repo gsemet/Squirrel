@@ -58,7 +58,7 @@ class SquirrelAutoRestartTrick(AutoRestartTrick):
 
     def start(self):
         self.process = subprocess.Popen(self.command, shell=self.shell)
-        print("Starting subprocess pid {}".format(self.process.pid))
+        print("Started with pid {}".format(self.process.pid))
 
     def stop(self):
         if self.process is None:
@@ -71,6 +71,9 @@ class SquirrelAutoRestartTrick(AutoRestartTrick):
                 print("Killing subprocess {}".format(self.process.pid))
                 proc = psutil.Process(self.process.pid)
                 proc.kill()
+        except subprocess.CalledProcessError:
+            # already dead
+            pass
         except psutil.NoSuchProcess:
             print("Warning: no such process. Continuing")
             # if process already dead, just let the AutoRestartTrick restarts it
@@ -97,9 +100,12 @@ class SquirrelAutoRestartTrick(AutoRestartTrick):
     def on_any_event(self, event):
         print("Stopping subprocess")
         self.stop()
-        print("Subprocess killed, waiting {} seconds".format(self.sleep_between_restart))
-        time.sleep(self.sleep_between_restart)
-        print("Starting subprocess")
+        if self.sleep_between_restart:
+            print("Subprocess killed, waiting {} seconds".format(self.sleep_between_restart))
+            time.sleep(self.sleep_between_restart)
+            print("Starting subprocess")
+        else:
+            print("Subprocess killed - Starting new subprocess")
         self.start()
 
 

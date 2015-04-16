@@ -53,7 +53,7 @@ marketing:
                     name: "Compte Courant"
                     icon_type: "fa fa-bank fa-3x"
                 -
-                    name: "Autre"
+                    name: "Contrat de Capitalisation"
                     icon_type: "fa fa-envelope fa-3x"
         us:
             homepage_accounts:

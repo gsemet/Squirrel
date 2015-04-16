@@ -315,9 +315,9 @@ elif "serve_dev" in current_capabilities:
         sys.stdout.flush()
         sys.stderr.flush()
 
-        sleep_sec = 1
+        sleep_sec = 0
         if sys.platform.startswith('win32'):
-            sleep_sec = 1
+            sleep_sec = 0
 
         auto_rel_cmd = ["auto_relauncher", "--directory", "backend", "--recursive",
                         "--sleep-between-restart", str(sleep_sec), "--patterns", "*.py",
