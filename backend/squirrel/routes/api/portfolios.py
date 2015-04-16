@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-
+import arrow
 import json
 
 from squirrel.routes import app
@@ -20,7 +20,7 @@ def route_portfolios(request):
             'description': "Compte Titre Ordinaire (uniq. Euronext Paris)",
             'class:': 'Actions',
             'type': 'CTO',
-            'creation_date': '01/03/2014',
+            'creation_date': arrow.get('01/03/2014', 'DD/MM/YYYY').format("YYYY-MM-DD"),
             'deposit': {
                 'v': 800.00,
                 'c': 'euro',

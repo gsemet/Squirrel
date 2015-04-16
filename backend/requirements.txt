@@ -1,5 +1,6 @@
 alembic
 anyjson
+arrow
 autobahn
 colorama
 colorlog
