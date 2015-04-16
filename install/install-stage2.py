@@ -1,5 +1,6 @@
 # This is the second part of the installation procedure or Squirrel.
 # It should be executed from the virtualenv
+# But beware, you might not have all the wonderful packages you will install with pip yet.
 
 from __future__ import absolute_import
 from __future__ import division
@@ -63,6 +64,13 @@ cmd_capabilities = {
         "frontend_install",
         "frontend_gulp_build",
     },
+    'update:all': {
+        "backend_install",
+        "frontend_install",
+        "frontend_update",
+        "frontend_update_npm",
+        "frontend_update_bower",
+    }
 }
 
 # if not os.environ['VIRTUAL_ENV']:
@@ -97,7 +105,7 @@ if sys.platform.startswith('win32') or (not os.environ.get("TRAVIS") and not sys
     bcolors.FAIL = ''
     bcolors.BOLD = ''
     bcolors.UNDERLINE = ''
-
+    bcolors.BOOT = ''
     bcolors.ENDC = ''
 
 
@@ -268,6 +276,14 @@ if "frontend_install" in current_capabilities:
         run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
     else:
         run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
+
+if "frontend_update" in current_capabilities:
+    printInfo("Updating npm")
+    printInfo("cd frontend")
+    run(["npm", "install", "--save"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+    printInfo("Updating bower")
+    printInfo("cd frontend")
+    run(["bower", "install", "--save"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 if "serve" not in current_capabilities:
     print("")

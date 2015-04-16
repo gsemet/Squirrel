@@ -31,6 +31,7 @@ allowed_cmd = {
     "install:backend": "install only backend (python)",
     "install:all": "install backend and frontend",
     "install:novirtualenv": "install backend and frontend without virtualenv",
+    "update:all": "update all dependencies (modules installed by npm and bower)",
 }
 aliases = {"serve": "serve:dev",
            "install": "install:all"}
@@ -64,7 +65,7 @@ if sys.platform.startswith('win32') or (not os.environ.get("TRAVIS") and not sys
     bcolors.FAIL = ''
     bcolors.BOLD = ''
     bcolors.UNDERLINE = ''
-
+    bcolors.BOOT = ''
     bcolors.ENDC = ''
 
 
@@ -168,6 +169,7 @@ else:
 printSeparator("=")
 printBoot("Squirrel Installer Stage 1")
 printBoot("Install target: {}".format(subcmd))
+printBoot("Platform: {0}".format(sys.platform))
 printBoot("Environment: {0}".format(os_str))
 printBoot("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
 if do_virtualenv:
