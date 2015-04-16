@@ -50,8 +50,10 @@ class bcolors(object):
 
     ENDC = '\033[0m'
 
-# Do *not* use color when not in a terminal
-if sys.platform.startswith('win32') or not sys.stdout.isatty():
+# Do *not* use color when:
+#  - on windows
+#  - not in a terminal except if we are in Travis CI
+if sys.platform.startswith('win32') or (not os.environ.get("TRAVIS") and not sys.stdout.isatty()):
     bcolors.HEADER = ''
     bcolors.OKBLUE = ''
     bcolors.OKGREEN = ''
