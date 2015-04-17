@@ -217,9 +217,14 @@ msgstr "Prix de Revient"
 msgid "Crawlers"
 msgstr "Crawlers"
 
-#: app\register\register.template.html:10
-msgid "Create"
-msgstr "Création"
+#: app\register\register.template.html:43
+msgid "Create your Free Account"
+msgstr "Créez votre compte gratuitement"
+
+#: app\register\register.template.html:11
+msgid "Create your portfolio, follow their evolutions, everything for free."
+msgstr ""
+"Créez vos portefeuilles, suivez leurs évolutions, le tout gratuitement."
 
 #: app\settings\settings.template.html:18
 msgid "Current language: {{language}}"
@@ -271,10 +276,13 @@ msgstr ""
 msgid "Edit"
 msgstr "Editer"
 
-#: app\contact\contact.template.html:23 app\register\register.template.html:19
-#: app\register\register.template.html:21
+#: app\contact\contact.template.html:23 app\register\register.template.html:40
 msgid "Email"
 msgstr "Email"
+
+#: app\register\register.template.html:16
+msgid "Everywhere, anytime"
+msgstr "Quand vous voulez, où vous voulez"
 
 #: services\translations\translations.service.js:132
 msgid "Feb"
@@ -300,9 +308,17 @@ msgstr "Trouvez votre propre stratégie d'investissement"
 msgid "Find your stocks on the Stock Screener"
 msgstr "Trouvez vos prochaines actions sur le Screener d'Action"
 
+#: app\register\register.template.html:34
+msgid "First name"
+msgstr "Prénom"
+
 #: app\homepage\homepage.unlogged.template.html:107
 msgid "Follow these types of Account:"
 msgstr "Suivez tous vos comptes:"
+
+#: app\register\register.template.html:10
+msgid "Free account"
+msgstr "Compte Gratuit"
 
 #: services\translations\translations.service.js:150
 msgid "Friday"
@@ -343,10 +359,6 @@ msgstr "Siège Social :"
 msgid "Help"
 msgstr "Aide"
 
-#: app\register\register.template.html:44
-msgid "If you already have an acount, please"
-msgstr "Si vous avez déjà un compte, veuillez"
-
 #: app\login\login.template.html:32
 msgid "If you do not already have an acount, please"
 msgstr "Si vous n'avez pas de compte, veuillez"
@@ -374,6 +386,10 @@ msgstr "Juin"
 #: services\translations\translations.service.js:122
 msgid "June"
 msgstr "Juin"
+
+#: app\register\register.template.html:37
+msgid "Last name"
+msgstr "Nom"
 
 #: app\admin\admin.crawlers.template.html:14
 msgid "Last run"
@@ -479,10 +495,12 @@ msgid "Overview of the website"
 msgstr "Vue d'ensemble du site"
 
 #: app\login\login.template.html:19 app\login\login.template.html:21
-#: app\register\register.template.html:25
-#: app\register\register.template.html:27
 msgid "Password"
 msgstr "Mot de passe"
+
+#: app\register\register.template.html:7
+msgid "Please fill in all the fields."
+msgstr "Veuillez remplir tous les champs."
 
 #: app\portfolios\overview.template.html:5
 msgid "Please find bellow a summary of the portfolios."
@@ -492,21 +510,29 @@ msgstr "Veuillez trouver ci-dessous un résumé de vos portefeuilles."
 msgid "Post details"
 msgstr "Coordonnées"
 
+#: app\register\register.template.html:17
+msgid "Prepare your investments ahead of time and let you conduct"
+msgstr "Préparez vos investissements en avance, et laissez vous contruire "
+
 #: app\homepage\homepage.unlogged.template.html:161
 msgid "Profesionnal data visualizations"
 msgstr "Visualisation de donnée Professionelle"
 
-#: app\register\register.template.html:38
 #: components\navbar\navbar.controller.js:35
 msgid "Register"
 msgstr "Enregistrement"
 
-#: app\register\register.template.html:50
+#: app\register\register.template.html:53
 msgid ""
-"Registration succesfully sent to the following address: "
-"{{registration_email}}."
+"Registration succesfully sent. Please check you email for the confirmation "
+"link."
 msgstr ""
-"Enregistrement réussit avec l'adresse email suivante: {{registration_email}}."
+"Inscription envoyée. Veuillez vérifier vos emails pour le lien de "
+"confirmation."
+
+#: app\register\register.template.html:22
+msgid "Relax, feel safe"
+msgstr "Relaxez vous, soyez en totale sécurité"
 
 #: app\portfolios\_portfolios.controller.js:55
 #: app\portfolios\reporting.template.html:2
@@ -520,11 +546,6 @@ msgstr "Réinit zoom"
 #: services\translations\translations.service.js:157
 msgid "Reset zoom level 1:1"
 msgstr "Réinit zoom niveau 1:1"
-
-#: app\register\register.template.html:31
-#: app\register\register.template.html:33
-msgid "Retype your password"
-msgstr "Veuillez retaper votre mot de passe"
 
 #: services\translations\translations.service.js:151
 msgid "Saturday"
@@ -584,9 +605,17 @@ msgstr "Nbr d'actions"
 msgid "Sign Up for Free"
 msgstr "Inscrivez-vous gratuitement"
 
+#: app\register\register.template.html:4
+msgid "Sign up for a free account now"
+msgstr "Inscrivez vous pour un compte gratuit maintenant"
+
 #: app\homepage\homepage.unlogged.template.html:10
 msgid "Sign up for free"
 msgstr "Inscrivez vous gratuitement"
+
+#: app\register\register.template.html:45
+msgid "Signing up signifies that you have read and agree to the"
+msgstr "L'inscription signifie que vous avez lu et accepté les "
 
 #: app\homepage\homepage.unlogged.template.html:6
 msgid "Simple, Smart, Unique Investing"
@@ -689,6 +718,10 @@ msgstr "Imposition"
 msgid "Taxes"
 msgstr "Impôts"
 
+#: app\register\register.template.html:45
+msgid "Terms of Service"
+msgstr "Termes du Service"
+
 #: app\homepage\homepage.unlogged.template.html:124
 msgid "The center of your personal finances"
 msgstr "Le Centre de Votre Finance Personnelle."
@@ -727,11 +760,6 @@ msgid "Use Technical Analysis tools for your investment decisions."
 msgstr ""
 "Utilisez les outils d'Analyse Techniques fournis pour vos prises de décision."
 
-#: app\register\register.template.html:13
-#: app\register\register.template.html:15
-msgid "Username"
-msgstr "Nom d'utilisateur"
-
 #: app\login\login.template.html:13 app\login\login.template.html:15
 msgid "Username or email"
 msgstr "Nom d'utilisateur ou email"
@@ -750,6 +778,18 @@ msgstr ""
 "expositions aux risques de marchés, avec de beaux graphiques modernes, "
 "professionels, efficaces et interactifs."
 
+#: app\register\register.template.html:24
+msgid ""
+"We do not sell your data. We don't ask for your mobile number because we do "
+"not want to\n"
+"          sell you hidden, techno-mystic algorithm. We do not disturb your "
+"with annoying ads."
+msgstr ""
+"Nous ne vendons pas vos données. Nous ne vous demandons pas non plus de "
+"numéro de téléphone car nous ne voulons pas vous vendre des produits cachés, "
+"des algorithmes crypto-mystique. Nous ne vous pertubons pas avec les "
+"publicités."
+
 #: app\admin\admin.crawlers.template.html:2
 msgid "Web data status"
 msgstr "Statut des données du web"
@@ -765,10 +805,6 @@ msgstr "Bienvenue sur Squirrel"
 #: services\translations\get_translation.modal.template.html:9
 msgid "Welcome to Squirrel. Can you tell us in which is your language"
 msgstr "Bienvenue sur Squirrel. Pouvez-vous nous dire quel est votre langue?"
-
-#: app\register\register.template.html:49
-msgid "Welcome!"
-msgstr "Bienvenue!"
 
 #: app\homepage\homepage.unlogged.template.html:222
 msgid "When investiment goes in the Cloud."
@@ -818,10 +854,6 @@ msgstr ""
 "Squirrel utilise les cookies de votre navigateur pour vous offir la "
 "meilleure expérience possible."
 
-#: app\register\register.template.html:49
-msgid "Your account has been created"
-msgstr "Votre compte a bien été créé."
-
 #: app\contact\contact.template.html:29 app\contact\contact.template.html:31
 msgid "Your message"
 msgstr "Votre message"
@@ -842,10 +874,6 @@ msgstr "contact@squirrel-ams.fr"
 msgid "legal notes"
 msgstr "Notes Légales"
 
-#: app\register\register.template.html:44
-msgid "log in"
-msgstr "vous connecter"
-
 #: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
@@ -854,9 +882,26 @@ msgstr "de vos portefeuilles"
 msgid "register in"
 msgstr "vous enregistrer"
 
-#: app\register\register.template.html:10
-msgid "your account"
-msgstr "de votre compte"
+#~ msgid "Create"
+#~ msgstr "Création"
+
+#~ msgid "If you already have an acount, please"
+#~ msgstr "Si vous avez déjà un compte, veuillez"
+
+#~ msgid "Retype your password"
+#~ msgstr "Veuillez retaper votre mot de passe"
+
+#~ msgid "Username"
+#~ msgstr "Nom d'utilisateur"
+
+#~ msgid "Welcome!"
+#~ msgstr "Bienvenue!"
+
+#~ msgid "Your account has been created"
+#~ msgstr "Votre compte a bien été créé."
+
+#~ msgid "log in"
+#~ msgstr "vous connecter"
 
 #~ msgid "Free registration"
 #~ msgstr "Inscription gratuite"

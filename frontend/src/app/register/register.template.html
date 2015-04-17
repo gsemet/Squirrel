@@ -1,53 +1,57 @@
-<div class="container">
-  <!-- <ol class="breadcrumb">
-    <li><a href="#">Home</a></li>
-    <li class="active">Register</li>
-  </ol>
-  <hr /> -->
+<div class="register register-gradient register-blank-text view-full-page">
+  <div class="container">
+    <header>
+      <h1 class="h2" translate>Sign up for a free account now</h1>
+      <hr>
+    </header>
+    <p class="alert error" id="fill-all-fields" style="display:none" translate>Please fill in all the fields.</p>
+    <div class="row" ng-if="!registration_sent">
+      <div class="col-md-6 register-benefits">
+        <h2 class="h3" translate>Free account</h2>
+        <p translate>
 
-  <div class="row">
-    <div class="col-md-offset-3 col-md-6" ng-if="!registration_sent">
-      <h1><span translate>Create</span> <small translate>your account</small></h1>
-      <form class="form-horizontal" ng-submit="submit()">
-        <div class="form-group">
-          <label for="inputUsername" class="col-sm-2 control-label" translate>Username</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" ng-model="username" id="inputUsername" placeholder="{{'Username' | translate}}">
+          Create your portfolio, follow their evolutions, everything for free.
+
+        </p>
+        <h2 class="h3" translate>Everywhere, anytime</h2>
+        <p translate>
+
+          Prepare your investments ahead of time and let you conduct
+
+        </p>
+        <h2 class="h3" translate>Relax, feel safe</h2>
+
+        <p translate>
+
+          We do not sell your data. We don't ask for your mobile number because we do not want to
+          sell you hidden, techno-mystic algorithm. We do not disturb your with annoying ads.
+
+        </p>
+      </div>
+      <div class="signup col-md-6">
+        <form ng-submit="submit()" id="signup">
+          <div class="form-group">
+            <input class="text required form-control input-lg" id="first_name" name="first_name" placeholder="{{'First name' | translate}}" tabindex="1" type="text" value="">
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label" translate>Email</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" ng-model="email" id="inputEmail3" placeholder="{{'Email' | translate}}">
+          <div class="form-group">
+            <input class="text required form-control input-lg" id="last_name" name="last_name" placeholder="{{'Last name' | translate}}" tabindex="2" type="text" value="">
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputPassword3" class="col-sm-2 control-label" translate>Password</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" ng-model="password" id="inputPassword3" placeholder="{{'Password' | translate}}">
+          <div class="form-group">
+            <input class="text required form-control input-lg" id="email" name="email" placeholder="{{'Email' | translate}}" tabindex="3" type="text" value="">
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputPassword2" class="col-sm-2 control-label" translate>Retype your password</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword2" placeholder="{{'Retype your password' | translate}}">
+          <div class="form-group last">
+            <input class="form-control input-lg" tabindex="5" type="submit" value="{{'Create your Free Account' | translate}}">
           </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" translate>Register</button>
-          </div>
-        </div>
-      </form>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <p><span translate>If you already have an acount, please</span> <a href="#/login" translate>log in</a>.</p>
-        </div>
+          <p class="tos"><span translate>Signing up signifies that you have read and agree to the </span><a href="#/tos" translate>Terms of Service</a>.</p>
+        </form>
+        <h5 class="login">Already have an account? <a class="btn btn-primary" href="#/login">Log In</a>
+        </h5>
       </div>
     </div>
-    <div class="col-md-6" ng-if="registration_sent">
-      <h1><span translate>Welcome!</span> <small translate>Your account has been created</small></h1>
-      <p translate>Registration succesfully sent to the following address: {{registration_email}}.</p>
+    <div class="row" ng-if="registration_sent">
+      <div class="col-md-6">
+        <p translate>Registration succesfully sent. Please check you email for the confirmation link.</p>
+      </div>
     </div>
   </div>
 </div>

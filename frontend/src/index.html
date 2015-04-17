@@ -27,7 +27,7 @@
     <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet'  type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'  type='text/css'>
   </head>
-  <body>
+  <body ng-controller="BodyController" ng-class="classFullPage()">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -36,7 +36,7 @@
     <div ng-include="'components/banners/banners.template.html'"></div>
     <div ng-include="'components/navbar/navbar.template.html'"></div>
 
-    <div ng-view></div>
+    <div ng-class="classFullPage()" ng-view></div>
 
     <div ng-include="'components/footer/footer.template.html'"></div>
 

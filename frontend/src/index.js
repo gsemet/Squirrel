@@ -146,3 +146,22 @@ app.config(
     }
   ]
 );
+
+'use strict';
+
+angular.module('squirrel').controller('BodyController',
+
+  ["$scope", "$location", "layout",
+
+    function($scope, $location, layout) {
+      $scope.classFullPage = function() {
+        if (layout.isFullPage()) {
+          console.log("yes is full size!");
+          return "view-full-page";
+        }
+        console.log("no full size");
+        return "";
+      }
+    }
+  ]
+);
