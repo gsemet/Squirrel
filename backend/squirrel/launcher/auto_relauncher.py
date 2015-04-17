@@ -14,7 +14,6 @@ import time
 from argh import arg
 from argh import dispatch_command
 from argh import expects_obj
-from colorlog import ColoredFormatter
 from watchdog.observers import Observer
 from watchdog.tricks import AutoRestartTrick
 from watchdog.utils import echo

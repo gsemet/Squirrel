@@ -76,7 +76,20 @@ cmd_capabilities = {
         "frontend_update",
         "frontend_update_npm",
         "frontend_update_bower",
-    }
+    },
+    'update:lang:all': {
+        "backend_install",
+        "frontend_install",
+        "frontend_gulp_build",
+        "frontend_update_translations_fr",
+        # add all update cap here
+    },
+    'update:lang:fr': {
+        "backend_install",
+        "frontend_install",
+        "frontend_gulp_build",
+        "frontend_update_translations_fr",
+    },
 }
 
 # if not os.environ['VIRTUAL_ENV']:
@@ -292,6 +305,12 @@ if "frontend_update" in current_capabilities:
     printInfo("Updating bower")
     printInfo("cd frontend")
     run(["bower", "install", "--save"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+
+if "frontend_update_translations_fr" in current_capabilities:
+    printInfo("Updating translation: Fr")
+    printInfo("cd frontend")
+    run(["poedit", os.path.join("src", "po", "fr.po")], cwd=os.path.join(install_path, "frontend"),
+        shell=shell)
 
 if "serve" not in current_capabilities:
     printInfo("")

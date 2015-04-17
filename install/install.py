@@ -17,6 +17,8 @@ from __future__ import print_function
 import os
 import subprocess
 import sys
+
+
 # Do *not* use optparse or argparse here, we are not sure on which version of python we are!
 
 isWindows = False
@@ -26,19 +28,26 @@ if sys.platform.startswith('win32'):
 do_virtualenv = True
 
 allowed_cmd = {
-    "serve:dev": ("install and launch developer server (backend served with auto_relauncher and "
-                  "frontend served by 'gulp serve')"),
-    "serve:devbackend": ("install and launch only the dev backend (with auto relauncher))"),
-    "serve:prod": "install and launch production server",
-    "serve:novirtualenv": ("install and serve production without going into "
-                           "virtualenv (Docker/Heroku)"),
-    "install:backend": "install only backend (python)",
-    "install:all": "install backend and frontend",
+    "serve:dev":           ("install and launch developer server (backend served with "
+                            "auto_relauncher and frontend served by 'gulp serve')"),
+    "serve:devbackend":    ("install and launch only the dev backend (with auto relauncher))"),
+    "serve:prod":           "install and launch production server",
+    "serve:novirtualenv":  ("install and serve production without going into "
+                            "virtualenv (Docker/Heroku)"),
+    "install:backend":      "install only backend (python)",
+    "install:all":          "install backend and frontend",
     "install:novirtualenv": "install backend and frontend without virtualenv",
-    "update:all": "update all dependencies (modules installed by npm and bower)",
+    "update:all":           ("update all dependencies (modules installed by npm and bower) "
+                             "and translations"),
+    "update:lang:all":       "update all translations files - requires 'poedit'",
+    "update:lang:fr":        "update translation (fr) - requires 'poedit'",
 }
-aliases = {"serve": "serve:dev",
-           "install": "install:all"}
+aliases = {
+    "serve": "serve:dev",
+    "install": "install:all",
+    "update": "update:all",
+    "update:lang": "update:lang:all",
+}
 default_cmd = "install:all"
 
 ####################################################################################################
