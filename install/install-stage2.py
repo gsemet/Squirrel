@@ -13,6 +13,10 @@ import sys
 
 from time import sleep
 
+isWindows = False
+if sys.platform.startswith('win32'):
+    isWindows = True
+
 install_path = sys.argv[1]
 install_path = os.path.abspath(install_path)
 
@@ -49,6 +53,7 @@ cmd_capabilities = {
         "frontend_gulp_build",
         "serve",
         "serve_prod",
+        "novirtualenv",
     },
     "install:backend": {
         "backend_install",
@@ -63,6 +68,7 @@ cmd_capabilities = {
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
+        "novirtualenv",
     },
     'update:all': {
         "backend_install",
@@ -97,7 +103,7 @@ class bcolors(object):
 # Do *not* use color when:
 #  - on windows
 #  - not in a terminal except if we are in Travis CI
-if sys.platform.startswith('win32') or (not os.environ.get("TRAVIS") and not sys.stdout.isatty()):
+if isWindows or (not os.environ.get("TRAVIS") and not sys.stdout.isatty()):
     bcolors.HEADER = ''
     bcolors.OKBLUE = ''
     bcolors.OKGREEN = ''
@@ -171,7 +177,7 @@ printInfo("We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
 printInfo("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
 printInfo("installation dir: {}".format(install_path))
 printInfo("workdir: {}".format(workdir_path))
-printInfo("Install target: {}".format(subcmd))
+printInfo("Executing command: '{}'".format(subcmd))
 printInfo("Install Capabilities: {}".format(", ".join(sorted(list(current_capabilities)))))
 printInfo("Environment variables:")
 for k, v in sorted(os.environ.items()):
@@ -225,7 +231,7 @@ if sys.version_info < (3, 4):
     run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                               "requirements-py_lt34.txt")])
 
-if sys.platform.startswith('win32'):
+if isWindows:
     printSeparator()
     printInfo("Installing Windows dependencies")
     run(["pip", "install", "-r", os.path.join(install_path, "backend",
@@ -238,10 +244,12 @@ printInfo("Installing backend")
 printInfo("cd backend")
 run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
-if sys.platform.startswith('win32'):
+if isWindows:
     shell = True
+    activate_path = os.path.join(workdir_path, "Scripts", "activate.exe")
 else:
     shell = False
+    activate_path = os.path.join(workdir_path, "bin", "activate")
 
 if "frontend_install" in current_capabilities:
     printSeparator()
@@ -272,7 +280,7 @@ if "frontend_install" in current_capabilities:
 
     printSeparator()
     printInfo("Building online documentation")
-    if sys.platform.startswith('win32'):
+    if isWindows:
         run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
     else:
         run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
@@ -286,16 +294,20 @@ if "frontend_update" in current_capabilities:
     run(["bower", "install", "--save"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 if "serve" not in current_capabilities:
-    print("")
+    printInfo("")
     printSeparator()
-    print("Do not start the server. Install is succesful.")
+    printInfo("Do not start the server. Install is succesful.")
+    if "novirtualenv" not in current_capabilities:
+        printInfo("You can activate the virtualenv at the following path: {}".format(activate_path))
+        if not isWindows:
+            printInfo("(Use 'source activate' symbolic in your root folder)")
     printSeparator()
     sys.exit(0)
 
 printSeparator()
 if "serve_prod" in current_capabilities:
     # Launching Squirrel-server
-    if sys.platform.startswith('win32'):
+    if isWindows:
         backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-server.exe")
     else:
         backend_launcher = "squirrel-server"
@@ -306,7 +318,7 @@ if "serve_prod" in current_capabilities:
 elif "serve_dev" in current_capabilities:
     # Launching Squirrel-devbackend, which doesn't serve the front end, and let the front
     # be served by 'gulp serve'
-    if sys.platform.startswith('win32'):
+    if isWindows:
         devbackend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-devbackend.exe")
     else:
         devbackend_launcher = "squirrel-devbackend"
@@ -316,7 +328,7 @@ elif "serve_dev" in current_capabilities:
         sys.stderr.flush()
 
         sleep_sec = 0
-        if sys.platform.startswith('win32'):
+        if isWindows:
             sleep_sec = 0
 
         auto_rel_cmd = ["auto_relauncher", "--directory", "backend", "--recursive",

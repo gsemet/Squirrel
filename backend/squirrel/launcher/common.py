@@ -34,16 +34,16 @@ def installTrap():
     if hasattr(signal, "SIGBREAK"):
         signal.signal(signal.SIGBREAK, terminate_handler)
 
-from ctypes import WINFUNCTYPE
-from ctypes import windll
-from ctypes.wintypes import BOOL
-from ctypes.wintypes import DWORD
-
 
 # https://github.com/zeromq/pyzmq/pull/559/files
 def install_handler_win32():
     if not sys.platform.startswith("win32"):
         return
+
+    from ctypes import WINFUNCTYPE
+    from ctypes import windll
+    from ctypes.wintypes import BOOL
+    from ctypes.wintypes import DWORD
 
     kernel32 = windll.LoadLibrary('kernel32')
     PHANDLER_ROUTINE = WINFUNCTYPE(BOOL, DWORD)

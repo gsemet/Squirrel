@@ -19,6 +19,10 @@ import subprocess
 import sys
 # Do *not* use optparse or argparse here, we are not sure on which version of python we are!
 
+isWindows = False
+if sys.platform.startswith('win32'):
+    isWindows = True
+
 do_virtualenv = True
 
 allowed_cmd = {
@@ -57,7 +61,7 @@ class bcolors(object):
 # Do *not* use color when:
 #  - on windows
 #  - not in a terminal except if we are in Travis CI
-if sys.platform.startswith('win32') or (not os.environ.get("TRAVIS") and not sys.stdout.isatty()):
+if isWindows or (not os.environ.get("TRAVIS") and not sys.stdout.isatty()):
     bcolors.HEADER = ''
     bcolors.OKBLUE = ''
     bcolors.OKGREEN = ''
@@ -117,6 +121,8 @@ def usage():
     for alias, cmd in sorted(aliases.items()):
         print("  {:10}{}".format(alias, cmd))
     print("")
+    print("If no command is selected, execute the following command: '{}'".format(default_cmd))
+    print("")
     print("Uninstall with './install/uninstall.py'")
     sys.exit(0)
 
@@ -146,6 +152,11 @@ if sys.version_info >= (3, 0):
 if "novirtualenv" in subcmd:
     do_virtualenv = False
 
+if os.environ.get('VIRTUAL_ENV'):
+    printError("You are inside a virtual env. Please leave it with 'deactivate' and relaunch "
+               "your command")
+    sys.exit(1)
+
 install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs", "default.conf"))
 stage2_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "install-stage2.py"))
@@ -157,7 +168,7 @@ workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                 os.pardir,
                                                 "requirements.txt"))
-if sys.platform.startswith('win32'):
+if isWindows:
     activate = os.path.join(workdir_path, "Scripts", "activate.bat")
     activate_info = activate
     os_str = "Windows"
@@ -168,7 +179,7 @@ else:
 
 printSeparator("=")
 printBoot("Squirrel Installer Stage 1")
-printBoot("Install target: {}".format(subcmd))
+printBoot("Executing command: '{}'".format(subcmd))
 printBoot("Platform: {0}".format(sys.platform))
 printBoot("Environment: {0}".format(os_str))
 printBoot("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
@@ -184,7 +195,7 @@ printBoot("Installing in {0}".format(workdir_path))
 printBoot("Requirements: {0}".format(requirements_txt))
 
 
-if sys.platform.startswith('win32'):
+if isWindows:
     virtualenv = "virtualenv.exe"
     python_exe = "python.exe"
     launch_in_new_window = True
@@ -213,10 +224,10 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
         if not os.path.exists(os.path.join(workdir_path, "bin", "pip")):
             subprocess.check_call(['virtualenv', workdir_path])
 
-        if not os.path.exists(os.path.join(install_path, "tosource")):
-            printBoot("Creating symblink tosource")
+        if not os.path.exists(os.path.join(install_path, "actvate")):
+            printBoot("Creating symblink actvate")
             os.symlink(os.path.join(workdir_path, "bin", "activate"), os.path.join(install_path,
-                                                                                   "tosource"))
+                                                                                   "actvate"))
 
         printBoot("Activating virtualenv in {0}".format(workdir_path))
         # subprocess.check_call([python_exe, stage2_path, activate, install_path])
