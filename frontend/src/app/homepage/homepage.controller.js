@@ -3,10 +3,10 @@
 angular.module('squirrel').controller('HomepageCtrl',
 
   ["AuthenticationService", "$rootScope", '$scope', "AUTH_EVENTS", "request", "TranslationService",
-    "$timeout",
+    "$timeout", "$location",
 
     function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS, request, TranslationService,
-      $timeout) {
+      $timeout, $location) {
 
       $scope.logged_in = AuthenticationService.isAuthenticated();
 
@@ -39,6 +39,10 @@ angular.module('squirrel').controller('HomepageCtrl',
       };
 
       $timeout($scope.refreshAccounts, 500);
+
+      $scope.signup = function() {
+        $location.path("/register");
+      }
     }
   ]
 );

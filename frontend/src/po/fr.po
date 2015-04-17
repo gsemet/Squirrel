@@ -9,85 +9,89 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 
-#: app/contact/contact.template.html:50
+#: app\contact\contact.template.html:50
 msgid "+33 1 01 01 01 01"
 msgstr "+33 1 01 01 01 01"
 
 #. thousands separator
-#: services/translations/translations.service.js:159
+#: services\translations\translations.service.js:159
 msgid ","
 msgstr " "
 
 #. decimal point
-#: services/translations/translations.service.js:154
+#: services\translations\translations.service.js:154
 msgid "."
 msgstr ","
 
-#: app/contact/contact.template.html:56
+#: app\contact\contact.template.html:56
 msgid "1 rue"
 msgstr "1 rue"
 
+#: app\homepage\homepage.unlogged.template.html:41
+msgid "100% online, live update"
+msgstr "100 en ligne, mis à jour automatiquement"
+
 #. 2 letters to say "1 month"
-#: app/portfolios/details.controller.js:66
+#: app\portfolios\details.controller.js:66
 msgid "1m"
 msgstr "1m"
 
 #. 2 letters to say "1 year"
-#: app/portfolios/details.controller.js:85
+#: app\portfolios\details.controller.js:85
 msgid "1y"
 msgstr "1a"
 
-#: app/contact/contact.template.html:57
+#: app\contact\contact.template.html:57
 msgid "31000 Toulouse"
 msgstr "31000 Toulouse"
 
 #. 2 letters to say "3 months"
-#: app/portfolios/details.controller.js:71
+#: app\portfolios\details.controller.js:71
 msgid "3m"
 msgstr "3m"
 
 #. 2 letters to say "6 months"
-#: app/portfolios/details.controller.js:76
+#: app\portfolios\details.controller.js:76
 msgid "6m"
 msgstr "6m"
 
-#: components/footer/footer.template.html:22
+#: components\footer\footer.template.html:22
 msgid "About"
 msgstr "A Propos"
 
-#: app/homepage/homepage.unlogged.template.html:220
+#: app\homepage\homepage.unlogged.template.html:221
 msgid "Access your porfolio anywhere, any time"
 msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 
-#: app/admin/admin.crawlers.template.html:15
+#: app\admin\admin.crawlers.template.html:15
 msgid "Actions"
 msgstr "Actions"
 
-#: app/admin/admin.template.html:14
+#: app\admin\admin.template.html:14
 msgid "Admin Panel"
 msgstr "Configuration"
 
-#: app/admin/admin.dashboard.template.html:3
+#: app\admin\admin.dashboard.template.html:3
 msgid "Administrator Dashboard"
 msgstr "Tableau de bord d'administration"
 
-#: components/navbar/navbar.template.html:57
+#: components\navbar\navbar.template.html:57
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
 
 #. 3 letters to say "all"
-#: app/portfolios/details.controller.js:89
+#: app\portfolios\details.controller.js:89
 msgid "All"
 msgstr "Tout"
 
-#: app/portfolios/_portfolios.controller.js:36
-#: app/portfolios/allocations.template.html:2
+#: app\portfolios\_portfolios.controller.js:36
+#: app\portfolios\allocations.template.html:2
 msgid "Allocations"
 msgstr "Expositions"
 
-#: components/banners/banners.template.html:21
+#: components\banners\banners.template.html:21
 msgid ""
 "An internal error is preventing to refresh the database. There is no quotes "
 "refresh until this\n"
@@ -97,7 +101,7 @@ msgstr ""
 "donnée. Il n'y a pas de mise à jour des valeurs des actions et fonds tant "
 "que ce problème ne sera pas fixé par nos équipes."
 
-#: app/homepage/homepage.unlogged.template.html:132
+#: app\homepage\homepage.unlogged.template.html:133
 msgid ""
 "Analyse and compare quotes. Follow the evolution of your positions, the "
 "value of your\n"
@@ -108,44 +112,44 @@ msgstr ""
 "positions, la valeur de votre portefeuille, prévoyez les versements de vos "
 "dividendes, préparez votre déclaration d'impôts."
 
-#: app/homepage/homepage.unlogged.template.html:32
+#: app\homepage\homepage.unlogged.template.html:33
 msgid "Analyze the market with modern tools"
 msgstr "Analysez le marché avec des outils à la pointe de la modernité"
 
-#: app/portfolios/_portfolios.controller.js:61
-#: app/portfolios/annual_reports.template.html:2
+#: app\portfolios\_portfolios.controller.js:61
+#: app\portfolios\annual_reports.template.html:2
 msgid "Annual Reports"
 msgstr "Rapports Annuels"
 
-#: services/translations/translations.service.js:134
+#: services\translations\translations.service.js:134
 msgid "Apr"
 msgstr "Avr"
 
-#: services/translations/translations.service.js:120
+#: services\translations\translations.service.js:120
 msgid "April"
 msgstr "Avril"
 
-#: services/translations/translations.service.js:138
+#: services\translations\translations.service.js:138
 msgid "Aug"
 msgstr "Aou"
 
-#: services/translations/translations.service.js:124
+#: services\translations\translations.service.js:124
 msgid "August"
 msgstr "Août"
 
-#: app/portfolios/overview.template.html:29
+#: app\portfolios\overview.template.html:29
 msgid "Balance"
 msgstr "Balance"
 
-#: app/homepage/homepage.unlogged.template.html:8
+#: app\homepage\homepage.unlogged.template.html:8
 msgid "Be your own Financial Advisor"
 msgstr "Soyez votre propre conseiller financier"
 
-#: app/portfolios/overview.template.html:25
+#: app\portfolios\overview.template.html:25
 msgid "Broker"
 msgstr "Courtier"
 
-#: components/banners/banners.template.html:45
+#: components\banners\banners.template.html:45
 msgid ""
 "By using continuing your navigation on our website and agreeing to this "
 "policy, you consent to\n"
@@ -155,32 +159,32 @@ msgstr ""
 "consentement sur l'utilisation de ces cookie, dans le cadre des terme de "
 "politique d'utilisation."
 
-#: services/translations/get_translation.modal.template.html:24
+#: services\translations\get_translation.modal.template.html:24
 msgid "Cancel"
 msgstr "Annuler"
 
-#: app/portfolios/_portfolios.controller.js:29
-#: app/portfolios/cash.template.html:2
+#: app\portfolios\_portfolios.controller.js:29
+#: app\portfolios\cash.template.html:2
 msgid "Cash"
 msgstr "Liquidités"
 
-#: app/settings/settings.template.html:21
+#: app\settings\settings.template.html:21
 msgid "Change Language"
 msgstr "Changer la langue courante"
 
-#: components/navbar/navbar.template.html:27
+#: components\navbar\navbar.template.html:27
 msgid "Change language"
 msgstr "Selectionnez votre langue"
 
-#: app/settings/settings.template.html:17
+#: app\settings\settings.template.html:17
 msgid "Change your Language"
 msgstr "Sélectionnez votre langue"
 
-#: services/translations/get_translation.modal.template.html:13
+#: services\translations\get_translation.modal.template.html:13
 msgid "Choose your language"
 msgstr "Sélectionnez votre langue"
 
-#: app/homepage/homepage.unlogged.template.html:229
+#: app\homepage\homepage.unlogged.template.html:230
 msgid ""
 "Consult, edit and visualize your portfolio anywhere, from your personal "
 "computer, tablet\n"
@@ -189,72 +193,72 @@ msgstr ""
 "Consultez, éditez et visualisez vos portefeuille depuis n'importe où, de "
 "votre ordinateur personnel, votre tablette ou votre smartphone."
 
-#: components/footer/footer.template.html:23
+#: components\footer\footer.template.html:23
 msgid "Contact"
 msgstr "Contact"
 
-#: app/contact/contact.template.html:12
+#: app\contact\contact.template.html:12
 msgid "Contact The Squirrel Team"
 msgstr "Contactez l'équipe de Squirrel"
 
-#: components/footer/footer.template.html:23
+#: components\footer\footer.template.html:23
 msgid "Contact the technical team"
 msgstr "Contactez le support technique"
 
-#: components/footer/footer.template.html:32
+#: components\footer\footer.template.html:32
 msgid "Copyright 2015 all rights reserved."
 msgstr "Copyright 2015 tous drotis réservés."
 
-#: app/portfolios/details.template.html:23
+#: app\portfolios\details.template.html:23
 msgid "Cost Basis"
 msgstr "Prix de Revient"
 
-#: app/admin/admin.crawlers.template.html:2 app/admin/admin.template.html:18
+#: app\admin\admin.crawlers.template.html:2 app\admin\admin.template.html:18
 msgid "Crawlers"
 msgstr "Crawlers"
 
-#: app/register/register.template.html:10
+#: app\register\register.template.html:10
 msgid "Create"
 msgstr "Création"
 
-#: app/settings/settings.template.html:18
+#: app\settings\settings.template.html:18
 msgid "Current language: {{language}}"
 msgstr "Langue actuelle: {{language}}"
 
-#: app/admin/admin.template.html:17
+#: app\admin\admin.template.html:17
 msgid "Dashboard"
 msgstr "Tableau de Bord"
 
-#: services/translations/translations.service.js:142
+#: services\translations\translations.service.js:142
 msgid "Dec"
 msgstr "Déc"
 
-#: services/translations/translations.service.js:128
+#: services\translations\translations.service.js:128
 msgid "December"
 msgstr "Décembre"
 
-#: app/portfolios/overview.template.html:28
+#: app\portfolios\overview.template.html:28
 msgid "Deposit"
 msgstr "Dépot"
 
-#: app/portfolios/cash.template.html:2
+#: app\portfolios\cash.template.html:2
 msgid "Deposits and Withdrawals"
 msgstr "Dépôts et Retraits"
 
-#: app/admin/admin.crawlers.template.html:12
-#: app/portfolios/overview.template.html:26
+#: app\admin\admin.crawlers.template.html:12
+#: app\portfolios\overview.template.html:26
 msgid "Description"
 msgstr "Description"
 
-#: app/portfolios/overview.template.html:30
+#: app\portfolios\overview.template.html:30
 msgid "Details"
 msgstr "Détails"
 
-#: app/portfolios/details.template.html:6
+#: app\portfolios\details.template.html:6
 msgid "Details of your portfolio"
 msgstr "Détail de votre portefeuille"
 
-#: app/homepage/homepage.unlogged.template.html:274
+#: app\homepage\homepage.unlogged.template.html:275
 msgid ""
 "Easily show your portfolio to your financial adviser so he can give you "
 "accurate and\n"
@@ -263,332 +267,336 @@ msgstr ""
 "Montrer votre portefeuille facilement à votre gesionnaire financier, pour "
 "qu'il vous offre les conseils les plus pertinents."
 
-#: app/portfolios/overview.template.html:31
+#: app\portfolios\overview.template.html:31
 msgid "Edit"
 msgstr "Editer"
 
-#: app/contact/contact.template.html:23 app/register/register.template.html:19
-#: app/register/register.template.html:21
+#: app\contact\contact.template.html:23 app\register\register.template.html:19
+#: app\register\register.template.html:21
 msgid "Email"
 msgstr "Email"
 
-#: services/translations/translations.service.js:132
+#: services\translations\translations.service.js:132
 msgid "Feb"
 msgstr "Fév"
 
-#: services/translations/translations.service.js:118
+#: services\translations\translations.service.js:118
 msgid "February"
 msgstr "Février"
 
-#: app/homepage/homepage.unlogged.template.html:36
+#: app\homepage\homepage.unlogged.template.html:37
 msgid "Financial markets"
 msgstr "Marchés financiers"
 
-#: app/screeners/screeners.template.html:9
+#: app\screeners\screeners.template.html:9
 msgid "Find your next stock here"
 msgstr "Trouvez vos prochaines actions"
 
-#: app/homepage/homepage.unlogged.template.html:58
+#: app\homepage\homepage.unlogged.template.html:59
 msgid "Find your own investment strategy"
 msgstr "Trouvez votre propre stratégie d'investissement"
 
-#: components/footer/footer.template.html:10
+#: components\footer\footer.template.html:10
 msgid "Find your stocks on the Stock Screener"
 msgstr "Trouvez vos prochaines actions sur le Screener d'Action"
 
-#: app/homepage/homepage.unlogged.template.html:106
+#: app\homepage\homepage.unlogged.template.html:107
 msgid "Follow these types of Account:"
 msgstr "Suivez tous vos comptes:"
 
-#: components/navbar/navbar.template.html:41
-msgid "Free registration"
-msgstr "Inscription gratuite"
-
-#: services/translations/translations.service.js:150
+#: services\translations\translations.service.js:150
 msgid "Friday"
 msgstr "Vendredi"
 
-#: services/translations/translations.service.js:161
+#: services\translations\translations.service.js:161
 msgid "From"
 msgstr "De"
 
-#: app/homepage/homepage.unlogged.template.html:65
+#: app\homepage\homepage.unlogged.template.html:66
 msgid "Full Featured Investment Portfolio Management Software."
 msgstr ""
 "Le Système en ligne de Gestion de Portefeuille dédié à vos Investissements."
 
-#: app/portfolios/details.template.html:24
+#: app\portfolios\details.template.html:24
 msgid "Gain"
 msgstr "Gain"
 
-#: app/portfolios/details.template.html:25
+#: app\portfolios\details.template.html:25
 msgid "Gain %"
 msgstr "Gain %"
 
-#: app/homepage/homepage.unlogged.template.html:199
+#: app\homepage\homepage.unlogged.template.html:200
 msgid "Generate professional looking reports."
 msgstr ""
 "Préparez et éditez vos rapports de qualité professionelle, depuis une large "
 "palette de modèles."
 
-#: app/homepage/homepage.unlogged.template.html:28
+#: app\homepage\homepage.unlogged.template.html:29
 msgid "Get a crystal clear overview of your financial situation"
 msgstr "Ayez une vue globale de votre situation financière, à chaque instant."
 
-#: app/contact/contact.template.html:55
+#: app\contact\contact.template.html:55
 msgid "Head Office :"
 msgstr "Siège Social :"
 
-#: components/footer/footer.template.html:14
+#: components\footer\footer.template.html:14
 msgid "Help"
 msgstr "Aide"
 
-#: app/register/register.template.html:44
+#: app\register\register.template.html:44
 msgid "If you already have an acount, please"
 msgstr "Si vous avez déjà un compte, veuillez"
 
-#: app/login/login.template.html:32
+#: app\login\login.template.html:32
 msgid "If you do not already have an acount, please"
 msgstr "Si vous n'avez pas de compte, veuillez"
 
-#: services/translations/translations.service.js:131
+#: services\translations\translations.service.js:131
 msgid "Jan"
 msgstr "Jan"
 
-#: services/translations/translations.service.js:117
+#: services\translations\translations.service.js:117
 msgid "January"
 msgstr "Janvier"
 
-#: services/translations/translations.service.js:137
+#: services\translations\translations.service.js:137
 msgid "Jul"
 msgstr "Jui"
 
-#: services/translations/translations.service.js:123
+#: services\translations\translations.service.js:123
 msgid "July"
 msgstr "Juillet"
 
-#: services/translations/translations.service.js:136
+#: services\translations\translations.service.js:136
 msgid "Jun"
 msgstr "Juin"
 
-#: services/translations/translations.service.js:122
+#: services\translations\translations.service.js:122
 msgid "June"
 msgstr "Juin"
 
-#: app/admin/admin.crawlers.template.html:14
+#: app\admin\admin.crawlers.template.html:14
 msgid "Last run"
 msgstr "Dernière exécution"
 
-#: components/footer/footer.template.html:19
+#: components\footer\footer.template.html:19
 msgid "Legal notes"
 msgstr "Notes légales"
 
-#: app/portfolios/securities.template.html:2
+#: app\portfolios\securities.template.html:2
 msgid "List of your securities"
 msgstr "Vue d'ensemble de de vos actions"
 
-#: services/translations/translations.service.js:115
+#: services\translations\translations.service.js:115
 msgid "Loading..."
 msgstr "Chargement..."
 
-#: components/navbar/navbar.template.html:34
+#: components\navbar\navbar.template.html:34
 msgid "Log in"
 msgstr "Connexion"
 
-#: components/navbar/navbar.template.html:58
+#: components\navbar\navbar.template.html:58
 msgid "Log out"
 msgstr "Deconnexion"
 
-#: app/login/login.template.html:10 app/login/login.template.html:26
-#: components/navbar/navbar.controller.js:32
+#: app\login\login.template.html:10 app\login\login.template.html:26
+#: components\navbar\navbar.controller.js:32
 msgid "Login"
 msgstr "Connexion"
 
-#: app/admin/admin.crawlers.template.html:16
+#: app\admin\admin.crawlers.template.html:16
 msgid "Logs"
 msgstr "Logs"
 
-#: components/footer/footer.template.html:18
+#: components\footer\footer.template.html:18
 msgid "Légal"
 msgstr "Légal"
 
-#: components/footer/footer.template.html:11
+#: components\footer\footer.template.html:11
 msgid "Manage your portfolios"
 msgstr "Gerez vos portefeuilles"
 
-#: services/translations/translations.service.js:133
+#: services\translations\translations.service.js:133
 msgid "Mar"
 msgstr "Mar"
 
-#: services/translations/translations.service.js:119
+#: services\translations\translations.service.js:119
 msgid "March"
 msgstr "Mars"
 
-#: services/translations/translations.service.js:121
-#: services/translations/translations.service.js:135
+#: services\translations\translations.service.js:121
+#: services\translations\translations.service.js:135
 msgid "May"
 msgstr "Mai"
 
-#: app/homepage/homepage.unlogged.template.html:212
+#: app\homepage\homepage.unlogged.template.html:213
 msgid "Meet Squirrel, your porfolio best friend!"
 msgstr "Découvrez Squirrel, le meilleur ami de votre Portefeuille"
 
-#: services/translations/translations.service.js:146
+#: services\translations\translations.service.js:146
 msgid "Monday"
 msgstr "Lundi"
 
-#: components/footer/footer.template.html:11
-#: components/navbar/navbar.controller.js:25
+#: components\footer\footer.template.html:11
+#: components\navbar\navbar.controller.js:25
 msgid "My Portfolios"
 msgstr "Mes Portefeuilles"
 
-#: app/admin/admin.crawlers.template.html:11
-#: app/contact/contact.template.html:17
-#: app/portfolios/details.template.html:20
-#: app/portfolios/overview.template.html:24
+#: app\admin\admin.crawlers.template.html:11
+#: app\contact\contact.template.html:17
+#: app\portfolios\details.template.html:20
+#: app\portfolios\overview.template.html:24
 msgid "Name"
 msgstr "Nom"
 
-#: services/translations/translations.service.js:141
+#: services\translations\translations.service.js:141
 msgid "Nov"
 msgstr "Nov"
 
-#: services/translations/translations.service.js:127
+#: services\translations\translations.service.js:127
 msgid "November"
 msgstr "Novembre"
 
-#: services/translations/get_translation.modal.template.html:23
+#: services\translations\get_translation.modal.template.html:23
 msgid "OK"
 msgstr "OK"
 
-#: services/translations/translations.service.js:140
+#: services\translations\translations.service.js:140
 msgid "Oct"
 msgstr "Oct"
 
-#: services/translations/translations.service.js:126
+#: services\translations\translations.service.js:126
 msgid "October"
 msgstr "Octobre"
 
-#: app/portfolios/_portfolios.controller.js:15
-#: app/portfolios/overview.template.html:4
+#: app\portfolios\_portfolios.controller.js:15
+#: app\portfolios\overview.template.html:4
 msgid "Overview"
 msgstr "Vue Générale"
 
-#: app/admin/admin.dashboard.template.html:3
+#: app\admin\admin.dashboard.template.html:3
 msgid "Overview of the website"
 msgstr "Vue d'ensemble du site"
 
-#: app/login/login.template.html:19 app/login/login.template.html:21
-#: app/register/register.template.html:25
-#: app/register/register.template.html:27
+#: app\login\login.template.html:19 app\login\login.template.html:21
+#: app\register\register.template.html:25
+#: app\register\register.template.html:27
 msgid "Password"
 msgstr "Mot de passe"
 
-#: app/portfolios/overview.template.html:5
+#: app\portfolios\overview.template.html:5
 msgid "Please find bellow a summary of the portfolios."
 msgstr "Veuillez trouver ci-dessous un résumé de vos portefeuilles."
 
-#: app/contact/contact.template.html:45
+#: app\contact\contact.template.html:45
 msgid "Post details"
 msgstr "Coordonnées"
 
-#: app/homepage/homepage.unlogged.template.html:160
+#: app\homepage\homepage.unlogged.template.html:161
 msgid "Profesionnal data visualizations"
 msgstr "Visualisation de donnée Professionelle"
 
-#: app/register/register.template.html:38
-#: components/navbar/navbar.controller.js:35
+#: app\register\register.template.html:38
+#: components\navbar\navbar.controller.js:35
 msgid "Register"
 msgstr "Enregistrement"
 
-#: app/register/register.template.html:50
+#: app\register\register.template.html:50
 msgid ""
 "Registration succesfully sent to the following address: "
 "{{registration_email}}."
 msgstr ""
 "Enregistrement réussit avec l'adresse email suivante: {{registration_email}}."
 
-#: app/portfolios/_portfolios.controller.js:55
-#: app/portfolios/reporting.template.html:2
+#: app\portfolios\_portfolios.controller.js:55
+#: app\portfolios\reporting.template.html:2
 msgid "Reporting"
 msgstr "Reporting"
 
-#: services/translations/translations.service.js:156
+#: services\translations\translations.service.js:156
 msgid "Reset zoom"
 msgstr "Réinit zoom"
 
-#: services/translations/translations.service.js:157
+#: services\translations\translations.service.js:157
 msgid "Reset zoom level 1:1"
 msgstr "Réinit zoom niveau 1:1"
 
-#: app/register/register.template.html:31
-#: app/register/register.template.html:33
+#: app\register\register.template.html:31
+#: app\register\register.template.html:33
 msgid "Retype your password"
 msgstr "Veuillez retaper votre mot de passe"
 
-#: services/translations/translations.service.js:151
+#: services\translations\translations.service.js:151
 msgid "Saturday"
 msgstr "Samedi"
 
-#: components/footer/footer.template.html:10
+#: components\footer\footer.template.html:10
 msgid "Screeners"
 msgstr "Screeners d'Actions"
 
-#: app/portfolios/_portfolios.controller.js:22
-#: app/portfolios/securities.template.html:2
+#: app\portfolios\_portfolios.controller.js:22
+#: app\portfolios\securities.template.html:2
 msgid "Securities"
 msgstr "Actions"
 
-#: app/portfolios/details.controller.js:33
+#: app\portfolios\details.controller.js:33
 msgid "Securities Allocation"
 msgstr "Allocation"
 
-#: services/translations/get_translation.modal.template.html:14
+#: services\translations\get_translation.modal.template.html:14
 msgid "Select please choose your prefered language"
 msgstr "Veuillez sélectionnez votre langue préférée"
 
-#: app/contact/contact.template.html:36
+#: app\contact\contact.template.html:36
 msgid "Send"
 msgstr "Envoyer"
 
-#: services/translations/translations.service.js:139
+#: services\translations\translations.service.js:139
 msgid "Sep"
 msgstr "Sep"
 
-#: services/translations/translations.service.js:125
+#: services\translations\translations.service.js:125
 msgid "September"
 msgstr "Septembre"
 
-#: components/footer/footer.template.html:9
+#: components\footer\footer.template.html:9
 msgid "Services"
 msgstr "Services"
 
-#: app/settings/settings.template.html:15
-#: components/navbar/navbar.template.html:56
+#: app\settings\settings.template.html:15
+#: components\navbar\navbar.template.html:56
 msgid "Settings"
 msgstr "Paramètres"
 
-#: app/homepage/homepage.unlogged.template.html:263
+#: app\homepage\homepage.unlogged.template.html:264
 msgid "Share part of your portfolio publicly, keep it completely private."
 msgstr "Partager votre portefeuille en ligne, ou gardez le complètement privé."
 
-#: app/homepage/homepage.unlogged.template.html:251
+#: app\homepage\homepage.unlogged.template.html:252
 msgid "Share your Portfolio"
 msgstr "Partagez vos Portefeuilles"
 
-#: app/portfolios/details.template.html:22
+#: app\portfolios\details.template.html:22
 msgid "Shares"
 msgstr "Nbr d'actions"
 
-#: app/homepage/homepage.unlogged.template.html:6
-msgid "Simple, Smart, Unique Investing"
-msgstr "Vos Investissements, simple, efficace, unique"
+#: components\navbar\navbar.template.html:41
+msgid "Sign Up for Free"
+msgstr "Inscrivez-vous gratuitement"
 
-#: app/homepage/homepage.unlogged.template.html:252
+#: app\homepage\homepage.unlogged.template.html:10
+msgid "Sign up for free"
+msgstr "Inscrivez vous gratuitement"
+
+#: app\homepage\homepage.unlogged.template.html:6
+msgid "Simple, Smart, Unique Investing"
+msgstr "Simple, Efficace, Unique"
+
+#: app\homepage\homepage.unlogged.template.html:253
 msgid "Social networks also apply to Investments"
 msgstr "Les Réseaux Sociaux s'appliquent également à l'Investissement"
 
-#: components/banners/banners.template.html:27
+#: components\banners\banners.template.html:27
 msgid ""
 "Sorry for the inconvenience. We do our best to fix this issue as soon as "
 "possible."
@@ -596,19 +604,19 @@ msgstr ""
 "Veuillez excusez ce désagrément. Nous faisons de notre mieux pour restaurer "
 "le service normal le plus vite possible."
 
-#: app/contact/contact.template.html:48
+#: app\contact\contact.template.html:48
 msgid "Squirrel"
 msgstr "Squirrel"
 
-#: components/footer/footer.template.html:15
+#: components\footer\footer.template.html:15
 msgid "Squirrel AMS"
 msgstr "Squirrel AMS"
 
-#: components/footer/footer.template.html:15
+#: components\footer\footer.template.html:15
 msgid "Squirrel Asset Management System"
 msgstr "Squirrel Gestionnaire de Portefeuille"
 
-#: app/homepage/homepage.unlogged.template.html:77
+#: app\homepage\homepage.unlogged.template.html:78
 msgid ""
 "Squirrel allows you track your all assets in one single place: Stocks, "
 "Bonds, Mutual Fund\n"
@@ -617,7 +625,7 @@ msgstr ""
 "Squirrel vous aide à suivre tous vos actifs en un seul endroit: actions, "
 "obligations, unité de compte et même options."
 
-#: app/homepage/homepage.unlogged.template.html:142
+#: app\homepage\homepage.unlogged.template.html:143
 msgid ""
 "Squirrel automatically retrieves the current value of any stocks, options or "
 "fund\n"
@@ -627,7 +635,7 @@ msgstr ""
 "actions, options et même les valeurs liquidatives de vos Unités de Compte, "
 "depuis les principales places boursières, jusqu'à 15 ans dans le passé."
 
-#: app/homepage/homepage.unlogged.template.html:83
+#: app\homepage\homepage.unlogged.template.html:84
 msgid ""
 "Squirrel is also able to help you tracking your speculative portfolio such "
 "as your Forex\n"
@@ -636,103 +644,103 @@ msgstr ""
 "Squirrel peut aussi vous aider à suivre votre portefeuille spéculatif tel "
 "que Forex, CFD. Seules les opérations manuelles sont fournies."
 
-#: app/contact/contact.template.html:53
+#: app\contact\contact.template.html:53
 msgid "Squirrel is edited by the Squirrel SAS"
 msgstr "Squirrel est édité par la société Squirrel SAS"
 
-#: app/admin/admin.crawlers.template.html:13
+#: app\admin\admin.crawlers.template.html:13
 msgid "Status"
 msgstr "Status"
 
-#: app/portfolios/_portfolios.controller.js:49
-#: app/portfolios/status_report.template.html:2
+#: app\portfolios\_portfolios.controller.js:49
+#: app\portfolios\status_report.template.html:2
 msgid "Status Report"
 msgstr "Rapport de Situation"
 
-#: app/screeners/screeners.template.html:9
+#: app\screeners\screeners.template.html:9
 msgid "Stock Screener"
 msgstr "Screeners"
 
-#: components/navbar/navbar.controller.js:22
+#: components\navbar\navbar.controller.js:22
 msgid "Stock Screeners"
 msgstr "Screeners d'Actions"
 
-#: services/translations/translations.service.js:145
+#: services\translations\translations.service.js:145
 msgid "Sunday"
 msgstr "Dimanche"
 
-#: app/portfolios/details.template.html:21
+#: app\portfolios\details.template.html:21
 msgid "Symbol"
 msgstr "Symboles"
 
-#: app/homepage/homepage.unlogged.template.html:54
+#: app\homepage\homepage.unlogged.template.html:55
 msgid "Synchronize your operations"
 msgstr "Synchronisez vos opérations"
 
-#: app/homepage/homepage.unlogged.template.html:161
+#: app\homepage\homepage.unlogged.template.html:162
 msgid "Take care of your investiment like the apple of your eye."
 msgstr "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
 
-#: app/portfolios/_portfolios.controller.js:67
+#: app\portfolios\_portfolios.controller.js:67
 msgid "Taxation"
 msgstr "Imposition"
 
-#: app/portfolios/taxation.template.html:2
+#: app\portfolios\taxation.template.html:2
 msgid "Taxes"
 msgstr "Impôts"
 
-#: app/homepage/homepage.unlogged.template.html:123
+#: app\homepage\homepage.unlogged.template.html:124
 msgid "The center of your personal finances"
 msgstr "Le Centre de Votre Finance Personnelle."
 
-#: services/translations/translations.service.js:149
+#: services\translations\translations.service.js:149
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: app/portfolios/_portfolios.controller.js:43
-#: app/portfolios/timeline.template.html:2
+#: app\portfolios\_portfolios.controller.js:43
+#: app\portfolios\timeline.template.html:2
 msgid "Timeline"
 msgstr "Timeline"
 
-#: services/translations/translations.service.js:162
+#: services\translations\translations.service.js:162
 msgid "To"
 msgstr "A"
 
-#: components/navbar/navbar.template.html:13
+#: components\navbar\navbar.template.html:13
 msgid "Toggle Navigation"
 msgstr "Basculer la navigation"
 
-#: app/homepage/homepage.unlogged.template.html:50
+#: app\homepage\homepage.unlogged.template.html:51
 msgid "Track your different Portfolios at a single place"
 msgstr "Suivez vos multiples portefeuilles à un seul endroit"
 
-#: services/translations/translations.service.js:147
+#: services\translations\translations.service.js:147
 msgid "Tuesday"
 msgstr "Mardi"
 
-#: app/portfolios/overview.template.html:27
+#: app\portfolios\overview.template.html:27
 msgid "Type"
 msgstr "Enveloppe Fiscale"
 
-#: app/homepage/homepage.unlogged.template.html:194
+#: app\homepage\homepage.unlogged.template.html:195
 msgid "Use Technical Analysis tools for your investment decisions."
 msgstr ""
 "Utilisez les outils d'Analyse Techniques fournis pour vos prises de décision."
 
-#: app/register/register.template.html:13
-#: app/register/register.template.html:15
+#: app\register\register.template.html:13
+#: app\register\register.template.html:15
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: app/login/login.template.html:13 app/login/login.template.html:15
+#: app\login\login.template.html:13 app\login\login.template.html:15
 msgid "Username or email"
 msgstr "Nom d'utilisateur ou email"
 
-#: app/portfolios/details.controller.js:101
+#: app\portfolios\details.controller.js:101
 msgid "Valorisation history"
 msgstr "Historique de Valorisation"
 
-#: app/homepage/homepage.unlogged.template.html:188
+#: app\homepage\homepage.unlogged.template.html:189
 msgid ""
 "Visualize your assets, show your current allocation, market exposure, with "
 "good looking,\n"
@@ -742,31 +750,31 @@ msgstr ""
 "expositions aux risques de marchés, avec de beaux graphiques modernes, "
 "professionels, efficaces et interactifs."
 
-#: app/admin/admin.crawlers.template.html:2
+#: app\admin\admin.crawlers.template.html:2
 msgid "Web data status"
 msgstr "Statut des données du web"
 
-#: services/translations/translations.service.js:148
+#: services\translations\translations.service.js:148
 msgid "Wednesday"
 msgstr "Mercredi"
 
-#: services/translations/get_translation.modal.template.html:6
+#: services\translations\get_translation.modal.template.html:6
 msgid "Welcome to Squirrel"
 msgstr "Bienvenue sur Squirrel"
 
-#: services/translations/get_translation.modal.template.html:9
+#: services\translations\get_translation.modal.template.html:9
 msgid "Welcome to Squirrel. Can you tell us in which is your language"
 msgstr "Bienvenue sur Squirrel. Pouvez-vous nous dire quel est votre langue?"
 
-#: app/register/register.template.html:49
+#: app\register\register.template.html:49
 msgid "Welcome!"
 msgstr "Bienvenue!"
 
-#: app/homepage/homepage.unlogged.template.html:221
+#: app\homepage\homepage.unlogged.template.html:222
 msgid "When investiment goes in the Cloud."
 msgstr "Quand vos investissements vont dans le Nuage."
 
-#: app/homepage/homepage.unlogged.template.html:89
+#: app\homepage\homepage.unlogged.template.html:90
 msgid ""
 "With this 100% online tool, you can track all your investments from "
 "differents exchanges,\n"
@@ -777,11 +785,11 @@ msgstr ""
 "enveloppes fiscales."
 
 #. 3 letters to say "year-to-date"
-#: app/portfolios/details.controller.js:80
+#: app\portfolios\details.controller.js:80
 msgid "YTD"
 msgstr "YTD"
 
-#: app/homepage/homepage.unlogged.template.html:268
+#: app\homepage\homepage.unlogged.template.html:269
 msgid ""
 "You can easily control what other can see. Create private link to graphs or "
 "table, with\n"
@@ -791,64 +799,67 @@ msgstr ""
 "des liens privés vers les graphiques, tableaux ou rapports, avec des "
 "protections par emails et mot de passe, et date d'expiration."
 
-#: app/contact/contact.template.html:25
+#: app\contact\contact.template.html:25
 msgid "Your Email"
 msgstr "Votres adresse email"
 
-#: app/contact/contact.template.html:19
+#: app\contact\contact.template.html:19
 msgid "Your Name"
 msgstr "Votre nom"
 
-#: app/homepage/homepage.unlogged.template.html:7
+#: app\homepage\homepage.unlogged.template.html:7
 msgid "Your Online Portfolio Manager"
 msgstr "Votre Gestionnaire de Portefeuille En Ligne"
 
-#: components/banners/banners.template.html:40
+#: components\banners\banners.template.html:40
 msgid ""
 "Your Squirrel website use cookies to ensure you get the best user experience."
 msgstr ""
 "Squirrel utilise les cookies de votre navigateur pour vous offir la "
 "meilleure expérience possible."
 
-#: app/register/register.template.html:49
+#: app\register\register.template.html:49
 msgid "Your account has been created"
 msgstr "Votre compte a bien été créé."
 
-#: app/contact/contact.template.html:29 app/contact/contact.template.html:31
+#: app\contact\contact.template.html:29 app\contact\contact.template.html:31
 msgid "Your message"
 msgstr "Votre message"
 
-#: app/contact/contact.template.html:40
+#: app\contact\contact.template.html:40
 msgid "Your message has been sent to the administrator"
 msgstr "Votre message a bien été envoyé à notre équipe."
 
-#: services/translations/translations.service.js:160
+#: services\translations\translations.service.js:160
 msgid "Zoom"
 msgstr "Zoom"
 
-#: app/contact/contact.template.html:49
+#: app\contact\contact.template.html:49
 msgid "contact@squirrel-ams.fr"
 msgstr "contact@squirrel-ams.fr"
 
-#: components/footer/footer.template.html:19
+#: components\footer\footer.template.html:19
 msgid "legal notes"
 msgstr "Notes Légales"
 
-#: app/register/register.template.html:44
+#: app\register\register.template.html:44
 msgid "log in"
 msgstr "vous connecter"
 
-#: app/portfolios/overview.template.html:4
+#: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
 
-#: app/login/login.template.html:32
+#: app\login\login.template.html:32
 msgid "register in"
 msgstr "vous enregistrer"
 
-#: app/register/register.template.html:10
+#: app\register\register.template.html:10
 msgid "your account"
 msgstr "de votre compte"
+
+#~ msgid "Free registration"
+#~ msgstr "Inscription gratuite"
 
 #~ msgid "Easily follow all your Assets"
 #~ msgstr "Suivez simplement tous vos actifs"
