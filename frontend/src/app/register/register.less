@@ -1,6 +1,6 @@
-@regColor1: rgba(160,147,72,.3);
-@regColor2: rgba(160,147,72,0);
-@regColor3: rgba(130,121,63,.2);
+@regColorBotLeft:rgba(160,147,72, .4);
+@regColorHalfTopLeft: rgba(140,127,142,0);
+@regColor3: #5C4624;
 @regColor4: rgba(182,151,84,.2);
 @regColor5: rgba(182,151,84,0);
 @regColorTopRight: #584A2D;
@@ -8,9 +8,9 @@
 @regColorBotRight: #6E592B;
 
 .register-gradient{
-  background-color: #554128;
-  background-image: -webkit-radial-gradient(0% bottom,@regColor1 0,@regColor2 60%),-webkit-radial-gradient(90% bottom,@regColorBotRight 0,@regColor3 40%),-webkit-radial-gradient(50% top,@regColor4 0,@regColor5 75%),-webkit-radial-gradient(right top,@regColorTopRight 0,@regColorMid1 57%);
-  background-image: radial-gradient(at 0 bottom,@regColor1 0,@regColor2 60%),radial-gradient(at 90% bottom,@regColorBotRight 0,@regColor3 40%),radial-gradient(at 50% top,@regColor4 0,@regColor5 75%),radial-gradient(at right top,@regColorTopRight 0,@regColorMid1 57%);
+  background-color:#554128;
+  background-image: -webkit-radial-gradient(0% bottom,@regColorBotLeft 0,@regColorHalfTopLeft 60%),-webkit-radial-gradient(90% bottom,@regColorBotRight 0,@regColor3 40%),-webkit-radial-gradient(50% top,@regColor4 0,@regColor5 75%),-webkit-radial-gradient(right top,@regColorTopRight 0,@regColorMid1 57%);
+  background-image: radial-gradient(at 0 bottom,@regColorBotLeft 0,@regColorHalfTopLeft 60%),radial-gradient(at 90% bottom,@regColorBotRight 0,@regColor3 40%),radial-gradient(at 50% top,@regColor4 0,@regColor5 75%),radial-gradient(at right top,@regColorTopRight 0,@regColorMid1 57%);
   background-size: auto,auto,100% 1000px,100% 1000px;
   background-repeat: no-repeat;
 }
@@ -27,4 +27,8 @@
 
 .register-benefits{
   font-size: 1.1em;
+}
+
+.tos a{
+  color: @bgDarker;
 }
