@@ -153,9 +153,8 @@ if "novirtualenv" in subcmd:
     do_virtualenv = False
 
 if os.environ.get('VIRTUAL_ENV'):
-    printError("You are inside a virtual env. Please leave it with 'deactivate' and relaunch "
-               "your command")
-    sys.exit(1)
+    printError("Beware, you are inside a virtual env. Please leave it with 'deactivate' "
+               "and relaunch your command, unless you understand what is going on.")
 
 install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs", "default.conf"))
