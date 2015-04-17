@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 
 import logging
+import logging.config as logging_config
 import psutil
 import re
 import signal
@@ -13,6 +14,7 @@ import time
 from argh import arg
 from argh import dispatch_command
 from argh import expects_obj
+from colorlog import ColoredFormatter
 from watchdog.observers import Observer
 from watchdog.tricks import AutoRestartTrick
 from watchdog.utils import echo
@@ -58,54 +60,54 @@ class SquirrelAutoRestartTrick(AutoRestartTrick):
 
     def start(self):
         self.process = subprocess.Popen(self.command, shell=self.shell)
-        print("Started with pid {}".format(self.process.pid))
+        logging.debug("Started with pid {}".format(self.process.pid))
 
     def stop(self):
         if self.process is None:
             return
         try:
             if sys.platform.startswith("win32") and self.win32_safe_kill:
-                print("Win32 safe killing: using taskkill /T /F on pid {}".format(self.process.pid))
+                logging.debug("Win32 safe killing: using taskkill /T /F on pid {}".format(self.process.pid))
                 subprocess.check_call("taskkill /PID {} /T /F".format(self.process.pid))
             else:
-                print("Killing subprocess {}".format(self.process.pid))
+                logging.debug("Killing subprocess {}".format(self.process.pid))
                 proc = psutil.Process(self.process.pid)
                 proc.kill()
         except subprocess.CalledProcessError:
             # already dead
             pass
         except psutil.NoSuchProcess:
-            print("Warning: no such process. Continuing")
+            logging.debug("Warning: no such process. Continuing")
             # if process already dead, just let the AutoRestartTrick restarts it
             pass
         else:
             kill_time = time.time() + self.kill_after
-            print("Testing if pid {} is still alive".format(self.process.pid))
+            logging.debug("Testing if pid {} is still alive".format(self.process.pid))
             while time.time() < kill_time:
                 if self.process.poll() is not None:
                     break
                 time.sleep(0.25)
             else:
-                print("Process still alive, terminating pid {}".format(self.process.pid))
+                logging.debug("Process still alive, terminating pid {}".format(self.process.pid))
                 try:
                     proc = psutil.Process(self.process.pid)
                     proc.terminate()
                 except psutil.NoSuchProcess:
-                    print("Warning: no such process. Continuing")
+                    logging.debug("Warning: no such process. Continuing")
                     # if process already dead, just let the AutoRestartTrick restarts it
                     pass
         self.process = None
 
     @echo.echo
     def on_any_event(self, event):
-        print("Stopping subprocess")
+        logging.debug("Stopping subprocess")
         self.stop()
         if self.sleep_between_restart:
-            print("Subprocess killed, waiting {} seconds".format(self.sleep_between_restart))
+            logging.debug("Subprocess killed, waiting {} seconds".format(self.sleep_between_restart))
             time.sleep(self.sleep_between_restart)
-            print("Starting subprocess")
+            logging.debug("Starting subprocess")
         else:
-            print("Subprocess killed - Starting new subprocess")
+            logging.debug("Subprocess killed - Starting new subprocess")
         self.start()
 
 
@@ -207,6 +209,10 @@ try to interpret them.
      action='store_true',
      dest="shell",
      help="Launch sub command in a shell (cmd under windows)")
+@arg('--verbose', "-v",
+     action='store_true',
+     dest="verbose",
+     help="Print debug information")
 @arg('--win32-safe-kill',
      action='store_true',
      dest="win32_safe_kill",
@@ -222,15 +228,17 @@ def auto_restart(args):
     :param args:
         Command line argument options.
     """
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
+    else:
+        logging.getLogger().setLevel(logging.INFO)
 
-    print("Auto relauncher with the following command:")
-    print("  directory: {}".format(args.directories))
-    print("  command: {}".format(args.command))
-    print("  shell: {}".format(args.shell))
+    logging.info("Auto relauncher with the following command: {}".format(args.command))
+    logging.debug("  directory: {}".format(args.directories))
+    logging.debug("  shell: {}".format(args.shell))
     if sys.platform.startswith("win32"):
-        print("  win32 safe kill: {}".format(args.win32_safe_kill))
-    print("  Wait time between restart: {} second(s)".format(args.sleep_between_restart))
-
+        logging.debug("  win32 safe kill: {}".format(args.win32_safe_kill))
+    logging.debug("  Wait time between restart: {} second(s)".format(args.sleep_between_restart))
     if not args.directories:
         args.directories = ['.']
 
@@ -268,4 +276,33 @@ def auto_restart(args):
 
 
 def run():
+    logging_config.dictConfig({
+        'version': 1,
+        'formatters': {
+            'colored': {
+                '()': 'colorlog.ColoredFormatter',
+                'format': "%(log_color)s{%(levelname)5s}%(reset)s %(message)s",
+                'log_colors': {
+                    'DEBUG':    'cyan',
+                    'INFO':     'green',
+                    'WARNING':  'yellow',
+                    'ERROR':    'red',
+                    'CRITICAL': 'red,bg_white',
+                },
+            }
+        },
+        'handlers': {
+            'stream': {
+                'class': 'logging.StreamHandler',
+                'formatter': 'colored',
+                'level': 'DEBUG'
+            },
+        },
+        'loggers': {
+            '': {
+                'handlers': ['stream'],
+                'level': 'DEBUG',
+            },
+        },
+    })
     dispatch_command(auto_restart)

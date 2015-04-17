@@ -224,10 +224,10 @@ elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
         if not os.path.exists(os.path.join(workdir_path, "bin", "pip")):
             subprocess.check_call(['virtualenv', workdir_path])
 
-        if not os.path.exists(os.path.join(install_path, "actvate")):
-            printBoot("Creating symblink actvate")
+        if not os.path.exists(os.path.join(install_path, "activate")):
+            printBoot("Creating symblink activate")
             os.symlink(os.path.join(workdir_path, "bin", "activate"), os.path.join(install_path,
-                                                                                   "actvate"))
+                                                                                   "activate"))
 
         printBoot("Activating virtualenv in {0}".format(workdir_path))
         # subprocess.check_call([python_exe, stage2_path, activate, install_path])
