@@ -421,7 +421,7 @@ msgstr "Connexion"
 
 #: app\login\login.template.html:8
 msgid "Log in to your account"
-msgstr "Connectez vous à votre compte"
+msgstr "Connexion à votre compte"
 
 #: components\navbar\navbar.template.html:58
 msgid "Log out"
