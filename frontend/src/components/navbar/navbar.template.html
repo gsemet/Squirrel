@@ -18,7 +18,7 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
     </div>
     <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
       <ul class="nav navbar-nav">
-        <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')"> <a href='#/{{navLink.endpoint}}'>{{navLink.linktext}}</a></li>
+        <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')"> <a href='#/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -53,8 +53,8 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
           </button> -->
           <ul class="dropdown-menu" role="menu">
             <!-- <li role="presentation" class="dropdown-header">General</li> -->
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/settings" translate>Settings</a></li>
-            <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="#/admin" translate>Administrator page</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/settings" ng-click="closeNavBar()" translate>Settings</a></li>
+            <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="#/admin" ng-click="closeNavBar()" translate>Administrator page</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#/logout" ng-click="logout()" translate>Log out</a></li>
           </ul>
         </li>

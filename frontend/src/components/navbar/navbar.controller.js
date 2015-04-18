@@ -66,6 +66,7 @@ angular.module('squirrel').controller('NavbarCtrl',
       $scope.logout = function() {
         console.log("log out !!!");
         AuthenticationService.logout();
+        $scope.closeNavBar();
       }
 
       $scope.navClass = function(page) {
@@ -79,17 +80,25 @@ angular.module('squirrel').controller('NavbarCtrl',
       };
 
       $scope.changeLang = function() {
+        $scope.closeNavBar();
         TranslationService.askUserLanguage();
       };
 
       $scope.goRegister = function() {
         console.log("goRegister");
+        $scope.closeNavBar();
         $location.path("/register")
       };
       $scope.goLogin = function() {
         console.log("goLogin");
+        $scope.closeNavBar();
         $location.path("/login")
       };
+
+      $scope.closeNavBar = function() {
+        $scope.navCollapsed = true;
+      }
+
     }
   ]
 );
