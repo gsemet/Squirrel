@@ -85,6 +85,10 @@ app.config(
           templateUrl: "app/pages/tos.template.html",
           controller: "TosCtrl"
         })
+        .when("/features", {
+          templateUrl: "app/pages/tos.template.html",
+          controller: "TosCtrl"
+        })
         .when("/doc", {
           controller: function() {
             window.location.replace('/doc');

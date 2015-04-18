@@ -141,9 +141,9 @@ msgstr "Août"
 msgid "Balance"
 msgstr "Balance"
 
-#: app\homepage\homepage.unlogged.template.html:8
-msgid "Be your own Financial Advisor"
-msgstr "Soyez votre propre conseiller financier"
+#: app\homepage\homepage.unlogged.template.html:37
+msgid "Be your own fund manager"
+msgstr "Soyez votre propre fonds"
 
 #: app\portfolios\overview.template.html:25
 msgid "Broker"
@@ -295,10 +295,6 @@ msgstr "Fév"
 #: services\translations\translations.service.js:118
 msgid "February"
 msgstr "Février"
-
-#: app\homepage\homepage.unlogged.template.html:37
-msgid "Financial markets"
-msgstr "Marchés financiers"
 
 #: app\screeners\screeners.template.html:9
 msgid "Find your next stock here"
@@ -722,8 +718,8 @@ msgid "Symbol"
 msgstr "Symboles"
 
 #: app\homepage\homepage.unlogged.template.html:55
-msgid "Synchronize your operations"
-msgstr "Synchronisez vos opérations"
+msgid "Synchronize your operations with your online broker"
+msgstr "Synchronisez vos opérations avec votre courtier en ligne"
 
 #: app\homepage\homepage.unlogged.template.html:162
 msgid "Take care of your investiment like the apple of your eye."
@@ -740,6 +736,10 @@ msgstr "Impôts"
 #: app\register\register.template.html:45
 msgid "Terms of Service"
 msgstr "Termes du Service"
+
+#: app\homepage\homepage.unlogged.template.html:8
+msgid "The best tool to track all your personals assets"
+msgstr "Le milleur outil pour suivre tous vos actifs personnels"
 
 #: app\homepage\homepage.unlogged.template.html:124
 msgid "The center of your personal finances"
@@ -892,6 +892,9 @@ msgstr "Notes Légales"
 #: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "Financial markets"
+#~ msgstr "Marchés financiers"
 
 #~ msgid "If you do not already have an acount, please"
 #~ msgstr "Si vous n'avez pas de compte, veuillez"
