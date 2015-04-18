@@ -81,6 +81,10 @@ app.config(
           templateUrl: "app/admin/admin.template.html",
           controller: "AdminCtrl"
         })
+        .when("/tos", {
+          templateUrl: "app/pages/tos.template.html",
+          controller: "TosCtrl"
+        })
         .when("/doc", {
           controller: function() {
             window.location.replace('/doc');
