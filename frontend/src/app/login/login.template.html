@@ -1,38 +1,34 @@
-<div class="container">
-     <!-- <ol class="breadcrumb">
-      <li><a href="#">Home</a></li>
-      <li class="active">Login</li>
-    </ol>
-    <hr /> -->
-
-    <div class="row">
-      <div class="col-md-offset-3 col-md-6">
-        <h1 translate>Login</h1>
-        <form class="form-horizontal" ng-submit="submit()">
+<div class="login-gradient login-blank-text view-full-page">
+  <div class="container">
+    <h1 class="login-logo">
+      Squirrel
+    </h1>
+    <div class="content">
+      <div class="panel login-panel login-text" id="login">
+        <h3 translate>Log in to your account</h3>
+        <form ng-submit="submit()" role="form">
           <div class="form-group">
-            <label for="inputUsername" class="col-sm-2 control-label" translate>Username or email</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" ng-model="username" id="inputUsername" placeholder="{{'Username or email' | translate}}">
+            <label for="email" translate>Email address</label>
+            <div class="inner-addon left-addon">
+              <div class="glyphicon glyphicon-user"></div>
+              <input autofocus="true" class="form-control login-input" id="email"
+                     name="email" placeholder="{{'Email address' |translate}}" tabindex="1" type="email">
             </div>
           </div>
           <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label" translate>Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" ng-model="password" id="inputPassword3" placeholder="{{'Password' | translate}}">
+            <label for="password" translate>Password</label>
+            <div class="inner-addon left-addon">
+              <div class="glyphicon glyphicon-lock"></div>
+              <input autocomplete="off" class="form-control login-input password"
+                     id="password" name="password" placeholder="{{'Password' | translate}}" tabindex="2" type="password">
             </div>
           </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default" translate>Login</button>
-            </div>
-          </div>
+          <button class="btn btn-primary btn-lg btn-block" name="commit" tabindex="3" type="submit" value="Log In" translate>Log In</button>
         </form>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <p><span translate>If you do not already have an acount, please</span> <a href="#/register" translate>register in</a>.</p>
-            </div>
-          </div>
-        </form>
+        <a class="panel-footer" href="#/register"><span translate>No account? </span>&nbsp;<span translate>Sign Up here</span></a>
+      </div>
+      <div class="login-bottom-text login-blank-text">
+        <a href="#/login" ng-click="forgot()" translate>Forgot your password?</a>
       </div>
     </div>
   </div>

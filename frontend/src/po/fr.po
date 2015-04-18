@@ -280,6 +280,10 @@ msgstr "Editer"
 msgid "Email"
 msgstr "Email"
 
+#: app\login\login.template.html:11 app\login\login.template.html:14
+msgid "Email address"
+msgstr "Adresse email"
+
 #: app\register\register.template.html:16
 msgid "Everywhere, anytime"
 msgstr "Quand vous voulez, où vous voulez"
@@ -315,6 +319,10 @@ msgstr "Prénom"
 #: app\homepage\homepage.unlogged.template.html:107
 msgid "Follow these types of Account:"
 msgstr "Suivez tous vos comptes:"
+
+#: app\login\login.template.html:27
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié?"
 
 #: app\register\register.template.html:10
 msgid "Free account"
@@ -358,10 +366,6 @@ msgstr "Siège Social :"
 #: components\footer\footer.template.html:14
 msgid "Help"
 msgstr "Aide"
-
-#: app\login\login.template.html:32
-msgid "If you do not already have an acount, please"
-msgstr "Si vous n'avez pas de compte, veuillez"
 
 #: services\translations\translations.service.js:131
 msgid "Jan"
@@ -407,15 +411,22 @@ msgstr "Vue d'ensemble de de vos actions"
 msgid "Loading..."
 msgstr "Chargement..."
 
+#: app\login\login.template.html:22
+msgid "Log In"
+msgstr "Connexion"
+
 #: components\navbar\navbar.template.html:34
 msgid "Log in"
 msgstr "Connexion"
+
+#: app\login\login.template.html:8
+msgid "Log in to your account"
+msgstr "Connectez vous à votre compte"
 
 #: components\navbar\navbar.template.html:58
 msgid "Log out"
 msgstr "Deconnexion"
 
-#: app\login\login.template.html:10 app\login\login.template.html:26
 #: components\navbar\navbar.controller.js:32
 msgid "Login"
 msgstr "Connexion"
@@ -465,6 +476,10 @@ msgstr "Mes Portefeuilles"
 msgid "Name"
 msgstr "Nom"
 
+#: app\login\login.template.html:24
+msgid "No account?"
+msgstr "Pas de compte?"
+
 #: services\translations\translations.service.js:141
 msgid "Nov"
 msgstr "Nov"
@@ -494,7 +509,7 @@ msgstr "Vue Générale"
 msgid "Overview of the website"
 msgstr "Vue d'ensemble du site"
 
-#: app\login\login.template.html:19 app\login\login.template.html:21
+#: app\login\login.template.html:17 app\login\login.template.html:20
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -603,6 +618,10 @@ msgstr "Nbr d'actions"
 
 #: components\navbar\navbar.template.html:41
 msgid "Sign Up for Free"
+msgstr "Inscrivez-vous gratuitement"
+
+#: app\login\login.template.html:24
+msgid "Sign Up here"
 msgstr "Inscrivez-vous gratuitement"
 
 #: app\register\register.template.html:4
@@ -760,10 +779,6 @@ msgid "Use Technical Analysis tools for your investment decisions."
 msgstr ""
 "Utilisez les outils d'Analyse Techniques fournis pour vos prises de décision."
 
-#: app\login\login.template.html:13 app\login\login.template.html:15
-msgid "Username or email"
-msgstr "Nom d'utilisateur ou email"
-
 #: app\portfolios\details.controller.js:101
 msgid "Valorisation history"
 msgstr "Historique de Valorisation"
@@ -878,18 +893,20 @@ msgstr "Notes Légales"
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
 
-#: app\login\login.template.html:32
-msgid "register in"
-msgstr "vous enregistrer"
+#~ msgid "If you do not already have an acount, please"
+#~ msgstr "Si vous n'avez pas de compte, veuillez"
+
+#~ msgid "Username or email"
+#~ msgstr "Nom d'utilisateur ou email"
+
+#~ msgid "register in"
+#~ msgstr "vous enregistrer"
 
 #~ msgid "Create"
 #~ msgstr "Création"
 
 #~ msgid "If you already have an acount, please"
 #~ msgstr "Si vous avez déjà un compte, veuillez"
-
-#~ msgid "Retype your password"
-#~ msgstr "Veuillez retaper votre mot de passe"
 
 #~ msgid "Username"
 #~ msgstr "Nom d'utilisateur"

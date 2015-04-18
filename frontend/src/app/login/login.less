@@ -1,0 +1,112 @@
+@logColorBotRight:rgba(160,147,72, .4);
+@logColorHalfTopLeft: rgba(140,127,142,0);
+@logColor3: #5C4624;
+@logColor4: rgba(182,151,84,.2);
+@logColor5: rgba(182,151,84,0);
+@logColorTopRight: #362C16;
+@logColorMid1: rgba(127,104,45,0.1);
+@logColorBotLeft: #3F2F0D;
+
+.login-gradient{
+  background-color:#674D2C;
+  background-image: -webkit-radial-gradient(0% bottom,@logColorBotLeft 0,@logColorHalfTopLeft 60%),-webkit-radial-gradient(90% bottom,@logColorBotRight 0,@logColor3 40%),-webkit-radial-gradient(50% top,@logColor4 0,@logColor5 75%),-webkit-radial-gradient(right top,@logColorTopRight 0,@logColorMid1 57%);
+  background-image: radial-gradient(at 0 bottom,@logColorBotLeft 0,@logColorHalfTopLeft 60%),radial-gradient(at 90% bottom,@logColorBotRight 0,@logColor3 40%),radial-gradient(at 50% top,@logColor4 0,@logColor5 75%),radial-gradient(at right top,@logColorTopRight 0,@logColorMid1 57%);
+  background-size: auto,auto,100% 1000px,100% 1000px;
+  background-repeat: no-repeat;
+}
+
+.login-blank-text{
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.login-logo{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.login-text{
+  color: @bgDefault;
+  text-align: center;
+}
+
+.login-text h3{
+  margin: 40px 0 0;
+}
+
+.login-text form{
+  padding: 40px;
+}
+
+.login header{
+  text-align: center;
+  margin-top: 100px;
+}
+
+.login header{
+  text-align: center;
+  margin-top: 100px;
+}
+
+.login-panel {
+  max-width: 430px;
+  margin: 0 auto 20px;
+  border-radius: 8px;
+}
+
+.login-panel .panel-footer{
+  padding: 20px;
+  display: block;
+  font-size: 0.95em;
+  color: #A89D85;
+  font-weight: 100;
+  text-align: center;
+}
+
+.login-bottom-text{
+  text-align: center;
+  color: white;
+}
+
+.login-bottom-text a, .login-bottom-text a:hover, .login-bottom-text a:focus{
+  text-decoration: underline;
+  color: white;
+}
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+
+.login-input{
+  height: 44px;
+  padding-left: 50px;
+}
+
+/* style glyph */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 14px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  45px; }
+.right-addon input { padding-right: 45px; }
+
+.inner-addon .glyphicon::after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  top: -10px;
+  bottom: -10px;
+  width: 1px;
+  opacity: .5;
+  background-color: rgba(212,212,212,0);
+  background-image: -webkit-linear-gradient(bottom,rgba(212,212,212,0) 0,#d4d4d4 30%,#d4d4d4 70%,rgba(212,212,212,0) 100%);
+  background-image: linear-gradient(to top,rgba(212,212,212,0) 0,#d4d4d4 30%,#d4d4d4 70%,rgba(212,212,212,0) 100%);
+}
