@@ -86,8 +86,12 @@ app.config(
           controller: "TosCtrl"
         })
         .when("/features", {
-          templateUrl: "app/pages/tos.template.html",
-          controller: "TosCtrl"
+          templateUrl: "app/pages/features.template.html",
+          controller: "FeaturesCtrl"
+        })
+        .when("/plans", {
+          templateUrl: "app/pages/plans.template.html",
+          controller: "PlansCtrl"
         })
         .when("/doc", {
           controller: function() {

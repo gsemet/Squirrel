@@ -16,25 +16,47 @@ angular.module('squirrel').controller('NavbarCtrl',
       $scope.title_tag = environment.getTitleTag();
 
       $scope.refreshDynamicLinks = function() {
-        $scope.navLinks = [
-          {
-            endpoint: 'screeners',
-            linktext: gettextCatalog.getString('Stock Screeners'),
-          }, {
-            endpoint: 'portfolios',
-            linktext: gettextCatalog.getString('My Portfolios'),
-          }
-        ];
+        var is_logged = AuthenticationService.isAuthenticated();
+        if (is_logged) {
+          $scope.navLinks = [
+            {
+              endpoint: 'screeners',
+              linktext: gettextCatalog.getString('Screeners'),
+            }, {
+              endpoint: 'portfolios',
+              linktext: gettextCatalog.getString('My Portfolios'),
+            }
+          ];
 
-        $scope.loginLinks = [
-          {
-            endpoint: 'login',
-            linktext: gettextCatalog.getString('Login'),
-          }, {
-            endpoint: 'register',
-            linktext: gettextCatalog.getString('Register'),
-          }
-        ];
+          $scope.loginLinks = [];
+        } else {
+          // is unlogged user
+          $scope.navLinks = [
+            {
+              endpoint: 'features',
+              linktext: gettextCatalog.getString('Features'),
+            }, {
+              endpoint: 'plans',
+              linktext: gettextCatalog.getString('Plans'),
+            }, {
+              endpoint: 'screeners',
+              linktext: gettextCatalog.getString('Screeners'),
+            }, {
+              endpoint: 'portfolios',
+              linktext: gettextCatalog.getString('Demo'),
+            }
+          ];
+
+          $scope.loginLinks = [
+            {
+              endpoint: 'login',
+              linktext: gettextCatalog.getString('Login'),
+            }, {
+              endpoint: 'register',
+              linktext: gettextCatalog.getString('Register'),
+            }
+          ];
+        }
       };
       $scope.refreshDynamicLinks();
 

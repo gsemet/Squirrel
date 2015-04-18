@@ -61,7 +61,7 @@ msgstr "6m"
 msgid "About"
 msgstr "A Propos"
 
-#: app\homepage\homepage.unlogged.template.html:221
+#: app\pages\features.template.html:93
 msgid "Access your porfolio anywhere, any time"
 msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 
@@ -77,7 +77,7 @@ msgstr "Configuration"
 msgid "Administrator Dashboard"
 msgstr "Tableau de bord d'administration"
 
-#: components\navbar\navbar.template.html:57
+#: components\navbar\navbar.template.html:61
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
 
@@ -101,7 +101,7 @@ msgstr ""
 "donnée. Il n'y a pas de mise à jour des valeurs des actions et fonds tant "
 "que ce problème ne sera pas fixé par nos équipes."
 
-#: app\homepage\homepage.unlogged.template.html:133
+#: app\pages\features.template.html:12
 msgid ""
 "Analyse and compare quotes. Follow the evolution of your positions, the "
 "value of your\n"
@@ -172,7 +172,7 @@ msgstr "Liquidités"
 msgid "Change Language"
 msgstr "Changer la langue courante"
 
-#: components\navbar\navbar.template.html:27
+#: components\navbar\navbar.template.html:29
 msgid "Change language"
 msgstr "Selectionnez votre langue"
 
@@ -184,7 +184,7 @@ msgstr "Sélectionnez votre langue"
 msgid "Choose your language"
 msgstr "Sélectionnez votre langue"
 
-#: app\homepage\homepage.unlogged.template.html:230
+#: app\pages\features.template.html:102
 msgid ""
 "Consult, edit and visualize your portfolio anywhere, from your personal "
 "computer, tablet\n"
@@ -217,7 +217,7 @@ msgstr "Prix de Revient"
 msgid "Crawlers"
 msgstr "Crawlers"
 
-#: app\register\register.template.html:43
+#: app\register\register.template.html:44
 msgid "Create your Free Account"
 msgstr "Créez votre compte gratuitement"
 
@@ -242,6 +242,10 @@ msgstr "Déc"
 msgid "December"
 msgstr "Décembre"
 
+#: components\navbar\navbar.controller.js:46
+msgid "Demo"
+msgstr "Demo"
+
 #: app\portfolios\overview.template.html:28
 msgid "Deposit"
 msgstr "Dépot"
@@ -263,7 +267,7 @@ msgstr "Détails"
 msgid "Details of your portfolio"
 msgstr "Détail de votre portefeuille"
 
-#: app\homepage\homepage.unlogged.template.html:275
+#: app\pages\features.template.html:147
 msgid ""
 "Easily show your portfolio to your financial adviser so he can give you "
 "accurate and\n"
@@ -276,7 +280,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Editer"
 
-#: app\contact\contact.template.html:23 app\register\register.template.html:40
+#: app\contact\contact.template.html:23 app\register\register.template.html:41
 msgid "Email"
 msgstr "Email"
 
@@ -287,6 +291,10 @@ msgstr "Adresse email"
 #: app\register\register.template.html:16
 msgid "Everywhere, anytime"
 msgstr "Quand vous voulez, où vous voulez"
+
+#: components\navbar\navbar.controller.js:37
+msgid "Features"
+msgstr "Decouverte"
 
 #: services\translations\translations.service.js:132
 msgid "Feb"
@@ -308,7 +316,7 @@ msgstr "Trouvez votre propre stratégie d'investissement"
 msgid "Find your stocks on the Stock Screener"
 msgstr "Trouvez vos prochaines actions sur le Screener d'Action"
 
-#: app\register\register.template.html:34
+#: app\register\register.template.html:35
 msgid "First name"
 msgstr "Prénom"
 
@@ -345,7 +353,7 @@ msgstr "Gain"
 msgid "Gain %"
 msgstr "Gain %"
 
-#: app\homepage\homepage.unlogged.template.html:200
+#: app\pages\features.template.html:79
 msgid "Generate professional looking reports."
 msgstr ""
 "Préparez et éditez vos rapports de qualité professionelle, depuis une large "
@@ -387,7 +395,7 @@ msgstr "Juin"
 msgid "June"
 msgstr "Juin"
 
-#: app\register\register.template.html:37
+#: app\register\register.template.html:38
 msgid "Last name"
 msgstr "Nom"
 
@@ -411,7 +419,7 @@ msgstr "Chargement..."
 msgid "Log In"
 msgstr "Connexion"
 
-#: components\navbar\navbar.template.html:34
+#: components\navbar\navbar.template.html:37
 msgid "Log in"
 msgstr "Connexion"
 
@@ -419,11 +427,11 @@ msgstr "Connexion"
 msgid "Log in to your account"
 msgstr "Connexion à votre compte"
 
-#: components\navbar\navbar.template.html:58
+#: components\navbar\navbar.template.html:62
 msgid "Log out"
 msgstr "Deconnexion"
 
-#: components\navbar\navbar.controller.js:32
+#: components\navbar\navbar.controller.js:53
 msgid "Login"
 msgstr "Connexion"
 
@@ -452,7 +460,7 @@ msgstr "Mars"
 msgid "May"
 msgstr "Mai"
 
-#: app\homepage\homepage.unlogged.template.html:213
+#: app\homepage\homepage.unlogged.template.html:125
 msgid "Meet Squirrel, your porfolio best friend!"
 msgstr "Découvrez Squirrel, le meilleur ami de votre Portefeuille"
 
@@ -461,7 +469,7 @@ msgid "Monday"
 msgstr "Lundi"
 
 #: components\footer\footer.template.html:11
-#: components\navbar\navbar.controller.js:25
+#: components\navbar\navbar.controller.js:27
 msgid "My Portfolios"
 msgstr "Mes Portefeuilles"
 
@@ -509,6 +517,10 @@ msgstr "Vue d'ensemble du site"
 msgid "Password"
 msgstr "Mot de passe"
 
+#: components\navbar\navbar.controller.js:40
+msgid "Plans"
+msgstr "Tarifs"
+
 #: app\register\register.template.html:7
 msgid "Please fill in all the fields."
 msgstr "Veuillez remplir tous les champs."
@@ -525,15 +537,15 @@ msgstr "Coordonnées"
 msgid "Prepare your investments ahead of time and let you conduct"
 msgstr "Préparez vos investissements en avance, et laissez vous contruire "
 
-#: app\homepage\homepage.unlogged.template.html:161
+#: app\pages\features.template.html:40
 msgid "Profesionnal data visualizations"
 msgstr "Visualisation de donnée Professionelle"
 
-#: components\navbar\navbar.controller.js:35
+#: components\navbar\navbar.controller.js:56
 msgid "Register"
 msgstr "Enregistrement"
 
-#: app\register\register.template.html:53
+#: app\register\register.template.html:54
 msgid ""
 "Registration succesfully sent. Please check you email for the confirmation "
 "link."
@@ -563,8 +575,10 @@ msgid "Saturday"
 msgstr "Samedi"
 
 #: components\footer\footer.template.html:10
+#: components\navbar\navbar.controller.js:24
+#: components\navbar\navbar.controller.js:43
 msgid "Screeners"
-msgstr "Screeners d'Actions"
+msgstr "Screeners"
 
 #: app\portfolios\_portfolios.controller.js:22
 #: app\portfolios\securities.template.html:2
@@ -596,15 +610,15 @@ msgid "Services"
 msgstr "Services"
 
 #: app\settings\settings.template.html:15
-#: components\navbar\navbar.template.html:56
+#: components\navbar\navbar.template.html:60
 msgid "Settings"
 msgstr "Paramètres"
 
-#: app\homepage\homepage.unlogged.template.html:264
+#: app\pages\features.template.html:136
 msgid "Share part of your portfolio publicly, keep it completely private."
 msgstr "Partager votre portefeuille en ligne, ou gardez le complètement privé."
 
-#: app\homepage\homepage.unlogged.template.html:252
+#: app\pages\features.template.html:124
 msgid "Share your Portfolio"
 msgstr "Partagez vos Portefeuilles"
 
@@ -612,9 +626,13 @@ msgstr "Partagez vos Portefeuilles"
 msgid "Shares"
 msgstr "Nbr d'actions"
 
-#: components\navbar\navbar.template.html:41
+#: components\navbar\navbar.template.html:44
+msgid "Sign Up"
+msgstr "Inscription"
+
+#: components\navbar\navbar.template.html:45
 msgid "Sign Up for Free"
-msgstr "Inscrivez-vous gratuitement"
+msgstr "Inscription gratuite"
 
 #: app\login\login.template.html:28
 msgid "Sign Up here"
@@ -628,7 +646,7 @@ msgstr "Inscrivez vous pour un compte gratuit maintenant"
 msgid "Sign up for free"
 msgstr "Inscrivez vous gratuitement"
 
-#: app\register\register.template.html:45
+#: app\register\register.template.html:46
 msgid "Signing up signifies that you have read and agree to the"
 msgstr "L'inscription signifie que vous avez lu et accepté les "
 
@@ -636,7 +654,7 @@ msgstr "L'inscription signifie que vous avez lu et accepté les "
 msgid "Simple, Smart, Unique Investing"
 msgstr "Simple, Efficace, Unique"
 
-#: app\homepage\homepage.unlogged.template.html:253
+#: app\pages\features.template.html:125
 msgid "Social networks also apply to Investments"
 msgstr "Les Réseaux Sociaux s'appliquent également à l'Investissement"
 
@@ -669,7 +687,7 @@ msgstr ""
 "Squirrel vous aide à suivre tous vos actifs en un seul endroit: actions, "
 "obligations, unité de compte et même options."
 
-#: app\homepage\homepage.unlogged.template.html:143
+#: app\pages\features.template.html:22
 msgid ""
 "Squirrel automatically retrieves the current value of any stocks, options or "
 "fund\n"
@@ -705,10 +723,6 @@ msgstr "Rapport de Situation"
 msgid "Stock Screener"
 msgstr "Screeners"
 
-#: components\navbar\navbar.controller.js:22
-msgid "Stock Screeners"
-msgstr "Screeners d'Actions"
-
 #: services\translations\translations.service.js:145
 msgid "Sunday"
 msgstr "Dimanche"
@@ -721,7 +735,7 @@ msgstr "Symboles"
 msgid "Synchronize your operations with your online broker"
 msgstr "Synchronisez vos opérations avec votre courtier en ligne"
 
-#: app\homepage\homepage.unlogged.template.html:162
+#: app\pages\features.template.html:41
 msgid "Take care of your investiment like the apple of your eye."
 msgstr "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
 
@@ -733,7 +747,7 @@ msgstr "Imposition"
 msgid "Taxes"
 msgstr "Impôts"
 
-#: app\register\register.template.html:45
+#: app\register\register.template.html:46
 msgid "Terms of Service"
 msgstr "Termes du Service"
 
@@ -741,7 +755,7 @@ msgstr "Termes du Service"
 msgid "The best tool to track all your personals assets"
 msgstr "Le milleur outil pour suivre tous vos actifs personnels"
 
-#: app\homepage\homepage.unlogged.template.html:124
+#: app\pages\features.template.html:3
 msgid "The center of your personal finances"
 msgstr "Le Centre de Votre Finance Personnelle."
 
@@ -758,7 +772,7 @@ msgstr "Timeline"
 msgid "To"
 msgstr "A"
 
-#: components\navbar\navbar.template.html:13
+#: components\navbar\navbar.template.html:16
 msgid "Toggle Navigation"
 msgstr "Basculer la navigation"
 
@@ -774,7 +788,7 @@ msgstr "Mardi"
 msgid "Type"
 msgstr "Enveloppe Fiscale"
 
-#: app\homepage\homepage.unlogged.template.html:195
+#: app\pages\features.template.html:74
 msgid "Use Technical Analysis tools for your investment decisions."
 msgstr ""
 "Utilisez les outils d'Analyse Techniques fournis pour vos prises de décision."
@@ -783,7 +797,7 @@ msgstr ""
 msgid "Valorisation history"
 msgstr "Historique de Valorisation"
 
-#: app\homepage\homepage.unlogged.template.html:189
+#: app\pages\features.template.html:68
 msgid ""
 "Visualize your assets, show your current allocation, market exposure, with "
 "good looking,\n"
@@ -797,13 +811,16 @@ msgstr ""
 msgid ""
 "We do not sell your data. We don't ask for your mobile number because we do "
 "not want to\n"
-"          sell you hidden, techno-mystic algorithm. We do not disturb your "
-"with annoying ads."
+"          sell you hidden, techno-mystic algorithms. We do not disturb your "
+"with annoying ads. There\n"
+"          is no commission on any trade. We do not make more when your trade "
+"more."
 msgstr ""
 "Nous ne vendons pas vos données. Nous ne vous demandons pas non plus de "
 "numéro de téléphone car nous ne voulons pas vous vendre des produits cachés, "
 "des algorithmes crypto-mystique. Nous ne vous pertubons pas avec les "
-"publicités."
+"publicités. Il n'y a ni commission ni rétro-commission sur les ventes. Nous "
+"ne faisons pas plus d'argent si vous faites plus de mouvements."
 
 #: app\admin\admin.crawlers.template.html:2
 msgid "Web data status"
@@ -821,7 +838,7 @@ msgstr "Bienvenue sur Squirrel"
 msgid "Welcome to Squirrel. Can you tell us in which is your language"
 msgstr "Bienvenue sur Squirrel. Pouvez-vous nous dire quel est votre langue?"
 
-#: app\homepage\homepage.unlogged.template.html:222
+#: app\pages\features.template.html:94
 msgid "When investiment goes in the Cloud."
 msgstr "Quand vos investissements vont dans le Nuage."
 
@@ -840,7 +857,7 @@ msgstr ""
 msgid "YTD"
 msgstr "YTD"
 
-#: app\homepage\homepage.unlogged.template.html:269
+#: app\pages\features.template.html:141
 msgid ""
 "You can easily control what other can see. Create private link to graphs or "
 "table, with\n"
@@ -892,6 +909,12 @@ msgstr "Notes Légales"
 #: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "Discover a Demo Portfolio"
+#~ msgstr "Portefeuille Démo"
+
+#~ msgid "Stock Screeners"
+#~ msgstr "Screeners d'Actions"
 
 #~ msgid "Financial markets"
 #~ msgstr "Marchés financiers"
