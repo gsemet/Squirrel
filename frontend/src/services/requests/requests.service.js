@@ -16,7 +16,10 @@ angular.module('squirrel').factory('request',
           data: data,
           params: params,
           withCredentials: true,
-          cache: (cache)
+          cache: (cache),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
         }).success(function(response) {
           deferred.resolve(response.value || response.data || response);
         }).error(function(response) {

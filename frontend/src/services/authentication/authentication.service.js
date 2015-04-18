@@ -8,10 +8,10 @@
 angular.module('squirrel').factory('AuthenticationService',
 
   ["$http", "$q", "$window", "$rootScope", "Session", "AUTH_EVENTS", '$timeout', 'ipCookie', "USER_ROLES",
-  "environment",
+  "environment", "request",
 
     function($http, $q, $window, $rootScope, Session, AUTH_EVENTS, $timeout, ipCookie, USER_ROLES,
-      environment) {
+      environment, request) {
 
       var authService = {};
 
@@ -21,7 +21,6 @@ angular.module('squirrel').factory('AuthenticationService',
         Session.create(
           data.id,
           data.userId,
-          data.userName,
           data.email,
           data.role,
           data.language
@@ -31,8 +30,8 @@ angular.module('squirrel').factory('AuthenticationService',
           expirationUnit: 'minutes',
         });
 
-        console.log("login successful for userName = " + data.userName);
-        $rootScope.$emit(AUTH_EVENTS.loginSuccess, data.userName);
+        console.log("login successful for email = " + data.email);
+        $rootScope.$emit(AUTH_EVENTS.loginSuccess, data.email);
         /*$window.sessionStorage["userInfo"] = JSON.stringify(userInfo);*/
 
       };
@@ -48,11 +47,11 @@ angular.module('squirrel').factory('AuthenticationService',
         var deferred = $q.defer();
 
         $http.get(environment.getBackendUrl() + "/api/profile", {
-          /* can be username or email */
+          /* can be email or email */
           sessionId: sessionId,
         }).then(function(result) {
           that.createSession(result.data);
-          deferred.resolve(result.data.userName);
+          deferred.resolve(result.data.email);
         }, function(error) {
           console.log("Restore error = " + JSON.stringify(error));
           $rootScope.$emit("loginFailed", error);
@@ -61,28 +60,24 @@ angular.module('squirrel').factory('AuthenticationService',
         return deferred.promise;
       });
 
-      authService.login = function(userName, password) {
-        var deferred = $q.defer();
-
-        $http.post(environment.getBackendUrl() + "/api/login", {
-          /* can be username or email */
-          userName: userName,
+      authService.login = function(email, password) {
+        return request.request(environment.getBackendUrl() + "/api/login", {
+          /* can be email or email */
+          email: email,
           password: password
-        }).then(function(result) {
+        }, "POST").then(function(result) {
           that.createSession(result.data);
-          deferred.resolve(result.data.userName);
+          deferred.resolve(result.data.email);
         }, function(error) {
           console.log("Login error = " + JSON.stringify(error));
           $rootScope.$emit("loginFailed", error);
           deferred.reject(error);
         });
-
-        return deferred.promise;
       };
 
       authService.logout = function() {
         var sessionId = Session.id;
-        var userName = Session.userName;
+        var email = Session.email;
 
         console.log("Removing cookie 'sessionId'");
         ipCookie("sessionId", "");
@@ -94,7 +89,7 @@ angular.module('squirrel').factory('AuthenticationService',
         $http.post(environment.getBackendUrl() + "/api/logout", {
           sessionId: sessionId
         }).then(function(result) {
-          console.log("logout successful for userName = " + userName);
+          console.log("logout successful for email = " + email);
           deferred.resolve(null);
         }, function(error) {
           console.log("Logout error = " + JSON.stringify(error));
@@ -105,22 +100,17 @@ angular.module('squirrel').factory('AuthenticationService',
         return deferred.promise;
       };
 
-      authService.register = function(userName, email, password) {
-        var deferred = $q.defer();
-
-        $http.post(environment.getBackendUrl() + "/api/register", {
-          userName: userName,
+      authService.register = function(firstName, lastName, email, password) {
+        return request.request(environment.getBackendUrl() + "/api/register", {
+          firstName: firstName,
+          lastName: lastName,
           email: email,
           password: password
-        }).then(function(result) {
-          deferred.resolve(userName);
-        }, function(error) {
+        }, "POST").then(function() {}, function(error) {
           console.log("Login error = " + JSON.stringify(error));
           $rootScope.$emit("loginFailed", error);
           deferred.reject(error);
         });
-
-        return deferred.promise;
       };
 
       authService.isAuthenticated = function() {
@@ -129,10 +119,6 @@ angular.module('squirrel').factory('AuthenticationService',
 
       authService.isAdmin = function() {
         return Session.userRole == USER_ROLES.admin;
-      };
-
-      authService.getUserName = function() {
-        return Session.userName;
       };
 
       authService.getSessionId = function() {

@@ -12,6 +12,8 @@ def route_register_post(request):
     request.setHeader('Content-Type', 'application/json')
 
     data = {"result": "Failure"}
+    print("register received")
+    print("args: ", request.args)
 
     return json.dumps(data)
 
