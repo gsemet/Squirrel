@@ -13,7 +13,12 @@ app = angular.module("squirrel", [
   'gettext',
   'highcharts-ng',
   'ipCookie',
-  'mgcrea.ngStrap',
+  'Mac',
+/*  'mgcrea.ngStrap',
+  'mgcrea.ngStrap.affix',
+  'mgcrea.ngStrap.helpers.dimensions',
+  'mgcrea.ngStrap.scrollspy',
+  'mgcrea.ngStrap.tooltip',*/
   'ngAnimate',
   'ngCrossfilter',
   'ngGrid',
@@ -177,3 +182,7 @@ angular.module('squirrel').controller('BodyController',
     }
   ]
 );
+
+angular.module('squirrel').run(['$anchorScroll', function($anchorScroll) {
+  $anchorScroll.yOffset = 80; // always scroll by 80 extra pixels
+}])

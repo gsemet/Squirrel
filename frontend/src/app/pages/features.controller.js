@@ -2,10 +2,14 @@
 
 angular.module("squirrel").controller("FeaturesCtrl",
 
-  ["$scope", "$location", "AuthenticationService",
+  ["$scope", "$location", "AuthenticationService", "$anchorScroll",
 
-    function($scope, $location, AuthenticationService) {
+    function($scope, $location, AuthenticationService, $anchorScroll) {
 
+      $scope.scrollTo = function(id) {
+        $location.hash(id);
+        $anchorScroll();
+      };
 
     }
   ]

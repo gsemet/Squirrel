@@ -61,7 +61,7 @@ msgstr "6m"
 msgid "About"
 msgstr "A Propos"
 
-#: app\pages\features.template.html:93
+#: app\pages\features.template.html:121
 msgid "Access your porfolio anywhere, any time"
 msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 
@@ -101,11 +101,11 @@ msgstr ""
 "donnée. Il n'y a pas de mise à jour des valeurs des actions et fonds tant "
 "que ce problème ne sera pas fixé par nos équipes."
 
-#: app\pages\features.template.html:12
+#: app\pages\features.template.html:43
 msgid ""
 "Analyse and compare quotes. Follow the evolution of your positions, the "
 "value of your\n"
-"          portfolio, forcast dividend reporting, prepare your tax "
+"                portfolio, forcast dividend reporting, prepare your tax "
 "declarations."
 msgstr ""
 "Analysez et comparez les valeurs de vos actions. Suivez l'évolution de vos "
@@ -120,6 +120,10 @@ msgstr "Analysez le marché avec des outils à la pointe de la modernité"
 #: app\portfolios\annual_reports.template.html:2
 msgid "Annual Reports"
 msgstr "Rapports Annuels"
+
+#: app\pages\features.template.html:21
+msgid "Anywhere, Anytime"
+msgstr "Quand vous voulez, où vous voulez"
 
 #: services\translations\translations.service.js:134
 msgid "Apr"
@@ -168,6 +172,10 @@ msgstr "Annuler"
 msgid "Cash"
 msgstr "Liquidités"
 
+#: app\pages\features.template.html:9
+msgid "Center of your Finance"
+msgstr "Le Centre de Votre Finance"
+
 #: app\settings\settings.template.html:21
 msgid "Change Language"
 msgstr "Changer la langue courante"
@@ -184,11 +192,11 @@ msgstr "Sélectionnez votre langue"
 msgid "Choose your language"
 msgstr "Sélectionnez votre langue"
 
-#: app\pages\features.template.html:102
+#: app\pages\features.template.html:129
 msgid ""
 "Consult, edit and visualize your portfolio anywhere, from your personal "
 "computer, tablet\n"
-"          or Mobile Phone."
+"                or Mobile Phone."
 msgstr ""
 "Consultez, éditez et visualisez vos portefeuille depuis n'importe où, de "
 "votre ordinateur personnel, votre tablette ou votre smartphone."
@@ -234,6 +242,10 @@ msgstr "Langue actuelle: {{language}}"
 msgid "Dashboard"
 msgstr "Tableau de Bord"
 
+#: app\pages\features.template.html:15
+msgid "Data Visualization"
+msgstr "Visualisation de donnée"
+
 #: services\translations\translations.service.js:142
 msgid "Dec"
 msgstr "Déc"
@@ -267,11 +279,11 @@ msgstr "Détails"
 msgid "Details of your portfolio"
 msgstr "Détail de votre portefeuille"
 
-#: app\pages\features.template.html:147
+#: app\pages\features.template.html:172
 msgid ""
 "Easily show your portfolio to your financial adviser so he can give you "
 "accurate and\n"
-"          valuable advices."
+"                valuable advices."
 msgstr ""
 "Montrer votre portefeuille facilement à votre gesionnaire financier, pour "
 "qu'il vous offre les conseils les plus pertinents."
@@ -353,7 +365,7 @@ msgstr "Gain"
 msgid "Gain %"
 msgstr "Gain %"
 
-#: app\pages\features.template.html:79
+#: app\pages\features.template.html:108
 msgid "Generate professional looking reports."
 msgstr ""
 "Préparez et éditez vos rapports de qualité professionelle, depuis une large "
@@ -537,7 +549,7 @@ msgstr "Coordonnées"
 msgid "Prepare your investments ahead of time and let you conduct"
 msgstr "Préparez vos investissements en avance, et laissez vous contruire "
 
-#: app\pages\features.template.html:40
+#: app\pages\features.template.html:70
 msgid "Profesionnal data visualizations"
 msgstr "Visualisation de donnée Professionelle"
 
@@ -614,11 +626,11 @@ msgstr "Services"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: app\pages\features.template.html:136
+#: app\pages\features.template.html:161
 msgid "Share part of your portfolio publicly, keep it completely private."
 msgstr "Partager votre portefeuille en ligne, ou gardez le complètement privé."
 
-#: app\pages\features.template.html:124
+#: app\pages\features.template.html:150 app\pages\features.template.html:27
 msgid "Share your Portfolio"
 msgstr "Partagez vos Portefeuilles"
 
@@ -626,7 +638,7 @@ msgstr "Partagez vos Portefeuilles"
 msgid "Shares"
 msgstr "Nbr d'actions"
 
-#: components\navbar\navbar.template.html:44
+#: components\navbar\navbar.template.html:45
 msgid "Sign Up"
 msgstr "Inscription"
 
@@ -654,7 +666,7 @@ msgstr "L'inscription signifie que vous avez lu et accepté les "
 msgid "Simple, Smart, Unique Investing"
 msgstr "Simple, Efficace, Unique"
 
-#: app\pages\features.template.html:125
+#: app\pages\features.template.html:151
 msgid "Social networks also apply to Investments"
 msgstr "Les Réseaux Sociaux s'appliquent également à l'Investissement"
 
@@ -687,11 +699,12 @@ msgstr ""
 "Squirrel vous aide à suivre tous vos actifs en un seul endroit: actions, "
 "obligations, unité de compte et même options."
 
-#: app\pages\features.template.html:22
+#: app\pages\features.template.html:53
 msgid ""
 "Squirrel automatically retrieves the current value of any stocks, options or "
 "fund\n"
-"          valorisation, from the main stock exchanges up to 15 years back."
+"                valorisation, from the main stock exchanges up to 15 years "
+"back."
 msgstr ""
 "Squirrel synchronise automatiquement les valeurs actuelles de toutes vos "
 "actions, options et même les valeurs liquidatives de vos Unités de Compte, "
@@ -735,7 +748,7 @@ msgstr "Symboles"
 msgid "Synchronize your operations with your online broker"
 msgstr "Synchronisez vos opérations avec votre courtier en ligne"
 
-#: app\pages\features.template.html:41
+#: app\pages\features.template.html:71
 msgid "Take care of your investiment like the apple of your eye."
 msgstr "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
 
@@ -755,7 +768,7 @@ msgstr "Termes du Service"
 msgid "The best tool to track all your personals assets"
 msgstr "Le milleur outil pour suivre tous vos actifs personnels"
 
-#: app\pages\features.template.html:3
+#: app\pages\features.template.html:35
 msgid "The center of your personal finances"
 msgstr "Le Centre de Votre Finance Personnelle."
 
@@ -788,7 +801,7 @@ msgstr "Mardi"
 msgid "Type"
 msgstr "Enveloppe Fiscale"
 
-#: app\pages\features.template.html:74
+#: app\pages\features.template.html:103
 msgid "Use Technical Analysis tools for your investment decisions."
 msgstr ""
 "Utilisez les outils d'Analyse Techniques fournis pour vos prises de décision."
@@ -797,11 +810,11 @@ msgstr ""
 msgid "Valorisation history"
 msgstr "Historique de Valorisation"
 
-#: app\pages\features.template.html:68
+#: app\pages\features.template.html:97
 msgid ""
 "Visualize your assets, show your current allocation, market exposure, with "
 "good looking,\n"
-"          extremely efficient and interactive graphs."
+"                extremely efficient and interactive graphs."
 msgstr ""
 "Visualisez vos actifs, affichez et suivez l'évolution de vos allocations, "
 "expositions aux risques de marchés, avec de beaux graphiques modernes, "
@@ -838,7 +851,7 @@ msgstr "Bienvenue sur Squirrel"
 msgid "Welcome to Squirrel. Can you tell us in which is your language"
 msgstr "Bienvenue sur Squirrel. Pouvez-vous nous dire quel est votre langue?"
 
-#: app\pages\features.template.html:94
+#: app\pages\features.template.html:122
 msgid "When investiment goes in the Cloud."
 msgstr "Quand vos investissements vont dans le Nuage."
 
@@ -857,11 +870,11 @@ msgstr ""
 msgid "YTD"
 msgstr "YTD"
 
-#: app\pages\features.template.html:141
+#: app\pages\features.template.html:166
 msgid ""
 "You can easily control what other can see. Create private link to graphs or "
 "table, with\n"
-"          email and password permission, expiration date."
+"                email and password permission, expiration date."
 msgstr ""
 "Vous controllez facilement ce que les personnes externes peuvent voir. Créez "
 "des liens privés vers les graphiques, tableaux ou rapports, avec des "
