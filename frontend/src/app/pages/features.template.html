@@ -1,35 +1,26 @@
-<div>
+<div id="top" class="feature-content">
   <div class="container">
     <div class="row content">
       <div class="visible-md-block visible-lg-block col-md-3 feature-sidebar hidden-print">
         <ul mac-affix class="nav nav-list docs-sidenav">
-          <li mac-scroll-spy-target="center-history">
-            <a ng-click="scrollTo('center-history')">
-              <i class="icon-chevron-right"></i>
-              <span translate>Center of your Finance</span>
-            </a>
-          </li>
-          <li mac-scroll-spy-target="visualizations">
-            <a ng-click="scrollTo('visualizations')">
-              <i class="icon-chevron-right"></i>
-              <span translate>Data Visualization</span>
-            </a>
-          </li>
-          <li mac-scroll-spy-target="anywhere">
-            <a ng-click="scrollTo('anywhere')">
-              <i class="icon-chevron-right"></i>
-              <span translate>Anywhere, Anytime</span>
-            </a>
-          </li>
-          <li mac-scroll-spy-target="share">
-            <a ng-click="scrollTo('share')">
-              <i class="icon-chevron-right"></i>
-              <span translate>Share your Portfolio</span>
+          <li ng-repeat="item in items" mac-scroll-spy-target="{{item.key}}">
+            <a ng-click="scrollTo(item.key)">
+              <span>{{item.text}}</span>
             </a>
           </li>
         </ul>
       </div>
-      <div class="col-md-9 feature-scrollit">
+      <div class="visible-xs-block visible-sm-block col-xs-12 feature-xs-topbar hidden-print">
+        <ul class="nav nav-list">
+          <li ng-repeat="item in items">
+            <a ng-click="scrollTo(item.key)">
+              <i class="fa fa-hand-o-right"></i>
+              <span>{{item.text}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-md-9 feature-scrollit">
         <section class="features-section bg-light-yellow">
           <div class="row">
             <h2 id="center-history" class="text-center" translate>The center of your personal finances</h2>
@@ -62,6 +53,12 @@
             </div>
           </div>
           <hr class="small">
+          <div class="features-go-to-top visible-xs-block visible-sm-block">
+            <a ng-click="scrollTo('top')">
+              <i class="fa fa-hand-o-up"></i>
+              <span translate>Top</span>
+            </a>
+          </a>
         </section>
 
 
@@ -111,8 +108,14 @@
 
               </p>
             </div>
-            <hr class="small">
           </div>
+          <hr class="small">
+          <div class="features-go-to-top visible-xs-block visible-sm-block">
+            <a ng-click="scrollTo('top')">
+              <i class="fa fa-hand-o-up"></i>
+              <span translate>Top</span>
+            </a>
+          </a>
         </section>
 
 
@@ -143,6 +146,12 @@
             </div>
           </div>
           <hr class="small">
+          <div class="features-go-to-top visible-xs-block visible-sm-block">
+            <a ng-click="scrollTo('top')">
+              <i class="fa fa-hand-o-up"></i>
+              <span translate>Top</span>
+            </a>
+          </a>
         </section>
 
         <section class="features-section bg-light-yellow">
@@ -176,8 +185,14 @@
 
               </p>
             </div>
-            <hr class="small">
           </div>
+          <hr class="small">
+          <div class="features-go-to-top visible-xs-block visible-sm-block">
+            <a ng-click="scrollTo('top')">
+              <i class="fa fa-hand-o-up"></i>
+              <span translate>Top</span>
+            </a>
+          </a>
         </section>
       </div>
     </div>
