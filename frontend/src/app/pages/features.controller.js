@@ -28,13 +28,16 @@ angular.module("squirrel").controller("FeaturesCtrl",
           "text": gettextCatalog.getString("Center of your Finance")
         }, {
           "key": "visualizations",
-          "text": gettextCatalog.getString("Data Visualization")
+          "text": gettextCatalog.getString("Visual Reporting")
         }, {
           "key": "anywhere",
           "text": gettextCatalog.getString("Anywhere, Anytime")
         }, {
           "key": "share",
           "text": gettextCatalog.getString("Share your Portfolio")
+        }, {
+          "key": "faq",
+          "text": gettextCatalog.getString("FAQ")
         }
       ];
     }

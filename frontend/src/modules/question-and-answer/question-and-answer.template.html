@@ -1,0 +1,12 @@
+<div class="question-and-answer">
+  <span class="expand-bullet h3" ng-show="expand" ng-click="expand = !expand">▾</span>
+  <span class="expand-bullet h3" ng-show="!expand" ng-click="expand = !expand">▸</span>
+  <div class="question" ng-click="expand = !expand">
+    {{question}}
+  </div>
+  <div class="answer" ng-show="expand">
+    <div ng-transclude>
+  </div>
+  <div class="clearfix"></div>
+  <hr class="light-hr">
+</div>
