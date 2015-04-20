@@ -28,15 +28,16 @@ frontend_bower_components_path = os.path.abspath(os.path.join(root_path,
                                                               "frontend",
                                                               "bower_components"))
 
-paths_to_remove = [(workdir_path, "workdir"),
-                   (egg_info, "Squirrel.egg_info"),
-                   (os.path.join(root_path, "_trial_temp"), "_trial_temp"),
-                   (os.path.join(root_path, "_trial_temp.lock"), "_trial_temp.lock"),
-                   (os.path.join(root_path, "tosource"), "tosource"),
-                   (frontend_dist_path, "frontend/dist"),
-                   (frontend_node_modules_path, "frontend/node_modules"),
-                   (frontend_bower_components_path, "frontend/bower_components"),
-                   ]
+paths_to_remove = [
+    (egg_info, "Squirrel.egg_info"),
+    (os.path.join(root_path, "_trial_temp"), "_trial_temp"),
+    (os.path.join(root_path, "_trial_temp.lock"), "_trial_temp.lock"),
+    (os.path.join(root_path, "tosource"), "tosource"),
+    (frontend_dist_path, "frontend/dist"),
+    (frontend_node_modules_path, "frontend/node_modules"),
+    (frontend_bower_components_path, "frontend/bower_components"),
+    (workdir_path, "workdir"),
+]
 
 print("Uninstalling files in {}".format(root_path))
 for path, name in paths_to_remove:
