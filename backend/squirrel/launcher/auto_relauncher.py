@@ -275,6 +275,21 @@ def auto_restart(args):
 
 
 def run():
+
+    def terminate_handler(signum, frame):
+        print('Signal handler called with signal', signum)
+        sys.exit(0)
+
+    def kill_handler(signum, frame):
+        print('Signal handler called with signal', signum)
+        sys.exit(1)
+
+    # Set the signal handler and a 5-second alarm
+    signal.signal(signal.SIGTERM, terminate_handler)
+    signal.signal(signal.SIGINT, kill_handler)
+    if hasattr(signal, "SIGBREAK"):
+        signal.signal(signal.SIGBREAK, terminate_handler)
+
     logging_config.dictConfig({
         'version': 1,
         'formatters': {
