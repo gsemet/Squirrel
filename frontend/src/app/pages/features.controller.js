@@ -25,19 +25,35 @@ angular.module("squirrel").controller("FeaturesCtrl",
       $scope.items = [
         {
           "key": "center-history",
-          "text": gettextCatalog.getString("Center of your Finance")
+          "text": gettextCatalog.getString("Center of your Finance"),
+          "children": [
+            {
+              "key": "visualizations",
+              "text": gettextCatalog.getString("Visual Portfolios")
+            }, {
+              "key": "anywhere",
+              "text": gettextCatalog.getString("Anywhere, Anytime")
+            }, {
+              "key": "share",
+              "text": gettextCatalog.getString("Share your Portfolio")
+            }
+          ]
         }, {
-          "key": "visualizations",
-          "text": gettextCatalog.getString("Visual Reporting")
-        }, {
-          "key": "anywhere",
-          "text": gettextCatalog.getString("Anywhere, Anytime")
-        }, {
-          "key": "share",
-          "text": gettextCatalog.getString("Share your Portfolio")
+          "key": "what",
+          "text": gettextCatalog.getString("Meet Squirrel"),
+          "children": [
+            {
+              "key": "what",
+              "text": gettextCatalog.getString("What is Squirrel?")
+            }, {
+              "key": "who",
+              "text": gettextCatalog.getString("Who is it for?")
+            }
+          ]
         }, {
           "key": "faq",
-          "text": gettextCatalog.getString("FAQ")
+          "text": gettextCatalog.getString("FAQ"),
+          "children": []
         }
       ];
     }

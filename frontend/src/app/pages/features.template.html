@@ -7,6 +7,13 @@
             <a ng-click="scrollTo(item.key)">
               <span>{{item.text}}</span>
             </a>
+            <ul class="nav nav-list">
+              <li ng-repeat="child in item.children" mac-scroll-spy-target="{{child.key}}">
+                <a ng-click="scrollTo(child.key)">
+                  <span>{{child.text}}</span>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -17,6 +24,11 @@
               <i class="fa fa-hand-o-right"></i>
               <span>{{item.text}}</span>
             </a>
+            <li ng-repeat="child in item.children" mac-scroll-spy-target="{{child.key}}">
+              <a ng-click="scrollTo(child.key)">
+                <span>{{child.text}}</span>
+              </a>
+            </li>
           </li>
         </ul>
       </div>
@@ -66,7 +78,7 @@
 
 
         <section class="features-section">
-          <h2 id="visualizations" class="text-center" translate>Visual Reporting</h2>
+          <h2 id="visualizations" class="text-center" translate>Visual Portfolios</h2>
           <p class="lead text-center" translate>
             Take care of your investiment like the apple of your eye.
           </p>
@@ -212,7 +224,126 @@
           </a>
         </section>
 
+        <section class="features-section">
+          <h2 id="what" class="text-center" translate>Meet Squirrel</h2>
+          <hr class="small">
+          <div class="row">
+            <div id="what" class="col-md-4 column">
+              <h3 translate>
+                What is Squirrel?
+              </h3>
+              <p class="features-justify" translate>
 
+                Squirrel is your swissknife of your investment life. It is an online tool gathering
+                everything you need to find, decide, follow your investment.
+
+              </p>
+            </div>
+            <div class="col-md-4 column">
+              <h3 translate>
+                But there plenty of similar tool online?
+              </h3>
+              <p class="features-justify" translate>
+
+                Most of the online portfolio managers offer you access to an automated investment
+                strategy, with no effort from your side. Enjoy the best algorithms that make
+                wonders, in the finance, work for you. Squirrel does not make these promises. What
+                it does promise is to give you the best tool to track you portfolio and find your
+                own strategy.
+
+              </p>
+            </div>
+            <div class="col-md-4 column">
+              <h3 translate>
+                What makes it different from other online portfolio managers?
+              </h3>
+              <p class="features-justify" translate>
+
+                Before everything else, Squirrel is a tool aimed at guiding you from day 1 when your
+                start you investment journey, to build step by step your own portfolio. You have all
+                the meaningful information in front of you, in your Squirrel Dashboard.
+
+              </p>
+              <p class="features-justify" translate>
+
+                There is no mystic algorithm behind Squirrel, no Award winning Trading Software
+                that will make you rich. Just well crafted tools, specially targeted to private
+                individual.
+
+              </p>
+            </div>
+          </div>
+
+          <hr class="small">
+          <div class="features-go-to-top visible-xs-block visible-sm-block">
+            <a ng-click="scrollTo('top')">
+              <i class="fa fa-hand-o-up"></i>
+              <translate>Back to Top</translate>
+            </a>
+          </a>
+        </section>
+
+
+        <section class="features-section">
+          <h2 id="who" class="text-center" translate>Who is it for?</h2>
+          <hr class="small">
+
+          <div class="row">
+            <div class="col-md-4 column">
+              <h3 translate>
+                Primary audience of Squirrel: Individuals
+              </h3>
+              <p class="features-justify" translate>
+
+                Squirrels is specially targetted for particulars who aren't experts of finance but
+                still want to take in charge there financial investments. Who is the best suited
+                to take the best decision for you?
+
+              </p>
+            </div>
+            <div class="col-md-4 column">
+              <h3 translate>
+                But also: Financial Advisor
+              </h3>
+              <p class="features-justify" translate>
+
+                Squirrel is also well suited for independent financial advisor. Open an account for
+                your client.
+
+              </p>
+            </div>
+            <div class="col-md-4 column">
+              <h3 translate>
+                How much does it cost?
+              </h3>
+              <p class="features-justify" translate>
+
+                Click on the "Plans" link and see which plans fits you the best.
+
+              </p>
+              <p class="features-justify" translate>
+
+                But the best place to start with is to click on the "Demo" button on the navigation
+                bar. You will see almost the real Squirrel in action, but with a demo account with
+                fake data.
+
+              </p>
+              <p class="features-justify" translate>
+
+                Sign up for free to see Squirrel by yourself!
+
+              </p>
+            </div>
+          </div>
+
+          <hr class="small">
+          <div class="features-go-to-top visible-xs-block visible-sm-block">
+            <a ng-click="scrollTo('top')">
+              <i class="fa fa-hand-o-up"></i>
+              <translate>Back to Top</translate>
+            </a>
+          </a>
+        </section>
         <section class="features-section">
           <h2 id="faq" class="text-center" translate>Frequently Asked Questions</h2>
           <p class="lead text-center" translate>
@@ -228,6 +359,7 @@
             </p>
           </question-and-answer>
           <question-and-answer question="{{'Who is behind?' | translate}}">
+            <img src="assets/images/line-chart-4-256.png" class="img-thumbnail features-img-right" alt="Myself">
             <p translate>
 
               Hi! My name is Gaetan Semet. I am Software engineer who started a very humble investor
@@ -237,9 +369,9 @@
             <p translate>
 
               As humble as my investments was, I had to open several broker accounts to exploit the
-              best of each of them. My first broker was quite good for buying stock from my country
-              (France), but was over expensive for stocks abroad. I then opened another account
-              on a cheaper broker.
+              best of each of them. My first broker was quite good for buying stock from my home
+              country (France), but was over expensive for stocks abroad. I then opened another
+              account on a cheaper broker.
 
             </p>
             <p translate>
