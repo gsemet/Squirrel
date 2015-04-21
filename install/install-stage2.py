@@ -27,6 +27,7 @@ subcmd = sys.argv[3]
 
 cmd_capabilities = {
     "serve:dev": {
+        "pip_upgrade",
         "backend_install",
         "frontend_install",
         "serve",
@@ -35,12 +36,14 @@ cmd_capabilities = {
         "serve_dev_frontend",
     },
     "serve:devbackend": {
+        "pip_upgrade",
         "backend_install",
         "serve",
         "serve_dev",
         "serve_dev_backend",
     },
     "serve:prod": {
+        "pip_upgrade",
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
@@ -48,6 +51,7 @@ cmd_capabilities = {
         "serve_prod",
     },
     "serve:novirtualenv": {
+        "pip_upgrade",
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
@@ -55,22 +59,36 @@ cmd_capabilities = {
         "serve_prod",
         "novirtualenv",
     },
+    "start:prod": {
+        "serve",
+        "serve_prod",
+    },
+    "start:dev": {
+        "serve",
+        "serve_dev",
+        "serve_dev_backend",
+        "serve_dev_frontend",
+    },
     "install:backend": {
+        "pip_upgrade",
         "backend_install",
         "frontend_install"
     },
     "install:all": {
+        "pip_upgrade",
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
     },
     "install:novirtualenv": {
+        "pip_upgrade",
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
         "novirtualenv",
     },
     'update:all': {
+        "pip_upgrade",
         "backend_install",
         "frontend_install",
         "frontend_update",
@@ -78,6 +96,7 @@ cmd_capabilities = {
         "frontend_update_bower",
     },
     'update:lang:all': {
+        "pip_upgrade",
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
@@ -85,6 +104,7 @@ cmd_capabilities = {
         # add all update cap here
     },
     'update:lang:fr': {
+        "pip_upgrade",
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
@@ -202,67 +222,68 @@ printInfo("Installation process really starts here...")
 printInfo("")
 
 
-if sys.platform.startswith("linux"):
-    pip_version_str = str(subprocess.check_output(["pip", "--versio"]))
-    pip_version_str = pip_version_str.split(" ")[1]
-    pip_version_str = pip_version_str.split("-")[0]
-    pip_version_str = pip_version_str.split("_")[0]
-    pip_version_str = pip_version_str.rpartition(".")[0]
-    pip_major, _, pip_minor = pip_version_str.partition(".")
-    pip_version = int(pip_major) * 100 + int(pip_minor)
-    if pip_version <= 105:
-        printSeparator()
-        printInfo("Patching this pip (version) {}.{}), to fix proxy issue (fixed in pip 1.6)"
-                  .format(pip_major, pip_minor))
-        printInfo("See: https://github.com/pypa/pip/issues/1805")
-        # Patching the installed pip to fix the following bug with proxy
-        # See http://www.irvingc.com/posts/10
-        patch_path = os.path.join(install_path, "install", "patch-pip.patch")
-        c = call(["bash", "-c", "patch -p0 -N --dry-run --silent < {} 2>/dev/null"
-                  .format(patch_path)])
-        if not c:
-            printInfo("Applying patch")
-            run(["bash", "-c", "patch -p0 < {}".format(patch_path)])
-        else:
-            printInfo("Already applied. Skipping patch")
+if "pip_upgrade" in current_capabilities:
+    if sys.platform.startswith("linux"):
+        pip_version_str = str(subprocess.check_output(["pip", "--versio"]))
+        pip_version_str = pip_version_str.split(" ")[1]
+        pip_version_str = pip_version_str.split("-")[0]
+        pip_version_str = pip_version_str.split("_")[0]
+        pip_version_str = pip_version_str.rpartition(".")[0]
+        pip_major, _, pip_minor = pip_version_str.partition(".")
+        pip_version = int(pip_major) * 100 + int(pip_minor)
+        if pip_version <= 105:
+            printSeparator()
+            printInfo("Patching this pip (version) {}.{}), to fix proxy issue (fixed in pip 1.6)"
+                      .format(pip_major, pip_minor))
+            printInfo("See: https://github.com/pypa/pip/issues/1805")
+            # Patching the installed pip to fix the following bug with proxy
+            # See http://www.irvingc.com/posts/10
+            patch_path = os.path.join(install_path, "install", "patch-pip.patch")
+            c = call(["bash", "-c", "patch -p0 -N --dry-run --silent < {} 2>/dev/null"
+                      .format(patch_path)])
+            if not c:
+                printInfo("Applying patch")
+                run(["bash", "-c", "patch -p0 < {}".format(patch_path)])
+            else:
+                printInfo("Already applied. Skipping patch")
 
-printSeparator()
-printInfo("Updating pip (try to always use latest version of pip)")
-printInfo("cd backend")
-run(["pip", "install", "--upgrade", "pip"])
+    printSeparator()
+    printInfo("Updating pip (try to always use latest version of pip)")
+    printInfo("cd backend")
+    run(["pip", "install", "--upgrade", "pip"])
 
-printSeparator()
-printInfo("Installing backend requirements")
-printInfo("cd backend")
-run(["pip", "install", "-r", os.path.join(install_path, "backend",
-                                          "requirements.txt")])
-
-if sys.version_info < (3, 4):
-    printInfo("Python version {}.{} < 3.4, installing extra requirements"
-              .format(sys.version_info[0], sys.version_info[2]))
+if "backend_install" in current_capabilities:
+    printSeparator()
+    printInfo("Installing backend requirements")
     printInfo("cd backend")
     run(["pip", "install", "-r", os.path.join(install_path, "backend",
-                                              "requirements-py_lt34.txt")])
+                                              "requirements.txt")])
 
-if isWindows:
+    if sys.version_info < (3, 4):
+        printInfo("Python version {}.{} < 3.4, installing extra requirements"
+                  .format(sys.version_info[0], sys.version_info[2]))
+        printInfo("cd backend")
+        run(["pip", "install", "-r", os.path.join(install_path, "backend",
+                                                  "requirements-py_lt34.txt")])
+
+    if isWindows:
+        printSeparator()
+        printInfo("Installing Windows dependencies")
+        run(["pip", "install", "-r", os.path.join(install_path, "backend",
+                                                  "requirements-win32.txt")])
+        printInfo("Ensure you have win32api installed")
+
     printSeparator()
-    printInfo("Installing Windows dependencies")
-    run(["pip", "install", "-r", os.path.join(install_path, "backend",
-                                              "requirements-win32.txt")])
-    printInfo("Ensure you have win32api installed")
+    printInfo("Installing backend")
+    printInfo("cd backend")
+    run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
-
-printSeparator()
-printInfo("Installing backend")
-printInfo("cd backend")
-run(["pip", "install", "-e", os.path.join(install_path, "backend")])
-
-if isWindows:
-    shell = True
-    activate_path = os.path.join(workdir_path, "Scripts", "activate.exe")
-else:
-    shell = False
-    activate_path = os.path.join(workdir_path, "bin", "activate")
+    if isWindows:
+        shell = True
+        activate_path = os.path.join(workdir_path, "Scripts", "activate.exe")
+    else:
+        shell = False
+        activate_path = os.path.join(workdir_path, "bin", "activate")
 
 if "frontend_install" in current_capabilities:
     printSeparator()

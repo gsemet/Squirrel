@@ -128,6 +128,9 @@ def setupLogger():
                                                  secondary_log_colors={},
                                                  style='%'
                                                  ))
+    log.info("*" * 79)
+    log.info("*" + " " * 26 + "Starting Squirrel Server " + " " * 26 + "*")
+    log.info("*" * 79)
     log.info("Logging configured - Entering in a colorful world on your terminal!")
 
     log.debug("File loggers configured by: {}".format(Config().frontend.logging_conf_full_path))

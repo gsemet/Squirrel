@@ -34,6 +34,8 @@ allowed_cmd = {
     "serve:prod":           "install and launch production server",
     "serve:novirtualenv":  ("install and serve production without going into "
                             "virtualenv (Docker/Heroku)"),
+    "start:prod":          ("only start prod server (no install)"),
+    "start:dev":           ("only start dev server (no install)"),
     "install:backend":      "install only backend (python)",
     "install:all":          "install backend and frontend",
     "install:novirtualenv": "install backend and frontend without virtualenv",
@@ -43,7 +45,9 @@ allowed_cmd = {
     "update:lang:fr":        "update translation (fr) - requires 'poedit'",
 }
 aliases = {
+    "(empty)": "install:all",
     "serve": "serve:dev",
+    "start": "start:dev",
     "install": "install:all",
     "update": "update:all",
     "update:lang": "update:lang:all",
@@ -124,11 +128,11 @@ def usage():
     print("")
     print("Commands:")
     for cmd, help in sorted(allowed_cmd.items()):
-        print("  {:20}{}".format(cmd, help))
+        print("  {:25}{}".format(cmd, help))
     print("")
     print("Aliases:")
     for alias, cmd in sorted(aliases.items()):
-        print("  {:10}{}".format(alias, cmd))
+        print("  {:25}{}".format(alias, cmd))
     print("")
     print("If no command is selected, execute the following command: '{}'".format(default_cmd))
     print("")
