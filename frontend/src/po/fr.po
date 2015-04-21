@@ -157,7 +157,7 @@ msgstr "Avr"
 msgid "April"
 msgstr "Avril"
 
-#: app\pages\features.template.html:368
+#: app\pages\features.template.html:369
 msgid ""
 "As humble as my investments was, I had to open several broker accounts to "
 "exploit the\n"
@@ -188,7 +188,7 @@ msgstr "Mises à Jour Automatiques"
 
 #: app\pages\features.template.html:131 app\pages\features.template.html:179
 #: app\pages\features.template.html:222 app\pages\features.template.html:281
-#: app\pages\features.template.html:343 app\pages\features.template.html:430
+#: app\pages\features.template.html:343 app\pages\features.template.html:472
 #: app\pages\features.template.html:74
 msgid "Back to Top"
 msgstr "Haut de Page"
@@ -242,7 +242,7 @@ msgstr ""
 msgid "But there plenty of similar tool online?"
 msgstr "Mais il y a déjà des dizaines d'outils similaires sur Internet?"
 
-#: app\pages\features.template.html:397
+#: app\pages\features.template.html:398
 msgid ""
 "But when data starts to becomes quite heavy, with lot of custom import "
 "scripts, the\n"
@@ -262,6 +262,11 @@ msgstr ""
 "En continuant votre navigation sur notre site, vous donnez votre "
 "consentement sur l'utilisation de ces cookie, dans le cadre des terme de "
 "politique d'utilisation."
+
+#: app\pages\features.template.html:428
+msgid "Can you synchronize automatically my different accounts?"
+msgstr ""
+"Ne pouvez-vous pas synchroniser automatiquement mes différents comptes?"
 
 #: services\translations\get_translation.modal.template.html:24
 msgid "Cancel"
@@ -521,7 +526,7 @@ msgstr "Siège Social :"
 msgid "Help"
 msgstr "Aide"
 
-#: app\pages\features.template.html:362
+#: app\pages\features.template.html:363
 msgid ""
 "Hi! My name is Gaetan Semet. I am Software engineer who started a very "
 "humble investor\n"
@@ -536,7 +541,7 @@ msgstr ""
 msgid "How much does it cost?"
 msgstr "Combien celà coûte-il?"
 
-#: app\pages\features.template.html:376
+#: app\pages\features.template.html:377
 msgid ""
 "I also wanted to follow my Mutual Funds. I didn't understood why they would "
 "be\n"
@@ -548,7 +553,7 @@ msgstr ""
 "pourquoi ne pas les inclure dans mon document de suivi des actions et les "
 "traiter au même titre qu'une action."
 
-#: app\pages\features.template.html:383
+#: app\pages\features.template.html:384
 msgid ""
 "I started tracking my different stock and mutual funds portfolio using a "
 "speadsheet\n"
@@ -563,7 +568,7 @@ msgstr ""
 "logiciel, et celà m'empechait de bénéficier d'outils modernes, du type de "
 "certains graphiques dynamiques et interactifs que l'on peut voir sur le net."
 
-#: app\pages\features.template.html:405
+#: app\pages\features.template.html:406
 msgid ""
 "I was also disappointed by the graphs themselves, they were not customable "
 "enough\n"
@@ -621,6 +626,10 @@ msgstr "Dernière exécution"
 #: components\footer\footer.template.html:19
 msgid "Legal notes"
 msgstr "Notes légales"
+
+#: app\pages\features.template.html:414
+msgid "Like for example:"
+msgstr "Comme par exemple:"
 
 #: app\portfolios\securities.template.html:2
 msgid "List of your securities"
@@ -898,7 +907,7 @@ msgstr "L'inscription signifie que vous avez lu et accepté les "
 msgid "Simple, Smart, Unique Investing"
 msgstr "Simple, Efficace, Unique"
 
-#: app\pages\features.template.html:390
+#: app\pages\features.template.html:391
 msgid ""
 "So I started using Google Spreadsheet to follow my investments, and I felt "
 "in love\n"
@@ -912,7 +921,7 @@ msgstr ""
 "en ligne. Qu'importe le lieu ou le moment dans la journée ou la semaine, je "
 "pouvais éditer et suivre mes portefeuilles instantanément."
 
-#: app\pages\features.template.html:382
+#: app\pages\features.template.html:383
 msgid "So how do you managed to follow your different portfolios?"
 msgstr "Comment faisiez-vous pour suivre vos différents portefeuilles?"
 
@@ -1030,7 +1039,7 @@ msgstr ""
 "graphiquesextrèmement compliqués \"qui en jete\" ni, au contraire, de "
 "graphiques trop simples. Juste ce qu'il vous faut."
 
-#: app\pages\features.template.html:416
+#: app\pages\features.template.html:421
 msgid ""
 "Squirrel started as a personal work but I wanted to do it the right way, "
 "with cutting\n"
@@ -1095,7 +1104,7 @@ msgstr "Impôts"
 msgid "Terms of Service"
 msgstr "Termes du Service"
 
-#: app\pages\features.template.html:415
+#: app\pages\features.template.html:420
 msgid "That's how Squirrel was born?"
 msgstr "C'est comme cela qu'est né Squirrel?"
 
@@ -1110,6 +1119,67 @@ msgstr "Le Réseau Social de L'Investisseur"
 #: app\homepage\homepage.unlogged.template.html:8
 msgid "The best tool to track all your personals assets"
 msgstr "Le milleur outil pour suivre tous vos actifs personnels"
+
+#: app\pages\features.template.html:436
+msgid ""
+"The major issue to deal with is security. \"Reading\" data from your account "
+"means it is\n"
+"              also possible to send orders. This would requires to store "
+"your credential on Squirrel\n"
+"              server, and this is definitely not a good idea. Even with all "
+"means taken to protect\n"
+"              all these sensitives information, such as \"bank level "
+"cryptography\", this would break\n"
+"              the golden rule \"Don't put all your eggs in the same basket"
+"\", since all your passwords\n"
+"              are at a single place. There is no simple say to garantee a "
+"total security in this\n"
+"              sector, at one point all your password will need to be "
+"decrypted before being sent to\n"
+"              your broker. We can setup what we call a \"Two way "
+"authentication\" technic, but this\n"
+"              would not allow automatically, transparent update. This is the "
+"only way to avoid\n"
+"              Squirrel to ever \"know\" your password at one point in the "
+"system."
+msgstr ""
+"Le principal problème à gerer dans ce domaine est la sécurité. \"Lire\" des "
+"données depuis votre compte signifie qu'il est aussi possible d'envoyer des "
+"ordres. Cela signifie qu'il faut à un moment ou à un autre stocker vos mots "
+"de passes sur le système Squirrel, et ce n'est pas du tout une bonne idée."
+"Même en prennant toutes les mesures possibles de protection de ces données "
+"extrèmement sensibles, tel qu'utiliser ce que certains appellent de la "
+"\"cryptographie niveau banquaire\",celà viole la règle d'or \"ne pas mettre "
+"tous ses oeufs dans le même pannier\", puisque tous vos mots de passes sont "
+"stoqués à un seul endroit. Il n'est pas simple de garantir une "
+"sécuritétotale  dans ce domaine, à un moment ou à un autre Squirrel devra "
+"déchiffrer votre mot de passe pour l'envoyer à votre courtier en ligne. Il "
+"est possible d'installer un systeme de vérification par plusieurs méthodes "
+"en même temps, telle que celle utilisée par votre banque lorsque vous "
+"désirez faire un virement par exemple, il vous demandera un code reçu par "
+"SMS. Mais cela empèchera tout raffraichissement automatique."
+
+#: app\pages\features.template.html:450
+msgid ""
+"The only solution that I can imagine is to cypher your credentials with the "
+"highest\n"
+"              level of possible cryptography, that cannot be ever decyphered "
+"by the Squirrel server.\n"
+"              The web interface would requires your to enter the passphrase "
+"and connect itself to\n"
+"              your different brokers. In other word, I would be like if you "
+"would manually retrieve\n"
+"              these data from your browser. Maybe one day this will be real!"
+msgstr ""
+"La seule solution que je pourrais imaginer est de chiffrer vos mots de "
+"passes sur Squirrel avec les techniques les plus efficaces, sans que le "
+"server Squirrel ne soit jamais en possibilité de le déchiffrer. L'interface "
+"web de Squirrel serait responsable de récupérer ces mots de passe chiffrer "
+"et de vous demander une phrase de sécurité et qui décoderait vos mots de "
+"passe dans la mémoire de votre navigateur et se connecter aux différents "
+"services un à un automatiquement. Niveau sécurité, cela correspondrait au "
+"niveau de sécurité fourni par votre courtier. Peut être un jour une telle "
+"solution sera réalité!"
 
 #: app\pages\features.template.html:267
 msgid ""
@@ -1155,6 +1225,34 @@ msgstr "Mardi"
 #: app\portfolios\overview.template.html:27
 msgid "Type"
 msgstr "Enveloppe Fiscale"
+
+#: app\pages\features.template.html:429
+msgid ""
+"Unfortunately, Squirrel cannot retrieve automatically the movement you "
+"execute on your\n"
+"              different accounts, such as buying a Stock or selling a mutual "
+"fund share. The first\n"
+"              step would be to sign a contract with every broker, connect, "
+"and retrieve this\n"
+"              information."
+msgstr ""
+"Malheureusement, Squirrel ne peut pas récupérer automatiquement vos "
+"mouvements que vous executez sur vos différents comptes, comme \"Vente d'une "
+"action\" ou \"achat d'une part de fonds commun (Unité de Compte)\". La "
+"première étape pour se faire voudrait de signer une contrat avec tous les "
+"coutiers et assurance en ligne disponibles, pour se connecter et récuperer "
+"les informations."
+
+#: app\pages\features.template.html:459
+msgid ""
+"Until this moment, unfortunately, you have to manually update your "
+"operations. But\n"
+"              don't be affraid, Squirrel is pretty confortable and this is "
+"quite easy to do."
+msgstr ""
+"Jusqu'à ce moment, malheureusement, il vous faut entrer manuellement les "
+"opérations que vous effectuez. Mais pour vous rassurer, Squirrel est assez "
+"confortable dans ce domaine, ce ne sera donc pas un problème!"
 
 #: app\pages\features.template.html:140
 msgid "Use the Cloud to your own advantage"

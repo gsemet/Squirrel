@@ -409,8 +409,12 @@
                 and not so good looking, compared to graph produced by JavaScript libraries such as
 
               </translate>
-              <a href="http://www.highcharts.com/">HighCharts</a>.
+              <a href="http://www.highcharts.com/" target="_blank">HighCharts</a>.
 
+              <translate verb="Example for hightchart">
+                Like for example:
+              </translate>
+              <highchart id="chart1" config="chartConfig"></highchart>
             </p>
           </question-and-answer>
           <question-and-answer question="{{'That\'s how Squirrel was born?' | translate}}">
@@ -421,6 +425,43 @@
 
             </p>
           </question-and-answer>
+          <question-and-answer question="{{'Can you synchronize automatically my different accounts?' | translate}}">
+            <p translate>
+
+              Unfortunately, Squirrel cannot retrieve automatically the movement you execute on your
+              different accounts, such as buying a Stock or selling a mutual fund share. The first
+              step would be to sign a contract with every broker, connect, and retrieve this
+              information.
+            </p>
+            <p translate>
+
+              The major issue to deal with is security. "Reading" data from your account means it is
+              also possible to send orders. This would requires to store your credential on Squirrel
+              server, and this is definitely not a good idea. Even with all means taken to protect
+              all these sensitives information, such as "bank level cryptography", this would break
+              the golden rule "Don't put all your eggs in the same basket", since all your passwords
+              are at a single place. There is no simple say to garantee a total security in this
+              sector, at one point all your password will need to be decrypted before being sent to
+              your broker. We can setup what we call a "Two way authentication" technic, but this
+              would not allow automatically, transparent update. This is the only way to avoid
+              Squirrel to ever "know" your password at one point in the system.
+
+            </p>
+            <p translate>
+
+              The only solution that I can imagine is to cypher your credentials with the highest
+              level of possible cryptography, that cannot be ever decyphered by the Squirrel server.
+              The web interface would requires your to enter the passphrase and connect itself to
+              your different brokers. In other word, I would be like if you would manually retrieve
+              these data from your browser. Maybe one day this will be real!
+
+            </p>
+            <p translate>
+
+              Until this moment, unfortunately, you have to manually update your operations. But
+              don't be affraid, Squirrel is pretty confortable and this is quite easy to do.
+
+            </p>
           <div class="clearfix"></div>
           <hr class="light-hr">
           </div>
