@@ -1094,7 +1094,7 @@ msgstr "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
 
 #: app\portfolios\_portfolios.controller.js:67
 msgid "Taxation"
-msgstr "Imposition"
+msgstr "Vos Impôts"
 
 #: app\portfolios\taxation.template.html:2
 msgid "Taxes"

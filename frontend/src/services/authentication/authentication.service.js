@@ -21,6 +21,8 @@ angular.module('squirrel').factory('AuthenticationService',
         Session.create(
           data.id,
           data.userId,
+          data.first_name,
+          data.last_name,
           data.email,
           data.role,
           data.language
@@ -46,18 +48,17 @@ angular.module('squirrel').factory('AuthenticationService',
 
         var deferred = $q.defer();
 
-        $http.get(environment.getBackendUrl() + "/api/profile", {
+        return request.request(environment.getBackendUrl() + "/api/login", {
           /* can be email or email */
           sessionId: sessionId,
-        }).then(function(result) {
-          that.createSession(result.data);
-          deferred.resolve(result.data.email);
+        }, "POST").then(function(data) {
+          that.createSession(data);
+          deferred.resolve(data.email);
         }, function(error) {
           console.log("Restore error = " + JSON.stringify(error));
           $rootScope.$emit("loginFailed", error);
           deferred.reject(error);
         });
-        return deferred.promise;
       });
 
       authService.login = function(email, password) {
@@ -65,9 +66,9 @@ angular.module('squirrel').factory('AuthenticationService',
           /* can be email or email */
           email: email,
           password: password
-        }, "POST").then(function(result) {
-          that.createSession(result.data);
-          deferred.resolve(result.data.email);
+        }, "POST").then(function(data) {
+          that.createSession(data);
+          deferred.resolve(data.email);
         }, function(error) {
           console.log("Login error = " + JSON.stringify(error));
           $rootScope.$emit("loginFailed", error);
@@ -127,6 +128,14 @@ angular.module('squirrel').factory('AuthenticationService',
 
       authService.getEmail = function() {
         return Session.email;
+      };
+
+      authService.getFirstName = function() {
+        return Session.firstName;
+      };
+
+      authService.getLastName = function() {
+        return Session.lastName;
       };
 
       authService.getUserId = function() {

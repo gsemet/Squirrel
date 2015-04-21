@@ -68,8 +68,8 @@ angular.module('squirrel').controller('NavbarCtrl',
 
 
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
-        console.log("navbar on loginSuccesful1:" + userName);
-        $scope.login_username = userName;
+        $scope.login_username = AuthenticationService.getFirstName();
+        console.log("navbar on loginSuccesful1:" + $scope.login_username);
         $scope.is_admin = AuthenticationService.isAdmin();
       });
 

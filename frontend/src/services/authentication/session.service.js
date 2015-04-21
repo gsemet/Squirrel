@@ -6,10 +6,11 @@ angular.module('squirrel').service('Session',
 
     function() {
 
-      this.create = function(sessionId, userId, userName, email, userRole, language) {
+      this.create = function(sessionId, userId, firstName, lastName, email, userRole, language) {
         this.id = sessionId;
         this.userId = userId;
-        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.userRole = userRole;
         this.language = language;
@@ -18,7 +19,8 @@ angular.module('squirrel').service('Session',
       this.destroy = function() {
         this.id = null;
         this.userId = null;
-        this.userName = null;
+        this.firstName = null;
+        this.lastName = null;
         this.email = null;
         this.userRole = null;
         this.language = null;

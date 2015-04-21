@@ -83,7 +83,7 @@ app.config(
           controller: "ContactCtrl"
         })
         .when("/admin", {
-          templateUrl: "app/admin/admin.template.html",
+          templateUrl: "app/admin/_admin.template.html",
           controller: "AdminCtrl"
         })
         .when("/tos", {
