@@ -72,13 +72,15 @@ cmd_capabilities = {
     "install:backend": {
         "pip_upgrade",
         "backend_install",
-        "frontend_install"
+        "frontend_install",
+        "warn_no_serve_and_quit",
     },
     "install:all": {
         "pip_upgrade",
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
+        "warn_no_serve_and_quit",
     },
     "install:novirtualenv": {
         "pip_upgrade",
@@ -86,6 +88,7 @@ cmd_capabilities = {
         "frontend_install",
         "frontend_gulp_build",
         "novirtualenv",
+        "warn_no_serve_and_quit",
     },
     'update:all': {
         "pip_upgrade",
@@ -109,6 +112,23 @@ cmd_capabilities = {
         "frontend_install",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
+    },
+    "test:all": {
+        "test",
+        "backend_test_unit",
+        "backend_test_integration",
+    },
+    "test:unit": {
+        "test",
+        "backend_test_unit",
+    },
+    "test:integration": {
+        "test",
+        "backend_test_integration",
+    },
+    "test:e2e": {
+        "test",
+        "frontend_test_e2e",
     },
 }
 
@@ -221,6 +241,13 @@ printInfo("")
 printInfo("Installation process really starts here...")
 printInfo("")
 
+if isWindows:
+    shell = True
+    activate_path = os.path.join(workdir_path, "Scripts", "activate.exe")
+else:
+    shell = False
+    activate_path = os.path.join(workdir_path, "bin", "activate")
+
 
 if "pip_upgrade" in current_capabilities:
     if sys.platform.startswith("linux"):
@@ -278,12 +305,6 @@ if "backend_install" in current_capabilities:
     printInfo("cd backend")
     run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
-    if isWindows:
-        shell = True
-        activate_path = os.path.join(workdir_path, "Scripts", "activate.exe")
-    else:
-        shell = False
-        activate_path = os.path.join(workdir_path, "bin", "activate")
 
 if "frontend_install" in current_capabilities:
     printSeparator()
@@ -333,7 +354,18 @@ if "frontend_update_translations_fr" in current_capabilities:
     run(["poedit", os.path.join("src", "po", "fr.po")], cwd=os.path.join(install_path, "frontend"),
         shell=shell)
 
-if "serve" not in current_capabilities:
+
+if "backend_test_unit" in current_capabilities:
+    printSeparator()
+    printInfo("Executing backend unit tests")
+    run(["trial", "squirrel"], cwd=os.path.join(install_path, "backend"), shell=shell)
+
+if "backend_test_integration" in current_capabilities:
+    printSeparator()
+    printInfo("Executing backend integration tests")
+    run(["trial", "squirrel"], cwd=os.path.join(install_path, "backend"), shell=shell)
+
+if "warn_no_serve_and_quit" in current_capabilities:
     printInfo("")
     printSeparator()
     printInfo("Do not start the server. Install is succesful.")
@@ -344,7 +376,6 @@ if "serve" not in current_capabilities:
     printSeparator()
     sys.exit(0)
 
-printSeparator()
 if "serve_prod" in current_capabilities:
     # Launching Squirrel-server
     if isWindows:

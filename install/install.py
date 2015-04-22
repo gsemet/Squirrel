@@ -43,6 +43,10 @@ allowed_cmd = {
                              "and translations"),
     "update:lang:all":       "update all translations files - requires 'poedit'",
     "update:lang:fr":        "update translation (fr) - requires 'poedit'",
+    "test:all":             ("execute all tests (unit tests, integration tests, e2e tests)"),
+    "test:unit":            ("execute unit tests"),
+    "test:integration":     ("execute unit tests"),
+    "test:e2e":             ("execute end to end tests"),
 }
 aliases = {
     "(empty)": "install:all",
@@ -51,6 +55,7 @@ aliases = {
     "install": "install:all",
     "update": "update:all",
     "update:lang": "update:lang:all",
+    "test": "test:all",
 }
 default_cmd = "install:all"
 
