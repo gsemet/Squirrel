@@ -1,2 +1,28 @@
-<div class="sidebar">
+<div class="wrapper" ng-class="sidebar_class">
+  <!-- Sidebar
+  Found: http://bootsnipp.com/snippets/featured/navigation-sidebar-with-toggle
+  -->
+  <div class="sidebar-wrapper" ng-class="sidebar_wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a ng-click="toggleSidebar()" class="sidebar-menu-toggle">
+          <span>{{title}}</span>
+          <span class="main_icon glyphicon glyphicon-align-justify"></span>
+        </a>
+      </li>
+    </ul>
+    <sidebar-collection class="sidebar-nav" collection='collection'></sidebar-collection>
+  </div>
+
+    <!-- Page Content -->
+    <!-- <div id="page-content-wrapper"> -->
+    <!-- <div class="container-fluid">
+      <div class="page-content inset">
+        <div class="row" ng-include="includeCurrentPage()"></div>
+      </div>
+    </div> -->
+    <!-- /#page-content-wrapper -->
 </div>
+
+
+

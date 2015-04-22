@@ -74,7 +74,7 @@ msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 msgid "Actions"
 msgstr "Actions"
 
-#: app\admin\admin.template.html:14
+#: app\admin\_admin.template.html:11
 msgid "Admin Panel"
 msgstr "Configuration"
 
@@ -339,7 +339,7 @@ msgstr "Copyright 2015 tous drotis réservés."
 msgid "Cost Basis"
 msgstr "Prix de Revient"
 
-#: app\admin\admin.crawlers.template.html:2 app\admin\admin.template.html:18
+#: app\admin\_admin.controller.js:23 app\admin\admin.crawlers.template.html:2
 msgid "Crawlers"
 msgstr "Crawlers"
 
@@ -356,7 +356,7 @@ msgstr ""
 msgid "Current language: {{language}}"
 msgstr "Langue actuelle: {{language}}"
 
-#: app\admin\admin.template.html:17
+#: app\admin\_admin.controller.js:19
 msgid "Dashboard"
 msgstr "Tableau de Bord"
 
@@ -428,6 +428,14 @@ msgstr ""
 #: app\register\register.template.html:16
 msgid "Everywhere, anytime"
 msgstr "Quand vous voulez, où vous voulez"
+
+#: app\admin\_admin.controller.js:27
+msgid "Ex: Charts"
+msgstr "Ex: Charts"
+
+#: app\admin\_admin.controller.js:31
+msgid "Ex: NgGrid"
+msgstr "Ex: NgGrid"
 
 #: app\pages\features.controller.js:55
 msgid "FAQ"

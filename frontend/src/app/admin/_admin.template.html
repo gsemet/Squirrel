@@ -4,60 +4,7 @@
   </div>
 </div>
 
-<div id="wrapper" ng-if="is_admin" ng-class="sidebar_class">
-  <!-- Sidebar
-  Found: http://bootsnipp.com/snippets/featured/navigation-sidebar-with-toggle
-  -->
-  <div id="sidebar-wrapper">
-    <ul id="sidebar_menu" class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a id="menu-toggle" ng-click="toggleSidebar()"><span translate>Admin Panel</span><span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
-    </ul>
-    <ul class="sidebar-nav" id="sidebar">
-      <li><a href="#/admin"><span translate>Dashboard</span><span class="sub_icon glyphicon glyphicon-dashboard"></span></a></li>
-      <li><a href="#/admin?p=crawlers"><span translate>Crawlers</span><span class="sub_icon fa fa-loading fa-spin"></span></a></li>
-      <li><a href="#/admin?p=charts">Ex: Charts<span class="sub_icon fa fa-loading fa-spin"></span></a></li>
-      <li><a href="#/admin?p=nggrid">Ex: NgGrid<span class="sub_icon fa fa-loading fa-spin"></span></a></li>
-    </ul>
-  </div>
-  <!--
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-              <a href="#/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-            </li>
-            <li>
-                <a href="#/admin?p=charts"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-            </li>
-        </ul>
-    </div>
-        -->
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <!-- <div id="page-content-wrapper"> -->
-    <div class="container-fluid">
-      <div class="page-content inset">
-        <div class="row" ng-if="currentPage() == 'dashboard'" ng-include="'app/admin/admin.dashboard.template.html'" ng-controller="AdminDashboardCtrl"></div>
-        <div class="row" ng-if="currentPage() == 'crawlers'" ng-include="'app/admin/admin.crawlers.template.html'" ng-controller="AdminCrawlersCtrl"></div>
-        <div class="row" ng-if="currentPage() == 'charts'" ng-include="'app/admin/admin.charts.template.html'" ng-controller="AdminChartsCtrl"></div>
-        <div class="row" ng-if="currentPage() == 'nggrid'" ng-include="'app/admin/admin.nggrid.template.html'" ng-controller="AdminNgGridCtrl"></div>
-      </div>
-    </div>
-    <!-- /#page-content-wrapper -->
+<div ng-if="is_admin">
+  <sidebar title="{{'Admin Panel' | translate}}" collection="menuItems">
+  </sidebar>
 </div>
-<!-- /#wrapper --><!--
-<div class="container-fluid" ng-if="is_admin">
-  <nav class="navbar-inverse">
-    <ul class="nav navbar-nav side-nav">
-      <li ng-class="activeIfCurrentPageIs('dashboard')">
-        <a href="#/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-      </li>
-      <li ng-class="activeIfCurrentPageIs('charts')">
-        <a href="#/admin?p=charts"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="row" ng-if="currentPage() == 'dashboard'" ng-include="'app/admin/admin.dashboard.template.html'" ng-controller="AdminDashboardCtrl"></div>
-  <div class="row" ng-if="currentPage() == 'charts'" ng-include="'app/admin/admin.charts.template.html'" ng-controller="AdminChartsCtrl"></div>
-</div>
- -->
