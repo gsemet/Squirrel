@@ -26,16 +26,34 @@
   margin-left: -250px;
   left: 70px;
   width: 250px;
-  background: @colorDark;
+  background: @colorMain;
   position: fixed;
   height: 100%;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
   //z-index: 10000;
   /*transition: all .4s ease 0s;*/
 }
 
+.sidebar-scrollable{
+  height: 100%;
+}
+
 .sidebar-transition {
   transition: all .4s ease 0s;
+}
+
+.sidebar-separator{
+  background-color: white;
+}
+
+.sidebar-separator a{
+  border-top: 1px solid @colorDark;
+  border-bottom: 1px solid @colorLight;
+  height: 1px;
+}
+
+.sidebar-footer{
+  height: 160px;
 }
 
 .sidebar-nav {
@@ -70,8 +88,6 @@
   text-decoration: none;
   width: 250px;
   background: @colorMain;
-  border-top: 1px solid @colorDark;
-  border-bottom: 1px solid @colorLight;
 }
 
 .sidebar-nav-animate li a {

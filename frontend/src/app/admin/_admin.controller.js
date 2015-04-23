@@ -129,12 +129,12 @@ angular.module('squirrel').controller('AdminCtrl',
           'templateUrl': 'app/admin/admin.crawlers.template.html'
         }, {
           'endpoint': "#/admin?p=charts",
-          'name': gettextCatalog.getString('Ex: Charts'),
+          'name': 'avant dernier element',
           'icon': 'sub_icon fa fa-book',
           'templateUrl': 'app/admin/admin.charts.template.html'
         }, {
           'endpoint': "#/admin?p=nggrid",
-          'name': gettextCatalog.getString('Ex: NgGrid'),
+          'name': 'last item',
           'icon': 'sub_icon fa fa-book',
           'templateUrl': 'app/admin/admin.nggrid.template.html'
         }

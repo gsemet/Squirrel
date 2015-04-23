@@ -11,18 +11,19 @@
         </a>
       </li>
     </ul>
-    <sidebar-collection class="sidebar-nav" collection='collection'></sidebar-collection>
+    <div class="sidebar-nav sidebar-scrollable">
+      <scrollable>
+        <sidebar-collection class="sidebar-nav" collection='collection'></sidebar-collection>
+        <div class="sidebar-nav sidebar-footer"></div>
+      </scrollable>
+    </div>
   </div>
-
-    <!-- Page Content -->
-    <!-- <div id="page-content-wrapper"> -->
-    <!-- <div class="container-fluid">
-      <div class="page-content inset">
-        <div class="row" ng-include="includeCurrentPage()"></div>
-      </div>
-    </div> -->
-    <!-- /#page-content-wrapper -->
+      <!-- Page Content -->
+      <!-- <div id="page-content-wrapper"> -->
+      <!-- <div class="container-fluid">
+        <div class="page-content inset">
+          <div class="row" ng-include="includeCurrentPage()"></div>
+        </div>
+      </div> -->
+      <!-- /#page-content-wrapper -->
 </div>
-
-
-

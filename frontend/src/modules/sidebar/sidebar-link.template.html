@@ -1,6 +1,11 @@
-<li ng-class="activeIfCurrentPageIs(member.endpoint)">
-  <a href="{{member.endpoint}}">
-    <span>{{member.name}}</span>
-    <span class="{{member.icon}}"></span>
-  </a>
+<li ng-class="getClass(member.endpoint)">
+  <div ng-if="member.type != 'separator'">
+    <a href="{{member.endpoint}}">
+      <span>{{member.name}}</span>
+      <span class="{{member.icon}}"></span>
+    </a>
+  </div>
+  <div ng-if="member.type == 'separator'" >
+    <a></a>
+  </div>
 </li>

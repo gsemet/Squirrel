@@ -24,6 +24,13 @@ angular.module('squirrel').controller('SidebarLinkCtrl',
         }
         return "";
       };
+
+      $scope.getClass = function(page) {
+        if ($scope.member.type == 'separator') {
+          return "sidebar-separator";
+        }
+        return $scope.activeIfCurrentPageIs(page);
+      };
     }
   ]
 );
