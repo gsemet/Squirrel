@@ -31,5 +31,5 @@ def serveBackend(serveFrontEnd=True, prod=False):
 
 
 def quitBackend():
-    app.quit()
+    print("Quitting main reactor")
     reactor.callLater(0, reactor.stop)

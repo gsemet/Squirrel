@@ -6,6 +6,7 @@ import sys
 
 from squirrel.launcher.common import serverSetup
 from squirrel.launcher.common import serverStop
+from squirrel.services.serve_backend import quitBackend
 from squirrel.services.serve_backend import serveBackend
 
 

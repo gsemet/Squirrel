@@ -21,12 +21,10 @@ def installTrap():
     def terminate_handler(signum, frame):
         print('Signal handler called with signal', signum)
         quitBackend()
-        sys.exit(0)
 
     def kill_handler(signum, frame):
         print('Signal handler called with signal', signum)
         quitBackend()
-        sys.exit(1)
 
     # Set the signal handler and a 5-second alarm
     signal.signal(signal.SIGTERM, terminate_handler)

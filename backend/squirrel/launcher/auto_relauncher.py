@@ -239,7 +239,7 @@ def auto_restart(args):
         logging.debug("  win32 safe kill: {}".format(args.win32_safe_kill))
     logging.debug("  Wait time between restart: {} second(s)".format(args.sleep_between_restart))
     if not args.directories:
-        args.directories = ['.']
+        args.directories = None
 
     # Allow either signal name or number.
     if re.match('^SIG[A-Z]+$', args.signal):
