@@ -1,32 +1,34 @@
-<h1 class="page-header">
-  <span translate>Crawlers</span> <small translate>Web data status</small>
-</h1>
+<div ng-controller="AdminCrawlersCtrl">
+  <h1 class="page-header">
+    <span translate>Crawlers</span> <small translate>Web data status</small>
+  </h1>
 
 
-<div class="row">
-  <div class="col-md-offset-2 col-md-8">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th class="text-center" translate>Name</th>
-          <th class="text-center" translate>Description</th>
-          <th class="text-center" translate>Status</th>
-          <th class="text-center" translate>Last run</th>
-          <th class="text-center" translate>Actions</th>
-          <th class="text-center" translate>Logs</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="crawler in crawlers">
-          <td>{{crawler.name}}</td>
-          <td>{{crawler.description}}</td>
-          <td>{{crawler.status}}</td>
-          <td>{{crawler.last_run}}</td>
-          <td><button type="button" ng-click="crawlerStart(crawler.name)" class="btn btn-default" ng-if="crawler.status == 'stopped'">Start</button></td>
-          <td><button type="button" ng-click="crawlerStop(crawler.name)" class="btn btn-default" ng-if="crawler.status == 'started'">Stop</button></td>
-          <td><button type="button" ng-click="crawlerShowLogs(crawler.name)" class="btn btn-default">Show logs</button></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center" translate>Name</th>
+            <th class="text-center" translate>Description</th>
+            <th class="text-center" translate>Status</th>
+            <th class="text-center" translate>Last run</th>
+            <th class="text-center" translate>Actions</th>
+            <th class="text-center" translate>Logs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="crawler in crawlers">
+            <td>{{crawler.name}}</td>
+            <td>{{crawler.description}}</td>
+            <td>{{crawler.status}}</td>
+            <td>{{crawler.last_run}}</td>
+            <td><button type="button" ng-click="crawlerStart(crawler.name)" class="btn btn-default" ng-if="crawler.status == 'stopped'">Start</button></td>
+            <td><button type="button" ng-click="crawlerStop(crawler.name)" class="btn btn-default" ng-if="crawler.status == 'started'">Stop</button></td>
+            <td><button type="button" ng-click="crawlerShowLogs(crawler.name)" class="btn btn-default">Show logs</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

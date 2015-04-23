@@ -80,7 +80,8 @@ app.config(
         })
         .when("/admin", {
           templateUrl: "app/admin/_admin.template.html",
-          controller: "AdminCtrl"
+          controller: "AdminCtrl",
+          reloadOnSearch: false
         })
         .when("/tos", {
           templateUrl: "app/pages/tos.template.html",

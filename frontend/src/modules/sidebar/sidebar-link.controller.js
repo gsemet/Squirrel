@@ -2,9 +2,9 @@
 
 angular.module('squirrel').controller('SidebarLinkCtrl',
 
-  ["$scope", "gettextCatalog", "$location",
+  ["$scope", "gettextCatalog", "$location", "sidebar",
 
-    function($scope, gettextCatalog, $location) {
+    function($scope, gettextCatalog, $location, sidebar) {
       $scope.currentPage = function(page) {
         var s = $location.search();
         if (_.isEmpty(s['p'])) {
@@ -30,6 +30,11 @@ angular.module('squirrel').controller('SidebarLinkCtrl',
           return "sidebar-separator";
         }
         return $scope.activeIfCurrentPageIs(page);
+      };
+
+      $scope.onClick = function(member) {
+        console.log("click on link = " + JSON.stringify(member));
+        $scope.$emit(sidebar.NAVIGATE, member);
       };
     }
   ]

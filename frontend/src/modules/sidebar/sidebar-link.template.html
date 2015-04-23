@@ -1,6 +1,6 @@
-<li ng-class="getClass(member.endpoint)">
+<li ng-class="getClass(member.search)">
   <div ng-if="member.type != 'separator'">
-    <a href="{{member.endpoint}}">
+    <a ng-click="onClick(member)">
       <span>{{member.name}}</span>
       <span class="{{member.icon}}"></span>
     </a>

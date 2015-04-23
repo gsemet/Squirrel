@@ -18,6 +18,8 @@ angular.module('squirrel').directive('sidebar',
         scope: {
           "title": "@",
           "collection": "=",
+          "endpoint": "=",
+          "search_page": "=",
         },
         templateUrl: "modules/sidebar/sidebar.template.html",
         controller: "SidebarCtrl",
