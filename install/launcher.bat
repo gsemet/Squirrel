@@ -6,13 +6,14 @@ shift
 :: %* doesn't work!!!
 set COMMAND=%1 %2 %3 %4 %5 %6 %7 %8 %9
 
-echo "Custom activate of the virtualenv (Windows):"
+echo [WIN LAUNCHER] Custom virtual env activate script (Windows)
+echo [WIN LAUNCHER] (use %WORKDIR_PATH%\Scripts\activate.bat from your shell)
 
-echo "Executing Command: %COMMAND%"
-echo "NEW_WINDOW: %NEW_WINDOW%"
-echo "Workdir path: %WORKDIR_PATH%"
-:: echo "PATH=%PATH%"
-:: echo "VIRTUAL_ENV=%VIRTUAL_ENV%"
+echo [WIN LAUNCHER] Executing Command: %COMMAND%
+echo [WIN LAUNCHER] Window configuration: %NEW_WINDOW%
+echo [WIN LAUNCHER] Workdir path: %WORKDIR_PATH%
+:: echo [WIN LAUNCHER] PATH=%PATH%"
+:: echo [WIN LAUNCHER] VIRTUAL_ENV=%VIRTUAL_ENV%"
 
 set "VIRTUAL_ENV=%WORKDIR_PATH%"
 
@@ -38,6 +39,8 @@ if defined _OLD_VIRTUAL_PATH (
 )
 set "PATH=%VIRTUAL_ENV%\Scripts;%PATH%"
 
+echo [WIN LAUNCHER] Setting path to: PATH=%PATH%
+echo [WIN LAUNCHER] Setting virtual env to: VIRTUAL_ENV=%VIRTUAL_ENV%
 
 if "%NEW_WINDOW%" == "new_window" (
     start /WAIT cmd.exe /k cmd /c %COMMAND%
