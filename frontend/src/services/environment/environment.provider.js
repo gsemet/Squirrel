@@ -40,6 +40,17 @@ angular.module('squirrel').provider('environment',
       appUrl: 'localhost',
       appPort: '3000',
       hasSubDomain: false,
+      features: {
+        "debug_translation": true
+      }
+    }, {
+      environment: 'prod',
+      appUrl: 'squirrel-ams.com',
+      appPort: '80',
+      hasSubDomain: false,
+      features: {
+        "debug_translation": false
+      }
     }];
     this.defaultSubDomain = "";
 
@@ -116,6 +127,16 @@ angular.module('squirrel').provider('environment',
         }
       };
 
+      var getFeatures = function() {
+        var env = findCurrentEnvironment();
+        var features = env.features;
+        if (features) {
+          return env.features;
+        } else {
+          return {};
+        }
+      };
+
       var getSubDomain = function() {
         var env = findCurrentEnvironment();
         if (env.hasSubDomain) {
@@ -134,7 +155,8 @@ angular.module('squirrel').provider('environment',
         getAppUrl: getAppUrl,
         getBackendUrl: getBackendUrl,
         getTitleTag: getTitleTag,
-        getSubDomain: getSubDomain
+        getSubDomain: getSubDomain,
+        getFeatures: getFeatures
       };
     };
   }

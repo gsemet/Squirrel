@@ -70,11 +70,11 @@ msgstr "A Propos"
 msgid "Access your porfolio anywhere, any time"
 msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 
-#: app\admin\admin.crawlers.template.html:15
+#: app\admin\admin.crawlers.template.html:16
 msgid "Actions"
 msgstr "Actions"
 
-#: app\admin\_admin.template.html:11
+#: app\admin\_admin.template.html:8
 msgid "Admin Panel"
 msgstr "Configuration"
 
@@ -95,7 +95,7 @@ msgstr "Tout"
 msgid "All in One Place"
 msgstr "Tout à Un Seul Endroit"
 
-#: app\portfolios\_portfolios.controller.js:36
+#: app\portfolios\_portfolios.controller.js:39
 #: app\portfolios\allocations.template.html:2
 msgid "Allocations"
 msgstr "Expositions"
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Analyze the market with modern tools"
 msgstr "Analysez le marché avec des outils à la pointe de la modernité"
 
-#: app\portfolios\_portfolios.controller.js:61
+#: app\portfolios\_portfolios.controller.js:74
 #: app\portfolios\annual_reports.template.html:2
 msgid "Annual Reports"
 msgstr "Rapports Annuels"
@@ -268,11 +268,11 @@ msgid "Can you synchronize automatically my different accounts?"
 msgstr ""
 "Ne pouvez-vous pas synchroniser automatiquement mes différents comptes?"
 
-#: services\translations\get_translation.modal.template.html:24
+#: services\translations\get_translation.modal.template.html:40
 msgid "Cancel"
 msgstr "Annuler"
 
-#: app\portfolios\_portfolios.controller.js:29
+#: app\portfolios\_portfolios.controller.js:32
 #: app\portfolios\cash.template.html:2
 msgid "Cash"
 msgstr "Liquidités"
@@ -299,7 +299,7 @@ msgstr ""
 "Vérifiez votre exposition aux risques, comparez votre portefeuille à un "
 "portefeuille modèle."
 
-#: services\translations\get_translation.modal.template.html:13
+#: services\translations\get_translation.modal.template.html:29
 msgid "Choose your language"
 msgstr "Sélectionnez votre langue"
 
@@ -339,7 +339,19 @@ msgstr "Copyright 2015 tous drotis réservés."
 msgid "Cost Basis"
 msgstr "Prix de Revient"
 
-#: app\admin\_admin.controller.js:23 app\admin\admin.crawlers.template.html:2
+#: app\portfolios\_portfolios.controller.js:46
+#: app\portfolios\covers.template.html:2
+msgid "Covers"
+msgstr "Couvertures"
+
+#: app\portfolios\covers.template.html:3
+msgid "Covers Computation"
+msgstr "Calculs de vos couvertures"
+
+#: app\admin\_admin.controller.js:119 app\admin\_admin.controller.js:145
+#: app\admin\_admin.controller.js:171 app\admin\_admin.controller.js:27
+#: app\admin\_admin.controller.js:65 app\admin\_admin.controller.js:93
+#: app\admin\admin.crawlers.template.html:3
 msgid "Crawlers"
 msgstr "Crawlers"
 
@@ -356,7 +368,9 @@ msgstr ""
 msgid "Current language: {{language}}"
 msgstr "Langue actuelle: {{language}}"
 
-#: app\admin\_admin.controller.js:19
+#: app\admin\_admin.controller.js:112 app\admin\_admin.controller.js:138
+#: app\admin\_admin.controller.js:164 app\admin\_admin.controller.js:20
+#: app\admin\_admin.controller.js:58 app\admin\_admin.controller.js:86
 msgid "Dashboard"
 msgstr "Tableau de Bord"
 
@@ -380,7 +394,7 @@ msgstr "Dépot"
 msgid "Deposits and Withdrawals"
 msgstr "Dépôts et Retraits"
 
-#: app\admin\admin.crawlers.template.html:12
+#: app\admin\admin.crawlers.template.html:13
 #: app\portfolios\overview.template.html:26
 msgid "Description"
 msgstr "Description"
@@ -429,11 +443,15 @@ msgstr ""
 msgid "Everywhere, anytime"
 msgstr "Quand vous voulez, où vous voulez"
 
-#: app\admin\_admin.controller.js:27
+#: app\admin\_admin.controller.js:100 app\admin\_admin.controller.js:126
+#: app\admin\_admin.controller.js:152 app\admin\_admin.controller.js:36
+#: app\admin\_admin.controller.js:74
 msgid "Ex: Charts"
 msgstr "Ex: Charts"
 
-#: app\admin\_admin.controller.js:31
+#: app\admin\_admin.controller.js:107 app\admin\_admin.controller.js:133
+#: app\admin\_admin.controller.js:159 app\admin\_admin.controller.js:50
+#: app\admin\_admin.controller.js:81
 msgid "Ex: NgGrid"
 msgstr "Ex: NgGrid"
 
@@ -530,6 +548,8 @@ msgstr "Des Questions à Propos de Squirrel?"
 msgid "Head Office :"
 msgstr "Siège Social :"
 
+#: app\admin\_admin.template.html:8
+#: app\portfolios\_portfolios.template.html:47
 #: components\footer\footer.template.html:14
 msgid "Help"
 msgstr "Aide"
@@ -627,7 +647,7 @@ msgstr "Restez Simple"
 msgid "Last name"
 msgstr "Nom"
 
-#: app\admin\admin.crawlers.template.html:14
+#: app\admin\admin.crawlers.template.html:15
 msgid "Last run"
 msgstr "Dernière exécution"
 
@@ -667,7 +687,7 @@ msgstr "Deconnexion"
 msgid "Login"
 msgstr "Connexion"
 
-#: app\admin\admin.crawlers.template.html:16
+#: app\admin\admin.crawlers.template.html:17
 msgid "Logs"
 msgstr "Logs"
 
@@ -721,12 +741,13 @@ msgstr ""
 "Profitez des meilleurs algorithmes qui font des merveilles dans le monde "
 "très fermé de la finance. Squirrel ne joue pas dans cette catéogie. "
 
+#: app\portfolios\_portfolios.template.html:47
 #: components\footer\footer.template.html:11
 #: components\navbar\navbar.controller.js:27
 msgid "My Portfolios"
 msgstr "Mes Portefeuilles"
 
-#: app\admin\admin.crawlers.template.html:11
+#: app\admin\admin.crawlers.template.html:12
 #: app\contact\contact.template.html:17
 #: app\portfolios\details.template.html:20
 #: app\portfolios\overview.template.html:24
@@ -745,7 +766,7 @@ msgstr "Nov"
 msgid "November"
 msgstr "Novembre"
 
-#: services\translations\get_translation.modal.template.html:23
+#: services\translations\get_translation.modal.template.html:39
 msgid "OK"
 msgstr "OK"
 
@@ -757,7 +778,7 @@ msgstr "Oct"
 msgid "October"
 msgstr "Octobre"
 
-#: app\portfolios\_portfolios.controller.js:15
+#: app\portfolios\_portfolios.controller.js:18
 #: app\portfolios\overview.template.html:4
 msgid "Overview"
 msgstr "Vue Générale"
@@ -782,6 +803,17 @@ msgstr "Veuillez remplir tous les champs."
 msgid "Please find bellow a summary of the portfolios."
 msgstr "Veuillez trouver ci-dessous un résumé de vos portefeuilles."
 
+#: services\translations\get_translation.modal.template.html:17
+msgid ""
+"Please note that you can still change your language even after this box has "
+"been\n"
+"                closed by clicking on the following button in the navigation "
+"bar:"
+msgstr ""
+"Veuillez noter que vous pourrez toujours changer votre langue, même après "
+"avoir sélectionné cette boite de dialogue, en cliquant sur le bouton suivant "
+"dans la barre de navigation:"
+
 #: app\contact\contact.template.html:45
 msgid "Post details"
 msgstr "Coordonnées"
@@ -802,7 +834,7 @@ msgstr "Publique ou Privée"
 msgid "Register"
 msgstr "Enregistrement"
 
-#: app\register\register.template.html:54
+#: app\register\register.template.html:58
 msgid ""
 "Registration succesfully sent. Please check you email for the confirmation "
 "link."
@@ -814,7 +846,7 @@ msgstr ""
 msgid "Relax, feel safe"
 msgstr "Relaxez vous, soyez en totale sécurité"
 
-#: app\portfolios\_portfolios.controller.js:55
+#: app\portfolios\_portfolios.controller.js:67
 #: app\portfolios\reporting.template.html:2
 msgid "Reporting"
 msgstr "Reporting"
@@ -837,7 +869,7 @@ msgstr "Samedi"
 msgid "Screeners"
 msgstr "Screeners"
 
-#: app\portfolios\_portfolios.controller.js:22
+#: app\portfolios\_portfolios.controller.js:25
 #: app\portfolios\securities.template.html:2
 msgid "Securities"
 msgstr "Actions"
@@ -846,7 +878,7 @@ msgstr "Actions"
 msgid "Securities Allocation"
 msgstr "Allocation"
 
-#: services\translations\get_translation.modal.template.html:14
+#: services\translations\get_translation.modal.template.html:30
 msgid "Select please choose your prefered language"
 msgstr "Veuillez sélectionnez votre langue préférée"
 
@@ -907,7 +939,7 @@ msgstr "Inscrivez vous gratuitement"
 msgid "Sign up for free to see Squirrel by yourself!"
 msgstr "Créez un compte gratuitement et découvrez Squirrel par vous-même!"
 
-#: app\register\register.template.html:46
+#: app\register\register.template.html:47
 msgid "Signing up signifies that you have read and agree to the"
 msgstr "L'inscription signifie que vous avez lu et accepté les "
 
@@ -1006,6 +1038,14 @@ msgstr ""
 "Squirrel est également idéal pour les conseillers financiers qui gères les "
 "comptes titres et financiers pour ces clients."
 
+#: services\translations\get_translation.modal.template.html:9
+msgid ""
+"Squirrel is available is various countries. {{navigator_language}}. Can you "
+"confirm by choosing your prefered language"
+msgstr ""
+"Squirrel est disponible pour plusieurs pays. {{navigator_language}}. Pouriez "
+"vous confirmer votre langue préférée:"
+
 #: app\contact\contact.template.html:53
 msgid "Squirrel is edited by the Squirrel SAS"
 msgstr "Squirrel est édité par la société Squirrel SAS"
@@ -1071,11 +1111,11 @@ msgstr ""
 "la finance mais veulent prendre en main leurs investissements personnels. "
 "Qui est le mieux placer pour prendre les meilleures décisions pour vous?"
 
-#: app\admin\admin.crawlers.template.html:13
+#: app\admin\admin.crawlers.template.html:14
 msgid "Status"
 msgstr "Status"
 
-#: app\portfolios\_portfolios.controller.js:49
+#: app\portfolios\_portfolios.controller.js:60
 #: app\portfolios\status_report.template.html:2
 msgid "Status Report"
 msgstr "Rapport de Situation"
@@ -1100,7 +1140,7 @@ msgstr "Synchronisez vos opérations avec votre courtier en ligne"
 msgid "Take care of your investiment like the apple of your eye."
 msgstr "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
 
-#: app\portfolios\_portfolios.controller.js:67
+#: app\portfolios\_portfolios.controller.js:81
 msgid "Taxation"
 msgstr "Vos Impôts"
 
@@ -1108,9 +1148,9 @@ msgstr "Vos Impôts"
 msgid "Taxes"
 msgstr "Impôts"
 
-#: app\register\register.template.html:46
+#: app\register\register.template.html:48
 msgid "Terms of Service"
-msgstr "Termes du Service"
+msgstr "Conditions de Service"
 
 #: app\pages\features.template.html:420
 msgid "That's how Squirrel was born?"
@@ -1127,6 +1167,10 @@ msgstr "Le Réseau Social de L'Investisseur"
 #: app\homepage\homepage.unlogged.template.html:8
 msgid "The best tool to track all your personals assets"
 msgstr "Le milleur outil pour suivre tous vos actifs personnels"
+
+#: services\translations\get_translation.modal.controller.js:15
+msgid "The current language exposed by your navigator is:"
+msgstr "La langue courant définie par votre navigateur est:"
 
 #: app\pages\features.template.html:436
 msgid ""
@@ -1205,7 +1249,7 @@ msgstr ""
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: app\portfolios\_portfolios.controller.js:43
+#: app\portfolios\_portfolios.controller.js:53
 #: app\portfolios\timeline.template.html:2
 msgid "Timeline"
 msgstr "Timeline"
@@ -1274,6 +1318,10 @@ msgstr "Historique de Valorisation"
 msgid "Visual Portfolios"
 msgstr "Des Portefeuilles Visuels"
 
+#: services\translations\get_translation.modal.controller.js:13
+msgid "We cannot find your language based on your navigator"
+msgstr "Nous ne pouvons pas détecter la langue de votre navigateur"
+
 #: app\register\register.template.html:24
 msgid ""
 "We do not sell your data. We don't ask for your mobile number because we do "
@@ -1289,7 +1337,7 @@ msgstr ""
 "publicités. Il n'y a ni commission ni rétro-commission sur les ventes. Nous "
 "ne faisons pas plus d'argent si vous faites plus de mouvements."
 
-#: app\admin\admin.crawlers.template.html:2
+#: app\admin\admin.crawlers.template.html:3
 msgid "Web data status"
 msgstr "Statut des données du web"
 
@@ -1298,12 +1346,8 @@ msgid "Wednesday"
 msgstr "Mercredi"
 
 #: services\translations\get_translation.modal.template.html:6
-msgid "Welcome to Squirrel"
-msgstr "Bienvenue sur Squirrel"
-
-#: services\translations\get_translation.modal.template.html:9
-msgid "Welcome to Squirrel. Can you tell us in which is your language"
-msgstr "Bienvenue sur Squirrel. Pouvez-vous nous dire quel est votre langue?"
+msgid "Welcome to the Squirrel Website"
+msgstr "Bienvenue sur le site internet Squirrel"
 
 #: app\pages\features.controller.js:47 app\pages\features.template.html:232
 #: app\pages\features.template.html:354
@@ -1395,6 +1439,10 @@ msgstr "Notes Légales"
 #: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "Welcome to Squirrel. Can you tell us in which is your language"
+#~ msgstr ""
+#~ "Bienvenue sur Squirrel. Pouvez-vous nous dire quel est votre langue?"
 
 #~ msgid "Target Audience"
 #~ msgstr "Pour qui?"

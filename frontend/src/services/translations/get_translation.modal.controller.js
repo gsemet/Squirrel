@@ -2,11 +2,20 @@
 
 angular.module('squirrel').controller('GetTranslationController',
 
-  ['$scope', 'close', "languages", "currentLang",
+  ['$scope', 'close', "languages", "currentLang", "gettextCatalog",
 
-    function($scope, close, languages, currentLang) {
+    function($scope, close, languages, currentLang, gettextCatalog) {
 
       $scope.languages = languages;
+      $scope.navigator_language = window.navigator.userLanguage || window.navigator.language || navigator.language ||
+        navigator.browserLanguage;
+      if (!$scope.navigator_language) {
+        $scope.navigator_language = gettextCatalog.getString('We cannot find your language based on your navigator');
+      } else {
+        $scope.navigator_language = gettextCatalog.getString('The current language exposed by your navigator is: ') +
+          $scope.navigator_language;
+      }
+
 
       $scope.language = {};
       console.log("currentLang = " + JSON.stringify(currentLang));
