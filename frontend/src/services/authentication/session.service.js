@@ -2,18 +2,23 @@
 
 angular.module('squirrel').service('Session',
 
-  [
+  ["USER_ROLES",
 
-    function() {
+    function(USER_ROLES) {
 
-      this.create = function(sessionId, userId, firstName, lastName, email, userRole, language) {
-        this.id = sessionId;
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.userRole = userRole;
-        this.language = language;
+      var that = this;
+
+      this.create = function(data) {
+        this.id = data.session_id;
+        this.userId = data.user_id;
+        this.firstName = data.first_name;
+        this.lastName = data.last_name;
+        this.email = data.email;
+        this.userRole = data.role;
+        this.language = data.language;
+        this.features = data.features;
+        console.log("Creating session for user = " + JSON.stringify(this.firstName) + ", email " +
+          JSON.stringify(this.email), ", role: " + JSON.stringify(this.userRole));
       };
 
       this.destroy = function() {
@@ -24,6 +29,15 @@ angular.module('squirrel').service('Session',
         this.email = null;
         this.userRole = null;
         this.language = null;
+        this.features = null;
+      };
+
+      this.isAuthenticated = function() {
+        return !!this.userId;
+      };
+
+      this.isAdmin = function() {
+        return this.userRole == USER_ROLES.admin;
       };
     }
   ]

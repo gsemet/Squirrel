@@ -14,18 +14,11 @@ angular.module('squirrel').factory('AuthenticationService',
       environment, request) {
 
       var authService = {};
-
       var that = this;
 
       this.createSession = function(data) {
         Session.create(
-          data.id,
-          data.userId,
-          data.first_name,
-          data.last_name,
-          data.email,
-          data.role,
-          data.language
+          data
         );
         ipCookie("sessionId", data.id, {
           expires: 15,
@@ -52,7 +45,7 @@ angular.module('squirrel').factory('AuthenticationService',
           /* can be email or email */
           sessionId: sessionId,
         }, "POST").then(function(data) {
-          that.createSession(data);
+      that.createSession(data);
           deferred.resolve(data.email);
         }, function(error) {
           console.log("Restore error = " + JSON.stringify(error));
@@ -148,6 +141,10 @@ angular.module('squirrel').factory('AuthenticationService',
 
       authService.getUserLanguage = function() {
         return Session.language;
+      };
+
+      authService.getFeatures = function() {
+        return Session.features;
       };
 
       return authService;

@@ -2,15 +2,15 @@
 
 angular.module('squirrel').controller('NavbarCtrl',
 
-  ["$scope", "$location", "$rootScope", "AuthenticationService", "AUTH_EVENTS", "gettextCatalog",
+  ["$scope", "$location", "$rootScope", "AuthenticationService", "Session", "AUTH_EVENTS", "gettextCatalog",
    "TranslationService", "environment",
 
-    function($scope, $location, $rootScope, AuthenticationService, AUTH_EVENTS, gettextCatalog,
+    function($scope, $location, $rootScope, AuthenticationService, Session, AUTH_EVENTS, gettextCatalog,
       TranslationService, environment) {
 
       $scope.date = new Date();
       $scope.login_username = "";
-      $scope.is_admin = AuthenticationService.isAdmin();
+      $scope.is_admin = Session.isAdmin();
       $scope.currentLang = TranslationService.getCurrentLang();
 
       $scope.title_tag = environment.getTitleTag();
@@ -70,7 +70,7 @@ angular.module('squirrel').controller('NavbarCtrl',
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
         $scope.login_username = AuthenticationService.getFirstName();
         console.log("navbar on loginSuccesful1:" + $scope.login_username);
-        $scope.is_admin = AuthenticationService.isAdmin();
+        $scope.is_admin = Session.isAdmin();
       });
 
       $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(event) {

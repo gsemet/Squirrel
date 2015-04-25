@@ -9,13 +9,16 @@ from squirrel.routes import app
 
 def getLoginData():
     return {
-        "id": "123456",
-        "userId": "987654",
+        "session_id": "123456",
+        "user_id": "987654",
         "first_name": "Gaetan",
         "last_name": "S",
         "email": "email@adress.com",
         "role": "admin",
         "language": "fr",
+        "features": {
+            "poc": True,
+        }
     }
 
 

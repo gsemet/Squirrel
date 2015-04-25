@@ -41,6 +41,13 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           templateUrl: 'app/portfolios/allocations.template.html',
         }, {
           search: {
+            'p': 'covers'
+          },
+          name: gettextCatalog.getString('Covers'),
+          icon: 'glyphicon glyphicon-book',
+          templateUrl: 'app/portfolios/covers.template.html',
+        }, {
+          search: {
             'p': 'timeline', // == move history
           },
           name: gettextCatalog.getString('Timeline'),
