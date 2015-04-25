@@ -9,6 +9,8 @@ angular.module('squirrel').service('sidebar',
       var that = this;
       this.opened = true;
       this.firstTime = true;
+      this.NAVIGATE = "navigate";
+      this.TOGGLE_GROUP = "toggle_group";
 
       this.setOpened = function() {
         that.opened = True;

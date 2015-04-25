@@ -5,8 +5,10 @@ angular.module('squirrel').directive('sidebarCollection', function() {
     restrict: "E",
     replace: true,
     scope: {
-      collection: '='
+      collection: '=',
+      expand: '@'
     },
     templateUrl: "modules/sidebar/sidebar-collection.template.html",
+    controller: "SidebarCollectionCtrl",
   }
 })

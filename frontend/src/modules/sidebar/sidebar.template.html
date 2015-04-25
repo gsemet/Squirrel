@@ -3,20 +3,25 @@
   Found: http://bootsnipp.com/snippets/featured/navigation-sidebar-with-toggle
   -->
   <div class="sidebar-wrapper" ng-class="sidebar_wrapper">
+    <ul class="sidebar-nav sidebar-margin-topbar"><li><a></a></li></ul>
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
         <a ng-click="toggleSidebar()" class="sidebar-menu-toggle">
           <span>{{title}}</span>
-          <span class="main_icon glyphicon glyphicon-align-justify"></span>
+          <span class="sidebar-main-icon glyphicon glyphicon-align-justify"></span>
         </a>
       </li>
     </ul>
     <div class="sidebar-nav sidebar-scrollable">
       <scrollable>
-        <sidebar-collection class="sidebar-nav" collection='collection'></sidebar-collection>
-        <div class="sidebar-nav sidebar-footer"></div>
+        <sidebar-collection class="sidebar-nav" collection='collection' expand="true"></sidebar-collection>
       </scrollable>
     </div>
+    <ul class="sidebar-nav sidebar-footer">
+      <li>
+        <span>{{footer}}</span>
+      </li>
+    </ul>
   </div>
   <!-- Page Content -->
   <div id="page-content-wrapper">

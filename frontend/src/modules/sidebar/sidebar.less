@@ -5,7 +5,7 @@
 @colorLighter               : #F0DFCE;
 @textColor                  : #fff;
 @selectColor                : @colorLighter;
-
+@topBarHeight: 50px;
 
 .row{
   margin-left:0px;
@@ -17,25 +17,36 @@
 }
 
 .wrapper {
-  padding-left: 70px;
+  padding-left: 60px;
   /*transition: all .4s ease 0s;*/
-  height: 100%
 }
 
 .sidebar-wrapper {
   margin-left: -250px;
-  left: 70px;
+  left: 60px;
   width: 250px;
   background: @colorMain;
   position: fixed;
   height: 100%;
-  /*overflow-y: auto;*/
-  //z-index: 10000;
+  top: 0;
+  z-index: 1000;
   transition: all .4s ease 0s;
 }
 
+.sidebar-margin-topbar li a{
+  height: @topBarHeight;
+}
+
 .sidebar-scrollable{
-  height: 100%;
+  /* to use css 3 calc from less, we need to escape the calc function by ~" */
+  width: ~"-moz-calc( 100% - 100px)";
+  height: ~"calc( 100% - 100px )";
+}
+
+.wrapper.active .sidebar-scrollable{
+  /* to use css 3 calc from less, we need to escape the calc function by ~" */
+  width: ~"-moz-calc( 100% - 160px)";
+  height: ~"calc( 100% - 160px )";
 }
 
 .sidebar-transition {
@@ -53,7 +64,24 @@
 }
 
 .sidebar-footer{
-  height: 160px;
+  position: absolute;
+  bottom: 0;
+  height:0;
+}
+
+.sidebar-footer li {
+  z-index: 10000;
+  line-height: 0px;
+  background-color: @colorMain;
+  color: @colorLight;
+  text-align: center;
+  margin-left: -40px;
+  padding-top: 5px;
+}
+
+.wrapper.active .sidebar-footer{
+  height: 50px;
+  line-height: 50px;
 }
 
 .sidebar-nav {
@@ -84,7 +112,7 @@
 .sidebar-nav li a {
   color: @selectColor;
   display: block;
-  float: left;
+  /*float: left;*/
   text-decoration: none;
   width: 250px;
   background: @colorMain;
@@ -104,10 +132,23 @@
   opacity: .7;
 }
 
-.sidebar-nav li {
+.sidebar-nav > li {
   line-height: 40px;
-  text-indent: 20px;
+  text-indent: 24px;
 }
+.sidebar-nav > li li{
+  line-height: 30px;
+  text-indent: 40px;
+  margin-left: -40px;
+}
+
+.sidebar-nav > li li.sidebar-separator{
+  line-height: 0px !important;
+}
+.sidebar-nav > li li.sidebar-separator a{
+  display: none;
+}
+
 
 .sidebar-nav li a {
   color: @selectColor;
@@ -141,13 +182,14 @@
   background: none;
 }
 
-.main_icon
+.sidebar-main-icon
 {
   float: right;
   padding-right: 25px;
   padding-top: 20px;
 }
-.sub_icon
+
+.sidebar-sub-icon
 {
   float: right;
   padding-right: 25px;
@@ -165,13 +207,38 @@
   display: inline-block;
 }
 
+.sidebar-main-icon {
+  float: right;
+  padding-right: 23px;
+  padding-top: 20px;
+}
+
+.sidebar-chevron{
+  float: left;
+  margin-left: -16px;
+  margin-right: -24px;
+  padding-top: 14px;
+  /* background-color: black; */
+  text-align: left;
+}
+
+.sidebar-chevron-open{
+  float: left;
+  margin-left: -20px;
+  margin-right: -24px;
+  padding-top: 14px;
+  /* background-color: black; */
+  text-align: left;
+}
+
+
 @media (max-width:767px) {
   .wrapper {
-    padding-left: 70px;
+    padding-left: 60px;
     transition: all .4s ease 0s;
   }
   .sidebar-wrapper {
-    left: 70px;
+    left: 60px;
   }
   .wrapper.active {
     padding-left: 250px;

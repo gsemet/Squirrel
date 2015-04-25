@@ -18,161 +18,172 @@ angular.module('squirrel').controller('AdminCtrl',
         {
           'search': {},
           'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'sub_icon glyphicon glyphicon-dashboard',
+          'icon': 'glyphicon glyphicon-dashboard',
           'templateUrl': 'app/admin/admin.dashboard.template.html'
         }, {
           'search': {
             "p": "crawlers"
           },
           'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.crawlers.template.html'
         }, {
-          'search': {
-            "p": "charts"
-          },
-          'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'sub_icon fa fa-book',
-          'templateUrl': 'app/admin/admin.charts.template.html'
-        }, {
-          'search': {
-            "p": "nggrid"
-          },
-          'name': gettextCatalog.getString('Ex: NgGrid'),
-          'icon': 'sub_icon fa fa-book',
-          'templateUrl': 'app/admin/admin.nggrid.template.html'
-        },
-        {
           'type': 'separator',
         }, {
-          'search': {},
-          'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'sub_icon glyphicon glyphicon-dashboard',
-          'templateUrl': 'app/admin/admin.dashboard.template.html'
+          'search': {
+            "p": "charts"
+          },
+          'name': gettextCatalog.getString('Ex: Charts'),
+          'icon': 'fa fa-book',
+          'templateUrl': 'app/admin/admin.charts.template.html'
         }, {
           'search': {
-            "p": "crawlers"
+            "p": "nggrid"
           },
-          'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'sub_icon fa fa-book',
-          'templateUrl': 'app/admin/admin.crawlers.template.html'
+          'name': "has children",
+          'icon': 'fa fa-book',
+          'templateUrl': 'app/admin/admin.nggrid.template.html',
+          'children': [{
+              'search': {
+                "p": "nggrid"
+              },
+              'name': gettextCatalog.getString('Ex: NgGrid'),
+              'icon': 'fa fa-book',
+              'templateUrl': 'app/admin/admin.nggrid.template.html'
+            },
+            {
+              'type': 'separator',
+            }, {
+              'search': {},
+              'name': gettextCatalog.getString('Dashboard'),
+              'icon': 'glyphicon glyphicon-dashboard',
+              'templateUrl': 'app/admin/admin.dashboard.template.html'
+            }, {
+              'search': {
+                "p": "crawlers"
+              },
+              'name': gettextCatalog.getString('Crawlers'),
+              'icon': 'fa fa-book',
+              'templateUrl': 'app/admin/admin.crawlers.template.html'
+            }
+          ]
         }, {
           'search': {
             "p": "charts"
           },
           'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.charts.template.html'
         }, {
           'search': {
             "p": "nggrid"
           },
           'name': gettextCatalog.getString('Ex: NgGrid'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.nggrid.template.html'
         }, {
           'search': {},
           'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'sub_icon glyphicon glyphicon-dashboard',
+          'icon': 'glyphicon glyphicon-dashboard',
           'templateUrl': 'app/admin/admin.dashboard.template.html'
         }, {
           'search': {
             "p": "crawlers"
           },
           'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.crawlers.template.html'
         }, {
           'search': {
             "p": "charts"
           },
           'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.charts.template.html'
         }, {
           'search': {
             "p": "nggrid"
           },
           'name': gettextCatalog.getString('Ex: NgGrid'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.nggrid.template.html'
         }, {
           'search': {},
           'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'sub_icon glyphicon glyphicon-dashboard',
+          'icon': 'glyphicon glyphicon-dashboard',
           'templateUrl': 'app/admin/admin.dashboard.template.html'
         }, {
           'search': {
             "p": "crawlers"
           },
           'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.crawlers.template.html'
         }, {
           'search': {
             "p": "charts"
           },
           'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.charts.template.html'
         }, {
           'search': {
             "p": "nggrid"
           },
           'name': gettextCatalog.getString('Ex: NgGrid'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.nggrid.template.html'
         }, {
           'search': {},
           'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'sub_icon glyphicon glyphicon-dashboard',
+          'icon': 'glyphicon glyphicon-dashboard',
           'templateUrl': 'app/admin/admin.dashboard.template.html'
         }, {
           'search': {
             "p": "crawlers"
           },
           'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.crawlers.template.html'
         }, {
           'search': {
             "p": "charts"
           },
           'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.charts.template.html'
         }, {
           'search': {
             "p": "nggrid"
           },
           'name': gettextCatalog.getString('Ex: NgGrid'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.nggrid.template.html'
         }, {
           'search': {},
           'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'sub_icon glyphicon glyphicon-dashboard',
+          'icon': 'glyphicon glyphicon-dashboard',
           'templateUrl': 'app/admin/admin.dashboard.template.html'
         }, {
           'search': {
             "p": "crawlers"
           },
           'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.crawlers.template.html'
         }, {
           'search': {
             "p": "charts"
           },
           'name': 'avant dernier element',
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.charts.template.html'
         }, {
           'search': {
             "p": "nggrid"
           },
           'name': 'last item',
-          'icon': 'sub_icon fa fa-book',
+          'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.nggrid.template.html'
         }
       ];

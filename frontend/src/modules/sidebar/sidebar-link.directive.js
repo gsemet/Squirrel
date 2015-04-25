@@ -11,7 +11,9 @@ angular.module('squirrel').directive('sidebarLink', function($compile) {
     templateUrl: "modules/sidebar/sidebar-link.template.html",
     link: function(scope, element, attrs) {
       if (angular.isArray(scope.member.children)) {
-        element.append("<sidebar-collection collection='member.children'></sidebar-collection>");
+        element.append(
+          "<sidebar-collection collection='member.children' expand='false'></sidebar-collection>"
+        );
         $compile(element.contents())(scope)
       }
     }

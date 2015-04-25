@@ -35,6 +35,14 @@ angular.module('squirrel').controller('SidebarLinkCtrl',
       $scope.onClick = function(member) {
         console.log("click on link = " + JSON.stringify(member));
         $scope.$emit(sidebar.NAVIGATE, member);
+        if (member.children) {
+          $scope.expand = !$scope.expand;
+          $scope.$broadcast(sidebar.TOGGLE_GROUP, member);
+        }
+      };
+
+      $scope.hasChildren = function() {
+        return angular.isArray($scope.member.children);
       };
     }
   ]

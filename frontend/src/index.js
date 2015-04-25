@@ -48,7 +48,8 @@ app.config(
         })
         .when("/portfolios", {
           templateUrl: "app/portfolios/_portfolios.template.html",
-          controller: "PortfoliosCtrl"
+          controller: "PortfoliosCtrl",
+          reloadOnSearch: false
         })
         .when("/portfolios/details/:portfolioId", {
           templateUrl: "app/portfolios/portfolios.template.html",

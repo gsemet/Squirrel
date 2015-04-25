@@ -1,8 +1,10 @@
 <li ng-class="getClass(member.search)">
   <div ng-if="member.type != 'separator'">
     <a ng-click="onClick(member)">
+      <span ng-show="hasChildren() && expand" class='sidebar-chevron fa fa-chevron-right'></span>
+      <span ng-show="hasChildren() && !expand" class='sidebar-chevron-open fa fa-chevron-down'></span>
       <span>{{member.name}}</span>
-      <span class="{{member.icon}}"></span>
+      <span class="sidebar-sub-icon {{member.icon}}"></span>
     </a>
   </div>
   <div ng-if="member.type == 'separator'" >

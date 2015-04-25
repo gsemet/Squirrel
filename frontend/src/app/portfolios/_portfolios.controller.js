@@ -8,64 +8,71 @@ angular.module("squirrel").controller("PortfoliosCtrl",
     function($scope, AuthenticationService, $rootScope, AUTH_EVENTS, $location, gettextCatalog,
       Restangular, $timeout) {
 
-      $scope.pages = [
+      $scope.is_admin = AuthenticationService.isAdmin();
+      $scope.endpoint = "#/portfolios";
+
+      $scope.portfolioIndex = 0;
+      $scope.menuItems = [
         {
-          endpoint: '',
-          href: '#/portfolios',
-          text: gettextCatalog.getString('Overview'),
-          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          search: {},
+          name: gettextCatalog.getString('Overview'),
+          icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/overview.template.html',
-          /*controller: "PortfoliosOverviewCtrl"  => hard to make it work */
         }, {
-          endpoint: 'securities',
-          href: '#/portfolios?p=securities',
-          text: gettextCatalog.getString('Securities'),
-          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          search: {
+            'p': 'securities'
+          },
+          name: gettextCatalog.getString('Securities'),
+          icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/securities.template.html',
-          /*controller: "PortfoliosSecuritiesCtrl"*/
         }, {
-          endpoint: 'cash',
-          href: '#/portfolios?p=cash',
-          text: gettextCatalog.getString('Cash'),
-          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          search: {
+            'p': 'cash'
+          },
+          name: gettextCatalog.getString('Cash'),
+          icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/cash.template.html',
-          /*controller: "PortfoliosSecuritiesCtrl"*/
         }, {
-          endpoint: 'allocations',
-          href: '#/portfolios?p=allocations',
-          text: gettextCatalog.getString('Allocations'),
-          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          search: {
+            'p': 'allocations'
+          },
+          name: gettextCatalog.getString('Allocations'),
+          icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/allocations.template.html',
-          /*controller: "PortfoliosSecuritiesCtrl"*/
         }, {
-          endpoint: 'timeline', // == move history
-          href: '#/portfolios?p=timeline',
-          text: gettextCatalog.getString('Timeline'),
-          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          search: {
+            'p': 'timeline', // == move history
+          },
+          name: gettextCatalog.getString('Timeline'),
+          icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/timeline.template.html',
         }, {
-          endpoint: 'status_report',
-          href: '#/portfolios?p=status_report',
-          text: gettextCatalog.getString('Status Report'),
-          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          search: {
+            'p': 'status_report'
+          },
+          name: gettextCatalog.getString('Status Report'),
+          icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/status_report.template.html',
         }, {
-          endpoint: 'reporting',
-          href: '#/portfolios?p=reporting',
-          text: gettextCatalog.getString('Reporting'),
-          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          search: {
+            'p': 'reporting'
+          },
+          name: gettextCatalog.getString('Reporting'),
+          icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/reporting.template.html',
         }, {
-          endpoint: 'annual_reports',
-          href: '#/portfolios?p=annual_reports',
-          text: gettextCatalog.getString('Annual Reports'),
-          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          search: {
+            'p': 'annual_reports'
+          },
+          name: gettextCatalog.getString('Annual Reports'),
+          icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/annual_reports.template.html',
         }, {
-          endpoint: 'taxation',
-          href: '#/portfolios?p=taxation',
-          text: gettextCatalog.getString('Taxation'),
-          spanicon: 'navbar_icon glyphicon glyphicon-dashboard',
+          search: {
+            'p': 'taxation'
+          },
+          name: gettextCatalog.getString('Taxation'),
+          icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/taxation.template.html',
         }
       ];
@@ -93,13 +100,23 @@ angular.module("squirrel").controller("PortfoliosCtrl",
         basePortfolios.getList().then(function(data) {
           $timeout(function() {
             console.log("received portfolios data for sidebar: " + JSON.stringify(data));
+            $scope.menuItems[$scope.portfolioIndex]['children'] = []
             _.forEach(data, function(row) {
               $scope.portfolios.push(row);
+              $scope.menuItems[$scope.portfolioIndex]['children'].push({
+                search: {
+                  'p': 'overview',
+                  'i': row.id,
+                },
+                name: row.name,
+                icon: 'glyphicon glyphicon-dashboard',
+                templateUrl: 'app/portfolios/overview.template.html',
+              });
             });
-          }, 100);
+          }, 10);
         });
       };
-      $timeout($scope.refresh, 100);
+      $timeout($scope.refresh, 10);
 
       $scope.sidebar_class = "active";
       $scope.toggleSidebar = function() {
@@ -156,6 +173,6 @@ angular.module("squirrel").controller("PortfoliosCtrl",
         console.log("$controller = " + c);
         return c;
       };*/
-    }
-  ]
+        }
+        ]
 );

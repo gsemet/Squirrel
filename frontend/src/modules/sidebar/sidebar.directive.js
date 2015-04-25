@@ -17,6 +17,7 @@ angular.module('squirrel').directive('sidebar',
         restrict: 'E',
         scope: {
           "title": "@",
+          "footer": "@",
           "collection": "=",
           "endpoint": "=",
           "search_page": "=",

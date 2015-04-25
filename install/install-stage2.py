@@ -421,12 +421,11 @@ elif "serve_dev" in current_capabilities:
 
     if "serve_dev_frontend":
         printInfo("Serving dev frontend")
+        sleep_sec = 5
 
-        auto_restart_backend_cmd = ["auto_relauncher",
-                                    "--sleep-between-restart", str(sleep_sec),
-                                    "gulp", "serve"]
+        auto_restart_backend_cmd = ["gulp", "serve"]
 
-        run(["gulp", "serve"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+        run(auto_restart_backend_cmd, cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 
 printInfo("Done")
