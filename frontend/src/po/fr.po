@@ -661,13 +661,13 @@ msgstr "Comme par exemple:"
 
 #: app\portfolios\securities.template.html:2
 msgid "List of your securities"
-msgstr "Vue d'ensemble de de vos actions"
+msgstr "Vue d'ensemble de vos actions"
 
 #: services\translations\translations.service.js:115
 msgid "Loading..."
 msgstr "Chargement..."
 
-#: app\login\login.template.html:26
+#: app\login\login.template.html:26 app\register\register.template.html:52
 msgid "Log In"
 msgstr "Connexion"
 
