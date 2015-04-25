@@ -34,6 +34,30 @@ angular.module('squirrel').service('sidebar',
         }
         return false;
       };
+
+      this.isInThisState = function(search, testItem) {
+        console.log("Searchg if search: " + JSON.stringify(search));
+        console.log("is in this item from the collection: " + JSON.stringify(testItem.search));
+        if (_.isEqual(search, testItem.search)) {
+          console.log("yes, it's the same (empty)");
+          return true;
+        }
+        if (_.isEmpty(search)) {
+          return false;
+        }
+        /* */
+        var yes = true;
+        _.forEach(search, function(itemSearch, itemSearchkey) {
+          console.log("comparing itemSearch (key:" + itemSearchkey + "): " +
+            JSON.stringify(itemSearchkey) + " " + JSON.stringify(itemSearch));
+          if (testItem[itemSearchkey] != itemSearch) {
+            console.log("no, they are not the same");
+            yes = false;
+          }
+        });
+        console.log("returning = " + JSON.stringify(yes));
+        return yes;
+      }
     }
 
   ]

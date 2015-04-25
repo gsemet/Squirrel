@@ -39,26 +39,17 @@ angular.module('squirrel').controller('SidebarCtrl',
         $location.search(member.search);
       });
 
-      $scope.refreshFromLocation = function(collection) {
+      $scope.refreshFromCurrentLocation = function(collection) {
         var search = $location.search();
         console.log("refresh from location = " + JSON.stringify(search));
         _.forEach($scope.collection, function(itemCollection) {
-          console.log("item search = " + JSON.stringify(itemCollection.search));
-          var allFound = false;
-          _.forEach(search, function(itemSearch, itemSearchkey) {
-            console.log("itemSearch = " + JSON.stringify(itemSearchkey) + " " +
-              JSON.stringify(itemSearch));
-            if (itemCollection[itemSearchkey] == itemSearch) {
-              allFound = true;
-            }
-          });
-          if (allFound) {
+          if (sidebar.isInThisState(search, itemCollection)) {
             console.log("found we are on page = " + JSON.stringify(itemCollection));
             $scope.$emit(sidebar.NAVIGATE, itemCollection);
           }
         });
       };
-      $scope.refreshFromLocation($scope.collection);
+      $scope.refreshFromCurrentLocation($scope.collection);
     }
   ]
 );

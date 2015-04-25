@@ -3,6 +3,8 @@
 
 @import '../common/common.less';
 
+@bgHover : rgba(255,255,255,0.2);
+
 // required for fixed navbar
 body {
   padding-top: 50px;
@@ -34,7 +36,7 @@ body {
       color: @colDefault;
       &:hover,  &:focus {
         color: @colDefault;
-        background-color: @bgHighlight; }}
+        background-color: @bgHover; }}
     .divider {
       background-color: @bgHighlight;}}}
 .navbar-default {
@@ -63,24 +65,24 @@ body {
     > .active {
       > a, > a:hover, > a:focus {
         color: @colDefault;
-        background-color: @bgHighlight; }}
+        background-color: @bgHover; }}
     > .open {
       > a, > a:hover, > a:focus {
         color: @colDefault;
-        background-color: @bgHighlight; }}}
+        background-color: @bgHover; }}}
   .navbar-toggle {
     border-color: @bgHighlight;
     &:hover, &:focus {
-      background-color: @bgHighlight; }
+      background-color: @bgHover; }
     .icon-bar {
-      background-color: @colDefault; }}
+      background-color: @bgHover; }}
   .navbar-collapse,
   .navbar-form {
     border-color: @colDefault; }
   .navbar-link {
     color: @colDefault;
     &:hover {
-      color: @colHighlight; }}}
+      color: @bgHover; }}}
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu {
     > li > a {
@@ -90,5 +92,5 @@ body {
     > .active {
       > a, > a:hover, > a:focus, {
         color: @colDefault;
-        background-color: @bgHighlight; }}}
+        background-color: @bgHover; }}}
 }
