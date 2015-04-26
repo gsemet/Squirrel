@@ -749,10 +749,11 @@ msgid ""
 "portfolio and find your\n"
 "                own strategy."
 msgstr ""
-"La plupars des outils de gestion de portefeuilles en ligne vous promette "
-"l'accès à un méthode d'investissement automatisé, sans effort de votre par. "
-"Profitez des meilleurs algorithmes qui font des merveilles dans le monde "
-"très fermé de la finance. Squirrel ne joue pas dans cette catéogie. "
+"La plupart des outils de gestion de portefeuilles en ligne vous promette "
+"l'accès à un méthode d'investissement automatisé, sans effort de votre part: "
+"<i>\"Profitez des meilleurs algorithmes qui font des merveilles dans le "
+"monde très fermé de la finance\".</i> Squirrel ne joue pas dans cette "
+"catéogie. "
 
 #: app\portfolios\_portfolios.template.html:47
 #: components\footer\footer.template.html:11

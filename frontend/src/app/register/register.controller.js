@@ -2,10 +2,11 @@
 
 angular.module("squirrel").controller("RegisterCtrl",
 
-  ["$scope", "AuthenticationService", "$location",
+  ["$scope", "AuthenticationService", "$location", "$document",
 
-    function($scope, AuthenticationService, $location) {
+    function($scope, AuthenticationService, $location, $document) {
 
+      $document.scrollTo(0, 0);
       $scope.registration_sent = false;
       $scope.registration_email = "";
 
