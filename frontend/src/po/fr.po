@@ -44,6 +44,10 @@ msgstr "1m"
 msgid "1y"
 msgstr "1a"
 
+#: app\pages\plans.template.html:67
+msgid "2.99 € / month"
+msgstr "2,99 € / mois"
+
 #: app\contact\contact.template.html:58
 msgid "31000 Toulouse"
 msgstr "31000 Toulouse"
@@ -58,19 +62,23 @@ msgstr "3m"
 msgid "6m"
 msgstr "6m"
 
+#: app\pages\plans.template.html:96
+msgid "9,99 € / month"
+msgstr "9,99 € / mois"
+
 #: app\contact\contact.template.html:41
 msgid "A error occured. Please try later."
 msgstr "Une erreur est arrivée. Veuillez réessayer plus tard."
 
-#: app\pages\features.template.html:355
+#: app\pages\features.template.html:352
 msgid "A quite ambitious project coming from a modest idea born early 2014."
 msgstr "Un projet assez ambitieu, issue d'une idée modeste née début 2014."
 
-#: components\footer\footer.template.html:23
+#: components\footer\footer.template.html:24
 msgid "About"
 msgstr "A Propos"
 
-#: app\pages\features.template.html:139
+#: app\pages\features.template.html:136
 msgid "Access your porfolio anywhere, any time"
 msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 
@@ -90,17 +98,32 @@ msgstr "Tableau de bord d'administration"
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
 
+#: app\pages\plans.template.html:77
+msgid "Advanced Premium"
+msgstr "Premium Avancée"
+
 #. 3 letters to say "all"
 #: app\portfolios\details.controller.js:89
 msgid "All"
 msgstr "Tout"
+
+#: app\pages\plans.template.html:26
+msgid ""
+"All basic features are fully enabled: track as many portfolio as you want, "
+"without any\n"
+"            limitation on the number of stocks or items. Yes, no limitation "
+"on the basic features!"
+msgstr ""
+"Toutes les fonctions basiques sont totalement activée: créez et suivez "
+"autant de portefeuille que vous le voulez, sans aucune limitation sur le "
+"nombre d'actions. Oui, aucune limitation!"
 
 #: app\portfolios\_portfolios.controller.js:39
 #: app\portfolios\allocations.template.html:2
 msgid "Allocations"
 msgstr "Expositions"
 
-#: app\pages\features.template.html:204
+#: app\pages\features.template.html:201
 msgid ""
 "Allow other Squirrel users to access to some part of your portfolios, for "
 "instance your\n"
@@ -161,7 +184,7 @@ msgstr "Avr"
 msgid "April"
 msgstr "Avril"
 
-#: app\pages\features.template.html:369
+#: app\pages\features.template.html:366
 msgid ""
 "As humble as my investments was, I had to open several broker accounts to "
 "exploit the\n"
@@ -178,6 +201,11 @@ msgstr ""
 "placesétrangères étaient hors de prix. J'ai donc un deuxième CTO, beaucoup "
 "moins cher pour places boursières aux Etats-Unis."
 
+#: app\pages\plans.template.html:34 app\pages\plans.template.html:62
+#: app\pages\plans.template.html:92
+msgid "As many portfolio as you want"
+msgstr "Autant de portefeuilles que vous le voulez"
+
 #: services\translations\translations.service.js:138
 msgid "Aug"
 msgstr "Aou"
@@ -190,9 +218,9 @@ msgstr "Août"
 msgid "Automatic Update"
 msgstr "Mises à Jour Automatiques"
 
-#: app\pages\features.template.html:131 app\pages\features.template.html:179
-#: app\pages\features.template.html:222 app\pages\features.template.html:281
-#: app\pages\features.template.html:343 app\pages\features.template.html:472
+#: app\pages\features.template.html:128 app\pages\features.template.html:176
+#: app\pages\features.template.html:219 app\pages\features.template.html:278
+#: app\pages\features.template.html:340 app\pages\features.template.html:469
 #: app\pages\features.template.html:74
 msgid "Back to Top"
 msgstr "Haut de Page"
@@ -201,11 +229,17 @@ msgstr "Haut de Page"
 msgid "Balance"
 msgstr "Balance"
 
+#: app\pages\plans.template.html:55
+msgid "Basic and avdanced features are included: taxations wizards,..."
+msgstr ""
+"Les fonctions basiques et même avancées sont inclus: assitants de calcul "
+"d'impôts..."
+
 #: app\homepage\homepage.unlogged.template.html:40
 msgid "Be your own fund manager."
 msgstr "Soyez votre propre gérant de fonds."
 
-#: app\pages\features.template.html:260
+#: app\pages\features.template.html:257
 msgid ""
 "Before everything else, Squirrel is a tool aimed at guiding you from day 1 "
 "when your\n"
@@ -218,7 +252,7 @@ msgstr ""
 "le premier jour de votre voyage en tant qu'investisseur particulier, pour "
 "construire vous-même pas à pas votre portefeuille."
 
-#: app\pages\features.template.html:211
+#: app\pages\features.template.html:208
 msgid "Best Tool To Communicate With Your Financial Advisor"
 msgstr "Le Meilleur Outil pour Communiquer avec votre Conseiller Financier"
 
@@ -226,11 +260,11 @@ msgstr "Le Meilleur Outil pour Communiquer avec votre Conseiller Financier"
 msgid "Broker"
 msgstr "Courtier"
 
-#: app\pages\features.template.html:305
+#: app\pages\features.template.html:302
 msgid "But also: Financial Advisor"
 msgstr "Pour les Conseillers Financiers"
 
-#: app\pages\features.template.html:324
+#: app\pages\features.template.html:321
 msgid ""
 "But the best place to start with is to click on the \"Demo\" button on the "
 "navigation\n"
@@ -242,11 +276,11 @@ msgstr ""
 "\" dans la bar de navigation.Vous aurez alors accès au vrai Squirrel en "
 "action, mais avec les données d'un compte de démonstration."
 
-#: app\pages\features.template.html:243
+#: app\pages\features.template.html:240
 msgid "But there plenty of similar tool online?"
 msgstr "Mais il y a déjà des dizaines d'outils similaires sur Internet?"
 
-#: app\pages\features.template.html:398
+#: app\pages\features.template.html:395
 msgid ""
 "But when data starts to becomes quite heavy, with lot of custom import "
 "scripts, the\n"
@@ -267,7 +301,7 @@ msgstr ""
 "consentement sur l'utilisation de ces cookie, dans le cadre des terme de "
 "politique d'utilisation."
 
-#: app\pages\features.template.html:428
+#: app\pages\features.template.html:425
 msgid "Can you synchronize automatically my different accounts?"
 msgstr ""
 "Ne pouvez-vous pas synchroniser automatiquement mes différents comptes?"
@@ -297,7 +331,7 @@ msgstr "Selectionnez votre langue"
 msgid "Change your Language"
 msgstr "Sélectionnez votre langue"
 
-#: app\pages\features.template.html:96
+#: app\pages\features.template.html:93
 msgid "Check your risk exposure, compare to well balanced porfolio."
 msgstr ""
 "Vérifiez votre exposition aux risques, comparez votre portefeuille à un "
@@ -307,12 +341,12 @@ msgstr ""
 msgid "Choose your language"
 msgstr "Sélectionnez votre langue"
 
-#: app\pages\features.template.html:319
+#: app\pages\features.template.html:316
 msgid "Click on the \"Plans\" link and see which plans fits you the best."
 msgstr ""
 "Cliquez sur le lien \"Tarifs\" pour voir lequel vous correspond le mieux."
 
-#: app\pages\features.template.html:149
+#: app\pages\features.template.html:146
 msgid ""
 "Consult, edit and visualize your portfolio anywhere, from your personal "
 "computer,\n"
@@ -323,7 +357,7 @@ msgstr ""
 "votre ordinateur personnel, votre tablette ou votre smartphone. Tout ce que "
 "dont vous avez besoin est une connexion internet."
 
-#: components\footer\footer.template.html:24
+#: components\footer\footer.template.html:25
 msgid "Contact"
 msgstr "Contact"
 
@@ -331,11 +365,11 @@ msgstr "Contact"
 msgid "Contact The Squirrel Team"
 msgstr "Contactez l'équipe de Squirrel"
 
-#: components\footer\footer.template.html:24
+#: components\footer\footer.template.html:25
 msgid "Contact the technical team"
 msgstr "Contactez le support technique"
 
-#: components\footer\footer.template.html:33
+#: components\footer\footer.template.html:34
 msgid "Copyright 2015 all rights reserved."
 msgstr "Copyright 2015 tous drotis réservés."
 
@@ -411,7 +445,7 @@ msgstr "Détails"
 msgid "Details of your portfolio"
 msgstr "Détail de votre portefeuille"
 
-#: app\pages\features.template.html:212
+#: app\pages\features.template.html:209
 msgid ""
 "Easily show your portfolio to your financial adviser so he can give you "
 "accurate and\n"
@@ -504,11 +538,15 @@ msgstr "Suivez tous vos comptes:"
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié?"
 
+#: app\pages\plans.template.html:18 app\pages\plans.template.html:38
+msgid "Free"
+msgstr "Gratuit"
+
 #: app\register\register.template.html:10
 msgid "Free account"
 msgstr "Compte Gratuit"
 
-#: app\pages\features.template.html:348
+#: app\pages\features.template.html:345
 msgid "Frequently Asked Questions"
 msgstr "Questions Fréquentes"
 
@@ -533,11 +571,11 @@ msgstr "Gain"
 msgid "Gain %"
 msgstr "Gain %"
 
-#: app\pages\features.template.html:353
+#: app\pages\features.template.html:350
 msgid "General"
 msgstr "Général"
 
-#: app\pages\features.template.html:101
+#: app\pages\features.template.html:98
 msgid "Generate Professional Reports"
 msgstr "Générez des Rapports de Qualité Professionel"
 
@@ -545,7 +583,7 @@ msgstr "Générez des Rapports de Qualité Professionel"
 msgid "Get a crystal clear overview of your financial situation."
 msgstr "Ayez une vue globale de votre situation financière, à chaque instant.."
 
-#: app\pages\features.template.html:203
+#: app\pages\features.template.html:200
 msgid "Give a Public Access to Portions of Your Reports"
 msgstr "Donnez un Accès Publique à Certaines Partie de Vos Rapports"
 
@@ -557,7 +595,7 @@ msgstr ""
 "Au dela de votre feuille de Tableur, suivez facilement vos actifs et "
 "préparez votre futur sereinement"
 
-#: app\pages\features.template.html:349
+#: app\pages\features.template.html:346
 msgid "Have Questions about Squirrel?"
 msgstr "Des Questions à Propos de Squirrel?"
 
@@ -571,7 +609,7 @@ msgstr "Siège Social :"
 msgid "Help"
 msgstr "Aide"
 
-#: app\pages\features.template.html:363
+#: app\pages\features.template.html:360
 msgid ""
 "Hi! My name is Gaetan Semet. I am Software engineer who started a very "
 "humble investor\n"
@@ -582,11 +620,11 @@ msgstr ""
 "démaré une vie d'humble investisseur, et j'ai été très déçu des outils "
 "existants pour gérer mes différents portefeuilles."
 
-#: app\pages\features.template.html:316
+#: app\pages\features.template.html:313
 msgid "How much does it cost?"
 msgstr "Combien celà coûte-il?"
 
-#: app\pages\features.template.html:377
+#: app\pages\features.template.html:374
 msgid ""
 "I also wanted to follow my Mutual Funds. I didn't understood why they would "
 "be\n"
@@ -598,7 +636,7 @@ msgstr ""
 "pourquoi ne pas les inclure dans mon document de suivi des actions et les "
 "traiter au même titre qu'une action."
 
-#: app\pages\features.template.html:384
+#: app\pages\features.template.html:381
 msgid ""
 "I started tracking my different stock and mutual funds portfolio using a "
 "speadsheet\n"
@@ -613,7 +651,7 @@ msgstr ""
 "logiciel, et celà m'empechait de bénéficier d'outils modernes, du type de "
 "certains graphiques dynamiques et interactifs que l'on peut voir sur le net."
 
-#: app\pages\features.template.html:406
+#: app\pages\features.template.html:403
 msgid ""
 "I was also disappointed by the graphs themselves, they were not customable "
 "enough\n"
@@ -624,11 +662,11 @@ msgstr ""
 "suffisament configurables, et pas vraiment élégants non plus, comparés à "
 "ceux générés par certaines bibliothèques JavaScript moderne telle que"
 
-#: app\pages\features.template.html:95
+#: app\pages\features.template.html:92
 msgid "Indentify your Porfolio's Strenght and Weakness"
 msgstr "Identifiez les Forces et Faiblesses de Vos Portefeuilles"
 
-#: app\pages\features.template.html:86
+#: app\pages\features.template.html:83
 msgid "Instantenously Visualize Your Porfolios"
 msgstr "Visualisez vos Portefeuilles en un Instant"
 
@@ -668,11 +706,7 @@ msgstr "Nom"
 msgid "Last run"
 msgstr "Dernière exécution"
 
-#: components\footer\footer.template.html:18
-msgid "Legal Notes"
-msgstr "Notes Légales"
-
-#: app\pages\features.template.html:414
+#: app\pages\features.template.html:411
 msgid "Like for example:"
 msgstr "Comme par exemple:"
 
@@ -725,7 +759,7 @@ msgstr "Mars"
 msgid "May"
 msgstr "Mai"
 
-#: app\pages\features.controller.js:45 app\pages\features.template.html:228
+#: app\pages\features.controller.js:45 app\pages\features.template.html:225
 msgid "Meet Squirrel"
 msgstr "Découvrez Squirrel"
 
@@ -737,7 +771,7 @@ msgstr "Découvrez Squirrel, le meilleur ami de votre Portefeuille"
 msgid "Monday"
 msgstr "Lundi"
 
-#: app\pages\features.template.html:246
+#: app\pages\features.template.html:243
 msgid ""
 "Most of the online portfolio managers offer you access to an automated "
 "investment\n"
@@ -829,19 +863,27 @@ msgstr ""
 "avoir sélectionné cette boite de dialogue, en cliquant sur le bouton suivant "
 "dans la barre de navigation:"
 
+#: components\footer\footer.template.html:18
+msgid "Policy"
+msgstr "Politique"
+
 #: app\contact\contact.template.html:46
 msgid "Post details"
 msgstr "Coordonnées"
+
+#: app\pages\plans.template.html:48
+msgid "Premium"
+msgstr "Premium"
 
 #: app\register\register.template.html:17
 msgid "Prepare your investments ahead of time and let you conduct"
 msgstr "Préparez vos investissements en avance, et laissez vous contruire "
 
-#: app\pages\features.template.html:293
+#: app\pages\features.template.html:290
 msgid "Primary audience of Squirrel: Individuals"
 msgstr "A qui s'adresse Squirrel: le particulier"
 
-#: app\pages\features.template.html:191
+#: app\pages\features.template.html:188
 msgid "Public or Private"
 msgstr "Publique ou Privée"
 
@@ -893,6 +935,10 @@ msgstr "Actions"
 msgid "Securities Allocation"
 msgstr "Allocation"
 
+#: components\footer\footer.template.html:21
+msgid "Security"
+msgstr "Sécurité"
+
 #: services\translations\get_translation.modal.template.html:30
 msgid "Select please choose your prefered language"
 msgstr "Veuillez sélectionnez votre langue préférée"
@@ -918,11 +964,11 @@ msgstr "Services"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: app\pages\features.template.html:192
+#: app\pages\features.template.html:189
 msgid "Share part of your portfolio publicly, or keep it completely private."
 msgstr "Partager votre portefeuille en ligne, ou gardez le complètement privé."
 
-#: app\pages\features.controller.js:40 app\pages\features.template.html:185
+#: app\pages\features.controller.js:40 app\pages\features.template.html:182
 msgid "Share your Portfolio"
 msgstr "Partagez vos Portefeuilles"
 
@@ -950,7 +996,7 @@ msgstr "Inscrivez vous pour un compte gratuit maintenant"
 msgid "Sign up for free"
 msgstr "Inscrivez vous gratuitement"
 
-#: app\pages\features.template.html:331
+#: app\pages\features.template.html:328
 msgid "Sign up for free to see Squirrel by yourself!"
 msgstr "Créez un compte gratuitement et découvrez Squirrel par vous-même!"
 
@@ -966,7 +1012,7 @@ msgstr "Simple, Efficace, Unique"
 msgid "Simple, easy and straight forward."
 msgstr "Simple, facile et direct."
 
-#: app\pages\features.template.html:391
+#: app\pages\features.template.html:388
 msgid ""
 "So I started using Google Spreadsheet to follow my investments, and I felt "
 "in love\n"
@@ -980,7 +1026,7 @@ msgstr ""
 "en ligne. Qu'importe le lieu ou le moment dans la journée ou la semaine, je "
 "pouvais éditer et suivre mes portefeuilles instantanément."
 
-#: app\pages\features.template.html:383
+#: app\pages\features.template.html:380
 msgid "So how do you managed to follow your different portfolios?"
 msgstr "Comment faisiez-vous pour suivre vos différents portefeuilles?"
 
@@ -1004,6 +1050,10 @@ msgstr "Squirrel AMS"
 msgid "Squirrel Asset Management System"
 msgstr "Squirrel Gestionnaire de Portefeuille"
 
+#: app\pages\plans.template.html:4
+msgid "Squirrel Plans"
+msgstr "Tarifs Squirrel"
+
 #: app\homepage\homepage.unlogged.template.html:81
 msgid ""
 "Squirrel allows you track your all assets in one single place: Stocks, "
@@ -1013,7 +1063,7 @@ msgstr ""
 "Squirrel vous aide à suivre tous vos actifs en un seul endroit: actions, "
 "obligations, unité de compte et même options."
 
-#: app\pages\features.template.html:102
+#: app\pages\features.template.html:99
 msgid ""
 "Squirrel also generates weekly or monthly reports. You can receive these "
 "reports\n"
@@ -1048,7 +1098,7 @@ msgstr ""
 "Squirrel peut aussi vous aider à suivre votre portefeuille spéculatif tel "
 "que Forex, CFD. Seules les opérations manuelles sont fournies."
 
-#: app\pages\features.template.html:308
+#: app\pages\features.template.html:305
 msgid ""
 "Squirrel is also well suited for independent financial advisor. Open an "
 "account for\n"
@@ -1080,7 +1130,7 @@ msgstr ""
 "est inclu pour suivre vos différents portefeuilles, de différents coutiers "
 "ou banque, en un seul endroit."
 
-#: app\pages\features.template.html:235
+#: app\pages\features.template.html:232
 msgid ""
 "Squirrel is your swissknife of your investment life. It is an online tool "
 "gathering\n"
@@ -1090,7 +1140,17 @@ msgstr ""
 "outil 100% en ligne qui réunit au même endroit tout ce que vous avez besoin "
 "pour trouver, décider et suivre vos investissements."
 
-#: app\pages\features.template.html:87
+#: app\pages\plans.template.html:6
+msgid ""
+"Squirrel offers advanced free account so you can discovers the real Service "
+"yourself.\n"
+"          Advanced Features are reserved to Premium Members."
+msgstr ""
+"Squirrel vous offre toutes les fonctions basiques avec le compte gratuit, "
+"pour que vous puissiez découvrir le service réel par vous-même. Les "
+"fonctions avancées sont réservées aux Membres Premium."
+
+#: app\pages\features.template.html:84
 msgid ""
 "Squirrel provides your powerful visualization tools. See the current "
 "allocation of your\n"
@@ -1108,7 +1168,7 @@ msgstr ""
 "graphiquesextrèmement compliqués \"qui en jete\" ni, au contraire, de "
 "graphiques trop simples. Juste ce qu'il vous faut."
 
-#: app\pages\features.template.html:421
+#: app\pages\features.template.html:418
 msgid ""
 "Squirrel started as a personal work but I wanted to do it the right way, "
 "with cutting\n"
@@ -1120,7 +1180,7 @@ msgstr ""
 "de dernière génération. Juste au cas où je désirais le transformer en réel "
 "service."
 
-#: app\pages\features.template.html:296
+#: app\pages\features.template.html:293
 msgid ""
 "Squirrels is specially targetted for particulars who aren't experts of "
 "finance but\n"
@@ -1157,13 +1217,13 @@ msgstr "Symboles"
 msgid "Synchronize your operations with your online broker"
 msgstr "Synchronisez vos opérations avec votre courtier en ligne"
 
-#: app\pages\features.template.html:82
-msgid "Take care of your investiment like the apple of your eye."
-msgstr "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
-
 #: app\portfolios\_portfolios.controller.js:81
 msgid "Taxation"
 msgstr "Vos Impôts"
+
+#: app\pages\plans.template.html:63
+msgid "Taxation plugins"
+msgstr "Plugin de calcul d'impôts."
 
 #: app\portfolios\taxation.template.html:2
 msgid "Taxes"
@@ -1177,7 +1237,7 @@ msgstr "Conditions Générale d'Utilisation"
 msgid "Terms of Service"
 msgstr "Conditions de Service"
 
-#: app\pages\features.template.html:420
+#: app\pages\features.template.html:417
 msgid "That's how Squirrel was born?"
 msgstr "C'est comme cela qu'est né Squirrel?"
 
@@ -1185,7 +1245,7 @@ msgstr "C'est comme cela qu'est né Squirrel?"
 msgid "The Center of Your Personal Finance"
 msgstr "Le Centre de Votre Finance Personnelle."
 
-#: app\pages\features.template.html:186
+#: app\pages\features.template.html:183
 msgid "The Investor Social Network"
 msgstr "Le Réseau Social de L'Investisseur"
 
@@ -1193,7 +1253,7 @@ msgstr "Le Réseau Social de L'Investisseur"
 msgid "The current language exposed by your navigator is:"
 msgstr "La langue courant définie par votre navigateur est:"
 
-#: app\pages\features.template.html:436
+#: app\pages\features.template.html:433
 msgid ""
 "The major issue to deal with is security. \"Reading\" data from your account "
 "means it is\n"
@@ -1232,7 +1292,7 @@ msgstr ""
 "désirez faire un virement par exemple, il vous demandera un code reçu par "
 "SMS. Mais cela empèchera tout raffraichissement automatique."
 
-#: app\pages\features.template.html:450
+#: app\pages\features.template.html:447
 msgid ""
 "The only solution that I can imagine is to cypher your credentials with the "
 "highest\n"
@@ -1254,7 +1314,7 @@ msgstr ""
 "niveau de sécurité fourni par votre courtier. Peut être un jour une telle "
 "solution sera réalité!"
 
-#: app\pages\features.template.html:267
+#: app\pages\features.template.html:264
 msgid ""
 "There is no mystic algorithm behind Squirrel, no Award winning Trading "
 "Software\n"
@@ -1265,6 +1325,27 @@ msgstr ""
 "Il n'y a pas d'algorithmes mysthérieux derrière Squirrel, pas de logiciel de "
 "Trading sophistiqué qui vous renderont riches. Juste des outils bien conçus, "
 "spécialement adapté aux particuliers."
+
+#: app\pages\plans.template.html:79
+msgid "This plan is dedicated to professional"
+msgstr "Ce plan est spécialement pour les professionnels..."
+
+#: app\pages\plans.template.html:50
+msgid ""
+"This plan is ideal for any particular which wants to access to all level 1 "
+"plugins"
+msgstr ""
+"Ce plan est idéal pour tout particulier qui désire accéder aux plugins de "
+"premier niveau."
+
+#: app\pages\plans.template.html:20
+msgid ""
+"This plan is the best place to start discovering Squirrel. Just open a free "
+"account\n"
+"            and start tracking your investments."
+msgstr ""
+"Ce plan est le meilleur endroit pour commencer à découvrir Squirrel. Ouvrez "
+"un compte gratuitement et commencer à suivre vos investissements."
 
 #: services\translations\translations.service.js:149
 msgid "Thursday"
@@ -1299,7 +1380,7 @@ msgstr "Mardi"
 msgid "Type"
 msgstr "Enveloppe Fiscale"
 
-#: app\pages\features.template.html:429
+#: app\pages\features.template.html:426
 msgid ""
 "Unfortunately, Squirrel cannot retrieve automatically the movement you "
 "execute on your\n"
@@ -1316,7 +1397,7 @@ msgstr ""
 "coutiers et assurance en ligne disponibles, pour se connecter et récuperer "
 "les informations."
 
-#: app\pages\features.template.html:459
+#: app\pages\features.template.html:456
 msgid ""
 "Until this moment, unfortunately, you have to manually update your "
 "operations. But\n"
@@ -1327,7 +1408,7 @@ msgstr ""
 "opérations que vous effectuez. Mais pour vous rassurer, Squirrel est assez "
 "confortable dans ce domaine, ce ne sera donc pas un problème!"
 
-#: app\pages\features.template.html:140
+#: app\pages\features.template.html:137
 msgid "Use the Cloud to your own advantage"
 msgstr "Utilisez le Nuage à votre propre avantage"
 
@@ -1370,22 +1451,22 @@ msgstr "Mercredi"
 msgid "Welcome to the Squirrel Website"
 msgstr "Bienvenue sur le site internet Squirrel"
 
-#: app\pages\features.controller.js:49 app\pages\features.template.html:232
-#: app\pages\features.template.html:354
+#: app\pages\features.controller.js:49 app\pages\features.template.html:229
+#: app\pages\features.template.html:351
 msgid "What is Squirrel?"
 msgstr "Qu'est ce que Squirrel?"
 
-#: app\pages\features.template.html:257
+#: app\pages\features.template.html:254
 msgid "What makes it different from other online portfolio managers?"
 msgstr ""
 "Qu'est ce qui le rend différent des autres outils de gestions de "
 "portefeuille en ligne?"
 
-#: app\pages\features.template.html:361
+#: app\pages\features.template.html:358
 msgid "Who is behind?"
 msgstr "Qui est derrière?"
 
-#: app\pages\features.controller.js:52 app\pages\features.template.html:288
+#: app\pages\features.controller.js:52 app\pages\features.template.html:285
 msgid "Who is it for?"
 msgstr "A qui est-ce adressé?"
 
@@ -1404,11 +1485,11 @@ msgstr ""
 msgid "YTD"
 msgstr "YTD"
 
-#: app\pages\features.template.html:197
+#: app\pages\features.template.html:194
 msgid "You are in Control"
 msgstr "Vous êtes au Controle."
 
-#: app\pages\features.template.html:198
+#: app\pages\features.template.html:195
 msgid ""
 "You can easily control what other can see. Create private link to graphs or "
 "table, with\n"
@@ -1456,6 +1537,13 @@ msgstr "contact@squirrel-ams.fr"
 #: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "Legal Notes"
+#~ msgstr "Notes Légales"
+
+#~ msgid "Take care of your investiment like the apple of your eye."
+#~ msgstr ""
+#~ "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
 
 #~ msgid "All in One Place"
 #~ msgstr "Tout à Un Seul Endroit"

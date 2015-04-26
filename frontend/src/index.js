@@ -96,6 +96,10 @@ app.config(
           templateUrl: "app/pages/plans.template.html",
           controller: "PlansCtrl"
         })
+        .when("/security", {
+          templateUrl: "app/pages/security.template.html",
+          controller: "SecurityCtrl"
+        })
         .when("/doc", {
           controller: function() {
             window.location.replace('/doc');
