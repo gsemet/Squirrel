@@ -1,1 +1,1 @@
-web: bash -c 'source workdir/bin/activate && squirrel-server'
+web: python ./install/install.py start:prod
