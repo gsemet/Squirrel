@@ -8,6 +8,8 @@ angular.module("squirrel").controller("FeaturesCtrl",
     function($scope, $rootScope, $location, AuthenticationService, $anchorScroll, gettextCatalog,
       $document) {
 
+      $document.scrollTo(0, 0);
+
       $scope.scrollTo = function(id) {
         /* $location.hash(id); */
         /* $anchorScroll(); */
@@ -25,7 +27,7 @@ angular.module("squirrel").controller("FeaturesCtrl",
       $scope.items = [
         {
           "key": "center-history",
-          "text": gettextCatalog.getString("Center of your Finance"),
+          "text": gettextCatalog.getString("Center Of Your Personal Finance"),
           "children": [
             {
               "key": "visualizations",

@@ -3,10 +3,12 @@
 angular.module('squirrel').controller('HomepageCtrl',
 
   ["AuthenticationService", "$rootScope", '$scope', "AUTH_EVENTS", "request", "TranslationService",
-    "$timeout", "$location",
+    "$timeout", "$location", "$document",
 
     function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS, request, TranslationService,
-      $timeout, $location) {
+      $timeout, $location, $document) {
+
+      $document.scrollTo(0, 0);
 
       $scope.logged_in = AuthenticationService.isAuthenticated();
 
