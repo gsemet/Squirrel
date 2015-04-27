@@ -44,10 +44,6 @@ msgstr "1m"
 msgid "1y"
 msgstr "1a"
 
-#: app\pages\plans.template.html:67
-msgid "2.99 € / month"
-msgstr "2,99 € / mois"
-
 #: app\contact\contact.template.html:58
 msgid "31000 Toulouse"
 msgstr "31000 Toulouse"
@@ -61,10 +57,6 @@ msgstr "3m"
 #: app\portfolios\details.controller.js:76
 msgid "6m"
 msgstr "6m"
-
-#: app\pages\plans.template.html:96
-msgid "9,99 € / month"
-msgstr "9,99 € / mois"
 
 #: app\contact\contact.template.html:41
 msgid "A error occured. Please try later."
@@ -98,25 +90,10 @@ msgstr "Tableau de bord d'administration"
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
 
-#: app\pages\plans.template.html:77
-msgid "Advanced Premium"
-msgstr "Premium Avancée"
-
 #. 3 letters to say "all"
 #: app\portfolios\details.controller.js:89
 msgid "All"
 msgstr "Tout"
-
-#: app\pages\plans.template.html:26
-msgid ""
-"All basic features are fully enabled: track as many portfolio as you want, "
-"without any\n"
-"            limitation on the number of stocks or items. Yes, no limitation "
-"on the basic features!"
-msgstr ""
-"Toutes les fonctions basiques sont totalement activée: créez et suivez "
-"autant de portefeuille que vous le voulez, sans aucune limitation sur le "
-"nombre d'actions. Oui, aucune limitation!"
 
 #: app\portfolios\_portfolios.controller.js:39
 #: app\portfolios\allocations.template.html:2
@@ -201,11 +178,6 @@ msgstr ""
 "placesétrangères étaient hors de prix. J'ai donc un deuxième CTO, beaucoup "
 "moins cher pour places boursières aux Etats-Unis."
 
-#: app\pages\plans.template.html:34 app\pages\plans.template.html:62
-#: app\pages\plans.template.html:92
-msgid "As many portfolio as you want"
-msgstr "Autant de portefeuilles que vous le voulez"
-
 #: services\translations\translations.service.js:138
 msgid "Aug"
 msgstr "Aou"
@@ -228,12 +200,6 @@ msgstr "Haut de Page"
 #: app\portfolios\overview.template.html:29
 msgid "Balance"
 msgstr "Balance"
-
-#: app\pages\plans.template.html:55
-msgid "Basic and avdanced features are included: taxations wizards,..."
-msgstr ""
-"Les fonctions basiques et même avancées sont inclus: assitants de calcul "
-"d'impôts..."
 
 #: app\homepage\homepage.unlogged.template.html:40
 msgid "Be your own fund manager."
@@ -538,10 +504,6 @@ msgstr "Suivez tous vos comptes:"
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié?"
 
-#: app\pages\plans.template.html:18 app\pages\plans.template.html:38
-msgid "Free"
-msgstr "Gratuit"
-
 #: app\register\register.template.html:10
 msgid "Free account"
 msgstr "Compte Gratuit"
@@ -759,6 +721,10 @@ msgstr "Mars"
 msgid "May"
 msgstr "Mai"
 
+#: app\pages\plans.controller.js:37
+msgid "Measure"
+msgstr "Mesures"
+
 #: app\pages\features.controller.js:45 app\pages\features.template.html:225
 msgid "Meet Squirrel"
 msgstr "Découvrez Squirrel"
@@ -867,13 +833,13 @@ msgstr ""
 msgid "Policy"
 msgstr "Politique"
 
+#: app\pages\plans.controller.js:15
+msgid "Portfolio Control"
+msgstr "Controle de vos Portefeuilles"
+
 #: app\contact\contact.template.html:46
 msgid "Post details"
 msgstr "Coordonnées"
-
-#: app\pages\plans.template.html:48
-msgid "Premium"
-msgstr "Premium"
 
 #: app\register\register.template.html:17
 msgid "Prepare your investments ahead of time and let you conduct"
@@ -886,6 +852,10 @@ msgstr "A qui s'adresse Squirrel: le particulier"
 #: app\pages\features.template.html:188
 msgid "Public or Private"
 msgstr "Publique ou Privée"
+
+#: app\pages\plans.controller.js:30
+msgid "Quaterly Portfolio Report by email"
+msgstr "Rapports Financier Trimestriel par email"
 
 #: components\navbar\navbar.controller.js:56
 msgid "Register"
@@ -915,6 +885,10 @@ msgstr "Réinit zoom"
 #: services\translations\translations.service.js:157
 msgid "Reset zoom level 1:1"
 msgstr "Réinit zoom niveau 1:1"
+
+#: app\pages\plans.controller.js:42
+msgid "Return, Gain, Alpha"
+msgstr "Gain, Alpha, Profits"
 
 #: services\translations\translations.service.js:151
 msgid "Saturday"
@@ -967,6 +941,10 @@ msgstr "Paramètres"
 #: app\pages\features.template.html:189
 msgid "Share part of your portfolio publicly, or keep it completely private."
 msgstr "Partager votre portefeuille en ligne, ou gardez le complètement privé."
+
+#: app\pages\plans.controller.js:47
+msgid "Share price"
+msgstr "Prix de la part"
 
 #: app\pages\features.controller.js:40 app\pages\features.template.html:182
 msgid "Share your Portfolio"
@@ -1221,10 +1199,6 @@ msgstr "Synchronisez vos opérations avec votre courtier en ligne"
 msgid "Taxation"
 msgstr "Vos Impôts"
 
-#: app\pages\plans.template.html:63
-msgid "Taxation plugins"
-msgstr "Plugin de calcul d'impôts."
-
 #: app\portfolios\taxation.template.html:2
 msgid "Taxes"
 msgstr "Impôts"
@@ -1326,27 +1300,6 @@ msgstr ""
 "Trading sophistiqué qui vous renderont riches. Juste des outils bien conçus, "
 "spécialement adapté aux particuliers."
 
-#: app\pages\plans.template.html:79
-msgid "This plan is dedicated to professional"
-msgstr "Ce plan est spécialement pour les professionnels..."
-
-#: app\pages\plans.template.html:50
-msgid ""
-"This plan is ideal for any particular which wants to access to all level 1 "
-"plugins"
-msgstr ""
-"Ce plan est idéal pour tout particulier qui désire accéder aux plugins de "
-"premier niveau."
-
-#: app\pages\plans.template.html:20
-msgid ""
-"This plan is the best place to start discovering Squirrel. Just open a free "
-"account\n"
-"            and start tracking your investments."
-msgstr ""
-"Ce plan est le meilleur endroit pour commencer à découvrir Squirrel. Ouvrez "
-"un compte gratuitement et commencer à suivre vos investissements."
-
 #: services\translations\translations.service.js:149
 msgid "Thursday"
 msgstr "Jeudi"
@@ -1416,6 +1369,10 @@ msgstr "Utilisez le Nuage à votre propre avantage"
 msgid "Valorisation history"
 msgstr "Historique de Valorisation"
 
+#: app\pages\plans.controller.js:20
+msgid "View and Edit all your Portfolios"
+msgstr "Visualiser et Editer vos portefeuilles"
+
 #: app\pages\features.controller.js:34 app\pages\features.template.html:81
 msgid "Visual Portfolios"
 msgstr "Des Portefeuilles Visuels"
@@ -1446,6 +1403,10 @@ msgstr "Statut des données du web"
 #: services\translations\translations.service.js:148
 msgid "Wednesday"
 msgstr "Mercredi"
+
+#: app\pages\plans.controller.js:25
+msgid "Weekly / Daily Portfolio Report by email"
+msgstr "Rapports Hebdomadaire ou Journalier, par email"
 
 #: services\translations\get_translation.modal.template.html:6
 msgid "Welcome to the Squirrel Website"
@@ -1537,6 +1498,60 @@ msgstr "contact@squirrel-ams.fr"
 #: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "2.99 € / month"
+#~ msgstr "2,99 € / mois"
+
+#~ msgid "9,99 € / month"
+#~ msgstr "9,99 € / mois"
+
+#~ msgid "Advanced Premium"
+#~ msgstr "Premium Avancée"
+
+#~ msgid ""
+#~ "All basic features are fully enabled: track as many portfolio as you "
+#~ "want, without any\n"
+#~ "            limitation on the number of stocks or items. Yes, no "
+#~ "limitation on the basic features!"
+#~ msgstr ""
+#~ "Toutes les fonctions basiques sont totalement activée: créez et suivez "
+#~ "autant de portefeuille que vous le voulez, sans aucune limitation sur le "
+#~ "nombre d'actions. Oui, aucune limitation!"
+
+#~ msgid "As many portfolio as you want"
+#~ msgstr "Autant de portefeuilles que vous le voulez"
+
+#~ msgid "Basic and avdanced features are included: taxations wizards,..."
+#~ msgstr ""
+#~ "Les fonctions basiques et même avancées sont inclus: assitants de calcul "
+#~ "d'impôts..."
+
+#~ msgid "Free"
+#~ msgstr "Gratuit"
+
+#~ msgid "Premium"
+#~ msgstr "Premium"
+
+#~ msgid "Taxation plugins"
+#~ msgstr "Plugin de calcul d'impôts."
+
+#~ msgid "This plan is dedicated to professional"
+#~ msgstr "Ce plan est spécialement pour les professionnels..."
+
+#~ msgid ""
+#~ "This plan is ideal for any particular which wants to access to all level "
+#~ "1 plugins"
+#~ msgstr ""
+#~ "Ce plan est idéal pour tout particulier qui désire accéder aux plugins de "
+#~ "premier niveau."
+
+#~ msgid ""
+#~ "This plan is the best place to start discovering Squirrel. Just open a "
+#~ "free account\n"
+#~ "            and start tracking your investments."
+#~ msgstr ""
+#~ "Ce plan est le meilleur endroit pour commencer à découvrir Squirrel. "
+#~ "Ouvrez un compte gratuitement et commencer à suivre vos investissements."
 
 #~ msgid "Legal Notes"
 #~ msgstr "Notes Légales"

@@ -35,8 +35,8 @@ angular.module("squirrel").controller("PlansCtrl",
         },
         {
           "name": gettextCatalog.getString("Measure"),
-          "odd_class": "",
-          "even_class": "light",
+          "odd_class": "light",
+          "even_class": "",
           "features": [
             {
               "description": gettextCatalog.getString("Return, Gain, Alpha"),
