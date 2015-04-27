@@ -1,80 +1,69 @@
 @import "../../components/common/common.less";
 
-.plans-container{
-  margin-top: 4em;
+.plans-features-table{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-.plans-container h1{
-  background-color: @bgDefault;
-  color: white;
-  padding: 20px;
+.plans-features-header{
+  width: 100%;
+  float: left;
 }
 
-.plans-container h3{
+.plans-feature-title{
+  width: 20%;
+  float: left;
+  padding-right: 30px;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.4em;
+  text-align: right;
+}
+
+.plans-feature-list{
+  width: 80%;
+  float: left;
+}
+
+.plans-features-table .description{
+  float: left;
+  padding-top: 5px;
+}
+
+.plans-features-table .support{
+  float: right;
+}
+
+.plans-features-table .free, .plans-features-table .premium{
+  float: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-transform: uppercase;
+  font-size: 14px;
+  width: 100px;
   text-align: center;
-  font-size: 20px;
 }
 
-.plan-heading{
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 15px;
+.plans-features-table .premium{
+  font-weight: bold;
+  color: darkred;
 }
 
-.plan-heading-free{
-  background-color: @bgDefault;
-  color: white;
+.plans-feature-list ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
 }
 
-.plan-heading-premium{
-  background-color: @bgLight;
-  color: white;
-}
-.plan-heading-advanced-premium{
-  background-color: @bgLighter;
-  color: black;
-}
-
-.plans-caption{
-  margin-top:2em;
-}
-
-.plans-margin-left{
-  margin-left: 15px;
-}
-
-.plans-margin-right{
-  margin-right: 15px;
-}
-
-.plan-offer{
-  padding: 0px;
-  margin-top: 30px;
-  border: 2px solid @bgDefault;
-  border-radius: 1px;
-  font-size: 0.9em;
-  margin-left: 30px;
-  margin-right: 30px;
-}
-
-.plan-offer ul{
-  text-align: left;
-  margin-left: -25px;
-}
-
-.plans-offer-caption{
-  padding-top: 25px;
+.plans-feature-list li {
+  height: 28px;
+  vertical-align: middle;
   padding-left: 15px;
-  padding-right: 15px;
 }
 
-.plans-price{
-  font-size: 1em;
-  margin-top: 10px;
-  margin-right: 0px;
-  margin-bottom: 15px;
-  margin-left: 0px;
-  color: #384c6d;
-  text-align: center;
-  font-weight: bolder;
+.plans-features-table .light {
+  background-color: @bgLighter;
 }

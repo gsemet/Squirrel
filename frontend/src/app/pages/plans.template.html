@@ -11,95 +11,35 @@
         </translate>
       </p>
     </div>
-
-
-    <div class="col-md-offset-1 col-sm-6 col-md-3">
-      <div class="plan-offer">
-        <h3 class="plan-heading plan-heading-free"><translate>Free</translate></h3>
-        <div class="plans-offer-caption text-justify">
-          <p translate>
-
-            This plan is the best place to start discovering Squirrel. Just open a free account
-            and start tracking your investments.
-
-          </p>
-          <p translate>
-
-            All basic features are fully enabled: track as many portfolio as you want, without any
-            limitation on the number of stocks or items. Yes, no limitation on the basic features!
-
-          </p>
-          <hr>
-          <ul>
-            <li translate>As many portfolio as you want</li>
-          </ul>
-        </div>
-        <div class="plans-price">
-          <translate>
-            Free
-          </translate>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-sm-6 col-md-3">
-      <div class="plan-offer">
-        <h3 class="plan-heading plan-heading-premium"><translate>Premium</translate></h3>
-        <div class="plans-offer-caption text-justify">
-          <p translate>
-
-            This plan is ideal for any particular which wants to access to all level 1 plugins
-
-          </p>
-          <p translate>
-
-            Basic and avdanced features are included: taxations wizards,...
-
-          </p>
-          <hr>
-          <ul>
-            <li translate>As many portfolio as you want</li>
-            <li translate>Taxation plugins</li>
-          </ul>
-        </div>
-        <div class="plans-price">
-          <translate>
-            2.99 € / month
-          </translate>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="plans-features-table">
+          <div class="plans-features-header">
+            <div class="plans-feature-title">&nbsp;</div>
+            <div class="plans-feature-list">
+              <div class="description">&nbsp;</div>
+              <div class="support">
+                <div class="free">Free</div>
+                <div class="premium">Premium</div>
+              </div>
+            </div>
+          </div>
+          <div ng-repeat="group in features">
+            <div class="plans-feature-title">{{group.name}}</div>
+            <div class="plans-feature-list">
+              <ul>
+                <li ng-repeat="feature in group.features" ng-class-odd="group.odd_class" ng-class-even="group.even_class">
+                  <div class="description">{{feature.description}}</div>
+                  <div class="support">
+                    <div class="free"><span ng-if="feature.free" class="fa fa-check fa-2x"></span></div>
+                    <div class="premium"><span ng-if="feature.premium" class="fa fa-check fa-2x"></span></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-
-    <div class="col-sm-6 col-md-3">
-      <div class="plan-offer">
-        <h3 class="plan-heading plan-heading-advanced-premium"><translate>Advanced Premium</translate></h3>
-        <div class="plans-offer-caption text-justify">
-          <p translate>
-
-            This plan is dedicated to professional
-
-          </p>
-          <p>
-
-            Lorem ipsum Nulla eiusmod voluptate sed Ut dolore cillum enim amet sit Duis mollit enim
-            incididunt non laboris ad pariatur mollit aliqua et dolore quis magna culpa enim.
-
-          </p>
-          <hr>
-          <ul>
-            <li translate>As many portfolio as you want</li>
-          </ul>
-        </div>
-        <div class="plans-price">
-          <translate>
-            9,99 € / month
-          </translate>
-        </div>
-      </div>
-    </div>
-
-
   </div>
 </div>
