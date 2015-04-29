@@ -8,7 +8,7 @@ import json
 from squirrel.routes import app
 
 
-@app.route("/api/portfolios", methods=['GET'])
+@app.route("/api/portfolios/p", methods=['GET'])
 def route_portfolios(request):
     request.setHeader('Content-Type', 'application/json')
 
@@ -61,8 +61,20 @@ def route_portfolios(request):
     return json.dumps(data)
 
 
-@app.route("/api/portfolios/<path:portfolio_id>", methods=['GET'])
-def route_portfolios_id(request, portfolio_id):
+@app.route("/api/portfolios/types", methods=['GET'])
+def route_portfolios_types(request):
+    request.setHeader('Content-Type', 'application/json')
+
+    data = [
+        {'name': 'CTO'},
+        {'name': 'PEA'},
+        {'name': 'PEA-PME'},
+    ]
+    return json.dumps(data)
+
+
+@app.route("/api/portfolios/p/<path:portfolio_id>", methods=['GET'])
+def route_portfolios_get(request, portfolio_id):
     request.setHeader('Content-Type', 'application/json')
 
     data = {

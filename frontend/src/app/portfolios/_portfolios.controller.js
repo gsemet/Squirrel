@@ -120,10 +120,10 @@ angular.module("squirrel").controller("PortfoliosCtrl",
                 templateUrl: 'app/portfolios/overview.template.html',
               });
             });
-          }, 10);
+          }, 500);
         });
       };
-      $timeout($scope.refresh, 10);
+      $timeout($scope.refresh, 500);
 
       $scope.sidebar_class = "active";
       $scope.toggleSidebar = function() {
