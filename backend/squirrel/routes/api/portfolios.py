@@ -6,6 +6,7 @@ import arrow
 import json
 
 from squirrel.routes import app
+from squirrel.services.config import Config
 
 
 @app.route("/api/portfolios/p", methods=['GET'])
@@ -65,12 +66,13 @@ def route_portfolios(request):
 def route_portfolios_types(request):
     request.setHeader('Content-Type', 'application/json')
 
-    data = [
-        {'name': 'CTO'},
-        {'name': 'PEA'},
-        {'name': 'PEA-PME'},
-    ]
-    return json.dumps(data)
+    data = []
+    for group_name, group_val in Config().settings.country.fr.items():
+        for name in group_val:
+            data.append({
+                'name': name,
+            })
+    return json.dumps(sorted(data, key=lambda x: x['name']))
 
 
 @app.route("/api/portfolios/p/<path:portfolio_id>", methods=['GET'])

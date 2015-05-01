@@ -9,6 +9,7 @@ from squirrel.common.result import EXCEPTION
 from squirrel.common.result import SUCCESS
 from squirrel.common.result import resultToString
 from squirrel.routes import app
+from squirrel.routes.api import getSingleArgFromRequest
 from squirrel.services.crawlers import CrawlerConfig
 
 
@@ -39,14 +40,13 @@ def route_crawlers_action(request, crawler):
             'message': message
         }))
 
-    actions = request.args.get('action', [])
-    if not actions:
+    action = getSingleArgFromRequest(request, 'action')
+    if not action:
         request.setResponseCode(EXCEPTION)
         defer.returnValue(json.dumps({
                                      'error': EXCEPTION,
                                      'message': 'no actions'
                                      }))
-    action = actions[0]
     if not action or action not in ALLOWED_ACTIONS:
         request.setResponseCode(EXCEPTION)
         defer.returnValue(json.dumps({

@@ -6,6 +6,7 @@ import json
 import logging
 
 from squirrel.routes import app
+from squirrel.routes.api import getSingleArgFromRequest
 from squirrel.services.config import Config
 
 log = logging.getLogger(__name__)
@@ -15,15 +16,13 @@ log = logging.getLogger(__name__)
 def route_marketing_get(request):
     request.setHeader('Content-Type', 'application/json')
 
-    req = request.args.get('r', [])
-    lang = request.args.get('l', ["us"])
+    req = getSingleArgFromRequest(request, 'r')
+    lang = getSingleArgFromRequest(request, 'l', default="us")
     log.info("request received for marketing req={!r}, lang={!r}".format(req, lang))
-    if len(req) == 0:
+    if req is None:
         return json.dumps({})
-    req = req.pop(0)
-    if len(lang) == 0:
-        return json.dumps({})
-    lang = lang.pop(0)
+    if lang is None:
+        lang = "us"
     data = {}
     if req == "homepage-accounts":
         data = Config().marketing.country.get(lang, {}).get("homepage_accounts", {})

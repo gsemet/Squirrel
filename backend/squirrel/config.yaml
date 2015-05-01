@@ -95,3 +95,61 @@ marketing:
                 -
                     name: "Other Type"
                     icon_type: "fa fa-envelope fa-3x"
+
+settings:
+    country:
+        fr:
+            'Assurance Vie':
+                - 'Assurance Vie (AV)'
+                - 'Contrat de Capitalisation'
+                - 'Tontine'
+                - "Plan d'Epargne Entreprise (PEE)"
+            'Immobilier':
+                - 'R&eacute;sidence Principale'
+                - 'Borloo'
+                - 'Cenci Bouvard'
+                - 'Duflot'
+                - 'Locatif Ancien'
+                - 'Immobilier Nu propri&eacute;t&eacute;'
+                - 'Immobilier Usufruit'
+                - 'Immobilier Viag&eacute;'
+                - 'Immobilier à l &eacute;tranger'
+                - 'Investissement hotelier'
+                - 'LMNP'
+                - 'LMP'
+                - 'Malraux'
+                - 'Monument historique'
+                - 'OCPI'
+                - 'SCPI'
+                - 'SCPI en nu propri&eacute;t&eacute; Parking'
+                - 'Pinel'
+                - 'Scellier'
+                - 'Robien'
+            "Bourse":
+                - 'PEA'
+                - 'PEA-PME'
+                - 'Compte Titre Ordinaire'
+                - 'PERP'
+                - 'Article 83 (A83)'
+                - 'PERCO'
+                - 'Madelin'
+                - 'Stock Options'
+            "Placement Alternatifs":
+                - 'FIP'
+                - 'FCPI'
+                - 'Bijoux'
+                - 'Chevaux de course'
+                - 'Bois et Foret (GFF)'
+                - 'Investissement en direct dans une PME'
+                - 'Meuble de collection'
+                - 'Or/M&eacute;taux pr&eacute;cieux'
+                - 'Sofica'
+                - "Tableaux et Oeuvre d'Art"
+                - 'Terre Agricole (GFA)'
+                - 'Vache laitière'
+                - 'Vigne (GFV)'
+                - 'Vin'
+                - 'Voiture et Bateau'
+            "Biens professionnels":
+                - 'Parts d&eacute;tenues par les salari&eacute;s et mandataires sociaux'
+                - 'Valeurs mobilières et biens mat&eacute;riels - Biens professionnels'

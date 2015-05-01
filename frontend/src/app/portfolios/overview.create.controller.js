@@ -50,6 +50,7 @@ angular.module("squirrel").controller("PortfolioOverviewCreateController",
       };
       */
       LocationWatcherService.setupWatchers($scope, "portfolioName", "n");
+      LocationWatcherService.setupWatchers($scope, "portfolioDescription", "d");
       LocationWatcherService.setupWatchers($scope, "portfolioTypes.selected.name", "t");
     }
   ]
