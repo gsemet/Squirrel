@@ -2,22 +2,64 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button"
+                class="close"
+                ng-click="cancel()"
+                data-dismiss="modal"
+                aria-hidden="true">&times;</button>
         <h4 class="modal-title" translate>Create new Porfolio</h4>
       </div>
       <div class="modal-body">
-        <p translate>
+        <p>
+          <translate>
 
-          Please select the type of account:
+            Please select the initial settings of your Account. You can change them later.
 
+          </translate>
         </p>
         <div class="row">
+          <!--
+                http://codepen.io/sevilayha/pen/xFcdI
+          -->
           <div class="col-sm-offset-1 col-sm-10">
-            <form class="form-horizontal" role="form">
+            <form name="createPortfolio"
+                  class="form-horizontal"
+                  role="form"
+                  novalidate>
+              <div class="form-group"
+                   ng-class="{ 'has-error' : createPortfolio.portfolioName.$invalid && !createPortfolio.portfolioName.$pristine }">
+                <label for="portfolioName">Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="portfolioName"
+                       name="portfolioName"
+                       ng-model="portfolioName"
+                       placeholder="{{'Please enter your portfolio name (required)' | translate}}"
+                       ng-minlength="3"
+                       required>
+                <p ng-show="createPortfolio.portfolioName.$error.minlength"
+                   class="help-block">
+                  <translate>
+
+                    Please enter a name with 3 characters or more.
+
+                  </translate>
+                </p>
+              </div>
               <div class="form-group">
-                <label for="exampleInputEmail1"><translate>Porfolio Type</translate></label>
-                <ui-select ng-model="portfolioTypes.selected" theme="bootstrap" title="{{'Porfolio Type' | translate}}">
-                  <ui-select-match placeholder="{{'Please select your portfolio type' | translate}}">{{$select.selected.name}}</ui-select-match>
+                <label for="portfolioType">
+                  <translate>Porfolio Type</translate>
+                </label>
+                <ui-select id="portfolioType"
+                           name="portfolioType"
+                           ng-model="portfolioTypes.selected"
+                           theme="bootstrap"
+                           title="{{'Porfolio Type' | translate}}">
+                  <ui-select-match placeholder="{{'Please select your portfolio type' | translate}}">
+
+                    {{$select.selected.name}}
+
+                  </ui-select-match>
                   <ui-select-choices repeat="type in portfolioTypes | filter: $select.search">
                     <div ng-bind-html="type.name | highlight: $select.search"></div>
                   </ui-select-choices>
@@ -25,11 +67,46 @@
               </div>
             </form>
           </div>
+
+          <!-- <div class="col-sm-6">
+            <form name="userForm" novalidate>
+
+              <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                  <label>Name</label>
+                  <input type="text" name="name" class="form-control" ng-model="user.name" required>
+                  <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                  <label>Username</label>
+                  <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+                  <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+                  <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                  <label>Email</label>
+                  <input type="email" name="email" class="form-control" ng-model="user.email">
+                  <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+              </div>
+
+              <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+            </form>
+          </div> -->
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" ng-click="ok()" class="btn btn-primary" data-dismiss="modal" translate>OK</button>
-        <button type="button" ng-click="cancel()" class="btn" data-dismiss="modal" translate>Cancel</button>
+        <button type="button"
+                ng-class="{ 'disabled' : createPortfolio.$invalid }"
+                ng-click="ok()"
+                class="btn btn-primary"
+                data-dismiss="modal"
+                translate>OK</button>
+        <button type="button"
+                ng-click="cancel()"
+                class="btn"
+                data-dismiss="modal"
+                translate>Cancel</button>
       </div>
     </div>
   </div>

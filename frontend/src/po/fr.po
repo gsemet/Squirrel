@@ -197,7 +197,7 @@ msgstr "Mises à Jour Automatiques"
 msgid "Back to Top"
 msgstr "Haut de Page"
 
-#: app\portfolios\overview.template.html:29
+#: app\portfolios\overview.template.html:34
 msgid "Balance"
 msgstr "Balance"
 
@@ -222,7 +222,7 @@ msgstr ""
 msgid "Best Tool To Communicate With Your Financial Advisor"
 msgstr "Le Meilleur Outil pour Communiquer avec votre Conseiller Financier"
 
-#: app\portfolios\overview.template.html:25
+#: app\portfolios\overview.template.html:30
 msgid "Broker"
 msgstr "Courtier"
 
@@ -272,6 +272,7 @@ msgid "Can you synchronize automatically my different accounts?"
 msgstr ""
 "Ne pouvez-vous pas synchroniser automatiquement mes différents comptes?"
 
+#: app\portfolios\overview.create.template.html:105
 #: services\translations\get_translation.modal.template.html:40
 msgid "Cancel"
 msgstr "Annuler"
@@ -359,6 +360,10 @@ msgstr "Calculs de vos couvertures"
 msgid "Crawlers"
 msgstr "Crawlers"
 
+#: app\portfolios\overview.create.template.html:10
+msgid "Create new Porfolio"
+msgstr "Créer un Portefeuille"
+
 #: app\register\register.template.html:44
 msgid "Create your Free Account"
 msgstr "Créez votre compte gratuitement"
@@ -390,7 +395,7 @@ msgstr "Décembre"
 msgid "Demo"
 msgstr "Demo"
 
-#: app\portfolios\overview.template.html:28
+#: app\portfolios\overview.template.html:33
 msgid "Deposit"
 msgstr "Dépot"
 
@@ -399,11 +404,11 @@ msgid "Deposits and Withdrawals"
 msgstr "Dépôts et Retraits"
 
 #: app\admin\admin.crawlers.template.html:13
-#: app\portfolios\overview.template.html:26
+#: app\portfolios\overview.template.html:31
 msgid "Description"
 msgstr "Description"
 
-#: app\portfolios\overview.template.html:30
+#: app\portfolios\overview.template.html:35
 msgid "Details"
 msgstr "Détails"
 
@@ -420,7 +425,7 @@ msgstr ""
 "Montrez votre portefeuille facilement à votre gesionnaire financier, pour "
 "qu'il vous offre encore plus simplement les conseils les plus pertinents."
 
-#: app\portfolios\overview.template.html:31
+#: app\portfolios\overview.template.html:36
 msgid "Edit"
 msgstr "Editer"
 
@@ -764,7 +769,7 @@ msgstr "Mes Portefeuilles"
 #: app\admin\admin.crawlers.template.html:12
 #: app\contact\contact.template.html:17
 #: app\portfolios\details.template.html:20
-#: app\portfolios\overview.template.html:24
+#: app\portfolios\overview.template.html:29
 msgid "Name"
 msgstr "Nom"
 
@@ -780,6 +785,7 @@ msgstr "Nov"
 msgid "November"
 msgstr "Novembre"
 
+#: app\portfolios\overview.create.template.html:99
 #: services\translations\get_translation.modal.template.html:39
 msgid "OK"
 msgstr "OK"
@@ -810,6 +816,14 @@ msgstr "Mot de passe"
 msgid "Plans"
 msgstr "Tarifs"
 
+#: app\portfolios\overview.create.template.html:42
+msgid "Please enter a name with 3 characters or more."
+msgstr "Veuillez entrer un nom avec plus de 3 caractères"
+
+#: app\portfolios\overview.create.template.html:37
+msgid "Please enter your portfolio name (required)"
+msgstr "Veuillez entrer le nom de votre portefolio (requis)"
+
 #: app\register\register.template.html:7
 msgid "Please fill in all the fields."
 msgstr "Veuillez remplir tous les champs."
@@ -829,9 +843,26 @@ msgstr ""
 "avoir sélectionné cette boite de dialogue, en cliquant sur le bouton suivant "
 "dans la barre de navigation:"
 
+#: app\portfolios\overview.create.template.html:14
+msgid ""
+"Please select the initial settings of your Account. You can change them "
+"later."
+msgstr ""
+"Veuillez définir les paramètres par défaut de votre nouveau Portefeuille. "
+"Vous pourrez les changer plus tard."
+
+#: app\portfolios\overview.create.template.html:58
+msgid "Please select your portfolio type"
+msgstr "Veuillez sélectionner le type de votre Portefeuille"
+
 #: components\footer\footer.template.html:18
 msgid "Policy"
 msgstr "Politique"
+
+#: app\portfolios\overview.create.template.html:51
+#: app\portfolios\overview.create.template.html:57
+msgid "Porfolio Type"
+msgstr "Type de portefeuille"
 
 #: app\pages\plans.controller.js:15
 msgid "Portfolio Control"
@@ -1329,7 +1360,7 @@ msgstr "Suivez vos multiples portefeuilles à un seul endroit"
 msgid "Tuesday"
 msgstr "Mardi"
 
-#: app\portfolios\overview.template.html:27
+#: app\portfolios\overview.template.html:32
 msgid "Type"
 msgstr "Enveloppe Fiscale"
 
@@ -1670,9 +1701,6 @@ msgstr "de vos portefeuilles"
 
 #~ msgid "Change homepage language"
 #~ msgstr "Changer la langue"
-
-#~ msgid "My Porfolio"
-#~ msgstr "Mes Portefeuilles"
 
 #~ msgid "You can track almost any kind of investment with this online tool."
 #~ msgstr ""
