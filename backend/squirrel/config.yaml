@@ -99,6 +99,7 @@ marketing:
 settings:
     country:
         fr:
+            # Use special HTML character!
             'Assurance Vie':
                 - 'Assurance Vie (AV)'
                 - 'Contrat de Capitalisation'
@@ -113,7 +114,7 @@ settings:
                 - 'Immobilier Nu propri&eacute;t&eacute;'
                 - 'Immobilier Usufruit'
                 - 'Immobilier Viag&eacute;'
-                - 'Immobilier à l &eacute;tranger'
+                - 'Immobilier &agrave; l &eacute;tranger'
                 - 'Investissement hotelier'
                 - 'LMNP'
                 - 'LMP'
@@ -129,10 +130,12 @@ settings:
                 - 'PEA'
                 - 'PEA-PME'
                 - 'Compte Titre Ordinaire'
-                - 'PERP'
+                - "Plan d'Epargne pour la Retraite Collectif (PERCO)"
+                - "Plan d'Epargne Retraite Populaire (PERP)"
                 - 'Article 83 (A83)'
-                - 'PERCO'
-                - 'Madelin'
+                - 'Compl&eacute;mentaire Retraite des Hospitaliers (CRH)'
+                - 'Pr&eacute;fon'
+                - 'Contrats Madelin'
                 - 'Stock Options'
             "Placement Alternatifs":
                 - 'FIP'
@@ -146,10 +149,16 @@ settings:
                 - 'Sofica'
                 - "Tableaux et Oeuvre d'Art"
                 - 'Terre Agricole (GFA)'
-                - 'Vache laitière'
+                - 'Vache laiti&egrave;re'
                 - 'Vigne (GFV)'
                 - 'Vin'
                 - 'Voiture et Bateau'
             "Biens professionnels":
                 - 'Parts d&eacute;tenues par les salari&eacute;s et mandataires sociaux'
-                - 'Valeurs mobilières et biens mat&eacute;riels - Biens professionnels'
+                - 'Valeurs mobili&egrave;res et biens mat&eacute;riels - Biens professionnels'
+            "Comptes Sp&eacute;culatifs":
+                - 'CFD (Forex ou Indices)'
+                - 'Autre Compte Speculatif (Futures, Options,...)'
+            "Autre Type de Portefeuille":
+                - "Type de portefeuille Personnalis&eacute; (Autre)"
+

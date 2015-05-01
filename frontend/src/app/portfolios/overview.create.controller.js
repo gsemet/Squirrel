@@ -2,9 +2,11 @@
 
 angular.module("squirrel").controller("PortfolioOverviewCreateController",
 
-  ["$scope", "$location", "gettextCatalog", "Restangular", "LocationWatcherService",
+  ["$scope", "$location", "gettextCatalog", "Restangular", "LocationWatcherService", "request",
+  "$sce",
 
-    function($scope, $location, gettextCatalog, Restangular, LocationWatcherService) {
+    function($scope, $location, gettextCatalog, Restangular, LocationWatcherService, request,
+      $sce) {
 
       $scope.portfolioTypes = {};
       $scope.currentType = null;
@@ -26,9 +28,7 @@ angular.module("squirrel").controller("PortfolioOverviewCreateController",
       };
 
       $scope.getPortfolioTypes = function() {
-        var basePortfolioTypes = Restangular.all("api/portfolios/types");
-
-        basePortfolioTypes.getList().then(function(data) {
+        request.request("api/portfolios/types").then(function(data) {
           console.log("received portfolios types: " + JSON.stringify(data));
           $scope.portfolioTypes = data;
           $scope.refresh();
@@ -37,6 +37,10 @@ angular.module("squirrel").controller("PortfolioOverviewCreateController",
         });
       };
       $scope.getPortfolioTypes();
+
+      $scope.groupPerAccountTypes = function(item) {
+        return item[0];
+      };
       /*
       $scope.setupWatchers = function($scope, scopeVarName, nameKey) {
         $scope.$watch(function() {

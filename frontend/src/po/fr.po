@@ -272,7 +272,7 @@ msgid "Can you synchronize automatically my different accounts?"
 msgstr ""
 "Ne pouvez-vous pas synchroniser automatiquement mes différents comptes?"
 
-#: app\portfolios\overview.create.template.html:105
+#: app\portfolios\overview.create.template.html:116
 #: services\translations\get_translation.modal.template.html:40
 msgid "Cancel"
 msgstr "Annuler"
@@ -360,10 +360,6 @@ msgstr "Calculs de vos couvertures"
 msgid "Crawlers"
 msgstr "Crawlers"
 
-#: app\portfolios\overview.create.template.html:10
-msgid "Create new Porfolio"
-msgstr "Créer un Portefeuille"
-
 #: app\register\register.template.html:44
 msgid "Create your Free Account"
 msgstr "Créez votre compte gratuitement"
@@ -407,6 +403,10 @@ msgstr "Dépôts et Retraits"
 #: app\portfolios\overview.template.html:31
 msgid "Description"
 msgstr "Description"
+
+#: app\portfolios\overview.create.template.html:75
+msgid "Description of your Portfolio (not required)"
+msgstr "Veuillez décrire votre Portefeuille (non requis)"
 
 #: app\portfolios\overview.template.html:35
 msgid "Details"
@@ -785,7 +785,7 @@ msgstr "Nov"
 msgid "November"
 msgstr "Novembre"
 
-#: app\portfolios\overview.create.template.html:99
+#: app\portfolios\overview.create.template.html:110
 #: services\translations\get_translation.modal.template.html:39
 msgid "OK"
 msgstr "OK"
@@ -858,6 +858,10 @@ msgstr "Veuillez sélectionner le type de votre Portefeuille"
 #: components\footer\footer.template.html:18
 msgid "Policy"
 msgstr "Politique"
+
+#: app\portfolios\overview.create.template.html:10
+msgid "Porfolio Creation"
+msgstr "Création d'un Portefeuille"
 
 #: app\portfolios\overview.create.template.html:51
 #: app\portfolios\overview.create.template.html:57
@@ -1529,6 +1533,9 @@ msgstr "contact@squirrel-ams.fr"
 #: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "Create new Porfolio"
+#~ msgstr "Créer un Portefeuille"
 
 #~ msgid "2.99 € / month"
 #~ msgstr "2,99 € / mois"

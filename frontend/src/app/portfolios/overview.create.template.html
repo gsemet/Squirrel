@@ -7,7 +7,7 @@
                 ng-click="cancel()"
                 data-dismiss="modal"
                 aria-hidden="true">&times;</button>
-        <h4 class="modal-title" translate>Create new Porfolio</h4>
+        <h4 class="modal-title" translate>Porfolio Creation</h4>
       </div>
       <div class="modal-body">
         <p>
@@ -57,24 +57,26 @@
                            title="{{'Porfolio Type' | translate}}">
                   <ui-select-match placeholder="{{'Please select your portfolio type' | translate}}">
 
-                    {{$select.selected.name}}
+                    {{$select.selected[1]}}
 
                   </ui-select-match>
-                  <ui-select-choices repeat="type in portfolioTypes | filter: $select.search">
-                    <div ng-bind-html="type.name | highlight: $select.search"></div>
+                  <ui-select-choices repeat="type in portfolioTypes | filter: $select.search"
+                                     theme="select2"
+                                     group-by="groupPerAccountTypes" >
+                    <div ng-bind-html="type[1] | highlight: $select.search"></div>
                   </ui-select-choices>
                 </ui-select>
               </div>
               <div class="form-group">
                 <label for="portfolioDescription">Description</label>
-                <input type="text"
-                       class="form-control"
-                       id="portfolioDescription"
-                       name="portfolioDescription"
-                       ng-model="portfolioDescription"
-                       placeholder="{{'Description of your Portfolio (not required)' | translate}}"
-                       required>
-                </p>
+                <textarea
+                  class="form-control"
+                  id="portfolioDescription"
+                  name="portfolioDescription"
+                  ng-model="portfolioDescription"
+                  placeholder="{{'You can enter a more complete description here (not required)' | translate}}"
+                  rows="3">
+                </textarea>
               </div>
             </form>
           </div>

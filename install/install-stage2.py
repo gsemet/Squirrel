@@ -404,7 +404,7 @@ elif "serve_dev" in current_capabilities:
 
         auto_restart_backend_cmd = [
             "auto_relauncher", "--directory", "backend", "--recursive",
-            "--sleep-between-restart", str(sleep_sec), "--patterns", "*.py",
+            "--sleep-between-restart", str(sleep_sec), "--patterns", "*.py;*.yaml",
             "--win32-safe-kill", "--verbose",
             devbackend_launcher]
 
