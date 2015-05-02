@@ -32,7 +32,7 @@ angular.module('squirrel').controller('SandboxNgGridCtrl',
         enableCellSelection: true
       };
 
-      var basePortfolios = Restangular.all("api/portfolios");
+      var basePortfolios = Restangular.all("api/portfolios/p");
 
       // sample:
       //   http://plnkr.co/edit/zuzcma?p=info

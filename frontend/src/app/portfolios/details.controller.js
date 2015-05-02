@@ -11,7 +11,7 @@ angular.module("squirrel").controller("PortfoliosDetailsCtrl",
       $scope.refresh = function() {
         var s = $location.search();
         var wanted_id = s['i'];
-        Restangular.one('api/portfolios', wanted_id).get().then(function(data) {
+        Restangular.one('api/portfolios/p', wanted_id).get().then(function(data) {
           $timeout(function() {
             console.log("received portfolio data for id " + wanted_id + ": " + JSON.stringify(data));
             $scope.portfolio = data;

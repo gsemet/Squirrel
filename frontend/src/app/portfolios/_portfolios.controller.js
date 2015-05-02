@@ -108,7 +108,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
         $scope.is_logged = AuthenticationService.isAuthenticated();
       });
 
-      var basePortfolios = Restangular.all("api/portfolios");
+      var basePortfolios = Restangular.all("api/portfolios/p");
 
       $scope.portfolios = [];
       $scope.refresh = function() {

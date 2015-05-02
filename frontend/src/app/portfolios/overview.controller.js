@@ -8,14 +8,6 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
     function($scope, $location, gettextCatalog, Restangular, ngTableParams, $timeout,
       ModalService, debug) {
 
-      var s = $location.search();
-      $scope.portfolio_id = s["i"];
-      debug.dump("PortfoliosOverviewCtrl", $scope.portfolio_id, "$scope.portfolio_id");
-      if ($scope.portfolio_id) {
-        debug.info("PortfoliosOverviewCtrl", "We are in portfolio detail, leaving overview controller initialization");
-        return;
-      }
-
       var basePortfolios = Restangular.all("api/portfolios/p");
 
       $scope.displayed = [];
@@ -33,9 +25,18 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
 
       $timeout($scope.refresh, 200);
 
+      var s = $location.search();
+      $scope.portfolio_id = s["i"];
+      debug.dump("PortfoliosOverviewCtrl", $scope.portfolio_id, "$scope.portfolio_id");
+      if ($scope.portfolio_id) {
+        debug.info("PortfoliosOverviewCtrl", "We are in portfolio detail, leaving overview controller initialization");
+        return;
+      }
+
       $scope.edit = function(row) {
         debug.log("PortfoliosOverviewCtrl", "edit row = " + JSON.stringify(row));
-        $location.url("/portfolios/?i=" + row.id)
+        $location.search("i", row.id);
+        $scope.portfolio_id = row.id;
       };
 
       $scope.createPortfolio = function() {
