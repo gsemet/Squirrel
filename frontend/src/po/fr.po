@@ -195,10 +195,6 @@ msgstr "Mises à Jour Automatiques"
 msgid "Back to Top"
 msgstr "Haut de Page"
 
-#: app\portfolios\overview.template.html:34
-msgid "Balance"
-msgstr "Balance"
-
 #: app\homepage\homepage.unlogged.template.html:40
 msgid "Be your own fund manager."
 msgstr "Soyez votre propre gérant de fonds."
@@ -219,10 +215,6 @@ msgstr ""
 #: app\pages\features.template.html:208
 msgid "Best Tool To Communicate With Your Financial Advisor"
 msgstr "Le Meilleur Outil pour Communiquer avec votre Conseiller Financier"
-
-#: app\portfolios\overview.template.html:30
-msgid "Broker"
-msgstr "Courtier"
 
 #: app\pages\features.template.html:310
 msgid "But also: Financial Advisor"
@@ -274,7 +266,7 @@ msgid "Can you synchronize automatically my different accounts?"
 msgstr ""
 "Ne pouvez-vous pas synchroniser automatiquement mes différents comptes?"
 
-#: app\portfolios\overview.create.template.html:118
+#: app\portfolios\create.template.html:118
 #: services\translations\get_translation.modal.template.html:40
 msgid "Cancel"
 msgstr "Annuler"
@@ -391,22 +383,13 @@ msgstr "Décembre"
 msgid "Demo"
 msgstr "Demo"
 
-#: app\portfolios\overview.template.html:33
-msgid "Deposit"
-msgstr "Dépot"
-
 #: app\portfolios\cash.template.html:2
 msgid "Deposits and Withdrawals"
 msgstr "Dépôts et Retraits"
 
 #: app\admin\admin.crawlers.template.html:13
-#: app\portfolios\overview.template.html:31
 msgid "Description"
 msgstr "Description"
-
-#: app\portfolios\overview.template.html:35
-msgid "Details"
-msgstr "Détails"
 
 #: app\portfolios\details.template.html:6
 msgid "Details of your portfolio"
@@ -425,10 +408,6 @@ msgid ""
 msgstr ""
 "Montrez votre portefeuille facilement à votre gesionnaire financier, pour "
 "qu'il vous offre encore plus simplement les conseils les plus pertinents."
-
-#: app\portfolios\overview.template.html:36
-msgid "Edit"
-msgstr "Editer"
 
 #: app\contact\contact.template.html:23 app\register\register.template.html:41
 msgid "Email"
@@ -840,7 +819,6 @@ msgstr "Mes Portefeuilles"
 #: app\admin\admin.crawlers.template.html:12
 #: app\contact\contact.template.html:17
 #: app\portfolios\details.template.html:20
-#: app\portfolios\overview.template.html:29
 msgid "Name"
 msgstr "Nom"
 
@@ -856,7 +834,7 @@ msgstr "Nov"
 msgid "November"
 msgstr "Novembre"
 
-#: app\portfolios\overview.create.template.html:112
+#: app\portfolios\create.template.html:112
 #: services\translations\get_translation.modal.template.html:39
 msgid "OK"
 msgstr "OK"
@@ -869,8 +847,7 @@ msgstr "Oct"
 msgid "October"
 msgstr "Octobre"
 
-#: app\portfolios\_portfolios.controller.js:27
-#: app\portfolios\overview.template.html:4
+#: app\portfolios\summary.template.html:4
 msgid "Overview"
 msgstr "Vue Générale"
 
@@ -888,11 +865,11 @@ msgstr "Mot de passe"
 msgid "Plans"
 msgstr "Tarifs"
 
-#: app\portfolios\overview.create.template.html:42
+#: app\portfolios\create.template.html:42
 msgid "Please enter a name with 3 characters or more."
 msgstr "Veuillez entrer un nom avec plus de 3 caractères"
 
-#: app\portfolios\overview.create.template.html:37
+#: app\portfolios\create.template.html:37
 msgid "Please enter your portfolio name (required)"
 msgstr "Veuillez entrer le nom de votre portefolio (requis)"
 
@@ -900,7 +877,7 @@ msgstr "Veuillez entrer le nom de votre portefolio (requis)"
 msgid "Please fill in all the fields."
 msgstr "Veuillez remplir tous les champs."
 
-#: app\portfolios\overview.template.html:5
+#: app\portfolios\summary.template.html:5
 msgid "Please find bellow a summary of the portfolios."
 msgstr "Veuillez trouver ci-dessous un résumé de vos portefeuilles."
 
@@ -915,7 +892,7 @@ msgstr ""
 "avoir sélectionné cette boite de dialogue, en cliquant sur le bouton suivant "
 "dans la barre de navigation:"
 
-#: app\portfolios\overview.create.template.html:14
+#: app\portfolios\create.template.html:14
 msgid ""
 "Please select the initial settings of your Account. You can change them "
 "later."
@@ -923,7 +900,7 @@ msgstr ""
 "Veuillez définir les paramètres par défaut de votre nouveau Portefeuille. "
 "Vous pourrez les changer plus tard."
 
-#: app\portfolios\overview.create.template.html:58
+#: app\portfolios\create.template.html:59
 msgid "Please select your portfolio type"
 msgstr "Veuillez sélectionner le type de votre Portefeuille"
 
@@ -931,18 +908,22 @@ msgstr "Veuillez sélectionner le type de votre Portefeuille"
 msgid "Policy"
 msgstr "Politique"
 
-#: app\portfolios\overview.create.template.html:10
+#: app\portfolios\create.template.html:10
 msgid "Porfolio Creation"
 msgstr "Création d'un Portefeuille"
 
-#: app\portfolios\overview.create.template.html:51
-#: app\portfolios\overview.create.template.html:57
+#: app\portfolios\create.template.html:51
+#: app\portfolios\create.template.html:57
 msgid "Porfolio Type"
 msgstr "Type de portefeuille"
 
 #: app\pages\plans.controller.js:15
 msgid "Portfolio Control"
 msgstr "Controle de vos Portefeuilles"
+
+#: app\portfolios\details.template.html:3
+msgid "Portfolio Details"
+msgstr "Détails de vos Portefeuilles"
 
 #: app\contact\contact.template.html:46
 msgid "Post details"
@@ -1294,6 +1275,10 @@ msgstr "Rapport de Situation"
 msgid "Stock Screener"
 msgstr "Screeners"
 
+#: app\portfolios\_portfolios.controller.js:27
+msgid "Summary"
+msgstr "Résumé"
+
 #: services\translations\translations.service.js:145
 msgid "Sunday"
 msgstr "Dimanche"
@@ -1436,10 +1421,6 @@ msgstr "Suivez vos multiples portefeuilles à un seul endroit"
 msgid "Tuesday"
 msgstr "Mardi"
 
-#: app\portfolios\overview.template.html:32
-msgid "Type"
-msgstr "Enveloppe Fiscale"
-
 #: app\pages\features.template.html:461
 msgid ""
 "Unfortunately, Squirrel cannot retrieve automatically the movement you "
@@ -1578,7 +1559,7 @@ msgstr ""
 "des liens privés vers les graphiques, tableaux ou rapports, avec des "
 "protections par emails et mot de passe, et date d'expiration."
 
-#: app\portfolios\overview.create.template.html:77
+#: app\portfolios\create.template.html:77
 msgid "You can enter a more complete description here (not required)"
 msgstr "Vous pouvez entrer une description plus complète ici (non requis)"
 
@@ -1617,9 +1598,27 @@ msgstr "Zoom"
 msgid "contact@squirrel-ams.fr"
 msgstr "contact@squirrel-ams.fr"
 
-#: app\portfolios\overview.template.html:4
+#: app\portfolios\summary.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "Balance"
+#~ msgstr "Balance"
+
+#~ msgid "Broker"
+#~ msgstr "Courtier"
+
+#~ msgid "Deposit"
+#~ msgstr "Dépot"
+
+#~ msgid "Details"
+#~ msgstr "Détails"
+
+#~ msgid "Edit"
+#~ msgstr "Editer"
+
+#~ msgid "Type"
+#~ msgstr "Enveloppe Fiscale"
 
 #~ msgid "Primary audience of Squirrel"
 #~ msgstr "Pour les Investisseur Particuliers"

@@ -1,4 +1,4 @@
-<div ng-controller="PortfoliosOverviewCtrl">
+<div ng-controller="PortfoliosSummaryCtrl">
   <div ng-if="!!portfolio_id" ng-include="'app/portfolios/details.template.html'"></div>
   <div ng-if="!portfolio_id">
     <h1 class="page-header"><span translate>Overview</span> <small translate>of your portfolios</small></h1>
@@ -10,20 +10,9 @@
         <a class="btn btn-default" ng-click="createPortfolio()">Create new Portfolio</a>
       </li>
     </ul>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="assets/images/dbg-chart.jpg" class="img-responsive" alt="Responsive image">
-        </div>
-        <div class="col-md-6">
-          <img src="assets/images/dbg-chart.jpg" class="img-responsive" alt="Responsive image">
-        </div>
-      </div>
-      <div class="row">
-        &nbsp;
-      </div>
-    </div>
-    <table st-table="displayed" class="table table-striped" st-select-row="row" st-select-mode="single">
+    <portfolio-summary id="portfolio_id">
+    </portfolio-summary>
+    <!-- <table st-table="displayed" class="table table-striped" st-select-row="row" st-select-mode="single">
       <thead>
         <tr>
           <th class="table-header" st-ratio="20" st-sort="name" translate>Name</th>
@@ -45,7 +34,7 @@
           <td st-ratio="20">{{row.deposit | json_currency}}</td>
           <td st-ratio="20">{{row.valorisation | json_currency}}</td>
           <td>
-            <button class="btn btn-sm" popover-placement="top" popover="{{row | portfolio_overview_detail_popover}}" type="button">
+            <button class="btn btn-sm" popover-placement="top" popover="{{row | portfolio_summary_detail_popover}}" type="button">
               <i class="glyphicon glyphicon-eye-open"></i>
             </button>
           </td>
@@ -64,6 +53,6 @@
           </td>
         </tr>
       </tfoot>
-    </table>
+    </table> -->
   </div>
 </div>

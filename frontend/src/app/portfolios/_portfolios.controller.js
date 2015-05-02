@@ -15,18 +15,18 @@ angular.module("squirrel").controller("PortfoliosCtrl",
 
       var s = $location.search()
       if (!s[page_key]) {
-        $location.search("p", "overview");
+        $location.search("p", "summary");
       }
 
       $scope.portfolioIndex = 0;
       $scope.menuItems = [
         {
           search: {
-            'p': 'overview'
+            'p': 'summary'
           },
-          name: gettextCatalog.getString('Overview'),
+          name: gettextCatalog.getString('Summary'),
           icon: 'glyphicon glyphicon-dashboard',
-          templateUrl: 'app/portfolios/overview.template.html',
+          templateUrl: 'app/portfolios/summary.template.html',
         }, {
           search: {
             'p': 'securities'
