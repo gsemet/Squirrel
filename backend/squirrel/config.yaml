@@ -105,6 +105,17 @@ settings:
                 - 'Contrat de Capitalisation'
                 - 'Tontine'
                 - "Plan d'&Eacute;pargne Entreprise (PEE)"
+                - "Plan d'&Eacute;pargne pour la Retraite Collectif (PERCO)"
+                - "Plan d'&Eacute;pargne Retraite Populaire (PERP)"
+                - 'Article 83 (A83)'
+                - 'Compl&eacute;mentaire Retraite des Hospitaliers (CRH)'
+                - 'Pr&eacute;fon'
+                - 'Contrats Madelin'
+            "Actions en Direct (Bourse)":
+                - "Plan d'&Eacute;pargne Action (PEA)"
+                - "Plan d'&Eacute;pargne en Actions destin&eacute; au financement des PME et ETI (PEA-PME)"
+                - 'Compte Titre Ordinaire (CTO)'
+                - 'Stock Options'
             'Immobilier':
                 - 'R&eacute;sidence Principale'
                 - 'Borloo'
@@ -127,17 +138,6 @@ settings:
                 - 'Scellier'
                 - 'Socit&eacute; Civile Immobili&egrave;re (SCI)'
                 - 'Robien'
-            "Bourse":
-                - "Plan d'&Eacute;pargne Action (PEA)"
-                - "Plan d'&Eacute;pargne en Actions destin&eacute; au financement des PME et ETI (PEA-PME)"
-                - 'Compte Titre Ordinaire (CTO)'
-                - "Plan d'&Eacute;pargne pour la Retraite Collectif (PERCO)"
-                - "Plan d'&Eacute;pargne Retraite Populaire (PERP)"
-                - 'Article 83 (A83)'
-                - 'Compl&eacute;mentaire Retraite des Hospitaliers (CRH)'
-                - 'Pr&eacute;fon'
-                - 'Contrats Madelin'
-                - 'Stock Options'
             "Placement Alternatifs":
                 - "Fonds d'Investissement de Proximit&eacute; (FIP)"
                 - "Fonds Commun de Placement dans l'Innovation (FCPI)"
