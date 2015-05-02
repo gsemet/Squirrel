@@ -2,9 +2,9 @@
 
 angular.module('squirrel').service('sidebar',
 
-  ["debug",
+  ["debug", "$rootScope",
 
-    function(debug) {
+    function(debug, $rootScope) {
 
       var that = this;
       this.opened = true;
@@ -12,6 +12,7 @@ angular.module('squirrel').service('sidebar',
       this.NAVIGATE = "sidebar-navigate";
       this.DISPLAY_PAGE = "sidebar-display";
       this.TOGGLE_GROUP = "sidebar-toggle-group";
+      this.REFRESH_SIDEBAR = "sidebar-force-refresh";
 
       this.setOpened = function() {
         that.opened = True;
@@ -35,6 +36,11 @@ angular.module('squirrel').service('sidebar',
         }
         return false;
       };
+
+      this.refresh = function() {
+        debug.log("sidebar", "Order received to refresh the sidebar");
+        $rootScope.$broadcast(this.REFRESH_SIDEBAR);
+      }
 
       this.isInThisState = function(search, itemCollection) {
         /*debug.dump("SidebarService", search, "Searching if 'search'");*/

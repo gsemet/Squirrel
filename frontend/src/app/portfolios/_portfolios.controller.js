@@ -3,10 +3,10 @@
 angular.module("squirrel").controller("PortfoliosCtrl",
 
   ["$scope", "AuthenticationService", "$rootScope", "AUTH_EVENTS", "$location", "gettextCatalog",
-  'Restangular', '$timeout', "debug",
+  'Restangular', '$timeout', "debug", "sidebar",
 
     function($scope, AuthenticationService, $rootScope, AUTH_EVENTS, $location, gettextCatalog,
-      Restangular, $timeout, debug) {
+      Restangular, $timeout, debug, sidebar) {
 
       $scope.is_admin = AuthenticationService.isAdmin();
       $scope.endpoint = "#/portfolios";
@@ -18,7 +18,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
         $location.search("p", "summary");
       }
 
-      $scope.portfolioIndex = 0;
+      $scope.portfolioIndexInSidebar = 0;
       $scope.menuItems = [
         {
           search: {
@@ -114,22 +114,21 @@ angular.module("squirrel").controller("PortfoliosCtrl",
       $scope.refresh = function() {
         $scope.portfolios = [];
         basePortfolios.getList().then(function(data) {
-          $timeout(function() {
-            console.log("received portfolios data for sidebar: " + JSON.stringify(data));
-            $scope.menuItems[$scope.portfolioIndex]['children'] = []
-            _.forEach(data, function(row) {
-              $scope.portfolios.push(row);
-              $scope.menuItems[$scope.portfolioIndex]['children'].push({
-                search: {
-                  'p': 'overview',
-                  'i': row.id,
-                },
-                name: row.name,
-                icon: 'glyphicon glyphicon-dashboard',
-                templateUrl: 'app/portfolios/overview.template.html',
-              });
+          debug.dump("PortfoliosCtrl", data, "received portfolios data for sidebar");
+          $scope.menuItems[$scope.portfolioIndexInSidebar]['children'] = []
+          _.forEach(data, function(row) {
+            $scope.portfolios.push(row);
+            $scope.menuItems[$scope.portfolioIndexInSidebar]['children'].push({
+              search: {
+                'p': 'overview',
+                'i': row.id,
+              },
+              name: row.name,
+              icon: 'glyphicon glyphicon-dashboard',
+              templateUrl: 'app/portfolios/overview.template.html',
             });
-          }, 500);
+          });
+          sidebar.refresh();
         });
       };
       $timeout($scope.refresh, 500);
