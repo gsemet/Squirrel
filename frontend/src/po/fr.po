@@ -412,6 +412,11 @@ msgstr "Détails"
 msgid "Details of your portfolio"
 msgstr "Détail de votre portefeuille"
 
+#: app\homepage\homepage.unlogged.template.html:8
+msgid "Easily Track Your Assets And Prepare Your Own Financial Future"
+msgstr ""
+"Suivez Facilement Tous Vos Actifs et Preparez Votre Propre Futur Financier."
+
 #: app\pages\features.template.html:209
 msgid ""
 "Easily show your portfolio to your financial adviser so he can give you "
@@ -486,10 +491,6 @@ msgstr "Février"
 msgid "Find your next stock here"
 msgstr "Trouvez vos prochaines actions"
 
-#: app\homepage\homepage.unlogged.template.html:62
-msgid "Find your own investment strategy"
-msgstr "Trouvez votre propre stratégie d'investissement"
-
 #: components\footer\footer.template.html:10
 msgid "Find your stocks on the Stock Screener"
 msgstr "Trouvez vos prochaines actions sur le Screener d'Action"
@@ -497,6 +498,10 @@ msgstr "Trouvez vos prochaines actions sur le Screener d'Action"
 #: app\register\register.template.html:35
 msgid "First name"
 msgstr "Prénom"
+
+#: app\homepage\homepage.unlogged.template.html:62
+msgid "Follow Your Own Investment Strategy"
+msgstr "Suivez Votre Propre Stratégie d'Investissement"
 
 #: app\homepage\homepage.unlogged.template.html:110
 msgid "Follow these types of Account:"
@@ -550,14 +555,6 @@ msgstr "Ayez une vue globale de votre situation financière, à chaque instant..
 #: app\pages\features.template.html:200
 msgid "Give a Public Access to Portions of Your Reports"
 msgstr "Donnez un Accès Publique à Certaines Partie de Vos Rapports"
-
-#: app\homepage\homepage.unlogged.template.html:8
-msgid ""
-"Go beyong your spreadsheet software to track your belongings and prepare "
-"your future"
-msgstr ""
-"Au dela de votre feuille de Tableur, suivez facilement vos actifs et "
-"préparez votre futur sereinement"
 
 #: app\pages\features.template.html:346
 msgid "Have Questions about Squirrel?"
@@ -1032,6 +1029,10 @@ msgstr "Partagez vos Portefeuilles"
 msgid "Shares"
 msgstr "Nbr d'actions"
 
+#: app\homepage\homepage.unlogged.template.html:58
+msgid "Show Your Real Exposition"
+msgstr "Découvrez Votre Allocation Réelle"
+
 #: components\navbar\navbar.template.html:45
 msgid "Sign Up"
 msgstr "Inscription"
@@ -1272,10 +1273,6 @@ msgstr "Dimanche"
 #: app\portfolios\details.template.html:21
 msgid "Symbol"
 msgstr "Symboles"
-
-#: app\homepage\homepage.unlogged.template.html:58
-msgid "Synchronize your operations with your online broker"
-msgstr "Synchronisez vos opérations avec votre courtier en ligne"
 
 #: app\portfolios\_portfolios.controller.js:81
 msgid "Taxation"
@@ -1526,12 +1523,12 @@ msgstr "A qui est-ce adressé?"
 #: app\homepage\homepage.unlogged.template.html:93
 msgid ""
 "With this 100% online tool, you can track all your investments from "
-"differents exchanges,\n"
-"          different brokers, different fiscal envelope."
+"differents places:\n"
+"          home, work, mobile. When you want and where you want."
 msgstr ""
 "Avec cet outil 100% en ligne, vous pouvez suivre tous vos investissements "
-"depuis différentes places boursières, différents courtiers, différentes "
-"enveloppes fiscales."
+"depuis n'importe quel endoits: chez vous, à votre travail, en déplacement. "
+"C'est quand et où voulez."
 
 #. 3 letters to say "year-to-date"
 #: app\portfolios\details.controller.js:80
@@ -1594,6 +1591,16 @@ msgstr "contact@squirrel-ams.fr"
 #: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "Synchronize your operations with your online broker"
+#~ msgstr "Synchronisez vos opérations avec votre courtier en ligne"
+
+#~ msgid ""
+#~ "Go beyong your spreadsheet software to track your belongings and prepare "
+#~ "your future"
+#~ msgstr ""
+#~ "Au dela de votre feuille de Tableur, suivez facilement vos actifs et "
+#~ "préparez votre futur sereinement"
 
 #~ msgid "Description of your Portfolio (not required)"
 #~ msgstr "Veuillez décrire votre Portefeuille (non requis)"
