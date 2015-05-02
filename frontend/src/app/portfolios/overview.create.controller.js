@@ -3,21 +3,21 @@
 angular.module("squirrel").controller("PortfolioOverviewCreateController",
 
   ["$scope", "$location", "gettextCatalog", "Restangular", "LocationWatcherService", "request",
-  "$sce",
+  "$sce", "debug",
 
     function($scope, $location, gettextCatalog, Restangular, LocationWatcherService, request,
-      $sce) {
+      $sce, debug) {
 
       $scope.portfolioTypes = {};
       $scope.currentType = null;
       $location.search("a", "create");
 
       $scope.refresh = function() {
-        console.log("currentType = " + JSON.stringify($scope.currentType));
+        debug.dump("PortfolioOverviewCreateController", $scope.currentType, "$scope.currentType");
         if ($scope.currentType) {
           _.forEach($scope.types, function(item) {
-            console.log("item = " + JSON.stringify(item));
-            console.log("item.name = " + JSON.stringify(item.name));
+            debug.dump("PortfolioOverviewCreateController", item, "item");
+            debug.dump("PortfolioOverviewCreateController", item.name, "item.name");
             if (item.name == $scope.currentType) {
               $scope.portfolioTypes = {
                 selected: item
@@ -29,7 +29,7 @@ angular.module("squirrel").controller("PortfolioOverviewCreateController",
 
       $scope.getPortfolioTypes = function() {
         request.request("api/portfolios/types").then(function(data) {
-          console.log("received portfolios types: " + JSON.stringify(data));
+          debug.dump("PortfolioOverviewCreateController", data, "received portfolios types");
           $scope.portfolioTypes = data;
           $scope.refresh();
           $scope.createPortfolio.$setPristine();

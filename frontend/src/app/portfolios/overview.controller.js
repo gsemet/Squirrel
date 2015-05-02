@@ -3,15 +3,16 @@
 angular.module("squirrel").controller("PortfoliosOverviewCtrl",
 
   ["$scope", "$location", "gettextCatalog", "Restangular", "ngTableParams", "$timeout",
-  "ModalService",
+  "ModalService", "debug",
 
     function($scope, $location, gettextCatalog, Restangular, ngTableParams, $timeout,
-      ModalService) {
+      ModalService, debug) {
 
       var s = $location.search();
       $scope.portfolio_id = s["i"];
-      console.log("overview page: $scope.portfolio_id = " + JSON.stringify($scope.portfolio_id));
+      debug.dump("PortfoliosOverviewCtrl", $scope.portfolio_id, "$scope.portfolio_id");
       if ($scope.portfolio_id) {
+        debug.info("PortfoliosOverviewCtrl", "We are in portfolio detail, leaving overview controller initialization");
         return;
       }
 
@@ -22,7 +23,7 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
         $scope.displayed = [];
         basePortfolios.getList().then(function(data) {
           $timeout(function() {
-            console.log("received portfolios data: " + JSON.stringify(data));
+            debug.log("PortfoliosOverviewCtrl", "received portfolios data: " + JSON.stringify(data));
             _.forEach(data, function(row) {
               $scope.displayed.push(row);
             });
@@ -33,7 +34,7 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
       $timeout($scope.refresh, 200);
 
       $scope.edit = function(row) {
-        console.log("edit row = " + JSON.stringify(row));
+        debug.log("PortfoliosOverviewCtrl", "edit row = " + JSON.stringify(row));
         $location.url("/portfolios/?i=" + row.id)
       };
 
@@ -49,11 +50,17 @@ angular.module("squirrel").controller("PortfoliosOverviewCtrl",
           // it as you need to.
           modal.element.modal();
           modal.close.then(function(data) {
-            console.log("creating modal result: " + data);
+            debug.log("PortfoliosOverviewCtrl", "creating modal result: " + data);
             if (data) {}
           });
         });
       };
+
+      var action = s["a"];
+      if (action == "create") {
+        debug.log("PortfoliosOverviewCtrl", "a=create, creating portfolios!!");
+        $timeout($scope.createPortfolio, 100);
+      }
     }
   ]
 );
