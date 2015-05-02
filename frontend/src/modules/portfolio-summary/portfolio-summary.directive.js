@@ -14,7 +14,7 @@ angular.module('squirrel').directive('portfolioSummary',
         },
         controllerAs: "page",
         templateUrl: "modules/portfolio-summary/portfolio-summary.template.html",
-        controller: "PorfolioSummaryCtrl",
+        controller: "PortfolioSummaryDirectiveCtrl",
       };
     }
   ]

@@ -180,10 +180,10 @@ angular.module('squirrel').controller('BodyController',
     function($scope, $location, layout) {
       $scope.classFullPage = function() {
         if (layout.isFullPage()) {
-          console.log("yes is full size!");
+          /*console.log("yes is full size!");*/
           return "view-full-page";
         }
-        console.log("no full size");
+        /*console.log("no full size");*/
         return "";
       }
     }
