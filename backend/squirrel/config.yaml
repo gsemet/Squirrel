@@ -104,7 +104,7 @@ settings:
                 - 'Assurance Vie (AV)'
                 - 'Contrat de Capitalisation'
                 - 'Tontine'
-                - "Plan d'Epargne Entreprise (PEE)"
+                - "Plan d'&Eacute;pargne Entreprise (PEE)"
             'Immobilier':
                 - 'R&eacute;sidence Principale'
                 - 'Borloo'
@@ -115,31 +115,32 @@ settings:
                 - 'Immobilier Usufruit'
                 - 'Immobilier Viag&eacute;'
                 - 'Immobilier &agrave; l &eacute;tranger'
-                - 'Investissement hotelier'
+                - 'Investissement Hotelier'
                 - 'LMNP'
                 - 'LMP'
                 - 'Malraux'
-                - 'Monument historique'
+                - 'Monument Historique'
                 - 'OCPI'
-                - 'SCPI'
+                - 'Part de Soci&eacute;t&eacute; Civile de Placement Immobilier (SCPI)'
                 - 'SCPI en nu propri&eacute;t&eacute; Parking'
                 - 'Pinel'
                 - 'Scellier'
+                - 'Socit&eacute; Civile Immobili&egrave;re (SCI)'
                 - 'Robien'
             "Bourse":
-                - 'PEA'
-                - 'PEA-PME'
-                - 'Compte Titre Ordinaire'
-                - "Plan d'Epargne pour la Retraite Collectif (PERCO)"
-                - "Plan d'Epargne Retraite Populaire (PERP)"
+                - "Plan d'&Eacute;pargne Action (PEA)"
+                - "Plan d'&Eacute;pargne en Actions destin&eacute; au financement des PME et ETI (PEA-PME)"
+                - 'Compte Titre Ordinaire (CTO)'
+                - "Plan d'&Eacute;pargne pour la Retraite Collectif (PERCO)"
+                - "Plan d'&Eacute;pargne Retraite Populaire (PERP)"
                 - 'Article 83 (A83)'
                 - 'Compl&eacute;mentaire Retraite des Hospitaliers (CRH)'
                 - 'Pr&eacute;fon'
                 - 'Contrats Madelin'
                 - 'Stock Options'
             "Placement Alternatifs":
-                - 'FIP'
-                - 'FCPI'
+                - "Fonds d'Investissement de Proximit&eacute; (FIP)"
+                - "Fonds Commun de Placement dans l'Innovation (FCPI)"
                 - 'Bijoux'
                 - 'Chevaux de course'
                 - 'Bois et Foret (GFF)'
