@@ -2,28 +2,29 @@
 
 angular.module('squirrel').service('sidebar',
 
-  [
+  ["debug",
 
-    function() {
+    function(debug) {
 
       var that = this;
       this.opened = true;
       this.firstTime = true;
-      this.NAVIGATE = "navigate";
-      this.TOGGLE_GROUP = "toggle_group";
+      this.NAVIGATE = "sidebar-navigate";
+      this.DISPLAY_PAGE = "sidebar-display";
+      this.TOGGLE_GROUP = "sidebar-toggle-group";
 
       this.setOpened = function() {
         that.opened = True;
-        console.log("setOpened = " + JSON.stringify(that.opened));
+        /*        debug.dump("SidebarService", that.opened, "setOpened");*/
       };
 
       this.toggleOpened = function() {
         that.opened = !that.opened;
-        console.log("toggleOpened = " + JSON.stringify(that.opened));
+        /*debug.dump("SidebarService", that.opened, "toggleOpened");*/
       };
 
       this.isOpened = function() {
-        console.log("isOpened = " + JSON.stringify(that.opened));
+        /*debug.dump("SidebarService", that.opened, "isOpened");*/
         return that.opened;
       };
 
@@ -35,28 +36,32 @@ angular.module('squirrel').service('sidebar',
         return false;
       };
 
-      this.isInThisState = function(search, testItem) {
-        /*console.log("Searchg if search: " + JSON.stringify(search));
-        console.log("is in this item from the collection: " + JSON.stringify(testItem.search));*/
-        if (_.isEqual(search, testItem.search)) {
-          /*console.log("yes, it's the same (empty)");*/
+      this.isInThisState = function(search, itemCollection) {
+        /*debug.dump("SidebarService", search, "Searching if 'search'");*/
+        /*debug.dump("SidebarService", itemCollection.search, "is in this item from the collection: ");*/
+        if (_.isEqual(search, itemCollection.search)) {
+          /*debug.debug("SidebarService", "yes, it's the same (empty)");*/
           return true;
         }
         if (_.isEmpty(search)) {
           return false;
         }
         /* */
-        var yes = true;
+        var found = false;
         _.forEach(search, function(itemSearch, itemSearchkey) {
-          /*console.log("comparing itemSearch (key:" + itemSearchkey + "): " +
-          JSON.stringify(itemSearchkey) + " " + JSON.stringify(itemSearch)); */
-          if (testItem[itemSearchkey] != itemSearch) {
-            /*console.log("no, they are not the same");*/
-            yes = false;
+          /*debug.dump("SidebarService", itemCollection.search, "itemCollection.search")*/
+          /*debug.debug("SidebarService", "comparing itemSearch (key: '" + itemSearchkey + "'): " +
+            JSON.stringify(itemCollection.search[itemSearchkey]) + " with " + JSON.stringify(itemSearch));*/
+          if (!itemCollection.search[itemSearchkey] || itemCollection.search[itemSearchkey] != itemSearch) {
+            /*debug.debug("SidebarService", "no, they are not the same");*/
+          } else {
+            /*debug.debug("SidebarService", "Yes they are the same!");*/
+            found = true;
+            return; /* like a break */
           }
         });
-        /*console.log("returning = " + JSON.stringify(yes));*/
-        return yes;
+        /*debug.debug("SidebarService", "returning " + found);*/
+        return found;
       }
     }
 

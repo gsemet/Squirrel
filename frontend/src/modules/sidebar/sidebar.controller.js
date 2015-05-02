@@ -11,11 +11,11 @@ angular.module('squirrel').controller('SidebarCtrl',
       $scope.toggleSidebar = function() {
         sidebar.toggleOpened();
         $scope.refreshClass();
-        debug.log("sidebar", "sidebar toggle => " + $scope.sidebar_class);
+        debug.debug("sidebar", "sidebar toggle => " + $scope.sidebar_class);
       };
 
       $scope.includeCurrentPage = function() {
-        debug.log("sidebar", "includeCurrentPage !!!");
+        debug.debug("sidebar", "includeCurrentPage !!!");
       };
 
       $scope.refreshClass = function() {
@@ -34,19 +34,26 @@ angular.module('squirrel').controller('SidebarCtrl',
 
       $scope.$on(sidebar.NAVIGATE, function(event, member) {
         $scope.templateUrl = member.templateUrl;
-        debug.log("sidebar", "update search to " + JSON.stringify(member.search));
-        debug.log("sidebar", "order show content of " + JSON.stringify($scope.templateUrl));
+        debug.debug("sidebar", "NAVIGATE event received");
+        debug.debug("sidebar", "order show content of " + JSON.stringify($scope.templateUrl));
+        debug.debug("sidebar", "update search to " + JSON.stringify(member.search));
         $location.search(member.search);
+      });
+
+      $scope.$on(sidebar.DISPLAY_PAGE, function(event, member) {
+        $scope.templateUrl = member.templateUrl;
+        debug.debug("sidebar", "DISPLAY_PAGE page event received");
+        debug.debug("sidebar", "order show content of " + JSON.stringify($scope.templateUrl));
       });
 
       $scope.refreshFromCurrentLocation = function(collection) {
         var search = $location.search();
-        debug.debug("sidebar", "refresh from location = " + JSON.stringify(search));
+        /*debug.debug("sidebar", "refresh from location = " + JSON.stringify(search));*/
         _.forEach($scope.collection, function(itemCollection) {
           if (sidebar.isInThisState(search, itemCollection)) {
-            debug.info("sidebar", "I found we actually are on page: " +
-              JSON.stringify(itemCollection) + "Navigating to it");
-            $scope.$emit(sidebar.NAVIGATE, itemCollection);
+            /*debug.info("sidebar", "I found we actually are on page: " +
+              JSON.stringify(itemCollection) + ". Displaying it");*/
+            $scope.$emit(sidebar.DISPLAY_PAGE, itemCollection);
           }
         });
       };

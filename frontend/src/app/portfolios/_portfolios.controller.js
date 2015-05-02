@@ -11,10 +11,19 @@ angular.module("squirrel").controller("PortfoliosCtrl",
       $scope.is_admin = AuthenticationService.isAdmin();
       $scope.endpoint = "#/portfolios";
 
+      var page_key = 'p';
+
+      var s = $location.search()
+      if (!s[page_key]) {
+        $location.search("p", "overview");
+      }
+
       $scope.portfolioIndex = 0;
       $scope.menuItems = [
         {
-          search: {},
+          search: {
+            'p': 'overview'
+          },
           name: gettextCatalog.getString('Overview'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/overview.template.html',
