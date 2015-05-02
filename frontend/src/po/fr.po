@@ -162,22 +162,19 @@ msgstr "Avr"
 msgid "April"
 msgstr "Avril"
 
-#: app\pages\features.template.html:366
+#: app\pages\features.template.html:446
 msgid ""
-"As humble as my investments was, I had to open several broker accounts to "
-"exploit the\n"
-"              best of each of them. My first broker was quite good for "
-"buying stock from my home\n"
-"              country (France), but was over expensive for stocks abroad. I "
-"then opened another\n"
-"              account on a cheaper broker."
+"As a reminder, Squirrel is able to follow the price evolution of almost any "
+"kind of\n"
+"              Stocks and Mutual Fonds valorisation or Bonds. So, you only "
+"have to manually enter\n"
+"              price of funds that are not publically available."
 msgstr ""
-"Aussi humble que mes investissements soient, j'ai ouvert plusieurs comptes "
-"chez des courtiers en ligne différents, pour en exploiter les avantages. Par "
-"exemple, mon premier Comte Titre Ordinaire, pour acheter des actions, "
-"étaient très adapté pour les actions Françaises, mais les frais pour les "
-"placesétrangères étaient hors de prix. J'ai donc un deuxième CTO, beaucoup "
-"moins cher pour places boursières aux Etats-Unis."
+"Je vous rappelle que Squirrel est capable de suivre l'évolution des prix et "
+"valorisation de pratiquement toutes les actions ou Unités de Compte. Vous "
+"n'aurez à rentrer manuellement que les valorisations des prix des fonds non "
+"exposés au public, tel que la valorisation du fonds euro de votre Assurance "
+"Vie française."
 
 #: services\translations\translations.service.js:138
 msgid "Aug"
@@ -193,7 +190,7 @@ msgstr "Mises à Jour Automatiques"
 
 #: app\pages\features.template.html:128 app\pages\features.template.html:176
 #: app\pages\features.template.html:219 app\pages\features.template.html:278
-#: app\pages\features.template.html:340 app\pages\features.template.html:469
+#: app\pages\features.template.html:340 app\pages\features.template.html:499
 #: app\pages\features.template.html:74
 msgid "Back to Top"
 msgstr "Haut de Page"
@@ -247,16 +244,20 @@ msgstr ""
 msgid "But there plenty of similar tool online?"
 msgstr "Mais il y a déjà des dizaines d'outils similaires sur Internet?"
 
-#: app\pages\features.template.html:395
+#: app\pages\features.template.html:399
 msgid ""
-"But when data starts to becomes quite heavy, with lot of custom import "
+"But when data start to becomes quite heavy, with lot of custom import "
 "scripts, the\n"
 "              Speadsheet started slowing down and become less confortable to "
-"work with."
+"work with. Ultimately,\n"
+"              I was not able to open it on my mobile phone, even the tablet "
+"crashed."
 msgstr ""
 "Mais avec l'augmentation du nombre de données dans le document, celui-ci est "
 "devenu lourd. J'avais également développé par mal de scripts d'import, celui "
-"rendait le document encore plus inconfortable à travailler avec."
+"rendait le document encore plus inconfortable à travailler avec. De plus, je "
+"ne pouvais plus ouvrir mon document avec la version smartphone de Google "
+"Spreadsheet, même sur tablette c'était devenu impossible."
 
 #: components\banners\banners.template.html:45
 msgid ""
@@ -268,7 +269,7 @@ msgstr ""
 "consentement sur l'utilisation de ces cookie, dans le cadre des terme de "
 "politique d'utilisation."
 
-#: app\pages\features.template.html:425
+#: app\pages\features.template.html:445
 msgid "Can you synchronize automatically my different accounts?"
 msgstr ""
 "Ne pouvez-vous pas synchroniser automatiquement mes différents comptes?"
@@ -577,45 +578,64 @@ msgstr "Aide"
 msgid ""
 "Hi! My name is Gaetan Semet. I am Software engineer who started a very "
 "humble investor\n"
-"              life and was very disappointed with existing tools to follow "
-"my different portfolio."
+"              life in 2014 and was very disappointed with existing tools to "
+"follow my different\n"
+"              portfolios."
 msgstr ""
 "Bonjour! Mon nom est Gaetan Semet. De formation Ingénieur en Logiciel, j'ai "
-"démaré une vie d'humble investisseur, et j'ai été très déçu des outils "
-"existants pour gérer mes différents portefeuilles."
+"démaré une vie d'humble investisseur en 2014, et j'ai été très déçu des "
+"outils existants pour gérer mes différents portefeuilles."
+
+#: app\pages\features.template.html:430
+msgid "How long does it take to build a web site like Squirrel?"
+msgstr "Combien de temps cela prend de construire un site tel que Squirrel?"
 
 #: app\pages\features.template.html:313
 msgid "How much does it cost?"
 msgstr "Combien celà coûte-il?"
 
-#: app\pages\features.template.html:374
+#: app\pages\features.template.html:375
 msgid ""
-"I also wanted to follow my Mutual Funds. I didn't understood why they would "
-"be\n"
-"              treated differently than stocks."
+"I also wanted to follow the Mutual Funds I had on contracts opened by my "
+"company. I\n"
+"              wanted to tracke them like I would do with stocks."
 msgstr ""
 "Je voulais également suivre l'ensemble des fonds et unités de compte dont "
-"j'étais investi, au sein d'Assurance Vie ou d'autres enveloppe fiscales. A "
-"chaque fois il fallait les suivre sur leur sites internet, je ne voyais pas "
-"pourquoi ne pas les inclure dans mon document de suivi des actions et les "
-"traiter au même titre qu'une action."
+"j'étais investi, au sein d'Assurance Vie ou d'autres enveloppe fiscales, tel "
+"que les PEE ouverts par mes différents employeurs. A chaque fois, il fallait "
+"les suivre sur leur sites internet, je ne voyais pas pourquoi ne pas les "
+"inclure dans mon document de suivi des actions et les traiter au même titre "
+"qu'une action."
 
-#: app\pages\features.template.html:381
+#: app\pages\features.template.html:367
 msgid ""
-"I started tracking my different stock and mutual funds portfolio using a "
-"speadsheet\n"
-"              software. But I felt very restricted when using such software, "
-"without beneficting\n"
-"              from modern tool, dynamic and interactives charts such as what "
-"we can see on the web."
+"I opened several accounts on several broker, to exploit the best of each "
+"contract.\n"
+"              Each contract has its own avdantages, and drawbacks. For "
+"example, my first stocks\n"
+"              broker was quite good for stocks from my home country "
+"(France), but was over expensive\n"
+"              for stocks abroad. I then opened another account on a cheaper "
+"broker of US stocks."
 msgstr ""
-"J'ai commencé à suivre mes différentes actions et Unité de Comptes (OPCVM) "
-"au sein de mes différents portefeuilles, dans un logiciel de Tableur. Mais "
-"je me suis rapidement senti restreint et limité par cette famille de "
-"logiciel, et celà m'empechait de bénéficier d'outils modernes, du type de "
-"certains graphiques dynamiques et interactifs que l'on peut voir sur le net."
+"J'ai ouvert des comptes chez des courtiers en ligne différents, pour en "
+"exploiter les avantages. Chaque contrat a ses propres inconvenients. Par "
+"exemple, mon premier Comte Titre Ordinaire, pour acheter des actions, "
+"étaient très compétitif pour les actions Françaises, mais les frais pour les "
+"places étrangères étaient hors de prix. J'ai donc ouvert un un second CTO "
+"chez un second courtier, beaucoup moins cher pour les actions américaines. "
+"De même, suivre plusieurs PEE et assurance vie devient vite compliqué."
 
-#: app\pages\features.template.html:403
+#: app\pages\features.template.html:431
+msgid ""
+"I took several months of hard evening work, first to learn web technologies "
+"and to\n"
+"              build this web site."
+msgstr ""
+"J'ai mis plusieurs mois de dûres soirées, d'abord pour apprendre les "
+"technologies du web, puis pour contruire ce site Internet."
+
+#: app\pages\features.template.html:408
 msgid ""
 "I was also disappointed by the graphs themselves, they were not customable "
 "enough\n"
@@ -670,9 +690,30 @@ msgstr "Nom"
 msgid "Last run"
 msgstr "Dernière exécution"
 
-#: app\pages\features.template.html:411
+#: app\pages\features.template.html:416
 msgid "Like for example:"
 msgstr "Comme par exemple:"
+
+#: app\pages\features.template.html:383
+msgid ""
+"Like many people, I started tracking my different stocks and mutual funds "
+"using a\n"
+"              speadsheet software. But I felt very restricted when using "
+"such software, without\n"
+"              beneficting from modern tools, dynamic and interactives charts "
+"such as what we can see\n"
+"              on the web. If services like Dropbox allow you to have access "
+"to you file while on the\n"
+"              go, you still need the software to open and check it."
+msgstr ""
+"Comme beaucoup de mon, j'ai commencé à suivre mes différentes actions et "
+"Unité de Comptes (OPCVM) au sein de mes différents portefeuilles, dans un "
+"logiciel de Tableur. Mais je me suis rapidement senti restreint et limité "
+"par cette famille de logiciel, et celà m'empechait de bénéficier d'outils "
+"modernes, du type de certains graphiques dynamiques et interactifs que l'on "
+"peut voir sur le net. Certains services en ligne tel que Dropbox permettent "
+"d'acceder à ces fichiers depuis n'importe où, mais il faut toujours avoir le "
+"logiciel pour ouvrir ce document."
 
 #: app\portfolios\securities.template.html:2
 msgid "List of your securities"
@@ -1027,7 +1068,7 @@ msgstr "Simple, Efficace, Unique"
 msgid "Simple, easy and straight forward."
 msgstr "Simple, facile et direct."
 
-#: app\pages\features.template.html:388
+#: app\pages\features.template.html:392
 msgid ""
 "So I started using Google Spreadsheet to follow my investments, and I felt "
 "in love\n"
@@ -1041,7 +1082,7 @@ msgstr ""
 "en ligne. Qu'importe le lieu ou le moment dans la journée ou la semaine, je "
 "pouvais éditer et suivre mes portefeuilles instantanément."
 
-#: app\pages\features.template.html:380
+#: app\pages\features.template.html:382
 msgid "So how do you managed to follow your different portfolios?"
 msgstr "Comment faisiez-vous pour suivre vos différents portefeuilles?"
 
@@ -1130,6 +1171,10 @@ msgstr ""
 "Squirrel est disponible pour plusieurs pays. {{navigator_language}}. Pouriez "
 "vous confirmer votre langue préférée:"
 
+#: app\pages\features.template.html:439
+msgid "Squirrel is built in Angular and Python."
+msgstr "Squirrel utilise Angular et Python."
+
 #: app\contact\contact.template.html:54
 msgid "Squirrel is edited by the Squirrel SAS"
 msgstr "Squirrel est édité par la société Squirrel SAS"
@@ -1183,16 +1228,16 @@ msgstr ""
 "graphiquesextrèmement compliqués \"qui en jete\" ni, au contraire, de "
 "graphiques trop simples. Juste ce qu'il vous faut."
 
-#: app\pages\features.template.html:418
+#: app\pages\features.template.html:423
 msgid ""
 "Squirrel started as a personal work but I wanted to do it the right way, "
 "with cutting\n"
-"              edge web technologies. Just in case I could release it as a "
-"real service."
+"              edge web technologies. And though maybe one day I could "
+"release it as a real service."
 msgstr ""
-"Squirrel a démarrer comme un travail personnel, un défi, mais je voulais le "
+"Squirrel a démarré comme un travail personnel, un défi, mais je voulais le "
 "faire directement de la bonne manière, avec les outils de développements Web "
-"de dernière génération. Juste au cas où je désirais le transformer en réel "
+"de dernière génération. Juste au cas où je désirerais le transformer en réel "
 "service."
 
 #: app\pages\features.template.html:293
@@ -1248,7 +1293,7 @@ msgstr "Conditions Générale d'Utilisation"
 msgid "Terms of Service"
 msgstr "Conditions de Service"
 
-#: app\pages\features.template.html:417
+#: app\pages\features.template.html:422
 msgid "That's how Squirrel was born?"
 msgstr "C'est comme cela qu'est né Squirrel?"
 
@@ -1264,7 +1309,7 @@ msgstr "Le Réseau Social de L'Investisseur"
 msgid "The current language exposed by your navigator is:"
 msgstr "La langue courant définie par votre navigateur est:"
 
-#: app\pages\features.template.html:433
+#: app\pages\features.template.html:463
 msgid ""
 "The major issue to deal with is security. \"Reading\" data from your account "
 "means it is\n"
@@ -1303,7 +1348,7 @@ msgstr ""
 "désirez faire un virement par exemple, il vous demandera un code reçu par "
 "SMS. Mais cela empèchera tout raffraichissement automatique."
 
-#: app\pages\features.template.html:447
+#: app\pages\features.template.html:477
 msgid ""
 "The only solution that I can imagine is to cypher your credentials with the "
 "highest\n"
@@ -1370,7 +1415,7 @@ msgstr "Mardi"
 msgid "Type"
 msgstr "Enveloppe Fiscale"
 
-#: app\pages\features.template.html:426
+#: app\pages\features.template.html:453
 msgid ""
 "Unfortunately, Squirrel cannot retrieve automatically the movement you "
 "execute on your\n"
@@ -1378,16 +1423,22 @@ msgid ""
 "fund share. The first\n"
 "              step would be to sign a contract with every broker, connect, "
 "and retrieve this\n"
-"              information."
+"              information. It is a large number of contract to sign, and lot "
+"of these brokers and\n"
+"              banks do not want, or do not have the culture to share this "
+"information.\n"
+"              Interoperability is not a common word in the financial world."
 msgstr ""
 "Malheureusement, Squirrel ne peut pas récupérer automatiquement vos "
 "mouvements que vous executez sur vos différents comptes, comme \"Vente d'une "
 "action\" ou \"achat d'une part de fonds commun (Unité de Compte)\". La "
-"première étape pour se faire voudrait de signer une contrat avec tous les "
-"coutiers et assurance en ligne disponibles, pour se connecter et récuperer "
-"les informations."
+"première étape pour se faire serait de signer un contrat avec chaque coutier "
+"et Assureur en ligne, pour se connecter et récuperer les informations. Au "
+"delà du nombre d'intervenants différents, bon nombre n'ont pas la volonté ni "
+"la culture de fournir l'infrastructure pour  partager cette information. "
+"Interopérabilité n'est pas un mot commun dans le monde financier."
 
-#: app\pages\features.template.html:456
+#: app\pages\features.template.html:486
 msgid ""
 "Until this moment, unfortunately, you have to manually update your "
 "operations. But\n"
@@ -1453,6 +1504,10 @@ msgstr "Bienvenue sur le site internet Squirrel"
 #: app\pages\features.template.html:351
 msgid "What is Squirrel?"
 msgstr "Qu'est ce que Squirrel?"
+
+#: app\pages\features.template.html:438
+msgid "What is the technologies behind?"
+msgstr "Quelles sont les technologies qu'utilisent Squirrel?"
 
 #: app\pages\features.template.html:254
 msgid "What makes it different from other online portfolio managers?"
