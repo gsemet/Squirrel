@@ -31,7 +31,12 @@ angular.module("squirrel").controller("PortfolioOverviewCreateController",
       $scope.getPortfolioTypes = function() {
         request.request("api/portfolios/types").then(function(data) {
           debug.dump("PortfolioOverviewCreateController", data, "received portfolios types");
-          $scope.portfolioTypes = data;
+          $scope.portfolioTypes = _.filter(data, function(item) {
+            debug.dump("PortfolioOverviewCreateController", item, "before");
+            var v = [he.decode(item[0]), he.decode(item[1])];
+            debug.dump("PortfolioOverviewCreateController", v, "after");
+            return v;
+          });
           $scope.refresh();
           $scope.createPortfolio.$setPristine();
           $scope.createPortfolio.portfolioType.$setPristine();
@@ -42,6 +47,7 @@ angular.module("squirrel").controller("PortfolioOverviewCreateController",
       $scope.groupPerAccountTypes = function(item) {
         return item[0];
       };
+
       /*
       $scope.setupWatchers = function($scope, scopeVarName, nameKey) {
         $scope.$watch(function() {

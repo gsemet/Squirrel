@@ -54,11 +54,11 @@
                            name="portfolioType"
                            ng-model="portfolioTypes.selected"
                            theme="bootstrap"
-                           title="{{'Porfolio Type' | translate}}">
+                           title="{{'Porfolio Type' | translate}}"
+                           required>
                   <ui-select-match placeholder="{{'Please select your portfolio type' | translate}}">
-
-                    {{$select.selected[1]}}
-
+                    <div ng-bind-html="$select.selected[1]">
+                    </div>
                   </ui-select-match>
                   <ui-select-choices repeat="type in portfolioTypes | filter: $select.search"
                                      theme="select2"
