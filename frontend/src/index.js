@@ -84,6 +84,11 @@ app.config(
           controller: "AdminCtrl",
           reloadOnSearch: false
         })
+        .when("/sandbox", {
+          templateUrl: "app/sandbox/_sandbox.template.html",
+          controller: "SandboxCtrl",
+          reloadOnSearch: false
+        })
         .when("/tos", {
           templateUrl: "app/pages/tos.template.html",
           controller: "TosCtrl"

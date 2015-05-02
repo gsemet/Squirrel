@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('squirrel').controller('AdminChartsCtrl',
+angular.module('squirrel').controller('SandboxChartsCtrl',
 
   ['$scope', '$http', "$q", "Crossfilter", "$timeout",
 
@@ -143,7 +143,7 @@ angular.module('squirrel').controller('AdminChartsCtrl',
 
       //////////////////////////////////////////////////////////////////////////////////////////////
 
-      $http.get("../app/admin/eurusd.json").then(
+      $http.get("../app/sandbox/eurusd.json").then(
         function(result) {
           console.log("request sent:" + +JSON.stringify(result.data));
 
@@ -213,7 +213,7 @@ angular.module('squirrel').controller('AdminChartsCtrl',
         }
       );
       //////////////////////////////////////////////////////////////////////////////////////////////
-      $http.get("../app/admin/eurusd.json").then(
+      $http.get("../app/sandbox/eurusd.json").then(
 
         function(result) {
           var data = result.data;
@@ -863,7 +863,7 @@ angular.module('squirrel').controller('AdminChartsCtrl',
       // betware of the timing, the div is created later
       $timeout(function() {
         $(function() {
-          $.getJSON('../app/admin/eurusd.json', function(data) {
+          $.getJSON('../app/sandbox/eurusd.json', function(data) {
 
             // create the chart
             $('#hightstock_container').highcharts('StockChart', {
@@ -996,7 +996,7 @@ angular.module('squirrel').controller('AdminChartsCtrl',
       };
 
       // Fetch all of the words to create the Crossfilter from.
-      $http.get('../app/admin/words.json').then(function then(response) {
+      $http.get('../app/sandbox/words.json').then(function then(response) {
 
         // Voila!
         $scope.words = new Crossfilter(response.data, '$id', 'persistent');
@@ -1024,7 +1024,7 @@ angular.module('squirrel').controller('AdminChartsCtrl',
       };
       //////////////////////////////////////////////////////////////////////////////////////////////
 
-      d3.csv("../app/admin/ndx.csv", function(data) {
+      d3.csv("../app/sandbox/ndx.csv", function(data) {
         /* since its a csv file we need to format the data a bit */
         var dateFormat = d3.time.format("%m/%d/%Y");
         var numberFormat = d3.format(".2f");

@@ -5,10 +5,10 @@
 // http://ironsummitmedia.github.io/startbootstrap-sb-admin/index.html
 angular.module('squirrel').controller('AdminCtrl',
 
-  ["AuthenticationService", "$rootScope", '$scope', "AUTH_EVENTS", "ADMIN_PAGES", "$location",
+  ["AuthenticationService", "$rootScope", '$scope', "AUTH_EVENTS", "$location",
   "gettextCatalog",
 
-    function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS, ADMIN_PAGES, $location,
+    function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS, $location,
       gettextCatalog) {
 
       $scope.is_admin = AuthenticationService.isAdmin();
@@ -27,164 +27,6 @@ angular.module('squirrel').controller('AdminCtrl',
           'name': gettextCatalog.getString('Crawlers'),
           'icon': 'fa fa-book',
           'templateUrl': 'app/admin/admin.crawlers.template.html'
-        }, {
-          'type': 'separator',
-        }, {
-          'search': {
-            "p": "charts"
-          },
-          'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.charts.template.html'
-        }, {
-          'search': {
-            "p": "nggrid"
-          },
-          'name': "has children",
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.nggrid.template.html',
-          'children': [{
-              'search': {
-                "p": "nggrid"
-              },
-              'name': gettextCatalog.getString('Ex: NgGrid'),
-              'icon': 'fa fa-book',
-              'templateUrl': 'app/admin/admin.nggrid.template.html'
-            },
-            {
-              'type': 'separator',
-            }, {
-              'search': {},
-              'name': gettextCatalog.getString('Dashboard'),
-              'icon': 'glyphicon glyphicon-dashboard',
-              'templateUrl': 'app/admin/admin.dashboard.template.html'
-            }, {
-              'search': {
-                "p": "crawlers"
-              },
-              'name': gettextCatalog.getString('Crawlers'),
-              'icon': 'fa fa-book',
-              'templateUrl': 'app/admin/admin.crawlers.template.html'
-            }
-          ]
-        }, {
-          'search': {
-            "p": "charts"
-          },
-          'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.charts.template.html'
-        }, {
-          'search': {
-            "p": "nggrid"
-          },
-          'name': gettextCatalog.getString('Ex: NgGrid'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.nggrid.template.html'
-        }, {
-          'search': {},
-          'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'glyphicon glyphicon-dashboard',
-          'templateUrl': 'app/admin/admin.dashboard.template.html'
-        }, {
-          'search': {
-            "p": "crawlers"
-          },
-          'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.crawlers.template.html'
-        }, {
-          'search': {
-            "p": "charts"
-          },
-          'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.charts.template.html'
-        }, {
-          'search': {
-            "p": "nggrid"
-          },
-          'name': gettextCatalog.getString('Ex: NgGrid'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.nggrid.template.html'
-        }, {
-          'search': {},
-          'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'glyphicon glyphicon-dashboard',
-          'templateUrl': 'app/admin/admin.dashboard.template.html'
-        }, {
-          'search': {
-            "p": "crawlers"
-          },
-          'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.crawlers.template.html'
-        }, {
-          'search': {
-            "p": "charts"
-          },
-          'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.charts.template.html'
-        }, {
-          'search': {
-            "p": "nggrid"
-          },
-          'name': gettextCatalog.getString('Ex: NgGrid'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.nggrid.template.html'
-        }, {
-          'search': {},
-          'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'glyphicon glyphicon-dashboard',
-          'templateUrl': 'app/admin/admin.dashboard.template.html'
-        }, {
-          'search': {
-            "p": "crawlers"
-          },
-          'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.crawlers.template.html'
-        }, {
-          'search': {
-            "p": "charts"
-          },
-          'name': gettextCatalog.getString('Ex: Charts'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.charts.template.html'
-        }, {
-          'search': {
-            "p": "nggrid"
-          },
-          'name': gettextCatalog.getString('Ex: NgGrid'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.nggrid.template.html'
-        }, {
-          'search': {},
-          'name': gettextCatalog.getString('Dashboard'),
-          'icon': 'glyphicon glyphicon-dashboard',
-          'templateUrl': 'app/admin/admin.dashboard.template.html'
-        }, {
-          'search': {
-            "p": "crawlers"
-          },
-          'name': gettextCatalog.getString('Crawlers'),
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.crawlers.template.html'
-        }, {
-          'search': {
-            "p": "charts"
-          },
-          'name': 'avant dernier element',
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.charts.template.html'
-        }, {
-          'search': {
-            "p": "nggrid"
-          },
-          'name': 'last item',
-          'icon': 'fa fa-book',
-          'templateUrl': 'app/admin/admin.nggrid.template.html'
         }
       ];
       $scope.currentPage = function(page) {

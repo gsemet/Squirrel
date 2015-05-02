@@ -1,0 +1,10 @@
+<div class="container" ng-if="!is_admin">
+  <div class="row" ng-if="!is_admin">
+    normal users don't have access to this page
+  </div>
+</div>
+
+<div ng-if="is_admin">
+  <sidebar title="{{'Admin Panel' | translate}}" collection="menuItems" endpoint="endpoint" footer="{{'Help' | translate}}">
+  </sidebar>
+</div>

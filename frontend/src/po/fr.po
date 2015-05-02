@@ -78,11 +78,12 @@ msgstr "Accédez à votre portefeuille depuis n'importe où, n'importe quand."
 msgid "Actions"
 msgstr "Actions"
 
-#: app\admin\_admin.template.html:8
+#: app\admin\_admin.template.html:8 app\sandbox\_sandbox.template.html:8
 msgid "Admin Panel"
 msgstr "Configuration"
 
 #: app\admin\admin.dashboard.template.html:3
+#: app\sandbox\sandbox.dashboard.template.html:3
 msgid "Administrator Dashboard"
 msgstr "Tableau de bord d'administration"
 
@@ -272,7 +273,7 @@ msgid "Can you synchronize automatically my different accounts?"
 msgstr ""
 "Ne pouvez-vous pas synchroniser automatiquement mes différents comptes?"
 
-#: app\portfolios\overview.create.template.html:116
+#: app\portfolios\overview.create.template.html:118
 #: services\translations\get_translation.modal.template.html:40
 msgid "Cancel"
 msgstr "Annuler"
@@ -353,10 +354,7 @@ msgstr "Couvertures"
 msgid "Covers Computation"
 msgstr "Calculs de vos couvertures"
 
-#: app\admin\_admin.controller.js:119 app\admin\_admin.controller.js:145
-#: app\admin\_admin.controller.js:171 app\admin\_admin.controller.js:27
-#: app\admin\_admin.controller.js:65 app\admin\_admin.controller.js:93
-#: app\admin\admin.crawlers.template.html:3
+#: app\admin\_admin.controller.js:27 app\admin\admin.crawlers.template.html:3
 msgid "Crawlers"
 msgstr "Crawlers"
 
@@ -373,9 +371,10 @@ msgstr ""
 msgid "Current language: {{language}}"
 msgstr "Langue actuelle: {{language}}"
 
-#: app\admin\_admin.controller.js:112 app\admin\_admin.controller.js:138
-#: app\admin\_admin.controller.js:164 app\admin\_admin.controller.js:20
-#: app\admin\_admin.controller.js:58 app\admin\_admin.controller.js:86
+#: app\admin\_admin.controller.js:20 app\sandbox\_sandbox.controller.js:110
+#: app\sandbox\_sandbox.controller.js:129
+#: app\sandbox\_sandbox.controller.js:20 app\sandbox\_sandbox.controller.js:51
+#: app\sandbox\_sandbox.controller.js:72 app\sandbox\_sandbox.controller.js:91
 msgid "Dashboard"
 msgstr "Tableau de Bord"
 
@@ -403,10 +402,6 @@ msgstr "Dépôts et Retraits"
 #: app\portfolios\overview.template.html:31
 msgid "Description"
 msgstr "Description"
-
-#: app\portfolios\overview.create.template.html:75
-msgid "Description of your Portfolio (not required)"
-msgstr "Veuillez décrire votre Portefeuille (non requis)"
 
 #: app\portfolios\overview.template.html:35
 msgid "Details"
@@ -457,15 +452,16 @@ msgstr "Tout Faire Facilement"
 msgid "Everywhere, anytime"
 msgstr "Quand vous voulez, où vous voulez"
 
-#: app\admin\_admin.controller.js:100 app\admin\_admin.controller.js:126
-#: app\admin\_admin.controller.js:152 app\admin\_admin.controller.js:36
-#: app\admin\_admin.controller.js:74
+#: app\sandbox\_sandbox.controller.js:117
+#: app\sandbox\_sandbox.controller.js:29 app\sandbox\_sandbox.controller.js:60
+#: app\sandbox\_sandbox.controller.js:79 app\sandbox\_sandbox.controller.js:98
 msgid "Ex: Charts"
 msgstr "Ex: Charts"
 
-#: app\admin\_admin.controller.js:107 app\admin\_admin.controller.js:133
-#: app\admin\_admin.controller.js:159 app\admin\_admin.controller.js:50
-#: app\admin\_admin.controller.js:81
+#: app\sandbox\_sandbox.controller.js:105
+#: app\sandbox\_sandbox.controller.js:124
+#: app\sandbox\_sandbox.controller.js:43 app\sandbox\_sandbox.controller.js:67
+#: app\sandbox\_sandbox.controller.js:86
 msgid "Ex: NgGrid"
 msgstr "Ex: NgGrid"
 
@@ -572,6 +568,7 @@ msgstr "Siège Social :"
 
 #: app\admin\_admin.template.html:8
 #: app\portfolios\_portfolios.template.html:47
+#: app\sandbox\_sandbox.template.html:8
 #: components\footer\footer.template.html:14
 msgid "Help"
 msgstr "Aide"
@@ -697,7 +694,7 @@ msgstr "Connexion"
 msgid "Log in to your account"
 msgstr "Connexion à votre compte"
 
-#: components\navbar\navbar.template.html:62
+#: components\navbar\navbar.template.html:63
 msgid "Log out"
 msgstr "Deconnexion"
 
@@ -785,7 +782,7 @@ msgstr "Nov"
 msgid "November"
 msgstr "Novembre"
 
-#: app\portfolios\overview.create.template.html:110
+#: app\portfolios\overview.create.template.html:112
 #: services\translations\get_translation.modal.template.html:39
 msgid "OK"
 msgstr "OK"
@@ -804,6 +801,7 @@ msgid "Overview"
 msgstr "Vue Générale"
 
 #: app\admin\admin.dashboard.template.html:3
+#: app\sandbox\sandbox.dashboard.template.html:3
 msgid "Overview of the website"
 msgstr "Vue d'ensemble du site"
 
@@ -924,6 +922,10 @@ msgstr "Réinit zoom niveau 1:1"
 #: app\pages\plans.controller.js:42
 msgid "Return, Gain, Alpha"
 msgstr "Gain, Alpha, Profits"
+
+#: components\navbar\navbar.template.html:62
+msgid "Sandbox"
+msgstr "Boite à Sable"
 
 #: services\translations\translations.service.js:151
 msgid "Saturday"
@@ -1495,6 +1497,10 @@ msgstr ""
 "des liens privés vers les graphiques, tableaux ou rapports, avec des "
 "protections par emails et mot de passe, et date d'expiration."
 
+#: app\portfolios\overview.create.template.html:77
+msgid "You can enter a more complete description here (not required)"
+msgstr "Vous pouvez entrer une description plus complète ici (non requis)"
+
 #: app\contact\contact.template.html:25
 msgid "Your Email"
 msgstr "Votres adresse email"
@@ -1533,6 +1539,9 @@ msgstr "contact@squirrel-ams.fr"
 #: app\portfolios\overview.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "Description of your Portfolio (not required)"
+#~ msgstr "Veuillez décrire votre Portefeuille (non requis)"
 
 #~ msgid "Create new Porfolio"
 #~ msgstr "Créer un Portefeuille"

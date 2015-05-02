@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('squirrel').controller('AdminNgGridCtrl',
+angular.module('squirrel').controller('SandboxNgGridCtrl',
 
   ['$scope', "Restangular", "ngTableParams", '$timeout',
 
