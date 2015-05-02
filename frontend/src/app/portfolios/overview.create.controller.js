@@ -17,8 +17,9 @@ angular.module("squirrel").controller("PortfolioOverviewCreateController",
         if ($scope.currentType) {
           _.forEach($scope.types, function(item) {
             debug.dump("PortfolioOverviewCreateController", item, "item");
-            debug.dump("PortfolioOverviewCreateController", item.name, "item.name");
-            if (item.name == $scope.currentType) {
+            debug.dump("PortfolioOverviewCreateController", item[0], "item[0]");
+            debug.dump("PortfolioOverviewCreateController", item[1], "item[1]");
+            if (item[1] == $scope.currentType) {
               $scope.portfolioTypes = {
                 selected: item
               };
@@ -55,7 +56,7 @@ angular.module("squirrel").controller("PortfolioOverviewCreateController",
       */
       LocationWatcherService.setupWatchers($scope, "portfolioName", "n");
       LocationWatcherService.setupWatchers($scope, "portfolioDescription", "d");
-      LocationWatcherService.setupWatchers($scope, "portfolioTypes.selected.name", "t");
+      LocationWatcherService.setupWatchers($scope, "portfolioTypes.selected[1]", "t");
     }
   ]
 );
