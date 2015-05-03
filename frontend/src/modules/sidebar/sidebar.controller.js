@@ -50,9 +50,13 @@ angular.module('squirrel').controller('SidebarCtrl',
         debug.debug("SidebarCtrl", "Sidebar controller received order to refresh itself");
         debug.dump("SidebarCtrl", $scope.collection, "$scope.collection");
         $timeout(function() {
-          debug.log("SidebarCtrl", "refreshing sidebar");
-          $scope.$digest();
-        }, 500);
+          debug.log("SidebarCtrl", "brutally refreshing sidebar");
+          var old_collection = $scope.collection;
+          $scope.collection = {};
+          $scope.$apply();
+          $scope.collection = old_collection;
+          $scope.$apply();
+        }, 200);
       });
 
       $scope.refreshFromCurrentLocation = function(collection) {
