@@ -35,12 +35,12 @@ msgid "100% online, live update."
 msgstr "100% en ligne, constamenet à jour."
 
 #. 2 letters to say "1 month"
-#: app\portfolios\details.controller.js:66
+#: app\portfolios\details.controller.js:68
 msgid "1m"
 msgstr "1m"
 
 #. 2 letters to say "1 year"
-#: app\portfolios\details.controller.js:85
+#: app\portfolios\details.controller.js:87
 msgid "1y"
 msgstr "1a"
 
@@ -49,12 +49,12 @@ msgid "31000 Toulouse"
 msgstr "31000 Toulouse"
 
 #. 2 letters to say "3 months"
-#: app\portfolios\details.controller.js:71
+#: app\portfolios\details.controller.js:73
 msgid "3m"
 msgstr "3m"
 
 #. 2 letters to say "6 months"
-#: app\portfolios\details.controller.js:76
+#: app\portfolios\details.controller.js:78
 msgid "6m"
 msgstr "6m"
 
@@ -87,12 +87,12 @@ msgstr "Configuration"
 msgid "Administrator Dashboard"
 msgstr "Tableau de bord d'administration"
 
-#: components\navbar\navbar.template.html:61
+#: components\navbar\navbar.template.html:64
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
 
 #. 3 letters to say "all"
-#: app\portfolios\details.controller.js:89
+#: app\portfolios\details.controller.js:91
 msgid "All"
 msgstr "Tout"
 
@@ -284,7 +284,7 @@ msgstr "Le Centre de Votre Finance Personnelle."
 msgid "Change Language"
 msgstr "Changer la langue courante"
 
-#: components\navbar\navbar.template.html:29
+#: components\navbar\navbar.template.html:32
 msgid "Change language"
 msgstr "Selectionnez votre langue"
 
@@ -379,7 +379,7 @@ msgstr "Déc"
 msgid "December"
 msgstr "Décembre"
 
-#: components\navbar\navbar.controller.js:46
+#: components\navbar\navbar.controller.js:47
 msgid "Demo"
 msgstr "Demo"
 
@@ -455,7 +455,7 @@ msgstr "Ex: NgGrid"
 msgid "FAQ"
 msgstr "Questions Fréquentes"
 
-#: components\navbar\navbar.controller.js:37
+#: components\navbar\navbar.controller.js:38
 msgid "Features"
 msgstr "Decouverte"
 
@@ -739,7 +739,7 @@ msgstr "Chargement..."
 msgid "Log In"
 msgstr "Connexion"
 
-#: components\navbar\navbar.template.html:37
+#: components\navbar\navbar.template.html:40
 msgid "Log in"
 msgstr "Connexion"
 
@@ -747,11 +747,11 @@ msgstr "Connexion"
 msgid "Log in to your account"
 msgstr "Connexion à votre compte"
 
-#: components\navbar\navbar.template.html:63
+#: components\navbar\navbar.template.html:66
 msgid "Log out"
 msgstr "Deconnexion"
 
-#: components\navbar\navbar.controller.js:53
+#: components\navbar\navbar.controller.js:54
 msgid "Login"
 msgstr "Connexion"
 
@@ -812,7 +812,7 @@ msgstr ""
 
 #: app\portfolios\_portfolios.template.html:47
 #: components\footer\footer.template.html:11
-#: components\navbar\navbar.controller.js:27
+#: components\navbar\navbar.controller.js:28
 msgid "My Portfolios"
 msgstr "Mes Portefeuilles"
 
@@ -861,7 +861,7 @@ msgid "Password"
 msgstr "Mot de passe"
 
 #: components\footer\footer.template.html:20
-#: components\navbar\navbar.controller.js:40
+#: components\navbar\navbar.controller.js:41
 msgid "Plans"
 msgstr "Tarifs"
 
@@ -941,7 +941,7 @@ msgstr "Publique ou Privée"
 msgid "Quaterly Portfolio Report by email"
 msgstr "Rapports Financier Trimestriel par email"
 
-#: components\navbar\navbar.controller.js:56
+#: components\navbar\navbar.controller.js:57
 msgid "Register"
 msgstr "Enregistrement"
 
@@ -974,7 +974,7 @@ msgstr "Réinit zoom niveau 1:1"
 msgid "Return, Gain, Alpha"
 msgstr "Gain, Alpha, Profits"
 
-#: components\navbar\navbar.template.html:62
+#: components\navbar\navbar.template.html:65
 msgid "Sandbox"
 msgstr "Bac à Sable"
 
@@ -984,7 +984,7 @@ msgstr "Samedi"
 
 #: components\footer\footer.template.html:10
 #: components\navbar\navbar.controller.js:24
-#: components\navbar\navbar.controller.js:43
+#: components\navbar\navbar.controller.js:44
 msgid "Screeners"
 msgstr "Screeners"
 
@@ -993,7 +993,7 @@ msgstr "Screeners"
 msgid "Securities"
 msgstr "Actions"
 
-#: app\portfolios\details.controller.js:33
+#: app\portfolios\details.controller.js:35
 msgid "Securities Allocation"
 msgstr "Allocation"
 
@@ -1022,7 +1022,7 @@ msgid "Services"
 msgstr "Services"
 
 #: app\settings\settings.template.html:15
-#: components\navbar\navbar.template.html:60
+#: components\navbar\navbar.template.html:63
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -1046,11 +1046,11 @@ msgstr "Nbr d'actions"
 msgid "Show Your Real Exposition"
 msgstr "Découvrez Votre Allocation Réelle"
 
-#: components\navbar\navbar.template.html:45
+#: components\navbar\navbar.template.html:48
 msgid "Sign Up"
 msgstr "Inscription"
 
-#: components\navbar\navbar.template.html:45
+#: components\navbar\navbar.template.html:48
 msgid "Sign Up for Free"
 msgstr "Inscription gratuite"
 
@@ -1317,7 +1317,7 @@ msgstr "Le Réseau Social de L'Investisseur"
 
 #: services\translations\get_translation.modal.controller.js:15
 msgid "The current language exposed by your navigator is:"
-msgstr "La langue courant définie par votre navigateur est:"
+msgstr "La langue actuellement définie dans votre navigateur est:"
 
 #: app\pages\features.template.html:471
 msgid ""
@@ -1459,7 +1459,7 @@ msgstr ""
 msgid "Use the Cloud to your own advantage"
 msgstr "Utilisez le Nuage à votre propre avantage"
 
-#: app\portfolios\details.controller.js:101
+#: app\portfolios\details.controller.js:103
 msgid "Valorisation history"
 msgstr "Historique de Valorisation"
 
@@ -1541,7 +1541,7 @@ msgstr ""
 "C'est quand et où voulez."
 
 #. 3 letters to say "year-to-date"
-#: app\portfolios\details.controller.js:80
+#: app\portfolios\details.controller.js:82
 msgid "YTD"
 msgstr "YTD"
 

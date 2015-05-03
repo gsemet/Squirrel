@@ -10,9 +10,9 @@ angular.module('squirrel').controller('GetTranslationController',
       $scope.navigator_language = window.navigator.userLanguage || window.navigator.language || navigator.language ||
         navigator.browserLanguage;
       if (!$scope.navigator_language) {
-        $scope.navigator_language = gettextCatalog.getString('We cannot find your language based on your navigator');
+        $scope.navigator_language = gettextCatalog.getString("We cannot find your language based on your navigator");
       } else {
-        $scope.navigator_language = gettextCatalog.getString('The current language exposed by your navigator is: ') +
+        $scope.navigator_language = gettextCatalog.getString("The current language exposed by your navigator is: ") +
           $scope.navigator_language;
       }
 
