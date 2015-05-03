@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('squirrel').directive('sidebar',
+angular.module('squirrel').directive('sidebarWithContent',
 
   [
 
