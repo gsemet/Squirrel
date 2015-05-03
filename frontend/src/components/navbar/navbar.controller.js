@@ -23,7 +23,8 @@ angular.module('squirrel').controller('NavbarCtrl',
               endpoint: 'screeners',
               linktext: gettextCatalog.getString('Screeners'),
             }, {
-              endpoint: 'portfolios?p=overview',
+              /*endpoint: 'portfolios?p=overview',*/
+              endpoint: 'portfolios',
               linktext: gettextCatalog.getString('My Portfolios'),
             }
           ];

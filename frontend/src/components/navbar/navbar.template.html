@@ -21,7 +21,10 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
     </div>
     <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
       <ul class="nav navbar-nav">
-        <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')"> <a href='#/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a></li>
+        <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')">
+          <!-- <a href='#/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a> -->
+          <a ui-sref='{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a>
+        </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

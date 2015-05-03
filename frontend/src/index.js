@@ -30,6 +30,7 @@ app = angular.module("squirrel", [
   'toastr',
   'ui.bootstrap',
   'ui.bootstrap.modal',
+  'ui.router',
   'ui.select',
   //'angularDc',
   //'stpa.morris',
@@ -38,82 +39,160 @@ app = angular.module("squirrel", [
 app.config(
 
   ['$routeProvider', '$locationProvider', 'toastrConfig', "environmentProvider",
+  "$stateProvider", "$urlRouterProvider",
 
-    function($routeProvider, $locationProvider, toastrConfig, environmentProvider) {
+    function($routeProvider, $locationProvider, toastrConfig, environmentProvider,
+      $stateProvider, $urlRouterProvider) {
+      $urlRouterProvider.otherwise("/");
 
-      $routeProvider
-        .when("/", {
+      $stateProvider
+        .state('homepage', {
+          url: "/",
           templateUrl: "app/homepage/homepage.template.html",
           controller: "HomepageCtrl",
         })
-        .when("/portfolios", {
+        .state('portfolios', {
+          url: "/portfolios",
           templateUrl: "app/portfolios/_portfolios.template.html",
           controller: "PortfoliosCtrl",
           reloadOnSearch: false
         })
-        .when("/portfolios/details/:portfolioId", {
-          templateUrl: "app/portfolios/portfolios.template.html",
-          controller: "PortfoliosCtrl"
-        })
-        .when("/screeners", {
+        .state('screeners', {
+          url: "/screeners",
           templateUrl: "app/screeners/screeners.template.html",
-          controller: "ScreenersCtrl"
+          controller: "ScreenersCtrl",
         })
-        .when("/login", {
+        .state('login', {
+          url: "/login",
           templateUrl: "app/login/login.template.html",
-          controller: "LoginCtrl"
+          controller: "LoginCtrl",
         })
-        .when("/register", {
+        .state('register', {
+          url: "/register",
           templateUrl: "app/register/register.template.html",
-          controller: "RegisterCtrl"
+          controller: "RegisterCtrl",
         })
-        .when("/settings", {
+        .state('settings', {
+          url: "/settings",
           templateUrl: "app/settings/settings.template.html",
-          controller: "SettingsCtrl"
+          controller: "SettingsCtrl",
         })
-        .when("/help", {
+        .state('help', {
+          url: "/help",
           templateUrl: "app/help/help.template.html",
-          controller: "HelpCtrl"
+          controller: "HelpCtrl",
         })
-        .when("/contact", {
-          templateUrl: "app/contact/contact.template.html",
-          controller: "ContactCtrl"
-        })
-        .when("/admin", {
+        .state("admin", {
+          url: "/admin",
           templateUrl: "app/admin/_admin.template.html",
           controller: "AdminCtrl",
           reloadOnSearch: false
         })
-        .when("/sandbox", {
+        .state("sandbox", {
+          url: "/sandbox",
           templateUrl: "app/sandbox/_sandbox.template.html",
           controller: "SandboxCtrl",
           reloadOnSearch: false
         })
-        .when("/tos", {
+        .state("tos", {
+          url: "/tos",
           templateUrl: "app/pages/tos.template.html",
           controller: "TosCtrl"
         })
-        .when("/features", {
+        .state("features", {
+          url: "/features",
           templateUrl: "app/pages/features.template.html",
           controller: "FeaturesCtrl"
         })
-        .when("/plans", {
+        .state("plans", {
+          url: "/plans",
           templateUrl: "app/pages/plans.template.html",
           controller: "PlansCtrl"
         })
-        .when("/security", {
+        .state("security", {
+          url: "/security",
           templateUrl: "app/pages/security.template.html",
           controller: "SecurityCtrl"
         })
-        .when("/doc", {
-          controller: function() {
-            window.location.replace('/doc');
-          },
-          template: "<div></div>"
-        })
-        .otherwise({
-          redirectTo: "/"
+        .state("contact", {
+          url: '/contact',
+          templateUrl: "app/contact/contact.template.html",
+          controller: "ContactCtrl"
         });
+      /*
+            $routeProvider
+              .when("/", {
+                templateUrl: "app/homepage/homepage.template.html",
+                controller: "HomepageCtrl",
+              })
+              .when("/portfolios", {
+                templateUrl: "app/portfolios/_portfolios.template.html",
+                controller: "PortfoliosCtrl",
+                reloadOnSearch: false
+              })
+              .when("/portfolios/details/:portfolioId", {
+                templateUrl: "app/portfolios/portfolios.template.html",
+                controller: "PortfoliosCtrl"
+              })
+              .when("/screeners", {
+                templateUrl: "app/screeners/screeners.template.html",
+                controller: "ScreenersCtrl"
+              })
+              .when("/login", {
+                templateUrl: "app/login/login.template.html",
+                controller: "LoginCtrl"
+              })
+              .when("/register", {
+                templateUrl: "app/register/register.template.html",
+                controller: "RegisterCtrl"
+              })
+              .when("/settings", {
+                templateUrl: "app/settings/settings.template.html",
+                controller: "SettingsCtrl"
+              })
+              .when("/help", {
+                templateUrl: "app/help/help.template.html",
+                controller: "HelpCtrl"
+              })
+              .when("/contact", {
+                templateUrl: "app/contact/contact.template.html",
+                controller: "ContactCtrl"
+              })
+              .when("/admin", {
+                templateUrl: "app/admin/_admin.template.html",
+                controller: "AdminCtrl",
+                reloadOnSearch: false
+              })
+              .when("/sandbox", {
+                templateUrl: "app/sandbox/_sandbox.template.html",
+                controller: "SandboxCtrl",
+                reloadOnSearch: false
+              })
+              .when("/tos", {
+                templateUrl: "app/pages/tos.template.html",
+                controller: "TosCtrl"
+              })
+              .when("/features", {
+                templateUrl: "app/pages/features.template.html",
+                controller: "FeaturesCtrl"
+              })
+              .when("/plans", {
+                templateUrl: "app/pages/plans.template.html",
+                controller: "PlansCtrl"
+              })
+              .when("/security", {
+                templateUrl: "app/pages/security.template.html",
+                controller: "SecurityCtrl"
+              })
+              .when("/doc", {
+                controller: function() {
+                  window.location.replace('/doc');
+                },
+                template: "<div></div>"
+              })
+              .otherwise({
+                redirectTo: "/"
+              });*/
 
       $locationProvider
         .html5Mode({
@@ -167,8 +246,8 @@ app.config(
         }]
       );
       environmentProvider.setDefaultSubDomain("en");
-    }
-  ]
+          }
+        ]
 );
 
 'use strict';
