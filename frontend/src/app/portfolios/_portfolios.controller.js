@@ -125,7 +125,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
               },
               name: row.name,
               icon: 'glyphicon glyphicon-dashboard',
-              templateUrl: 'app/portfolios/overview.template.html',
+              templateUrl: 'app/portfolios/details.template.html',
             });
           });
           sidebar.refresh();
