@@ -24,10 +24,11 @@ angular.module('squirrel').controller('SidebarLinkCtrl',
       $scope.onClick = function(member) {
         console.log("click on link = " + JSON.stringify(member));
         $scope.$emit(sidebar.NAVIGATE, member);
-        if (member.children) {
-          $scope.expand = !$scope.expand;
-          $scope.$broadcast(sidebar.TOGGLE_GROUP, member);
-        }
+      };
+      $scope.onChevronClick = function(member) {
+        console.log("click on chevron = " + JSON.stringify(member));
+        $scope.expand = !$scope.expand;
+        $scope.$broadcast(sidebar.TOGGLE_GROUP, member);
       };
 
       $scope.hasChildren = function() {
