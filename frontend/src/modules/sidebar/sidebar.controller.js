@@ -51,7 +51,7 @@ angular.module('squirrel').controller('SidebarCtrl',
         debug.dump("SidebarCtrl", $scope.collection, "$scope.collection");
         $timeout(function() {
           debug.log("SidebarCtrl", "refreshing sidebar");
-          $scope.$apply();
+          $scope.$digest();
         }, 500);
       });
 
