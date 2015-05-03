@@ -9,6 +9,7 @@ app = angular.module("squirrel", [
   'angular-timeline',
   'angularModalService',
   'angularMoment',
+  'ct.ui.router.extras',
   'duScroll',
   'gettext',
   'highcharts-ng',
