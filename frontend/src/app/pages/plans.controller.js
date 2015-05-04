@@ -37,12 +37,12 @@ angular.module("squirrel").controller("PlansCtrl",
               "premium": true,
             },
             {
-              "description": gettextCatalog.getString("Weekly / Daily Portfolio Report by email"),
+              "description": gettextCatalog.getStringtring("Weekly / Daily Portfolio Report by email"),
               "free": true,
               "premium": true,
             },
             {
-              "description": gettextCatalog.getString("Quaterly Portfolio Report by email"),
+              "description": gettextCatalog.getString("Personal History Timeline"),
               "free": true,
               "premium": true,
             }

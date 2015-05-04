@@ -884,6 +884,10 @@ msgstr "Vue d'ensemble du site"
 msgid "Password"
 msgstr "Mot de passe"
 
+#: app\pages\plans.controller.js:45
+msgid "Personal History Timeline"
+msgstr "Timeline Personel"
+
 #: components\footer\footer.template.html:20
 #: components\navbar\navbar.controller.js:41
 msgid "Plans"
@@ -961,7 +965,7 @@ msgstr "Préparez vos investissements en avance, et laissez vous contruire "
 msgid "Public or Private"
 msgstr "Publique ou Privée"
 
-#: app\pages\plans.controller.js:116 app\pages\plans.controller.js:45
+#: app\pages\plans.controller.js:116
 msgid "Quaterly Portfolio Report by email"
 msgstr "Rapports Financier Trimestriel par email"
 
@@ -1563,7 +1567,7 @@ msgstr "Statut des données du web"
 msgid "Wednesday"
 msgstr "Mercredi"
 
-#: app\pages\plans.controller.js:111 app\pages\plans.controller.js:40
+#: app\pages\plans.controller.js:111
 msgid "Weekly / Daily Portfolio Report by email"
 msgstr "Rapports Hebdomadaire ou Journalier, par email"
 
