@@ -34,7 +34,7 @@
     "highcharts-ng": "~0.0.8",
     "highstock": "~3.0.1",
     "jquery": "~1.11.2",
-    "lodash": "~3.7.0",
+    "lodash": "~3.8.0",
     "macgyver": "~0.6.1",
     "magnific-popup": "~1.0.0",
     "ng-crossfilter": "https://github.com/Stibbons/ngCrossfilter.git#v2.4.2-lodash4",
@@ -42,6 +42,7 @@
     "ng-table": "~0.5.4",
     "restangular": "~1.5.1",
     "toastr": "~2.1.1",
+    "ui-router-extras": "~0.0.13",
     "underscore.string": "~3.0.3"
   },
   "devDependencies": {
