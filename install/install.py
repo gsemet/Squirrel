@@ -53,6 +53,7 @@ aliases = {
     "serve": "serve:dev",
     "start": "start:dev",
     "install": "install:all",
+    "install:prod": "install:all",
     "update": "update:all",
     "update:lang": "update:lang:all",
     "test": "test:all",
