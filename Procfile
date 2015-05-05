@@ -1,1 +1,1 @@
-web: python ./install/install.py start:prod
+web: python ./install/install.py serve:novirtualenv
