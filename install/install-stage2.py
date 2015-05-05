@@ -250,12 +250,14 @@ else:
 
 if "pip_upgrade" in current_capabilities:
     if sys.platform.startswith("linux"):
-        pip_version_str = str(subprocess.check_output(["pip", "--versio"]))
+        pip_version_str = str(subprocess.check_output(["pip", "--version"]))
         pip_version_str = pip_version_str.split(" ")[1]
         pip_version_str = pip_version_str.split("-")[0]
         pip_version_str = pip_version_str.split("_")[0]
         pip_version_str = pip_version_str.rpartition(".")[0]
         pip_major, _, pip_minor = pip_version_str.partition(".")
+        pip_minor = pip_minor.partition('.')[0]
+        pip_minor = pip_minor.partition('-')[0]
         pip_version = int(pip_major) * 100 + int(pip_minor)
         if pip_version <= 105:
             printSeparator()
