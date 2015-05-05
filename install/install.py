@@ -38,7 +38,7 @@ allowed_cmd = {
     "start:dev":           ("only start dev server (no install)"),
     "install:backend":      "install only backend (python)",
     "install:all":          "install backend and frontend",
-    "install:novirtualenv": "install backend and frontend without virtualenv",
+    "install:novirtualenv": "install only frontend without virtualenv",
     "update:all":           ("update all dependencies (modules installed by npm and bower) "
                              "and translations"),
     "update:lang:all":       "update all translations files - requires 'poedit'",
