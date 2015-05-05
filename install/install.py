@@ -205,7 +205,8 @@ if do_virtualenv:
     printBoot("Setting up virtualenv to start Installer Stage 2.")
 else:
     printBoot("!!!!!!!!!!!!!!!!!!!")
-    printBoot("Do **NOT** setup a virtual env ('novirtualenv' option). Production on Docker mode.")
+    printBoot("Beware !! We will **NOT** setup into a virtual env ('novirtualenv' option).")
+    printBoot("Hope your production works inside a Docker !")
     printBoot("!!!!!!!!!!!!!!!!!!!")
 printBoot("You can activate this environment with the following command:")
 printBoot("    {0}".format(activate_info))

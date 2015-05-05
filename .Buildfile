@@ -1,1 +1,1 @@
-python install/install.py install:prod
+python install/install.py install:novirtualenv

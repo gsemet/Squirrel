@@ -132,10 +132,6 @@ cmd_capabilities = {
     },
 }
 
-# if not os.environ['VIRTUAL_ENV']:
-#     raise Exception("VIRTUAL_ENV environment variable is empty. We are not in a virtualenv.")
-
-
 ####################################################################################################
 # Utility functions
 ####################################################################################################
@@ -226,7 +222,10 @@ if subcmd not in cmd_capabilities.keys():
     printError("Invalid install target: {}. Available: {}".format(subcmd, cmd_capabilities.keys()))
     sys.exit(1)
 current_capabilities = cmd_capabilities[subcmd]
-printInfo("We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
+if "VIRTUAL_ENV" not in os.environ:
+    printInfo("We are **NOT** in a virtualenv")
+else:
+    printInfo("We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
 printInfo("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
 printInfo("installation dir: {}".format(install_path))
 printInfo("workdir: {}".format(workdir_path))
