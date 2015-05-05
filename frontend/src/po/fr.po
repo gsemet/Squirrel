@@ -145,7 +145,7 @@ msgstr ""
 msgid "Analyze the market with modern tools."
 msgstr "Analysez le marché avec des outils à la pointe de la modernité."
 
-#: app\pages\plans.controller.js:121
+#: app\pages\plans.controller.js:136
 msgid "Annual Portfolio Report edition"
 msgstr "Edition des votre Rapport Annuel"
 
@@ -319,6 +319,10 @@ msgid "Click on the \"Plans\" link and see which plans fits you the best."
 msgstr ""
 "Cliquez sur le lien \"Tarifs\" pour voir lequel vous correspond le mieux."
 
+#: app\pages\plans.controller.js:82
+msgid "Compare With N Benchmarks (Stocks, Funds, ETF)"
+msgstr "Comparaison avec N Référence (Indices, Stocks, ETF, Fonds)"
+
 #: app\pages\features.template.html:154
 msgid ""
 "Consult, edit and visualize your portfolio anywhere, from your personal "
@@ -411,6 +415,10 @@ msgstr "Description"
 msgid "Details of your portfolio"
 msgstr "Détail de votre portefeuille"
 
+#: app\pages\plans.controller.js:94
+msgid "Dynamic Stocks Comparison"
+msgstr "Comparaison Dynamique"
+
 #: app\homepage\homepage.unlogged.template.html:8
 msgid "Easily Track Your Assets And Prepare Your Own Financial Future"
 msgstr ""
@@ -425,11 +433,11 @@ msgstr ""
 "Montrez votre portefeuille facilement à votre gesionnaire financier, pour "
 "qu'il vous offre encore plus simplement les conseils les plus pertinents."
 
-#: app\pages\plans.controller.js:138
+#: app\pages\plans.controller.js:153
 msgid "Easy Gains/Loose Tracking for your Tax Statement"
 msgstr "Suivi simple de vos gains/pertes pour votre déclaration d'impôts"
 
-#: app\pages\plans.controller.js:126
+#: app\pages\plans.controller.js:141
 msgid "Edit your annual Portfolio Report"
 msgstr "Edition de votre Rapport Annuel"
 
@@ -965,7 +973,7 @@ msgstr "Préparez vos investissements en avance, et laissez vous contruire "
 msgid "Public or Private"
 msgstr "Publique ou Privée"
 
-#: app\pages\plans.controller.js:116
+#: app\pages\plans.controller.js:131
 msgid "Quaterly Portfolio Report by email"
 msgstr "Rapports Financier Trimestriel par email"
 
@@ -990,7 +998,7 @@ msgstr "Relaxez vous, soyez en totale sécurité"
 msgid "Reporting"
 msgstr "Reporting"
 
-#: app\pages\plans.controller.js:101
+#: app\pages\plans.controller.js:116
 msgid "Reports and Reminder"
 msgstr "Rapports et Rappels"
 
@@ -1014,11 +1022,11 @@ msgstr "Bac à Sable"
 msgid "Saturday"
 msgstr "Samedi"
 
-#: app\pages\plans.controller.js:89
+#: app\pages\plans.controller.js:104
 msgid "Save Screener Settings"
 msgstr "Enregistrement de vos paramètres du Screeners"
 
-#: app\pages\plans.controller.js:94
+#: app\pages\plans.controller.js:109
 msgid "Screener Staging Area"
 msgstr "Liste d'attente pour votre sélection d'Actions"
 
@@ -1127,6 +1135,10 @@ msgstr "Simple, facile et direct."
 msgid "Small/Big Caps Exposure"
 msgstr "Exposition Grande / Petite Capitalisation"
 
+#: app\pages\plans.controller.js:99
+msgid "Smart Stock Search History"
+msgstr "Historique Intelligent de Recherche"
+
 #: app\pages\features.template.html:400
 msgid ""
 "So I started using Google Spreadsheet to follow my investments, and I felt "
@@ -1153,7 +1165,7 @@ msgstr ""
 "Veuillez excusez ce désagrément. Nous faisons de notre mieux pour restaurer "
 "le service normal le plus vite possible."
 
-#: app\pages\plans.controller.js:143
+#: app\pages\plans.controller.js:158
 msgid "Speculative Account Monthly Report Storage"
 msgstr "Stockage des Rapports Mensuels de votre Compte Spéculatif (CFD)"
 
@@ -1323,7 +1335,7 @@ msgstr "Rapport de Situation"
 msgid "Stock Screener"
 msgstr "Screeners"
 
-#: app\pages\plans.controller.js:84
+#: app\pages\plans.controller.js:89
 msgid "Stocks Screener"
 msgstr "Screeners"
 
@@ -1339,7 +1351,7 @@ msgstr "Dimanche"
 msgid "Symbol"
 msgstr "Symboles"
 
-#: app\pages\plans.controller.js:133
+#: app\pages\plans.controller.js:148
 msgid "Tax Statement"
 msgstr "Déclaration d'Impôts"
 
@@ -1519,7 +1531,7 @@ msgstr ""
 msgid "Use the Cloud to your own advantage"
 msgstr "Utilisez le Nuage à votre propre avantage"
 
-#: app\pages\plans.controller.js:106
+#: app\pages\plans.controller.js:121
 msgid "User defined Periodic Reminder for Manual Updates"
 msgstr "Rappels Périodique Pour Les Mises à Jour Manuels."
 
@@ -1567,7 +1579,7 @@ msgstr "Statut des données du web"
 msgid "Wednesday"
 msgstr "Mercredi"
 
-#: app\pages\plans.controller.js:111
+#: app\pages\plans.controller.js:126
 msgid "Weekly / Daily Portfolio Report by email"
 msgstr "Rapports Hebdomadaire ou Journalier, par email"
 

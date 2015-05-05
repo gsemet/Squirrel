@@ -79,7 +79,7 @@ angular.module("squirrel").controller("PlansCtrl",
               "premium": true,
             },
             {
-              "description": gettextCatalog.getString("Benchmark Comparison"),
+              "description": gettextCatalog.getString("Compare With N Benchmarks (Stocks, Funds, ETF)"),
               "free": true,
               "premium": true,
             }
@@ -90,6 +90,16 @@ angular.module("squirrel").controller("PlansCtrl",
           "odd_class": "light",
           "even_class": "",
           "features": [
+            {
+              "description": gettextCatalog.getString("Dynamic Stocks Comparison"),
+              "free": true,
+              "premium": true,
+            },
+            {
+              "description": gettextCatalog.getString("Smart Stock Search History"),
+              "free": true,
+              "premium": true,
+            },
             {
               "description": gettextCatalog.getString("Save Screener Settings"),
               "free": true,
