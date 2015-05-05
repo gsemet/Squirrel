@@ -77,6 +77,11 @@ angular.module("squirrel").controller("PlansCtrl",
               "description": gettextCatalog.getString("Assets Classes Exposure"),
               "free": true,
               "premium": true,
+            },
+            {
+              "description": gettextCatalog.getString("Benchmark Comparison"),
+              "free": true,
+              "premium": true,
             }
           ]
         },
