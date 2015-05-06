@@ -386,7 +386,7 @@ if "serve_prod" in current_capabilities:
     # Launching Squirrel-server
     server_base_name = "squirrel-server"
     if "heroku" in current_capabilities:
-        server_base_name = "heroku-server"
+        server_base_name = "squirrel-heroku"
     if isWindows:
         backend_launcher = os.path.join(workdir_path, "Scripts", server_base_name + ".exe")
     else:
