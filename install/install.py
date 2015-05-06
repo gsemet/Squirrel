@@ -36,6 +36,7 @@ allowed_cmd = {
                             "virtualenv (Docker/Heroku)"),
     "start:prod":          ("only start prod server (no install)"),
     "start:dev":           ("only start dev server (no install)"),
+    "start:novirtualenv":  ("only start dev server without virtualenv (no install)"),
     "install:backend":      "install only backend (python)",
     "install:all":          "install backend and frontend",
     "install:novirtualenv": "install only frontend without virtualenv",
@@ -57,6 +58,8 @@ aliases = {
     "update": "update:all",
     "update:lang": "update:lang:all",
     "test": "test:all",
+    "heroku:build": "install:novirtualenv",
+    "heroku:start": "start:novirtualenv",
 }
 default_cmd = "install:all"
 

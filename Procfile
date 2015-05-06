@@ -1,1 +1,1 @@
-web: python ./install/install.py serve:novirtualenv
+web: python ./install/install.py heroku:start

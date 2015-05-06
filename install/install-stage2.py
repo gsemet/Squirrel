@@ -69,6 +69,11 @@ cmd_capabilities = {
         "serve_dev_backend",
         "serve_dev_frontend",
     },
+    "start:novirtualenv": {
+        "serve",
+        "serve_prod",
+        "novirtualenv",
+    },
     "install:backend": {
         "pip_upgrade",
         "backend_install",

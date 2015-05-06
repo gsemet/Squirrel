@@ -1,1 +1,1 @@
-python install/install.py install:novirtualenv
+python install/install.py heroku:build
