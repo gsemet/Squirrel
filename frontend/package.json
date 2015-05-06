@@ -2,6 +2,7 @@
   "name": "squirrel",
   "version": "0.0.0",
   "dependencies": {
+    "gulp": "~3.8.10",
     "gulp-angular-gettext": "~2.1.0",
     "require-dir": "~0.1.0",
     "chalk": "~0.5.1",
