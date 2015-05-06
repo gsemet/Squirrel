@@ -77,7 +77,7 @@
     "wiredep": "~2.2.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "==0.10.25"
   },
   "scripts": {
     "postinstall": "bower install && gulp build"
