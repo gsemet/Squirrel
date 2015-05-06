@@ -323,7 +323,7 @@ if "frontend_install" in current_capabilities:
             shell=shell)
     else:
         printInfo("cd frontend")
-        run(["npm", "install", "--dev"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+        run(["npm", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
     printInfo("cd frontend")
     run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
