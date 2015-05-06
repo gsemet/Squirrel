@@ -51,6 +51,7 @@ cmd_capabilities = {
         "serve_prod",
     },
     "serve:novirtualenv": {
+        "pip_upgrade",
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
@@ -83,8 +84,7 @@ cmd_capabilities = {
     },
     "install:novirtualenv": {
         "pip_upgrade",
-        "frontend_install",
-        "frontend_gulp_build",
+        "backend_install",
         "novirtualenv",
         "warn_no_serve_and_quit",
     },
