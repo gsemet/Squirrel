@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 
 import logging
+import os
 
 from dictns import Namespace
 from twisted.internet import reactor
@@ -17,7 +18,10 @@ from squirrel.routes import *
 log = logging.getLogger(__name__)
 
 
-def serveBackend(serveFrontEnd=True, prod=False):
+def serveBackend(serveFrontEnd=True, prod=False, heroku=False):
+    if heroku:
+        port = os.environ['PORT']
+        log.info("Starging web service on {} (heroku)".format(port))
     if prod:
         port = Config().frontend.prod_port
         log.info("Starging web service on {} (prod)".format(port))

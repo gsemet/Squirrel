@@ -5,6 +5,7 @@ frontend:
     doc_path: ../doc/build/html/
     dev_port: 8080
     prod_port: 80
+    heroku_port: '$PORT'
     logging_conf_path: ./squirrel/logging.conf
 
 backend:

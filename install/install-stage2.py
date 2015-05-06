@@ -58,6 +58,7 @@ cmd_capabilities = {
         "serve",
         "serve_prod",
         "novirtualenv",
+        "heroku",
     },
     "start:prod": {
         "serve",
@@ -73,6 +74,7 @@ cmd_capabilities = {
         "serve",
         "serve_prod",
         "novirtualenv",
+        "heroku",
     },
     "install:backend": {
         "pip_upgrade",
@@ -382,10 +384,13 @@ if "warn_no_serve_and_quit" in current_capabilities:
 
 if "serve_prod" in current_capabilities:
     # Launching Squirrel-server
+    server_base_name = "squirrel-server"
+    if "heroku" in current_capabilities:
+        server_base_name = "heroku-server"
     if isWindows:
-        backend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-server.exe")
+        backend_launcher = os.path.join(workdir_path, "Scripts", server_base_name + ".exe")
     else:
-        backend_launcher = "squirrel-server"
+        backend_launcher = server_base_name
     printInfo("Launching Squirrel-server {}".format(backend_launcher))
 
     run([backend_launcher])
