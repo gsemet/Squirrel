@@ -22,10 +22,10 @@ class TestEntryPoint(TestCase):
         Config().unload()
         Config({
             'frontend': {
-                'root_full_path': 'full/path',
+                'root_fullpath': 'full/path',
                 'port': '1234',
             },
             'crawlers': {},
         })
-        self.assertEqual(Config().frontend.root_full_path, "full/path")
+        self.assertEqual(Config().frontend.root_fullpath, "full/path")
         run()

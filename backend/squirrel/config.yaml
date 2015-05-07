@@ -3,10 +3,12 @@
 flavour:
     config_file: 'config-{flavour}.yaml'
 
+logging:
+    config_file: ' ./squirrel/logging.conf'
+
 frontend:
     root_path: ../frontend/dist/
     doc_path: ../doc/build/html/
-    logging_conf_path: ./squirrel/logging.conf
 
 backend:
     serve: false

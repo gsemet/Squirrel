@@ -68,7 +68,7 @@ class PluginRegistry(object):
 
 
 def loadPlugins(forcePluginNames=None):
-    plugin_root = Config().plugins.full_default_path
+    plugin_root = Config().plugins.default_path_fullpath
     log.info("Loading plugin located at: {!r}".format([plugin_root]))
     PluginRegistry().loadPlugin([plugin_root])
 

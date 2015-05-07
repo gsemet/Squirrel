@@ -91,14 +91,14 @@ def _makeSqlLitePath(url):
 
 def updateFullPaths():
     c = Config()
-    c.frontend.root_full_path = _makeFullPath(c.frontend.root_path)
-    c.frontend.doc_full_path = _makeFullPath(c.frontend.doc_path)
-    c.frontend.logging_conf_full_path = _makeFullPath(c.frontend.logging_conf_path)
+    c.frontend.root_fullpath = _makeFullPath(c.frontend.root_path)
+    c.frontend.doc_fullpath = _makeFullPath(c.frontend.doc_path)
+    c.logging.config_file_fullpath = _makeFullPath(c.logging.config_file)
     c.backend.db.full_url = _makeSqlLitePath(c.backend.db.url)
-    c.backend.db.full_workdir = _makeFullPath(c.backend.db.workdir)
+    c.backend.db.workdir_fullpath = _makeFullPath(c.backend.db.workdir)
     if sys.platform.startswith("win32"):
         c.backend.db.full_url = c.backend.db.full_url.replace("\\", "\\\\")
-    c.plugins.full_default_path = _makeFullPath(c.plugins.default_path)
+    c.plugins.default_path_fullpath = _makeFullPath(c.plugins.default_path)
 
 
 def dumpConfigToLogger(level="info"):

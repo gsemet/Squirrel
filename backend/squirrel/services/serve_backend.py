@@ -30,7 +30,7 @@ def findPortNumber():
 def serveBackend():
     port = findPortNumber()
     log.info("Starging web service on port {!r}".format(port))
-    log.info("Serving front end located at: {}".format(Config().frontend.root_full_path))
+    log.info("Serving front end located at: {}".format(Config().frontend.root_fullpath))
     app.run("localhost", port)
 
 

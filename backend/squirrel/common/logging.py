@@ -20,7 +20,9 @@ log = logging.getLogger(__name__)
 
 
 def setupLogger():
-    logging_config.fileConfig(Config().frontend.logging_conf_full_path)
+    config_file_fullpath = Config().logging.config_file_fullpath
+    log.info("Using configuration file: {}".format(config_file_fullpath))
+    logging_config.fileConfig(config_file_fullpath)
 
     class SplitFormatter(ColoredFormatter):
 
@@ -133,4 +135,4 @@ def setupLogger():
     log.info("*" * 79)
     log.info("Logging configured - Entering in a colorful world on your terminal!")
 
-    log.debug("File loggers configured by: {}".format(Config().frontend.logging_conf_full_path))
+    log.debug("File loggers configured by: {}".format(config_file_fullpath))

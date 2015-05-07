@@ -77,9 +77,9 @@ def makedirs(path):
 
 def createWorkdirs():
     # useful for novirtualenv mode
-    full_workdir = Config().backend.db.full_workdir
-    log.info("Ensuring workdir exists: {}".format(full_workdir))
-    makedirs(full_workdir)
+    workdir_fullpath = Config().backend.db.workdir_fullpath
+    log.info("Ensuring workdir exists: {}".format(workdir_fullpath))
+    makedirs(workdir_fullpath)
 
     sqlurl = Config().backend.db.full_url
     if sqlurl.startswith("sqlite:///"):

@@ -1,6 +1,9 @@
 frontend:
     port: $PORT
 
+logging:
+    config_file: ' ./squirrel/logging-heroku.conf'
+
 backend:
     serve: true
     db:
