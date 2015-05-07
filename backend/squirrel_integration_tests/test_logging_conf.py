@@ -4,10 +4,19 @@ from __future__ import print_function
 
 import logging
 
+try:
+    # python < 3
+    import ConfigParser as configparser
+except:
+    # python > 3
+    import configparser
+
+
 from squirrel.common.downloader import cleanupReactorForUnitTest
 from squirrel.common.downloader import prepareReactorForUnitTest
 from squirrel.common.logging import setupLogger
 from squirrel.common.unittest import TestCase
+from squirrel.services.config import Config
 from squirrel.services.config import initializeConfig
 from squirrel.services.config import unloadConfig
 from squirrel.services.config import updateFullPaths
@@ -39,3 +48,9 @@ class IntegrationTestLonggingConf(TestCase):
         initializeConfig("prod")
         updateFullPaths()
         setupLogger()
+
+    def testUnexistingFile(self):
+        initializeConfig("dev")
+        updateFullPaths()
+        Config().logging.config_file_fullpath = "/unexisting/path"
+        self.assertRaises(configparser.NoSectionError, setupLogger)

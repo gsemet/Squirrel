@@ -2,6 +2,13 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+try:
+    # python < 3
+    import ConfigParser as configparser
+except:
+    # python > 3
+    import configparser
+
 import logging
 import logging.config as logging_config
 import sys
@@ -22,7 +29,12 @@ log = logging.getLogger(__name__)
 def setupLogger():
     config_file_fullpath = Config().logging.config_file_fullpath
     log.info("Using configuration file: {}".format(config_file_fullpath))
-    logging_config.fileConfig(config_file_fullpath)
+    try:
+        logging_config.fileConfig(config_file_fullpath)
+    except configparser.NoSectionError as e:
+        raise type(e)("NoSectionError exception raised by fileConfig. "
+                      "This probably comes from an invalid path: {!r}\n"
+                      "Original exception message: {}".format(config_file_fullpath, e))
 
     class SplitFormatter(ColoredFormatter):
 
