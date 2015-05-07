@@ -2,11 +2,13 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import os
 import signal
 import sys
 
 from squirrel.common.i18n import setupI18n
 from squirrel.common.logging import setupLogger
+from squirrel.services.config import Config
 from squirrel.services.config import dumpConfigToLogger
 from squirrel.services.config import initializeConfig
 from squirrel.services.config import unloadConfig
@@ -62,9 +64,18 @@ def install_handler_win32():
         raise RuntimeError('SetConsoleCtrlHandler failed.')
 
 
+def createWorkdir():
+    # useful for novirtualenv mode
+    try:
+        os.makedirs(Config().backend.db.full_workdir)
+    except:
+        pass
+
+
 def serverSetup(prod=False):
     installTrap()
     initializeConfig()
+    createWorkdir()
     setupLogger()
     dumpConfigToLogger()
     setupI18n()
