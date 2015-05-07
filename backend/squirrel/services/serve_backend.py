@@ -22,7 +22,7 @@ def serveBackend(serveFrontEnd=True, prod=False, heroku=False):
     if heroku:
         port = os.environ['PORT']
         log.info("Starging web service on {} (heroku)".format(port))
-    if prod:
+    elif prod:
         port = Config().frontend.prod_port
         log.info("Starging web service on {} (prod)".format(port))
     else:
