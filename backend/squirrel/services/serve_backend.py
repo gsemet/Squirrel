@@ -20,14 +20,14 @@ log = logging.getLogger(__name__)
 
 def serveBackend(serveFrontEnd=True, prod=False, heroku=False):
     if heroku:
-        port = os.environ['PORT']
-        log.info("Starging web service on {} (heroku)".format(port))
+        port = int(os.environ['PORT'])
+        log.info("Starging web service on {!r} (heroku)".format(port))
     elif prod:
-        port = Config().frontend.prod_port
-        log.info("Starging web service on {} (prod)".format(port))
+        port = int(Config().frontend.prod_port)
+        log.info("Starging web service on {!r} (prod)".format(port))
     else:
-        port = Config().frontend.dev_port
-        log.info("Starging web service on {} (dev)".format(port))
+        port = int(Config().frontend.dev_port)
+        log.info("Starging web service on {!r} (dev)".format(port))
     log.info("Serving front end located at: {}".format(Config().frontend.root_full_path))
     Config().runtime = Namespace()
     Config().runtime.serveFrontEnd = True
