@@ -123,9 +123,9 @@ def configureFlavor(config_path, flavour):
     if os.path.exists(flavour_config_file):
         cfg = _loadYaml(flavour_config_file)
         log.info("Loaded flavour data: {}".format(cfg))
+        Config().merge(cfg)
     else:
         log.info("No configuration file found")
-    Config().merge(cfg)
 
 
 def initializeConfig(flavour):

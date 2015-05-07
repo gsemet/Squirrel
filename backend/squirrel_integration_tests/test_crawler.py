@@ -11,7 +11,6 @@ from squirrel.common.downloader import prepareReactorForUnitTest
 from squirrel.common.unittest import TestCase
 from squirrel.model.ticker import Ticker
 from squirrel.procedures.crawler import Crawler
-from squirrel.services.config import Config
 from squirrel.services.config import initializeConfig
 from squirrel.services.config import unloadConfig
 from squirrel.services.config import updateFullPaths
@@ -26,9 +25,7 @@ class IntegrationTestCrawler(TestCase):
 
     def setUp(self):
         prepareReactorForUnitTest(self)
-        initializeConfig()
-        Config().backend.db.url = "sqlite:///{workdir}/db-for-integ-tests.sqlite".format(
-            workdir=Config().backend.db.workdir)
+        initializeConfig("integ_tests")
         updateFullPaths()
         loadPlugins(["GoogleFinance"])
         self.crawler = Crawler()

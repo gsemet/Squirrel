@@ -29,7 +29,7 @@ class IntegrationTestYahooFinance(TestCase):
 
     def setUp(self):
         prepareReactorForUnitTest(self)
-        initializeConfig()
+        initializeConfig("integ_tests")
         loadPlugins(["YahooFinance"])
 
     def tearDown(self):

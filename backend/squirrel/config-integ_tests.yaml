@@ -1,0 +1,8 @@
+frontend:
+    port: XX
+
+backend:
+    serve: true
+    db:
+        workdir: ../workdir/
+        url: sqlite:///../workdir/db-for-integ-tests.sqlite

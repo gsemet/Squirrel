@@ -27,7 +27,7 @@ class IntegrationTestNasdaqList(TestCase):
 
     def setUp(self):
         prepareReactorForUnitTest(self)
-        initializeConfig()
+        initializeConfig("integ_tests")
         loadPlugins(["NasdaqList"])
 
     def tearDown(self):
