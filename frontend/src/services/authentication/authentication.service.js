@@ -39,7 +39,7 @@ angular.module('squirrel').factory('AuthenticationService',
         }
         console.log("Restoring sessionId = " + JSON.stringify(sessionId));
 
-        return request.request(environment.getBackendUrl() + "/api/login", {
+        return request.request("/api/login", {
           /* can be email or email */
           sessionId: sessionId,
         }, "POST").then(function(data) {
@@ -51,7 +51,7 @@ angular.module('squirrel').factory('AuthenticationService',
       });
 
       authService.login = function(email, password) {
-        return request.request(environment.getBackendUrl() + "/api/login", {
+        return request.request("/api/login", {
           /* can be email or email */
           email: email,
           password: password
@@ -74,7 +74,7 @@ angular.module('squirrel').factory('AuthenticationService',
         Session.destroy();
         $rootScope.$emit(AUTH_EVENTS.logoutSuccess);
 
-        $http.post(environment.getBackendUrl() + "/api/logout", {
+        $http.post("/api/logout", {
           sessionId: sessionId
         }).then(function(result) {
           console.log("logout successful for email = " + email);
@@ -85,7 +85,7 @@ angular.module('squirrel').factory('AuthenticationService',
       };
 
       authService.register = function(firstName, lastName, email, password) {
-        return request.request(environment.getBackendUrl() + "/api/register", {
+        return request.request("/api/register", {
           firstName: firstName,
           lastName: lastName,
           email: email,
