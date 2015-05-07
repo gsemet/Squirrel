@@ -2,6 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import logging
 import os
 import signal
 import sys
@@ -17,6 +18,9 @@ from squirrel.services.db import connectDatabase
 from squirrel.services.plugin_loader import loadPlugins
 from squirrel.services.plugin_loader import unloadPlugins
 from squirrel.services.serve_backend import quitBackend
+
+
+log = logging.getLogger(__name__)
 
 
 def installTrap():
@@ -64,18 +68,39 @@ def install_handler_win32():
         raise RuntimeError('SetConsoleCtrlHandler failed.')
 
 
-def createWorkdir():
-    # useful for novirtualenv mode
+def makedirs(path):
     try:
-        os.makedirs(Config().backend.db.full_workdir)
+        os.makedirs(path)
     except:
         pass
 
 
-def serverSetup(prod=False):
+def createWorkdirs():
+    # useful for novirtualenv mode
+    full_workdir = Config().backend.db.full_workdir
+    log.info("Ensuring workdir exists: {}".format(full_workdir))
+    makedirs(full_workdir)
+
+    sqlurl = Config().backend.db.full_url
+    if sqlurl.startswith("sqlite:///"):
+        log.info("Sqlite database detected: {}".format(sqlurl))
+        sqlurl = sqlurl.replace("sqlite:///", "")
+        sqlurl_filename = os.path.dirname(sqlurl)
+        log.info("Ensuring path exists: {}".format(sqlurl_filename))
+        makedirs(sqlurl_filename)
+    else:
+        sqlurl = None
+
+
+def setupDefaultLogger():
+    logging.basicConfig(level=logging.INFO)
+
+
+def serverSetup(prod=False, flavour=None):
+    setupDefaultLogger()
     installTrap()
-    initializeConfig()
-    createWorkdir()
+    initializeConfig(flavour)
+    createWorkdirs()
     setupLogger()
     dumpConfigToLogger()
     setupI18n()

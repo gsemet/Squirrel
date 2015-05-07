@@ -13,8 +13,8 @@ from squirrel.services.serve_backend import serveBackend
 def run():
 
     try:
-        serverSetup()
-        serveBackend(serveFrontEnd=True, prod=True, heroku=True)
+        serverSetup(flavour="heroku")
+        serveBackend(serveFrontEnd=True)
         serverStop()
     except KeyboardInterrupt:
         print("Ctrl-c pressed ...")

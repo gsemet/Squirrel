@@ -17,12 +17,13 @@ class TestEntryPoint(TestCase):
     @patch("squirrel.launcher.common.initializeConfig", new=Mock())
     @patch("squirrel.launcher.common.setupLogger", new=Mock())
     @patch("squirrel.launcher.common.loadPlugins", new=Mock())
+    @patch("squirrel.launcher.common.createWorkdirs", new=Mock())
     def testRun(self):
         Config().unload()
         Config({
             'frontend': {
                 'root_full_path': 'full/path',
-                'prod_port': '1234',
+                'port': '1234',
             },
             'crawlers': {},
         })

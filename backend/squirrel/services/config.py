@@ -10,8 +10,10 @@ import yaml
 from dictns import Namespace
 from dictns import _appendToParent
 
+from squirrel.common.dict import mergeDict
 from squirrel.common.i18n import _
 from squirrel.common.singleton import singleton
+from squirrel.common.text import indent
 
 
 log = logging.getLogger(__name__)
@@ -49,6 +51,9 @@ class Config(object):
 
     def dumpFlat(self, parent=None):
         return _dumpFlat(self)
+
+    def merge(self, other):
+        self.cfg = mergeDict(self.cfg, other)
 
     def __getattr__(self, name):
         return getattr(self.cfg, name)
@@ -105,10 +110,25 @@ def dumpConfigToLogger(level="info"):
     c = Config()
     getattr(log, level)("")
     getattr(log, level)(_("Listing all available keys:"))
-    getattr(log, level)(c.dumpFlat())
+    getattr(log, level)(indent(c.dumpFlat()))
 
 
-def initializeConfig():
+def configureFlavor(config_path, flavour):
+    if not flavour:
+        flavour = "dev"
+    log.info("Loading flavor configuration: '{}'".format(flavour))
+    config_dir = os.path.dirname(config_path)
+    flavour_config_file = os.path.join(config_dir, Config().flavour.config_file.format(flavour=flavour))
+    log.info("Configuration file: '{}'".format(flavour_config_file))
+    if os.path.exists(flavour_config_file):
+        cfg = _loadYaml(flavour_config_file)
+        log.info("Loaded flavour data: {}".format(cfg))
+    else:
+        log.info("No configuration file found")
+    Config().merge(cfg)
+
+
+def initializeConfig(flavour):
     config_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                os.pardir,
                                                "config.yaml"))
@@ -116,6 +136,7 @@ def initializeConfig():
     _loadConfig(config_path)
     updateFullPaths()
     dumpConfigToLogger()
+    configureFlavor(config_path, flavour)
 
 
 def unloadConfig():

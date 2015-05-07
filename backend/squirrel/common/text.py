@@ -4,15 +4,18 @@ from __future__ import print_function
 
 import calendar
 import datetime
+import textwrap
 import time
-
-from textwrap import dedent as textwrap_dedent
 
 __all__ = ['dedent']
 
 
+def indent(text, prefix="  ", firstLine=True):
+    return (prefix if firstLine else "") + text.replace("\n", "\n" + prefix)
+
+
 def dedent(text):
-    return textwrap_dedent(text).lstrip()
+    return textwrap.dedent(text).lstrip()
 
 
 def getTodayEpoch():

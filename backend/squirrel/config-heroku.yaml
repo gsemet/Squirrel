@@ -1,0 +1,7 @@
+frontend:
+    port: $PORT
+
+backend:
+    db:
+        workdir: ../log/
+        url: sqlite:///../tmp/db.sqlite

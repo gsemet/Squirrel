@@ -18,16 +18,19 @@ from squirrel.routes import *
 log = logging.getLogger(__name__)
 
 
-def serveBackend(serveFrontEnd=True, prod=False, heroku=False):
-    if heroku:
-        port = int(os.environ['PORT'])
-        log.info("Starging web service on {!r} (heroku)".format(port))
-    elif prod:
-        port = int(Config().frontend.prod_port)
-        log.info("Starging web service on {!r} (prod)".format(port))
+def findPortNumber():
+    port = Config().frontend.port
+    if isinstance(port, basestring) and port.startswith("$"):
+        env_var_name = port.replace('$')
+        port = int(os.environ[env_var_name])
     else:
-        port = int(Config().frontend.dev_port)
-        log.info("Starging web service on {!r} (dev)".format(port))
+        port = int(port)
+    return port
+
+
+def serveBackend(serveFrontEnd=True):
+    port = findPortNumber()
+    log.info("Starging web service on port {!r}".format(port))
     log.info("Serving front end located at: {}".format(Config().frontend.root_full_path))
     Config().runtime = Namespace()
     Config().runtime.serveFrontEnd = True

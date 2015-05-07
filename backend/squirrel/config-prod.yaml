@@ -1,0 +1,7 @@
+frontend:
+    port: 80
+
+backend:
+    db:
+        workdir: ../workdir/
+        url: sqlite:///../workdir/db.sqlite
