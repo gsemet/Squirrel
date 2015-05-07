@@ -82,10 +82,19 @@ def _makeFullPath(relPath):
     return os.path.abspath(os.path.join(backend_root, relPath))
 
 
-def _makeSqlLitePath(url):
+def _resolveSqlPath(url):
+
     sqlite_proto = "sqlite:///"
     if url.startswith(sqlite_proto):
-        return sqlite_proto + _makeFullPath(url[len(sqlite_proto):])
+        url = sqlite_proto + _makeFullPath(url[len(sqlite_proto):])
+    elif url.startswith('$'):
+        url = url[1:]
+        log.info("Resolving SQL Url using the environment variable '{}'".format(url))
+        url = os.environ[url]
+
+    if sys.platform.startswith("win32"):
+        url = url.replace("\\", "\\\\")
+
     return url
 
 
@@ -94,10 +103,8 @@ def updateFullPaths():
     c.frontend.root_fullpath = _makeFullPath(c.frontend.root_path)
     c.frontend.doc_fullpath = _makeFullPath(c.frontend.doc_path)
     c.logging.config_file_fullpath = _makeFullPath(c.logging.config_file)
-    c.backend.db.full_url = _makeSqlLitePath(c.backend.db.url)
+    c.backend.db.full_url = _resolveSqlPath(c.backend.db.url)
     c.backend.db.workdir_fullpath = _makeFullPath(c.backend.db.workdir)
-    if sys.platform.startswith("win32"):
-        c.backend.db.full_url = c.backend.db.full_url.replace("\\", "\\\\")
     c.plugins.default_path_fullpath = _makeFullPath(c.plugins.default_path)
 
 
