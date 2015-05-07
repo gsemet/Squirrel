@@ -95,38 +95,51 @@ if isWindows or (not os.environ.get("TRAVIS") and not sys.stdout.isatty()):
     bcolors.ENDC = ''
 
 
+def flush():
+    sys.stdout.flush()
+    sys.stderr.flush()
+
+
 def printInfo(text):
     print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + text)
+    flush()
 
 
 def printError(text):
     print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
+    flush()
 
 
 def printSeparator(char="-", color=bcolors.OKGREEN):
     print(color + char * 79 + bcolors.ENDC)
+    flush()
 
 
 def printNote(text):
     print(bcolors.HEADER + "[NOTE ] " + bcolors.ENDC + text)
+    flush()
 
 
 def printBoot(text):
     print(bcolors.BOOT + "[BOOT ] " + bcolors.ENDC + text)
+    flush()
 
 
 def run(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
+    flush()
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
 
 
 def call(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
+    flush()
     return subprocess.call(cmd, shell=shell, cwd=cwd)
 
 
 def run_background(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD (background)" + bcolors.ENDC + "] {}".format(" ".join(cmd)))
+    flush()
     subprocess.Popen(cmd, cwd=cwd, shell=shell)
 
 ####################################################################################################
@@ -207,10 +220,11 @@ printBoot("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.s
 if do_virtualenv:
     printBoot("Setting up virtualenv to start Installer Stage 2.")
 else:
-    printBoot("!!!!!!!!!!!!!!!!!!!")
-    printBoot("Beware !! We will **NOT** setup into a virtual env ('novirtualenv' option).")
-    printBoot("Hope your production works inside a Docker !")
-    printBoot("!!!!!!!!!!!!!!!!!!!")
+    m = "Beware !! 'novirtualenv' mode detected, do ** NOT ** setup a virtual env!"
+    printBoot("!" * len(m))
+    printBoot(m)
+    printBoot("*** Hope your production works inside a Docker !! *** ")
+    printBoot("!" * len(m))
 printBoot("You can activate this environment with the following command:")
 printBoot("    {0}".format(activate_info))
 printBoot("Installing in {0}".format(workdir_path))

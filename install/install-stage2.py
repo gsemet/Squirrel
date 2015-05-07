@@ -169,54 +169,51 @@ if isWindows or (not os.environ.get("TRAVIS") and not sys.stdout.isatty()):
     bcolors.ENDC = ''
 
 
-def printInfo(text):
-    print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + text)
+def flush():
     sys.stdout.flush()
     sys.stderr.flush()
+
+
+def printInfo(text):
+    print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + text)
+    flush()
 
 
 def printError(text):
     print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
-    sys.stdout.flush()
-    sys.stderr.flush()
+    flush()
 
 
 def printSeparator(char="-", color=bcolors.OKGREEN):
     print(color + char * 79 + bcolors.ENDC)
-    sys.stdout.flush()
-    sys.stderr.flush()
+    flush()
 
 
 def printNote(text):
     print(bcolors.HEADER + "[NOTE ] " + bcolors.ENDC + text)
-    sys.stdout.flush()
-    sys.stderr.flush()
+    flush()
 
 
 def printBoot(text):
     print(bcolors.BOOT + "[BOOT ] " + bcolors.ENDC + text)
-    sys.stdout.flush()
-    sys.stderr.flush()
+    flush()
 
 
 def run(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
-    sys.stdout.flush()
-    sys.stderr.flush()
+    flush()
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
 
 
 def call(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
-    sys.stdout.flush()
-    sys.stderr.flush()
+    flush()
     return subprocess.call(cmd, shell=shell, cwd=cwd)
 
 
 def run_background(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD (background)" + bcolors.ENDC + "] {}".format(" ".join(cmd)))
-    sys.stdout.flush()
-    sys.stderr.flush()
+    flush()
     subprocess.Popen(cmd, cwd=cwd, shell=shell)
 
 ####################################################################################################
@@ -391,7 +388,7 @@ if "serve_prod" in current_capabilities:
         backend_launcher = os.path.join(workdir_path, "Scripts", server_base_name + ".exe")
     else:
         backend_launcher = server_base_name
-    printInfo("Launching Squirrel-server {}".format(backend_launcher))
+    printInfo("Launching Prod Squirrel Server: {}".format(backend_launcher))
 
     run([backend_launcher])
 
