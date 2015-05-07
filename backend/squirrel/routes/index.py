@@ -15,6 +15,8 @@ log = logging.getLogger(__name__)
 
 @app.route('/', methods=['GET'])
 def get_root(request):
+    if not Config().backend.serve:
+        return
     log.debug("request root")
     s = serve_url(FRONTEND_INDEX_FILE, Config().frontend.root_full_path)
     # http://stackoverflow.com/questions/22929920/no-such-resource-404-error

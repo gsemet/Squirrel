@@ -1,3 +1,6 @@
 
 frontend:
     port: 8080
+
+backend:
+    serve: false

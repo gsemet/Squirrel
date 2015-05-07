@@ -2,6 +2,7 @@ frontend:
     port: $PORT
 
 backend:
+    serve: true
     db:
         workdir: ../log/
         url: sqlite:///../tmp/db.sqlite

@@ -2,6 +2,7 @@ frontend:
     port: 80
 
 backend:
+    serve: true
     db:
         workdir: ../workdir/
         url: sqlite:///../workdir/db.sqlite

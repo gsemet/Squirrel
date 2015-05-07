@@ -14,7 +14,7 @@ def run():
 
     try:
         serverSetup(flavour="prod")
-        serveBackend(serveFrontEnd=True)
+        serveBackend()
         serverStop()
     except KeyboardInterrupt:
         print("Ctrl-c pressed ...")

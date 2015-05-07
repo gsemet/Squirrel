@@ -14,7 +14,7 @@ def run():
 
     try:
         serverSetup(flavour="heroku")
-        serveBackend(serveFrontEnd=True)
+        serveBackend()
         serverStop()
     except KeyboardInterrupt:
         print("Ctrl-c pressed ...")

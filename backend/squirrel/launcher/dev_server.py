@@ -15,7 +15,7 @@ def run():
     try:
         install_handler_win32()
         serverSetup(flavour="dev")
-        serveBackend(serveFrontEnd=False)
+        serveBackend()
         serverStop()
     except KeyboardInterrupt:
         print("Ctrl-c pressed ...")

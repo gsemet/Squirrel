@@ -9,6 +9,7 @@ frontend:
     logging_conf_path: ./squirrel/logging.conf
 
 backend:
+    serve: false
     db:
         workdir: ../workdir/
         url: sqlite:///../workdir/db.sqlite

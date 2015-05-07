@@ -5,7 +5,6 @@ from __future__ import print_function
 import logging
 import os
 
-from dictns import Namespace
 from twisted.internet import reactor
 
 from squirrel.routes import app
@@ -28,12 +27,10 @@ def findPortNumber():
     return port
 
 
-def serveBackend(serveFrontEnd=True):
+def serveBackend():
     port = findPortNumber()
     log.info("Starging web service on port {!r}".format(port))
     log.info("Serving front end located at: {}".format(Config().frontend.root_full_path))
-    Config().runtime = Namespace()
-    Config().runtime.serveFrontEnd = True
     app.run("localhost", port)
 
 
