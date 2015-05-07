@@ -4,7 +4,7 @@ flavour:
     config_file: 'config-{flavour}.yaml'
 
 logging:
-    config_file: ' ./squirrel/logging.conf'
+    config_file: ./squirrel/logging.conf
 
 frontend:
     root_path: ../frontend/dist/
