@@ -20,7 +20,7 @@ log = logging.getLogger(__name__)
 def findPortNumber():
     port = Config().frontend.port
     if isinstance(port, basestring) and port.startswith("$"):
-        env_var_name = port.replace('$')
+        env_var_name = port.replace('$', "")
         port = int(os.environ[env_var_name])
     else:
         port = int(port)
