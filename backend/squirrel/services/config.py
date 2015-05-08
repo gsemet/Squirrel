@@ -141,9 +141,9 @@ def initializeConfig(flavour):
                                                "config.yaml"))
     log.debug("Loading configuration: {}".format(config_path))
     _loadConfig(config_path)
+    configureFlavor(config_path, flavour)
     updateFullPaths()
     dumpConfigToLogger()
-    configureFlavor(config_path, flavour)
 
 
 def unloadConfig():
