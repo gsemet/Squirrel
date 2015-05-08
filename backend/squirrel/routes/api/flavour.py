@@ -15,4 +15,4 @@ log = logging.getLogger(__name__)
 def route_flavour(request):
     request.setHeader('Content-Type', 'application/json')
 
-    return json.data(Config().flavour.name)
+    return json.dumps(Config().flavour.name)
