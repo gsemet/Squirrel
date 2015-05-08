@@ -146,7 +146,7 @@ def setupLogger():
                                                      secondary_log_colors={},
                                                      style='%'
                                                      ))
-    else:
+    elif Config().logging.use_color_formatter:
         log.debug("Configuring color formatter")
 
         format_string = ("%(log_color)s%(levelname){align_level_width}s%(reset)s | %(message)s"
