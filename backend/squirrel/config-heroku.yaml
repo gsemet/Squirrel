@@ -3,7 +3,7 @@ frontend:
 
 logging:
     use_split_formatter: false
-    use_color_formatter: false
+    use_color_formatter: true
     config_file: ./squirrel/logging-heroku.conf
 
 backend:

@@ -27,7 +27,7 @@ def autoroute(python_file, **kwargs):
 def serve_url(wanted_url, root_path):
     log.debug("root: {!r}".format(root_path))
     wanted_url = os.path.normpath(wanted_url)
-    log.debug("wanted_url", wanted_url)
+    log.debug("wanted_url: {}", wanted_url)
     full_file_path = os.path.join(root_path, wanted_url)
     # Seems like twisted DirectoryLister doesn't like unicode input
     # http://stackoverflow.com/questions/20433559/twisted-web-file-directory-listing-issues
