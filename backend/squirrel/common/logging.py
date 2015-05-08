@@ -36,6 +36,9 @@ def setupLogger():
                       "This probably comes from an invalid path: {!r}\n"
                       "Original exception message: {}".format(config_file_fullpath, e))
 
+    align_level_width = 6
+    extra_char_width = 3
+
     class SplitFormatter(ColoredFormatter):
 
         '''
@@ -122,26 +125,48 @@ def setupLogger():
             else:
                 return None
 
-    align_level_width = 6
-    extra_char_width = 3
-    format_string = ("%(log_color)s%(levelname){align_level_width}s%(reset)s | %(message)s"
-                     .format(align_level_width=align_level_width))
-    root = logging.getLogger()
-    date_fmt_string = None
-    # Do *not* replace the formatter in quiet mode since we want to bare output
-    root.handlers[0].setFormatter(SplitFormatter(fmt=format_string,
-                                                 datefmt=date_fmt_string,
-                                                 reset=True,
-                                                 log_colors={
-                                                     'DEBUG':    'cyan',
-                                                     'INFO':     'green',
-                                                     'WARNING':  'yellow',
-                                                     'ERROR':    'red',
-                                                     'CRITICAL': 'red,bg_white',
-                                                 },
-                                                 secondary_log_colors={},
-                                                 style='%'
-                                                 ))
+    if Config().logging.use_split_formatter:
+        log.debug("Configuring magic split formatter")
+
+        format_string = ("%(log_color)s%(levelname){align_level_width}s%(reset)s | %(message)s"
+                         .format(align_level_width=align_level_width))
+        root = logging.getLogger()
+        date_fmt_string = None
+        # Do *not* replace the formatter in quiet mode since we want to bare output
+        root.handlers[0].setFormatter(SplitFormatter(fmt=format_string,
+                                                     datefmt=date_fmt_string,
+                                                     reset=True,
+                                                     log_colors={
+                                                         'DEBUG':    'cyan',
+                                                         'INFO':     'green',
+                                                         'WARNING':  'yellow',
+                                                         'ERROR':    'red',
+                                                         'CRITICAL': 'red,bg_white',
+                                                     },
+                                                     secondary_log_colors={},
+                                                     style='%'
+                                                     ))
+    else:
+        log.debug("Configuring color formatter")
+
+        format_string = ("%(log_color)s%(levelname){align_level_width}s%(reset)s | %(message)s"
+                         .format(align_level_width=align_level_width))
+        root = logging.getLogger()
+        date_fmt_string = None
+        # Do *not* replace the formatter in quiet mode since we want to bare output
+        root.handlers[0].setFormatter(ColoredFormatter(fmt=format_string,
+                                                       datefmt=date_fmt_string,
+                                                       reset=True,
+                                                       log_colors={
+                                                           'DEBUG':    'cyan',
+                                                           'INFO':     'green',
+                                                           'WARNING':  'yellow',
+                                                           'ERROR':    'red',
+                                                           'CRITICAL': 'red,bg_white',
+                                                       },
+                                                       secondary_log_colors={},
+                                                       style='%'
+                                                       ))
     log.info("*" * 79)
     log.info("*" + " " * 26 + "Starting Squirrel Server " + " " * 26 + "*")
     log.info("*" * 79)

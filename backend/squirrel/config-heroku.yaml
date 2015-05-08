@@ -2,6 +2,7 @@ frontend:
     port: $PORT
 
 logging:
+    use_split_formatter: false
     config_file: ./squirrel/logging-heroku.conf
 
 backend:

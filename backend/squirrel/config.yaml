@@ -4,6 +4,7 @@ flavour:
     config_file: 'config-{flavour}.yaml'
 
 logging:
+    use_split_formatter: true
     config_file: ./squirrel/logging.conf
 
 frontend:

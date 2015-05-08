@@ -1,3 +1,7 @@
+logging:
+    use_split_formatter: true
+    config_file: ./squirrel/logging.conf
+
 frontend:
     port: 80
 
