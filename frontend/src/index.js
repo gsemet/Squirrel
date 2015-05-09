@@ -197,7 +197,8 @@ app.config(
 
       $locationProvider
         .html5Mode({
-          enabled: false
+          enabled: true,
+          requireBase: true
         });
       // todo : enable hashPrefix (SEO friendly)
       //.hashPrefix('!');
