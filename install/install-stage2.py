@@ -322,12 +322,13 @@ if "frontend_install" in current_capabilities:
                                                                               "frontend"),
             shell=shell)
         printInfo("cd frontend")
-        run(["npm", "--proxy", os.environ["http_proxy"], "install"], cwd=os.path.join(install_path,
-                                                                                      "frontend"),
+        run(["npm", "--proxy", os.environ["http_proxy"], "install", "--ignore-scripts"],
+            cwd=os.path.join(install_path, "frontend"),
             shell=shell)
     else:
         printInfo("cd frontend")
-        run(["npm", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+        run(["npm", "install", "--ignore-scripts"], cwd=os.path.join(install_path, "frontend"),
+            shell=shell)
 
     printInfo("cd frontend")
     run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
