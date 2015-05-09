@@ -15,9 +15,9 @@ Asset Portfolio Management System.
 Installation
 ============
 
-Installation is done using the scripts located in the ``install`` directory.
+Installation is done using the ``install.py`` script located in the ``install`` directory.
 
-Squirrel runs its own virtuelenv, to avoid conflict with installed libraries.
+Squirrel typically runs its own virtuelenv, to avoid conflict with installed Python libraries.
 
 Prerequisits
 ************
@@ -30,8 +30,8 @@ Have python 2.7, pip and virtualenv installed on your system:
     $ pip  # pip 6.0.8
     $ pip install virtualenv
 
-To build the frontend UI (HTML), you'll need node, and bower. The build system uses gulp which will
-be automatically installed by the Squirel Installer.
+To build the frontend UI (HTML), you'll need node, and bower. The build system uses ``gulp`` which
+will be automatically installed by the Squirel Installer.
 
 .. code-block:: bash
 
@@ -45,6 +45,51 @@ Squirrel is not Python 3 compatible, the following dependencies needs to be port
 
 - Twisted
 
+Targets
+*******
+
+Squirrel installation allows to select several type of installation targets:
+
+``install:dev`` or ``serve:dev``
+
+    Your prefered mode for hacking Squirrel. It will setup a virtualenv if ``workdir`` directory.
+    ``isntall:dev`` only installs and do not start. ``serve:dev`` install and automatically start
+    web server.
+
+    It lauches the Python backend with autorestart (ie, as soon as you modify a python file, the
+    backend is restarted), and starts the Angular frontend using ``gulp serve`` (ie, as soon as you
+    modify an HTML or Javascript file, the frontend is restarted). Both are connected. The backend
+    runs transparently on port 8080, while the frontend will be automatically displayed in your web
+    browser on port 3000.
+
+    The trick here is that gulp serve will automatically route api requests to the backend server,
+    (ie, all requests to ``localhost:3000/api`` are proxied to ``localhost:8080/api``), so there is
+    no cross origin problem (CORS).
+
+``install:prod`` or ``serve:prod``
+
+    This target will compile the frontend in production mode. ``serve:prod`` will start the
+    Python backend in prod mode, ie, it will serve the Angular web site itself.
+
+    Use it for a standalone installation, or to test the production mode on your machine.
+
+- ``install:novirtualenv``
+
+    This target is used when installing Squirrel on a cloud platform that is already a dedicated
+    virtual environment (typically, your cloud service actually starts a docker for you).
+
+    For heroku, there are two dedicated targets:
+
+    - ``heroku:build``, used during buildpack creation
+    - ``heroku:start``, used to start the production server
+
+Use ``--help`` for full command line help:
+
+.. code-block:: bash
+
+    python install/install.py --help
+
+
 Installation under Mac OS X and Linux
 *************************************
 
@@ -52,17 +97,17 @@ Installation under Mac OS X and Linux
 
     On Mac OS X, this project has been developped and validated with Homebrew.
 
-In the squirrel directory, execute the following command:
+In the squirrel directory, just execute the following command:
 
 .. code-block:: bash
 
-    python install/install.py install
+    python install/install.py
 
 
 Installation under Windows
 **************************
 
-``python.exe`` and ``virtualenv.exe`` should be accessible through your path.
+``python.exe`` and ``virtualenv.exe`` should be accessible in your path.
 
 Backend
 -------
@@ -139,26 +184,28 @@ Development
 ***********
 
 Basically, you just need to run ``install/install.py`` and let all the magic happen. Everything
-will be automatically regenerated:
+will be automatically regenerated in development mode:
 
 - frontend (Web UI using Angular)
 - backend (Python based)
 - online documentation (using sphinx)
 
-Use the following command to start the development server:
+Use the following command to build and start the development server:
 
 .. code-block:: bash
 
     python install/install serve:dev
 
 Your web browser will automatically opens to ``localhost:3000``, with the HTML (frontend) served
-by ``gulp serve`` and the backend running with ``squirrel-devbackend``.
+by ``gulp serve`` and the backend running with ``squirrel-devbackend``, with ``/api`` automatically
+routed so you don't have any CORS issue.
 
 It is advised to have the `BrowserSync <http://www.browsersync.io/>`_ plugin installed in your
 browser. With it, any modification done in the frontend will be instantaneously applied into your
 web browser.
 
-So sad, it does not work with the backend.
+It also works for the frontend, with the ``auto_relauncher`` program deliberately inspired by the
+``watchmedo`` demo script from the ``watchdog`` Python module.
 
 Frontend
 --------
@@ -184,6 +231,8 @@ Development:
 - ``gulp protractor`` to launch your e2e tests with Protractor
 - ``gulp protractor:dist`` to launch your e2e tests with Protractor on the dist files
 
+I usually prefer using ``install/install.py start:dev`` target.
+
 Editor configuration
 --------------------
 
@@ -197,30 +246,128 @@ Windows:
     "build_systems":
     [
         {
-            "name": "Squirrel - Install and launch",
-            "cmd": ["python", "-u", "install\\install.py"], // add -l to launch Squirrel automatically
+            "cmd":
+            [
+                "python",
+                "-u",
+                "install\\install.py",
+                "serve:dev"
+            ],
+            "name": "Squirrel - Install and launch (dev)",
             "shell": true,
-            "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel"
+            "working_dir": "X:\\Path\\to\\Squirrel"
         },
         {
-            "name": "Squirrel - Unit test",
-            "cmd": ["install\\unittest.bat", "squirrel"],
+            "cmd":
+            [
+                "python",
+                "-u",
+                "install\\install.py",
+                "serve:prod"
+            ],
+            "name": "Squirrel - Install and launch (prod)",
             "shell": true,
-            "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel"
+            "working_dir": "X:\\Path\\to\\Squirrel"
         },
         {
+            "cmd":
+            [
+                "python",
+                "-u",
+                "install\\install.py",
+                "start:prod"
+            ],
+            "name": "Squirrel - Start Prod server (prod). No build!",
+            "shell": true,
+            "working_dir": "X:\\Path\\to\\Squirrel"
+        },
+        {
+            "cmd":
+            [
+                "python",
+                "-u",
+                "install\\uninstall.py"
+            ],
+            "name": "Squirrel - Uninstall",
+            "shell": true,
+            "working_dir": "X:\\Path\\to\\Squirrel"
+        },
+        {
+            "cmd":
+            [
+                "install\\unittest.bat",
+                "squirrel"
+            ],
+            "name": "Squirrel - Unit tests",
+            "shell": true,
+            "working_dir": "X:\\Path\\to\\Squirrel"
+        },
+        {
+            "cmd":
+            [
+                "install\\unittest.bat",
+                "squirrel_integration_tests"
+            ],
+            "name": "Squirrel - Integration tests",
+            "shell": true,
+            "working_dir": "X:\\Path\\to\\Squirrel"
+        },
+        {
+            "cmd":
+            [
+                "make.bat",
+                "html"
+            ],
             "name": "Squirrel - Build documentation",
-            "cmd": ["make.bat", "html"],
             "shell": true,
-            "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel\\doc"
+            "working_dir": "X:\\Path\\to\\Squirrel\\doc"
         },
         {
+            "cmd":
+            [
+                "gulp",
+                "build"
+            ],
             "name": "Squirrel - Build Frontend",
-            "cmd": ["gulp", "build"],
             "shell": true,
-            "working_dir": "X:\\Full\\Path\\Where\\Is\\Installed\\Squirrel\\frontend"
+            "working_dir": "X:\\Path\\to\\Squirrel\\frontend"
+        },
+        {
+            "cmd":
+            [
+                "gulp",
+                "serve"
+            ],
+            "name": "Squirrel - Serve Frontend (dev)",
+            "shell": true,
+            "working_dir": "X:\\Path\\to\\Squirrel\\frontend"
+        },
+        {
+            "cmd":
+            [
+                "python",
+                "-u",
+                "install\\install.py",
+                "serve:devbackend"
+            ],
+            "name": "Squirrel - Serve backend (dev)",
+            "shell": true,
+            "working_dir": "X:\\Path\\to\\Squirrel"
+        },
+        {
+            "cmd":
+            [
+                "python",
+                "-u",
+                "install\\install.py",
+                "update:all"
+            ],
+            "name": "Squirrel - Update all",
+            "shell": true,
+            "working_dir": "X:\\Path\\to\\Squirrel"
         }
-    ]
+    ],
+
 
 Linux/Mac OS:
 
