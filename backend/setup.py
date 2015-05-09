@@ -11,7 +11,7 @@ setup_args = {
     'version': version,
     'entry_points': {
         'console_scripts': [
-            'squirrel-heroku = squirrel.launcher.heroku_server:run',
+            'squirrel-heroku = squirrel.launcher.squirrel_heroku:run',
             'squirrel-prod = squirrel.launcher.squirrel_prod:run',
             'squirrel-dev = squirrel.launcher.squirrel_dev:run',
             'squirrel-cli = squirrel.launcher.squirrel_cli:run',
