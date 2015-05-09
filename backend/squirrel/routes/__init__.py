@@ -31,6 +31,7 @@ mime_types = {
     ".woff": "application/font-woff",
     ".gif": "image/gif",
     ".jpeg": "image/jpeg",
+    ".jpg": "image/jpeg",
     ".png": "image/png",
     ".js": "application/javascript",
     ".css": "text/css",
@@ -66,7 +67,8 @@ def serve_url(wanted_url, root_path):
                   .format(full_file_path))
         full_index_path = os.path.join(root_path, FRONTEND_INDEX_FILE)
         return File(full_index_path, defaultType=getMimeType(full_index_path))
-    log.debug("File exists: {}".format(is_exists))
+    log.debug("File {}, mime: {}".format("exists" if is_exists else "does not exist",
+                                         getMimeType(full_file_path)))
     return File(full_file_path, defaultType=getMimeType(full_file_path))
 
 
