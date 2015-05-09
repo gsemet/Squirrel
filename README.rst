@@ -66,6 +66,10 @@ Squirrel installation allows to select several type of installation targets:
     (ie, all requests to ``localhost:3000/api`` are proxied to ``localhost:8080/api``), so there is
     no cross origin problem (CORS).
 
+    The backend also serves the production files on port 8080, but you need to have built the
+    production frontend first (using ``install:prod`` target). Use this to work on backend routing.
+    But in your every day developer life, you probably don't want to use it.
+
 ``install:prod`` or ``serve:prod``
 
     This target will compile the frontend in production mode. ``serve:prod`` will start the

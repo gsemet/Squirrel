@@ -11,6 +11,9 @@ from klein import Klein
 from twisted.web.static import DirectoryLister
 from twisted.web.static import File
 
+from squirrel.config.constants import FRONTEND_INDEX_FILE
+from squirrel.services.config import Config
+
 app = Klein()
 log = logging.getLogger(__name__)
 
@@ -28,6 +31,7 @@ def serve_url(wanted_url, root_path):
     log.debug("root: {!r}".format(root_path))
     wanted_url = os.path.normpath(wanted_url)
     log.debug("wanted_url: {}", wanted_url)
+    log.debug("html5mode: {}".format(Config().frontend.html5mode))
     full_file_path = os.path.join(root_path, wanted_url)
     # Seems like twisted DirectoryLister doesn't like unicode input
     # http://stackoverflow.com/questions/20433559/twisted-web-file-directory-listing-issues
@@ -37,7 +41,13 @@ def serve_url(wanted_url, root_path):
         log.debug("Dir exists: {}".format(os.path.exists(full_file_path)))
         log.debug("should list: os.listdir(self.path)", os.listdir(full_file_path))
         return DirectoryLister(full_file_path)
-    log.debug("File exists: {}".format(os.path.exists(full_file_path)))
+    is_exists = os.path.exists(full_file_path)
+    if not is_exists and Config().frontend.html5mode:
+        log.debug("File {!r} do not exist, html5mode detected, serving index.html"
+                  .format(wanted_url, full_file_path))
+        full_index_path = os.path.join(root_path, FRONTEND_INDEX_FILE)
+        return File(full_index_path)
+    log.debug("File exists: {}".format(is_exists))
     return File(full_file_path)
 
 

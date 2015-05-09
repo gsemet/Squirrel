@@ -11,6 +11,7 @@ logging:
 frontend:
     root_path: ../frontend/dist/
     doc_path: ../doc/build/html/
+    html5mode: true
 
 backend:
     serve: false

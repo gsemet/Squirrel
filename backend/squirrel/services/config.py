@@ -32,12 +32,12 @@ def _dumpFlat(n, parent=None):
                 v = Namespace(v)
                 s = _dumpFlat(v, me)
             elif type(v) == list:
-                s = me + " = " + str(v) + "\n"
+                s = me + " = " + repr(v).replace('\n', '\\n') + "\n"
                 if len(v) > 0:
                     v = v[0]
                     s += do_item(me + "[i]", v)
             else:
-                s = me + " = " + str(v) + "\n"
+                s = me + " = " + repr(v).replace('\n', '\\n') + "\n"
             return s
         s += do_item(me, v)
     return s
