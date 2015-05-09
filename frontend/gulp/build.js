@@ -46,9 +46,9 @@ gulp.task('html', ['inject', 'partials'], function() {
     .pipe(jsFilter)
     .pipe($.replace('MODE: "dev"', 'MODE: "prod"'))
     .pipe($.ngAnnotate())
-    .pipe($.uglify({
-      preserveComments: $.uglifySaveLicense
-    }))
+  /*.pipe($.uglify({*/
+    /*  preserveComments: $.uglifySaveLicense*/
+    /*}))*/
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.replace('../bootstrap/fonts', 'fonts'))
