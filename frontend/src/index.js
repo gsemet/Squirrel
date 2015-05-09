@@ -247,9 +247,11 @@ app.config(
           hasSubDomain: false,
         }]
       );
-      environmentProvider.setDefaultSubDomain("en");
-          }
-        ]
+      environmentProvider.setDefaultSubDomain("www");
+    }
+
+  ]
+
 );
 
 
@@ -267,13 +269,23 @@ angular.module('squirrel').controller('BodyController',
         return "";
       }
     }
+
   ]
+
 );
 
 
-angular.module('squirrel').run(['$anchorScroll', function($anchorScroll) {
-  $anchorScroll.yOffset = 80; // always scroll by 80 extra pixels
-}])
+angular.module('squirrel').run(
+
+  ['$anchorScroll',
+
+    function($anchorScroll) {
+      $anchorScroll.yOffset = 80; // always scroll by 80 extra pixels
+    }
+
+  ]
+
+)
 
 
 /**
@@ -282,8 +294,10 @@ angular.module('squirrel').run(['$anchorScroll', function($anchorScroll) {
  * server.
  */
 angular.module('squirrel').constant('DEPLOYMENT', {
+
   /**
    * Please keep exactly like this: 'MODE: "dev"' !!
    */
   MODE: "dev"
+
 })

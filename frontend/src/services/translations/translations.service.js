@@ -4,10 +4,10 @@
 angular.module('squirrel').factory('TranslationService',
 
   ['gettextCatalog', "AUTH_EVENTS", "$rootScope", "AuthenticationService", "ipCookie", "ModalService",
-    "$timeout", "DEPLOYMENT",
+    "$timeout", "DEPLOYMENT", "debug",
 
     function(gettextCatalog, AUTH_EVENTS, $rootScope, AuthenticationService, ipCookie, ModalService,
-      $timeout, DEPLOYMENT) {
+      $timeout, DEPLOYMENT, debug) {
 
       var translationService = {
         languages: [{
@@ -21,38 +21,39 @@ angular.module('squirrel').factory('TranslationService',
       };
 
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
-        console.log("translation service on loginSuccesful: " + userName);
+        debug.info("TranslationService", "translation service on loginSuccesful: " + userName);
         var lang = AuthenticationService.getUserLanguage();
-        console.log(" lang => " + lang);
+        debug.info("TranslationService", " lang => " + lang);
         ipCookie("prefered-language", lang);
         translationService.setLangFromCookie();
       });
 
       $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(event) {
-        console.log("translation service on logout");
+        debug.info("TranslationService", "translation service on logout");
         translationService.setLangFromCookie();
       });
 
       $rootScope.$on(AUTH_EVENTS.loginFailed, function(event, error) {
-        console.log("translation service on loginError:" + error);
+        debug.info("TranslationService", "translation service on loginError:" + error);
       });
 
       translationService.setLangFromCookie = function() {
         var lang = ipCookie("prefered-language");
         if (lang && lang != 'us') {
-          console.log("Setting current language to " + lang + "mode=" + DEPLOYMENT.MODE);
+          debug.info("TranslationService", "Setting current language to " + lang +
+            ", mode=" + DEPLOYMENT.MODE);
           gettextCatalog.setCurrentLanguage(lang);
           if (DEPLOYMENT.MODE == 'dev') {
-            console.log("debug mode enabled");
+            debug.info("TranslationService", "debug mode enabled");
             gettextCatalog.debug = true;
           }
           translationService.currentLang = lang;
           translationService.setExternalToolLang();
           $rootScope.$emit(translationService.TRANSLATION_UPDATED, lang);
-          console.log("emiting signal = TRANSLATION_UPDATED " + lang);
+          debug.info("TranslationService", "emiting signal = TRANSLATION_UPDATED " + lang);
         } else {
           gettextCatalog.setCurrentLanguage('en');
-          console.log("Setting to default language 'us' (='en')");
+          debug.info("TranslationService", "Setting to default language 'us' (='en')");
           if (!lang) {
             translationService.currentLang = null;
             $timeout(function() {
@@ -61,7 +62,7 @@ angular.module('squirrel').factory('TranslationService',
           } else {
             translationService.currentLang = lang;
             translationService.setExternalToolLang();
-            console.log("emiting signal = TRANSLATION_UPDATED " + lang);
+            debug.info("TranslationService", "emiting signal = TRANSLATION_UPDATED " + lang);
             $rootScope.$emit(translationService.TRANSLATION_UPDATED, lang);
 
           }
@@ -85,7 +86,7 @@ angular.module('squirrel').factory('TranslationService',
           // it as you need to.
           modal.element.modal();
           modal.close.then(function(lang) {
-            console.log("You said you wanted language: " + lang);
+            debug.info("TranslationService", "You said you wanted language: " + lang);
             if (lang) {
               ipCookie("prefered-language", lang);
               translationService.setLangFromCookie();
@@ -100,12 +101,13 @@ angular.module('squirrel').factory('TranslationService',
       };
 
       translationService.getCurrentLanguage = function() {
-        console.log("translationService.currentLang = " + JSON.stringify(translationService.currentLang));
+        debug.info("TranslationService", "translationService.currentLang = " +
+          JSON.stringify(translationService.currentLang));
         var found = null;
         _.forEach(translationService.languages, function(lang) {
-          console.log("lang = " + JSON.stringify(lang) + "?");
+          debug.info("TranslationService", "lang = " + JSON.stringify(lang) + "?");
           if (translationService.currentLang == lang.short_lang) {
-            console.log("returing = " + JSON.stringify(lang.language));
+            debug.info("TranslationService", "returing = " + JSON.stringify(lang.language));
             found = lang.language;
           };
         });
