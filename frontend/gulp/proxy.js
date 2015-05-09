@@ -17,6 +17,7 @@
 
 var httpProxy = require('http-proxy');
 var chalk = require('chalk');
+var colors = require('colors');
 
 /*
  * Location of your backend server
@@ -54,10 +55,10 @@ function proxyMiddleware(req, res, next) {
    */
   if (/^\/api\//.test(req.url)) {
     // route all request to /api/* to backend running on port 8080
-    console.log("[serving w/ proxy] " + req.url);
+    console.log("[serving w/ proxy] ".red + req.url);
     proxy.web(req, res);
   } else {
-    console.log("[serving w/o proxy] " + req.url);
+    console.log("[serving w/o proxy] ".magenta + req.url);
     next();
   }
 }
