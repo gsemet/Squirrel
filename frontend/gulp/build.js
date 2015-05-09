@@ -1,8 +1,11 @@
 'use strict';
 
 var gulp = require('gulp');
+var gulpif = require('gulp-if');
 
 var paths = gulp.paths;
+
+var do_uglyfy = false;
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -46,25 +49,25 @@ gulp.task('html', ['inject', 'partials'], function() {
     .pipe(jsFilter)
     .pipe($.replace('MODE: "dev"', 'MODE: "prod"'))
     .pipe($.ngAnnotate())
-  /*.pipe($.uglify({*/
-    /*  preserveComments: $.uglifySaveLicense*/
-    /*}))*/
+    .pipe(gulpif(do_uglyfy, $.uglify({
+      preserveComments: $.uglifySaveLicense
+    })))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.replace('../bootstrap/fonts', 'fonts'))
     .pipe($.replace('../bower_components/font-awesome', 'fonts/'))
     .pipe($.replace('/bower_components/bootstrap/fonts', '/fonts'))
-    .pipe($.csso())
+    .pipe(gulpif(do_uglyfy, $.csso()))
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
-    .pipe($.minifyHtml({
+    .pipe(gulpif(do_uglyfy, $.minifyHtml({
       empty: true,
       spare: true,
       quotes: true
-    }))
+    })))
     .pipe($.htmlPrettify({
       indent_char: ' ',
       indent_size: 2
