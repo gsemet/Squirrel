@@ -4,10 +4,10 @@
 angular.module('squirrel').factory('TranslationService',
 
   ['gettextCatalog', "AUTH_EVENTS", "$rootScope", "AuthenticationService", "ipCookie", "ModalService",
-    "$timeout",
+    "$timeout", "DEPLOYMENT",
 
     function(gettextCatalog, AUTH_EVENTS, $rootScope, AuthenticationService, ipCookie, ModalService,
-      $timeout) {
+      $timeout, DEPLOYMENT) {
 
       var translationService = {
         languages: [{
@@ -40,9 +40,12 @@ angular.module('squirrel').factory('TranslationService',
       translationService.setLangFromCookie = function() {
         var lang = ipCookie("prefered-language");
         if (lang && lang != 'us') {
-          console.log("Setting current language to " + lang);
+          console.log("Setting current language to " + lang + "mode=" + DEPLOYMENT.MODE);
           gettextCatalog.setCurrentLanguage(lang);
-          gettextCatalog.debug = true;
+          if (DEPLOYMENT.MODE == 'dev') {
+            console.log("debug mode enabled");
+            gettextCatalog.debug = true;
+          }
           translationService.currentLang = lang;
           translationService.setExternalToolLang();
           $rootScope.$emit(translationService.TRANSLATION_UPDATED, lang);

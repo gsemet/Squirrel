@@ -274,3 +274,15 @@ angular.module('squirrel').controller('BodyController',
 angular.module('squirrel').run(['$anchorScroll', function($anchorScroll) {
   $anchorScroll.yOffset = 80; // always scroll by 80 extra pixels
 }])
+
+/**
+ * The following constant DEPLOYMENT.MODE will be set to 'dev' when serving with 'gulp serve', and
+ * to 'prod' when the files has been built with gulp built and are serve by a production HTML
+ * server.
+ */
+angular.module('squirrel').constant('DEPLOYMENT', {
+  /**
+   * Please keep exactly like this: 'MODE: "dev"' !!
+   */
+  MODE: "dev",
+})
