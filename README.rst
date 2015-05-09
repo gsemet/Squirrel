@@ -208,8 +208,9 @@ It is advised to have the `BrowserSync <http://www.browsersync.io/>`_ plugin ins
 browser. With it, any modification done in the frontend will be instantaneously applied into your
 web browser.
 
-It also works for the frontend, with the ``auto_relauncher`` program deliberately inspired by the
-``watchmedo`` demo script from the ``watchdog`` Python module.
+It also works for the backend, with the ``auto_relauncher`` program deliberately inspired by the
+``watchmedo`` demo script from the ``watchdog`` Python module. As soon as a python file, located in
+``frontend`` directory, is modified, the backend server is restarted. Just hack and test!
 
 Frontend
 --------
