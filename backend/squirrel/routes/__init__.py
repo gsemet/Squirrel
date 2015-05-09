@@ -26,11 +26,30 @@ def autoroute(python_file, **kwargs):
     log.debug("route", route)
     return app.route(route, **kwargs)
 
+mime_types = {
+    ".woff2": "application/font-woff",
+    ".woff": "application/font-woff",
+    ".gif": "image/gif",
+    ".jpeg": "image/jpeg",
+    ".png": "image/png",
+    ".js": "application/javascript",
+    ".css": "text/css",
+    ".html": "text/html",
+    ".zip": "application/zip",
+    ".pdf": "application/pdf",
+    ".ttf": "application/octet-stream",
+}
+
+
+def getMimeType(file_path):
+    _, ext = os.path.splitext(file_path)
+    return mime_types.get(ext, "text/html")
+
 
 def serve_url(wanted_url, root_path):
     log.debug("root: {!r}".format(root_path))
     wanted_url = os.path.normpath(wanted_url)
-    log.debug("wanted_url: {}", wanted_url)
+    log.debug("wanted_url: {}".format(wanted_url))
     log.debug("html5mode: {}".format(Config().frontend.html5mode))
     full_file_path = os.path.join(root_path, wanted_url)
     # Seems like twisted DirectoryLister doesn't like unicode input
@@ -39,16 +58,16 @@ def serve_url(wanted_url, root_path):
     log.debug("Serving url {!r} with file {!r}".format(wanted_url, full_file_path))
     if os.path.isdir(full_file_path):
         log.debug("Dir exists: {}".format(os.path.exists(full_file_path)))
-        log.debug("should list: os.listdir(self.path)", os.listdir(full_file_path))
+        log.debug("should list: os.listdir(self.path): {}".format(os.listdir(full_file_path)))
         return DirectoryLister(full_file_path)
     is_exists = os.path.exists(full_file_path)
     if not is_exists and Config().frontend.html5mode:
         log.debug("File {!r} do not exist, html5mode detected, serving index.html"
-                  .format(wanted_url, full_file_path))
+                  .format(full_file_path))
         full_index_path = os.path.join(root_path, FRONTEND_INDEX_FILE)
-        return File(full_index_path)
+        return File(full_index_path, defaultType=getMimeType(full_index_path))
     log.debug("File exists: {}".format(is_exists))
-    return File(full_file_path)
+    return File(full_file_path, defaultType=getMimeType(full_file_path))
 
 
 # injecting all *.py file other than __init__.py in this file
