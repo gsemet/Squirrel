@@ -381,8 +381,8 @@ if "warn_no_serve_and_quit" in current_capabilities:
     sys.exit(0)
 
 if "serve_prod" in current_capabilities:
-    # Launching Squirrel-server
-    server_base_name = "squirrel-server"
+    # Launching squirrel-prod
+    server_base_name = "squirrel-prod"
     if "heroku" in current_capabilities:
         server_base_name = "squirrel-heroku"
     if isWindows:
@@ -394,14 +394,14 @@ if "serve_prod" in current_capabilities:
     run([backend_launcher])
 
 elif "serve_dev" in current_capabilities:
-    # Launching Squirrel-devbackend, which doesn't serve the front end, and let the front
+    # Launching squirrel-dev, which doesn't serve the front end, and let the front
     # be served by 'gulp serve'
     if isWindows:
-        devbackend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-devbackend.exe")
+        devbackend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-dev.exe")
     else:
-        devbackend_launcher = "squirrel-devbackend"
+        devbackend_launcher = "squirrel-dev"
     if "serve_dev_backend" in current_capabilities:
-        printInfo("Launching squirrel-devbackend with auto relauncher {}".format(devbackend_launcher))
+        printInfo("Launching squirrel-dev with auto relauncher {}".format(devbackend_launcher))
         sys.stdout.flush()
         sys.stderr.flush()
 

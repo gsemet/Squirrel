@@ -18,6 +18,7 @@ from squirrel.services.db import connectDatabase
 from squirrel.services.plugin_loader import loadPlugins
 from squirrel.services.plugin_loader import unloadPlugins
 from squirrel.services.serve_backend import quitBackend
+from squirrel.services.serve_backend import serveBackend
 
 
 log = logging.getLogger(__name__)
@@ -40,7 +41,7 @@ def installTrap():
 
 
 # https://github.com/zeromq/pyzmq/pull/559/files
-def install_handler_win32():
+def installHandlerWin32():
     if not sys.platform.startswith("win32"):
         return
 
@@ -96,7 +97,7 @@ def setupDefaultLogger():
     logging.basicConfig(level=logging.INFO)
 
 
-def serverSetup(prod=False, flavour=None):
+def serverSetup(flavour=None):
     setupDefaultLogger()
     installTrap()
     initializeConfig(flavour)
@@ -112,3 +113,15 @@ def serverSetup(prod=False, flavour=None):
 def serverStop():
     unloadConfig()
     unloadPlugins()
+
+
+def commonRun(flavour):
+    try:
+        installHandlerWin32()
+        serverSetup(flavour=flavour)
+        serveBackend()
+        serverStop()
+    except KeyboardInterrupt:
+        print("Ctrl-c pressed ...")
+        quitBackend()
+        sys.exit(1)

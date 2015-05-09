@@ -12,9 +12,9 @@ setup_args = {
     'entry_points': {
         'console_scripts': [
             'squirrel-heroku = squirrel.launcher.heroku_server:run',
-            'squirrel-server = squirrel.launcher.complete_server:run',
-            'squirrel-devbackend = squirrel.launcher.dev_server:run',
-            'squirrel-cli = squirrel.launcher.cli:run',
+            'squirrel-prod = squirrel.launcher.squirrel_prod:run',
+            'squirrel-dev = squirrel.launcher.squirrel_dev:run',
+            'squirrel-cli = squirrel.launcher.squirrel_cli:run',
             'auto_relauncher = squirrel.launcher.auto_relauncher:run',
         ],
     },
