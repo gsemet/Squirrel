@@ -55,10 +55,10 @@ function proxyMiddleware(req, res, next) {
    */
   if (/^\/api\//.test(req.url)) {
     // route all request to /api/* to backend running on port 8080
-    console.log("[serving w/ proxy] ".red + req.url);
+    console.log("[w/ proxy] ".red + req.url);
     proxy.web(req, res);
   } else {
-    console.log("[serving w/o proxy] ".magenta + req.url);
+    console.log("[no proxy] ".magenta + req.url);
     next();
   }
 }
