@@ -284,5 +284,5 @@ angular.module('squirrel').constant('DEPLOYMENT', {
   /**
    * Please keep exactly like this: 'MODE: "dev"' !!
    */
-  MODE: "dev",
+  MODE: "dev"
 })
