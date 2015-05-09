@@ -17,8 +17,6 @@
 
 var httpProxy = require('http-proxy');
 var chalk = require('chalk');
-var historyApiFallback = require('connect-history-api-fallback')
-var enableHtml5ModeFallback = true;
 
 /*
  * Location of your backend server
@@ -58,11 +56,6 @@ function proxyMiddleware(req, res, next) {
     // route all request to /api/* to backend running on port 8080
     console.log("[serving w/ proxy] " + req.url);
     proxy.web(req, res);
-  } else if (enableHtml5ModeFallback) {
-    console.log("[serving w/o proxy (html5mode fallback)] " + req.url);
-    return historyApiFallback({
-      verbose: false
-    })(req, res, next);
   } else {
     console.log("[serving w/o proxy] " + req.url);
     next();

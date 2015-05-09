@@ -8,6 +8,8 @@ var util = require('util');
 
 var browserSync = require('browser-sync');
 
+var spa = require("browser-sync-spa");
+
 var middleware = require('./proxy');
 
 function browserSyncInit(baseDir, files, browser) {
@@ -20,6 +22,10 @@ function browserSyncInit(baseDir, files, browser) {
       '/node_modules': 'node_modules',
     };
   }
+
+  browserSync.use(spa({
+    selector: "[ng-app]" // Only needed for angular apps
+  }));
 
   browserSync.instance = browserSync.init(files, {
     startPath: '/',
