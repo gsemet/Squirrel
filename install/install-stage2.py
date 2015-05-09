@@ -367,7 +367,7 @@ if "backend_test_unit" in current_capabilities:
 if "backend_test_integration" in current_capabilities:
     printSeparator()
     printInfo("Executing backend integration tests")
-    run(["trial", "squirrel"], cwd=os.path.join(install_path, "backend"), shell=shell)
+    run(["trial", "squirrel_integration_tests"], cwd=os.path.join(install_path, "backend"), shell=shell)
 
 if "warn_no_serve_and_quit" in current_capabilities:
     printInfo("")
