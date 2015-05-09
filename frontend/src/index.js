@@ -252,7 +252,6 @@ app.config(
         ]
 );
 
-'use strict';
 
 angular.module('squirrel').controller('BodyController',
 
@@ -271,9 +270,11 @@ angular.module('squirrel').controller('BodyController',
   ]
 );
 
+
 angular.module('squirrel').run(['$anchorScroll', function($anchorScroll) {
   $anchorScroll.yOffset = 80; // always scroll by 80 extra pixels
 }])
+
 
 /**
  * The following constant DEPLOYMENT.MODE will be set to 'dev' when serving with 'gulp serve', and
