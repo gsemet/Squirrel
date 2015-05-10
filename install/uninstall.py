@@ -3,6 +3,9 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+# Please remind that this script uses the system python install, so we are **not** in our well
+# controlled virtual env.
+
 import fnmatch
 import os
 import shutil
@@ -12,7 +15,7 @@ config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs",
 with open(config_path) as f:
     config = f.readlines()
 
-# todo: read this config file (we are in a virtualenv, can import yaml package)
+# todo: read this config file (beware, we are *not* in a virtualenv, cannot use the yaml package)
 root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
 frontend_dist_path = os.path.abspath(os.path.join(root_path,
