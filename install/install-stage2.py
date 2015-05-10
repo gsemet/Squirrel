@@ -73,6 +73,13 @@ cmd_capabilities = {
     "start:novirtualenv": {
         "serve",
         "serve_prod",
+        # TODO: add worker server here when it will be splitted
+        "novirtualenv",
+        "heroku",
+    },
+    "start:novirtualenv:web": {
+        "serve",
+        "serve_prod",
         "novirtualenv",
         "heroku",
     },
@@ -106,6 +113,7 @@ cmd_capabilities = {
     'update:lang:all': {
         "pip_upgrade",
         "backend_install",
+        "backend_update_translation",
         "frontend_install",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
@@ -114,6 +122,7 @@ cmd_capabilities = {
     'update:lang:fr': {
         "pip_upgrade",
         "backend_install",
+        "backend_update_translation",
         "frontend_install",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
@@ -358,7 +367,6 @@ if "frontend_update_translations_fr" in current_capabilities:
     run(["poedit", os.path.join("src", "po", "fr.po")], cwd=os.path.join(install_path, "frontend"),
         shell=shell)
 
-
 if "backend_test_unit" in current_capabilities:
     printSeparator()
     printInfo("Executing backend unit tests")
@@ -369,16 +377,11 @@ if "backend_test_integration" in current_capabilities:
     printInfo("Executing backend integration tests")
     run(["trial", "squirrel_integration_tests"], cwd=os.path.join(install_path, "backend"), shell=shell)
 
-if "warn_no_serve_and_quit" in current_capabilities:
-    printInfo("")
+if "backend_update_translation" in current_capabilities:
     printSeparator()
-    printInfo("Do not start the server. Install is succesful.")
-    if "novirtualenv" not in current_capabilities:
-        printInfo("You can activate the virtualenv at the following path: {}".format(activate_path))
-        if not isWindows:
-            printInfo("(Use 'source activate' symbolic in your root folder)")
-    printSeparator()
-    sys.exit(0)
+    print("[INFO] Updating backend translation")
+    run("xgettext --debug --language=Python --keyword=_ --output=po/Squirrel.pot $(find . -name '*.py')",
+        cwd=os.path.join(install_path, "backend"), shell=True)
 
 if "serve_prod" in current_capabilities:
     # Launching squirrel-prod
@@ -435,5 +438,17 @@ elif "serve_dev" in current_capabilities:
         run(auto_restart_backend_cmd, cwd=os.path.join(install_path, "frontend"), shell=shell)
 
 
-printInfo("Done")
-printSeparator()
+if "warn_no_serve_and_quit" in current_capabilities:
+    printInfo("")
+    printSeparator()
+    printInfo("Do not start the server. Install is succesful.")
+    if "novirtualenv" not in current_capabilities:
+        printInfo("You can activate the virtualenv at the following path: {}".format(activate_path))
+        if not isWindows:
+            printInfo("(Use 'source activate' symbolic in your root folder)")
+    printSeparator()
+    sys.exit(0)
+else:
+    printInfo("Done")
+    printSeparator()
+    sys.exit(0)

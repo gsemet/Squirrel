@@ -28,26 +28,27 @@ if sys.platform.startswith('win32'):
 do_virtualenv = True
 
 allowed_cmd = {
-    "serve:dev":           ("install and launch developer server (backend served with "
-                            "auto_relauncher and frontend served by 'gulp serve')"),
-    "serve:devbackend":    ("install and launch only the dev backend (with auto relauncher))"),
-    "serve:prod":           "install and launch production server",
-    "serve:novirtualenv":  ("install and serve production without going into "
-                            "virtualenv (Docker/Heroku)"),
-    "start:prod":          ("only start prod server (no install)"),
-    "start:dev":           ("only start dev server (no install)"),
-    "start:novirtualenv":  ("only start dev server without virtualenv (no install)"),
-    "install:backend":      "install only backend (python)",
-    "install:all":          "install backend and frontend",
-    "install:novirtualenv": "install only frontend without virtualenv",
-    "update:all":           ("update all dependencies (modules installed by npm and bower) "
-                             "and translations"),
-    "update:lang:all":       "update all translations files - requires 'poedit'",
-    "update:lang:fr":        "update translation (fr) - requires 'poedit'",
-    "test:all":             ("execute all tests (unit tests, integration tests, e2e tests)"),
-    "test:unit":            ("execute unit tests"),
-    "test:integration":     ("execute unit tests"),
-    "test:e2e":             ("execute end to end tests"),
+    "serve:dev":               ("install and launch developer server (backend served with "
+                                "auto_relauncher and frontend served by 'gulp serve')"),
+    "serve:devbackend":        ("install and launch only the dev backend (with auto relauncher))"),
+    "serve:prod":               "install and launch production server",
+    "serve:novirtualenv":      ("install and serve production without going into "
+                                "virtualenv (Docker/Heroku)"),
+    "start:prod":              ("start all prod servers (no install)"),
+    "start:dev":               ("start all dev servers (no install)"),
+    "start:novirtualenv":      ("start all prod servers without virtualenv"),
+    "start:novirtualenv:web":  ("start web process only, without virtualenv"),
+    "install:backend":         "install only backend (python)",
+    "install:all":             "install backend and frontend",
+    "install:novirtualenv":    "install only frontend without virtualenv",
+    "update:all":              ("update all dependencies (modules installed by npm and bower) "
+                                "and translations"),
+    "update:lang:all":          "update all translations files - requires 'poedit'",
+    "update:lang:fr":           "update translation (fr) - requires 'poedit'",
+    "test:all":                ("execute all tests (unit tests, integration tests, e2e tests)"),
+    "test:unit":               ("execute unit tests"),
+    "test:integration":        ("execute unit tests"),
+    "test:e2e":                ("execute end to end tests"),
 }
 aliases = {
     "(empty)": "install:all",
@@ -60,6 +61,7 @@ aliases = {
     "test": "test:all",
     "heroku:build": "install:novirtualenv",
     "heroku:start": "start:novirtualenv",
+    "heroku:start:web": "start:novirtualenv:web",
 }
 default_cmd = "install:all"
 
@@ -188,7 +190,9 @@ if "novirtualenv" in subcmd:
     do_virtualenv = False
 
 if os.environ.get('VIRTUAL_ENV'):
-    printError("Beware, you are inside a virtual env. Please leave it with 'deactivate' "
+    printError("Beware, you already are inside the following virtual env: {}"
+               .format(os.environ.get('VIRTUAL_ENV')))
+    printError(" Please leave it with 'deactivate' "
                "and relaunch your command, unless you understand what is going on.")
 
 install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
