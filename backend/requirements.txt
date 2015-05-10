@@ -12,6 +12,7 @@ jinja2 == 2.7.3
 klein == 15.0.0
 mock == 1.0.1
 pep8 == 1.6.2
+pika == 0.9.14
 pip >= 1.6.0
 psutil == 2.2.1
 pycontracts == 1.7.1
