@@ -11,7 +11,7 @@ body {
 }
 
 .login-button, .login-button:hover, .login-button:active:focus, .login-button:focus, {
-  margin-top: 8px;
+  margin-top: 7px;
   margin-left: 8px;
   color: #fff;
   background-color: transparent;
@@ -19,7 +19,7 @@ body {
 }
 .signup-button, .signup-button:hover, .signup-button:hover:focus, .signup-button:focus, {
   margin-left: 14px;
-  margin-top: 8px;
+  margin-top: 7px;
   margin-right: 15px;
   color: #fff;
   background-color: @bgDark;
@@ -28,7 +28,14 @@ body {
 
 .squirrel-brand-img{
   max-width: 30px;
-  margin-top: -5px
+  margin-top: -5px;
+  padding-left: 5px;
+}
+
+@media(min-width: 764px){
+  .squirrel-brand-img{
+    margin-left: 10px;
+  }
 }
 
 @dropDown       : true;
@@ -127,8 +134,22 @@ body {
   background: -moz-linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* For Firefox 3.6 to 15 */
   background: linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* Standard syntax (must be last) */
 
+  min-width: 365px;
+
   .navbar-header {
     float: left;
+  }
+  .container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+    > .navbar-header{
+      margin-right: 0px;
+      margin-left: 0px;
+    }
+    .navbar-brand{
+      padding: 15px 0px;
+      margin-left: 5px;
+    }
   }
   .navbar-brand {
     color: @colDefault;
@@ -142,7 +163,7 @@ body {
   }
 
   @media (min-width: 767px) {
-    navbar-collapse.collapse {
+    .navbar-collapse.collapse {
       display: block!important;
       font-size: 1em;
     }
@@ -161,14 +182,16 @@ body {
   }
   .navbar-nav-squirrel>li, .navbar-nav-squirrel {
     float: left !important;
-    margin-top: 2px;
+    margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
     padding: 0px;
-    > li > a {
+    > a {
       color: @colDefault;
       margin-left: 2px;
       margin-right: 2px;
+      margin-top: 5px;
+      margin-left: 8px;
       padding-left: 6px;
       padding-right: 6px;
       &:hover, &:focus {
@@ -183,10 +206,25 @@ body {
       }
     }
   }
-  .navbar-nav-squirrel.navbar-right:last-child {
-    margin-right: -15px !important;
-  }
+
   .navbar-right {
-    float: right!important;
+    float: right !important;
+    margin-right: 15px;
+    margin-top: 4px;
+  }
+
+  @media (min-width: 767px) {
+    .navbar-nav-squirrel {
+       margin-top: 0px;
+    }
+    .navbar-nav-squirrel.navbar-right:last-child {
+      margin-right: 10px !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .navbar-nav-squirrel.navbar-right:last-child {
+      margin-right: 0px !important;
+    }
   }
 }

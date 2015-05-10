@@ -238,19 +238,56 @@
 
 @media (max-width:767px) {
   .wrapper {
-    padding-left: 60px;
     transition: all .4s ease 0s;
+    /*padding-left: 60px;*/
+    /*position: fixed;*/
+    padding-left: 0px;
+    width: 100%;
+    .sidebar-wrapper{
+      height: 100px;
+    }
+    .sidebar-footer{
+      display: none;
+    }
+    .sidebar-wrapper {
+      left: 60px;
+      position: fixed;
+      background: transparent;
+      color: @colorMain;
+    }
+    .sidebar-nav > .sidebar-brand a {
+      color: @colorMain;
+    }
+    .sidebar-nav > .sidebar-brand a:hover {
+      color: @colorMain;
+      background: none;
+    }
   }
-  .sidebar-wrapper {
-    left: 60px;
-  }
-  .wrapper.active {
-    padding-left: 250px;
-  }
-  .wrapper.active .sidebar-wrapper {
-    left: 250px;
-    width: 250px;
-    transition: all .4s ease 0s;
+  .wrapper.active{
+    width: 100%;
+    height: inherit;
+    padding-left: 0px;
+
+    .sidebar-wrapper{
+      height: 100%;
+    }
+    .sidebar-footer{
+      display: inherit;
+    }
+    .sidebar-nav > .sidebar-brand a {
+      color: @textColor;
+    }
+    .sidebar-nav > .sidebar-brand a:hover {
+      color: @textColor;
+      background: none;
+    }
+    .sidebar-wrapper {
+      left: 250px;
+      width: 250px;
+      transition: all .4s ease 0s;
+      position: fixed;
+      background: #4d2c0c;
+    }
   }
 }
 /*
