@@ -26,7 +26,13 @@ body {
   /*border-color: @bgDark;*/
 }
 
+.squirrel-brand-img{
+  max-width: 30px;
+  margin-top: -5px
+}
+
 @dropDown       : true;
+
 .ddm() when (@dropDown) {
   > .dropdown-menu {
     background-color: @bgDefault;
@@ -39,6 +45,7 @@ body {
         background-color: @bgHover; }}
     .divider {
       background-color: @bgHighlight;}}}
+
 .navbar-default {
   /*background-color: @bgDefault;*/
   /*background-image: url("../assets/images/leather.jpg");*/
@@ -83,14 +90,103 @@ body {
     color: @colDefault;
     &:hover {
       color: @bgHover; }}}
-@media (max-width: 767px) {
+
+  @media (max-width: 768px) {
+    .navbar-nav {
+      float: left;
+      margin: 0;
+    }
+    .navbar-collapse.collapse {
+      display: block !important;
+      height: auto !important;
+      padding-bottom: 0;
+      overflow: visible !important;
+    }
+  }
+  @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu {
     > li > a {
       color: @colDefault;
       &:hover, &:focus {
-        color: @colDefault; }}
+        color: @colDefault;
+      }
+    }
     > .active {
       > a, > a:hover, > a:focus, {
         color: @colDefault;
-        background-color: @bgHover; }}}
+        background-color: @bgHover;
+      }
+    }
+  }
+}
+
+.navbar-squirrel{
+  border-color: @bgHighlight;
+  background: -webkit-linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* Standard syntax (must be last) */
+
+  .navbar-header {
+    float: left;
+  }
+  .navbar-brand {
+    color: @colDefault;
+    &:hover, &:focus {
+      color: @colDefault;
+    }
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    font-size: 0.9em;
+  }
+
+  @media (min-width: 767px) {
+    navbar-collapse.collapse {
+      display: block!important;
+      font-size: 1em;
+    }
+  }
+  .navbar-sm-login {
+    height: 40px;
+    button{
+      margin: 0px;
+      padding: 2px;
+      height: 40px;
+      &:hover, &:active:focus, &:focus {
+        margin-top: 0px;
+        margin-left: 0px;
+      }
+    }
+  }
+  .navbar-nav-squirrel>li, .navbar-nav-squirrel {
+    float: left !important;
+    margin-top: 2px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+    > li > a {
+      color: @colDefault;
+      margin-left: 2px;
+      margin-right: 2px;
+      padding-left: 6px;
+      padding-right: 6px;
+      &:hover, &:focus {
+        color: @colDefault;
+        background-color: @bgHover;
+      }
+    }
+    > .active {
+      > a, > a:hover, > a:focus, {
+        color: @colDefault;
+        background-color: @bgHover;
+      }
+    }
+  }
+  .navbar-nav-squirrel.navbar-right:last-child {
+    margin-right: -15px !important;
+  }
+  .navbar-right {
+    float: right!important;
+  }
 }

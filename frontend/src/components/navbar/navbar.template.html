@@ -3,31 +3,40 @@ reference:
 
 http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angular-ui-bootstrap-done-in-the-correct-angula
 -->
-<nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarCtrl">
+<nav class="navbar navbar-squirrel navbar-fixed-top" ng-controller="NavbarCtrl">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/" ng-class="navClass('')" >
         <span class="squirrel-brand">
-          <img src="assets/images/logo-256.png" style="max-width: 30px; margin-top: -5px"></img>
-          <span class="hidden-sm">Squirrel-AMS{{title_tag}}</span>
+          <img class="squirrel-brand-img" src="assets/images/logo-256.png"></img>
+          <span class="visible-md-inline visible-lg-inline">Squirrel-AMS{{title_tag}}</span>
         </span>
       </a>
-      <button type="button" class="navbar-toggle collapsed" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+      <!-- <button type="button" class="navbar-toggle collapsed" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
         <span class="sr-only" translate>Toggle Navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
+      </button> -->
     </div>
     <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav-squirrel">
         <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')">
           <!-- <a href='#/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a> -->
           <a ui-sref='{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a>
         </li>
       </ul>
-
-      <ul class="nav navbar-nav navbar-right">
+      <!-- small screen login panel -->
+      <ul class="nav navbar-nav-squirrel navbar-sm-login visible-xs-inline visible-sm-inline navbar-right">
+        <li ng-if="login_username.length <= 0" ng-class="navClass('login')">
+          <button class="btn login-button"
+                  ng-click="goLogin()"
+                  type="button">
+            <span class="glyphicon glyphicon-user"></span>
+          </button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav-squirrel navbar-login visible-md-inline visible-lg-inline navbar-right">
         <li ng-if="login_username.length <= 0 && currentLang">
           <a href="#/" ng-click='changeLang()' alt="{{'Change language'| translate}}">
             <span class="glyphicon glyphicon-flag"></span>
