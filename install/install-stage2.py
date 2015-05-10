@@ -86,7 +86,6 @@ cmd_capabilities = {
     "install:backend": {
         "pip_upgrade",
         "backend_install",
-        "frontend_install",
         "warn_no_serve_and_quit",
     },
     "install:all": {

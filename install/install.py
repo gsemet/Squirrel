@@ -192,7 +192,7 @@ if "novirtualenv" in subcmd:
 if os.environ.get('VIRTUAL_ENV'):
     printError("Beware, you already are inside the following virtual env: {}"
                .format(os.environ.get('VIRTUAL_ENV')))
-    printError(" Please leave it with 'deactivate' "
+    printError("Please leave it with 'deactivate' "
                "and relaunch your command, unless you understand what is going on.")
 
 install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
