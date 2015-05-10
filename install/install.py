@@ -237,7 +237,7 @@ if isWindows:
     launch_in_new_window = True
 
     if not os.path.exists(os.path.join(workdir_path, "Scripts", "pip.exe")):
-        print("Installing virtualenv in: {0}".format(workdir_path))
+        printBoot("Installing virtualenv in: {0}".format(workdir_path))
         subprocess.check_call([virtualenv, "--system-site-packages", workdir_path])
 
     # using launcher instead of activate.bat because we want to launch custom commands
