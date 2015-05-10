@@ -27,7 +27,7 @@ gulp.task('partials', ['markups'], function() {
     .pipe(gulp.dest(paths.tmp + '/partials/'));
 });
 
-gulp.task('html', ['inject', 'partials'], function() {
+gulp.task('html', ['inject', 'partials', 'translations'], function() {
   var partialsInjectFile = gulp.src(paths.tmp + '/partials/templateCacheHtml.js', {
     read: false
   });
