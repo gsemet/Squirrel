@@ -12,30 +12,60 @@
       </p>
     </div>
     <div class="row">
-      <div class="col-md-11">
+      <div class="col-md-12">
         <div class="plans-features-table">
           <div class="plans-features-header">
-            <div class="plans-feature-title">&nbsp;</div>
-            <div class="plans-feature-list">
-              <div class="description">&nbsp;</div>
-              <div class="support">
-                <div class="free">Free</div>
-                <div class="premium">Premium</div>
+            <div class="row">
+              <div class="col-xs-12 col-md-2">
+                <div class="plans-feature-title">&nbsp;</div>
+              </div>
+              <div class="col-xs-12 col-md-10">
+                <div class="plans-feature-list">
+                  <div class="row">
+                    <div class="col-xs-8">
+                      <div class="description">&nbsp;</div>
+                      <!-- <div class="support"> -->
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="free">Free</div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="premium">Premium</div>
+                    </div>
+                    <!-- </div> -->
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <div class="plans-features-table">
           <div ng-repeat="group in features">
-            <div class="plans-feature-title">{{group.name}}</div>
-            <div class="plans-feature-list">
-              <ul>
-                <li ng-repeat="feature in group.features" ng-class-odd="group.odd_class" ng-class-even="group.even_class">
-                  <div class="description">{{feature.description}}</div>
-                  <div class="support">
-                    <div class="free"><span ng-if="feature.free" class="fa fa-check fa-2x"></span></div>
-                    <div class="premium"><span ng-if="feature.premium" class="fa fa-check fa-2x"></span></div>
-                  </div>
-                </li>
-              </ul>
+            <div class="row">
+              <div class="col-xs-12 col-md-2">
+                <div class="plans-feature-title">{{group.name}}</div>
+              </div>
+              <div class="col-xs-12 col-md-10">
+                <div class="plans-feature-list">
+                  <ul>
+                    <li ng-repeat="feature in group.features" ng-class-odd="group.odd_class" ng-class-even="group.even_class">
+                      <div class="row">
+                        <div class="col-xs-8">
+                          <div class="description">{{feature.description}}</div>
+                        </div>
+                        <div class="col-xs-2">
+                          <!-- <div class="support"> -->
+                          <div class="free"><span ng-if="feature.free" class="fa fa-check fa-2x"></span></div>
+                        </div>
+                        <div class="col-xs-2">
+                          <div class="premium"><span ng-if="feature.premium" class="fa fa-check fa-2x"></span></div>
+                          <!-- </div> -->
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
