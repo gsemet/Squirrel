@@ -14,10 +14,10 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import imp
 import os
 import subprocess
 import sys
-
 
 # Do *not* use optparse or argparse here, we are not sure on which version of python we are!
 
@@ -27,42 +27,12 @@ if sys.platform.startswith('win32'):
 
 do_virtualenv = True
 
-allowed_cmd = {
-    "serve:dev":               ("install and launch developer server (backend served with "
-                                "auto_relauncher and frontend served by 'gulp serve')"),
-    "serve:devbackend":        ("install and launch only the dev backend (with auto relauncher))"),
-    "serve:prod":               "install and launch production server",
-    "serve:novirtualenv":      ("install and serve production without going into "
-                                "virtualenv (Docker/Heroku)"),
-    "start:prod":              ("start all prod servers (no install)"),
-    "start:dev":               ("start all dev servers (no install)"),
-    "start:novirtualenv":      ("start all prod servers without virtualenv"),
-    "start:novirtualenv:web":  ("start web process only, without virtualenv"),
-    "install:backend":         "install only backend (python)",
-    "install:all":             "install backend and frontend",
-    "install:novirtualenv":    "install only frontend without virtualenv",
-    "update:all":              ("update all dependencies (modules installed by npm and bower) "
-                                "and translations"),
-    "update:lang:all":          "update all translations files - requires 'poedit'",
-    "update:lang:fr":           "update translation (fr) - requires 'poedit'",
-    "test:all":                ("execute all tests (unit tests, integration tests, e2e tests)"),
-    "test:unit":               ("execute unit tests"),
-    "test:integration":        ("execute unit tests"),
-    "test:e2e":                ("execute end to end tests"),
-}
-aliases = {
-    "(empty)": "install:all",
-    "serve": "serve:dev",
-    "start": "start:dev",
-    "install": "install:all",
-    "install:prod": "install:all",
-    "update": "update:all",
-    "update:lang": "update:lang:all",
-    "test": "test:all",
-    "heroku:build": "install:novirtualenv",
-    "heroku:start": "start:novirtualenv",
-    "heroku:start:web": "start:novirtualenv:web",
-}
+# Injecting available targets from installer stage 2
+pkg = imp.load_source('install.stage2',
+                      os.path.join(os.path.dirname(__file__), "install-stage2.py"))
+allowed_cmd = pkg.allowed_cmd
+aliases = pkg.aliases
+
 default_cmd = "install:all"
 
 ####################################################################################################
