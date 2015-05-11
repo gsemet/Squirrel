@@ -30,7 +30,8 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
       <ul class="nav navbar-nav-squirrel navbar-sm-login visible-xs-inline visible-sm-inline navbar-right">
         <li ng-if="login_username.length <= 0" ng-class="navClass('login')">
           <button class="btn login-button"
-                  ng-click="goLogin()"
+                  ng-init="loginCollapsed = true"
+                  ng-click="loginCollapsed = !loginCollapsed"
                   type="button">
             <span class="glyphicon glyphicon-user"></span>
           </button>
