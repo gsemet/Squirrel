@@ -63,7 +63,7 @@ file_pattern_to_clean = [
 ]
 po_file_to_clean = [
     '*.js',
-    '*.mp',
+    '*.mo',
 ]
 print("Cleaning files: {}".format(", ".join(file_pattern_to_clean)))
 matches = []
