@@ -51,7 +51,6 @@ Targets
 Squirrel installation allows to select several type of installation targets:
 
 ``install:dev`` or ``serve:dev``
-
     Your prefered mode for hacking Squirrel. It will setup a virtualenv if ``workdir`` directory.
     ``isntall:dev`` only installs and do not start. ``serve:dev`` install and automatically start
     web server.
@@ -71,14 +70,12 @@ Squirrel installation allows to select several type of installation targets:
     But in your every day developer life, you probably don't want to use it.
 
 ``install:prod`` or ``serve:prod``
-
     This target will compile the frontend in production mode. ``serve:prod`` will start the
     Python backend in prod mode, ie, it will serve the Angular web site itself.
 
     Use it for a standalone installation, or to test the production mode on your machine.
 
 - ``install:novirtualenv``
-
     This target is used when installing Squirrel on a cloud platform that is already a dedicated
     virtual environment (typically, your cloud service actually starts a docker for you).
 
@@ -215,6 +212,10 @@ It also works for the backend, with the ``auto_relauncher`` program deliberately
 Frontend
 --------
 
+Use ::
+
+        install/install.py serve:dev
+
 Gulp file (re)generation:
 
 .. code-block:: bash
@@ -226,7 +227,7 @@ See `generator-gulp-angular`_
 
 .. _generator-gulp-angular: https://github.com/Swiip/generator-gulp-angular
 
-Development:
+Gulp Target development (in ``/frontend`` directory:
 
 - ``gulp`` or ``gulp build`` to build an optimized version of your application in /dist
 - ``gulp serve`` to launch a browser sync server on your source files
@@ -382,13 +383,13 @@ Linux/Mac OS:
     [
         {
             "name": "Squirrel - Install and launch",
-            "cmd": ["python -u install/install.py "], // add -l to launch Squirrel automatically
+            "cmd": ["python -u install/install.py install"],
             "shell": true,
             "working_dir": "/Full/Path/Where/Is/Installed/Squirrel"
         },
         {
-            "name": "Squirrel - Unit test",
-            "cmd": ["source workdir/bin/activate && trial squirrel"],
+            "name": "Squirrel - All Unit and Regression Tests",
+            "cmd": ["python -u install/install.py test"],
             "shell": true,
             "working_dir": "/Full/Path/Where/Is/Installed/Squirrel"
         },
@@ -400,7 +401,7 @@ Linux/Mac OS:
         },
         {
             "name": "Squirrel - Build Frontend",
-            "cmd": ["gulp build"],
+            "cmd": ["python -u install/install.py install:frontend"],
             "shell": true,
             "working_dir": "/Full/Path/Where/Is/Installed/Squirrel/frontend"
         }
