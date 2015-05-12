@@ -27,18 +27,27 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
         </li>
       </ul>
       <!-- small screen login panel -->
-      <ul class="nav navbar-nav-squirrel navbar-sm-login visible-xs-inline visible-sm-inline navbar-right">
-        <li ng-if="login_username.length <= 0" ng-class="navClass('login')">
+      <ul class="nav navbar-nav-squirrel navbar-sm-login visible-xs-inline visible-sm-inline navbar-right"
+          ng-if="login_username.length <= 0">
+        <li ng-class="navClass('login')" dropdown>
           <button class="btn login-button"
                   ng-init="loginCollapsed = true"
-                  ng-click="loginCollapsed = !loginCollapsed"
+                  dropdown-toggle
                   type="button">
             <span class="glyphicon glyphicon-user"></span>
           </button>
+          <ul class="dropdown-menu navbar-dropdown-menu-right" role="menu">
+            <!-- <li role="presentation" class="dropdown-header">General</li> -->
+            <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="goLogin()" translate>Log in</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="goRegister()" translate>Sign Up</a></li>
+          </ul>
+
         </li>
       </ul>
-      <ul class="nav navbar-nav-squirrel navbar-login visible-md-inline visible-lg-inline navbar-right">
-        <li ng-if="login_username.length <= 0 && currentLang">
+      <!-- big screen login panel -->
+      <ul class="nav navbar-nav-squirrel navbar-login visible-md-inline visible-lg-inline navbar-right"
+          ng-if="login_username.length <= 0 && currentLang">
+        <li>
           <a class="navbar-change-lang" href="#/" ng-click='changeLang()' alt="{{'Change language'| translate}}">
             <span class="glyphicon glyphicon-flag"></span>
           </a>
