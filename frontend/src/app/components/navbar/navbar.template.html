@@ -39,7 +39,7 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
       </ul>
       <ul class="nav navbar-nav-squirrel navbar-login visible-md-inline visible-lg-inline navbar-right">
         <li ng-if="login_username.length <= 0 && currentLang">
-          <a href="#/" ng-click='changeLang()' alt="{{'Change language'| translate}}">
+          <a class="navbar-change-lang" href="#/" ng-click='changeLang()' alt="{{'Change language'| translate}}">
             <span class="glyphicon glyphicon-flag"></span>
           </a>
         </li>

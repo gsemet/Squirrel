@@ -13,17 +13,22 @@ body {
 .login-button, .login-button:hover, .login-button:active:focus, .login-button:focus, {
   margin-top: 7px;
   margin-left: 8px;
+  margin-top: 5px;
   color: #fff;
   background-color: transparent;
   /*border-color: #d1cfca;*/
 }
 .signup-button, .signup-button:hover, .signup-button:hover:focus, .signup-button:focus, {
   margin-left: 14px;
-  margin-top: 7px;
+  margin-top: 5px;
   margin-right: 15px;
   color: #fff;
   background-color: @bgDark;
   /*border-color: @bgDark;*/
+}
+
+.navbar-change-lang{
+  margin-top: 2px !important;
 }
 
 .squirrel-brand-img{
@@ -180,7 +185,14 @@ body {
       }
     }
   }
-  .navbar-nav-squirrel>li, .navbar-nav-squirrel {
+  .navbar-nav-squirrel {
+    float: left !important;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+  }
+  .navbar-nav-squirrel>li {
     float: left !important;
     margin-top: 0px;
     margin-left: 0px;
