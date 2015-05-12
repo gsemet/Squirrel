@@ -3,12 +3,14 @@
     <div class="row content">
       <div class="visible-md-block visible-lg-block col-md-3 feature-sidebar hidden-print">
         <ul mac-affix class="nav nav-list docs-sidenav">
-          <li ng-repeat="item in items" mac-scroll-spy-target="{{item.key}}">
+          <li ng-repeat="item in items"
+              mac-scroll-spy-target="{{item.key}}">
             <a ng-click="scrollTo(item.key)">
               <span>{{item.text}}</span>
             </a>
             <ul class="nav nav-list">
-              <li ng-repeat="child in item.children" mac-scroll-spy-target="{{child.key}}">
+              <li ng-repeat="child in item.children"
+                  mac-scroll-spy-target="{{child.key}}">
                 <a ng-click="scrollTo(child.key)">
                   <span>{{child.text}}</span>
                 </a>
@@ -24,7 +26,8 @@
               <i class="fa fa-hand-o-right"></i>
               <span>{{item.text}}</span>
             </a>
-            <li ng-repeat="child in item.children" mac-scroll-spy-target="{{child.key}}">
+            <li ng-repeat="child in item.children"
+                mac-scroll-spy-target="{{child.key}}">
               <a ng-click="scrollTo(child.key)">
                 <span>{{child.text}}</span>
               </a>
@@ -34,9 +37,13 @@
       </div>
       <div class="col-xs-12 col-md-9 feature-scrollit">
         <section class="features-section bg-light-yellow">
-          <h2 id="center-history" class="text-center" translate>The Center of Your Personal Finance</h2>
+          <h2 id="center-history" class="text-center" translate>
+            The Center of Your Personal Finance
+            </h2>
           <hr class="small hr-white">
-          <img src="assets/images/red-business-graph-short.png" class="feature-img-responsive feature-margin-bottom" alt="Responsive image">
+          <img src="assets/images/red-business-graph-short.png"
+               class="feature-img-responsive feature-margin-bottom"
+               alt="Responsive image">
 
           <h3 translate>Keep it Simple</h3>
           <p translate>
@@ -77,7 +84,6 @@
             </a>
           </a>
         </section>
-
 
         <section class="features-section">
           <h2 id="visualizations" class="text-center" translate>Visual Portfolios</h2>
@@ -138,10 +144,11 @@
           </a>
         </section>
 
-
         <section class="features-section">
           <div class="row">
-            <h2 id="anywhere" class="text-center" translate>Access your porfolio anywhere, any time</h2>
+            <h2 id="anywhere" class="text-center" translate>
+              Access your porfolio anywhere, any time
+            </h2>
             <p class="lead text-center" translate>
               Use the Cloud to your own advantage
             </p>
@@ -166,7 +173,9 @@
               </p> -->
             </div>
             <div class="col-md-offset-1 col-md-5">
-              <img src="assets/images/dbg-chart.jpg" class="img-responsive" alt="Responsive image">
+              <img src="assets/images/dbg-chart.jpg"
+                   class="img-responsive"
+                   alt="Responsive image">
             </div>
           </div>
           <hr class="small">
@@ -196,7 +205,9 @@
             You can easily control what other can see. Create private link to graphs or table, with
             email and password permission, expiration date.
           </p>
-          <img src="assets/images/dbg-chart.jpg" class="feature-img-responsive" alt="Responsive image">
+          <img src="assets/images/dbg-chart.jpg"
+               class="feature-img-responsive"
+               alt="Responsive image">
           <h3 translate>Give a Public Access to Portions of Your Reports</h3>
           <p translate>
 
@@ -364,7 +375,9 @@
             </p>
           </question-and-answer>
           <question-and-answer question="{{'Who is behind?' | translate}}">
-            <img src="assets/images/portrait-small.jpg" class="img-thumbnail features-img-right" alt="Myself">
+            <img src="assets/images/portrait-small.jpg"
+                 class="img-thumbnail features-img-right"
+                 alt="Myself">
             <p translate>
 
               Hi! My name is Gaetan Semet. I am Software engineer who started a very humble investor

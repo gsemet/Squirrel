@@ -1,7 +1,7 @@
 <div class="login-gradient login-blank-text view-full-page">
   <div class="container">
     <h1 class="login-logo">
-      Squirrel
+      <!-- Squirrel big logo -->
     </h1>
     <div class="content">
       <div class="panel login-panel login-text" id="login">
@@ -11,21 +11,37 @@
             <label for="email" translate>Email address</label>
             <div class="inner-addon left-addon">
               <div class="glyphicon glyphicon-user"></div>
-              <input autofocus="true" class="form-control login-input" id="email"
-                     name="email" placeholder="{{'Email address' |translate}}" tabindex="1" type="email">
+              <input autofocus="true"
+                     class="form-control login-input"
+                     id="email"
+                     name="email"
+                     placeholder="{{'Email address' |translate}}"
+                     tabindex="1"
+                     type="email">
             </div>
           </div>
           <div class="form-group">
             <label for="password" translate>Password</label>
             <div class="inner-addon left-addon">
               <div class="glyphicon glyphicon-lock"></div>
-              <input autocomplete="off" class="form-control login-input password"
-                     id="password" name="password" placeholder="{{'Password' | translate}}" tabindex="2" type="password">
+              <input autocomplete="off"
+                     class="form-control login-input password"
+                     id="password"
+                     name="password"
+                     placeholder="{{'Password' | translate}}"
+                     tabindex="2" type="password">
             </div>
           </div>
-          <button class="btn btn-primary btn-lg btn-block" name="commit" tabindex="3" type="submit" value="Log In" translate>Log In</button>
+          <button class="btn btn-primary btn-lg btn-block"
+                  name="commit"
+                  tabindex="3"
+                  type="submit"
+                  value="Log In"
+                  translate>Log In</button>
         </form>
-        <a class="panel-footer" href="/register"><span translate>No account? </span>&nbsp;<span translate>Sign Up here !</span></a>
+        <a class="panel-footer" href="/register">
+          <span translate>No account? </span>&nbsp;<span translate>Sign Up here !</span>
+        </a>
       </div>
       <div class="login-bottom-text login-blank-text">
         <a href="/login" ng-click="forgot()" translate>Forgot your password?</a>
