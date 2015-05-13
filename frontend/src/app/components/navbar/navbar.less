@@ -139,7 +139,7 @@ body {
   background: -moz-linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* For Firefox 3.6 to 15 */
   background: linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* Standard syntax (must be last) */
 
-  min-width: 320px;
+  min-width: 344px;
 
   .navbar-header {
     float: left;
@@ -192,36 +192,46 @@ body {
     margin-right: 0px;
     padding: 0px;
   }
-  .navbar-nav-squirrel>li {
-    float: left !important;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 0px;
-    > a {
-      color: @colDefault;
-      margin-left: 2px;
-      margin-right: 2px;
-      margin-top: 5px;
-      margin-left: 5px;
-      padding-left: 3px;
-      padding-right: 3px;
-      &:hover, &:focus {
+  .navbar-nav-squirrel{
+    > .open {
+      > a, > a:hover, > a:focus {
         color: @colDefault;
         background-color: @bgHover;
       }
     }
-    > .active {
-      > a, > a:hover, > a:focus, {
+
+    > li {
+      float: left !important;
+      margin-top: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      padding: 0px;
+      > a {
         color: @colDefault;
-        background-color: @bgHover;
+        margin-left: 2px;
+        margin-right: 2px;
+        margin-top: 5px;
+        margin-left: 5px;
+        padding-left: 3px;
+        padding-right: 3px;
+        &:hover, &:focus {
+          color: @colDefault;
+          background-color: @bgHover;
+        }
       }
+      > .active {
+        > a, > a:hover, > a:focus, {
+          color: @colDefault;
+          background-color: @bgHover;
+        }
+      }
+      .ddm
     }
   }
 
   .navbar-right {
     float: right !important;
-    margin-right: 20px;
+    padding-right: 15px;
     margin-top: 4px;
   }
 
@@ -240,7 +250,12 @@ body {
     }
   }
 
+  .navbar-notopmargin{
+    margin-top: -4px !important;
+  }
+
   .navbar-dropdown-menu-right{
-    left: -600%;
+    right: 0;
+    left: auto;
   }
 }

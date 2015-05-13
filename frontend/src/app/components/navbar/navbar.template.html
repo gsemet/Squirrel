@@ -22,7 +22,7 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
     <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
       <ul class="nav navbar-nav-squirrel">
         <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')">
-          <!-- <a href='#/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a> -->
+          <!-- <a href='/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a> -->
           <a ui-sref='{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a>
         </li>
       </ul>
@@ -48,7 +48,7 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
       <ul class="nav navbar-nav-squirrel navbar-login visible-md-inline visible-lg-inline navbar-right"
           ng-if="login_username.length <= 0 && currentLang">
         <li>
-          <a class="navbar-change-lang" href="#/" ng-click='changeLang()' alt="{{'Change language'| translate}}">
+          <a class="navbar-change-lang pointer" ng-click='changeLang()' alt="{{'Change language'| translate}}">
             <span class="glyphicon glyphicon-flag"></span>
           </a>
         </li>
@@ -71,18 +71,29 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
           <button class="btn btn-primary navbar-btn" type="button" ng-click="logout()">
             <span class="glyphicon glyphicon-remove"></span> Logout
           </button> -->
-        <li ng-if="login_username.length > 0" dropdown>
-          <a href="#" dropdown-toggle>{{login_username}} <span class="caret"></span></a>
+      </ul>
+      <!-- Connected user button -->
+      <ul class="nav navbar-nav-squirrel navbar-login navbar-right"
+          ng-if="login_username.length > 0">
+        <li class="navbar-notopmargin"
+            dropdown>
+          <a class="pointer"
+             dropdown-toggle>
+            <span class="visible-md-inline visible-lg-inline">
+             {{login_username}}
+            </span>
+            <span class="caret"></span>
+          </a>
           <!-- <button class="dropdown-toggle" type="button" id="dropdownUserMenu" dropdown-toggle>
             {{login_username}}
             <span class="caret"></span>
           </button> -->
-          <ul class="dropdown-menu" role="menu">
+          <ul class="dropdown-menu navbar-dropdown-menu-right" role="menu">
             <!-- <li role="presentation" class="dropdown-header">General</li> -->
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/settings" ng-click="closeNavBar()" translate>Settings</a></li>
-            <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="#/admin" ng-click="closeNavBar()" translate>Administrator page</a></li>
-            <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="#/sandbox" ng-click="closeNavBar()" translate>Sandbox</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#/logout" ng-click="logout()" translate>Log out</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="/settings" ng-click="closeNavBar()" translate>Settings</a></li>
+            <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="/admin" ng-click="closeNavBar()" translate>Administrator page</a></li>
+            <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="/sandbox" ng-click="closeNavBar()" translate>Sandbox</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout" ng-click="logout()" translate>Log out</a></li>
           </ul>
         </li>
       </ul>
