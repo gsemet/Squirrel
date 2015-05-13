@@ -87,7 +87,7 @@ msgstr "Configuration"
 msgid "Administrator Dashboard"
 msgstr "Tableau de bord d'administration"
 
-#: components\navbar\navbar.template.html:73
+#: components\navbar\navbar.template.html:74
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
 
@@ -296,7 +296,7 @@ msgstr "Le Centre de Votre Finance Personnelle."
 msgid "Change Language"
 msgstr "Changer la langue courante"
 
-#: components\navbar\navbar.template.html:41
+#: components\navbar\navbar.template.html:42
 msgid "Change language"
 msgstr "Selectionnez votre langue"
 
@@ -775,7 +775,7 @@ msgstr "Chargement..."
 msgid "Log In"
 msgstr "Connexion"
 
-#: components\navbar\navbar.template.html:49
+#: components\navbar\navbar.template.html:50
 msgid "Log in"
 msgstr "Connexion"
 
@@ -783,7 +783,7 @@ msgstr "Connexion"
 msgid "Log in to your account"
 msgstr "Connexion à votre compte"
 
-#: components\navbar\navbar.template.html:75
+#: components\navbar\navbar.template.html:76
 msgid "Log out"
 msgstr "Deconnexion"
 
@@ -1014,7 +1014,7 @@ msgstr "Réinit zoom niveau 1:1"
 msgid "Return, Gain, Alpha"
 msgstr "Gain, Alpha, Profits"
 
-#: components\navbar\navbar.template.html:74
+#: components\navbar\navbar.template.html:75
 msgid "Sandbox"
 msgstr "Bac à Sable"
 
@@ -1070,7 +1070,7 @@ msgid "Services"
 msgstr "Services"
 
 #: app\settings\settings.template.html:15
-#: components\navbar\navbar.template.html:72
+#: components\navbar\navbar.template.html:73
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -1094,11 +1094,11 @@ msgstr "Nbr d'actions"
 msgid "Show Your Real Exposition"
 msgstr "Découvrez Votre Allocation Réelle"
 
-#: components\navbar\navbar.template.html:57
+#: components\navbar\navbar.template.html:58
 msgid "Sign Up"
 msgstr "Inscription"
 
-#: components\navbar\navbar.template.html:57
+#: components\navbar\navbar.template.html:58
 msgid "Sign Up for Free"
 msgstr "Inscription gratuite"
 
