@@ -172,6 +172,11 @@ body {
     font-size: 0.9em;
   }
 
+  @media (max-width: 992px) {
+    .navbar-collapse.collapse {
+      padding-right: 30px;
+    }
+  }
   @media (min-width: 767px) {
     .navbar-collapse.collapse {
       display: block!important;
@@ -262,5 +267,11 @@ body {
   .navbar-dropdown-menu-right{
     right: 0;
     left: auto;
+  }
+
+  @media (min-width: 768px){
+    .navbar-dropdown-menu-right{
+      right: -27px;
+    }
   }
 }
