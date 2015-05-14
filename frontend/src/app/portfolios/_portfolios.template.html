@@ -28,7 +28,7 @@
           </a>
           <ul ng-if="page.endpoint == '' && activeIfCurrentPageIs(page.endpoint) == 'active'">
             <li ng-repeat="portfolio in portfolios" ng-class="activeIfCurrentPortfolioIdIs(portfolio.id)">
-              <a href="#/portfolios?i={{portfolio.id}}">
+              <a href="/portfolios?i={{portfolio.id}}">
                 <span>{{portfolio.name}}</span>
               </a>
             </li>

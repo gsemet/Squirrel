@@ -1,29 +1,56 @@
 @import '../components/common/common.less';
 
-.homepage-intro-header {
-  padding-bottom: 50px;
+@homeColorBotRight:rgba(160,147,72, .4);
+@homeColorHalfTopLeft: rgba(140,127,142,0);
+@homeColor3: #5C4624;
+@homeColor4: rgba(182,151,84,.2);
+@homeColor5: rgba(182,151,84,0);
+@homeColorTopRight: #362C16;
+@homeColorMid1: rgba(127,104,45,0.1);
+@homeColorBotLeft: #3F2F0D;
+
+.homepage-gradiant-header{
+  background-color:#674D2C;
+  background-image: -webkit-radial-gradient(0% bottom,@homeColorBotLeft 0,@homeColorHalfTopLeft 60%),-webkit-radial-gradient(90% bottom,@homeColorBotRight 0,@homeColor3 40%),-webkit-radial-gradient(50% top,@homeColor4 0,@homeColor5 75%),-webkit-radial-gradient(right top,@homeColorTopRight 0,@homeColorMid1 57%);
+  background-image: radial-gradient(at 0 bottom,@homeColorBotLeft 0,@homeColorHalfTopLeft 60%),radial-gradient(at 90% bottom,@homeColorBotRight 0,@homeColor3 40%),radial-gradient(at 50% top,@homeColor4 0,@homeColor5 75%),radial-gradient(at right top,@homeColorTopRight 0,@homeColorMid1 57%);
+  background-size: auto,auto,100% 1000px,100% 1000px;
+  background-repeat: no-repeat;
+}
+
+.homepage-intro-text{
   text-align: center;
   color: #f8f8f8;
-  font-family: Karbon,Helvetica,Arial,sans-serif;
+  font-family: Asap, Helvetica, Arial, sans-serif;
   font-weight: 300;
-  background: url(../assets/images/intro-bg.jpg) no-repeat center center;
-  background-size: cover;
+}
+
+@media (max-width: 768px){
+  padding-bottom: 50px;
+}
+
+.homepage-intro-header {
+  background-attachment: fixed;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  position: relative;
+  background: url(../assets/images/intro-bg.jpg);
+  height: 350px;
 }
 h1.homepage-white-text{
   color: #fff;
   text-shadow: rgba(128,128,128,.25) 0 -1px 0;
   font-size: 60px !important;
-  font-family: Karbon,Helvetica,Arial,sans-serif;
+  font-family: Asap, Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
 
-.homepage-intro-header .intro-message {
+.homepage .intro-message {
   position: relative;
   padding-top: 10%;
   padding-bottom: 10%;
 }
 
-.homepage-intro-header .intro-message > h1 {
+.homepage .intro-message > h1 {
   margin: 0;
   text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
   font-size: 5em;
@@ -35,11 +62,11 @@ h1.homepage-white-text{
   border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
-.homepage-intro-header .intro-message > h3 {
+.homepage .intro-message > h3 {
   text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 
-.homepage-intro-header .intro-message > h4 {
+.homepage .intro-message > h4 {
   text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
   margin-top: 5em;
   margin-bottom: 5em;}
@@ -145,4 +172,40 @@ h1.homepage-white-text{
 
 .homepage-section.section-triptic{
 
+}
+
+.homepage .feature-img.img-loaded{
+  background-image: url(../assets/images/line-chart-4-256.png);
+  -webkit-animation: fadeInDown 1s both;
+  animation: fadeInDown 1s both;
+}
+
+.homepage .feature-img{
+  height: 175px;
+  background-position: center 15px;
+  background-size: 320px 299px;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px){
+  .homepage .feature-img {
+    background-size: 349px 359px;
+    min-height: 388px;
+    margin-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (min-width: 992px)
+{
+  .homepage .feature-img {
+    height: 510px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-size: 520px 486px;
+  }
+}
+
+.homepage-slick-slide{
+  font-size: 1.2em;
 }

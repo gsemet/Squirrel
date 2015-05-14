@@ -12,7 +12,7 @@ angular.module('squirrel').controller('SandboxCtrl',
       gettextCatalog) {
 
       $scope.is_admin = AuthenticationService.isAdmin();
-      $scope.endpoint = "#/sandbox";
+      $scope.endpoint = "/sandbox";
 
       $scope.menuItems = [
         {

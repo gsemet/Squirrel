@@ -9,7 +9,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
       Restangular, $timeout, debug, sidebar) {
 
       $scope.is_admin = AuthenticationService.isAdmin();
-      $scope.endpoint = "#/portfolios";
+      $scope.endpoint = "/portfolios";
 
       var page_key = 'p';
 

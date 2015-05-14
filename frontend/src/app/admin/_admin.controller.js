@@ -12,7 +12,7 @@ angular.module('squirrel').controller('AdminCtrl',
       gettextCatalog) {
 
       $scope.is_admin = AuthenticationService.isAdmin();
-      $scope.endpoint = "#/admin";
+      $scope.endpoint = "/admin";
 
       $scope.menuItems = [
         {
