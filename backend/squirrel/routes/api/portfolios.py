@@ -128,7 +128,7 @@ def _getAccountTypes():
     data = []
     if not Config().settings.country.fr:
         return None
-    for group_name, group_val in Config().settings.country.fr.items():
+    for group_name, group_val in Config().settings.country.fr.asset_types.items():
         for name in group_val:
             data.append((group_name, name))
     data = sorted(data, key=lambda x: '{}{}'.format(x[0], x[1]))

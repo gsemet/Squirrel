@@ -106,67 +106,68 @@ marketing:
 settings:
     country:
         fr:
-            # Use special HTML character!
-            'Assurance Vie':
-                - 'Assurance Vie (AV)'
-                - 'Contrat de Capitalisation'
-                - 'Tontine'
-                - "Plan d'&Eacute;pargne Entreprise (PEE)"
-                - "Plan d'&Eacute;pargne pour la Retraite Collectif (PERCO)"
-                - "Plan d'&Eacute;pargne Retraite Populaire (PERP)"
-                - 'Article 83 (A83)'
-                - 'Compl&eacute;mentaire Retraite des Hospitaliers (CRH)'
-                - 'Pr&eacute;fon'
-                - 'Contrats Madelin'
-            "Actions en Direct (Bourse)":
-                - "Plan d'&Eacute;pargne Action (PEA)"
-                - "Plan d'&Eacute;pargne en Actions destin&eacute; au financement des PME et ETI (PEA-PME)"
-                - 'Compte Titre Ordinaire (CTO)'
-                - 'Stock Options'
-            'Immobilier':
-                - 'R&eacute;sidence Principale'
-                - 'Borloo'
-                - 'Cenci Bouvard'
-                - 'Duflot'
-                - 'Locatif Ancien'
-                - 'Immobilier Nu propri&eacute;t&eacute;'
-                - 'Immobilier Usufruit'
-                - 'Immobilier Viag&eacute;'
-                - 'Immobilier &agrave; l &eacute;tranger'
-                - 'Investissement Hotelier'
-                - 'LMNP'
-                - 'LMP'
-                - 'Malraux'
-                - 'Monument Historique'
-                - 'OCPI'
-                - 'Part de Soci&eacute;t&eacute; Civile de Placement Immobilier (SCPI)'
-                - 'SCPI en nu propri&eacute;t&eacute; Parking'
-                - 'Pinel'
-                - 'Scellier'
-                - 'Socit&eacute; Civile Immobili&egrave;re (SCI)'
-                - 'Robien'
-            "Placement Alternatifs":
-                - "Fonds d'Investissement de Proximit&eacute; (FIP)"
-                - "Fonds Commun de Placement dans l'Innovation (FCPI)"
-                - 'Bijoux'
-                - 'Chevaux de course'
-                - 'Bois et Foret (GFF)'
-                - 'Investissement en direct dans une PME'
-                - 'Meuble de collection'
-                - 'Or/M&eacute;taux pr&eacute;cieux'
-                - 'Sofica'
-                - "Tableaux et Oeuvre d'Art"
-                - 'Terre Agricole (GFA)'
-                - 'Vache laiti&egrave;re'
-                - 'Vigne (GFV)'
-                - 'Vin'
-                - 'Voiture et Bateau'
-            "Biens professionnels":
-                - 'Parts d&eacute;tenues par les salari&eacute;s et mandataires sociaux'
-                - 'Valeurs mobili&egrave;res et biens mat&eacute;riels - Biens professionnels'
-            "Comptes Sp&eacute;culatifs":
-                - 'CFD (Forex ou Indices)'
-                - 'Autre Compte Speculatif (Futures, Options,...)'
-            "Autre Type de Portefeuille":
-                - "Type de portefeuille Personnalis&eacute; (Autre)"
+            asset_types:
+                # Use special HTML character!
+                'Assurance Vie':
+                    - 'Assurance Vie (AV)'
+                    - 'Contrat de Capitalisation'
+                    - 'Tontine'
+                    - "Plan d'&Eacute;pargne Entreprise (PEE)"
+                    - "Plan d'&Eacute;pargne pour la Retraite Collectif (PERCO)"
+                    - "Plan d'&Eacute;pargne Retraite Populaire (PERP)"
+                    - 'Article 83 (A83)'
+                    - 'Compl&eacute;mentaire Retraite des Hospitaliers (CRH)'
+                    - 'Pr&eacute;fon'
+                    - 'Contrats Madelin'
+                "Actions en Direct (Bourse)":
+                    - "Plan d'&Eacute;pargne Action (PEA)"
+                    - "Plan d'&Eacute;pargne en Actions destin&eacute; au financement des PME et ETI (PEA-PME)"
+                    - 'Compte Titre Ordinaire (CTO)'
+                    - 'Stock Options'
+                'Immobilier':
+                    - 'R&eacute;sidence Principale'
+                    - 'Borloo'
+                    - 'Cenci Bouvard'
+                    - 'Duflot'
+                    - 'Locatif Ancien'
+                    - 'Immobilier Nu propri&eacute;t&eacute;'
+                    - 'Immobilier Usufruit'
+                    - 'Immobilier Viag&eacute;'
+                    - "Immobilier &agrave; l'&eacute;tranger"
+                    - 'Investissement Hotelier'
+                    - 'LMNP'
+                    - 'LMP'
+                    - 'Malraux'
+                    - 'Monument Historique'
+                    - 'OCPI'
+                    - 'Part de Soci&eacute;t&eacute; Civile de Placement Immobilier (SCPI)'
+                    - 'SCPI en nu propri&eacute;t&eacute; Parking'
+                    - 'Pinel'
+                    - 'Scellier'
+                    - 'Socit&eacute; Civile Immobili&egrave;re (SCI)'
+                    - 'Robien'
+                "Placement Alternatifs":
+                    - "Fonds d'Investissement de Proximit&eacute; (FIP)"
+                    - "Fonds Commun de Placement dans l'Innovation (FCPI)"
+                    - 'Bijoux'
+                    - 'Chevaux de course'
+                    - 'Bois et Foret (GFF)'
+                    - 'Investissement en direct dans une PME'
+                    - 'Meuble de collection'
+                    - 'Or/M&eacute;taux pr&eacute;cieux'
+                    - 'Sofica'
+                    - "Tableaux et Oeuvre d'Art"
+                    - 'Terre Agricole (GFA)'
+                    - 'Vache laiti&egrave;re'
+                    - 'Vigne (GFV)'
+                    - 'Vin'
+                    - 'Voiture et Bateau'
+                "Biens professionnels":
+                    - 'Parts d&eacute;tenues par les salari&eacute;s et mandataires sociaux'
+                    - 'Valeurs mobili&egrave;res et biens mat&eacute;riels - Biens professionnels'
+                "Comptes Speculatifs":
+                    - 'CFD, Forex (Actions, Indices, Mati&egrave;res Premi&egrave;re, Changes)'
+                    - 'Autre Compte Sp&eacute;culatif (Futures, Options,...)'
+                "Autre Type de Portefeuille":
+                    - "Type de portefeuille Personnalis&eacute; (Autre)"
 
