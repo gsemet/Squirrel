@@ -2,15 +2,16 @@
 
 angular.module('squirrel').service('layout',
 
-  ["$location",
+  ["$location", "debug",
 
-    function($location) {
+    function($location, debug) {
 
       var that = this;
 
       this.showFooter = function() {
-        if ($location.path() === "/" && page === '') {
-          console.log("display footer on homepage!")
+        debug.dump("layout", $location.path(), "$location.path()")
+        if ($location.path() === "/") {
+          debug.log("layout", "display footer on homepage!")
           return true;
         }
         var currentRoute = $location.path().substring(1) || '/';
@@ -20,15 +21,15 @@ angular.module('squirrel').service('layout',
           "/login",
         ];
         var page = $location.path();
-        /*console.log("page = " + JSON.stringify(page));*/
+        /*debug.log("layout", "page = " + JSON.stringify(page));*/
         var v = !_.contains(hide_in_pages, page);
-        /*console.log("display footer: " + JSON.stringify(v));*/
+        debug.log("layout", "display footer: " + JSON.stringify(v));
         return v;
       };
 
       this.isFullPage = function() {
         if ($location.path() === "/" && page === '') {
-          console.log("display footer on homepage!")
+          debug.log("layout", "display footer on homepage!")
           return false;
         }
         var currentRoute = $location.path().substring(1) || '/';
@@ -37,9 +38,9 @@ angular.module('squirrel').service('layout',
           "/login",
         ];
         var page = $location.path();
-        /*console.log("page = " + JSON.stringify(page));*/
+        /*debug.log("layout", "page = " + JSON.stringify(page));*/
         var v = _.contains(hide_in_pages, page);
-        /*console.log("display footer: " + JSON.stringify(v));*/
+        /*debug.log("layout", "display footer: " + JSON.stringify(v));*/
         return v;
       };
     }
