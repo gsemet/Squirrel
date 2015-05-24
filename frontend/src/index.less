@@ -92,3 +92,8 @@ table .text-center {
 .pointer{
   cursor: pointer;
 }
+// Force nano widget overflow to hide scrollbar if not needed (use 'auto' instead of 'scroll')
+.nano > .nano-content{
+  overflow      : auto !important;
+  overflow-x    : hidden !important;
+}
