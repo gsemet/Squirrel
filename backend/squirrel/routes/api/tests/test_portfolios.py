@@ -13,7 +13,7 @@ class TestGetAccountTypes(TestCase):
     def givenListCreatedWith(self, items):
         Config().unload()
         Config({
-            'settings': {'country': {'fr': items}}
+            'settings': {'country': {'fr': {'asset_types': items}}}
         })
 
     def executeGetAccountType(self):
@@ -25,7 +25,7 @@ class TestGetAccountTypes(TestCase):
     def testEmptySettings(self):
         self.givenListCreatedWith({})
         self.executeGetAccountType()
-        self.assertReturnedDataEquals(None)
+        self.assertReturnedDataEquals([])
 
     def testTwoUnderedGroups(self):
         self.givenListCreatedWith({
