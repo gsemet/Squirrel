@@ -1,28 +1,30 @@
 <div ng-controller="FooterCtrl">
-  <footer class="visible-lg-block" ng-if="show_footer()" >
-    <div class="footer-bottom" class="noprint">
-      <div class="footer-bottom-container">
-        <div class="footer-bloc footer-left-text">
-            2015 © squirrel-ams.com
-        </div>
-        <div class="footer-bloc">
-          <span class="title" translate>Services</span>
-          <a class="item" href="/screeners" title="{{'Find your stocks on the Stock Screener' | translate}}" translate>Screeners</a>
-          <a class="item" href="/portfolios" title="{{'Manage your portfolios' | translate}}" translate>My Portfolios</a>
-        </div>
-        <div class="footer-bloc">
-          <span class="title" translate>Help</span>
-          <a class="item" href="/help" title="{{'Squirrel Asset Management System' | translate}}" translate>Squirrel AMS</a>
-        </div>
-        <div class="footer-bloc">
-          <span class="title" translate>Policy</span>
-          <a class="item" href="/tos" title="{{'Term of Service'| translate}}" rel="nofollow" translate>Term of Service</a>
-          <a class="item" href="/plans" title="{{'Plans'| translate}}" rel="nofollow" translate>Plans</a>
-          <a class="item" href="/security" title="{{'Security'| translate}}" rel="nofollow" translate>Security</a>
-        </div>
-        <div class="footer-bloc">
-          <span class="title" translate>About</span>
-          <a class="item" href="/contact" title="{{'Contact the technical team' | translate}}" rel="nofollow" translate>Contact</a>
+  <footer ng-if="show_footer()" >
+    <div class="footer-bottom noprint">
+      <div class="container footer-bottom-container">
+        <div class="row">
+          <div class="col-xs-2 col-xs-offset-1 col-md-2 footer-bloc footer-left-text">
+              2015 © squirrel-ams.com
+          </div>
+          <div class="col-xs-2 col-md-3 footer-bloc">
+            <span class="title" translate>Services</span>
+            <a class="item" href="/screeners" title="{{'Find your stocks on the Stock Screener' | translate}}" translate>Screeners</a>
+            <a class="item" href="/portfolios" title="{{'Manage your portfolios' | translate}}" translate>My Portfolios</a>
+          </div>
+          <div class="col-xs-2 col-md-3 footer-bloc">
+            <span class="title" translate>Help</span>
+            <a class="item" href="/help" title="{{'Squirrel Asset Management System' | translate}}" translate>Squirrel AMS</a>
+          </div>
+          <div class="col-xs-2 col-md-3 footer-bloc">
+            <span class="title" translate>Policy</span>
+            <a class="item" href="/tos" title="{{'Term of Service'| translate}}" rel="nofollow" translate>Term of Service</a>
+            <a class="item" href="/plans" title="{{'Plans'| translate}}" rel="nofollow" translate>Plans</a>
+            <a class="item" href="/security" title="{{'Security'| translate}}" rel="nofollow" translate>Security</a>
+          </div>
+          <div class="col-xs-2 col-md-3 footer-bloc">
+            <span class="title" translate>About</span>
+            <a class="item" href="/contact" title="{{'Contact the technical team' | translate}}" rel="nofollow" translate>Contact</a>
+          </div>
         </div>
       </div>
     </div>
