@@ -38,7 +38,8 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
           </button>
           <ul class="dropdown-menu navbar-dropdown-menu-right" role="menu">
             <!-- <li role="presentation" class="dropdown-header">General</li> -->
-            <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="goLogin()" translate>Log in</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="changeLang()()" translate>Change Language</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="goLogin()" translate>Log In</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="goRegister()" translate>Sign Up</a></li>
           </ul>
 
@@ -48,7 +49,7 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
       <ul class="nav navbar-nav-squirrel navbar-login visible-md-inline visible-lg-inline navbar-right"
           ng-if="login_username.length <= 0 && currentLang">
         <li>
-          <a class="navbar-change-lang pointer" ng-click='changeLang()' alt="{{'Change language'| translate}}">
+          <a class="navbar-change-lang pointer" ng-click='changeLang()' alt="{{'Change Language'| translate}}">
             <span class="glyphicon glyphicon-flag"></span>
           </a>
         </li>
@@ -56,7 +57,7 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
           <button class="btn login-button"
                   ng-click="goLogin()"
                   type="button">
-            <span class="glyphicon glyphicon-user"></span> <span translate>Log in</span>
+            <span class="glyphicon glyphicon-user"></span> <span translate>Log In</span>
           </button>
         </li>
         <li ng-if="login_username.length <= 0" ng-class="navClass('register')">
