@@ -1272,7 +1272,7 @@ msgid ""
 "              Historical performance is not a guarantee of future returns."
 msgstr ""
 "Squirrel n'est pas un conseiller financier.\n"
-"les performances passées ne préjugent pas des performances futures."
+"Les performances passées ne préjugent pas des performances futures."
 
 #: app\pages\features.template.html:49
 msgid ""
