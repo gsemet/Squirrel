@@ -74,7 +74,7 @@ angular.module('squirrel').factory('TranslationService',
         // Ex:
         //     http://jsfiddle.net/dwmkerr/8MVLJ/
         ModalService.showModal({
-          templateUrl: "services/translations/get_translation.modal.template.html",
+          templateUrl: "app/components/translations/get_translation.modal.template.html",
           controller: "GetTranslationController",
           inputs: {
             languages: translationService.languages,

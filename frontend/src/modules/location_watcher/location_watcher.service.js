@@ -9,8 +9,6 @@ angular.module('squirrel').factory('LocationWatcherService',
 
       var service = {}
 
-      service.setLangFromCookie = function() {}
-
       service.setupWatchers = function($scope, scopeVarName, nameKey) {
         $scope.$watch(function() {
           return $location.search();
