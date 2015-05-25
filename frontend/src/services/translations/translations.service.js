@@ -4,10 +4,10 @@
 angular.module('squirrel').factory('TranslationService',
 
   ['gettextCatalog', "AUTH_EVENTS", "$rootScope", "AuthenticationService", "ipCookie", "ModalService",
-    "$timeout", "DEPLOYMENT", "debug",
+    "$timeout", "DEPLOYMENT", "debug", "$location",
 
     function(gettextCatalog, AUTH_EVENTS, $rootScope, AuthenticationService, ipCookie, ModalService,
-      $timeout, DEPLOYMENT, debug) {
+      $timeout, DEPLOYMENT, debug, $location) {
 
       var translationService = {
         languages: [{
@@ -55,10 +55,10 @@ angular.module('squirrel').factory('TranslationService',
           gettextCatalog.setCurrentLanguage('en');
           debug.info("TranslationService", "Setting to default language 'us' (='en')");
           if (!lang) {
-            translationService.currentLang = null;
+            translationService.currentLang = 'en';
             $timeout(function() {
-              translationService.askUserLanguage();
-            }, 1000);
+              translationService.setLangFromDomain();
+            }, 100);
           } else {
             translationService.currentLang = lang;
             translationService.setExternalToolLang();
@@ -99,6 +99,35 @@ angular.module('squirrel').factory('TranslationService',
       translationService.getCurrentLang = function() {
         return translationService.currentLang;
       };
+
+      translationService.setLangFromDomain = function() {
+        var domain = translationService.getcurrentDomain();
+        debug.dump("TranslationService", domain, "Setting language from domain:");
+        if (domain == "fr") {
+          ipCookie("prefered-language", "fr");
+          translationService.setLangFromCookie();
+        } else if (domain == "en") {
+          ipCookie("prefered-language", "us");
+          translationService.setLangFromCookie();
+        } else {
+          ipCookie("prefered-language", "us");
+          translationService.setLangFromCookie();
+        }
+      }
+
+      translationService.getcurrentDomain = function() {
+        var matches;
+        var output = "";
+        var urls = /\w+:\/\/([\w|\.]+)/;
+
+        matches = urls.exec($location.host());
+
+        if (matches !== null) {
+          output = matches[1];
+        }
+
+        return output;
+      }
 
       translationService.getCurrentLanguage = function() {
         debug.info("TranslationService", "translationService.currentLang = " +
