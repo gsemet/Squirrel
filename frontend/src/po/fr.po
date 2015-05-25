@@ -91,7 +91,7 @@ msgstr "Configuration"
 msgid "Administrator Dashboard"
 msgstr "Tableau de bord d'administration"
 
-#: app\components\navbar\navbar.template.html:94
+#: app\components\navbar\navbar.template.html:95
 msgid "Administrator page"
 msgstr "Page de l'administrateur"
 
@@ -280,13 +280,17 @@ msgstr ""
 "expérience sur le site.<br/>Pour plus d'information, cliquez <a href=\"/tos"
 "\">ici</a>."
 
+#: services\translations\get_translation.modal.template.html:14
+msgid "Can you choose your prefered language:"
+msgstr "Veuillez sélectionnez votre langue préférée:"
+
 #: app\pages\features.template.html:466
 msgid "Can you synchronize automatically my different accounts?"
 msgstr ""
 "Ne pouvez-vous pas synchroniser automatiquement mes différents comptes?"
 
 #: app\portfolios\create.template.html:118
-#: services\translations\get_translation.modal.template.html:40
+#: services\translations\get_translation.modal.template.html:45
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -299,13 +303,11 @@ msgstr "Liquidités"
 msgid "Center Of Your Personal Finance"
 msgstr "Le Centre de Votre Finance Personnelle."
 
+#: app\components\navbar\navbar.template.html:41
+#: app\components\navbar\navbar.template.html:52
 #: app\settings\settings.template.html:21
 msgid "Change Language"
 msgstr "Changer la langue courante"
-
-#: app\components\navbar\navbar.template.html:51
-msgid "Change language"
-msgstr "Selectionnez votre langue"
 
 #: app\settings\settings.template.html:17
 msgid "Change your Language"
@@ -317,7 +319,7 @@ msgstr ""
 "Vérifiez votre exposition aux risques, comparez votre portefeuille à des "
 "portefeuille académiques."
 
-#: services\translations\get_translation.modal.template.html:29
+#: services\translations\get_translation.modal.template.html:34
 msgid "Choose your language"
 msgstr "Sélectionnez votre langue"
 
@@ -785,20 +787,17 @@ msgstr "Vue d'ensemble de vos actions"
 msgid "Loading..."
 msgstr "Chargement..."
 
+#: app\components\navbar\navbar.template.html:42
+#: app\components\navbar\navbar.template.html:60
 #: app\login\login.template.html:35 app\register\register.template.html:53
 msgid "Log In"
-msgstr "Connexion"
-
-#: app\components\navbar\navbar.template.html:41
-#: app\components\navbar\navbar.template.html:59
-msgid "Log in"
 msgstr "Connexion"
 
 #: app\login\login.template.html:8
 msgid "Log in to your account"
 msgstr "Connexion à votre compte"
 
-#: app\components\navbar\navbar.template.html:96
+#: app\components\navbar\navbar.template.html:97
 msgid "Log out"
 msgstr "Deconnexion"
 
@@ -878,7 +877,7 @@ msgid "November"
 msgstr "Novembre"
 
 #: app\portfolios\create.template.html:112
-#: services\translations\get_translation.modal.template.html:39
+#: services\translations\get_translation.modal.template.html:44
 msgid "OK"
 msgstr "OK"
 
@@ -928,7 +927,7 @@ msgstr "Veuillez remplir tous les champs."
 msgid "Please find bellow a summary of the portfolios."
 msgstr "Veuillez trouver ci-dessous un résumé de vos portefeuilles."
 
-#: services\translations\get_translation.modal.template.html:17
+#: services\translations\get_translation.modal.template.html:22
 msgid ""
 "Please note that you can still change your language even after this box has "
 "been\n"
@@ -1029,7 +1028,7 @@ msgstr "Réinit zoom niveau 1:1"
 msgid "Return, Gain, Alpha"
 msgstr "Gain, Alpha, Profits"
 
-#: app\components\navbar\navbar.template.html:95
+#: app\components\navbar\navbar.template.html:96
 msgid "Sandbox"
 msgstr "Bac à Sable"
 
@@ -1064,7 +1063,7 @@ msgstr "Allocation"
 msgid "Security"
 msgstr "Sécurité"
 
-#: services\translations\get_translation.modal.template.html:30
+#: services\translations\get_translation.modal.template.html:35
 msgid "Select please choose your prefered language"
 msgstr "Veuillez sélectionnez votre langue préférée"
 
@@ -1084,7 +1083,7 @@ msgstr "Septembre"
 msgid "Services"
 msgstr "Services"
 
-#: app\components\navbar\navbar.template.html:93
+#: app\components\navbar\navbar.template.html:94
 #: app\settings\settings.template.html:15
 msgid "Settings"
 msgstr "Paramètres"
@@ -1109,12 +1108,12 @@ msgstr "Nbr d'actions"
 msgid "Show Your Real Exposition"
 msgstr "Découvrez Votre Allocation Réelle"
 
-#: app\components\navbar\navbar.template.html:42
-#: app\components\navbar\navbar.template.html:67
+#: app\components\navbar\navbar.template.html:43
+#: app\components\navbar\navbar.template.html:68
 msgid "Sign Up"
 msgstr "Inscription"
 
-#: app\components\navbar\navbar.template.html:67
+#: app\components\navbar\navbar.template.html:68
 msgid "Sign Up for Free"
 msgstr "Inscription gratuite"
 
@@ -1251,12 +1250,8 @@ msgstr ""
 "qui gèrent les comptes titres et OPCVM pour le comptes de leurs clients."
 
 #: services\translations\get_translation.modal.template.html:9
-msgid ""
-"Squirrel is available is various countries. {{navigator_language}}. Can you "
-"confirm by choosing your prefered language"
-msgstr ""
-"Squirrel est disponible pour plusieurs pays. {{navigator_language}}. Pouriez "
-"vous confirmer votre langue préférée:"
+msgid "Squirrel is available is various countries. {{browser_language}}."
+msgstr "Squirrel est disponible pour plusieurs pays. {{browser_language}}."
 
 #: app\pages\features.template.html:460
 msgid "Squirrel is built in Angular and Python."
@@ -1425,7 +1420,7 @@ msgid "The Investor Social Network"
 msgstr "Le Réseau Social de L'Investisseur"
 
 #: services\translations\get_translation.modal.controller.js:15
-msgid "The current language exposed by your navigator is:"
+msgid "The current language exposed by your browser is:"
 msgstr "La langue actuellement définie dans votre navigateur est:"
 
 #: app\pages\features.template.html:484
@@ -1589,8 +1584,8 @@ msgid "Visual Portfolios"
 msgstr "Des Portefeuilles Visuels"
 
 #: services\translations\get_translation.modal.controller.js:13
-msgid "We cannot find your language based on your navigator"
-msgstr "Nous ne pouvons pas détecter la langue de votre navigateur"
+msgid "We cannot find your language based on your browser."
+msgstr "Nous ne pouvons pas détecter la langue de votre navigateur."
 
 #: app\register\register.template.html:24
 msgid ""
@@ -1711,6 +1706,12 @@ msgstr "contact@squirrel-ams.fr"
 #: app\portfolios\summary.template.html:4
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
+
+#~ msgid "Change language"
+#~ msgstr "Selectionnez votre langue"
+
+#~ msgid "Log in"
+#~ msgstr "Connexion"
 
 #~ msgid "For more information, click <a href=\"/tos\">here</a>."
 #~ msgstr "Pour en savoir, cliquez <a href=\"/tos\">ici</a>."

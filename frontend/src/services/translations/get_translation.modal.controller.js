@@ -7,13 +7,14 @@ angular.module('squirrel').controller('GetTranslationController',
     function($scope, close, languages, currentLang, gettextCatalog) {
 
       $scope.languages = languages;
-      $scope.navigator_language = window.navigator.userLanguage || window.navigator.language || navigator.language ||
+      $scope.browser_language = window.navigator.userLanguage || window.navigator.language || navigator.language ||
         navigator.browserLanguage;
-      if (!$scope.navigator_language) {
-        $scope.navigator_language = gettextCatalog.getString("We cannot find your language based on your navigator");
+      if (!$scope.browser_language) {
+        $scope.browser_language = gettextCatalog.getString("We cannot find your language based on your browser.");
       } else {
-        $scope.navigator_language = gettextCatalog.getString("The current language exposed by your navigator is: ") +
-          $scope.navigator_language;
+        $scope.browser_language = gettextCatalog.getString(
+            "The current language exposed by your browser is:") + " " +
+          $scope.browser_language;
       }
 
 
