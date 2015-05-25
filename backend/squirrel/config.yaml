@@ -57,7 +57,7 @@ marketing:
                     name: "PERP, PERCO, Article 83"
                     icon_type: "fa fa-envelope fa-3x"
                 -
-                    name: "Compte Courant"
+                    name: "Compte &agrave; Terme"
                     icon_type: "fa fa-bank fa-3x"
                 -
                     name: "CFD"
@@ -108,6 +108,16 @@ settings:
         fr:
             asset_types:
                 # Use special HTML character!
+                'Compte de D&eacute;pot &amp; &eacute;pargne':
+                    - 'Compte &agrave; Terme (CAT)'
+                    - 'Compte Courant (compte chèque)'
+                    - 'Compte Esp&egrave;ce non r&eacute;mun&eacute;r&eacute;'
+                    - 'Compte Livret A (Compte épargne A)'
+                    - 'Livret de D&eacute;veloppement Durable (LDD)'
+                    - 'Livret Jeune'
+                    - "Livret d'&Eacute;pagne Populaire (LEP)"
+                    - "Compte sur Livret (ou Livret B)"
+                    - "Autre Livrets Non R&egrave;glement&eacute;s"
                 'Assurance Vie':
                     - 'Assurance Vie (AV)'
                     - 'Contrat de Capitalisation'
