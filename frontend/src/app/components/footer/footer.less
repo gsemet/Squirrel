@@ -18,28 +18,31 @@
 .footer-bloc {
   float: left;
   margin-right: 35px;
+  width: 140px;
+}
+
+.footer-items{
   padding: 10px;
   color: #949598;
-  width: 140px;
   text-align: right;
   font-size: .9em;
-}
+  height: 10em;
 
-.footer-bloc > span.title {
-  font-size: 1.1em;
-  border-bottom: 1px solid #ddd;
-  display: block;
-  text-align: right;
-  color: #333!important;
-}
-
-.footer-bloc a.item {
-  display: block;
-  margin: 4px 0;
-  text-decoration: none;
-  color: #949598;
-  font-size: .9em;
-  line-height: 1.4em;
+  > span.title {
+    font-size: 1.1em;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    text-align: right;
+    color: #333!important;
+  }
+  a.item, a.item:hover, a.item:visited, a.item:focus {
+    display: block;
+    margin: 4px 0;
+    text-decoration: none;
+    color: #949598;
+    font-size: .9em;
+    line-height: 1.4em;
+  }
 }
 
 .footer-left-text{
@@ -67,4 +70,43 @@ footer {
   border-top: solid 2px #fff;
   background: url(../../assets/images/wild_oliva_dark.png);
   background: none #222222;
+}
+
+.social a.bubble {
+  display: inline-block;
+  text-align: center;
+  height: 32px;
+  width: 32px;
+  border: 1px solid #b2afab;
+  color: #b2afab;
+  -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;
+  border-radius: 16px;
+  margin: 0 4px;
+  line-height: 30px;
+  -moz-transition: all .2s;
+  -o-transition: all .2s;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.social a.bubble:hover{
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.social a.facebook:hover {
+  border: 1px solid #3b5998;
+  background: #3b5998;
+}
+.social a.twitter:hover{
+    border: 1px solid #00aced;
+  background: #00aced;
+}
+.social a.gplus:hover{
+  border: 1px solid #d34836;
+  background: #d34836;
 }

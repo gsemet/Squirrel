@@ -25,9 +25,9 @@
   a.plans{
     color: white;
     text-decoration: underline;
-    -webkit-text-shadow: rgba(128,128,128,.25) 5px 2px 0px;
-    -moz-text-shadow: rgba(128,128,128,.25) 5px 2px 0px;
-    text-shadow: rgba(128,128,128,.25) 5px 2px 0px;
+    -webkit-text-shadow: rgba(128, 128, 128, 0.85) 0px 0px 7px;
+    -moz-text-shadow: rgba(128, 128, 128, 0.85) 0px 0px 7px;
+    text-shadow: rgba(128, 128, 128, 0.85) 0px 0px 7px;
     margin-bottom: 40px;
   }
 }
@@ -39,17 +39,12 @@
   font-weight: 300;
 }
 
-@media (max-width: 768px){
-  padding-bottom: 50px;
-}
-
 .homepage-intro-header {
   background-attachment: fixed;
   background-position: 50% 0;
   background-repeat: no-repeat;
   position: relative;
   background: url(../assets/images/intro-bg.jpg);
-  height: 350px;
 }
 h1.homepage-white-text{
   color: #fff;
@@ -89,6 +84,12 @@ h1.homepage-white-text{
     -moz-text-shadow: rgba(128,128,128,.25) 0 -1px 0;
     -webkit-text-shadow: rgba(128,128,128,.25) 0 -1px 0;
     text-shadow: rgba(128,128,128,.25) 0 -1px 0;
+  }
+}
+
+@media (min-width: 768px){
+  .homepage .top-intro-message{
+    padding-bottom: 400px;
   }
 }
 

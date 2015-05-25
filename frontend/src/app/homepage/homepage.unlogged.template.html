@@ -4,10 +4,15 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8">
-          <div class="intro-message">
+          <div class="intro-message top-intro-message">
             <h1 class="homepage-white-text" translate>Your Online Portfolio Manager</h1>
             <h3 translate>Easily Track Your Assets And Prepare Your Own Financial Future</h3>
-            <button type="button" class="btn btn-default btn-hero" translate ng-click="signup()" translate>Sign up for free</button>
+            <button type="button"
+                    class="btn btn-default btn-hero"
+                    translate ng-click="signup()"
+                    translate>
+              Sign up for free
+            </button>
             <p>
               <a class="plans" href="/plans" translate>Pricing &amp; addition information</a>
             </p>
@@ -53,15 +58,53 @@
     </slick>
   </div>
 
-  <div parallax-background parallax-ratio="-0.8" class="homepage-intro-header homepage-intro-text">
+  <section class="homepage-section section-triptic">
+    <div class="container">
+      <div class="col-md-4">
+        <img src="assets/images/line-chart-4-256.png"
+             class="img-responsive img-center"
+             alt="Responsive image">
+        <h1 class="homepage-triptic-text" translate>
+
+            Track your different Portfolios at a single place
+
+        </h1>
+      </div>
+      <div class="col-md-4">
+        <img src="assets/images/line-chart-4-256.png"
+             class="img-responsive img-center"
+             alt="Responsive image">
+        <h1 class="homepage-triptic-text" translate>
+
+            Show Your Real Exposition
+
+        </h1>
+      </div>
+      <div class="col-md-4">
+        <img src="assets/images/line-chart-4-256.png"
+             class="img-responsive img-center"
+             alt="Responsive image">
+        <h1 class="homepage-triptic-text" translate>
+
+            Follow Your Own Investment Strategy
+
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <div parallax-background parallax-ratio="-0.8"
+       class="homepage-intro-header homepage-intro-text">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <div class="intro-message">
-            <p class="citation" translate>
+            <p class="citation"
+               translate>
 
-              Squirrel is the simpler, yet powerful online portfolio management tool, it allows a
-              private individual to grab its finances. It efficiently replaces custom-made spreadsheet and provides state of the art graphical visualization tools.
+              Squirrel is the simpler, yet most powerful online portfolio management tool. It allows
+              a private individual to grab easily its investment decisions. It efficiently replaces
+              custom-made spreadsheet and provides state of the art graphical visualization tools.
 
             </p>
           </div>
@@ -69,63 +112,6 @@
       </div>
     </div>
   </div>
-
-  <section class="homepage-section section-triptic">
-    <div class="container">
-      <div class="col-md-4">
-        <img src="assets/images/line-chart-4-256.png" class="img-responsive img-center" alt="Responsive image">
-        <h1 class="homepage-triptic-text" translate>Track your different Portfolios at a single place</h1>
-      </div>
-      <div class="col-md-4">
-        <img src="assets/images/line-chart-4-256.png" class="img-responsive img-center" alt="Responsive image">
-        <h1 class="homepage-triptic-text" translate>Show Your Real Exposition</h1>
-      </div>
-      <div class="col-md-4">
-        <img src="assets/images/line-chart-4-256.png" class="img-responsive img-center" alt="Responsive image">
-        <h1 class="homepage-triptic-text" translate>Follow Your Own Investment Strategy</h1>
-      </div>
-    </div>
-  </section>
-
-  <section class="homepage-section bg-light-yellow">
-    <div class="container">
-      <h2 class="text-center" translate>Full Featured Investment Portfolio Management Software.</h2>
-      <p class="lead text-center">
-
-      </p>
-      <hr class="small">
-    </div>
-    <div class="container">
-      <div class="row text-center feature-text homepage-text">
-        <div class="col-xs-12 col-md-offset-1 col-md-5">
-          <img src="assets/images/dbg-chart.jpg" class="img-responsive" alt="Responsive image">
-        </div>
-        <div class="col-xs-12 col-md-offset-1 col-md-4 col-md-offset-1 feature-text-bottom-block">
-          <p translate>
-
-            Squirrel allows you track your all assets in one single place: Stocks, Bonds, Mutual Fund
-            or even Options.
-
-          </p>
-          <p translate>
-
-            Squirrel is also able to help you tracking your speculative portfolio such as your Forex
-            or CFD account. Only manual operations will be available however.
-
-          </p>
-          <p translate>
-
-            With this 100% online tool, you can track all your investments from differents places:
-            home, work, mobile. When you want and where you want.
-
-          </p>
-        </div>
-      </div>
-      <div class="footer">
-        <p></p>
-      </div>
-    </div>
-  </section>
 
   <section class="homepage-section section-sixtic">
     <div class="container">
@@ -141,6 +127,46 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="homepage-section bg-light-brown">
+    <div class="container">
+      <h2 class="text-center" translate>Full Featured Investment Portfolio Management Software.</h2>
+      <p class="lead text-center">
+
+      </p>
+      <hr class="small">
+    </div>
+    <div class="container">
+      <div class="row text-center feature-text homepage-text">
+        <div class="col-xs-12 col-md-offset-1 col-md-5">
+          <img src="assets/images/dbg-chart.jpg" class="img-responsive" alt="Responsive image">
+        </div>
+        <div class="col-xs-12 col-md-offset-1 col-md-4 col-md-offset-1 feature-text-bottom-block">
+          <p translate>
+
+            Squirrel allows you track your all assets in one single place: Stocks, Bonds, Mutual
+            Fund or even Options.
+
+          </p>
+          <p translate>
+
+            Squirrel is also able to help you tracking your speculative portfolios such as your
+            Forex or CFD account (where only manual operations will be available).
+
+          </p>
+          <p translate>
+
+            With this 100% online tool, you can track all your investments from differents places:
+            home, work, mobile. Whenever and wherever you want.
+
+          </p>
+        </div>
+      </div>
+      <div class="footer">
+        <p></p>
       </div>
     </div>
   </section>
