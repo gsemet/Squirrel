@@ -139,10 +139,14 @@ body {
   background: -moz-linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* For Firefox 3.6 to 15 */
   background: linear-gradient(@bgDefaultGrandientTop, @bgDefault); /* Standard syntax (must be last) */
 
-  min-width: 344px;
+  min-width: 310px;
   -moz-box-shadow: 0px 10px 30px 5px rgba(0, 0, 0, 0.125);
   -webkit-box-shadow: 0px 10px 30px 5px rgba(0, 0, 0, 0.125);
   box-shadow: 0px 10px 30px 5px rgba(0, 0, 0, 0.125);
+
+  @media (max-width:767px) {
+    padding-left: 32px;
+  }
 
   .navbar-header {
     float: left;

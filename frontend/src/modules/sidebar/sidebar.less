@@ -238,6 +238,11 @@
     /*position: fixed;*/
     padding-left: 0px;
     width: 100%;
+
+    .sidebar-margin-topbar{
+      height: 0px;
+    }
+
     .sidebar-wrapper{
       height: 100px;
     }
@@ -246,15 +251,19 @@
     }
     .sidebar-wrapper {
       left: 55px;
+      z-index: 2000;
       position: fixed;
       background: transparent;
-      color: @colorMain;
+      color: @textColor;
+    }
+    .sidebar-nav > .sidebar-brand {
+      margin-top: -6px;
     }
     .sidebar-nav > .sidebar-brand a {
-      color: @colorMain;
+      color: @textColor;
     }
     .sidebar-nav > .sidebar-brand a:hover {
-      color: @colorMain;
+      color: @textColor;
       background: none;
     }
     .sidebar-main-icon{
