@@ -98,7 +98,7 @@ def route_portfolios(request):
                     'c': 'euro',
                 },
             },
-            'valorisation': {
+            'balance': {
                 'v': 755.90,
                 'c': 'euro',
             },
@@ -165,7 +165,7 @@ def route_portfolios_get(request, portfolio_id):
             },
         },
         'portfolio_value': {
-            'valorisation': {
+            'balance': {
                 'v': 755.90,
                 'c': 'euro',
             },
@@ -187,12 +187,48 @@ def route_portfolios_get(request, portfolio_id):
                 }
             },
         },
+        'invested': {
+            'total': {
+                'v': 850,
+                'c': 'euro',
+            },
+            'deposit': {
+                'v': 750,
+                'c': 'euro',
+            },
+            'withdrawals': {
+                'v': 100,
+                'c': 'euro',
+            },
+            'other': {
+                'v': 0,
+                'c': 'euro',
+            },
+        },
+        'earned': {
+            'total': {
+                'v': 105,
+                'c': 'euro',
+            },
+            'market_change': {
+                'v': 70,
+                'c': 'euro',
+            },
+            'dividends': {
+                'v': 20,
+                'c': 'euro',
+            },
+            'other': {
+                'v': 5,
+                'c': 'euro',
+            },
+        },
         'cash': {
             'deposit': {
                 'v': 5254,
                 'c': 'euro',
             },
-            'valorisation': {
+            'balance': {
                 'v': 5764,
                 'c': 'euro',
             },
@@ -216,7 +252,7 @@ def route_portfolios_get(request, portfolio_id):
                     'exchange': 'NYSE',
                     'symbol': 'GDF',
                 },
-                'valorisation': {
+                'balance': {
                     'v': 650.90,
                     'c': 'euro',
                 },
@@ -261,7 +297,7 @@ def route_portfolios_get(request, portfolio_id):
                         'exchange': 'NYSE',
                         'symbol': 'FP',
                 },
-                'valorisation': {
+                'balance': {
                     'v': 170.90,
                     'c': 'euro',
                 },
@@ -306,7 +342,7 @@ def route_portfolios_get(request, portfolio_id):
                         'exchange': 'NYSE',
                         'symbol': 'FP',
                 },
-                'valorisation': {
+                'balance': {
                     'v': 90.10,
                     'c': 'euro',
                 },

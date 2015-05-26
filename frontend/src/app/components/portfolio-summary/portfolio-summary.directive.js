@@ -13,7 +13,7 @@ angular.module('squirrel').directive('portfolioSummary',
           id: '@id',
         },
         controllerAs: "page",
-        templateUrl: "apps/components/portfolio-summary/portfolio-summary.template.html",
+        templateUrl: "app/components/portfolio-summary/portfolio-summary.template.html",
         controller: "PortfolioSummaryDirectiveCtrl",
       };
     }
