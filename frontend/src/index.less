@@ -104,3 +104,16 @@ table .text-center {
     padding-right: 0px !important;
   }
 }
+
+// Disable auto-zoom in input text tag safari on IPhone
+// http://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  input[type='text'], input[type='number'], textarea {
+    font-size: 16px;
+  }
+
+  select:focus, textarea:focus, input:focus {
+    font-size: 16px;
+    background: #eee;
+  }
+}
