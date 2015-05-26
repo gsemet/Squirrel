@@ -108,14 +108,19 @@ settings:
         fr:
             asset_types:
                 # Use special HTML character!
-                'Compte de D&eacute;pot &amp; &eacute;pargne':
+                # Don't use accent in group title!
+                'Compte de Depot & Epargne':
                     - 'Compte &agrave; Terme (CAT)'
-                    - 'Compte Courant (compte chèque)'
+                    - 'Compte Courant (compte ch&egrave;que)'
                     - 'Compte Esp&egrave;ce non r&eacute;mun&eacute;r&eacute;'
-                    - 'Compte Livret A (Compte épargne A)'
-                    - 'Livret de D&eacute;veloppement Durable (LDD)'
+                    - 'Livret A (Compte &eacute;pargne A)'
+                    - 'Livret Bleu'
+                    - 'Livret de D&eacute;veloppement Durable (LDD/CODEVI)'
                     - 'Livret Jeune'
                     - "Livret d'&Eacute;pagne Populaire (LEP)"
+                    - "Livret d'&Eacute;pagne Entreprise (LEP)"
+                    - "Compte d'&Eacute;pagne Logement (CEL)"
+                    - "Plan d'&Eacute;pagne Logement (PEL)"
                     - "Compte sur Livret (ou Livret B)"
                     - "Autre Livrets Non R&egrave;glement&eacute;s"
                 'Assurance Vie':
@@ -134,6 +139,7 @@ settings:
                     - "Plan d'&Eacute;pargne en Actions destin&eacute; au financement des PME et ETI (PEA-PME)"
                     - 'Compte Titre Ordinaire (CTO)'
                     - 'Stock Options'
+                    - 'Actions Gratuites'
                 'Immobilier':
                     - 'R&eacute;sidence Principale'
                     - 'Borloo'
