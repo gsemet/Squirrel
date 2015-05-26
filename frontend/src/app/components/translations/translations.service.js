@@ -197,6 +197,10 @@ angular.module('squirrel').factory('TranslationService',
           }
         });
       }
+
+      // force load from cookie
+      translationService.setLangFromCookie();
+
       return translationService;
     }
   ]
