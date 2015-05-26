@@ -2,11 +2,15 @@
   <div class="row">
     <div class="col-xs-12 col-md-10 col-md-offset-1 card">
       <div class="row">
-        <div class="col-xs-12 col-md-10">
+        <div class="col-xs-12 col-lg-6">
           <div class="summary">
             <div class="row">
-              <div class="col-xs-8 col-md-4 name col-xs-nopadding" ng-bind-html="portfolio.name"></div>
-              <div class="col-xs-4 col-md-2 balance col-xs-nopadding">
+              <div class="col-xs-8 name col-xs-nopadding">
+                <button type="button" class="btn-expand" ng-if="expand" ng-click="expand = !expand">-</button>
+                <button type="button" class="btn-expand" ng-if="!expand" ng-click="expand = !expand">+</button>
+                <span ng-bind-html="portfolio.name"></span>
+              </div>
+              <div class="col-xs-4 balance col-xs-nopadding">
                 <div class="title" translate>
                   Balance
                 </div>
@@ -16,7 +20,7 @@
           </div>
           <div class="details">
             <div class="row">
-              <div class="col-xs-12 col-md-8 col-xs-nopadding">
+              <div class="col-xs-12 col-xs-nopadding">
                 <div class="row invested">
                   <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Invested:</div>
@@ -85,7 +89,8 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-12 col-lg-6">
+          <pie-chart title="title of the chart" data="data">
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 html {
   height: 100%;
-  min-width: 360px;
+  min-width: 300px;
 }
 
 .view-full-page{
@@ -70,14 +70,16 @@ table .text-center {
   border-color: white;
 }
 
-.center-modal {
-  position: fixed;
-  top: 25%;
-}
+@media (min-width: 768px) {
+  .center-modal {
+    position: fixed;
+    top: 25%;
+  }
 
-.top-modal {
-  position: fixed;
-  top: 10%;
+  .top-modal {
+    position: fixed;
+    top: 10%;
+  }
 }
 
 .ui-select-bootstrap .ui-select-choices-group-label{
