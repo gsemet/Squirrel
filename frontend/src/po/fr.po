@@ -1212,6 +1212,10 @@ msgstr "Stockage des Rapports Mensuels de votre Compte Spéculatif (CFD)"
 msgid "Squirrel"
 msgstr "Squirrel"
 
+#: index.html:5
+msgid "Squirrel - Your Online Portfolio Manager"
+msgstr "Squirrel - Votre Gestionnaire de Portefeuille En Ligne"
+
 #: app\components\footer\footer.template.html:18
 msgid "Squirrel AMS"
 msgstr "Squirrel AMS"
