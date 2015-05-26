@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-xs-12 col-md-10 col-md-offset-1 card">
       <div class="row">
-        <div class="col-xs-12 col-md-10 col-xs-nopadding">
+        <div class="col-xs-12 col-md-10">
           <div class="summary">
             <div class="row">
-              <div class="col-xs-8 col-md-4 name" ng-bind-html="portfolio.name"></div>
-              <div class="col-xs-4 col-md-2 balance">
+              <div class="col-xs-8 col-md-4 name col-xs-nopadding" ng-bind-html="portfolio.name"></div>
+              <div class="col-xs-4 col-md-2 balance col-xs-nopadding">
                 <div class="title" translate>
                   Balance
                 </div>
@@ -18,66 +18,66 @@
             <div class="row">
               <div class="col-xs-12 col-md-8 col-xs-nopadding">
                 <div class="row invested">
-                  <div class="col-xs-8">
+                  <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Invested:</div>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-4 col-xs-nopadding">
                     <div class="value", ng-bind-html="portfolio.invested.total | json_currency"></div>
                   </div>
                 </div>
                 <div class="row deposit">
-                  <div class="col-xs-8">
+                  <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Deposit:</div>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-4 col-xs-nopadding">
                     <div class="value", ng-bind-html="portfolio.invested.deposit | json_currency"></div>
                   </div>
                 </div>
                 <div class="row withdrawals">
-                  <div class="col-xs-8">
+                  <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Withdrawals:</div>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-4 col-xs-nopadding">
                     <div class="value", ng-bind-html="portfolio.invested.withdrawals | json_currency"></div>
                   </div>
                 </div>
                 <div class="row invested-other">
-                  <div class="col-xs-8">
+                  <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Other:</div>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-4 col-xs-nopadding">
                     <div class="value", ng-bind-html="portfolio.invested.other | json_currency"></div>
                   </div>
                 </div>
                 <div class="row earned">
-                  <div class="col-xs-8">
+                  <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Earned:</div>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-4 col-xs-nopadding">
                     <div class="value", ng-bind-html="portfolio.earned.total | json_currency"></div>
                   </div>
                 </div>
                 <div class="row market-change">
-                  <div class="col-xs-8">
+                  <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Market Change:</div>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-4 col-xs-nopadding">
                     <div class="value", ng-bind-html="portfolio.earned.market_change | json_currency"></div>
                   </div>
                 </div>
                 <div class="row dividends">
-                  <div class="col-xs-8">
+                  <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Dividends:</div>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-4 col-xs-nopadding">
                     <div class="value", ng-bind-html="portfolio.earned.dividends | json_currency"></div>
                   </div>
                 </div>
                 <div class="row earned-other bottom-hr">
-                  <div class="col-xs-8">
+                  <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Other:</div>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-4 col-xs-nopadding">
                     <div class="value", ng-bind-html="portfolio.earned.other | json_currency"></div>
                   </div>
                 </div>
