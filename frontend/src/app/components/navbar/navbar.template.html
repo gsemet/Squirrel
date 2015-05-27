@@ -9,18 +9,12 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
       <a class="navbar-brand" href="/" ng-class="navClass('')" >
         <span class="squirrel-brand">
           <img class="squirrel-brand-img" src="assets/images/logo-256.png"></img>
-          <span class="visible-md-inline visible-lg-inline">Squirrel-AMS{{title_tag}}</span>
+          <span>Squirrel-AMS{{title_tag}}</span>
         </span>
       </a>
-      <!-- <button type="button" class="navbar-toggle collapsed" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
-        <span class="sr-only" translate>Toggle Navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button> -->
     </div>
     <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
-      <ul class="nav navbar-nav-squirrel">
+      <ul class="nav navbar-nav-squirrel visible-md-inline visible-lg-inline">
         <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')">
           <!-- <a href='/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a> -->
           <a ui-sref='{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a>
@@ -37,7 +31,10 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
             <span class="glyphicon glyphicon-user"></span>
           </button>
           <ul class="dropdown-menu navbar-dropdown-menu-right" role="menu">
-            <!-- <li role="presentation" class="dropdown-header">General</li> -->
+            <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')">
+              <!-- <a href='/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a> -->
+              <a ui-sref='{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a>
+            </li>
             <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="changeLang()()" translate>Change Language</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="goLogin()" translate>Log In</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="goRegister()" translate>Sign Up</a></li>
@@ -90,7 +87,10 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
             <span class="caret"></span>
           </button> -->
           <ul class="dropdown-menu navbar-dropdown-menu-right" role="menu">
-            <!-- <li role="presentation" class="dropdown-header">General</li> -->
+            <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')">
+              <!-- <a href='/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a> -->
+              <a ui-sref='{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a>
+            </li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="/settings" ng-click="closeNavBar()" translate>Settings</a></li>
             <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="/admin" ng-click="closeNavBar()" translate>Administrator page</a></li>
             <li role="presentation" ng-if="is_admin"><a role="menuitem" tabindex="-1" href="/sandbox" ng-click="closeNavBar()" translate>Sandbox</a></li>
