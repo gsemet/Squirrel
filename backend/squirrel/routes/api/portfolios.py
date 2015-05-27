@@ -150,9 +150,13 @@ def route_portfolios_get(request, portfolio_id):
         'id': portfolio_id,
         'name': "CTO Fortuneo",
         'broker': 'Fortuneo',
-        'description': "Compte Titre Ordinaire (uniq. Euronext Paris)",
+        'description': "Actions Euronext uniquement",
         'class:': 'Actions',
-        'type': 'CTO',
+        'type': {
+            'id': 123,
+            'short': 'CTO',
+            'long': 'Compte Titre Ordinaire (CTO)',
+        },
         'creation_date': '01/03/2014',
         'supports': {
             'quotes': {

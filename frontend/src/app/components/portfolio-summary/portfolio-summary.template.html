@@ -3,25 +3,34 @@
     <div class="col-xs-12 col-md-10 col-md-offset-1 card">
       <div class="row">
         <div class="col-xs-12 col-lg-6">
-          <div class="summary">
-            <div class="row">
-              <div class="col-xs-8 name col-xs-nopadding">
-                <button type="button" class="btn-expand" ng-if="expand" ng-click="expand = !expand">-</button>
-                <button type="button" class="btn-expand" ng-if="!expand" ng-click="expand = !expand">+</button>
-                <span ng-bind-html="portfolio.name"></span>
-              </div>
-              <div class="col-xs-4 balance col-xs-nopadding">
-                <div class="title" translate>
-                  Balance
+          <div class="row">
+            <div class="expand-col-md col-xs-1 col-xs-nopadding">
+              <button type="button" class="btn-expand" ng-if="expand" ng-click="expand = !expand">-</button>
+            </div>
+            <div class="col-xs-7 col-xs-nopadding">
+              <div class="row">
+                <div class="col-xs-12 col-xs-nopadding summary name">
+                  <span ng-bind-html="portfolio.name"></span>
                 </div>
-                <div class="value" ng-bind-html="portfolio.portfolio_value.balance | json_currency"></div>
+                <div class="col-xs-12 col-xs-nopadding">
+                  <div ng-bind-html="portfolio.description"></div>
+                </div>
+                <div class="col-xs-12 col-xs-nopadding">
+                  <div ng-bind-html="portfolio.type.long"></div>
+                </div>
               </div>
+            </div>
+            <div class="col-xs-4 summary balance col-xs-nopadding">
+              <div class="title" translate>
+                Balance
+              </div>
+              <div class="value" ng-bind-html="portfolio.portfolio_value.balance | json_currency"></div>
             </div>
           </div>
           <div class="details">
             <div class="row">
               <div class="col-xs-12 col-xs-nopadding">
-                <div class="row invested">
+                <div class="row invested bottom-hr-light">
                   <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Invested:</div>
                   </div>
@@ -53,7 +62,7 @@
                     <div class="value", ng-bind-html="portfolio.invested.other | json_currency"></div>
                   </div>
                 </div>
-                <div class="row earned">
+                <div class="row earned bottom-hr-light">
                   <div class="col-xs-8 col-xs-nopadding">
                     <div translate>Earned:</div>
                   </div>
