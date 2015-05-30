@@ -44,7 +44,9 @@ mime_types = {
 
 def getMimeType(file_path):
     _, ext = os.path.splitext(file_path)
-    return mime_types.get(ext, "text/html")
+    m = mime_types.get(ext, "text/html")
+    log.debug("found mime for path {}: {}".format(file_path, m))
+    return m
 
 
 def serve_url(wanted_url, root_path):

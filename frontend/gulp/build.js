@@ -57,6 +57,8 @@ gulp.task('html', ['inject', 'partials', 'translations'], function() {
     .pipe($.replace('../bootstrap/fonts', 'fonts'))
     .pipe($.replace('../bower_components/font-awesome', 'fonts/'))
     .pipe($.replace('/bower_components/bootstrap/fonts', '/fonts'))
+    .pipe($.replace('./fonts/slick', '/fonts/slick'))
+    .pipe($.replace('./ajax-loader.gif', '/assets/images/ajax-loader.gif'))
     .pipe(gulpif(do_uglyfy, $.csso()))
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
@@ -87,7 +89,7 @@ gulp.task('images', function() {
 
 gulp.task('fonts', function() {
   return gulp.src($.mainBowerFiles())
-    .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
+    .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
     .pipe(gulp.dest(paths.dist + '/fonts/'));
 });

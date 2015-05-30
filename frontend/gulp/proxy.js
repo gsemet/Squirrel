@@ -51,7 +51,7 @@ function proxyMiddleware(req, res, next) {
    */
   /* Default test:
    *
-   *  /\.(html|css|js|png|jpg|jpeg|gif|ico|xml|rss|txt|eot|svg|ttf|woff|cur)(\?((r|v|rel|rev)=[\-\.\w]*)?)?$/
+   *  /\.(html|css|js|png|jpg|jpeg|gif|ico|xml|rss|txt|eot|svg|ttf|woff|woff2|cur)(\?((r|v|rel|rev)=[\-\.\w]*)?)?$/
    */
   if (/^\/api\//.test(req.url)) {
     // route all request to /api/* to backend running on port 8080
