@@ -50,6 +50,13 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           templateUrl: 'app/portfolios/allocations.template.html',
         }, {
           search: {
+            'p': 'watchlist'
+          },
+          name: gettextCatalog.getString('Watchlist'),
+          icon: 'glyphicon glyphicon-dashboard',
+          templateUrl: 'app/portfolios/watchlist.template.html',
+        }, {
+          search: {
             'p': 'covers'
           },
           name: gettextCatalog.getString('Covers'),

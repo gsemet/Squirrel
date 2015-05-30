@@ -149,7 +149,7 @@ msgstr "Analysez le marché avec des outils à la pointe de la modernité"
 msgid "Annual Portfolio Report edition"
 msgstr "Edition des votre Rapport Annuel"
 
-#: app\portfolios\_portfolios.controller.js:83
+#: app\portfolios\_portfolios.controller.js:90
 #: app\portfolios\annual_reports.template.html:2
 msgid "Annual Reports"
 msgstr "Rapports Annuels"
@@ -303,8 +303,8 @@ msgstr "Liquidités"
 msgid "Center Of Your Personal Finance"
 msgstr "Le Centre de Votre Finance Personnelle."
 
-#: app\components\navbar\navbar.template.html:41
-#: app\components\navbar\navbar.template.html:52
+#: app\components\navbar\navbar.template.html:38
+#: app\components\navbar\navbar.template.html:49
 #: app\settings\settings.template.html:21
 msgid "Change Language"
 msgstr "Changer la langue courante"
@@ -363,7 +363,7 @@ msgstr "Copyright 2015 tous droits réservés."
 msgid "Cost Basis"
 msgstr "Prix de Revient"
 
-#: app\portfolios\_portfolios.controller.js:55
+#: app\portfolios\_portfolios.controller.js:62
 #: app\portfolios\covers.template.html:2
 msgid "Covers"
 msgstr "Couvertures"
@@ -807,8 +807,8 @@ msgstr "Vue d'ensemble de vos actions"
 msgid "Loading..."
 msgstr "Chargement..."
 
-#: app\components\navbar\navbar.template.html:42
-#: app\components\navbar\navbar.template.html:60
+#: app\components\navbar\navbar.template.html:39
+#: app\components\navbar\navbar.template.html:57
 #: app\login\login.template.html:35 app\register\register.template.html:53
 msgid "Log In"
 msgstr "Connexion"
@@ -1036,7 +1036,7 @@ msgstr ""
 msgid "Relax, feel safe"
 msgstr "Relaxez vous, soyez en totale sécurité"
 
-#: app\portfolios\_portfolios.controller.js:76
+#: app\portfolios\_portfolios.controller.js:83
 #: app\portfolios\reporting.template.html:2
 msgid "Reporting"
 msgstr "Reporting"
@@ -1137,12 +1137,12 @@ msgstr "Nbr d'actions"
 msgid "Show Your Real Exposition"
 msgstr "Découvrez Votre Allocation Réelle"
 
-#: app\components\navbar\navbar.template.html:43
-#: app\components\navbar\navbar.template.html:68
+#: app\components\navbar\navbar.template.html:40
+#: app\components\navbar\navbar.template.html:65
 msgid "Sign Up"
 msgstr "Inscription"
 
-#: app\components\navbar\navbar.template.html:68
+#: app\components\navbar\navbar.template.html:65
 msgid "Sign Up for Free"
 msgstr "Inscription gratuite"
 
@@ -1403,7 +1403,7 @@ msgstr ""
 msgid "Status"
 msgstr "Status"
 
-#: app\portfolios\_portfolios.controller.js:69
+#: app\portfolios\_portfolios.controller.js:76
 #: app\portfolios\status_report.template.html:2
 msgid "Status Report"
 msgstr "Rapport de Situation"
@@ -1432,7 +1432,7 @@ msgstr "Symboles"
 msgid "Tax Statement"
 msgstr "Déclaration d'Impôts"
 
-#: app\portfolios\_portfolios.controller.js:90
+#: app\portfolios\_portfolios.controller.js:97
 msgid "Taxation"
 msgstr "Vos Impôts"
 
@@ -1541,7 +1541,7 @@ msgstr ""
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: app\portfolios\_portfolios.controller.js:62
+#: app\portfolios\_portfolios.controller.js:69
 #: app\portfolios\timeline.template.html:2
 msgid "Timeline"
 msgstr "Timeline"
@@ -1623,6 +1623,11 @@ msgstr "Visualiser et Editer un portefeuille"
 #: app\pages\features.controller.js:34 app\pages\features.template.html:89
 msgid "Visual Portfolios"
 msgstr "Des Portefeuilles Visuels"
+
+#: app\portfolios\_portfolios.controller.js:55
+#: app\portfolios\watchlist.template.html:2
+msgid "Watchlist"
+msgstr "Liste de Surveillance"
 
 #: app\components\translations\get_translation.modal.controller.js:13
 msgid "We cannot find your language based on your browser."
