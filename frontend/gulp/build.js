@@ -6,6 +6,7 @@ var gulpif = require('gulp-if');
 var paths = gulp.paths;
 
 var do_uglyfy = false;
+var do_minify_partials = false;
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -16,11 +17,12 @@ gulp.task('partials', ['markups'], function() {
     paths.src + '/{app,components,services,modules}/**/*.html',
     paths.tmp + '/{app,components,services,modules}/**/*.html'
   ])
-    .pipe($.minifyHtml({
-      empty: true,
-      spare: true,
-      quotes: true
-    }))
+    .pipe(gulpif(do_minify_partials, $.minifyHtml({
+      empty: true, // KEEP empty attributes
+      spare: true, // KEEP redundant attributes
+      quotes: true, // KEEP redundant attributes
+      loose: true // KEEP one whitespace (needed for angular-gettext)
+    })))
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
       module: 'squirrel'
     }))
