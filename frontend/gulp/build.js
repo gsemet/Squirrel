@@ -27,7 +27,7 @@ gulp.task('partials', ['markups'], function() {
     .pipe(gulp.dest(paths.tmp + '/partials/'));
 });
 
-gulp.task('html', ['inject', 'partials', 'translations'], function() {
+gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
   var partialsInjectFile = gulp.src(paths.tmp + '/partials/templateCacheHtml.js', {
     read: false
   });
@@ -95,7 +95,7 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('misc', function() {
-  return gulp.src(paths.src + '/**/*.ico')
+  return gulp.src(paths.src + '/**/*.{ico,png}')
     .pipe(gulp.dest(paths.dist + '/'));
 });
 
