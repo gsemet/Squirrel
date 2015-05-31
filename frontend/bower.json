@@ -8,7 +8,7 @@
     "angular-cookie": "~4.0.6",
     "angular-dc": "https://github.com/Stibbons/angular-dc.git#0.0.8-lodash3-3",
     "angular-fontawesome": "~0.3.2",
-    "angular-gettext": "~2.0.5",
+    "angular-gettext": "~2.1.0",
     "angular-modal-service": "https://github.com/Stibbons/angular-modal-service.git#v0.6.6-jquery1.1",
     "angular-moment": "~0.9.2",
     "angular-nanoscroller": "https://github.com/Stibbons/angular-nanoscroller.git#v0.2.1-ang13",
