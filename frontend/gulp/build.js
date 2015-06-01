@@ -8,6 +8,7 @@ var paths = gulp.paths;
 var do_uglyfy = false;
 var do_minify_partials = false;
 var do_minify_partials_htmlmin = true;
+var do_minify_html_htmlmin = true;
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -76,7 +77,7 @@ gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
       spare: true,
       quotes: true
     })))
-    .pipe(gulpif(do_minify_partials_htmlmin, $.htmlmin({
+    .pipe(gulpif(do_minify_html_htmlmin, $.htmlmin({
       removeComments: true
     })))
     .pipe($.htmlPrettify({
