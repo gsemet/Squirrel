@@ -19,7 +19,12 @@ angular.module("squirrel").controller("PlansCtrl",
             {
               "description": gettextCatalog.getString('View and Edit one Portfolio'),
               "free": true,
-              "premium": false,
+              "premium": true,
+            },
+            {
+              "description": gettextCatalog.getString('Number of Portfolios'),
+              "free": 2,
+              "premium": "unlimited",
             },
             {
               "description": gettextCatalog.getString('View and Edit all your Portfolios'),

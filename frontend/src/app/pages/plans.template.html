@@ -24,7 +24,6 @@
                   <div class="row">
                     <div class="col-xs-8">
                       <div class="description">&nbsp;</div>
-                      <!-- <div class="support"> -->
                     </div>
                     <div class="col-xs-2">
                       <div class="free">Free</div>
@@ -32,7 +31,6 @@
                     <div class="col-xs-2">
                       <div class="premium">Premium</div>
                     </div>
-                    <!-- </div> -->
                   </div>
                 </div>
               </div>
@@ -54,12 +52,16 @@
                           <div class="description">{{feature.description}}</div>
                         </div>
                         <div class="col-xs-2">
-                          <!-- <div class="support"> -->
-                          <div class="free"><span ng-if="feature.free" class="fa fa-check fa-2x"></span></div>
+                          <div class="free">
+                            <span ng-if="feature.free == true" class="fa fa-check fa-2x"></span>
+                            <span class="text-cell" ng-if="(feature.free != true) && (feature.free != false)">{{feature.free}}</span>
+                          </div>
                         </div>
                         <div class="col-xs-2">
-                          <div class="premium"><span ng-if="feature.premium" class="fa fa-check fa-2x"></span></div>
-                          <!-- </div> -->
+                          <div class="premium">
+                            <span ng-if="feature.premium == true" class="fa fa-check fa-2x"></span>
+                            <span class="text-cell" ng-if="(feature.premium != true) && (feature.premium != false)">{{feature.premium}}</span>
+                          </div>
                         </div>
                       </div>
                     </li>
