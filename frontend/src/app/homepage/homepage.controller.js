@@ -3,10 +3,10 @@
 angular.module('squirrel').controller('HomepageCtrl',
 
   ["AuthenticationService", "$rootScope", '$scope', "AUTH_EVENTS", "request", "TranslationService",
-    "$timeout", "$location", "$document",
+    "$timeout", "$location", "$document", "gettextCatalog",
 
     function(AuthenticationService, $rootScope, $scope, AUTH_EVENTS, request, TranslationService,
-      $timeout, $location, $document) {
+      $timeout, $location, $document, gettextCatalog) {
 
       $document.scrollTo(0, 0);
 
@@ -41,6 +41,11 @@ angular.module('squirrel').controller('HomepageCtrl',
       };
 
       $timeout($scope.refreshAccounts, 500);
+
+      $scope.parallaxText = gettextCatalog.getString("Squirrel is the simpler, yet most powerful " +
+        "online portfolio management tool. It allows " +
+        "a private individual to grab easily its investment decisions.It efficiently replaces " +
+        "custom - made spreadsheet and provides state of the art graphical visualization tools.");
 
       $scope.signup = function() {
         $location.path("/register");
