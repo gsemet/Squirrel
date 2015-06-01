@@ -7,6 +7,7 @@ var paths = gulp.paths;
 
 var do_uglyfy = false;
 var do_minify_partials = false;
+var do_minify_partials_htmlmin = true;
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -22,6 +23,9 @@ gulp.task('partials', ['markups'], function() {
       spare: true, // KEEP redundant attributes
       quotes: true, // KEEP redundant attributes
       loose: true // KEEP one whitespace (needed for angular-gettext)
+    })))
+    .pipe(gulpif(do_minify_partials_htmlmin, $.htmlmin({
+      removeComments: true
     })))
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
       module: 'squirrel'
@@ -67,10 +71,13 @@ gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
-    .pipe(gulpif(do_uglyfy, $.minifyHtml({
+    .pipe(gulpif(do_minify_partials, $.minifyHtml({
       empty: true,
       spare: true,
       quotes: true
+    })))
+    .pipe(gulpif(do_minify_partials_htmlmin, $.htmlmin({
+      removeComments: true
     })))
     .pipe($.htmlPrettify({
       indent_char: ' ',
