@@ -182,7 +182,10 @@ settings:
                     - 'Parts d&eacute;tenues par les salari&eacute;s et mandataires sociaux'
                     - 'Valeurs mobili&egrave;res et biens mat&eacute;riels - Biens professionnels'
                 "Comptes Speculatifs":
-                    - 'CFD, Forex (Actions, Indices, Mati&egrave;res Premi&egrave;re, Changes)'
+                    - 'CFD sur Actions'
+                    - 'CFD sur Indices'
+                    - 'CFD sur Mati&egrave;res Premi&egrave;re'
+                    - 'Forex (CFD sur marché des changes)'
                     - 'Autre Compte Sp&eacute;culatif (Futures, Options,...)'
                 "Autre Type de Portefeuille":
                     - "Type de portefeuille Personnalis&eacute; (Autre)"
