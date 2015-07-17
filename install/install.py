@@ -213,7 +213,14 @@ def main():
 
         if not os.path.exists(os.path.join(workdir_path, "Scripts", "pip.exe")):
             printBoot("Installing virtualenv in: {0}".format(workdir_path))
-            subprocess.check_call([virtualenv, "--system-site-packages", workdir_path])
+            try:
+                subprocess.check_call([virtualenv, "--system-site-packages", workdir_path])
+            except:
+                printError("Error during installation of virtualenv. Do you have virtual env "
+                           "in your system? Install it with:")
+                printError("  sudo pip install virtualenv")
+                printError("Reraising original exception:")
+                raise
 
         # using launcher instead of activate.bat because we want to launch custom commands
         launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))

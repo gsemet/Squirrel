@@ -407,6 +407,8 @@ def main():
                 shell=shell)
 
         printInfo("cd frontend")
+        # Circumvent bugs such as https://github.com/bower/bower/issues/646
+        run(["bower", "cache", "clean"], cwd=os.path.join(install_path, "frontend"), shell=shell)
         run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
 
         if "frontend_gulp_build" in current_capabilities:
