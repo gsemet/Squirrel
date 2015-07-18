@@ -13,6 +13,34 @@ frontend:
     doc_path: ../doc/build/html/
     html5mode: true
 
+features:
+    # Allowed values:
+    #  disabled
+    #  dev
+    #  enabled
+    languages:
+        multilanguage: disabled
+        default: 'fr'
+    screeners_page: disabled
+    plans_page: dev
+    demo_page: disabled
+    features_page: enabled
+    portfolio_page: enabled
+    portfolio:
+        summary: enabled
+        securities: dev
+        cash: disabled
+        allocations: disabled
+        watchlist: disabled
+        covers: disabled
+        timeline: disabled
+        reports: disabled
+        reporting: disabled
+        taxation: disabled
+    debug:
+        logging: enabled
+
+
 backend:
     serve: false
     db:

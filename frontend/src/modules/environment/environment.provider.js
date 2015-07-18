@@ -1,103 +1,22 @@
 'use strict';
 
-angular.module('squirrel').provider('environment',
+angular.module('squirrel').factory('environment',
 
-  function() {
+  ['debug',
 
-    // Defines different environments.
-    //
-    // The environment will be selected based on the url
-    //
-    // Example:
-    //
-    // environmentProvider.setList(
-    //   [{
-    //     environment: 'local',
-    //     appUseSSL: false,
-    //     appUrl: 'localhost',
-    //     appPort: '9000', // only if using a non-standard port (80 or 443)
-    //     backendUseSSL: false,
-    //     backendUrl: 'myApp-dev.servercom' // optional: if different from appUrl,
-    //     servicePort: '8080' // only if using a non-standard port (80 or 443)
-    //   },
-    //   {
-    //     environment: 'dev',
-    //     appUrl: 'myApp-dev.servercom'
-    //   },
-    //   {
-    //     environment: 'preview',
-    //     appUrl: 'myApp-pre.servercom'
-    //   },
-    //   {
-    //     environment: 'prod',
-    //     appUrl: 'subdomain.servercom/myAppVirtualDirectory'
-    //   }]
-    // );
+    function(debug) {
 
-    // DEFAULT
-    this.list = [{
-      environment: 'local',
-      appUrl: 'localhost',
-      appPort: '3000',
-      hasSubDomain: false,
-      features: {
-        "debug_translation": true
-      }
-    }, {
-      environment: 'prod',
-      appUrl: 'squirrel-ams.com',
-      appPort: '80',
-      hasSubDomain: false,
-      features: {
-        "debug_translation": false
-      }
-    }];
-    this.defaultSubDomain = "";
-
-    this.setList = function(list) {
-      this.list = list;
-    };
-
-    this.setDefaultSubDomain = function(defaultSubDomain) {
-      this.defaultSubDomain = defaultSubDomain;
-    }
-
-
-    this.$get = function($location) {
-      var list = this.list;
-      var host = $location.host();
-      var env = null;
-
-      var findCurrentEnvironment = function() {
-        host = host.toLowerCase();
-
-        if (!env && _.isArray(list) && list.length > 0) {
-          env = _.find(list, function(environment) {
-            if (environment.appUrl) {
-              var lowercaseUrl = environment.appUrl.toLowerCase();
-              return (lowercaseUrl == host);
-            }
-          });
-
-          console.log("Current environment: " + JSON.stringify(env));
-
-          if (!env) {
-            //Environment not found fall back to a default.
-            env = list[0];
-          }
-        }
-
-        return env;
+      // DEFAULT
+      var environment = {
+        env: {},
       };
 
-      var getEnvironment = function() {
-        var enviro = findCurrentEnvironment();
-        console.log('enviro: ' + enviro);
-        return (enviro) ? enviro.environment : 'local';
+      environment.getEnvironment = function() {
+        return environment.env;
       };
 
-      var getAppUrl = function() {
-        var env = findCurrentEnvironment();
+      environment.getAppUrl = function() {
+        var env = environment.env;
         var currentSSL = (env.appUseSSL) ? 'https://' : 'http://';
         var currentAppUrl = (env.appUrl) ? env.appUrl : list.appUrl;
         var currentAppPort = (env.appPort) ? ':' + env.appPort : '';
@@ -105,9 +24,8 @@ angular.module('squirrel').provider('environment',
         return currentSSL + currentAppUrl + currentAppPort;
       };
 
-      var getBackendUrl = function() {
-        var env = findCurrentEnvironment();
-        console.log("env = " + JSON.stringify(env));
+      environment.getBackendUrl = function() {
+        var env = environment.env;
         var currentSSL = (env.backendUseSSL) ? 'https://' : 'http://';
         var currentbackendUrl = (env.backendUrl) ? env.backendUrl : env.appUrl;
         var currentServicePort = (env.servicePort) ? ':' + env.servicePort : '';
@@ -117,8 +35,8 @@ angular.module('squirrel').provider('environment',
         return currentSSL + currentbackendUrl + currentServicePort;
       };
 
-      var getTitleTag = function() {
-        var env = findCurrentEnvironment();
+      environment.getTitleTag = function() {
+        var env = environment.env;
         var titleTag = env.titleTag;
         if (titleTag) {
           return env.titleTag;
@@ -127,8 +45,8 @@ angular.module('squirrel').provider('environment',
         }
       };
 
-      var getFeatures = function() {
-        var env = findCurrentEnvironment();
+      environment.getFeatures = function() {
+        var env = environment.env;
         var features = env.features;
         if (features) {
           return env.features;
@@ -137,8 +55,8 @@ angular.module('squirrel').provider('environment',
         }
       };
 
-      var getSubDomain = function() {
-        var env = findCurrentEnvironment();
+      environment.getSubDomain = function() {
+        var env = environment.env;
         if (env.hasSubDomain) {
           return null;
         }
@@ -150,14 +68,13 @@ angular.module('squirrel').provider('environment',
         }
       };
 
-      return {
-        getEnvironment: getEnvironment,
-        getAppUrl: getAppUrl,
-        getBackendUrl: getBackendUrl,
-        getTitleTag: getTitleTag,
-        getSubDomain: getSubDomain,
-        getFeatures: getFeatures
+      environment.setEnvironment = function(env) {
+        environment.env = env;
+        debug.dump("environment", environment.env, "environment.env");
       };
-    };
-  }
+      return environment;
+    }
+
+  ]
+
 );

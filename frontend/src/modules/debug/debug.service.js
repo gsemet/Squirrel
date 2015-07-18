@@ -7,10 +7,17 @@ angular.module('squirrel').factory('debug',
     function($log) {
 
       this.debug_settings = [];
-      var debug_service = {};
+      var debug_service = {
+        enabled: true,
+      };
+      debug_service.disable = function() {
+        debug_service.enabled = false;
+      }
 
       debug_service.log = function(module, text) {
-        $log.log("[" + module + "] " + text);
+        if (debug_service.enabled) {
+          $log.log("[" + module + "] " + text);
+        }
       };
 
       debug_service.warn = function(module, text) {
@@ -19,8 +26,10 @@ angular.module('squirrel').factory('debug',
       };
 
       debug_service.info = function(module, text) {
-        $log.info("%c [" + module + "] " + text,
-          'color: #0006FF');
+        if (debug_service.enabled) {
+          $log.info("%c [" + module + "] " + text,
+            'color: #0006FF');
+        }
       };
 
       debug_service.error = function(module, text) {
@@ -29,15 +38,19 @@ angular.module('squirrel').factory('debug',
       };
 
       debug_service.debug = function(module, text) {
-        $log.debug("%c [" + module + "] " + text, 'background: #FFFFFF; color: #444444');
+        if (debug_service.enabled) {
+          $log.debug("%c [" + module + "] " + text, 'background: #FFFFFF; color: #444444');
+        }
       };
 
       debug_service.dump = function(module, obj, name) {
-        if (!name) {
-          name = "Object"
+        if (debug_service.enabled) {
+          if (!name) {
+            name = "Object"
+          }
+          $log.log("%c [" + module + "] " + name + ": " + JSON.stringify(obj),
+            'background: #DFDFDF; color: #000000#000000');
         }
-        $log.log("%c [" + module + "] " + name + ": " + JSON.stringify(obj),
-          'background: #DFDFDF; color: #000000#000000');
       };
 
       return debug_service;

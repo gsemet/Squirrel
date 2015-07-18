@@ -3,10 +3,10 @@
 angular.module("squirrel").controller("PortfoliosCtrl",
 
   ["$scope", "AuthenticationService", "$rootScope", "AUTH_EVENTS", "$location", "gettextCatalog",
-  'Restangular', '$timeout', "debug", "sidebar",
+  'Restangular', '$timeout', "debug", "sidebar", "environment",
 
     function($scope, AuthenticationService, $rootScope, AUTH_EVENTS, $location, gettextCatalog,
-      Restangular, $timeout, debug, sidebar) {
+      Restangular, $timeout, debug, sidebar, environment) {
 
       $scope.is_admin = AuthenticationService.isAdmin();
       $scope.endpoint = "/portfolios";
@@ -18,6 +18,8 @@ angular.module("squirrel").controller("PortfoliosCtrl",
         $location.search("p", "summary");
       }
 
+      var features = environment.getFeatures();
+
       $scope.portfolioIndexInSidebar = 0;
       $scope.menuItems = [
         {
@@ -27,6 +29,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Summary'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/summary.template.html',
+          state: features.portfolio.summary,
         }, {
           search: {
             'p': 'securities'
@@ -34,6 +37,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Securities'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/securities.template.html',
+          state: features.portfolio.securities,
         }, {
           search: {
             'p': 'cash'
@@ -41,6 +45,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Cash'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/cash.template.html',
+          state: features.portfolio.cash,
         }, {
           search: {
             'p': 'allocations'
@@ -48,6 +53,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Allocations'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/allocations.template.html',
+          state: features.portfolio.allocations,
         }, {
           search: {
             'p': 'watchlist'
@@ -55,6 +61,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Watchlist'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/watchlist.template.html',
+          state: features.portfolio.watchlist,
         }, {
           search: {
             'p': 'covers'
@@ -62,6 +69,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Covers'),
           icon: 'glyphicon glyphicon-book',
           templateUrl: 'app/portfolios/covers.template.html',
+          state: features.portfolio.covers,
         }, {
           search: {
             'p': 'timeline', // == move history
@@ -69,6 +77,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Timeline'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/timeline.template.html',
+          state: features.portfolio.timeline,
         }, {
           search: {
             'p': 'status_report'
@@ -76,6 +85,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Status Report'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/status_report.template.html',
+          state: features.portfolio.reports,
         }, {
           search: {
             'p': 'reporting'
@@ -83,6 +93,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Reporting'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/reporting.template.html',
+          state: features.portfolio.reporting,
         }, {
           search: {
             'p': 'annual_reports'
@@ -90,6 +101,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Annual Reports'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/annual_reports.template.html',
+          state: features.portfolio.reports,
         }, {
           search: {
             'p': 'taxation'
@@ -97,6 +109,7 @@ angular.module("squirrel").controller("PortfoliosCtrl",
           name: gettextCatalog.getString('Taxation'),
           icon: 'glyphicon glyphicon-dashboard',
           templateUrl: 'app/portfolios/taxation.template.html',
+          state: features.portfolio.taxation,
         }
       ];
 

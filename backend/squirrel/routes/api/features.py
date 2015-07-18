@@ -11,8 +11,8 @@ from squirrel.services.config import Config
 log = logging.getLogger(__name__)
 
 
-@app.route("/api/flavour", methods=['GET'])
-def route_flavour(request):
+@app.route("/api/features", methods=['GET'])
+def route_features(request):
     request.setHeader('Content-Type', 'application/json')
 
-    return json.dumps(Config().flavour.name)
+    return json.dumps(Config().features)

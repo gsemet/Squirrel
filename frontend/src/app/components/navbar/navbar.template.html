@@ -14,7 +14,9 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
     </div>
     <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
       <ul class="nav navbar-nav-squirrel visible-md-inline visible-lg-inline">
-        <li ng-repeat="navLink in navLinks" ng-class="navClass('{{navLink.endpoint}}')">
+        <li ng-repeat="navLink in navLinks"
+            ng-class="{active: active(navLink.endpoint), item_under_development: navLink.state == 'dev'}"
+            ng-if='navLink.state != "disabled"'>
           <!-- <a href='/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a> -->
           <a ui-sref='{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a>
         </li>
@@ -34,7 +36,10 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
               <!-- <a href='/{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a> -->
               <a ui-sref='{{navLink.endpoint}}' ng-click="closeNavBar()">{{navLink.linktext}}</a>
             </li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="changeLang()()" translate>Change Language</a></li>
+            <li role="presentation"
+                ng-if="multilanguage">
+              <a role="menuitem" tabindex="-1" class="pointer" ng-click="changeLang()()" translate>Change Language</a>
+            </li>
             <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="goLogin()" translate>Log In</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" class="pointer" ng-click="goRegister()" translate>Sign Up</a></li>
           </ul>
@@ -44,7 +49,7 @@ http://stackoverflow.com/questions/16268606/responsive-dropdown-navbar-with-angu
       <!-- big screen login panel -->
       <ul class="nav navbar-nav-squirrel navbar-login visible-md-inline visible-lg-inline navbar-right"
           ng-if="login_username.length <= 0 && currentLang">
-        <li>
+        <li ng-if="multilanguage">
           <a class="navbar-change-lang pointer" ng-click='changeLang()' alt="{{'Change Language'| translate}}">
             <span class="glyphicon glyphicon-flag"></span>
           </a>

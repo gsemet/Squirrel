@@ -6,19 +6,19 @@ angular.module('squirrel').controller('SidebarLinkCtrl',
 
     function($scope, gettextCatalog, $location, sidebar) {
 
-      $scope.activeIfCurrentPageIs = function(page) {
+      $scope.active = function(page) {
         var s = $location.search();
         if (sidebar.isInThisState(s, $scope.member)) {
-          return "active";
+          return true;
         }
-        return "";
+        return false;
       };
 
-      $scope.getClass = function(page) {
+      $scope.separator = function(page) {
         if ($scope.member.type == 'separator') {
-          return "sidebar-separator";
+          return true;
         }
-        return $scope.activeIfCurrentPageIs(page);
+        return false
       };
 
       $scope.onClick = function(member) {

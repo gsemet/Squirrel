@@ -1,4 +1,5 @@
-<li ng-class="getClass(member.search)">
+<li ng-class="{sidebarSeparator: separator(member.search), active: active(member.search), item_under_development: member.state == 'dev'}"
+    ng-if="member.state != 'disabled'">
   <div ng-if="member.type != 'separator'">
     <a ng-click="onClick(member)">
       <span ng-click="onChevronClick(member)"

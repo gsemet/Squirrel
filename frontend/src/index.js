@@ -229,29 +229,8 @@ app.config(
         titleClass: 'toast-title',
         toastClass: 'toast'
       });
-
-
-      environmentProvider.setList(
-        [{
-          environment: 'prod',
-          appPort: '80',
-          backendPort: '80',
-          titleTag: "",
-          hasSubDomain: true,
-        }, {
-          environment: 'dev',
-          appUrl: "localhost",
-          appPort: '3000',
-          backendPort: '3000', // gulp proxy automatically routes /api requests to port 8080
-          titleTag: "-dev",
-          hasSubDomain: false,
-        }]
-      );
-      environmentProvider.setDefaultSubDomain("www");
     }
-
   ]
-
 );
 
 
@@ -301,3 +280,49 @@ angular.module('squirrel').constant('DEPLOYMENT', {
   MODE: "dev"
 
 })
+
+
+angular.module('squirrel').run(
+
+  ['environment', 'request', 'debug', "DEPLOYMENT",
+
+    function(environment, request, debug, DEPLOYMENT) {
+      if (DEPLOYMENT.MODE == "dev") {
+        debug.debug("index", "getting features");
+      }
+
+      request.request("/api/features").then(function(data) {
+        var environments = {
+          "dev": {
+            name: 'dev',
+            appUrl: 'localhost',
+            appPort: '3000',
+            hasSubDomain: false,
+            features: data,
+          },
+          "prod": {
+            name: 'prod',
+            appUrl: 'squirrel-ams.com',
+            appPort: '80',
+            hasSubDomain: false,
+            features: data,
+          }
+        };
+        /*
+        if (DEPLOYMENT.MODE == "dev") {
+          debug.dump("index", environments, "environment");
+          debug.dump("index", DEPLOYMENT.MODE, "DEPLOYMENT.MODE");
+          debug.dump("index", environments[DEPLOYMENT.MODE], "environments[DEPLOYMENT.MODE]");
+        }
+        */
+        environment.setEnvironment(environments[DEPLOYMENT.MODE]);
+        if (!environment.getFeatures().debug.logging) {
+          /*debug.debug("index", "disabling debug level");*/
+          debug.disable();
+        }
+        /* From here 'debug' service is configured */
+        debug.dump("index", environment.getEnvironment(), "current environment: ");
+      });
+    }
+  ]
+)

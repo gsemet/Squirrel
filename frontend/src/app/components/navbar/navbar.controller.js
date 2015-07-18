@@ -12,20 +12,24 @@ angular.module('squirrel').controller('NavbarCtrl',
       $scope.login_username = "";
       $scope.is_admin = Session.isAdmin();
       $scope.currentLang = TranslationService.getCurrentLang();
+      $scope.multilanguage = (environment.getFeatures().languages.multilanguage == "enabled");
 
       $scope.title_tag = environment.getTitleTag();
 
       $scope.refreshDynamicLinks = function() {
         var is_logged = AuthenticationService.isAuthenticated();
+        var features = environment.getFeatures();
         if (is_logged) {
           $scope.navLinks = [
             {
               endpoint: 'screeners',
               linktext: gettextCatalog.getString('Screeners'),
+              state: features.screeners_page,
             }, {
               /*endpoint: 'portfolios?p=overview',*/
               endpoint: 'portfolios',
               linktext: gettextCatalog.getString('My Portfolios'),
+              state: features.portfolio_page,
             }
           ];
 
@@ -36,15 +40,19 @@ angular.module('squirrel').controller('NavbarCtrl',
             {
               endpoint: 'features',
               linktext: gettextCatalog.getString('Features'),
+              state: features.features_page,
             }, {
               endpoint: 'plans',
               linktext: gettextCatalog.getString('Plans'),
+              state: features.plans_page,
             }, {
               endpoint: 'screeners',
               linktext: gettextCatalog.getString('Screeners'),
+              state: features.screeners_page,
             }, {
               endpoint: 'portfolios',
               linktext: gettextCatalog.getString('Demo'),
+              state: features.demo_page,
             }
           ];
 
@@ -92,14 +100,14 @@ angular.module('squirrel').controller('NavbarCtrl',
         $scope.closeNavBar();
       }
 
-      $scope.navClass = function(page) {
+      $scope.active = function(page) {
         /*console.log("location: " + $location.path() + ", page: " + page);*/
         if ($location.path() === "/" && page === '') {
           /*console.log("returning active!")*/
-          return "active";
+          return true;
         }
         var currentRoute = $location.path().substring(1) || '/';
-        return page === currentRoute ? 'active' : '';
+        return page === currentRoute ? true : false;
       };
 
       $scope.changeLang = function() {
