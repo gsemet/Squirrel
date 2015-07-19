@@ -72,6 +72,8 @@ angular.module('squirrel').factory('environment',
         environment.env = env;
         debug.dump("environment", environment.env, "environment.env");
       };
+
+      environment.ENVIRONMENT_FOUND = "environment_found";
       return environment;
     }
 

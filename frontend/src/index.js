@@ -284,9 +284,9 @@ angular.module('squirrel').constant('DEPLOYMENT', {
 
 angular.module('squirrel').run(
 
-  ['environment', 'request', 'debug', "DEPLOYMENT",
+  ['environment', 'request', 'debug', "DEPLOYMENT", "$rootScope",
 
-    function(environment, request, debug, DEPLOYMENT) {
+    function(environment, request, debug, DEPLOYMENT, $rootScope) {
       if (DEPLOYMENT.MODE == "dev") {
         debug.debug("index", "getting features");
       }
@@ -322,6 +322,7 @@ angular.module('squirrel').run(
         }
         /* From here 'debug' service is configured */
         debug.dump("index", environment.getEnvironment(), "current environment: ");
+        $rootScope.$broadcast(environment.ENVIRONMENT_FOUND);
       });
     }
   ]

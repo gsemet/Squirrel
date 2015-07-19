@@ -12,7 +12,10 @@ angular.module('squirrel').controller('NavbarCtrl',
       $scope.login_username = "";
       $scope.is_admin = Session.isAdmin();
       $scope.currentLang = TranslationService.getCurrentLang();
-      $scope.multilanguage = (environment.getFeatures().languages.multilanguage == "enabled");
+      $scope.multilanguage = false;
+      $rootScope.$on(environment.ENVIRONMENT_FOUND, function(event) {
+        $scope.multilanguage = (environment.getFeatures().languages.multilanguage == "enabled");
+      });
 
       $scope.title_tag = environment.getTitleTag();
 
