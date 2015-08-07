@@ -37,9 +37,11 @@ angular.module('squirrel').factory('TranslationService',
         debug.info("TranslationService", "translation service on loginError:" + error);
       });
 
+      translationService.defaultLang = 'fr';
+
       translationService.setLangFromCookie = function() {
         var lang = ipCookie("prefered-language");
-        if (lang && lang != 'us') {
+        if (lang && lang != translationService.defaultLang) {
           debug.info("TranslationService", "Setting current language to " + lang +
             ", mode=" + DEPLOYMENT.MODE);
           gettextCatalog.setCurrentLanguage(lang);
@@ -52,10 +54,11 @@ angular.module('squirrel').factory('TranslationService',
           $rootScope.$emit(translationService.TRANSLATION_UPDATED, lang);
           debug.info("TranslationService", "emiting signal = TRANSLATION_UPDATED " + lang);
         } else {
-          gettextCatalog.setCurrentLanguage('en');
-          debug.info("TranslationService", "Setting to default language 'us' (='en')");
+          gettextCatalog.setCurrentLanguage(translationService.defaultLang);
+          debug.info("TranslationService",
+            "Setting to default language " + translationService.defaultLang);
           if (!lang) {
-            translationService.currentLang = 'en';
+            translationService.currentLang = translationService.defaultLang;
             $timeout(function() {
               translationService.setLangFromDomain();
             }, 100);
@@ -102,7 +105,7 @@ angular.module('squirrel').factory('TranslationService',
 
       translationService.setLangFromDomain = function() {
         var domain = translationService.getcurrentDomain();
-        debug.dump("TranslationService", domain, "Setting language from domain:");
+        debug.dump("TranslationService", domain, "Setting language from domain");
         if (domain == "fr") {
           ipCookie("prefered-language", "fr");
           translationService.setLangFromCookie();
@@ -110,7 +113,7 @@ angular.module('squirrel').factory('TranslationService',
           ipCookie("prefered-language", "us");
           translationService.setLangFromCookie();
         } else {
-          ipCookie("prefered-language", "us");
+          ipCookie("prefered-language", translationService.defaultLang);
           translationService.setLangFromCookie();
         }
       }
