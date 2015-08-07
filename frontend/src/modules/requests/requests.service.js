@@ -2,14 +2,14 @@
 
 angular.module('squirrel').factory('request',
 
-  ['$http', '$q',
+  ['$http', '$q', "debug",
 
-    function($http, $q) {
+    function($http, $q, debug) {
 
       // URL required; rest are optional
       var request = function(url, params, verb, data, cache) {
         var deferred = $q.defer();
-        console.log("Request: url = " + ((verb) ? verb : 'GET') + JSON.stringify(url));
+        debug.debug("requests", "Request: url = " + ((verb) ? verb : 'GET') + JSON.stringify(url));
         $http({
           method: (verb) ? verb : 'GET',
           url: url,
@@ -21,11 +21,9 @@ angular.module('squirrel').factory('request',
             'Content-Type': 'application/x-www-form-urlencoded'
           },
         }).success(function(response) {
-          console.log("variable response.value = " + JSON.stringify(response.value));
-          console.log("variable response.data = " + JSON.stringify(response.data));
           deferred.resolve(response.value || response.data || response);
         }).error(function(response) {
-          console.log("error = " + JSON.stringify(response));
+          debug.error("navbar", JSON.stringify(response));
           deferred.reject(response);
         });
 
