@@ -69,9 +69,18 @@
   "overrides": {
     "bootstrap": {
       "main": [
+        "./fonts/glyphicons-halflings-regular.eot",
         "./fonts/glyphicons-halflings-regular.ttf",
         "./fonts/glyphicons-halflings-regular.woff",
         "./fonts/glyphicons-halflings-regular.woff2"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+      "./fonts/fontawesome-webfont.eot",
+      "./fonts/fontawesome-webfont.ttf",
+      "./fonts/fontawesome-webfont.wott",
+      "./fonts/fontawesome-webfont.wott2",
       ]
     }
   }
