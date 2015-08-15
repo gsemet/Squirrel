@@ -18,7 +18,6 @@ app = angular.module("squirrel", [
   'ngAnimate',
   'ngCrossfilter',
   'ngResource',
-  'ngRoute',
   'ngSanitize',
   'ngTable',
   'ngTouch',
