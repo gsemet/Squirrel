@@ -13,6 +13,7 @@ setup_args = {
         'console_scripts': [
             'squirrel-heroku = squirrel.launcher.squirrel_heroku:run',
             'squirrel-prod = squirrel.launcher.squirrel_prod:run',
+            'squirrel-staging = squirrel.launcher.squirrel_staging:run',
             'squirrel-dev = squirrel.launcher.squirrel_dev:run',
             'squirrel-cli = squirrel.launcher.squirrel_cli:run',
             'auto_relauncher = squirrel.launcher.auto_relauncher:run',

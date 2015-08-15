@@ -24,10 +24,12 @@ allowed_cmd = {
                                 "auto_relauncher and frontend served by 'gulp serve')"),
     "serve:dev:backend":       ("install and launch only the dev backend (with auto relauncher))"),
     "serve:dev:frontend":      ("install and launch only the dev frontend (with gulp serve))"),
+    "serve:staging":            "",
     "serve:prod":               "install and launch production server",
     "serve:novirtualenv":      ("install and serve production without going into "
                                 "virtualenv (Docker/Heroku)"),
     "start:prod":              ("start all prod servers (no install)"),
+    "start:staging":           ("start all staging servers (no install)"),
     "start:dev":               ("start all dev servers (no install)"),
     "start:dev:frontend":      ("start frontend in dev mode (no install)"),
     "start:dev:backend":       ("start backend in dev mode (no install)"),
@@ -92,6 +94,14 @@ cmd_capabilities = {
         "serve",
         "serve_prod",
     },
+    "serve:staging": {
+        "pip_upgrade",
+        "backend_install",
+        "frontend_install",
+        "frontend_gulp_build",
+        "serve",
+        "serve_staging",
+    },
     "serve:novirtualenv": {
         "pip_upgrade",
         "backend_install",
@@ -105,6 +115,10 @@ cmd_capabilities = {
     "start:prod": {
         "serve",
         "serve_prod",
+    },
+    "start:staging": {
+        "serve",
+        "serve_staging",
     },
     "start:dev": {
         "serve",
@@ -452,11 +466,13 @@ def main():
         run("xgettext --debug --language=Python --keyword=_ --output=po/Squirrel.pot $(find . -name '*.py')",
             cwd=os.path.join(install_path, "backend"), shell=True)
 
-    if "serve_prod" in current_capabilities:
+    if "serve_prod" in current_capabilities or "serve_staging" in current_capabilities:
         # Launching squirrel-prod
         server_base_name = "squirrel-prod"
         if "heroku" in current_capabilities:
             server_base_name = "squirrel-heroku"
+        elif "serve_staging" in current_capabilities:
+            server_base_name = "squirrel-staging"
         if isWindows:
             backend_launcher = os.path.join(workdir_path, "Scripts", server_base_name + ".exe")
         else:

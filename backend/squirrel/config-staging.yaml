@@ -1,0 +1,13 @@
+logging:
+    use_split_formatter: true
+    use_color_formatter: true
+    config_file: ./squirrel/logging.conf
+
+frontend:
+    port: 9000
+
+backend:
+    serve: true
+    db:
+        workdir: ../workdir/
+        url: sqlite:///../workdir/db.sqlite
