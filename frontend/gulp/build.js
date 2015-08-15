@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var gulpif = require('gulp-if');
+var debug = require('gulp-debug');
 
 var paths = gulp.paths;
 
@@ -54,6 +55,9 @@ gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
+    .pipe(debug({
+      title: 'copying js:'
+    }))
     .pipe($.replace('MODE: "dev"', 'MODE: "prod"'))
     .pipe($.ngAnnotate())
     .pipe(gulpif(do_uglyfy, $.uglify({
@@ -61,6 +65,9 @@ gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
     })))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
+    .pipe(debug({
+      title: 'copying css from:'
+    }))
     .pipe($.replace('../bootstrap/fonts', 'fonts'))
     .pipe($.replace('../bower_components/font-awesome', 'fonts/'))
     .pipe($.replace('/bower_components/bootstrap/fonts', '/fonts'))
@@ -72,6 +79,9 @@ gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
+    .pipe(debug({
+      title: 'copying html:'
+    }))
     .pipe(gulpif(do_minify_partials, $.minifyHtml({
       empty: true,
       spare: true,
@@ -94,18 +104,30 @@ gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
 
 gulp.task('images', function() {
   return gulp.src(paths.src + '/assets/images/**/*')
+    .pipe(debug({
+      title: 'copying image:'
+    }))
     .pipe(gulp.dest(paths.dist + '/assets/images/'));
 });
 
 gulp.task('fonts', function() {
   return gulp.src($.mainBowerFiles())
+    /*.pipe(debug({
+      title: 'copying main bower file:'
+    }))*/
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
+    .pipe(debug({
+      title: 'copying font:'
+    }))
     .pipe($.flatten())
     .pipe(gulp.dest(paths.dist + '/fonts/'));
 });
 
 gulp.task('misc', function() {
   return gulp.src(paths.src + '/**/*.{ico,png}')
+    .pipe(debug({
+      title: 'copying ico:'
+    }))
     .pipe(gulp.dest(paths.dist + '/'));
 });
 

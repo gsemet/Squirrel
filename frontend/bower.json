@@ -65,5 +65,14 @@
     "underscore.string": "~3.1.1",
     "font-awesome": "~4.4.0",
     "angular-fontawesome": "~0.4.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "./fonts/glyphicons-halflings-regular.ttf",
+        "./fonts/glyphicons-halflings-regular.woff",
+        "./fonts/glyphicons-halflings-regular.woff2"
+      ]
+    }
   }
 }
