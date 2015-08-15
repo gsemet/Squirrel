@@ -283,7 +283,7 @@ msgstr ""
 "l'utilisation de ces cookies pour vous proposer les contenus adaptés à vos "
 "centres d'intérêt et améliorer votre expérience sur le site.<br/>Vous ne "
 "trouverez pas de cookies d’autres sites internet ou de publicité ciblées sur "
-"Squirrel<br/>Pour plus d'information, cliquez <a href=\"/tos\">ici</a>."
+"Squirrel. Pour plus d'information, cliquez <a href=\"/tos\">ici</a>."
 
 #: app/components/translations/get_translation.modal.template.html:14
 msgid "Can you choose your prefered language:"
@@ -543,7 +543,7 @@ msgstr "Prénom"
 
 #: app/homepage/homepage.unlogged.template.html:87
 msgid "Follow Your Own Investment Strategy"
-msgstr "Suivez Votre Propre Stratégie d'Investissement"
+msgstr "Suivez Vos Performances En Toute Simplcité"
 
 #: app/homepage/homepage.unlogged.template.html:127
 msgid "Follow these types of Account:"
