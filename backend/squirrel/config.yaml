@@ -88,7 +88,7 @@ marketing:
                     name: "Compte &agrave; Terme"
                     icon_type: "fa fa-bank fa-3x"
                 -
-                    name: "CFD"
+                    name: "CFD, Compte de Trading"
                     icon_type: "fa fa-heartbeat fa-3x"
         us:
             homepage_accounts:
