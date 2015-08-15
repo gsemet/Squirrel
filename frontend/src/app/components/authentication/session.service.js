@@ -2,9 +2,9 @@
 
 angular.module('squirrel').service('Session',
 
-  ["USER_ROLES",
+  ["USER_ROLES", "debug",
 
-    function(USER_ROLES) {
+    function(USER_ROLES, debug) {
 
       var that = this;
 
@@ -17,7 +17,8 @@ angular.module('squirrel').service('Session',
         this.userRole = data.role;
         this.language = data.language;
         this.features = data.features;
-        console.log("Creating session for user = " + JSON.stringify(this.firstName) + ", email " +
+        debug.debug("session", "Creating session for user = " +
+          JSON.stringify(this.firstName) + ", email " +
           JSON.stringify(this.email), ", role: " + JSON.stringify(this.userRole));
       };
 

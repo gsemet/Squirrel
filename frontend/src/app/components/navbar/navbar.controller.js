@@ -2,24 +2,23 @@
 
 angular.module('squirrel').controller('NavbarCtrl',
 
-  ["$scope", "$location", "$rootScope", "AuthenticationService", "Session", "AUTH_EVENTS", "gettextCatalog",
-   "TranslationService", "environment",
+  ["$scope", "$location", "$rootScope", "AuthenticationService", "Session", "AUTH_EVENTS",
+   "gettextCatalog", "TranslationService", "environment", "debug",
 
-    function($scope, $location, $rootScope, AuthenticationService, Session, AUTH_EVENTS, gettextCatalog,
-      TranslationService, environment) {
+    function($scope, $location, $rootScope, AuthenticationService, Session, AUTH_EVENTS,
+      gettextCatalog, TranslationService, environment, debug) {
 
       $scope.date = new Date();
       $scope.login_username = "";
       $scope.is_admin = Session.isAdmin();
       $scope.currentLang = TranslationService.getCurrentLang();
       $scope.multilanguage = false;
-      $rootScope.$on(environment.ENVIRONMENT_FOUND, function(event) {
-        $scope.multilanguage = (environment.getFeatures().languages.multilanguage == "enabled");
-      });
-
-      $scope.title_tag = environment.getTitleTag();
+      $scope.title_tag = "";
+      $scope.navLinks = [];
+      $scope.loginLinks = [];
 
       $scope.refreshDynamicLinks = function() {
+        debug.debug("navbar", "refreshDynamicLinks");
         var is_logged = AuthenticationService.isAuthenticated();
         var features = environment.getFeatures();
         if (is_logged) {
@@ -70,43 +69,48 @@ angular.module('squirrel').controller('NavbarCtrl',
           ];
         }
       };
-      $scope.refreshDynamicLinks();
+
+      $rootScope.$on(environment.ENVIRONMENT_FOUND, function(event) {
+        debug.debug("navbar", "on event: ENVIRONMENT_FOUND");
+        $scope.multilanguage = (environment.getFeatures().languages.multilanguage == "enabled");
+        $scope.title_tag = environment.getTitleTag();
+        $scope.refreshDynamicLinks();
+      });
 
       $rootScope.$on(TranslationService.TRANSLATION_UPDATED, function(event, lang) {
-        console.log("navbar on translation updated:" + lang);
+        debug.debug("navbar", "navbar on translation updated:" + lang);
         $scope.currentLang = TranslationService.getCurrentLang();
         $scope.refreshDynamicLinks();
       });
 
-
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function(event, userName) {
         $scope.login_username = AuthenticationService.getFirstName();
-        console.log("navbar on loginSuccesful1:" + $scope.login_username);
+        debug.debug("navbar", "navbar on loginSuccesful1:" + $scope.login_username);
         $scope.is_admin = Session.isAdmin();
       });
 
       $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(event) {
-        console.log("navbar on logout");
+        debug.debug("navbar", "navbar on logout");
         $scope.login_username = "";
         $scope.is_admin = false;
       });
 
       $rootScope.$on(AUTH_EVENTS.loginFailed, function(event, error) {
-        console.log("navbar on loginError:" + error);
+        debug.debug("navbar", "navbar on loginError:" + error);
         $scope.login_username = "";
         $scope.is_admin = false;
       });
 
       $scope.logout = function() {
-        console.log("log out !!!");
+        debug.debug("navbar", "log out !!!");
         AuthenticationService.logout();
         $scope.closeNavBar();
       }
 
       $scope.active = function(page) {
-        /*console.log("location: " + $location.path() + ", page: " + page);*/
+        /*debug.debug("navbar", "location: " + $location.path() + ", page: " + page);*/
         if ($location.path() === "/" && page === '') {
-          /*console.log("returning active!")*/
+          /*debug.debug("navbar", "returning active!")*/
           return true;
         }
         var currentRoute = $location.path().substring(1) || '/';
@@ -119,12 +123,12 @@ angular.module('squirrel').controller('NavbarCtrl',
       };
 
       $scope.goRegister = function() {
-        console.log("goRegister");
+        debug.debug("navbar", "goRegister");
         $scope.closeNavBar();
         $location.path("/register")
       };
       $scope.goLogin = function() {
-        console.log("goLogin");
+        debug.debug("navbar", "goLogin");
         $scope.closeNavBar();
         $location.path("/login")
       };
@@ -132,7 +136,6 @@ angular.module('squirrel').controller('NavbarCtrl',
       $scope.closeNavBar = function() {
         $scope.navCollapsed = true;
       }
-
     }
   ]
 );

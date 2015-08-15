@@ -7,11 +7,11 @@
 
 angular.module('squirrel').factory('AuthenticationService',
 
-  ["$http", "$q", "$window", "$rootScope", "Session", "AUTH_EVENTS", '$timeout', 'ipCookie', "USER_ROLES",
-  "environment", "request",
+  ["$http", "$q", "$window", "$rootScope", "Session", "AUTH_EVENTS", '$timeout', 'ipCookie',
+  "USER_ROLES", "environment", "request", "debug",
 
     function($http, $q, $window, $rootScope, Session, AUTH_EVENTS, $timeout, ipCookie, USER_ROLES,
-      environment, request) {
+      environment, request, debug) {
 
       var authService = {};
       var that = this;
@@ -25,19 +25,19 @@ angular.module('squirrel').factory('AuthenticationService',
           expirationUnit: 'minutes',
         });
 
-        console.log("login successful for email = " + data.email);
+        debug.dump("authentication", data.email, "login successful for email");
         $rootScope.$emit(AUTH_EVENTS.loginSuccess, data.email);
         /*$window.sessionStorage["userInfo"] = JSON.stringify(userInfo);*/
 
       };
 
       $timeout(function() {
-        console.log("Trying to restore session");
+        debug.debug("authentication", "Trying to restore session");
         var sessionId = ipCookie('sessionId');
         if (!sessionId) {
           return;
         }
-        console.log("Restoring sessionId = " + JSON.stringify(sessionId));
+        debug.dump("authentication", JSON.stringify(sessionId), "Restoring sessionId");
 
         return request.request("/api/login", {
           /* can be email or email */
@@ -45,7 +45,7 @@ angular.module('squirrel').factory('AuthenticationService',
         }, "POST").then(function(data) {
           that.createSession(data);
         }, function(error) {
-          console.log("Restore error = " + JSON.stringify(error));
+          debug.dump("authentication", JSON.stringify(error), "Restore error");
           $rootScope.$emit("loginFailed", error);
         });
       });
@@ -57,9 +57,9 @@ angular.module('squirrel').factory('AuthenticationService',
           password: password
         }, "POST").then(function(data) {
           that.createSession(data);
-          console.log("login success, got data = " + JSON.stringify(data));
+          debug.dump("authentication", JSON.stringify(data), "login success, got data");
         }, function(error) {
-          console.log("Login error = " + JSON.stringify(error));
+          debug.dump("authentication", JSON.stringify(error), "Login error");
           $rootScope.$emit("loginFailed", error);
         });
       };
@@ -68,7 +68,7 @@ angular.module('squirrel').factory('AuthenticationService',
         var sessionId = Session.id;
         var email = Session.email;
 
-        console.log("Removing cookie 'sessionId'");
+        debug.debug("authentication", "Removing cookie 'sessionId'");
         ipCookie("sessionId", "");
         ipCookie.remove("sessionId");
         Session.destroy();
@@ -77,9 +77,9 @@ angular.module('squirrel').factory('AuthenticationService',
         $http.post("/api/logout", {
           sessionId: sessionId
         }).then(function(result) {
-          console.log("logout successful for email = " + email);
+          debug.dump("authentication", email, "logout successful for email ");
         }, function(error) {
-          console.log("Logout error = " + JSON.stringify(error));
+          debug.dump("authentication", JSON.stringify(error), "Logout error");
           $rootScope.$emit("logoutFailed", error);
         });
       };
@@ -91,7 +91,7 @@ angular.module('squirrel').factory('AuthenticationService',
           email: email,
           password: password
         }, "POST").then(function() {}, function(error) {
-          console.log("Login error = " + JSON.stringify(error));
+          debug.debug("authentication", "Login error = " + JSON.stringify(error));
           $rootScope.$emit("loginFailed", error);
         });
       };
