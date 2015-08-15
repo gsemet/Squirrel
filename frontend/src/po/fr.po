@@ -96,6 +96,10 @@ msgstr "Page de l'administrateur"
 msgid "All"
 msgstr "Tout"
 
+#: app/pages/plans.controller.js:40
+msgid "All Exchange Places"
+msgstr "Toutes Places de Marchés "
+
 #: app/portfolios/_portfolios.controller.js:53
 #: app/portfolios/allocations.template.html:2
 msgid "Allocations"
@@ -145,6 +149,10 @@ msgstr ""
 msgid "Analyze the market with modern tools"
 msgstr "Analysez le marché avec des outils à la pointe de la modernité"
 
+#: app/pages/plans.controller.js:129
+msgid "Annual Portfolio Report edition"
+msgstr "Edition des votre Rapport Annuel"
+
 #: app/portfolios/_portfolios.controller.js:101
 #: app/portfolios/annual_reports.template.html:2
 msgid "Annual Reports"
@@ -176,6 +184,10 @@ msgstr ""
 "valorisations des prix des fonds non exposés au public, tel que la "
 "valorisation du fonds euro de votre Assurance Vie française. "
 
+#: app/pages/plans.controller.js:79
+msgid "Assets Classes Exposure"
+msgstr "Exposition par Classe d'Actifs"
+
 #: app/components/translations/translations.service.js:175
 msgid "Aug"
 msgstr "Aou"
@@ -183,6 +195,10 @@ msgstr "Aou"
 #: app/components/translations/translations.service.js:161
 msgid "August"
 msgstr "Août"
+
+#: app/pages/plans.controller.js:36
+msgid "Automatic Stocks, Mutual Funds, ETF Updates"
+msgstr "Mise à jour automatique des valorisations Fonds, Actions et Trackers"
 
 #: app/pages/features.template.html:72
 msgid "Automatic Update"
@@ -317,6 +333,10 @@ msgid "Click on the \"Plans\" link and see which plans fits you the best."
 msgstr ""
 "Cliquez sur le lien \"Tarifs\" pour voir lequel vous correspond le mieux."
 
+#: app/pages/plans.controller.js:83
+msgid "Compare With N Benchmarks (Stocks, Funds, ETF)"
+msgstr "Comparaison avec N Référence (Indices, Stocks, ETF, Fonds)"
+
 #: app/pages/features.template.html:161
 msgid ""
 "Consult, edit and visualize your portfolio anywhere, from your personal "
@@ -385,6 +405,10 @@ msgstr "Langue actuelle: {{language}}"
 msgid "Dashboard"
 msgstr "Tableau de Bord"
 
+#: app/pages/plans.controller.js:54
+msgid "Data Visualisation"
+msgstr "Visualisation de donnée"
+
 #: app/components/translations/translations.service.js:179
 msgid "Dec"
 msgstr "Déc"
@@ -417,6 +441,10 @@ msgstr "Détail de votre portefeuille"
 msgid "Dividends:"
 msgstr "Dividendes:"
 
+#: app/pages/plans.controller.js:94
+msgid "Dynamic Stocks Comparison"
+msgstr "Comparaison Dynamique"
+
 #: app/components/portfolio-summary/portfolio-summary.template.html:67
 msgid "Earned:"
 msgstr "Gains:"
@@ -434,6 +462,14 @@ msgid ""
 msgstr ""
 "Montrez votre portefeuille facilement à votre gesionnaire financier, pour "
 "qu'il vous offre encore plus simplement les conseils les plus pertinents."
+
+#: app/pages/plans.controller.js:144
+msgid "Easy Gains/Loose Tracking for your Tax Statement"
+msgstr "Suivi simple de vos gains/pertes pour votre déclaration d'impôts"
+
+#: app/pages/plans.controller.js:133
+msgid "Edit your annual Portfolio Report"
+msgstr "Edition de votre Rapport Annuel"
 
 #: app/contact/contact.template.html:23 app/register/register.template.html:41
 msgid "Email"
@@ -573,6 +609,10 @@ msgstr "Général"
 msgid "Generate Professional Reports"
 msgstr "Générez des Rapports de Qualité Professionel"
 
+#: app/pages/plans.controller.js:71
+msgid "Geography Exposure"
+msgstr "Allocation Géographique"
+
 #: app/pages/features.template.html:211
 msgid "Give a Public Access to Portions of Your Reports"
 msgstr "Donnez un Accès Publique à Certaines Partie de Vos Rapports"
@@ -589,6 +629,10 @@ msgstr ""
 "plus pertinentes, et uniquement celles-ci. Pas de graphiques compliqués pour "
 "en mettre plein la vue, ni au contraire, de graphiques trop simples pour "
 "être exploités. Juste ce qu'il vous faut."
+
+#: app/pages/plans.controller.js:28
+msgid "Group Your Portfolios into Classes"
+msgstr "Regroupez vos Portefeuilles en Classe"
 
 #: app/pages/features.template.html:365
 msgid "Have Questions about Squirrel?"
@@ -873,6 +917,10 @@ msgstr "Nov"
 msgid "November"
 msgstr "Novembre"
 
+#: app/pages/plans.controller.js:24
+msgid "Number of Portfolios"
+msgstr "Nombre de Portefeuilles"
+
 #: app/components/translations/get_translation.modal.template.html:44
 #: app/portfolios/create.template.html:112
 msgid "OK"
@@ -903,6 +951,10 @@ msgstr "Vue d'ensemble du site"
 #: app/login/login.template.html:24 app/login/login.template.html:31
 msgid "Password"
 msgstr "Mot de passe"
+
+#: app/pages/plans.controller.js:48
+msgid "Personal History Timeline"
+msgstr "Timeline Personel"
 
 #: app/components/footer/footer.template.html:23
 #: app/components/navbar/navbar.controller.js:49
@@ -961,6 +1013,10 @@ msgstr "Création d'un Portefeuille"
 msgid "Porfolio Type"
 msgstr "Type de portefeuille"
 
+#: app/pages/plans.controller.js:15
+msgid "Portfolio Control"
+msgstr "Controle de vos Portefeuilles"
+
 #: app/portfolios/details.template.html:3
 msgid "Portfolio Summary"
 msgstr "Résumé des Portefeuilles"
@@ -985,6 +1041,10 @@ msgstr "Tarifs &amp; Informations Complémentaires"
 msgid "Public or Private"
 msgstr "Publique ou Privée"
 
+#: app/pages/plans.controller.js:125
+msgid "Quaterly Portfolio Report by email"
+msgstr "Rapports Financier Trimestriel par email"
+
 #: app/components/navbar/navbar.controller.js:68
 msgid "Register"
 msgstr "Enregistrement"
@@ -1006,6 +1066,10 @@ msgstr "Relaxez vous, soyez en totale sécurité"
 msgid "Reporting"
 msgstr "Reporting"
 
+#: app/pages/plans.controller.js:112
+msgid "Reports and Reminder"
+msgstr "Rapports et Rappels"
+
 #: app/components/translations/translations.service.js:193
 msgid "Reset zoom"
 msgstr "Réinit zoom"
@@ -1014,6 +1078,10 @@ msgstr "Réinit zoom"
 msgid "Reset zoom level 1:1"
 msgstr "Réinit zoom niveau 1:1"
 
+#: app/pages/plans.controller.js:59
+msgid "Return, Gain, Alpha"
+msgstr "Gain, Alpha, Profits"
+
 #: app/components/navbar/navbar.template.html:100
 msgid "Sandbox"
 msgstr "Bac à Sable"
@@ -1021,6 +1089,14 @@ msgstr "Bac à Sable"
 #: app/components/translations/translations.service.js:188
 msgid "Saturday"
 msgstr "Samedi"
+
+#: app/pages/plans.controller.js:102
+msgid "Save Screener Settings"
+msgstr "Enregistrement de vos paramètres du Screeners"
+
+#: app/pages/plans.controller.js:106
+msgid "Screener Staging Area"
+msgstr "Liste d'attente pour votre sélection d'Actions"
 
 #: app/components/footer/footer.template.html:13
 #: app/components/navbar/navbar.controller.js:29
@@ -1065,6 +1141,10 @@ msgstr "Services"
 #: app/settings/settings.template.html:15
 msgid "Settings"
 msgstr "Paramètres"
+
+#: app/pages/plans.controller.js:67
+msgid "Share Price History"
+msgstr "Evolution du Prix de la Part"
 
 #: app/pages/features.template.html:197
 msgid "Share part of your portfolio publicly, or keep it completely private."
@@ -1115,6 +1195,14 @@ msgstr "L'inscription signifie que vous avez lu et accepté les "
 msgid "Simple to use, easy to understand"
 msgstr "Simple à utiliser, facile à comprendre"
 
+#: app/pages/plans.controller.js:75
+msgid "Small/Big Caps Exposure"
+msgstr "Exposition Grande / Petite Capitalisation"
+
+#: app/pages/plans.controller.js:98
+msgid "Smart Stock Search History"
+msgstr "Historique Intelligent de Recherche"
+
 #: app/pages/features.template.html:413
 msgid ""
 "So I started using Google Spreadsheet to follow my investments, and I felt "
@@ -1140,6 +1228,10 @@ msgid ""
 msgstr ""
 "Veuillez excusez ce désagrément. Nous faisons de notre mieux pour restaurer "
 "le service normal le plus vite possible."
+
+#: app/pages/plans.controller.js:148
+msgid "Speculative Account Monthly Report Storage"
+msgstr "Stockage des Rapports Mensuels de votre Compte Spéculatif (CFD)"
 
 #: app/contact/contact.template.html:49
 msgid "Squirrel"
@@ -1342,6 +1434,10 @@ msgstr "Rapport de Situation"
 msgid "Stock Screener"
 msgstr "Screeners"
 
+#: app/pages/plans.controller.js:89
+msgid "Stocks Screener"
+msgstr "Screeners"
+
 #: app/portfolios/_portfolios.controller.js:29
 msgid "Summary"
 msgstr "Résumé"
@@ -1353,6 +1449,14 @@ msgstr "Dimanche"
 #: app/portfolios/details.template.html:21
 msgid "Symbol"
 msgstr "Symboles"
+
+#: app/pages/plans.controller.js:139
+msgid "Tax Statement"
+msgstr "Déclaration d'Impôts"
+
+#: app/pages/plans.controller.js:63
+msgid "Tax-aware Return"
+msgstr "Rendements Taxation Incluses"
 
 #: app/portfolios/_portfolios.controller.js:109
 msgid "Taxation"
@@ -1474,6 +1578,10 @@ msgstr "Timeline"
 msgid "To"
 msgstr "A"
 
+#: app/pages/plans.controller.js:32
+msgid "Track Every Assets Type"
+msgstr "Suivi De Tous Type d'Actifs."
+
 #: app/pages/features.template.html:64
 msgid "Track your Fees"
 msgstr "Surveillez vos frais cachés"
@@ -1525,9 +1633,17 @@ msgstr ""
 msgid "Use the Cloud to your own advantage"
 msgstr "Utilisez le Nuage à votre propre avantage"
 
+#: app/pages/plans.controller.js:117
+msgid "User defined Periodic Reminder for Manual Updates"
+msgstr "Rappels Périodique Pour Les Mises à Jour Manuels."
+
 #: app/portfolios/details.controller.js:103
 msgid "Valorisation history"
 msgstr "Historique de Valorisation"
+
+#: app/pages/plans.controller.js:20
+msgid "View and Edit one Portfolio"
+msgstr "Visualiser et Editer un portefeuille"
 
 #: app/pages/features.controller.js:34 app/pages/features.template.html:89
 msgid "Visual Portfolios"
@@ -1565,6 +1681,10 @@ msgstr "Statut des données du web"
 #: app/components/translations/translations.service.js:185
 msgid "Wednesday"
 msgstr "Mercredi"
+
+#: app/pages/plans.controller.js:121 app/pages/plans.controller.js:44
+msgid "Weekly / Daily Portfolio Report by email"
+msgstr "Rapports Hebdomadaire ou Journalier, par email"
 
 #: app/components/translations/get_translation.modal.template.html:6
 msgid "Welcome to the Squirrel Website"
@@ -1662,89 +1782,8 @@ msgstr "contact@squirrel-ams.fr"
 msgid "of your portfolios"
 msgstr "de vos portefeuilles"
 
-#~ msgid "Annual Portfolio Report edition"
-#~ msgstr "Edition des votre Rapport Annuel"
-
-#~ msgid "Assets Classes Exposure"
-#~ msgstr "Exposition par Classe d'Actifs"
-
-#~ msgid "Automatic Stocks and Mutual Funds Updates"
-#~ msgstr "Mise à jour automatique des valorisations Fonds et Actions"
-
-#~ msgid "Compare With N Benchmarks (Stocks, Funds, ETF)"
-#~ msgstr "Comparaison avec N Référence (Indices, Stocks, ETF, Fonds)"
-
-#~ msgid "Data Visualisation"
-#~ msgstr "Visualisation de donnée"
-
-#~ msgid "Dynamic Stocks Comparison"
-#~ msgstr "Comparaison Dynamique"
-
-#~ msgid "Easy Gains/Loose Tracking for your Tax Statement"
-#~ msgstr "Suivi simple de vos gains/pertes pour votre déclaration d'impôts"
-
-#~ msgid "Edit your annual Portfolio Report"
-#~ msgstr "Edition de votre Rapport Annuel"
-
-#~ msgid "Geography Exposure"
-#~ msgstr "Allocation Géographique"
-
-#~ msgid "Number of Portfolios"
-#~ msgstr "Nombre de Portefeuilles"
-
-#~ msgid "Personal History Timeline"
-#~ msgstr "Timeline Personel"
-
-#~ msgid "Portfolio Control"
-#~ msgstr "Controle de vos Portefeuilles"
-
-#~ msgid "Quaterly Portfolio Report by email"
-#~ msgstr "Rapports Financier Trimestriel par email"
-
-#~ msgid "Reports and Reminder"
-#~ msgstr "Rapports et Rappels"
-
-#~ msgid "Return, Gain, Alpha"
-#~ msgstr "Gain, Alpha, Profits"
-
-#~ msgid "Save Screener Settings"
-#~ msgstr "Enregistrement de vos paramètres du Screeners"
-
-#~ msgid "Screener Staging Area"
-#~ msgstr "Liste d'attente pour votre sélection d'Actions"
-
-#~ msgid "Share Price History"
-#~ msgstr "Evolution du Prix de la Part"
-
-#~ msgid "Small/Big Caps Exposure"
-#~ msgstr "Exposition Grande / Petite Capitalisation"
-
-#~ msgid "Smart Stock Search History"
-#~ msgstr "Historique Intelligent de Recherche"
-
-#~ msgid "Speculative Account Monthly Report Storage"
-#~ msgstr "Stockage des Rapports Mensuels de votre Compte Spéculatif (CFD)"
-
-#~ msgid "Stocks Screener"
-#~ msgstr "Screeners"
-
-#~ msgid "Tax Statement"
-#~ msgstr "Déclaration d'Impôts"
-
-#~ msgid "Track Every Assets Type"
-#~ msgstr "Suivi De Tous Type d'Actifs."
-
-#~ msgid "User defined Periodic Reminder for Manual Updates"
-#~ msgstr "Rappels Périodique Pour Les Mises à Jour Manuels."
-
 #~ msgid "View and Edit all your Portfolios"
 #~ msgstr "Visualiser et Editer vos portefeuilles"
-
-#~ msgid "View and Edit one Portfolio"
-#~ msgstr "Visualiser et Editer un portefeuille"
-
-#~ msgid "Weekly / Daily Portfolio Report by email"
-#~ msgstr "Rapports Hebdomadaire ou Journalier, par email"
 
 #~ msgid ""
 #~ "Squirrel is not a financial advise service.\n"
@@ -1875,9 +1914,6 @@ msgstr "de vos portefeuilles"
 #~ msgid "Take care of your investiment like the apple of your eye."
 #~ msgstr ""
 #~ "Prennez soin de vos investissements, comme à la prunelle de vos yeux."
-
-#~ msgid "All in One Place"
-#~ msgstr "Tout à Un Seul Endroit"
 
 #~ msgid "Center of your Finance"
 #~ msgstr "Le Centre de Votre Finance"
