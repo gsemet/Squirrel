@@ -90,45 +90,25 @@ marketing:
                 -
                     name: "CFD, Compte de Trading"
                     icon_type: "fa fa-heartbeat fa-3x"
-        us:
-            homepage_accounts:
-                -
-                    name: "Individual Account"
-                    icon_type: "fa fa-user fa-3x"
-                -
-                    name: "Joint Account"
-                    icon_type: "fa fa-users fa-3x"
-                -
-                    name: "IRA"
-                    icon_type: "fa fa-umbrella fa-3x"
-                -
-                    name: "401(1k)"
-                    icon_type: "fa fa-book fa-3x"
-                -
-                    name: "Stock Account"
-                    icon_type: "fa fa-bank fa-3x"
-                -
-                    name: "Other Type"
-                    icon_type: "fa fa-envelope fa-3x"
         en:
             homepage_accounts:
                 -
-                    name: "Individual Account"
-                    icon_type: "fa fa-user fa-3x"
+                    name: "Individual, Joint Accounts"
+                    icon_type: "fa fa-bank fa-3x"
                 -
-                    name: "Joint Account"
+                    name: "Stock Account"
                     icon_type: "fa fa-users fa-3x"
                 -
-                    name: "IRA"
+                    name: "IRA, Roth IRA"
                     icon_type: "fa fa-umbrella fa-3x"
                 -
                     name: "401(1k)"
                     icon_type: "fa fa-book fa-3x"
                 -
-                    name: "Stock Account"
-                    icon_type: "fa fa-bank fa-3x"
+                    name: "Crowdfounding Account"
+                    icon_type: "fa fa-user fa-3x"
                 -
-                    name: "Other Type"
+                    name: "Trading Account"
                     icon_type: "fa fa-envelope fa-3x"
 
 settings:
