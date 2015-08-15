@@ -6,8 +6,8 @@ var debug = require('gulp-debug');
 
 var paths = gulp.paths;
 
-var do_uglyfy = false;
-var do_minify_partials = false;
+var do_uglyfy = true;
+var do_minify_partials = False;
 var do_minify_partials_htmlmin = true;
 var do_minify_html_htmlmin = true;
 
