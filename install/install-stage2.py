@@ -361,7 +361,8 @@ def main():
     printSeparator("=")
     printInfo("Squirrel Installer Stage 2")
     if subcmd not in cmd_capabilities.keys():
-        printError("Invalid install target: {}. Available: {}".format(subcmd, cmd_capabilities.keys()))
+        printError("Invalid install target: {}. Available: {}"
+                   .format(subcmd, cmd_capabilities.keys()))
         sys.exit(1)
     current_capabilities = cmd_capabilities[subcmd]
     if "VIRTUAL_ENV" not in os.environ:
@@ -402,7 +403,8 @@ def main():
             pip_version = int(pip_major) * 100 + int(pip_minor)
             if pip_version <= 105:
                 printSeparator()
-                printInfo("Patching this pip (version) {}.{}), to fix proxy issue (fixed in pip 1.6)"
+                printInfo("Patching this pip (version) {}.{}), "
+                          "to fix proxy issue (fixed in pip 1.6)"
                           .format(pip_major, pip_minor))
                 printInfo("See: https://github.com/pypa/pip/issues/1805")
                 # Patching the installed pip to fix the following bug with proxy
@@ -484,20 +486,6 @@ def main():
         else:
             run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
 
-    if "frontend_update" in current_capabilities:
-        printInfo("Updating npm")
-        printInfo("cd frontend")
-        run(["npm", "install", "--save"], cwd=os.path.join(install_path, "frontend"), shell=shell)
-        printInfo("Updating bower")
-        printInfo("cd frontend")
-        run(["bower", "install", "--save"], cwd=os.path.join(install_path, "frontend"), shell=shell)
-
-    if "frontend_update_translations_fr" in current_capabilities:
-        printInfo("Updating translation: Fr")
-        printInfo("cd frontend")
-        run(["poedit", os.path.join("src", "po", "fr.po")], cwd=os.path.join(install_path, "frontend"),
-            shell=shell)
-
     if "homepage_install" in current_capabilities:
         printSeparator()
         printInfo("Compiling homepage website")
@@ -538,31 +526,60 @@ def main():
     if "homepage_update" in current_capabilities:
         printInfo("Updating npm")
         printInfo("cd homepage")
-        run(["npm", "install", "--save"], cwd=os.path.join(install_path, "homepage"), shell=shell)
+        run(["npm", "install", "--save"],
+            cwd=os.path.join(install_path, "homepage"),
+            shell=shell)
         printInfo("Updating bower")
         printInfo("cd homepage")
-        run(["bower", "install", "--save"], cwd=os.path.join(install_path, "homepage"), shell=shell)
+        run(["bower", "install", "--save"],
+            cwd=os.path.join(install_path, "homepage"),
+            shell=shell)
+
+    if "frontend_update" in current_capabilities:
+        printInfo("Updating npm")
+        printInfo("cd frontend")
+        run(["npm", "install", "--save"],
+            cwd=os.path.join(install_path, "frontend"),
+            shell=shell)
+        printInfo("Updating bower")
+        printInfo("cd frontend")
+        run(["bower", "install", "--save"],
+            cwd=os.path.join(install_path, "frontend"),
+            shell=shell)
 
     if "homepage_update_translations_fr" in current_capabilities:
         printInfo("Updating translation: Fr")
         printInfo("cd homepage")
-        run(["poedit", os.path.join("src", "po", "fr.po")], cwd=os.path.join(install_path, "homepage"),
+        run(["poedit", os.path.join("src", "po", "fr.po")],
+            cwd=os.path.join(install_path, "homepage"),
+            shell=shell)
+
+    if "frontend_update_translations_fr" in current_capabilities:
+        printInfo("Updating translation: Fr")
+        printInfo("cd frontend")
+        run(["poedit", os.path.join("src", "po", "fr.po")],
+            cwd=os.path.join(install_path, "frontend"),
             shell=shell)
 
     if "backend_test_unit" in current_capabilities:
         printSeparator()
         printInfo("Executing backend unit tests")
-        run(["trial", "squirrel"], cwd=os.path.join(install_path, "backend"), shell=shell)
+        run(["trial", "squirrel"],
+            cwd=os.path.join(install_path, "backend"),
+            shell=shell)
 
     if "backend_test_integration" in current_capabilities:
         printSeparator()
         printInfo("Executing backend integration tests")
-        run(["trial", "squirrel_integration_tests"], cwd=os.path.join(install_path, "backend"), shell=shell)
+        run(["trial", "squirrel_integration_tests"],
+            cwd=os.path.join(install_path, "backend"),
+            shell=shell)
 
     if "backend_update_translation" in current_capabilities:
         printSeparator()
         print("[INFO] Updating backend translation")
-        run("xgettext --debug --language=Python --keyword=_ --output=po/Squirrel.pot $(find . -name '*.py')",
+        run("xgettext --debug --language=Python --keyword=_ "
+            "--output=po/Squirrel.pot $(find . -name '*.py')",
             cwd=os.path.join(install_path, "backend"), shell=True)
 
     if "serve_prod" in current_capabilities or "serve_staging" in current_capabilities:
@@ -643,7 +660,8 @@ def main():
         printSeparator()
         printInfo("Do not start the server. Install is succesful.")
         if "novirtualenv" not in current_capabilities:
-            printInfo("You can activate the virtualenv at the following path: {}".format(activate_path))
+            printInfo("You can activate the virtualenv at the following path: {}"
+                      .format(activate_path))
             if not isWindows:
                 printInfo("(Use 'source activate' symbolic in your root folder)")
         printSeparator()
