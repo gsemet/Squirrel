@@ -21,6 +21,9 @@ workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 frontend_dist_path = os.path.abspath(os.path.join(root_path,
                                                   "frontend",
                                                   "dist"))
+homepage_dist_path = os.path.abspath(os.path.join(root_path,
+                                                  "homepage",
+                                                  "dist"))
 egg_info = os.path.abspath(os.path.join(root_path,
                                         "backend",
                                         "Squirrel.egg-info"))
@@ -36,6 +39,18 @@ frontend_po_path = os.path.abspath(os.path.join(root_path,
                                                 "src",
                                                 "po",
                                                 ))
+homepage_node_modules_path = os.path.abspath(os.path.join(root_path,
+                                                          "homepage",
+                                                          "node_modules"))
+homepage_bower_components_path = os.path.abspath(os.path.join(root_path,
+                                                              "homepage",
+                                                              "bower_components"))
+
+homepage_po_path = os.path.abspath(os.path.join(root_path,
+                                                "homepage",
+                                                "src",
+                                                "po",
+                                                ))
 
 paths_to_remove = [
     (egg_info, "Squirrel.egg_info"),
@@ -45,6 +60,9 @@ paths_to_remove = [
     (frontend_dist_path, "frontend/dist"),
     (frontend_node_modules_path, "frontend/node_modules"),
     (frontend_bower_components_path, "frontend/bower_components"),
+    (homepage_dist_path, "homepage/dist"),
+    (homepage_node_modules_path, "homepage/node_modules"),
+    (homepage_bower_components_path, "homepage/bower_components"),
     (workdir_path, "workdir"),
 ]
 
@@ -73,6 +91,10 @@ for root, dirnames, filenames in os.walk(root_path):
             matches.append(os.path.join(root, filename))
 
 for root, dirnames, filenames in os.walk(frontend_po_path):
+    for pattern in po_file_to_clean:
+        for filename in fnmatch.filter(filenames, pattern):
+            matches.append(os.path.join(root, filename))
+for root, dirnames, filenames in os.walk(homepage_po_path):
     for pattern in po_file_to_clean:
         for filename in fnmatch.filter(filenames, pattern):
             matches.append(os.path.join(root, filename))

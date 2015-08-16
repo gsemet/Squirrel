@@ -21,7 +21,8 @@ __all__ = ['allowed_cmd', 'aliases']
 
 allowed_cmd = {
     "serve:dev":               ("install and launch developer server (backend served with "
-                                "auto_relauncher and frontend served by 'gulp serve')"),
+                                "auto_relauncher and frontend and homepage both served by "
+                                "'gulp serve')"),
     "serve:dev:backend":       ("install and launch only the dev backend (with auto relauncher))"),
     "serve:dev:frontend":      ("install and launch only the dev frontend (with gulp serve))"),
     "serve:dev:homepage":      ("install and launch only the dev homepage (with gulp serve))"),
@@ -54,6 +55,7 @@ allowed_cmd = {
 aliases = {
     "(empty)": "install:all",
     "serve": "serve:dev",
+    "dev": "serve:dev",
     "start": "start:dev",
     "install": "install:all",
     "install:prod": "install:all",
@@ -70,10 +72,12 @@ cmd_capabilities = {
         "pip_upgrade",
         "backend_install",
         "frontend_install",
+        "homepage_install",
         "serve",
         "serve_dev",
         "serve_dev_backend",
         "serve_dev_frontend",
+        "serve_dev_homepage",
     },
     "serve:dev:backend": {
         "pip_upgrade",
@@ -111,6 +115,8 @@ cmd_capabilities = {
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
+        "homepage_install",
+        "homepage_gulp_build",
         "serve",
         "serve_staging",
     },
