@@ -463,7 +463,7 @@ def main():
         printInfo("Compiling frontend website")
         printInfo("PWD")
         run(["bash", "-c", "echo $PWD"])
-        run(["bash", "-c", "ls -Rla"])
+        run(["bash", "-c", "ls -la"])
         run(["bash", "-c", "which npm"])
         if "http_proxy" in os.environ:
             printNote("Behind a proxy: npm --proxy")
