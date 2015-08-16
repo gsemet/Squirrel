@@ -452,6 +452,10 @@ def main():
     if "frontend_install" in current_capabilities:
         printSeparator()
         printInfo("Compiling frontend website")
+        printInfo("PWD")
+        run(["bash", "-c", "echo $PWD"])
+        run(["bash", "-c", "ls -Rla"])
+        run(["bash", "-c", "which npm"])
         if "http_proxy" in os.environ:
             printNote("Behind a proxy: npm --proxy")
             printNote("You may want to add the following lines in your ~/.gitconfig:")
