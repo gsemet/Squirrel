@@ -38,10 +38,10 @@ app = angular.module("squirrel", [
 
 app.config(
 
-  ['$routeProvider', '$locationProvider', 'toastrConfig', "environmentProvider",
+  [ /*'$routeProvider', */ '$locationProvider', 'toastrConfig', "environmentProvider",
   "$stateProvider", "$urlRouterProvider",
 
-    function($routeProvider, $locationProvider, toastrConfig, environmentProvider,
+    function( /*$routeProvider, */ $locationProvider, toastrConfig, environmentProvider,
       $stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise("/");
 
