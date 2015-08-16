@@ -24,7 +24,8 @@ allowed_cmd = {
                                 "auto_relauncher and frontend served by 'gulp serve')"),
     "serve:dev:backend":       ("install and launch only the dev backend (with auto relauncher))"),
     "serve:dev:frontend":      ("install and launch only the dev frontend (with gulp serve))"),
-    "serve:staging":            "",
+    "serve:dev:homepage":      ("install and launch only the dev homepage (with gulp serve))"),
+    "serve:staging":            "install and server only the staging frontend",
     "serve:prod":               "install and launch production server",
     "serve:novirtualenv":      ("install and serve production without going into "
                                 "virtualenv (Docker/Heroku)"),
@@ -32,11 +33,13 @@ allowed_cmd = {
     "start:staging":           ("start all staging servers (no install)"),
     "start:dev":               ("start all dev servers (no install)"),
     "start:dev:frontend":      ("start frontend in dev mode (no install)"),
+    "start:dev:homepage":      ("start homepage in dev mode (no install)"),
     "start:dev:backend":       ("start backend in dev mode (no install)"),
     "start:novirtualenv":      ("start all prod servers without virtualenv (heroku model)"),
     "start:novirtualenv:web":  ("start web process only, without virtualenv (heroku model)"),
     "install:backend":          "install only backend (python)",
     "install:frontend":         "install only frontend (angular)",
+    "install:homepage":         "install only homepage (angular)",
     "install:all":              "install backend and frontend",
     "install:novirtualenv":     "install only frontend without virtualenv (heroku model)",
     "update:all":              ("update all dependencies (modules installed by npm and bower) "
@@ -86,11 +89,20 @@ cmd_capabilities = {
         "serve_dev",
         "serve_dev_frontend",
     },
+    "serve:dev:homepage": {
+        "pip_upgrade",
+        "frontend_install",
+        "serve",
+        "serve_dev",
+        "serve_dev_homepage",
+    },
     "serve:prod": {
         "pip_upgrade",
         "backend_install",
         "frontend_install",
+        "homepage_install",
         "frontend_gulp_build",
+        "homepage_gulp_build",
         "serve",
         "serve_prod",
     },
@@ -107,6 +119,8 @@ cmd_capabilities = {
         "backend_install",
         "frontend_install",
         "frontend_gulp_build",
+        "homepage_install",
+        "homepage_gulp_build",
         "serve",
         "serve_prod",
         "novirtualenv",
@@ -131,6 +145,11 @@ cmd_capabilities = {
         "serve_dev",
         "serve_dev_frontend",
     },
+    "start:dev:homepage": {
+        "serve",
+        "serve_dev",
+        "serve_dev_homepage",
+    },
     "start:dev:backend": {
         "serve",
         "serve_dev",
@@ -153,7 +172,9 @@ cmd_capabilities = {
         "pip_upgrade",
         "backend_install",
         "frontend_install",
+        "homepage_install",
         "frontend_gulp_build",
+        "homepage_gulp_build",
         "warn_no_serve_and_quit",
     },
     "install:backend": {
@@ -166,9 +187,16 @@ cmd_capabilities = {
         "frontend_gulp_build",
         "warn_no_serve_and_quit",
     },
+    "install:homepage": {
+        "homepage_install",
+        "homepage_gulp_build",
+        "warn_no_serve_and_quit",
+    },
     "install:novirtualenv": {
         "pip_upgrade",
         "backend_install",
+        "frontend_install",
+        "homepage_install",
         "novirtualenv",
         "warn_no_serve_and_quit",
     },
@@ -180,7 +208,13 @@ cmd_capabilities = {
         "frontend_update_npm",
         "frontend_update_bower",
         "frontend_gulp_build",
-        "frontend_update_translations_fr"
+        "frontend_update_translations_fr",
+        "homepage_install",
+        "homepage_update",
+        "homepage_update_npm",
+        "homepage_update_bower",
+        "homepage_gulp_build",
+        "homepage_update_translations_fr"
     },
     'update:lang:all': {
         "pip_upgrade",
@@ -189,6 +223,9 @@ cmd_capabilities = {
         "frontend_install",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
+        "homepage_install",
+        "homepage_gulp_build",
+        "homepage_update_translations_fr",
         # add all update cap here
     },
     'update:lang:fr': {
@@ -198,6 +235,9 @@ cmd_capabilities = {
         "frontend_install",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
+        "homepage_install",
+        "homepage_gulp_build",
+        "homepage_update_translations_fr",
     },
     "test:all": {
         "test",
@@ -215,6 +255,7 @@ cmd_capabilities = {
     "test:e2e": {
         "test",
         "frontend_test_e2e",
+        "homepage_test_e2e",
     },
 }
 
@@ -450,6 +491,57 @@ def main():
         run(["poedit", os.path.join("src", "po", "fr.po")], cwd=os.path.join(install_path, "frontend"),
             shell=shell)
 
+    if "homepage_install" in current_capabilities:
+        printSeparator()
+        printInfo("Compiling homepage website")
+        if "http_proxy" in os.environ:
+            printNote("Behind a proxy: npm --proxy")
+            printNote("You may want to add the following lines in your ~/.gitconfig:")
+            printNote("   [url \"https://github.com\"]")
+            printNote("      insteadOf=git://github.com")
+            printInfo("cd homepage")
+            run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
+                                                                                  "homepage"),
+                shell=shell)
+            printInfo("cd homepage")
+            run(["npm", "--proxy", os.environ["http_proxy"], "install", "--ignore-scripts"],
+                cwd=os.path.join(install_path, "homepage"),
+                shell=shell)
+        else:
+            printInfo("cd homepage")
+            run(["npm", "install", "--ignore-scripts"], cwd=os.path.join(install_path, "homepage"),
+                shell=shell)
+
+        printInfo("cd homepage")
+        # Circumvent bugs such as https://github.com/bower/bower/issues/646
+        run(["bower", "cache", "clean"], cwd=os.path.join(install_path, "homepage"), shell=shell)
+        run(["bower", "install"], cwd=os.path.join(install_path, "homepage"), shell=shell)
+
+        if "homepage_gulp_build" in current_capabilities:
+            printInfo("cd homepage")
+            run(["gulp", "build"], cwd=os.path.join(install_path, "homepage"), shell=shell)
+
+        printSeparator()
+        printInfo("Building online documentation")
+        if isWindows:
+            run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
+        else:
+            run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
+
+    if "homepage_update" in current_capabilities:
+        printInfo("Updating npm")
+        printInfo("cd homepage")
+        run(["npm", "install", "--save"], cwd=os.path.join(install_path, "homepage"), shell=shell)
+        printInfo("Updating bower")
+        printInfo("cd homepage")
+        run(["bower", "install", "--save"], cwd=os.path.join(install_path, "homepage"), shell=shell)
+
+    if "homepage_update_translations_fr" in current_capabilities:
+        printInfo("Updating translation: Fr")
+        printInfo("cd homepage")
+        run(["poedit", os.path.join("src", "po", "fr.po")], cwd=os.path.join(install_path, "homepage"),
+            shell=shell)
+
     if "backend_test_unit" in current_capabilities:
         printSeparator()
         printInfo("Executing backend unit tests")
@@ -503,12 +595,14 @@ def main():
                 "--win32-safe-kill", "--verbose",
                 devbackend_launcher]
 
-            if "serve_dev_frontend" in current_capabilities:
+            if ("serve_dev_frontend" in current_capabilities or
+                    "serve_dev_homepage" in current_capabilities):
                 run_background(auto_restart_backend_cmd, cwd=install_path)
             else:
                 run(auto_restart_backend_cmd, cwd=install_path)
-        if (("serve_dev_frontend" in current_capabilities)
-                and ("serve_dev_backend" in current_capabilities)):
+        if (("serve_dev_frontend" in current_capabilities or
+                "serve_dev_homepage" in current_capabilities) and
+                ("serve_dev_backend" in current_capabilities)):
             printInfo("Sleep 5 seconds")
             sys.stdout.flush()
             sys.stderr.flush()
@@ -521,6 +615,14 @@ def main():
             auto_restart_backend_cmd = ["gulp", "serve"]
 
             run(auto_restart_backend_cmd, cwd=os.path.join(install_path, "frontend"), shell=shell)
+
+        if "serve_dev_homepage":
+            printInfo("Serving dev homepage")
+            sleep_sec = 5
+
+            auto_restart_backend_cmd = ["gulp", "serve"]
+
+            run(auto_restart_backend_cmd, cwd=os.path.join(install_path, "homepage"), shell=shell)
 
     if "warn_no_serve_and_quit" in current_capabilities:
         printInfo("")

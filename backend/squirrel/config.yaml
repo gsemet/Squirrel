@@ -9,6 +9,7 @@ logging:
     config_file: ./squirrel/logging.conf
 
 frontend:
+    homepage_path: ../homepage/dist/
     root_path: ../frontend/dist/
     doc_path: ../doc/build/html/
     html5mode: true

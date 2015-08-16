@@ -101,6 +101,7 @@ def _resolveSqlPath(url):
 def updateFullPaths():
     c = Config()
     c.frontend.root_fullpath = _makeFullPath(c.frontend.root_path)
+    c.frontend.homepage_fullpath = _makeFullPath(c.frontend.homepage_path)
     c.frontend.doc_fullpath = _makeFullPath(c.frontend.doc_path)
     c.logging.config_file_fullpath = _makeFullPath(c.logging.config_file)
     c.backend.db.full_url = _resolveSqlPath(c.backend.db.url)
