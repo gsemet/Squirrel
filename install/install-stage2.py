@@ -31,7 +31,7 @@ allowed_cmd = {
                                 "virtualenv (Docker/Heroku)"),
     "start:prod":              ("start all prod servers (no install)"),
     "start:staging":           ("start all staging servers (no install)"),
-    "start:dev":               ("start all dev servers (no install)"),
+    "start:dev":               ("start frontend, homepage and backend dev servers (no install)"),
     "start:dev:frontend":      ("start frontend in dev mode (no install)"),
     "start:dev:homepage":      ("start homepage in dev mode (no install)"),
     "start:dev:backend":       ("start backend in dev mode (no install)"),
@@ -139,6 +139,7 @@ cmd_capabilities = {
         "serve_dev",
         "serve_dev_backend",
         "serve_dev_frontend",
+        "serve_dev_homepage",
     },
     "start:dev:frontend": {
         "serve",
@@ -614,7 +615,9 @@ def main():
 
             auto_restart_backend_cmd = ["gulp", "serve"]
 
-            run(auto_restart_backend_cmd, cwd=os.path.join(install_path, "frontend"), shell=shell)
+            run_background(auto_restart_backend_cmd,
+                           cwd=os.path.join(install_path, "frontend"),
+                           shell=shell)
 
         if "serve_dev_homepage":
             printInfo("Serving dev homepage")
@@ -622,7 +625,12 @@ def main():
 
             auto_restart_backend_cmd = ["gulp", "serve"]
 
-            run(auto_restart_backend_cmd, cwd=os.path.join(install_path, "homepage"), shell=shell)
+            run_background(auto_restart_backend_cmd,
+                           cwd=os.path.join(install_path, "homepage"),
+                           shell=shell)
+        while True:
+            printInfo(' -- Click Ctrl+C to clock this window --')
+            sleep(5)
 
     if "warn_no_serve_and_quit" in current_capabilities:
         printInfo("")
