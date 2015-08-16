@@ -141,7 +141,7 @@ def main():
             # removing executable name
             args.pop(0)
             subcmd = args.pop(0)
-            if subcmd in {"-h", "--help"}:
+            if subcmd in {"-h", "--help", "help"}:
                 usage()
             subcmd = aliases.get(subcmd, subcmd)
             if subcmd not in allowed_cmd.keys():

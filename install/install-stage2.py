@@ -20,6 +20,7 @@ if sys.platform.startswith('win32'):
 __all__ = ['allowed_cmd', 'aliases']
 
 allowed_cmd = {
+    "help":                     "print help message",
     "serve:dev":               ("install and launch developer server (backend served with "
                                 "auto_relauncher and frontend and homepage both served by "
                                 "'gulp serve')"),
@@ -38,11 +39,11 @@ allowed_cmd = {
     "start:dev:backend":       ("start backend in dev mode (no install)"),
     "start:novirtualenv":      ("start all prod servers without virtualenv (heroku model)"),
     "start:novirtualenv:web":  ("start web process only, without virtualenv (heroku model)"),
-    "install:backend":          "install only backend (python)",
-    "install:frontend":         "install only frontend (angular)",
-    "install:homepage":         "install only homepage (angular)",
-    "install:all":              "install backend and frontend",
-    "install:novirtualenv":     "install only frontend without virtualenv (heroku model)",
+    "install:backend":          "build/install only backend (python)",
+    "install:frontend":         "build/install only frontend (angular)",
+    "install:homepage":         "build/install only homepage (angular)",
+    "install:all":              "build/install backend and frontend",
+    "install:novirtualenv":     "build/install only frontend without virtualenv (heroku model)",
     "update:all":              ("update all dependencies (modules installed by npm and bower) "
                                 "and translations"),
     "update:lang:all":          "update all translations files - requires 'poedit'",
@@ -58,6 +59,8 @@ aliases = {
     "dev": "serve:dev",
     "start": "start:dev",
     "install": "install:all",
+    "build": "install:all",
+    "build:all": "install:all",
     "install:prod": "install:all",
     "update": "update:all",
     "update:lang": "update:lang:all",
@@ -68,6 +71,9 @@ aliases = {
 }
 
 cmd_capabilities = {
+    "help": {
+        "help",
+    },
     "serve:dev": {
         "pip_upgrade",
         "backend_install",
@@ -365,6 +371,9 @@ def main():
                    .format(subcmd, cmd_capabilities.keys()))
         sys.exit(1)
     current_capabilities = cmd_capabilities[subcmd]
+    if "help" in current_capabilities:
+        printInfo("Help")
+        return 0
     if "VIRTUAL_ENV" not in os.environ:
         printInfo("We are **NOT** in a virtualenv")
     else:
