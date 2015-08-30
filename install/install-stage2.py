@@ -44,7 +44,7 @@ allowed_cmd = {
     "install:frontend":         "build/install only frontend (angular)",
     "install:homepage":         "build/install only homepage (angular)",
     "install:all":              "build/install backend and frontend",
-    "install:novirtualenv:frontend": "build/install only frontend without virtualenv (heroku model)",
+    "install:novirtualenv:backend": "build/install only backend without virtualenv (heroku model)",
     "install:novirtualenv:all":      "build/install all without virtualenv (heroku model)",
     "update:all":              ("update all dependencies (modules installed by npm and bower) "
                                 "and translations"),

@@ -66,6 +66,7 @@ def main():
             subcmd = aliases.get(subcmd, subcmd)
             if subcmd not in allowed_cmd.keys():
                 lib.printError("Invalid command: {}".format(subcmd))
+                lib.printError("Allowed: {}".format(allowed_cmd.keys()))
                 lib.printError("See usage with --help")
                 sys.exit(1)
     else:
