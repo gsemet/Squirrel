@@ -215,8 +215,6 @@ cmd_capabilities = {
     "install:novirtualenv": {
         "pip_upgrade",
         "backend_install",
-        "frontend_install",
-        "homepage_install",
         "novirtualenv",
         "warn_no_serve_and_quit",
     },
