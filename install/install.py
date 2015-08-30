@@ -21,98 +21,18 @@ import sys
 
 # Do *not* use optparse or argparse here, we are not sure on which version of python we are!
 
-isWindows = False
-if sys.platform.startswith('win32'):
-    isWindows = True
+# Injecting available targets from installer stage 2
+stage2 = imp.load_source('install.stage2',
+                         os.path.join(os.path.dirname(__file__), "install-stage2.py"))
+allowed_cmd = stage2.allowed_cmd
+aliases = stage2.aliases
 
 # Injecting available targets from installer stage 2
-pkg = imp.load_source('install.stage2',
-                      os.path.join(os.path.dirname(__file__), "install-stage2.py"))
-allowed_cmd = pkg.allowed_cmd
-aliases = pkg.aliases
+lib = imp.load_source('install-lib.py',
+                      os.path.join(os.path.dirname(__file__), "install-lib.py"))
+
 
 default_cmd = "install:all"
-
-####################################################################################################
-# Utility functions
-####################################################################################################
-
-
-class bcolors(object):
-    HEADER = '\033[95m'
-    OKBLUE = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-    BOOT = '\033[94m'
-
-    ENDC = '\033[0m'
-
-# Do *not* use color when:
-#  - on windows
-#  - not in a terminal except if we are in Travis CI
-if isWindows or (not os.environ.get("TRAVIS") and not sys.stdout.isatty()):
-    bcolors.HEADER = ''
-    bcolors.OKBLUE = ''
-    bcolors.OKGREEN = ''
-    bcolors.WARNING = ''
-    bcolors.FAIL = ''
-    bcolors.BOLD = ''
-    bcolors.UNDERLINE = ''
-    bcolors.BOOT = ''
-    bcolors.ENDC = ''
-
-
-def flush():
-    sys.stdout.flush()
-    sys.stderr.flush()
-
-
-def printInfo(text):
-    print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + text)
-    flush()
-
-
-def printError(text):
-    print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
-    flush()
-
-
-def printSeparator(char="-", color=bcolors.OKGREEN):
-    print(color + char * 79 + bcolors.ENDC)
-    flush()
-
-
-def printNote(text):
-    print(bcolors.HEADER + "[NOTE ] " + bcolors.ENDC + text)
-    flush()
-
-
-def printBoot(text):
-    print(bcolors.BOOT + "[BOOT ] " + bcolors.ENDC + text)
-    flush()
-
-
-def run(cmd, cwd=None, shell=False):
-    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
-    flush()
-    subprocess.check_call(cmd, shell=shell, cwd=cwd)
-
-
-def call(cmd, cwd=None, shell=False):
-    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
-    flush()
-    return subprocess.call(cmd, shell=shell, cwd=cwd)
-
-
-def run_background(cmd, cwd=None, shell=False):
-    print(bcolors.OKGREEN + "[CMD (background)" + bcolors.ENDC + "] {}".format(" ".join(cmd)))
-    flush()
-    subprocess.Popen(cmd, cwd=cwd, shell=shell)
-
-####################################################################################################
 
 
 def usage():
@@ -145,11 +65,11 @@ def main():
                 usage()
             subcmd = aliases.get(subcmd, subcmd)
             if subcmd not in allowed_cmd.keys():
-                print("Invalid command: {}".format(subcmd))
-                print("See usage with --help")
+                lib.printError("Invalid command: {}".format(subcmd))
+                lib.printError("See usage with --help")
                 sys.exit(1)
     else:
-        print("No argument in the command line, using default target: {}".format(default_cmd))
+        lib.printError("No argument in the command line, using default target: {}".format(default_cmd))
         subcmd = default_cmd
 
     if sys.version_info < (2, 7):
@@ -162,10 +82,10 @@ def main():
         do_virtualenv = False
 
     if os.environ.get('VIRTUAL_ENV'):
-        printError("Beware, you already are inside the following virtual env: {}"
-                   .format(os.environ.get('VIRTUAL_ENV')))
-        printError("Please leave it with 'deactivate' "
-                   "and relaunch your command, unless you understand what is going on.")
+        lib.printError("Beware, you already are inside the following virtual env: {}"
+                       .format(os.environ.get('VIRTUAL_ENV')))
+        lib.printError("Please leave it with 'deactivate' "
+                       "and relaunch your command, unless you understand what is going on.")
 
     install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
     # config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs", "default.conf"))
@@ -178,7 +98,7 @@ def main():
     requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                     os.pardir,
                                                     "requirements.txt"))
-    if isWindows:
+    if lib.isWindows:
         activate = os.path.join(workdir_path, "Scripts", "activate.bat")
         activate_info = activate
         os_str = "Windows"
@@ -187,45 +107,46 @@ def main():
         activate_info = "source {0}".format(activate)
         os_str = "Posix"
 
-    printSeparator("=")
-    printBoot("Squirrel Installer Stage 1")
-    printBoot("Executing command: '{}'".format(subcmd))
-    printBoot("Platform: {0}".format(sys.platform))
-    printBoot("Environment: {0}".format(os_str))
-    printBoot("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
+    lib.printSeparator("=")
+    lib.printBoot("Squirrel Installer Stage 1")
+    lib.printBoot("Executing command: '{}'".format(subcmd))
+    lib.printBoot("Platform: {0}".format(sys.platform))
+    lib.printBoot("Environment: {0}".format(os_str))
+    lib.printBoot("Interpreter: {0} - Version: {1}".format(sys.executable,
+                                                           sys.version.split("\n")[0]))
     if do_virtualenv:
-        printBoot("Setting up virtualenv to start Installer Stage 2.")
+        lib.printBoot("Setting up virtualenv to start Installer Stage 2.")
     else:
         m = "Beware !! 'novirtualenv' mode detected, do ** NOT ** setup a virtual env!"
-        printBoot("!" * len(m))
-        printBoot(m)
-        printBoot("*** Hope your production works inside a Docker !! *** ")
-        printBoot("!" * len(m))
-    printBoot("You can activate this environment with the following command:")
-    printBoot("    {0}".format(activate_info))
-    printBoot("Installing in {0}".format(workdir_path))
-    printBoot("Requirements: {0}".format(requirements_txt))
+        lib.printBoot("!" * len(m))
+        lib.printBoot(m)
+        lib.printBoot("*** Hope your production works inside a Docker !! *** ")
+        lib.printBoot("!" * len(m))
+    lib.printBoot("You can activate this environment with the following command:")
+    lib.printBoot("    {0}".format(activate_info))
+    lib.printBoot("Installing in {0}".format(workdir_path))
+    lib.printBoot("Requirements: {0}".format(requirements_txt))
 
-    if isWindows:
+    if lib.isWindows:
         virtualenv = "virtualenv.exe"
         # python_exe = "python.exe"
         launch_in_new_window = True
 
         if not os.path.exists(os.path.join(workdir_path, "Scripts", "pip.exe")):
-            printBoot("Installing virtualenv in: {0}".format(workdir_path))
+            lib.printBoot("Installing virtualenv in: {0}".format(workdir_path))
             try:
                 subprocess.check_call([virtualenv, "--system-site-packages", workdir_path])
             except:
-                printError("Error during installation of virtualenv. Do you have virtual env "
-                           "in your system? Install it with:")
-                printError("  sudo pip install virtualenv")
-                printError("Reraising original exception:")
+                lib.printError("Error during installation of virtualenv. Do you have virtual env "
+                               "in your system? Install it with:")
+                lib.printError("  sudo pip install virtualenv")
+                lib.printError("Reraising original exception:")
                 raise
 
         # using launcher instead of activate.bat because we want to launch custom commands
         launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 
-        printBoot("Activating virtualenv in {0}".format(workdir_path))
+        lib.printBoot("Activating virtualenv in {0}".format(workdir_path))
         subprocess.check_call([
             "cmd", "/K",
             launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
@@ -235,7 +156,7 @@ def main():
 
         if do_virtualenv:
             if "VIRTUAL_ENV" in os.environ and not os.environ['VIRTUAL_ENV']:
-                printBoot("Note: Already in a virtualenv!")
+                lib.printBoot("Note: Already in a virtualenv!")
 
             activate = os.path.join(workdir_path, "bin", "activate")
 
@@ -243,11 +164,11 @@ def main():
                 subprocess.check_call(['virtualenv', workdir_path])
 
             if not os.path.exists(os.path.join(install_path, "activate")):
-                printBoot("Creating symblink activate")
+                lib.printBoot("Creating symblink activate")
                 os.symlink(os.path.join(workdir_path, "bin", "activate"), os.path.join(install_path,
                                                                                        "activate"))
 
-            printBoot("Activating virtualenv in {0}".format(workdir_path))
+            lib.printBoot("Activating virtualenv in {0}".format(workdir_path))
             # subprocess.check_call([python_exe, stage2_path, activate, install_path])
             subprocess.check_call([
                 'bash',
@@ -259,7 +180,7 @@ def main():
                         workdir_path=workdir_path,
                         subcmd=subcmd)])
         else:
-            printBoot("Starting stage 2 directly without installing a virtualenv")
+            lib.printBoot("Starting stage 2 directly without installing a virtualenv")
             # subprocess.check_call([python_exe, stage2_path, activate, install_path])
             subprocess.check_call([
                 'python',

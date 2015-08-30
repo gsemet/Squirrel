@@ -6,16 +6,17 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-
+import imp
 import os
 import subprocess
 import sys
 
 from time import sleep
 
-isWindows = False
-if sys.platform.startswith('win32'):
-    isWindows = True
+# Injecting available targets from installer stage 2
+lib = imp.load_source('install-lib.py',
+                      os.path.join(os.path.dirname(__file__), "install-lib.py"))
+
 
 __all__ = ['allowed_cmd', 'aliases']
 
@@ -293,87 +294,6 @@ cmd_capabilities = {
     },
 }
 
-####################################################################################################
-# Utility functions
-####################################################################################################
-
-
-class bcolors(object):
-    HEADER = '\033[95m'
-    OKBLUE = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-    BOOT = '\033[94m'
-
-    ENDC = '\033[0m'
-
-# Do *not* use color when:
-#  - on windows
-#  - not in a terminal except if we are in Travis CI
-if isWindows or (not os.environ.get("TRAVIS") and not sys.stdout.isatty()):
-    bcolors.HEADER = ''
-    bcolors.OKBLUE = ''
-    bcolors.OKGREEN = ''
-    bcolors.WARNING = ''
-    bcolors.FAIL = ''
-    bcolors.BOLD = ''
-    bcolors.UNDERLINE = ''
-    bcolors.BOOT = ''
-    bcolors.ENDC = ''
-
-
-def flush():
-    sys.stdout.flush()
-    sys.stderr.flush()
-
-
-def printInfo(text):
-    print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + text)
-    flush()
-
-
-def printError(text):
-    print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
-    flush()
-
-
-def printSeparator(char="-", color=bcolors.OKGREEN):
-    print(color + char * 79 + bcolors.ENDC)
-    flush()
-
-
-def printNote(text):
-    print(bcolors.HEADER + "[NOTE ] " + bcolors.ENDC + text)
-    flush()
-
-
-def printBoot(text):
-    print(bcolors.BOOT + "[BOOT ] " + bcolors.ENDC + text)
-    flush()
-
-
-def run(cmd, cwd=None, shell=False):
-    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
-    flush()
-    subprocess.check_call(cmd, shell=shell, cwd=cwd)
-
-
-def call(cmd, cwd=None, shell=False):
-    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
-    flush()
-    return subprocess.call(cmd, shell=shell, cwd=cwd)
-
-
-def run_background(cmd, cwd=None, shell=False):
-    print(bcolors.OKGREEN + "[CMD (background)" + bcolors.ENDC + "] {}".format(" ".join(cmd)))
-    flush()
-    subprocess.Popen(cmd, cwd=cwd, shell=shell)
-
-####################################################################################################
-
 
 def main():
 
@@ -385,35 +305,36 @@ def main():
 
     subcmd = sys.argv[3]
 
-    printSeparator("=")
-    printInfo("Squirrel Installer Stage 2")
+    lib.printSeparator("=")
+    lib.printInfo("Squirrel Installer Stage 2")
     if subcmd not in cmd_capabilities.keys():
-        printError("Invalid install target: {}. Available: {}"
-                   .format(subcmd, cmd_capabilities.keys()))
+        lib.printError("Invalid install target: {}. Available: {}"
+                       .format(subcmd, cmd_capabilities.keys()))
         sys.exit(1)
     current_capabilities = cmd_capabilities[subcmd]
     if "help" in current_capabilities:
-        printInfo("Help")
+        lib.printInfo("Help")
         return 0
     if "VIRTUAL_ENV" not in os.environ:
-        printInfo("We are **NOT** in a virtualenv")
+        lib.printInfo("We are **NOT** in a virtualenv")
     else:
-        printInfo("We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
-    printInfo("Interpreter: {0} - Version: {1}".format(sys.executable, sys.version.split("\n")[0]))
-    printInfo("installation dir: {}".format(install_path))
-    printInfo("workdir: {}".format(workdir_path))
-    printInfo("Executing command: '{}'".format(subcmd))
-    printInfo("Install Capabilities: {}".format(", ".join(sorted(list(current_capabilities)))))
-    printInfo("Environment variables:")
+        lib.printInfo("We are in the virtualenv: {}".format(os.environ['VIRTUAL_ENV']))
+    lib.printInfo("Interpreter: {0} - Version: {1}".format(sys.executable,
+                                                           sys.version.split("\n")[0]))
+    lib.printInfo("installation dir: {}".format(install_path))
+    lib.printInfo("workdir: {}".format(workdir_path))
+    lib.printInfo("Executing command: '{}'".format(subcmd))
+    lib.printInfo("Install Capabilities: {}".format(", ".join(sorted(list(current_capabilities)))))
+    lib.printInfo("Environment variables:")
     for k, v in sorted(os.environ.items()):
-        printInfo("  {0}:{1}".format(k, v))
+        lib.printInfo("  {0}:{1}".format(k, v))
 
-    printSeparator("=")
-    printInfo("")
-    printInfo("Installation process really starts here...")
-    printInfo("")
+    lib.printSeparator("=")
+    lib.printInfo("")
+    lib.printInfo("Installation process really starts here...")
+    lib.printInfo("")
 
-    if isWindows:
+    if lib.isWindows:
         shell = True
         activate_path = os.path.join(workdir_path, "Scripts", "activate.exe")
     else:
@@ -432,192 +353,210 @@ def main():
             pip_minor = pip_minor.partition('-')[0]
             pip_version = int(pip_major) * 100 + int(pip_minor)
             if pip_version <= 105:
-                printSeparator()
-                printInfo("Patching this pip (version) {}.{}), "
-                          "to fix proxy issue (fixed in pip 1.6)"
-                          .format(pip_major, pip_minor))
-                printInfo("See: https://github.com/pypa/pip/issues/1805")
+                lib.printSeparator()
+                lib.printInfo("Patching this pip (version) {}.{}), "
+                              "to fix proxy issue (fixed in pip 1.6)"
+                              .format(pip_major, pip_minor))
+                lib.printInfo("See: https://github.com/pypa/pip/issues/1805")
                 # Patching the installed pip to fix the following bug with proxy
                 # See http://www.irvingc.com/posts/10
                 patch_path = os.path.join(install_path, "install", "patch-pip.patch")
                 c = call(["bash", "-c", "patch -p0 -N --dry-run --silent < {} 2>/dev/null"
                           .format(patch_path)])
                 if not c:
-                    printInfo("Applying patch")
-                    run(["bash", "-c", "patch -p0 < {}".format(patch_path)])
+                    lib.printInfo("Applying patch")
+                    lib.run(["bash", "-c", "patch -p0 < {}".format(patch_path)])
                 else:
-                    printInfo("Already applied. Skipping patch")
+                    lib.printInfo("Already applied. Skipping patch")
 
-        printSeparator()
-        printInfo("Updating pip (try to always use latest version of pip)")
-        printInfo("cd backend")
-        run(["pip", "install", "--upgrade", "pip"])
+        lib.printSeparator()
+        lib.printInfo("Updating pip (try to always use latest version of pip)")
+        lib.printInfo("cd backend")
+        lib.run(["pip", "install", "--upgrade", "pip"])
 
     if "backend_install" in current_capabilities:
-        printSeparator()
-        printInfo("Installing backend requirements")
-        printInfo("cd backend")
-        run(["pip", "install", "-r", os.path.join(install_path, "backend",
-                                                  "requirements.txt")])
+        lib.printSeparator()
+        lib.printInfo("Installing backend requirements")
+        lib.printInfo("cd backend")
+        lib.run(["pip", "install", "-r", os.path.join(install_path, "backend",
+                                                      "requirements.txt")])
 
         if sys.version_info < (3, 4):
-            printInfo("Python version {}.{} < 3.4, installing extra requirements"
-                      .format(sys.version_info[0], sys.version_info[2]))
-            printInfo("cd backend")
-            run(["pip", "install", "-r", os.path.join(install_path, "backend",
-                                                      "requirements-py_lt34.txt")])
+            lib.printInfo("Python version {}.{} < 3.4, installing extra requirements"
+                          .format(sys.version_info[0], sys.version_info[2]))
+            lib.printInfo("cd backend")
+            lib.run(["pip", "install", "-r", os.path.join(install_path, "backend",
+                                                          "requirements-py_lt34.txt")])
 
-        if isWindows:
-            printSeparator()
-            printInfo("Installing Windows dependencies")
-            run(["pip", "install", "-r", os.path.join(install_path, "backend",
-                                                      "requirements-win32.txt")])
-            printInfo("Ensure you have win32api installed")
+        if lib.isWindows:
+            lib.printSeparator()
+            lib.printInfo("Installing Windows dependencies")
+            lib.run(["pip", "install", "-r", os.path.join(install_path, "backend",
+                                                          "requirements-win32.txt")])
+            lib.printInfo("Ensure you have win32api installed")
 
-        printSeparator()
-        printInfo("Installing backend")
-        printInfo("cd backend")
-        run(["pip", "install", "-e", os.path.join(install_path, "backend")])
+        lib.printSeparator()
+        lib.printInfo("Installing backend")
+        lib.printInfo("cd backend")
+        lib.run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
     if "frontend_install" in current_capabilities:
-        printSeparator()
-        printInfo("Compiling frontend website")
-        printInfo("PWD")
-        run(["bash", "-c", "echo PWD=$PWD"])
-        run(["bash", "-c", "echo PATH=$PATH"])
-        run(["bash", "-c", "export"])
-        run(["bash", "-c", "ls -la"])
-        run(["bash", "-c", "ls -la .heroku"])
-        run(["bash", "-c", "which npm"])
+        lib.printSeparator()
+        lib.printInfo("Compiling frontend website")
+        lib.printInfo("PWD")
+        lib.run_nocheck(["bash", "-c", "echo PWD=$PWD"])
+        lib.run_nocheck(["bash", "-c", "echo PATH=$PATH"])
+        lib.run_nocheck(["bash", "-c", "export"])
+        lib.run_nocheck(["bash", "-c", "ls -la"])
+        lib.run_nocheck(["bash", "-c", "ls -la .heroku"])
+        lib.run_nocheck(["bash", "-c", "which npm"])
         if "http_proxy" in os.environ:
             printNote("Behind a proxy: npm --proxy")
             printNote("You may want to add the following lines in your ~/.gitconfig:")
             printNote("   [url \"https://github.com\"]")
             printNote("      insteadOf=git://github.com")
-            printInfo("cd frontend")
-            run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
-                                                                                  "frontend"),
-                shell=shell)
-            printInfo("cd frontend")
-            run(["npm", "--proxy", os.environ["http_proxy"], "install", "--ignore-scripts"],
-                cwd=os.path.join(install_path, "frontend"),
-                shell=shell)
+            lib.printInfo("cd frontend")
+            lib.run(["npm", "config", "set", "strict-ssl", "false"],
+                    cwd=os.path.join(install_path,
+                                     "frontend"),
+                    shell=shell)
+            lib.printInfo("cd frontend")
+            lib.run(["npm", "--proxy", os.environ["http_proxy"], "install", "--ignore-scripts"],
+                    cwd=os.path.join(install_path, "frontend"),
+                    shell=shell)
         else:
-            printInfo("cd frontend")
-            run(["npm", "install", "--ignore-scripts"], cwd=os.path.join(install_path, "frontend"),
-                shell=shell)
+            lib.printInfo("cd frontend")
+            lib.run(["npm", "install", "--ignore-scripts"],
+                    cwd=os.path.join(install_path, "frontend"),
+                    shell=shell)
 
-        printInfo("cd frontend")
+        lib.printInfo("cd frontend")
         # Circumvent bugs such as https://github.com/bower/bower/issues/646
-        run(["bower", "cache", "clean"], cwd=os.path.join(install_path, "frontend"), shell=shell)
-        run(["bower", "install"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+        lib.run(["bower", "cache", "clean"], cwd=os.path.join(install_path, "frontend"),
+                shell=shell)
+        lib.run(["bower", "install"], cwd=os.path.join(install_path, "frontend"),
+                shell=shell)
 
         if "frontend_gulp_build" in current_capabilities:
-            printInfo("cd frontend")
-            run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"), shell=shell)
+            lib.printInfo("cd frontend")
+            lib.run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"),
+                    shell=shell)
 
-        printSeparator()
-        printInfo("Building online documentation")
-        if isWindows:
-            run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
+        lib.printSeparator()
+        lib.printInfo("Building online documentation")
+        if lib.isWindows:
+            lib.run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"),
+                    shell=True)
         else:
-            run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
+            lib.run(["make", "html"], cwd=os.path.join(install_path, "doc"),
+                    shell=shell)
 
     if "homepage_install" in current_capabilities:
-        printSeparator()
-        printInfo("Compiling homepage website")
+        lib.printSeparator()
+        lib.printInfo("Compiling homepage website")
         if "http_proxy" in os.environ:
             printNote("Behind a proxy: npm --proxy")
             printNote("You may want to add the following lines in your ~/.gitconfig:")
             printNote("   [url \"https://github.com\"]")
             printNote("      insteadOf=git://github.com")
-            printInfo("cd homepage")
-            run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
-                                                                                  "homepage"),
-                shell=shell)
-            printInfo("cd homepage")
-            run(["npm", "--proxy", os.environ["http_proxy"], "install", "--ignore-scripts"],
+            lib.printInfo("cd homepage")
+            lib.run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
+                                                                                      "homepage"),
+                    shell=shell)
+            lib.printInfo("cd homepage")
+            lib.run(["npm", "--proxy", os.environ["http_proxy"], "install", "--ignore-scripts"],
+                    cwd=os.path.join(install_path, "homepage"),
+                    shell=shell)
+        else:
+            lib.printInfo("cd homepage")
+            lib.run(["npm", "install", "--ignore-scripts"],
+                    cwd=os.path.join(install_path, "homepage"),
+                    shell=shell)
+
+        lib.printInfo("cd homepage")
+        # Circumvent bugs such as https://github.com/bower/bower/issues/646
+        lib.run(["bower", "cache", "clean"],
                 cwd=os.path.join(install_path, "homepage"),
                 shell=shell)
-        else:
-            printInfo("cd homepage")
-            run(["npm", "install", "--ignore-scripts"], cwd=os.path.join(install_path, "homepage"),
+        lib.run(["bower", "install"],
+                cwd=os.path.join(install_path, "homepage"),
                 shell=shell)
 
-        printInfo("cd homepage")
-        # Circumvent bugs such as https://github.com/bower/bower/issues/646
-        run(["bower", "cache", "clean"], cwd=os.path.join(install_path, "homepage"), shell=shell)
-        run(["bower", "install"], cwd=os.path.join(install_path, "homepage"), shell=shell)
-
         if "homepage_gulp_build" in current_capabilities:
-            printInfo("cd homepage")
-            run(["gulp", "build"], cwd=os.path.join(install_path, "homepage"), shell=shell)
+            lib.printInfo("cd homepage")
+            lib.run(["gulp", "build"],
+                    cwd=os.path.join(install_path, "homepage"),
+                    shell=shell)
 
-        printSeparator()
-        printInfo("Building online documentation")
-        if isWindows:
-            run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"), shell=True)
+        lib.printSeparator()
+        lib.printInfo("Building online documentation")
+        if lib.isWindows:
+            lib.run(["make.bat", "html"],
+                    cwd=os.path.join(install_path, "doc"),
+                    shell=True)
         else:
-            run(["make", "html"], cwd=os.path.join(install_path, "doc"), shell=shell)
+            lib.run(["make", "html"],
+                    cwd=os.path.join(install_path, "doc"),
+                    shell=shell)
 
     if "homepage_update" in current_capabilities:
-        printInfo("Updating npm")
-        printInfo("cd homepage")
-        run(["npm", "install", "--save"],
-            cwd=os.path.join(install_path, "homepage"),
-            shell=shell)
-        printInfo("Updating bower")
-        printInfo("cd homepage")
-        run(["bower", "install", "--save"],
-            cwd=os.path.join(install_path, "homepage"),
-            shell=shell)
+        lib.printInfo("Updating npm")
+        lib.printInfo("cd homepage")
+        lib.run(["npm", "install", "--save"],
+                cwd=os.path.join(install_path, "homepage"),
+                shell=shell)
+        lib.printInfo("Updating bower")
+        lib.printInfo("cd homepage")
+        lib.run(["bower", "install", "--save"],
+                cwd=os.path.join(install_path, "homepage"),
+                shell=shell)
 
     if "frontend_update" in current_capabilities:
-        printInfo("Updating npm")
-        printInfo("cd frontend")
-        run(["npm", "install", "--save"],
-            cwd=os.path.join(install_path, "frontend"),
-            shell=shell)
-        printInfo("Updating bower")
-        printInfo("cd frontend")
-        run(["bower", "install", "--save"],
-            cwd=os.path.join(install_path, "frontend"),
-            shell=shell)
+        lib.printInfo("Updating npm")
+        lib.printInfo("cd frontend")
+        lib.run(["npm", "install", "--save"],
+                cwd=os.path.join(install_path, "frontend"),
+                shell=shell)
+        lib.printInfo("Updating bower")
+        lib.printInfo("cd frontend")
+        lib.run(["bower", "install", "--save"],
+                cwd=os.path.join(install_path, "frontend"),
+                shell=shell)
 
     if "homepage_update_translations_fr" in current_capabilities:
-        printInfo("Updating translation: Fr")
-        printInfo("cd homepage")
-        run(["poedit", os.path.join("src", "po", "fr.po")],
-            cwd=os.path.join(install_path, "homepage"),
-            shell=shell)
+        lib.printInfo("Updating translation: Fr")
+        lib.printInfo("cd homepage")
+        lib.run(["poedit", os.path.join("src", "po", "fr.po")],
+                cwd=os.path.join(install_path, "homepage"),
+                shell=shell)
 
     if "frontend_update_translations_fr" in current_capabilities:
-        printInfo("Updating translation: Fr")
-        printInfo("cd frontend")
-        run(["poedit", os.path.join("src", "po", "fr.po")],
-            cwd=os.path.join(install_path, "frontend"),
-            shell=shell)
+        lib.printInfo("Updating translation: Fr")
+        lib.printInfo("cd frontend")
+        lib.run(["poedit", os.path.join("src", "po", "fr.po")],
+                cwd=os.path.join(install_path, "frontend"),
+                shell=shell)
 
     if "backend_test_unit" in current_capabilities:
-        printSeparator()
-        printInfo("Executing backend unit tests")
-        run(["trial", "squirrel"],
-            cwd=os.path.join(install_path, "backend"),
-            shell=shell)
+        lib.printSeparator()
+        lib.printInfo("Executing backend unit tests")
+        lib.run(["trial", "squirrel"],
+                cwd=os.path.join(install_path, "backend"),
+                shell=shell)
 
     if "backend_test_integration" in current_capabilities:
-        printSeparator()
-        printInfo("Executing backend integration tests")
-        run(["trial", "squirrel_integration_tests"],
-            cwd=os.path.join(install_path, "backend"),
-            shell=shell)
+        lib.printSeparator()
+        lib.printInfo("Executing backend integration tests")
+        lib.run(["trial", "squirrel_integration_tests"],
+                cwd=os.path.join(install_path, "backend"),
+                shell=shell)
 
     if "backend_update_translation" in current_capabilities:
-        printSeparator()
+        lib.printSeparator()
         print("[INFO] Updating backend translation")
-        run("xgettext --debug --language=Python --keyword=_ "
-            "--output=po/Squirrel.pot $(find . -name '*.py')",
-            cwd=os.path.join(install_path, "backend"), shell=True)
+        lib.run("xgettext --debug --language=Python --keyword=_ "
+                "--output=po/Squirrel.pot $(find . -name '*.py')",
+                cwd=os.path.join(install_path, "backend"), shell=True)
 
     if "serve_prod" in current_capabilities or "serve_staging" in current_capabilities:
         # Launching squirrel-prod
@@ -626,28 +565,29 @@ def main():
             server_base_name = "squirrel-heroku"
         elif "serve_staging" in current_capabilities:
             server_base_name = "squirrel-staging"
-        if isWindows:
+        if lib.isWindows:
             backend_launcher = os.path.join(workdir_path, "Scripts", server_base_name + ".exe")
         else:
             backend_launcher = server_base_name
-        printInfo("Launching Prod Squirrel Server: {}".format(backend_launcher))
+        lib.printInfo("Launching Prod Squirrel Server: {}".format(backend_launcher))
 
-        run([backend_launcher])
+        lib.run([backend_launcher])
 
     elif "serve_dev" in current_capabilities:
         # Launching squirrel-dev, which doesn't serve the front end, and let the front
         # be served by 'gulp serve'
-        if isWindows:
+        if lib.isWindows:
             devbackend_launcher = os.path.join(workdir_path, "Scripts", "squirrel-dev.exe")
         else:
             devbackend_launcher = "squirrel-dev"
         if "serve_dev_backend" in current_capabilities:
-            printInfo("Launching squirrel-dev with auto relauncher {}".format(devbackend_launcher))
+            lib.printInfo("Launching squirrel-dev with auto relauncher {}"
+                          .format(devbackend_launcher))
             sys.stdout.flush()
             sys.stderr.flush()
 
             sleep_sec = 0
-            if isWindows:
+            if lib.isWindows:
                 sleep_sec = 0
 
             auto_restart_backend_cmd = [
@@ -658,54 +598,54 @@ def main():
 
             if ("serve_dev_frontend" in current_capabilities or
                     "serve_dev_homepage" in current_capabilities):
-                run_background(auto_restart_backend_cmd, cwd=install_path)
+                lib.run_background(auto_restart_backend_cmd, cwd=install_path)
             else:
-                run(auto_restart_backend_cmd, cwd=install_path)
+                lib.run(auto_restart_backend_cmd, cwd=install_path)
         if (("serve_dev_frontend" in current_capabilities or
                 "serve_dev_homepage" in current_capabilities) and
                 ("serve_dev_backend" in current_capabilities)):
-            printInfo("Sleep 5 seconds")
+            lib.printInfo("Sleep 5 seconds")
             sys.stdout.flush()
             sys.stderr.flush()
             sleep(5)
 
         if "serve_dev_frontend" in current_capabilities:
-            printInfo("Serving dev frontend")
+            lib.printInfo("Serving dev frontend")
             sleep_sec = 5
 
             auto_restart_backend_cmd = ["gulp", "serve"]
 
-            run_background(auto_restart_backend_cmd,
-                           cwd=os.path.join(install_path, "frontend"),
-                           shell=shell)
+            lib.run_background(auto_restart_backend_cmd,
+                               cwd=os.path.join(install_path, "frontend"),
+                               shell=shell)
 
         if "serve_dev_homepage" in current_capabilities:
-            printInfo("Serving dev homepage")
+            lib.printInfo("Serving dev homepage")
             sleep_sec = 5
 
             auto_restart_backend_cmd = ["gulp", "serve"]
 
-            run_background(auto_restart_backend_cmd,
-                           cwd=os.path.join(install_path, "homepage"),
-                           shell=shell)
+            lib.run_background(auto_restart_backend_cmd,
+                               cwd=os.path.join(install_path, "homepage"),
+                               shell=shell)
         while True:
-            printInfo(' -- Click Ctrl+C to close this window --')
+            lib.printInfo(' -- Click Ctrl+C to close this window --')
             sleep(5)
 
     if "warn_no_serve_and_quit" in current_capabilities:
-        printInfo("")
-        printSeparator()
-        printInfo("Do not start the server. Install is succesful.")
+        lib.printInfo("")
+        lib.printSeparator()
+        lib.printInfo("Do not start the server. Install is succesful.")
         if "novirtualenv" not in current_capabilities:
-            printInfo("You can activate the virtualenv at the following path: {}"
-                      .format(activate_path))
-            if not isWindows:
-                printInfo("(Use 'source activate' symbolic in your root folder)")
-        printSeparator()
+            lib.printInfo("You can activate the virtualenv at the following path: {}"
+                          .format(activate_path))
+            if not lib.isWindows:
+                lib.printInfo("(Use 'source activate' symbolic in your root folder)")
+        lib.printSeparator()
         sys.exit(0)
     else:
-        printInfo("Done")
-        printSeparator()
+        lib.printInfo("Done")
+        lib.printSeparator()
         sys.exit(0)
 
 if __name__ == "__main__":
