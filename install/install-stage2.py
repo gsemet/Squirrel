@@ -483,8 +483,11 @@ def main():
         printSeparator()
         printInfo("Compiling frontend website")
         printInfo("PWD")
-        run(["bash", "-c", "echo $PWD"])
+        run(["bash", "-c", "echo PWD=$PWD"])
+        run(["bash", "-c", "echo PATH=$PATH"])
+        run(["bash", "-c", "export"])
         run(["bash", "-c", "ls -la"])
+        run(["bash", "-c", "ls -la .heroku"])
         run(["bash", "-c", "which npm"])
         if "http_proxy" in os.environ:
             printNote("Behind a proxy: npm --proxy")
