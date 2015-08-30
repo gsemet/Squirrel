@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var paths = gulp.paths;
 
 var gettext = require('gulp-angular-gettext');
+var debug = require('gulp-debug');
 
 gulp.task('pot', function() {
   return gulp.src([
@@ -19,8 +20,13 @@ gulp.task('pot', function() {
 
 gulp.task('translations', function() {
   return gulp.src([
-      'src/po/**/fr.po',
+      'src/po/**/*.po',
     ])
-    .pipe(gettext.compile({}))
+    .pipe(debug({
+      title: 'compile po:'
+    }))
+    .pipe(gettext.compile({
+      format: "json"
+    }))
     .pipe(gulp.dest('src/po/'));
 });

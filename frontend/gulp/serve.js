@@ -20,6 +20,7 @@ function browserSyncInit(baseDir, files, browser) {
     routes = {
       '/bower_components': 'bower_components',
       '/node_modules': 'node_modules',
+      '/languages': 'po',
     };
   }
 

@@ -59,6 +59,7 @@ gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
       title: 'copying js:'
     }))
     .pipe($.replace('MODE: "dev"', 'MODE: "prod"'))
+    .pipe($.replace('/languages/', '/po/'))
     .pipe($.ngAnnotate())
     .pipe(gulpif(do_uglyfy, $.uglify({
       preserveComments: $.uglifySaveLicense
@@ -131,8 +132,16 @@ gulp.task('misc', function() {
     .pipe(gulp.dest(paths.dist + '/'));
 });
 
+gulp.task('languages', function() {
+  return gulp.src(paths.src + '/po/*.json')
+    .pipe(debug({
+      title: 'copying json lang:'
+    }))
+    .pipe(gulp.dest(paths.dist + '/languages/'));
+});
+
 gulp.task('clean', function(done) {
   $.del([paths.dist + '/', paths.tmp + '/'], done);
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'misc']);
+gulp.task('build', ['html', 'images', 'fonts', 'misc', 'languages']);

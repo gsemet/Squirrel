@@ -45,6 +45,7 @@ angular.module('squirrel').factory('TranslationService',
           debug.info("TranslationService", "Setting current language to " + lang +
             ", mode=" + DEPLOYMENT.MODE);
           gettextCatalog.setCurrentLanguage(lang);
+          gettextCatalog.loadRemote("/languages/" + lang + ".json");
           if (DEPLOYMENT.MODE == 'dev') {
             debug.info("TranslationService", "debug mode enabled");
             gettextCatalog.debug = true;
@@ -55,6 +56,7 @@ angular.module('squirrel').factory('TranslationService',
           debug.info("TranslationService", "emiting signal = TRANSLATION_UPDATED " + lang);
         } else {
           gettextCatalog.setCurrentLanguage(translationService.defaultLang);
+          gettextCatalog.loadRemote("/languages/" + translationService.defaultLang + ".json");
           debug.info("TranslationService",
             "Setting to default language " + translationService.defaultLang);
           if (!lang) {

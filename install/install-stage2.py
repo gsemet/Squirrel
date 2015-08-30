@@ -47,6 +47,7 @@ allowed_cmd = {
     "update:all":              ("update all dependencies (modules installed by npm and bower) "
                                 "and translations"),
     "update:lang:all":          "update all translations files - requires 'poedit'",
+    "update:lang:en":           "update translation (en) - requires 'poedit'",
     "update:lang:fr":           "update translation (fr) - requires 'poedit'",
     "test:all":                ("execute all tests (unit tests, integration tests, e2e tests)"),
     "test:unit":               ("execute unit tests"),
@@ -61,6 +62,8 @@ aliases = {
     "install": "install:all",
     "build": "install:all",
     "build:all": "install:all",
+    "build:homepage": "install:homepage",
+    "build:frontend": "install:frontend",
     "install:prod": "install:all",
     "update": "update:all",
     "update:lang": "update:lang:all",
@@ -222,12 +225,14 @@ cmd_capabilities = {
         "frontend_update_bower",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
+        "frontend_update_translations_en",
         "homepage_install",
         "homepage_update",
         "homepage_update_npm",
         "homepage_update_bower",
         "homepage_gulp_build",
         "homepage_update_translations_fr"
+        "homepage_update_translations_en"
     },
     'update:lang:all': {
         "pip_upgrade",
@@ -236,9 +241,11 @@ cmd_capabilities = {
         "frontend_install",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
+        "frontend_update_translations_en",
         "homepage_install",
         "homepage_gulp_build",
         "homepage_update_translations_fr",
+        "homepage_update_translations_en",
         # add all update cap here
     },
     'update:lang:fr': {
@@ -251,6 +258,17 @@ cmd_capabilities = {
         "homepage_install",
         "homepage_gulp_build",
         "homepage_update_translations_fr",
+    },
+    'update:lang:en': {
+        "pip_upgrade",
+        "backend_install",
+        "backend_update_translation",
+        "frontend_install",
+        "frontend_gulp_build",
+        "frontend_update_translations_en",
+        "homepage_install",
+        "homepage_gulp_build",
+        "homepage_update_translations_en",
     },
     "test:all": {
         "test",
@@ -665,7 +683,7 @@ def main():
                            cwd=os.path.join(install_path, "homepage"),
                            shell=shell)
         while True:
-            printInfo(' -- Click Ctrl+C to clock this window --')
+            printInfo(' -- Click Ctrl+C to close this window --')
             sleep(5)
 
     if "warn_no_serve_and_quit" in current_capabilities:
