@@ -1,0 +1,1 @@
+python install/install.py heroku:build:backend

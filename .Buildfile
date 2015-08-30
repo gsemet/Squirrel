@@ -1,1 +1,1 @@
-python install/install.py heroku:build
+python install/install.py heroku:build:all

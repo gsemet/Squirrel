@@ -44,7 +44,8 @@ allowed_cmd = {
     "install:frontend":         "build/install only frontend (angular)",
     "install:homepage":         "build/install only homepage (angular)",
     "install:all":              "build/install backend and frontend",
-    "install:novirtualenv":     "build/install only frontend without virtualenv (heroku model)",
+    "install:novirtualenv:frontend": "build/install only frontend without virtualenv (heroku model)",
+    "install:novirtualenv:all":      "build/install all without virtualenv (heroku model)",
     "update:all":              ("update all dependencies (modules installed by npm and bower) "
                                 "and translations"),
     "update:lang:all":          "update all translations files - requires 'poedit'",
@@ -72,7 +73,8 @@ aliases = {
     "update": "update:all",
     "update:lang": "update:lang:all",
     "test": "test:all",
-    "heroku:build": "install:novirtualenv",
+    "heroku:build:backend": "install:novirtualenv:backend",
+    "heroku:build:all": "install:novirtualenv:all",
     "heroku:start": "start:novirtualenv",
     "heroku:start:web": "start:novirtualenv:web",
 }
@@ -212,9 +214,17 @@ cmd_capabilities = {
         "homepage_gulp_build",
         "warn_no_serve_and_quit",
     },
-    "install:novirtualenv": {
+    "install:novirtualenv:backend": {
         "pip_upgrade",
         "backend_install",
+        "novirtualenv",
+        "warn_no_serve_and_quit",
+    },
+    "install:novirtualenv:all": {
+        "pip_upgrade",
+        "backend_install",
+        "frontend_install",
+        "homepage_install",
         "novirtualenv",
         "warn_no_serve_and_quit",
     },
