@@ -5,12 +5,9 @@ var app;
 // we use lodash is better than undercore: http: //kitcambridge.be/blog/say-hello-to-lo-dash/
 app = angular.module("squirrel", [
   // keep the following lines sorted!
-  'angular-parallax',
-  'angular-timeline',
   'angularModalService',
   'angularMoment',
   'ct.ui.router.extras',
-  'duScroll',
   'gettext',
   'highcharts-ng',
   'ipCookie',
