@@ -57,6 +57,9 @@ allowed_cmd = {
 aliases = {
     "(empty)": "install:all",
     "serve": "serve:dev",
+    "serve:homepage": "serve:dev:homepage",
+    "serve:frontend": "serve:dev:frontend",
+    "serve:backend": "serve:dev:backend",
     "dev": "serve:dev",
     "start": "start:dev",
     "install": "install:all",
@@ -663,7 +666,7 @@ def main():
             sys.stderr.flush()
             sleep(5)
 
-        if "serve_dev_frontend":
+        if "serve_dev_frontend" in current_capabilities:
             printInfo("Serving dev frontend")
             sleep_sec = 5
 
@@ -673,7 +676,7 @@ def main():
                            cwd=os.path.join(install_path, "frontend"),
                            shell=shell)
 
-        if "serve_dev_homepage":
+        if "serve_dev_homepage" in current_capabilities:
             printInfo("Serving dev homepage")
             sleep_sec = 5
 
