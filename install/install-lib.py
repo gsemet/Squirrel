@@ -78,6 +78,13 @@ def run(cmd, cwd=None, shell=False):
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
 
 
+def run_output(cmd, cwd=None, shell=False):
+    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
+    flush()
+    s = subprocess.check_call(cmd, shell=shell, cwd=cwd)
+    return str(s)
+
+
 def run_nocheck(cmd, cwd=None, shell=False):
     try:
         print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
