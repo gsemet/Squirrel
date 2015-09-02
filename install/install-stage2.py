@@ -8,7 +8,6 @@ from __future__ import print_function
 
 import imp
 import os
-import subprocess
 import sys
 
 from time import sleep
@@ -351,7 +350,7 @@ def main():
 
     if "pip_upgrade" in current_capabilities:
         if sys.platform.startswith("linux"):
-            pip_version_str = str(subprocess.check_output(["pip", "--version"]))
+            pip_version_str = lib.run_output(["pip", "--version"])
             pip_version_str = pip_version_str.split(" ")[1]
             pip_version_str = pip_version_str.split("-")[0]
             pip_version_str = pip_version_str.split("_")[0]
@@ -369,8 +368,8 @@ def main():
                 # Patching the installed pip to fix the following bug with proxy
                 # See http://www.irvingc.com/posts/10
                 patch_path = os.path.join(install_path, "install", "patch-pip.patch")
-                c = call(["bash", "-c", "patch -p0 -N --dry-run --silent < {} 2>/dev/null"
-                          .format(patch_path)])
+                c = lib.call(["bash", "-c", "patch -p0 -N --dry-run --silent < {} 2>/dev/null"
+                              .format(patch_path)])
                 if not c:
                     lib.printInfo("Applying patch")
                     lib.run(["bash", "-c", "patch -p0 < {}".format(patch_path)])
@@ -419,10 +418,10 @@ def main():
         lib.run_nocheck(["bash", "-c", "ls -la .heroku"])
         lib.run_nocheck(["bash", "-c", "which npm"])
         if "http_proxy" in os.environ:
-            printNote("Behind a proxy: npm --proxy")
-            printNote("You may want to add the following lines in your ~/.gitconfig:")
-            printNote("   [url \"https://github.com\"]")
-            printNote("      insteadOf=git://github.com")
+            lib.printNote("Behind a proxy: npm --proxy")
+            lib.printNote("You may want to add the following lines in your ~/.gitconfig:")
+            lib.printNote("   [url \"https://github.com\"]")
+            lib.printNote("      insteadOf=git://github.com")
             lib.printInfo("cd frontend")
             lib.run(["npm", "config", "set", "strict-ssl", "false"],
                     cwd=os.path.join(install_path,
@@ -463,10 +462,10 @@ def main():
         lib.printSeparator()
         lib.printInfo("Compiling homepage website")
         if "http_proxy" in os.environ:
-            printNote("Behind a proxy: npm --proxy")
-            printNote("You may want to add the following lines in your ~/.gitconfig:")
-            printNote("   [url \"https://github.com\"]")
-            printNote("      insteadOf=git://github.com")
+            lib.printNote("Behind a proxy: npm --proxy")
+            lib.printNote("You may want to add the following lines in your ~/.gitconfig:")
+            lib.printNote("   [url \"https://github.com\"]")
+            lib.printNote("      insteadOf=git://github.com")
             lib.printInfo("cd homepage")
             lib.run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
                                                                                       "homepage"),
