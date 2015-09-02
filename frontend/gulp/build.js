@@ -17,8 +17,8 @@ var $ = require('gulp-load-plugins')({
 
 gulp.task('partials', ['markups'], function() {
   return gulp.src([
-    paths.src + '/{app,components,services,modules}/**/*.html',
-    paths.tmp + '/{app,components,services,modules}/**/*.html'
+    paths.src + '/{app,modules}/**/*.html',
+    paths.tmp + '/{app,modules}/**/*.html'
   ])
     .pipe(gulpif(do_minify_partials, $.minifyHtml({
       empty: true, // KEEP empty attributes
@@ -49,6 +49,10 @@ gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');
   var assets;
+  /* Force remove of all comments
+   * It doesn't reduce the file size that much. Ex: 1.690 Mb => 1.683Mb*/
+  var preserveComments = $.uglifySaveLicense;
+  /*var preserveComments = false;*/
 
   return gulp.src(paths.tmp + '/serve/*.html')
     .pipe($.inject(partialsInjectFile, partialsInjectOptions))
@@ -62,7 +66,7 @@ gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
     .pipe($.replace('/languages/', '/po/'))
     .pipe($.ngAnnotate())
     .pipe(gulpif(do_uglyfy, $.uglify({
-      preserveComments: $.uglifySaveLicense
+      preserveComments: preserveComments
     })))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)

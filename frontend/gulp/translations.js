@@ -10,8 +10,8 @@ var debug = require('gulp-debug');
 gulp.task('pot', function() {
   return gulp.src([
       'src/index.html',
-      'src/{app,components,services,modules}/**/*.html',
-      'src/{app,components,services,modules}/**/*.js'])
+      'src/{app,modules}/**/*.html',
+      'src/{app,modules}/**/*.js'])
     .pipe(gettext.extract('template.pot', {
       // options to pass to angular-gettext-tools...
     }))
