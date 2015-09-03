@@ -81,7 +81,7 @@ def run(cmd, cwd=None, shell=False):
 def run_output(cmd, cwd=None, shell=False):
     print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
     flush()
-    s = subprocess.check_call(cmd, shell=shell, cwd=cwd)
+    s = subprocess.check_output(cmd, shell=shell, cwd=cwd)
     return str(s)
 
 

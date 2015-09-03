@@ -70,7 +70,7 @@ def main():
                 lib.printError("See usage with --help")
                 sys.exit(1)
     else:
-        lib.printError("No argument in the command line, using default target: {}".format(default_cmd))
+        lib.printInfo("No argument in the command line, using default target: {}".format(default_cmd))
         subcmd = default_cmd
 
     if sys.version_info < (2, 7):
