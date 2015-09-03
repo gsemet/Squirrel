@@ -10,7 +10,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 log = logging.getLogger(__name__)
 
-naming_convention = {
+NAMING_CONVENTION = {
     "ix": 'ix_%(column_0_label)s',
     "uq": "uq_%(table_name)s_%(column_0_name)s",
     "ck": "ck_%(table_name)s_%(constraint_name)s",
@@ -18,7 +18,7 @@ naming_convention = {
     "pk": "pk_%(table_name)s"
 }
 
-Base = declarative_base(metadata=sa.MetaData(naming_convention=naming_convention))
+Base = declarative_base(metadata=sa.MetaData(naming_convention=NAMING_CONVENTION))
 
 # force import all table here to register them, so they ll be created with the
 # create_all function.
