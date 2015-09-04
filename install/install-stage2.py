@@ -330,6 +330,7 @@ def main():
                                                            sys.version.split("\n")[0]))
     lib.printInfo("installation dir: {}".format(install_path))
     lib.printInfo("workdir: {}".format(workdir_path))
+    lib.printInfo("PATH: {}".format(os.environ['PATH']))
     lib.printInfo("Executing command: '{}'".format(subcmd))
     lib.printInfo("Install Capabilities: {}".format(", ".join(sorted(list(current_capabilities)))))
     lib.printInfo("Environment variables:")
@@ -440,13 +441,16 @@ def main():
         lib.printInfo("cd frontend")
         # Circumvent bugs such as https://github.com/bower/bower/issues/646
         lib.run(["bower", "cache", "clean"], cwd=os.path.join(install_path, "frontend"),
+                extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
                 shell=shell)
         lib.run(["bower", "install"], cwd=os.path.join(install_path, "frontend"),
+                extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
                 shell=shell)
 
         if "frontend_gulp_build" in current_capabilities:
             lib.printInfo("cd frontend")
             lib.run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"),
+                    extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
                     shell=shell)
 
         lib.printSeparator()
@@ -484,15 +488,18 @@ def main():
         # Circumvent bugs such as https://github.com/bower/bower/issues/646
         lib.run(["bower", "cache", "clean"],
                 cwd=os.path.join(install_path, "homepage"),
+                extraPath=os.path.join(install_path, "homepage", "node_modules", ".bin"),
                 shell=shell)
         lib.run(["bower", "install"],
                 cwd=os.path.join(install_path, "homepage"),
+                extraPath=os.path.join(install_path, "homepage", "node_modules", ".bin"),
                 shell=shell)
 
         if "homepage_gulp_build" in current_capabilities:
             lib.printInfo("cd homepage")
             lib.run(["gulp", "build"],
                     cwd=os.path.join(install_path, "homepage"),
+                    extraPath=os.path.join(install_path, "homepage", "node_modules", ".bin"),
                     shell=shell)
 
         lib.printSeparator()
@@ -528,6 +535,7 @@ def main():
         lib.printInfo("cd frontend")
         lib.run(["bower", "install", "--save"],
                 cwd=os.path.join(install_path, "frontend"),
+                extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
                 shell=shell)
 
     if "homepage_update_translations_fr" in current_capabilities:
