@@ -81,6 +81,7 @@ def run(cmd, cwd=None, shell=False, extraPath=None):
         shell = True
         path_bkp = os.environ['PATH']
         os.environ['PATH'] = extraPath + ":" + os.environ['PATH']
+        cmd = " ".join(cmd)
         print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " PATH set to: {}".format(os.environ['PATH']))
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
     if extraPath and path_bkp:
