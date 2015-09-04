@@ -75,6 +75,7 @@ def printBoot(text):
 def run(cmd, cwd=None, shell=False, extraPath=None):
     print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
     flush()
+    path_bkp = None
     if extraPath and not isWindows:
         # Force use shell to allow PATH environment variable propagation
         shell = True
@@ -82,7 +83,7 @@ def run(cmd, cwd=None, shell=False, extraPath=None):
         os.environ['PATH'] = extraPath + ":" + os.environ['PATH']
         print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " PATH set to: {}".format(os.environ['PATH']))
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
-    if extraPath:
+    if extraPath and path_bkp:
         os.environ['PATH'] = path_bkp
 
 
