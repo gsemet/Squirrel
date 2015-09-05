@@ -660,10 +660,6 @@ def main():
 
     if "clean_prod" in current_capabilities:
         lib.run_background(["install", "uninstall.py", "--no-dist"],
-                           cwd=os.path.join(install_path, "frontend"),
-                           shell=shell)
-        lib.run_background(["install", "uninstall.py", "--no-dist"],
-                           cwd=os.path.join(install_path, "homepage"),
                            shell=shell)
 
     if "warn_no_serve_and_quit" in current_capabilities:

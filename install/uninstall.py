@@ -26,13 +26,12 @@ with open(config_path) as f:
 # todo: read this config file (beware, we are *not* in a virtualenv, cannot use the yaml package)
 root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
-if remove_dist:
-    frontend_dist_path = os.path.abspath(os.path.join(root_path,
-                                                      "frontend",
-                                                      "dist"))
-    homepage_dist_path = os.path.abspath(os.path.join(root_path,
-                                                      "homepage",
-                                                      "dist"))
+frontend_dist_path = os.path.abspath(os.path.join(root_path,
+                                                  "frontend",
+                                                  "dist"))
+homepage_dist_path = os.path.abspath(os.path.join(root_path,
+                                                  "homepage",
+                                                  "dist"))
 egg_info = os.path.abspath(os.path.join(root_path,
                                         "backend",
                                         "Squirrel.egg-info"))
@@ -66,14 +65,15 @@ paths_to_remove = [
     (os.path.join(root_path, "_trial_temp"), "_trial_temp"),
     (os.path.join(root_path, "_trial_temp.lock"), "_trial_temp.lock"),
     (os.path.join(root_path, "tosource"), "tosource"),
-    (frontend_dist_path, "frontend/dist"),
     (frontend_node_modules_path, "frontend/node_modules"),
     (frontend_bower_components_path, "frontend/bower_components"),
-    (homepage_dist_path, "homepage/dist"),
     (homepage_node_modules_path, "homepage/node_modules"),
     (homepage_bower_components_path, "homepage/bower_components"),
     (workdir_path, "workdir"),
 ]
+if remove_dist:
+    paths_to_remove.append((frontend_dist_path, "frontend/dist"))
+    paths_to_remove.append((homepage_dist_path, "homepage/dist"))
 
 print("Uninstalling files in {}".format(root_path))
 for path, name in paths_to_remove:
