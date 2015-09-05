@@ -84,9 +84,10 @@ cmd_capabilities = {
     },
     "serve:dev": {
         "pip_upgrade",
-        "backend_install",
-        "frontend_install",
-        "homepage_install",
+        "build_install",
+        "build_frontend",
+        "build_homepage",
+        "build_doc",
         "serve",
         "serve_dev",
         "serve_dev_backend",
@@ -95,30 +96,31 @@ cmd_capabilities = {
     },
     "serve:dev:backend": {
         "pip_upgrade",
-        "backend_install",
+        "build_install",
         "serve",
         "serve_dev",
         "serve_dev_backend",
     },
     "serve:dev:frontend": {
         "pip_upgrade",
-        "frontend_install",
+        "build_frontend",
         "serve",
         "serve_dev",
         "serve_dev_frontend",
     },
     "serve:dev:homepage": {
         "pip_upgrade",
-        "frontend_install",
+        "build_frontend",
         "serve",
         "serve_dev",
         "serve_dev_homepage",
     },
     "serve:prod": {
         "pip_upgrade",
-        "backend_install",
-        "frontend_install",
-        "homepage_install",
+        "build_install",
+        "build_frontend",
+        "build_homepage",
+        "build_doc",
         "frontend_gulp_build",
         "homepage_gulp_build",
         "serve",
@@ -126,20 +128,22 @@ cmd_capabilities = {
     },
     "serve:staging": {
         "pip_upgrade",
-        "backend_install",
-        "frontend_install",
+        "build_install",
+        "build_frontend",
+        "build_doc",
         "frontend_gulp_build",
-        "homepage_install",
+        "build_homepage",
         "homepage_gulp_build",
         "serve",
         "serve_staging",
     },
     "serve:novirtualenv": {
         "pip_upgrade",
-        "backend_install",
-        "frontend_install",
+        "build_install",
+        "build_frontend",
+        "build_doc",
         "frontend_gulp_build",
-        "homepage_install",
+        "build_homepage",
         "homepage_gulp_build",
         "serve",
         "serve_prod",
@@ -191,53 +195,55 @@ cmd_capabilities = {
     },
     "install:all": {
         "pip_upgrade",
-        "backend_install",
-        "frontend_install",
-        "homepage_install",
+        "build_install",
+        "build_frontend",
+        "build_homepage",
+        "build_doc",
         "frontend_gulp_build",
         "homepage_gulp_build",
         "warn_no_serve_and_quit",
     },
     "install:backend": {
         "pip_upgrade",
-        "backend_install",
+        "build_install",
         "warn_no_serve_and_quit",
     },
     "install:frontend": {
-        "frontend_install",
+        "build_frontend",
         "frontend_gulp_build",
         "warn_no_serve_and_quit",
     },
     "install:homepage": {
-        "homepage_install",
+        "build_homepage",
         "homepage_gulp_build",
         "warn_no_serve_and_quit",
     },
     "install:novirtualenv:backend": {
         "pip_upgrade",
-        "backend_install",
+        "build_install",
         "novirtualenv",
         "warn_no_serve_and_quit",
     },
     "install:novirtualenv:all": {
         "pip_upgrade",
-        "backend_install",
-        "frontend_install",
-        "homepage_install",
+        "build_install",
+        "build_frontend",
+        "build_homepage",
         "novirtualenv",
         "warn_no_serve_and_quit",
     },
     'update:all': {
         "pip_upgrade",
-        "backend_install",
-        "frontend_install",
+        "build_install",
+        "build_frontend",
         "frontend_update",
         "frontend_update_npm",
         "frontend_update_bower",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
         "frontend_update_translations_en",
-        "homepage_install",
+        "build_homepage",
+        "build_doc",
         "homepage_update",
         "homepage_update_npm",
         "homepage_update_bower",
@@ -247,13 +253,13 @@ cmd_capabilities = {
     },
     'update:lang:all': {
         "pip_upgrade",
-        "backend_install",
+        "build_install",
         "backend_update_translation",
-        "frontend_install",
+        "build_frontend",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
         "frontend_update_translations_en",
-        "homepage_install",
+        "build_homepage",
         "homepage_gulp_build",
         "homepage_update_translations_fr",
         "homepage_update_translations_en",
@@ -261,23 +267,23 @@ cmd_capabilities = {
     },
     'update:lang:fr': {
         "pip_upgrade",
-        "backend_install",
+        "build_install",
         "backend_update_translation",
-        "frontend_install",
+        "build_frontend",
         "frontend_gulp_build",
         "frontend_update_translations_fr",
-        "homepage_install",
+        "build_homepage",
         "homepage_gulp_build",
         "homepage_update_translations_fr",
     },
     'update:lang:en': {
         "pip_upgrade",
-        "backend_install",
+        "build_install",
         "backend_update_translation",
-        "frontend_install",
+        "build_frontend",
         "frontend_gulp_build",
         "frontend_update_translations_en",
-        "homepage_install",
+        "build_homepage",
         "homepage_gulp_build",
         "homepage_update_translations_en",
     },
@@ -382,7 +388,7 @@ def main():
         lib.printInfo("cd backend")
         lib.run(["pip", "install", "--upgrade", "pip"])
 
-    if "backend_install" in current_capabilities:
+    if "build_install" in current_capabilities:
         lib.printSeparator()
         lib.printInfo("Installing backend requirements")
         lib.printInfo("cd backend")
@@ -408,7 +414,7 @@ def main():
         lib.printInfo("cd backend")
         lib.run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
-    if "frontend_install" in current_capabilities:
+    if "build_frontend" in current_capabilities:
         lib.printSeparator()
         lib.printInfo("Compiling frontend website")
         lib.printInfo("PWD")
@@ -453,16 +459,7 @@ def main():
                     extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
                     shell=shell)
 
-        lib.printSeparator()
-        lib.printInfo("Building online documentation")
-        if lib.isWindows:
-            lib.run(["make.bat", "html"], cwd=os.path.join(install_path, "doc"),
-                    shell=True)
-        else:
-            lib.run(["make", "html"], cwd=os.path.join(install_path, "doc"),
-                    shell=shell)
-
-    if "homepage_install" in current_capabilities:
+    if "build_homepage" in current_capabilities:
         lib.printSeparator()
         lib.printInfo("Compiling homepage website")
         if "http_proxy" in os.environ:
@@ -502,6 +499,7 @@ def main():
                     extraPath=os.path.join(install_path, "homepage", "node_modules", ".bin"),
                     shell=shell)
 
+    if "build_doc" in current_capabilities:
         lib.printSeparator()
         lib.printInfo("Building online documentation")
         if lib.isWindows:
