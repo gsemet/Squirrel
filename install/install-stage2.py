@@ -42,9 +42,10 @@ allowed_cmd = {
     "install:backend":          "build/install only backend (python)",
     "install:frontend":         "build/install only frontend (angular)",
     "install:homepage":         "build/install only homepage (angular)",
-    "install:all":              "build/install backend and frontend",
+    "install:all":              "build/install backend, frontend and homepage",
+    "install:all-clean":        "build/install backend, frontend and homepage, then clean build",
     "install:novirtualenv:backend": "build/install only backend without virtualenv (heroku model)",
-    "install:novirtualenv:all":      "build/install all without virtualenv (heroku model)",
+    "install:novirtualenv:all":     "build/install all without virtualenv (heroku model)",
     "update:all":              ("update all dependencies (modules installed by npm and bower) "
                                 "and translations"),
     "update:lang:all":          "update all translations files - requires 'poedit'",
@@ -203,6 +204,17 @@ cmd_capabilities = {
         "homepage_gulp_build",
         "warn_no_serve_and_quit",
     },
+    "install:all-clean": {
+        "pip_upgrade",
+        "build_install",
+        "build_frontend",
+        "build_homepage",
+        "build_doc",
+        "clean_prod",
+        "frontend_gulp_build",
+        "homepage_gulp_build",
+        "warn_no_serve_and_quit",
+    },
     "install:backend": {
         "pip_upgrade",
         "build_install",
@@ -231,6 +243,7 @@ cmd_capabilities = {
         "build_homepage",
         "novirtualenv",
         "warn_no_serve_and_quit",
+        "clean_prod",
     },
     'update:all': {
         "pip_upgrade",
@@ -566,7 +579,7 @@ def main():
 
     if "backend_update_translation" in current_capabilities:
         lib.printSeparator()
-        print("[INFO] Updating backend translation")
+        lib.printInfo("Updating backend translation")
         lib.run("xgettext --debug --language=Python --keyword=_ "
                 "--output=po/Squirrel.pot $(find . -name '*.py')",
                 cwd=os.path.join(install_path, "backend"), shell=True)
@@ -644,6 +657,14 @@ def main():
         while True:
             lib.printInfo(' -- Click Ctrl+C to close this window --')
             sleep(5)
+
+    if "clean_prod" in current_capabilities:
+        lib.run_background(["install", "uninstall.py", "--no-dist"],
+                           cwd=os.path.join(install_path, "frontend"),
+                           shell=shell)
+        lib.run_background(["install", "uninstall.py", "--no-dist"],
+                           cwd=os.path.join(install_path, "homepage"),
+                           shell=shell)
 
     if "warn_no_serve_and_quit" in current_capabilities:
         lib.printInfo("")

@@ -9,6 +9,14 @@ from __future__ import print_function
 import fnmatch
 import os
 import shutil
+import sys
+
+remove_dist = True
+
+if len(sys.argv) > 1:
+    args = sys.argv[:]
+    if args[1] == "--no-dist":
+        remove_dist = False
 
 config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs", "default.conf"))
 
@@ -18,12 +26,13 @@ with open(config_path) as f:
 # todo: read this config file (beware, we are *not* in a virtualenv, cannot use the yaml package)
 root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
-frontend_dist_path = os.path.abspath(os.path.join(root_path,
-                                                  "frontend",
-                                                  "dist"))
-homepage_dist_path = os.path.abspath(os.path.join(root_path,
-                                                  "homepage",
-                                                  "dist"))
+if remove_dist:
+    frontend_dist_path = os.path.abspath(os.path.join(root_path,
+                                                      "frontend",
+                                                      "dist"))
+    homepage_dist_path = os.path.abspath(os.path.join(root_path,
+                                                      "homepage",
+                                                      "dist"))
 egg_info = os.path.abspath(os.path.join(root_path,
                                         "backend",
                                         "Squirrel.egg-info"))
