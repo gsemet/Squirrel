@@ -659,7 +659,7 @@ def main():
             sleep(5)
 
     if "clean_prod" in current_capabilities:
-        lib.run_background(["install", "uninstall.py", "--no-dist"],
+        lib.run_background([os.path.join("install", "uninstall.py"), "--no-dist"],
                            shell=shell)
 
     if "warn_no_serve_and_quit" in current_capabilities:
