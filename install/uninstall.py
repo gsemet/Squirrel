@@ -119,4 +119,7 @@ if matches:
         lib.printInfo(" - {}".format(m))
         os.unlink(m)
 
-lib.printInfo("Uninstall done")
+if remove_dist:
+    lib.printInfo("Uninstall done")
+else:
+    lib.printInfo("Uninstall of compilation artifacts done. Built dist kept.")
