@@ -7,9 +7,15 @@ from __future__ import print_function
 # controlled virtual env.
 
 import fnmatch
+import imp
 import os
 import shutil
 import sys
+
+
+# Injecting available targets from installer stage 2
+lib = imp.load_source('install-lib.py',
+                      os.path.join(os.path.dirname(__file__), "install-lib.py"))
 
 remove_dist = True
 
@@ -75,13 +81,13 @@ if remove_dist:
     paths_to_remove.append((frontend_dist_path, "frontend/dist"))
     paths_to_remove.append((homepage_dist_path, "homepage/dist"))
 
-print("Uninstalling files in {}".format(root_path))
+lib.printInfo("Uninstalling files in {}".format(root_path))
 for path, name in paths_to_remove:
     if os.path.isdir(path):
-        print("Removing {}...".format(name))
+        lib.printInfo("Removing {}...".format(name))
         shutil.rmtree(path)
     elif os.path.isfile(path):
-        print("Removing {}...".format(name))
+        lib.printInfo("Removing {}...".format(name))
         os.unlink(path)
 
 file_pattern_to_clean = [
@@ -92,7 +98,7 @@ po_file_to_clean = [
     '*.js',
     '*.mo',
 ]
-print("Cleaning files: {}".format(", ".join(file_pattern_to_clean)))
+lib.printInfo("Cleaning files: {}".format(", ".join(file_pattern_to_clean)))
 matches = []
 for root, dirnames, filenames in os.walk(root_path):
     for pattern in file_pattern_to_clean:
@@ -108,9 +114,9 @@ for root, dirnames, filenames in os.walk(homepage_po_path):
         for filename in fnmatch.filter(filenames, pattern):
             matches.append(os.path.join(root, filename))
 if matches:
-    print("Removing:")
+    lib.printInfo("Removing:")
     for m in matches:
-        print(" - {}".format(m))
+        lib.printInfo(" - {}".format(m))
         os.unlink(m)
 
-print("Uninstall done")
+lib.printInfo("Uninstall done")
