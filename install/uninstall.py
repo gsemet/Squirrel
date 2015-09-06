@@ -61,17 +61,17 @@ homepage_po_path = os.path.abspath(os.path.join(root_path,
                                                 ))
 
 paths_to_remove = [
-    (egg_info, "Squirrel.egg_info"),
     (os.path.join(root_path, "_trial_temp"), "_trial_temp"),
     (os.path.join(root_path, "_trial_temp.lock"), "_trial_temp.lock"),
-    (os.path.join(root_path, "tosource"), "tosource"),
     (frontend_node_modules_path, "frontend/node_modules"),
     (frontend_bower_components_path, "frontend/bower_components"),
     (homepage_node_modules_path, "homepage/node_modules"),
     (homepage_bower_components_path, "homepage/bower_components"),
-    (workdir_path, "workdir"),
 ]
 if remove_dist:
+    paths_to_remove.append((os.path.join(root_path, "tosource"), "tosource"))
+    paths_to_remove.append((workdir_path, "workdir"))
+    paths_to_remove.append((egg_info, "Squirrel.egg_info"))
     paths_to_remove.append((frontend_dist_path, "frontend/dist"))
     paths_to_remove.append((homepage_dist_path, "homepage/dist"))
 
