@@ -121,7 +121,7 @@ def main():
         except:
             lib.printError("Missing dependency: virtualenv. "
                            "Please install this mandatory dependency!")
-            return 1
+            # return 1
 
         lib.printBoot("Setting up virtualenv to start Installer Stage 2.")
     else:
