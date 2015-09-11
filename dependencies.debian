@@ -1,0 +1,5 @@
+libpython-dev
+libffi-dev
+libssl-dev
+mongodb
+npm

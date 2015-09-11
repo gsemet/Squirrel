@@ -84,6 +84,7 @@ cmd_capabilities = {
         "help",
     },
     "serve:dev": {
+        "check_dependencies",
         "pip_upgrade",
         "build_install",
         "build_frontend",
@@ -96,6 +97,7 @@ cmd_capabilities = {
         "serve_dev_homepage",
     },
     "serve:dev:backend": {
+        "check_dependencies",
         "pip_upgrade",
         "build_install",
         "serve",
@@ -117,6 +119,7 @@ cmd_capabilities = {
         "serve_dev_homepage",
     },
     "serve:prod": {
+        "check_dependencies",
         "pip_upgrade",
         "build_install",
         "build_frontend",
@@ -128,6 +131,7 @@ cmd_capabilities = {
         "serve_prod",
     },
     "serve:staging": {
+        "check_dependencies",
         "pip_upgrade",
         "build_install",
         "build_frontend",
@@ -139,6 +143,7 @@ cmd_capabilities = {
         "serve_staging",
     },
     "serve:novirtualenv": {
+        "check_dependencies",
         "pip_upgrade",
         "build_install",
         "build_frontend",
@@ -368,6 +373,16 @@ def main():
         shell = False
         activate_path = os.path.join(workdir_path, "bin", "activate")
 
+    if "check_dependencies" in current_capabilities:
+        lib.printInfo("Checking mandatory dependencies: ")
+        lib.printInfo(" - virtualenv")  # (already checked in stage1)
+        lib.printInfo(" - pip")
+        lib.printInfo(" - MongoDB")
+        lib.printInfo(" - node")
+        # find nodejs on debian and warn to install manually the node package from node.io!
+        lib.printInfo(" - bower")
+        lib.printInfo("OK")
+
     if "pip_upgrade" in current_capabilities:
         if sys.platform.startswith("linux"):
             pip_version_str = lib.run_output(["pip", "--version"])
@@ -462,7 +477,7 @@ def main():
         lib.run(["bower", "cache", "clean"], cwd=os.path.join(install_path, "frontend"),
                 extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
                 shell=shell)
-        lib.run(["bower", "install"], cwd=os.path.join(install_path, "frontend"),
+        lib.run(["bower", "install", "--allow-root"], cwd=os.path.join(install_path, "frontend"),
                 extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
                 shell=shell)
 
@@ -500,7 +515,7 @@ def main():
                 cwd=os.path.join(install_path, "homepage"),
                 extraPath=os.path.join(install_path, "homepage", "node_modules", ".bin"),
                 shell=shell)
-        lib.run(["bower", "install"],
+        lib.run(["bower", "install", "--allow-root"],
                 cwd=os.path.join(install_path, "homepage"),
                 extraPath=os.path.join(install_path, "homepage", "node_modules", ".bin"),
                 shell=shell)

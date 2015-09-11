@@ -116,6 +116,13 @@ def main():
     lib.printBoot("Interpreter: {0} - Version: {1}".format(sys.executable,
                                                            sys.version.split("\n")[0]))
     if do_virtualenv:
+        try:
+            lib.check_call(["virtualenv", "--version"])
+        except:
+            lib.printError("Missing dependency: virtualenv. "
+                           "Please install this mandatory dependency!")
+            return 1
+
         lib.printBoot("Setting up virtualenv to start Installer Stage 2.")
     else:
         m = "Beware !! 'novirtualenv' mode detected, do ** NOT ** setup a virtual env!"
