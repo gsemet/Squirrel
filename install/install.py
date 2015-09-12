@@ -16,7 +16,6 @@ from __future__ import print_function
 
 import imp
 import os
-import subprocess
 import sys
 
 # Do *not* use optparse or argparse here, we are not sure on which version of python we are!
@@ -105,6 +104,7 @@ def main():
     requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                     os.pardir,
                                                     "requirements.txt"))
+
     if lib.isWindows:
         activate = os.path.join(workdir_path, "Scripts", "activate.bat")
         activate_info = activate

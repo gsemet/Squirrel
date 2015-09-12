@@ -2,6 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import errno
 import os
 import subprocess
 import sys
@@ -48,12 +49,16 @@ def flush():
 
 
 def printInfo(text):
-    print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + text)
+    text = str(text)
+    for line in text.split("\n"):
+        print(bcolors.OKBLUE + "[INFO ] " + bcolors.ENDC + line)
     flush()
 
 
 def printError(text):
-    print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + text, file=sys.stderr)
+    text = str(text)
+    for line in text.split("\n"):
+        print(bcolors.FAIL + "[ERROR] " + bcolors.ENDC + line, file=sys.stderr)
     flush()
 
 
@@ -63,13 +68,33 @@ def printSeparator(char="-", color=bcolors.OKGREEN):
 
 
 def printNote(text):
-    print(bcolors.HEADER + "[NOTE ] " + bcolors.ENDC + text)
+    text = str(text)
+    for line in text.split("\n"):
+        print(bcolors.HEADER + "[NOTE ] " + bcolors.ENDC + line)
     flush()
 
 
 def printBoot(text):
-    print(bcolors.BOOT + "[BOOT ] " + bcolors.ENDC + text)
+    text = str(text)
+    for line in text.split("\n"):
+        print(bcolors.BOOT + "[BOOT ] " + bcolors.ENDC + line)
     flush()
+
+
+def printDebug(text):
+    text = str(text)
+    for line in text.split("\n"):
+        print(bcolors.BOOT + "[DEBUG] " + bcolors.ENDC + line)
+    flush()
+
+
+def printQuestion(text):
+    text = str(text)
+    for line in text.split("\n"):
+        print(bcolors.OKGREEN + "[???? ] " + bcolors.ENDC + line)
+    flush()
+    line = sys.stdin.readline()
+    return line.strip()
 
 
 def run(cmd, cwd=None, shell=False, extraPath=None):
@@ -115,4 +140,12 @@ def run_background(cmd, cwd=None, shell=False):
     flush()
     subprocess.Popen(cmd, cwd=cwd, shell=shell)
 
-####################################################################################################
+
+def mkdirs(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise

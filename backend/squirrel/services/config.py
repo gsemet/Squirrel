@@ -98,6 +98,15 @@ def _resolveSqlPath(url):
     return url
 
 
+def _resolveEnv(var):
+    if var.startswith('$'):
+        var = var[1:]
+        log.info("Resolving setting '{}' using the environment variables to: {}"
+                 .format(var, os.environ[var]))
+        var = os.environ[var]
+    return var
+
+
 def updateFullPaths():
     c = Config()
     c.frontend.root_fullpath = _makeFullPath(c.frontend.root_path)
@@ -105,6 +114,7 @@ def updateFullPaths():
     c.frontend.doc_fullpath = _makeFullPath(c.frontend.doc_path)
     c.logging.config_file_fullpath = _makeFullPath(c.logging.config_file)
     c.backend.db.full_url = _resolveSqlPath(c.backend.db.url)
+    c.backend.mongodb.full_url = _resolveEnv(c.backend.mongdb.url)
     c.backend.db.workdir_fullpath = _makeFullPath(c.backend.db.workdir)
     c.plugins.default_path_fullpath = _makeFullPath(c.plugins.default_path)
 

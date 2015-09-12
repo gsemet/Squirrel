@@ -47,6 +47,8 @@ backend:
     db:
         workdir: ../workdir/
         url: sqlite:///../workdir/db.sqlite
+    mongodb:
+        url: $MONGO_DB_URL
 
 plugins:
     default_path: ../plugins/

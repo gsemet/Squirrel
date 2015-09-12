@@ -7,6 +7,7 @@ from __future__ import division
 from __future__ import print_function
 
 import imp
+import json
 import os
 import sys
 
@@ -95,6 +96,7 @@ cmd_capabilities = {
         "serve_dev_backend",
         "serve_dev_frontend",
         "serve_dev_homepage",
+        "start_mongo_if_needed",
     },
     "serve:dev:backend": {
         "check_dependencies",
@@ -103,6 +105,7 @@ cmd_capabilities = {
         "serve",
         "serve_dev",
         "serve_dev_backend",
+        "start_mongo_if_needed",
     },
     "serve:dev:frontend": {
         "pip_upgrade",
@@ -129,6 +132,7 @@ cmd_capabilities = {
         "homepage_gulp_build",
         "serve",
         "serve_prod",
+        "start_mongo_if_needed",
     },
     "serve:staging": {
         "check_dependencies",
@@ -141,6 +145,7 @@ cmd_capabilities = {
         "homepage_gulp_build",
         "serve",
         "serve_staging",
+        "start_mongo_if_needed",
     },
     "serve:novirtualenv": {
         "check_dependencies",
@@ -153,12 +158,14 @@ cmd_capabilities = {
         "homepage_gulp_build",
         "serve",
         "serve_prod",
+        "start_mongo_if_needed",
         "novirtualenv",
         "heroku",
     },
     "start:prod": {
         "serve",
         "serve_prod",
+        "start_mongo_if_needed",
     },
     "start:staging": {
         "serve",
@@ -167,6 +174,7 @@ cmd_capabilities = {
     "start:dev": {
         "serve",
         "serve_dev",
+        "start_mongo_if_needed",
         "serve_dev_backend",
         "serve_dev_frontend",
         "serve_dev_homepage",
@@ -184,6 +192,7 @@ cmd_capabilities = {
     "start:dev:backend": {
         "serve",
         "serve_dev",
+        "start_mongo_if_needed",
         "serve_dev_backend",
     },
     "start:novirtualenv": {
@@ -372,6 +381,46 @@ def main():
     else:
         shell = False
         activate_path = os.path.join(workdir_path, "bin", "activate")
+
+    environ_json_path = os.path.join(workdir_path, "environ.json")
+    if os.path.exists(environ_json_path):
+        lib.printInfo("Sourcing environment variables from {}".format(environ_json_path))
+        with open(environ_json_path) as f:
+            content = f.read()
+            lib.printDebug("content:{!r}".format(content))
+            environ_json = json.loads(content)
+            for name, var in environ_json.items():
+                lib.printInfo("  {}={}".format(name, var))
+                os.environ[name] = var
+
+    user_env_var = {}
+    if not os.environ.get('MONGO_DB_URL'):
+        lib.printInfo("MONGO_DB_URL environment variable not found")
+        if not os.environ.get("MONGOD_PATH"):
+            lib.printInfo("MONGOD_PATH environment variable not set")
+            res = lib.printQuestion("Do you want to manage MongoDB server?\n"
+                                    "1 = Let Squirrel Installer start/stop MongoDB server\n"
+                                    "2 = MongoDB is already installed, just set the URL")
+            if res == "1":
+                res = lib.printQuestion("Where MongoDB is installed (path to 'mongod{}')?"
+                                        .format(".exe" if isWindows else ""))
+                if not os.path.exists(os.path.abspath(res)):
+                    lib.printError("Path does not exist: {}".format(res))
+                    return 1
+                user_env_var["MONGOD_PATH"] = res
+            elif res == "2":
+                res = lib.printQuestion("What is the URL of your MongoDB server?")
+                user_env_var["MONGO_DB_URL"] = res
+            else:
+                lib.printError("Invalid anwser: {}".format(res))
+                return 1
+
+    if user_env_var:
+        lib.printInfo("Writing environment json: {}".format(environ_json_path))
+        with open(environ_json_path, "w") as f:
+            f.writelines(json.dumps(user_env_var))
+        for name, var in user_env_var.items():
+            os.environ[name] = var
 
     if "check_dependencies" in current_capabilities:
         lib.printInfo("Checking mandatory dependencies: ")
@@ -598,6 +647,16 @@ def main():
         lib.run("xgettext --debug --language=Python --keyword=_ "
                 "--output=po/Squirrel.pot $(find . -name '*.py')",
                 cwd=os.path.join(install_path, "backend"), shell=True)
+
+    if "start_mongo_if_needed" in current_capabilities:
+        if os.environ["MONGOD_PATH"]:
+            lib.printInfo("Starting mongod: {}".format(os.environ["MONGOD_PATH"]))
+            mongo_dbpath = os.path.join(workdir_path, "mongodb")
+            lib.mkdirs(mongo_dbpath)
+            lib.run_background([os.environ["MONGOD_PATH"], "--dbpath", mongo_dbpath])
+            os.environ["MONGO_DB_URL"] = "localhost:27017"
+        else:
+            lib.printInfo("Do not start MongoDB")
 
     if "serve_prod" in current_capabilities or "serve_staging" in current_capabilities:
         # Launching squirrel-prod
