@@ -53,8 +53,6 @@ def usage():
 
 
 def main():
-    do_virtualenv = True
-
     if len(sys.argv) > 1:
         args = sys.argv[:]
         while args:
@@ -81,6 +79,13 @@ def main():
 
     if "novirtualenv" in subcmd:
         do_virtualenv = False
+
+    do_virtualenv = True
+
+    if lib.isWindows:
+        virtualenv = "virtualenv.exe"
+        # python_exe = "python.exe"
+        launch_in_new_window = True
 
     if os.environ.get('VIRTUAL_ENV'):
         lib.printError("Beware, you already are inside the following virtual env: {}"
@@ -117,11 +122,13 @@ def main():
                                                            sys.version.split("\n")[0]))
     if do_virtualenv:
         try:
-            lib.check_call(["virtualenv", "--version"])
+            lib.printInfo("Checking if virtualenv exits...")
+            lib.run([virtualenv, "--version"])
+            lib.printInfo("OK")
         except:
             lib.printError("Missing dependency: virtualenv. "
                            "Please install this mandatory dependency!")
-            # return 1
+            raise
 
         lib.printBoot("Setting up virtualenv to start Installer Stage 2.")
     else:
@@ -136,14 +143,11 @@ def main():
     lib.printBoot("Requirements: {0}".format(requirements_txt))
 
     if lib.isWindows:
-        virtualenv = "virtualenv.exe"
-        # python_exe = "python.exe"
-        launch_in_new_window = True
 
         if not os.path.exists(os.path.join(workdir_path, "Scripts", "pip.exe")):
             lib.printBoot("Installing virtualenv in: {0}".format(workdir_path))
             try:
-                subprocess.check_call([virtualenv, "--system-site-packages", workdir_path])
+                lib.run([virtualenv, "--system-site-packages", workdir_path])
             except:
                 lib.printError("Error during installation of virtualenv. Do you have virtual env "
                                "in your system? Install it with:")
@@ -155,7 +159,7 @@ def main():
         launcher_bat = os.path.abspath(os.path.join(os.path.dirname(__file__), "launcher.bat"))
 
         lib.printBoot("Activating virtualenv in {0}".format(workdir_path))
-        subprocess.check_call([
+        lib.run([
             "cmd", "/K",
             launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
             workdir_path, stage2_path, install_path, workdir_path, subcmd])
@@ -169,7 +173,7 @@ def main():
             activate = os.path.join(workdir_path, "bin", "activate")
 
             if not os.path.exists(os.path.join(workdir_path, "bin", "pip")):
-                subprocess.check_call(['virtualenv', workdir_path])
+                lib.run(['virtualenv', workdir_path])
 
             if not os.path.exists(os.path.join(install_path, "activate")):
                 lib.printBoot("Creating symblink activate")
@@ -177,8 +181,8 @@ def main():
                                                                                        "activate"))
 
             lib.printBoot("Activating virtualenv in {0}".format(workdir_path))
-            # subprocess.check_call([python_exe, stage2_path, activate, install_path])
-            subprocess.check_call([
+            # lib.run([python_exe, stage2_path, activate, install_path])
+            lib.run([
                 'bash',
                 '-c',
                 'source {activate} && python {stage2} {install_path} {workdir_path} {subcmd}'
@@ -189,8 +193,8 @@ def main():
                         subcmd=subcmd)])
         else:
             lib.printBoot("Starting stage 2 directly without installing a virtualenv")
-            # subprocess.check_call([python_exe, stage2_path, activate, install_path])
-            subprocess.check_call([
+            # lib.run([python_exe, stage2_path, activate, install_path])
+            lib.run([
                 'python',
                 stage2_path,
                 install_path,
