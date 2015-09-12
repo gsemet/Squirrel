@@ -114,7 +114,7 @@ def updateFullPaths():
     c.frontend.doc_fullpath = _makeFullPath(c.frontend.doc_path)
     c.logging.config_file_fullpath = _makeFullPath(c.logging.config_file)
     c.backend.db.full_url = _resolveSqlPath(c.backend.db.url)
-    c.backend.backend.mongodb.full_url = _resolveEnv(c.backend.mongodb.url)
+    c.backend.mongodb.full_url = _resolveEnv(c.backend.mongodb.url)
     c.backend.db.workdir_fullpath = _makeFullPath(c.backend.db.workdir)
     c.plugins.default_path_fullpath = _makeFullPath(c.plugins.default_path)
 
