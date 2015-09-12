@@ -81,6 +81,7 @@ def main():
         do_virtualenv = False
 
     do_virtualenv = True
+    virtualenv = "virtualenv"
 
     if lib.isWindows:
         virtualenv = "virtualenv.exe"
