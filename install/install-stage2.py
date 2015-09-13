@@ -393,34 +393,35 @@ def main():
                 lib.printInfo("  {}={}".format(name, var))
                 os.environ[name] = var
 
-    user_env_var = {}
-    if not os.environ.get('MONGO_DB_URL'):
-        lib.printInfo("MONGO_DB_URL environment variable not found")
-        if not os.environ.get("MONGOD_PATH"):
-            lib.printInfo("MONGOD_PATH environment variable not set")
-            res = lib.printQuestion("Do you want to manage MongoDB server?\n"
-                                    "1 = Let Squirrel Installer start/stop MongoDB server\n"
-                                    "2 = MongoDB is already installed, just set the URL")
-            if res == "1":
-                res = lib.printQuestion("Where MongoDB is installed (path to 'mongod{}')?"
-                                        .format(".exe" if isWindows else ""))
-                if not os.path.exists(os.path.abspath(res)):
-                    lib.printError("Path does not exist: {}".format(res))
+    if "check_dependencies" in current_capabilities:
+        user_env_var = {}
+        if not os.environ.get('MONGO_DB_URL'):
+            lib.printInfo("MONGO_DB_URL environment variable not found")
+            if not os.environ.get("MONGOD_PATH"):
+                lib.printInfo("MONGOD_PATH environment variable not set")
+                res = lib.printQuestion("Do you want to manage MongoDB server?\n"
+                                        "1 = Let Squirrel Installer start/stop MongoDB server\n"
+                                        "2 = MongoDB is already installed, just set the URL")
+                if res == "1":
+                    res = lib.printQuestion("Where MongoDB is installed (path to 'mongod{}')?"
+                                            .format(".exe" if lib.isWindows else ""))
+                    if not os.path.exists(os.path.abspath(res)):
+                        lib.printError("Path does not exist: {}".format(res))
+                        return 1
+                    user_env_var["MONGOD_PATH"] = res
+                elif res == "2":
+                    res = lib.printQuestion("What is the URL of your MongoDB server?")
+                    user_env_var["MONGO_DB_URL"] = res
+                else:
+                    lib.printError("Invalid anwser: {}".format(res))
                     return 1
-                user_env_var["MONGOD_PATH"] = res
-            elif res == "2":
-                res = lib.printQuestion("What is the URL of your MongoDB server?")
-                user_env_var["MONGO_DB_URL"] = res
-            else:
-                lib.printError("Invalid anwser: {}".format(res))
-                return 1
 
-    if user_env_var:
-        lib.printInfo("Writing environment json: {}".format(environ_json_path))
-        with open(environ_json_path, "w") as f:
-            f.writelines(json.dumps(user_env_var))
-        for name, var in user_env_var.items():
-            os.environ[name] = var
+        if user_env_var:
+            lib.printInfo("Writing environment json: {}".format(environ_json_path))
+            with open(environ_json_path, "w") as f:
+                f.writelines(json.dumps(user_env_var))
+            for name, var in user_env_var.items():
+                os.environ[name] = var
 
     if "check_dependencies" in current_capabilities:
         lib.printInfo("Checking mandatory dependencies: ")
