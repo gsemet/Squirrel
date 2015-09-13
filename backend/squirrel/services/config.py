@@ -90,7 +90,7 @@ def _resolveSqlPath(url):
     elif url.startswith('$'):
         url = url[1:]
         log.info("Resolving SQL Url using the environment variable '{}'".format(url))
-        url = os.environ[url]
+        url = os.environ.get(url)
 
     if sys.platform.startswith("win32"):
         url = url.replace("\\", "\\\\")
@@ -102,8 +102,8 @@ def _resolveEnv(var):
     if var.startswith('$'):
         var = var[1:]
         log.info("Resolving setting '{}' using the environment variables to: {}"
-                 .format(var, os.environ[var]))
-        var = os.environ[var]
+                 .format(var, os.environ.get(var)))
+        var = os.environ.get(var)
     return var
 
 
