@@ -384,7 +384,8 @@ def main():
 
     environ_json_path = os.path.join(workdir_path, "environ.json")
     if os.path.exists(environ_json_path):
-        lib.printInfo("Sourcing environment variables from {}".format(environ_json_path))
+        lib.printInfo("Environment variable json file found, sourcing it from {}"
+                      .format(environ_json_path))
         with open(environ_json_path) as f:
             content = f.read()
             lib.printDebug("content:{!r}".format(content))
@@ -395,13 +396,17 @@ def main():
 
     if "check_dependencies" in current_capabilities:
         user_env_var = {}
+        lib.printSeparator()
+        lib.printInfo("External dependency check is required")
         if not os.environ.get('MONGO_DB_URL'):
             lib.printInfo("MONGO_DB_URL environment variable not found")
             if not os.environ.get("MONGOD_PATH"):
                 lib.printInfo("MONGOD_PATH environment variable not set")
                 res = lib.printQuestion("Do you want to manage MongoDB server?\n"
-                                        "1 = Let Squirrel Installer start/stop MongoDB server\n"
-                                        "2 = MongoDB is already installed, just set the URL")
+                                        "1 = Let Squirrel Installer start/stop MongoDB server "
+                                        "(mongod)\n"
+                                        "2 = MongoDB daemon (mongod) is already running, just "
+                                        "set the URL")
                 if res == "1":
                     res = lib.printQuestion("Where MongoDB is installed (path to 'mongod{}')?"
                                             .format(".exe" if lib.isWindows else ""))
@@ -495,12 +500,8 @@ def main():
     if "build_frontend" in current_capabilities:
         lib.printSeparator()
         lib.printInfo("Compiling frontend website")
-        lib.printInfo("PWD")
-        lib.run_nocheck(["bash", "-c", "echo PWD=$PWD"])
-        lib.run_nocheck(["bash", "-c", "echo PATH=$PATH"])
         lib.run_nocheck(["bash", "-c", "export"])
         lib.run_nocheck(["bash", "-c", "ls -la"])
-        lib.run_nocheck(["bash", "-c", "ls -la .heroku"])
         lib.run_nocheck(["bash", "-c", "which npm"])
         if "http_proxy" in os.environ:
             lib.printNote("Behind a proxy: npm --proxy")
