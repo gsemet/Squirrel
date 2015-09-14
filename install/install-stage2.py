@@ -56,6 +56,7 @@ allowed_cmd = {
     "test:unit":               ("execute unit tests"),
     "test:integration":        ("execute unit tests"),
     "test:e2e":                ("execute end to end tests"),
+    "update:node":             ("install and update node (require root password)")
 }
 aliases = {
     "(empty)": "install:all",
@@ -332,6 +333,9 @@ cmd_capabilities = {
         "frontend_test_e2e",
         "homepage_test_e2e",
     },
+    "update:node": {
+        "update_node",
+    }
 }
 
 
@@ -397,6 +401,13 @@ def main():
         if not content:
             lib.printInfo("Removing {} because it is empty".format(environ_json_path))
             os.unlink(environ_json_path)
+
+    if "update_node" in current_capabilities:
+        lib.printSeparator()
+        lib.printInfo("Updating node tools...")
+        lib.run(["npm", "install", "-g", "bower"])
+        lib.run(["npm", "install", "-g", "gulp"])
+        lib.run(["npm", "install", "-g", "grunt"])
 
     if "check_dependencies" in current_capabilities:
         user_env_var = {}
