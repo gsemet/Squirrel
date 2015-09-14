@@ -67,14 +67,13 @@ def main():
                 lib.printError("See usage with --help")
                 sys.exit(1)
     else:
-        lib.printInfo("No argument in the command line, using default target: {}".format(default_cmd))
+        lib.printInfo("No argument in the command line, using default target: {}"
+                      .format(default_cmd))
         subcmd = default_cmd
 
-    if sys.version_info < (2, 7):
-        raise Exception("must use python 2.7.x. Current version is: {}.".format(sys.version_info))
-
-    if sys.version_info >= (3, 0):
-        raise Exception("must use python 2.7.x. Current version is: {}.".format(sys.version_info))
+    if sys.version_info < (2, 7) or sys.version_info >= (3, 0):
+        raise Exception("You must use python 2.7.x. Current version is: {}."
+                        .format(sys.version_info))
 
     do_virtualenv = True
     virtualenv = "virtualenv"
@@ -94,11 +93,9 @@ def main():
                        "and relaunch your command, unless you understand what is going on.")
 
     install_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-    # config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "configs", "default.conf"))
+    # config_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
+    #                                            "configs", "default.conf"))
     stage2_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "install-stage2.py"))
-
-    # with open(config_path) as f:
-    #     config = f.readlines()
 
     workdir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "workdir"))
     requirements_txt = os.path.abspath(os.path.join(os.path.dirname(__file__),

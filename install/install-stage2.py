@@ -621,7 +621,8 @@ def main():
 
         lib.printCmd("cd frontend")
         # Circumvent bugs such as https://github.com/bower/bower/issues/646
-        lib.run(["bower", "cache", "clean", "--allow-root"], cwd=os.path.join(install_path, "frontend"),
+        lib.run(["bower", "cache", "clean", "--allow-root"], cwd=os.path.join(install_path,
+                                                                              "frontend"),
                 extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
                 shell=shell)
         lib.run(["bower", "install", "--allow-root"], cwd=os.path.join(install_path, "frontend"),
