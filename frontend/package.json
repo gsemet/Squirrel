@@ -1,5 +1,5 @@
 {
-  "name": "squirrel",
+  "name": "squirrel-frontend",
   "version": "0.0.0",
   "dependencies": {
     "bower": "^1.4.1",
@@ -92,9 +92,6 @@
     "wiredep": "~2.2.0"
   },
   "engines": {
-    "node": "==0.10.25"
-  },
-  "scripts": {
-    "postinstall": "bower install && gulp build"
+    "node": ">=0.10.0"
   }
 }
