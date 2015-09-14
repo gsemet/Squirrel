@@ -262,7 +262,6 @@ cmd_capabilities = {
         "build_homepage",
         "novirtualenv",
         "warn_no_serve_and_quit",
-        "clean_prod",
     },
     'update:all': {
         "pip_upgrade",
