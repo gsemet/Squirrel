@@ -76,11 +76,11 @@ def main():
     if sys.version_info >= (3, 0):
         raise Exception("must use python 2.7.x. Current version is: {}.".format(sys.version_info))
 
-    if "novirtualenv" in subcmd:
-        do_virtualenv = False
-
     do_virtualenv = True
     virtualenv = "virtualenv"
+
+    if "novirtualenv" in subcmd:
+        do_virtualenv = False
 
     if lib.isWindows:
         virtualenv = "virtualenv.exe"
