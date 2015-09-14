@@ -484,6 +484,10 @@ def main():
                 cwd=os.path.join(install_path,
                                  "backend"),
                 shell=shell)
+        lib.run(["pip-sync"],
+                cwd=os.path.join(install_path,
+                                 "backend"),
+                shell=shell)
 
     if "check_dependencies" in current_capabilities:
         user_env_var = {}
