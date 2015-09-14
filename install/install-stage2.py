@@ -58,8 +58,9 @@ allowed_cmd = {
     "test:e2e":                ("execute end to end tests"),
     "update:node:base":        ("install and update node (require root password)"),
     "update:node:list":        ("list version of all your package to latest version"),
-    "update:node:package":    ("update all your 'package.json' depdencies to latest version"),
+    "update:node:package":     ("update all your 'package.json' depdencies to latest version"),
     "update:node:bower":       ("update all your 'bower.json' to latest version"),
+    "update:pip:all":          ("update pip's 'requirements.txt'"),
 }
 aliases = {
     "(empty)": "install:all",
@@ -348,6 +349,9 @@ cmd_capabilities = {
     "update:node:bower": {
         "update_node_bower",
     },
+    "update:pip:all": {
+        "update_pip_all",
+    },
 }
 
 
@@ -470,6 +474,15 @@ def main():
         lib.run(["bower-update"],
                 cwd=os.path.join(install_path,
                                  "frontend"),
+                shell=shell)
+
+    if "update_pip_all" in current_capabilities:
+        lib.printInfo("Updating 'requirements' with the greatest 'pip-tools' tool.")
+        lib.printInfo("Please wait it may take some times...")
+        lib.printCmd("cd backend")
+        lib.run(["pip-compile"],
+                cwd=os.path.join(install_path,
+                                 "backend"),
                 shell=shell)
 
     if "check_dependencies" in current_capabilities:
