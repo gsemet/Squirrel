@@ -117,7 +117,7 @@ cmd_capabilities = {
     },
     "serve:dev:homepage": {
         "pip_upgrade",
-        "build_frontend",
+        "build_homepage",
         "serve",
         "serve_dev",
         "serve_dev_homepage",
@@ -502,20 +502,19 @@ def main():
 
         lib.printSeparator()
         lib.printInfo("Updating pip (try to always use latest version of pip)")
-        lib.printInfo("cd backend")
         lib.run(["pip", "install", "--upgrade", "pip"])
 
     if "build_install" in current_capabilities:
         lib.printSeparator()
         lib.printInfo("Installing backend requirements")
-        lib.printInfo("cd backend")
+        lib.printCmd("cd backend")
         lib.run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                                       "requirements.txt")])
 
         if sys.version_info < (3, 4):
             lib.printInfo("Python version {}.{} < 3.4, installing extra requirements"
                           .format(sys.version_info[0], sys.version_info[2]))
-            lib.printInfo("cd backend")
+            lib.printCmd("cd backend")
             lib.run(["pip", "install", "-r", os.path.join(install_path, "backend",
                                                           "requirements-py_lt34.txt")])
 
@@ -528,7 +527,7 @@ def main():
 
         lib.printSeparator()
         lib.printInfo("Installing backend")
-        lib.printInfo("cd backend")
+        lib.printCmd("cd backend")
         lib.run(["pip", "install", "-e", os.path.join(install_path, "backend")])
 
     if "build_frontend" in current_capabilities:
@@ -542,22 +541,22 @@ def main():
             lib.printNote("You may want to add the following lines in your ~/.gitconfig:")
             lib.printNote("   [url \"https://github.com\"]")
             lib.printNote("      insteadOf=git://github.com")
-            lib.printInfo("cd frontend")
+            lib.printCmd("cd frontend")
             lib.run(["npm", "config", "set", "strict-ssl", "false"],
                     cwd=os.path.join(install_path,
                                      "frontend"),
                     shell=shell)
-            lib.printInfo("cd frontend")
+            lib.printCmd("cd frontend")
             lib.run(["npm", "--proxy", os.environ["http_proxy"], "install", "--ignore-scripts"],
                     cwd=os.path.join(install_path, "frontend"),
                     shell=shell)
         else:
-            lib.printInfo("cd frontend")
+            lib.printCmd("cd frontend")
             lib.run(["npm", "install", "--ignore-scripts"],
                     cwd=os.path.join(install_path, "frontend"),
                     shell=shell)
 
-        lib.printInfo("cd frontend")
+        lib.printCmd("cd frontend")
         # Circumvent bugs such as https://github.com/bower/bower/issues/646
         lib.run(["bower", "cache", "clean", "--allow-root"], cwd=os.path.join(install_path, "frontend"),
                 extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
@@ -567,7 +566,7 @@ def main():
                 shell=shell)
 
         if "frontend_gulp_build" in current_capabilities:
-            lib.printInfo("cd frontend")
+            lib.printCmd("cd frontend")
             lib.run(["gulp", "build"], cwd=os.path.join(install_path, "frontend"),
                     extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
                     shell=shell)
@@ -580,21 +579,21 @@ def main():
             lib.printNote("You may want to add the following lines in your ~/.gitconfig:")
             lib.printNote("   [url \"https://github.com\"]")
             lib.printNote("      insteadOf=git://github.com")
-            lib.printInfo("cd homepage")
+            lib.printCmd("cd homepage")
             lib.run(["npm", "config", "set", "strict-ssl", "false"], cwd=os.path.join(install_path,
                                                                                       "homepage"),
                     shell=shell)
-            lib.printInfo("cd homepage")
+            lib.printCmd("cd homepage")
             lib.run(["npm", "--proxy", os.environ["http_proxy"], "install", "--ignore-scripts"],
                     cwd=os.path.join(install_path, "homepage"),
                     shell=shell)
         else:
-            lib.printInfo("cd homepage")
+            lib.printCmd("cd homepage")
             lib.run(["npm", "install", "--ignore-scripts"],
                     cwd=os.path.join(install_path, "homepage"),
                     shell=shell)
 
-        lib.printInfo("cd homepage")
+        lib.printCmd("cd homepage")
         # Circumvent bugs such as https://github.com/bower/bower/issues/646
         lib.run(["bower", "cache", "clean", "--allow-root"],
                 cwd=os.path.join(install_path, "homepage"),
@@ -606,7 +605,7 @@ def main():
                 shell=shell)
 
         if "homepage_gulp_build" in current_capabilities:
-            lib.printInfo("cd homepage")
+            lib.printCmd("cd homepage")
             lib.run(["gulp", "build"],
                     cwd=os.path.join(install_path, "homepage"),
                     extraPath=os.path.join(install_path, "homepage", "node_modules", ".bin"),
@@ -626,24 +625,24 @@ def main():
 
     if "homepage_update" in current_capabilities:
         lib.printInfo("Updating npm")
-        lib.printInfo("cd homepage")
+        lib.printCmd("cd homepage")
         lib.run(["npm", "install", "--save"],
                 cwd=os.path.join(install_path, "homepage"),
                 shell=shell)
         lib.printInfo("Updating bower")
-        lib.printInfo("cd homepage")
+        lib.printCmd("cd homepage")
         lib.run(["bower", "install", "--save"],
                 cwd=os.path.join(install_path, "homepage"),
                 shell=shell)
 
     if "frontend_update" in current_capabilities:
         lib.printInfo("Updating npm")
-        lib.printInfo("cd frontend")
+        lib.printCmd("cd frontend")
         lib.run(["npm", "install", "--save"],
                 cwd=os.path.join(install_path, "frontend"),
                 shell=shell)
         lib.printInfo("Updating bower")
-        lib.printInfo("cd frontend")
+        lib.printCmd("cd frontend")
         lib.run(["bower", "install", "--save"],
                 cwd=os.path.join(install_path, "frontend"),
                 extraPath=os.path.join(install_path, "frontend", "node_modules", ".bin"),
@@ -651,14 +650,14 @@ def main():
 
     if "homepage_update_translations_fr" in current_capabilities:
         lib.printInfo("Updating translation: Fr")
-        lib.printInfo("cd homepage")
+        lib.printCmd("cd homepage")
         lib.run(["poedit", os.path.join("src", "po", "fr.po")],
                 cwd=os.path.join(install_path, "homepage"),
                 shell=shell)
 
     if "frontend_update_translations_fr" in current_capabilities:
         lib.printInfo("Updating translation: Fr")
-        lib.printInfo("cd frontend")
+        lib.printCmd("cd frontend")
         lib.run(["poedit", os.path.join("src", "po", "fr.po")],
                 cwd=os.path.join(install_path, "frontend"),
                 shell=shell)

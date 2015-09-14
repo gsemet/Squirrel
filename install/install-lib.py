@@ -88,6 +88,13 @@ def printDebug(text):
     flush()
 
 
+def printCmd(text):
+    text = str(text)
+    for line in text.split("\n"):
+        print(bcolors.OKGREEN + "[CMD  ] " + bcolors.ENDC + line)
+    flush()
+
+
 def printQuestion(text):
     text = str(text)
     for line in text.split("\n"):
