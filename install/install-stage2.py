@@ -402,18 +402,28 @@ def main():
             lib.printInfo("MONGO_DB_URL environment variable not found")
             if not os.environ.get("MONGOD_PATH"):
                 lib.printInfo("MONGOD_PATH environment variable not set")
+                mongod_path = None
+                if not lib.isWindows:
+                    try:
+                        mongod_path = lib.run_output(["which", "mongod"])
+                    except:
+                        mongod_path = None
                 res = lib.printQuestion("Do you want to manage MongoDB server?\n"
                                         "1 = Let Squirrel Installer start/stop MongoDB server "
                                         "(mongod)\n"
                                         "2 = MongoDB daemon (mongod) is already running, just "
                                         "set the URL")
                 if res == "1":
-                    res = lib.printQuestion("Where MongoDB is installed (path to 'mongod{}')?"
-                                            .format(".exe" if lib.isWindows else ""))
-                    if not os.path.exists(os.path.abspath(res)):
-                        lib.printError("Path does not exist: {}".format(res))
-                        return 1
-                    user_env_var["MONGOD_PATH"] = res
+                    if mongod_path:
+                        lib.printInfo("'mongod' found: {}".format(mongod_path))
+                        user_env_var["MONGOD_PATH"] = mongod_path
+                    else:
+                        res = lib.printQuestion("Where MongoDB is installed (path to 'mongod{}')?"
+                                                .format(".exe" if lib.isWindows else ""))
+                        if not os.path.exists(os.path.abspath(res)):
+                            lib.printError("Path does not exist: {}".format(res))
+                            return 1
+                        user_env_var["MONGOD_PATH"] = res
                 elif res == "2":
                     res = lib.printQuestion("What is the URL of your MongoDB server?")
                     user_env_var["MONGO_DB_URL"] = res
