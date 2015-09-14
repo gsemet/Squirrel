@@ -56,7 +56,9 @@ allowed_cmd = {
     "test:unit":               ("execute unit tests"),
     "test:integration":        ("execute unit tests"),
     "test:e2e":                ("execute end to end tests"),
-    "update:node":             ("install and update node (require root password)")
+    "update:node:base":        ("install and update node (require root password)"),
+    "update:node:list":        ("list version of all your package to latest version"),
+    "update:node:all":         ("update all your package to latest version"),
 }
 aliases = {
     "(empty)": "install:all",
@@ -333,8 +335,14 @@ cmd_capabilities = {
         "frontend_test_e2e",
         "homepage_test_e2e",
     },
-    "update:node": {
-        "update_node",
+    "update:node:base": {
+        "update_node_base",
+    },
+    "update:node:list": {
+        "update_node_list",
+    },
+    "update:node:all": {
+        "update_node_all",
     }
 }
 
@@ -402,12 +410,47 @@ def main():
             lib.printInfo("Removing {} because it is empty".format(environ_json_path))
             os.unlink(environ_json_path)
 
-    if "update_node" in current_capabilities:
+    if "update_node_base" in current_capabilities:
         lib.printSeparator()
-        lib.printInfo("Updating node tools...")
+        lib.printInfo("Updating our lovely node tools:")
+        lib.printInfo(" - bower")
+        lib.printInfo(" - gulp")
+        lib.printInfo(" - grunt")
+        lib.printInfo(" - npm-check-updates")
+        lib.printInfo("...")
+
         lib.run(["npm", "install", "-g", "bower"])
         lib.run(["npm", "install", "-g", "gulp"])
         lib.run(["npm", "install", "-g", "grunt"])
+        lib.run(["npm", "install", "-g", "npm-check-updates"])
+
+    if "update_node_list" in current_capabilities:
+        lib.printInfo("Running the great 'ncu' tool.")
+        lib.printInfo("Please wait it may take some times...")
+        lib.printCmd("cd homepage")
+        lib.run(["ncu"],
+                cwd=os.path.join(install_path,
+                                 "homepage"),
+                shell=shell)
+        lib.printCmd("cd frontend")
+        lib.run(["ncu"],
+                cwd=os.path.join(install_path,
+                                 "frontend"),
+                shell=shell)
+
+    if "update_node_all" in current_capabilities:
+        lib.printInfo("Updating all 'package.json' with the greatest 'ncu' tool.")
+        lib.printInfo("Please wait it may take some times...")
+        lib.printCmd("cd homepage")
+        lib.run(["ncu", "-u"],
+                cwd=os.path.join(install_path,
+                                 "homepage"),
+                shell=shell)
+        lib.printCmd("cd frontend")
+        lib.run(["ncu", "-u"],
+                cwd=os.path.join(install_path,
+                                 "frontend"),
+                shell=shell)
 
     if "check_dependencies" in current_capabilities:
         user_env_var = {}
