@@ -87,7 +87,7 @@ def main():
         # python_exe = "python.exe"
         launch_in_new_window = True
 
-    if os.environ.get('VIRTUAL_ENV'):
+    if do_virtualenv and os.environ.get('VIRTUAL_ENV'):
         lib.printError("Beware, you already are inside the following virtual env: {}"
                        .format(os.environ.get('VIRTUAL_ENV')))
         lib.printError("Please leave it with 'deactivate' "
