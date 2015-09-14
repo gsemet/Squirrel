@@ -58,7 +58,8 @@ allowed_cmd = {
     "test:e2e":                ("execute end to end tests"),
     "update:node:base":        ("install and update node (require root password)"),
     "update:node:list":        ("list version of all your package to latest version"),
-    "update:node:all":         ("update all your package to latest version"),
+    "update:node:package":    ("update all your 'package.json' depdencies to latest version"),
+    "update:node:bower":       ("update all your 'bower.json' to latest version"),
 }
 aliases = {
     "(empty)": "install:all",
@@ -341,8 +342,11 @@ cmd_capabilities = {
     "update:node:list": {
         "update_node_list",
     },
-    "update:node:all": {
-        "update_node_all",
+    "update:node:package": {
+        "update_node_package",
+    }
+    "update:node:bower": {
+        "update_node_bower",
     }
 }
 
@@ -417,12 +421,14 @@ def main():
         lib.printInfo(" - gulp")
         lib.printInfo(" - grunt")
         lib.printInfo(" - npm-check-updates")
+        lib.printInfo(" - bower-update")
         lib.printInfo("...")
 
         lib.run(["npm", "install", "-g", "bower"])
         lib.run(["npm", "install", "-g", "gulp"])
         lib.run(["npm", "install", "-g", "grunt"])
         lib.run(["npm", "install", "-g", "npm-check-updates"])
+        lib.run(["npm", "install", "-g", "bower-update"])
 
     if "update_node_list" in current_capabilities:
         lib.printInfo("Running the great 'ncu' tool.")
@@ -438,7 +444,7 @@ def main():
                                  "frontend"),
                 shell=shell)
 
-    if "update_node_all" in current_capabilities:
+    if "update_node_package" in current_capabilities:
         lib.printInfo("Updating all 'package.json' with the greatest 'ncu' tool.")
         lib.printInfo("Please wait it may take some times...")
         lib.printCmd("cd homepage")
@@ -448,6 +454,20 @@ def main():
                 shell=shell)
         lib.printCmd("cd frontend")
         lib.run(["ncu", "-u"],
+                cwd=os.path.join(install_path,
+                                 "frontend"),
+                shell=shell)
+
+    if "update_node_bower" in current_capabilities:
+        lib.printInfo("Updating all 'bower.json' with the greatest 'bower-update' tool.")
+        lib.printInfo("Please wait it may take some times...")
+        lib.printCmd("cd homepage")
+        lib.run(["bower-update"],
+                cwd=os.path.join(install_path,
+                                 "homepage"),
+                shell=shell)
+        lib.printCmd("cd frontend")
+        lib.run(["bower-update"],
                 cwd=os.path.join(install_path,
                                  "frontend"),
                 shell=shell)
