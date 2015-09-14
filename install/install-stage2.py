@@ -388,11 +388,15 @@ def main():
                       .format(environ_json_path))
         with open(environ_json_path) as f:
             content = f.read()
-            lib.printDebug("content:{!r}".format(content))
-            environ_json = json.loads(content)
-            for name, var in environ_json.items():
-                lib.printInfo("  {}={}".format(name, var))
-                os.environ[name] = var
+            lib.printDebug("content: {!r}".format(content))
+            if content:
+                environ_json = json.loads(content)
+                for name, var in environ_json.items():
+                    lib.printInfo("  {}={}".format(name, var))
+                    os.environ[name] = var
+        if not content:
+            lib.printInfo("Removing {} because it is empty".format(environ_json_path))
+            os.unlink(environ_json_path)
 
     if "check_dependencies" in current_capabilities:
         user_env_var = {}
@@ -406,6 +410,7 @@ def main():
                 if not lib.isWindows:
                     try:
                         mongod_path = lib.run_output(["which", "mongod"])
+                        mongod_path = mongod_path.strip()
                     except:
                         mongod_path = None
                 res = lib.printQuestion("Do you want to manage MongoDB server?\n"
@@ -425,8 +430,13 @@ def main():
                             return 1
                         user_env_var["MONGOD_PATH"] = res
                 elif res == "2":
-                    res = lib.printQuestion("What is the URL of your MongoDB server?")
+                    res = lib.printQuestion("What is the URL of your MongoDB server "
+                                            "(empty='localhost:27017') ?")
+                    res = res.split()
+                    if not res:
+                        res = 'localhost:27017'
                     user_env_var["MONGO_DB_URL"] = res
+                    lib.printInfo("Setting MONGO_DB_URL to '{}'".format(res))
                 else:
                     lib.printError("Invalid anwser: {}".format(res))
                     return 1
@@ -434,7 +444,10 @@ def main():
         if user_env_var:
             lib.printInfo("Writing environment json: {}".format(environ_json_path))
             with open(environ_json_path, "w") as f:
-                f.writelines(json.dumps(user_env_var))
+                f.writelines(json.dumps(user_env_var,
+                                        sort_keys=True,
+                                        indent=4,
+                                        separators=(',', ': ')))
             for name, var in user_env_var.items():
                 os.environ[name] = var
 
