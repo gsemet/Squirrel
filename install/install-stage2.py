@@ -344,10 +344,10 @@ cmd_capabilities = {
     },
     "update:node:package": {
         "update_node_package",
-    }
+    },
     "update:node:bower": {
         "update_node_bower",
-    }
+    },
 }
 
 
