@@ -6,22 +6,8 @@ from __future__ import print_function
 import logging
 import sqlalchemy as sa
 
-from sqlalchemy.ext.declarative import declarative_base
+from squirrel.db.tables.table_base import Base
 
-log = logging.getLogger(__name__)
-
-NAMING_CONVENTION = {
-    "ix": 'ix_%(column_0_label)s',
-    "uq": "uq_%(table_name)s_%(column_0_name)s",
-    "ck": "ck_%(table_name)s_%(constraint_name)s",
-    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-    "pk": "pk_%(table_name)s"
-}
-
-Base = declarative_base(metadata=sa.MetaData(naming_convention=NAMING_CONVENTION))
-
-# force import all table here to register them, so they ll be created with the
-# create_all function.
 from squirrel.db.tables.currencies import TableCurrencies
 from squirrel.db.tables.plugin_importers import TablePluginImporters
 from squirrel.db.tables.portfolios import TablePortfolios
@@ -29,6 +15,8 @@ from squirrel.db.tables.stocks import TableStocks
 from squirrel.db.tables.tickers import TableTickers
 from squirrel.db.tables.ticks import TableTicks
 from squirrel.db.tables.users import TableUsers
+
+log = logging.getLogger(__name__)
 
 
 class Model(object):
