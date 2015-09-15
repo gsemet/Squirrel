@@ -12,18 +12,28 @@ function webpack(watch, callback) {
   var webpackOptions = {
     watch: watch,
     module: {
-      preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'jshint-loader'}],
-      loaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}]
+      preLoaders: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'jshint-loader'
+      }],
+      loaders: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }]
     },
-    output: { filename: 'index.module.js' }
+    output: {
+      filename: 'index.module.js'
+    }
   };
 
-  if(watch) {
+  if (watch) {
     webpackOptions.devtool = 'inline-source-map';
   }
 
   var webpackChangeHandler = function(err, stats) {
-    if(err) {
+    if (err) {
       conf.errorHandler('Webpack')(err);
     }
     $.util.log(stats.toString({
@@ -33,7 +43,7 @@ function webpack(watch, callback) {
       version: false
     }));
     browserSync.reload();
-    if(watch) {
+    if (watch) {
       watch = false;
       callback();
     }
@@ -44,10 +54,10 @@ function webpack(watch, callback) {
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')));
 }
 
-gulp.task('scripts', function () {
+gulp.task('scripts', function() {
   return webpack(false);
 });
 
-gulp.task('scripts:watch', ['scripts'], function (callback) {
+gulp.task('scripts:watch', ['scripts'], function(callback) {
   return webpack(true, callback);
 });

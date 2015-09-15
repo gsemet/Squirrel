@@ -1,8 +1,10 @@
 'use strict';
 
+var path = require('path');
 var gulp = require('gulp');
+var conf = require('./conf');
 
-var paths = gulp.paths;
+var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
 
@@ -11,14 +13,15 @@ gulp.task('markups', function() {
     path.extname = '.html';
   }
 
-  return gulp.src(paths.src + '/{app,modules}/**/*.jade')
+  return gulp.src(path.join(conf.paths.src, '/app/**/*.jade'))
     .pipe($.consolidate('jade', {
+      basedir: conf.paths.src,
+      doctype: 'html',
       pretty: '  '
-    }))
-    .on('error', function handleError(err) {
-      console.error(err.toString());
-      this.emit('end');
-    })
+    })).on('error', conf.errorHandler('Jade'))
     .pipe($.rename(renameToHtml))
-    .pipe(gulp.dest(paths.tmp + '/serve/'));
+    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
+    .pipe(browserSync.reload({
+      stream: true 
+    }));
 });

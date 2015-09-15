@@ -1,15 +1,8 @@
 'use strict';
 
+var path = require('path');
 var gulp = require('gulp');
-var gulpif = require('gulp-if');
-var debug = require('gulp-debug');
-
-var paths = gulp.paths;
-
-var do_uglyfy = true;
-var do_minify_partials = false;
-var do_minify_partials_htmlmin = true;
-var do_minify_html_htmlmin = true;
+var conf = require('./conf');
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -17,135 +10,103 @@ var $ = require('gulp-load-plugins')({
 
 gulp.task('partials', ['markups'], function() {
   return gulp.src([
-    paths.src + '/{app,modules}/**/*.html',
-    paths.tmp + '/{app,modules}/**/*.html'
+    path.join(conf.paths.src, '/app/**/*.html'),
+    path.join(conf.paths.tmp, '/serve/app/**/*.html')
   ])
-    .pipe(gulpif(do_minify_partials, $.minifyHtml({
-      empty: true, // KEEP empty attributes
-      spare: true, // KEEP redundant attributes
-      quotes: true, // KEEP redundant attributes
-      loose: true // KEEP one whitespace (needed for angular-gettext)
-    })))
-    .pipe(gulpif(do_minify_partials_htmlmin, $.htmlmin({
-      removeComments: true
-    })))
-    .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: 'squirrel'
+    .pipe($.minifyHtml({
+      empty: true,
+      spare: true,
+      quotes: true
     }))
-    .pipe(gulp.dest(paths.tmp + '/partials/'));
+    .pipe($.angularTemplatecache('templateCacheHtml.js', {
+      module: '',
+      root: 'app'
+    }))
+    .pipe(gulp.dest(conf.paths.tmp + '/partials/'));
 });
 
-gulp.task('html', ['inject', 'partials', 'pot', 'translations'], function() {
-  var partialsInjectFile = gulp.src(paths.tmp + '/partials/templateCacheHtml.js', {
+gulp.task('html', ['inject', 'partials'], function() {
+  var partialsInjectFile = gulp.src(path.join(conf.paths.tmp, '/partials/templateCacheHtml.js'), {
     read: false
   });
   var partialsInjectOptions = {
     starttag: '<!-- inject:partials -->',
-    ignorePath: paths.tmp + '/partials',
+    ignorePath: path.join(conf.paths.tmp, '/partials'),
     addRootSlash: false
   };
 
-  var htmlFilter = $.filter('*.html');
-  var jsFilter = $.filter('**/*.js');
-  var cssFilter = $.filter('**/*.css');
+  var htmlFilter = $.filter('*.html', {
+    restore: true
+  });
+  var jsFilter = $.filter('**/*.js', {
+    restore: true
+  });
+  var cssFilter = $.filter('**/*.css', {
+    restore: true
+  });
   var assets;
-  /* Force remove of all comments
-   * It doesn't reduce the file size that much. Ex: 1.690 Mb => 1.683Mb*/
-  var preserveComments = $.uglifySaveLicense;
-  /*var preserveComments = false;*/
 
-  return gulp.src(paths.tmp + '/serve/*.html')
+  return gulp.src(path.join(conf.paths.tmp, '/serve/*.html'))
     .pipe($.inject(partialsInjectFile, partialsInjectOptions))
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
-    .pipe(debug({
-      title: 'copying js:'
-    }))
-    .pipe($.replace('MODE: "dev"', 'MODE: "prod"'))
-    .pipe($.replace('/languages/', '/po/'))
-    .pipe($.ngAnnotate())
-    .pipe(gulpif(do_uglyfy, $.uglify({
-      preserveComments: preserveComments
-    })))
-    .pipe(jsFilter.restore())
+    .pipe($.sourcemaps.init())
+    .pipe($.uglify({
+      preserveComments: $.uglifySaveLicense
+    })).on('error', conf.errorHandler('Uglify'))
+    .pipe($.sourcemaps.write('maps'))
+    .pipe(jsFilter.restore)
     .pipe(cssFilter)
-    .pipe(debug({
-      title: 'copying css from:'
+    .pipe($.sourcemaps.init())
+    .pipe($.replace('../../bower_components/bootstrap/fonts/', '../fonts/'))
+    .pipe($.minifyCss({
+      processImport: false
     }))
-    .pipe($.replace('../bootstrap/fonts', 'fonts'))
-    .pipe($.replace('../bower_components/font-awesome', 'fonts/'))
-    .pipe($.replace('/bower_components/bootstrap/fonts', '/fonts'))
-    .pipe($.replace('./fonts/slick', '/fonts/slick'))
-    .pipe($.replace('./ajax-loader.gif', '/assets/images/ajax-loader.gif'))
-    .pipe(gulpif(do_uglyfy, $.csso()))
-    .pipe(cssFilter.restore())
+    .pipe($.sourcemaps.write('maps'))
+    .pipe(cssFilter.restore)
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
-    .pipe(debug({
-      title: 'copying html:'
-    }))
-    .pipe(gulpif(do_minify_partials, $.minifyHtml({
+    .pipe($.minifyHtml({
       empty: true,
       spare: true,
-      quotes: true
-    })))
-    .pipe(gulpif(do_minify_html_htmlmin, $.htmlmin({
-      removeComments: true
-    })))
-    .pipe($.htmlPrettify({
-      indent_char: ' ',
-      indent_size: 2
+      quotes: true,
+      conditionals: true
     }))
-    .pipe(htmlFilter.restore())
-    .pipe(gulp.dest(paths.dist + '/'))
+    .pipe(htmlFilter.restore)
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe($.size({
-      title: paths.dist + '/',
+      title: path.join(conf.paths.dist, '/'),
       showFiles: true
     }));
 });
 
-gulp.task('images', function() {
-  return gulp.src(paths.src + '/assets/images/**/*')
-    .pipe(debug({
-      title: 'copying image:'
-    }))
-    .pipe(gulp.dest(paths.dist + '/assets/images/'));
-});
-
+// Only applies for fonts from bower dependencies
+// Custom fonts are handled by the "other" task
 gulp.task('fonts', function() {
   return gulp.src($.mainBowerFiles())
-    /*.pipe(debug({
-      title: 'copying main bower file:'
-    }))*/
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
-    .pipe(debug({
-      title: 'copying font:'
-    }))
     .pipe($.flatten())
-    .pipe(gulp.dest(paths.dist + '/fonts/'));
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
 });
 
-gulp.task('misc', function() {
-  return gulp.src(paths.src + '/**/*.{ico,png}')
-    .pipe(debug({
-      title: 'copying ico:'
-    }))
-    .pipe(gulp.dest(paths.dist + '/'));
-});
+gulp.task('other', function() {
+  var fileFilter = $.filter(function(file) {
+    return file.stat.isFile();
+  });
 
-gulp.task('languages', function() {
-  return gulp.src(paths.src + '/po/*.json')
-    .pipe(debug({
-      title: 'copying json lang:'
-    }))
-    .pipe(gulp.dest(paths.dist + '/languages/'));
+  return gulp.src([
+    path.join(conf.paths.src, '/**/*'),
+    path.join('!' + conf.paths.src, '/**/*.{html,css,js,less,jade}')
+  ])
+    .pipe(fileFilter)
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
 
 gulp.task('clean', function(done) {
-  $.del([paths.dist + '/', paths.tmp + '/'], done);
+  $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')], done);
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'misc', 'languages']);
+gulp.task('build', ['html', 'fonts', 'other']);

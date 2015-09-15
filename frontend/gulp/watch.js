@@ -1,24 +1,33 @@
 'use strict';
 
+var path = require('path');
 var gulp = require('gulp');
+var conf = require('./conf');
 
-var paths = gulp.paths;
+var browserSync = require('browser-sync');
 
-gulp.task('watch', ['markups', 'inject', 'pot', 'translations'], function() {
+function isOnlyChange(event) {
+  return event.type === 'changed';
+}
+
+gulp.task('watch', ['scripts:watch', 'markups', 'inject'], function() {
+
+  gulp.watch([path.join(conf.paths.src, '/*.html'), 'bower.json'], ['inject']);
+
   gulp.watch([
-    paths.src + '/*.html',
-    paths.src + '/{app,modules}/**/*.less',
-    paths.src + '/{app,modules}/**/*.css',
-    paths.src + '/{app,modules}/**/*.jade',
-    paths.src + '/{app,modules}/**/*.html',
-    paths.src + '/{app,modules}/**/*.js',
-    paths.src + '/{app,modules}/**/*.coffee',
-    paths.src + '/languages/*.json',
-    paths.src + '/index.*',
-    paths.src + '/vendor.less',
-    'bower.json',
-    'gulp/*.js',
-  ], ['inject', 'pot', 'translations']);
-  gulp.watch(paths.src + '/{app,modules}/**/*.jade', ['markups']);
-  gulp.watch(paths.src + '/po/*.po', ['translations']);
+    path.join(conf.paths.src, '/app/**/*.css'),
+    path.join(conf.paths.src, '/app/**/*.less')
+  ], function(event) {
+    if (isOnlyChange(event)) {
+      gulp.start('styles');
+    } else {
+      gulp.start('inject');
+    }
+  });
+
+  gulp.watch(path.join(conf.paths.src, '/app/**/*.jade'), ['markups']);
+
+  gulp.watch(path.join(conf.paths.src, '/app/**/*.html'), function(event) {
+    browserSync.reload(event.path);
+  });
 });
