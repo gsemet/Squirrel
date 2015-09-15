@@ -769,7 +769,7 @@ def main():
                 cwd=os.path.join(install_path, "backend"), shell=True)
 
     if "start_mongo_if_needed" in current_capabilities:
-        if os.environ["MONGOD_PATH"]:
+        if os.environ.get("MONGOD_PATH"):
             lib.printInfo("Starting mongod: {}".format(os.environ["MONGOD_PATH"]))
             mongo_dbpath = os.path.join(workdir_path, "mongodb")
             lib.mkdirs(mongo_dbpath)

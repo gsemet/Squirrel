@@ -12,6 +12,7 @@ enum34
 jinja2
 klein
 mock
+pbr
 pep8
 pika
 pip-tools
