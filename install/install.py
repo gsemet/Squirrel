@@ -162,7 +162,7 @@ def main():
             launcher_bat, "new_window" if launch_in_new_window else "no_new_window",
             workdir_path, stage2_path, install_path, workdir_path, subcmd])
 
-    elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
+    elif lib.isLinux or lib.isMacOsX:
 
         if do_virtualenv:
             if "VIRTUAL_ENV" in os.environ and not os.environ['VIRTUAL_ENV']:

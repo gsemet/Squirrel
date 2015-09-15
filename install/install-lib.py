@@ -7,9 +7,9 @@ import os
 import subprocess
 import sys
 
-isWindows = False
-if sys.platform.startswith('win32'):
-    isWindows = True
+isWindows = sys.platform.startswith('win32')
+isLinux = sys.platform.startswith("linux")
+isMaxOsX = sys.platform.startswith("darwin")
 
 ####################################################################################################
 # Utility functions
