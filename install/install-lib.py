@@ -9,7 +9,7 @@ import sys
 
 isWindows = sys.platform.startswith('win32')
 isLinux = sys.platform.startswith("linux")
-isMaxOsX = sys.platform.startswith("darwin")
+isMacOsX = sys.platform.startswith("darwin")
 
 ####################################################################################################
 # Utility functions
