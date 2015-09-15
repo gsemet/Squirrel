@@ -56,15 +56,17 @@ def main():
         args = sys.argv[:]
         while args:
             # removing executable name
-            args.pop(0)
+            exe_name = args.pop(0)
             subcmd = args.pop(0)
             if subcmd in {"-h", "--help", "help"}:
                 usage()
             subcmd = aliases.get(subcmd, subcmd)
             if subcmd not in allowed_cmd.keys():
                 lib.printError("Invalid command: {}".format(subcmd))
-                lib.printError("Allowed: {}".format(allowed_cmd.keys()))
-                lib.printError("See usage with --help")
+                lib.printError("Allowed:\n{}".format("\n".join(["  {}".format(c)
+                                                                for c
+                                                                in sorted(allowed_cmd.keys())])))
+                lib.printError("See usage with '{} --help'".format(exe_name))
                 sys.exit(1)
     else:
         lib.printInfo("No argument in the command line, using default target: {}"

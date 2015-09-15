@@ -58,9 +58,9 @@ allowed_cmd = {
     "test:e2e":                ("execute end to end tests"),
     "update:node:base":        ("install and update node (require root password)"),
     "update:node:list":        ("list version of all your package to latest version"),
-    "update:node:package":     ("update all your 'package.json' depdencies to latest version"),
-    "update:node:bower":       ("update all your 'bower.json' to latest version"),
-    "update:pip:all":          ("update pip's 'requirements.txt'"),
+    "update:node:package":     ("update all your 'package.json' dependencies to latest version"),
+    "update:node:bower":       ("update all your 'bower.json' dependencies to latest version"),
+    "update:pip:all":          ("update pip's 'requirements.txt' dependencies to latest version"),
 }
 aliases = {
     "(empty)": "install:all",
@@ -403,6 +403,7 @@ def main():
 
     environ_json_path = os.path.join(workdir_path, "environ.json")
     if os.path.exists(environ_json_path):
+        lib.printSeparator()
         lib.printInfo("Environment variable json file found, sourcing it from {}"
                       .format(environ_json_path))
         with open(environ_json_path) as f:
@@ -434,6 +435,7 @@ def main():
         lib.run(["npm", "install", "-g", "bower-update"])
 
     if "update_node_list" in current_capabilities:
+        lib.printSeparator()
         lib.printInfo("Running the great 'ncu' tool.")
         lib.printInfo("Please wait it may take some times...")
         lib.printCmd("cd homepage")
@@ -448,6 +450,7 @@ def main():
                 shell=shell)
 
     if "update_node_package" in current_capabilities:
+        lib.printSeparator()
         lib.printInfo("Updating all 'package.json' with the greatest 'ncu' tool.")
         lib.printInfo("Please wait it may take some times...")
         lib.printCmd("cd homepage")
@@ -462,6 +465,7 @@ def main():
                 shell=shell)
 
     if "update_node_bower" in current_capabilities:
+        lib.printSeparator()
         lib.printInfo("Updating all 'bower.json' with the greatest 'bower-update' tool.")
         lib.printInfo("Please wait it may take some times...")
         lib.printCmd("cd homepage")
@@ -476,6 +480,7 @@ def main():
                 shell=shell)
 
     if "update_pip_all" in current_capabilities:
+        lib.printSeparator()
         lib.printInfo("Updating 'requirements' with the greatest 'pip-tools' tool.")
         lib.printInfo("Please wait it may take some times...")
         lib.printCmd("cd backend")
