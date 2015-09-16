@@ -44,9 +44,9 @@ Additional Services
 Squirrel requires the following external services to be available on your machine even for
 development:
 
-- MongoDB
-- PostgreSQL
-- Crossbar.io
+- MongoDB: to store ticks and other statistical information
+- **PostgreSQL**: to store user information, portfolio and transactions
+- **Crossbar.io**: to make workers and UI processes communicate (installed automatically)
 
 Indeed this may look a bit overbloated, but widely recognized methodologies such as `TwelveFactor`_
 advise to use the same external services in prod and in dev. Indeed, you have to install PostgreSQL
