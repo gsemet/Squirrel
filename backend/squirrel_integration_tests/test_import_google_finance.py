@@ -53,7 +53,7 @@ class IntegrationTestGoogleFinance(TestCase):
         for tick in res[:10]:
             self.assertNotEqual(tick.open, 0)
             self.assertNotEqual(tick.volume, 0)
-        [log.debug("{!r}".format(r)) for r in res[:10]]
+        [log.debug("%r", r) for r in res[:10]]
 
     @defer.inlineCallbacks
     def test_BadTicker_ExceptionOccurs(self):

@@ -50,9 +50,9 @@ class PluginImporterBase(YapsyIPlugin):
 
     @defer.inlineCallbacks
     def httpRequest(self, url):
-        self.log.debug("Requesting url: {}".format(url))
+        self.log.debug("Requesting url: %s", url)
         code, content = yield get(url)
-        self.log.debug("Received response: {}".format(code))
+        self.log.debug("Received response: %s", code)
         if code != 200:
             raise Exception("Error received: code = {}".format(code))
 
@@ -86,11 +86,11 @@ class PluginImporterBase(YapsyIPlugin):
 
             def makeConnection(self, transport):
                 self.fObj = open(self.filename, 'wb')
-                log.info('Opened %s for writing' % self.filename)
+                log.info('Opened %s for writing', self.filename)
 
             def connectionLost(self, reason):
                 self.fObj.close()
-                log.info('Closed %s' % self.filename)
+                log.info('Closed %s', self.filename)
 
             def dataReceived(self, bytes):
                 self.fObj.write(bytes)

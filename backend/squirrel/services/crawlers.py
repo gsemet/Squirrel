@@ -41,11 +41,11 @@ class CrawlerConfig(Service):
 
     def reconfigure(self):
         plugins = PluginRegistry().getPluginNamesByCategory("Import")
-        log.info("plugins: {}".format(plugins))
+        log.info("plugins: %s", plugins)
         self.crawlers = {}
         for crawler_config_name, crawler_config in Config().crawlers.items():
             if crawler_config.plugin_name in plugins:
-                log.info("Plugin found: {}".format(crawler_config.plugin_name))
+                log.info("Plugin found: %s", crawler_config.plugin_name)
                 self.crawlers[crawler_config.plugin_name] = (CrawerStatus(
                     name=crawler_config.plugin_name,
                     description=crawler_config.description,
@@ -88,7 +88,7 @@ class CrawlerConfig(Service):
         return (SUCCESS, crawler.status)
 
     def start(self, name):
-        log.info("Order received: start crawler {!r}".format(name))
+        log.info("Order received: start crawler %r", name)
         if not self.crawlers:
             return (FAILURE, "no crawler initialized")
         if name not in self.crawlers:
@@ -108,7 +108,7 @@ class CrawlerConfig(Service):
             raise Exception("Invalid state: {}".format(crawler.status))
 
     def stop(self, name):
-        log.info("Order received: stop crawler {!r}".format(name))
+        log.info("Order received: stop crawler %r", name)
         if not self.crawlers:
             return (FAILURE, "no crawler initialized")
         if name not in self.crawlers:
@@ -128,7 +128,7 @@ class CrawlerConfig(Service):
             raise Exception("Invalid state: {}".format(crawler.status))
 
     def getProgress(self, name):
-        log.info("Order received: get crawler progress {!r}".format(name))
+        log.info("Order received: get crawler progress %r", name)
         if not self.crawlers:
             return (FAILURE, "no crawler initialized")
         if name not in self.crawlers:
