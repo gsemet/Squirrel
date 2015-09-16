@@ -39,11 +39,11 @@ class PluginRegistry(object):
         self.pluginManager.collectPlugins()
         # Loop round the plugins and print their names.
         for plugin_info in self.pluginManager.getAllPlugins():
-            log.info("Loading plugin {!r}".format(plugin_info.name))
-            log.info("  Description: {}".format(plugin_info.description))
-            log.info("  Author: {}".format(plugin_info.author))
-            log.info("  Website: {}".format(plugin_info.website))
-            log.info("  Version: {}".format(plugin_info.version))
+            log.info("Loading plugin %r", plugin_info.name)
+            log.info("  Description: %s", plugin_info.description)
+            log.info("  Author: %s", plugin_info.author)
+            log.info("  Website: %s", plugin_info.website)
+            log.info("  Version: %s", plugin_info.version)
             if plugin_info.plugin_object.name in self.loadedPlugins:
                 raise Exception("Plugin {!r} already loaded".format(plugin_info.name))
             plugin_info.plugin_object.description = plugin_info.description
@@ -69,7 +69,7 @@ class PluginRegistry(object):
 
 def loadPlugins(forcePluginNames=None):
     plugin_root = Config().plugins.default_path_fullpath
-    log.info("Loading plugin located at: {!r}".format([plugin_root]))
+    log.info("Loading plugin located at: %r", [plugin_root])
     PluginRegistry().loadPlugin([plugin_root])
 
 

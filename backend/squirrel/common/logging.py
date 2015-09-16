@@ -28,7 +28,7 @@ log = logging.getLogger(__name__)
 
 def setupLogger():
     config_file_fullpath = Config().logging.config_file_fullpath
-    log.info("Using configuration file: {}".format(config_file_fullpath))
+    log.info("Using configuration file: %s", config_file_fullpath)
     try:
         logging_config.fileConfig(config_file_fullpath)
     except configparser.NoSectionError as e:
@@ -82,6 +82,8 @@ def setupLogger():
         def format(self, record):
             record = deepcopy(record)
             multiline_message = record.getMessage()
+            # args are already rendered in 'multiline_message'
+            record.args = None
             if self.usesTime():
                 record.asctime = self.formatTime(record, self.datefmt)
             formatted_lines = []
@@ -133,19 +135,19 @@ def setupLogger():
         root = logging.getLogger()
         date_fmt_string = None
         # Do *not* replace the formatter in quiet mode since we want to bare output
-        root.handlers[0].setFormatter(SplitFormatter(fmt=format_string,
-                                                     datefmt=date_fmt_string,
-                                                     reset=True,
-                                                     log_colors={
-                                                         'DEBUG':    'cyan',
-                                                         'INFO':     'green',
-                                                         'WARNING':  'yellow',
-                                                         'ERROR':    'red',
-                                                         'CRITICAL': 'red,bg_white',
-                                                     },
-                                                     secondary_log_colors={},
-                                                     style='%'
-                                                     ))
+        root.handlers[0].setFormatter(SplitFormatter(
+            fmt=format_string,
+            datefmt=date_fmt_string,
+            reset=True,
+            log_colors={
+                'DEBUG':    'cyan',
+                'INFO':     'green',
+                'WARNING':  'yellow',
+                'ERROR':    'red',
+                'CRITICAL': 'red,bg_white',
+            },
+            style='%'
+        ))
     elif Config().logging.use_color_formatter:
         log.debug("Configuring color formatter")
 
@@ -154,22 +156,21 @@ def setupLogger():
         root = logging.getLogger()
         date_fmt_string = None
         # Do *not* replace the formatter in quiet mode since we want to bare output
-        root.handlers[0].setFormatter(ColoredFormatter(fmt=format_string,
-                                                       datefmt=date_fmt_string,
-                                                       reset=True,
-                                                       log_colors={
-                                                           'DEBUG':    'cyan',
-                                                           'INFO':     'green',
-                                                           'WARNING':  'yellow',
-                                                           'ERROR':    'red',
-                                                           'CRITICAL': 'red,bg_white',
-                                                       },
-                                                       secondary_log_colors={},
-                                                       style='%'
-                                                       ))
+        root.handlers[0].setFormatter(ColoredFormatter(
+            format_string,
+            datefmt=date_fmt_string,
+            reset=True,
+            log_colors={
+                'DEBUG':    'cyan',
+                'INFO':     'green',
+                'WARNING':  'yellow',
+                'ERROR':    'red',
+                'CRITICAL': 'red,bg_white',
+            },
+            style='%'
+        ))
     log.info("*" * 79)
     log.info("*" + " " * 26 + "Starting Squirrel Server " + " " * 26 + "*")
     log.info("*" * 79)
     log.info("Logging configured - Entering in a colorful world on your terminal!")
-
-    log.debug("File loggers configured by: {}".format(config_file_fullpath))
+    log.debug("File loggers configured by: %s", config_file_fullpath)
