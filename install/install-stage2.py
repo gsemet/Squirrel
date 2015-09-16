@@ -116,14 +116,12 @@ cmd_capabilities = {
         "start_mongo_if_needed",
     },
     "serve:dev:frontend": {
-        "pip_upgrade",
         "build_frontend",
         "serve",
         "serve_dev",
         "serve_dev_frontend",
     },
     "serve:dev:homepage": {
-        "pip_upgrade",
         "build_homepage",
         "serve",
         "serve_dev",
@@ -431,11 +429,26 @@ def main():
         lib.printInfo(" - bower-update")
         lib.printInfo("...")
 
-        lib.run(["npm", "install", "-g", "bower"])
-        lib.run(["npm", "install", "-g", "gulp"])
-        lib.run(["npm", "install", "-g", "grunt"])
-        lib.run(["npm", "install", "-g", "npm-check-updates"])
-        lib.run(["npm", "install", "-g", "bower-update"])
+        try:
+            lib.run(["npm", "install", "-g", "bower"])
+        except:
+            lib.run(["sudo", "-E", "npm", "install", "-g", "bower"])
+        try:
+            lib.run(["npm", "install", "-g", "gulp"])
+        except:
+            lib.run(["sudo", "-E", "npm", "install", "-g", "gulp"])
+        try:
+            lib.run(["npm", "install", "-g", "grunt"])
+        except:
+            lib.run(["sudo", "-E", "npm", "install", "-g", "grunt"])
+        try:
+            lib.run(["npm", "install", "-g", "npm-check-updates"])
+        except:
+            lib.run(["sudo", "-E", "npm", "install", "-g", "npm-check-updates"])
+        try:
+            lib.run(["npm", "install", "-g", "bower-update"])
+        except:
+            lib.run(["sudo", "-E", "npm", "install", "-g", "bower-update"])
 
     if "update_node_list" in current_capabilities:
         lib.printSeparator()
