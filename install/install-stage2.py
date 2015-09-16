@@ -403,6 +403,7 @@ def main():
         activate_path = os.path.join(workdir_path, "bin", "activate")
 
     environ_json_path = os.path.join(workdir_path, "environ.json")
+    json_read_environ = {}
     if os.path.exists(environ_json_path):
         lib.printSeparator()
         lib.printInfo("Environment variable json file found, sourcing it from {}"
@@ -415,6 +416,7 @@ def main():
                 for name, var in environ_json.items():
                     lib.printInfo("  {}={}".format(name, var))
                     os.environ[name] = var
+                    json_read_environ[name] = var
         if not content:
             lib.printInfo("Removing {} because it is empty".format(environ_json_path))
             os.unlink(environ_json_path)
@@ -513,9 +515,13 @@ def main():
         user_env_var = {}
         lib.printSeparator()
         lib.printInfo("External dependency check is required")
-        if not os.environ.get('MONGO_DB_URL'):
+        if os.environ.get('MONGO_DB_URL'):
+            lib.printInfo("Using MONGO_DB_URL={}".format(os.environ.get('MONGO_DB_URL')))
+        else:
             lib.printInfo("MONGO_DB_URL environment variable not found")
-            if not os.environ.get("MONGOD_PATH"):
+            if os.environ.get("MONGOD_PATH"):
+                lib.printInfo("Using MONGOD_PATH={}".format(os.environ.get('MONGOD_PATH')))
+            else:
                 lib.printInfo("MONGOD_PATH environment variable not set")
                 mongod_path = None
                 if not lib.isWindows:
@@ -552,7 +558,9 @@ def main():
                     lib.printError("Invalid anwser: {}".format(res))
                     return 1
 
-        if not os.environ.get('DATABASE_URL'):
+        if os.environ.get('DATABASE_URL'):
+            lib.printInfo("Using DATABASE_URL={}".format(os.environ.get('DATABASE_URL')))
+        else:
             lib.printInfo("DATABASE_URL environment variable not found")
             res = lib.printQuestion("What is the URL of your PostgreSQL server "
                                     "(empty='localhost:5432') ?")
@@ -565,7 +573,9 @@ def main():
         if user_env_var:
             lib.printInfo("Writing environment json: {}".format(environ_json_path))
             with open(environ_json_path, "w") as f:
-                f.writelines(json.dumps(user_env_var,
+                res = user_env_var.copy()
+                res.update(json_read_environ)
+                f.writelines(json.dumps(res,
                                         sort_keys=True,
                                         indent=4,
                                         separators=(',', ': ')))
