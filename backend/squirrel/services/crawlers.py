@@ -63,6 +63,7 @@ class CrawlerConfig(Service):
         #             'NASDAQ':
         #                 - "AAPL"
         #                 - "GOOG"
+
     def getAllCrawlers(self):
         # return a copy of crawlers
         return self.crawlers.values()

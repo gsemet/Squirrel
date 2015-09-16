@@ -9,3 +9,6 @@ frontend:
 
 backend:
     serve: true
+    db:
+        workdir: ../workdir/
+        url: $DATABASE_URL

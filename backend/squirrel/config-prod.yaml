@@ -10,4 +10,4 @@ backend:
     serve: true
     db:
         workdir: ../workdir/
-        url: sqlite:///../workdir/db.sqlite
+        url: $DATABASE_URL

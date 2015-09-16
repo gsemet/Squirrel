@@ -38,12 +38,30 @@ will be automatically installed by the Squirel Installer.
     $ npm install -g gulp
     $ npm install -g bower
 
-Python 3
---------
+Additional Services
+-------------------
+
+Squirrel requires the following external services to be available on your machine even for
+development:
+
+- MongoDB
+- PostgreSQL
+- Crossbar.io
+
+Indeed this may look a bit overbloated, but widely recognized methodologies such as `TwelveFactor`_
+advise to use the same external services in prod and in dev. Indeed, you have to install PostgreSQL
+on your development machine.
+
+.. _TwelveFactor: http://12factor.net/dev-prod-parity
+
+Python 2.7
+----------
 
 Squirrel is not Python 3 compatible, the following dependencies needs to be ported first:
 
 - Twisted
+
+That why Squirrel is validated only against Python 2.7.
 
 Targets
 *******

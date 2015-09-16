@@ -69,6 +69,9 @@ aliases = {
     "serve:frontend": "serve:dev:frontend",
     "serve:backend": "serve:dev:backend",
     "dev": "serve:dev",
+    "dev:backend": "serve:dev:backend",
+    "dev:homepage": "serve:dev:homepage",
+    "dev:frontend": "serve:dev:frontend",
     "start": "start:dev",
     "install": "install:all",
     "build": "install:all",
@@ -536,6 +539,16 @@ def main():
                     lib.printError("Invalid anwser: {}".format(res))
                     return 1
 
+        if not os.environ.get('DATABASE_URL'):
+            lib.printInfo("DATABASE_URL environment variable not found")
+            res = lib.printQuestion("What is the URL of your PostgreSQL server "
+                                    "(empty='localhost:5432') ?")
+            res = res.split()
+            if not res:
+                res = 'localhost:5432'
+            user_env_var["DATABASE_URL"] = res
+            lib.printInfo("Setting DATABASE_URL to '{}'".format(res))
+
         if user_env_var:
             lib.printInfo("Writing environment json: {}".format(environ_json_path))
             with open(environ_json_path, "w") as f:
@@ -551,6 +564,7 @@ def main():
         lib.printInfo(" - virtualenv")  # (already checked in stage1)
         lib.printInfo(" - pip")
         lib.printInfo(" - MongoDB")
+        lib.printInfo(" - PostgreSQL")
         lib.printInfo(" - node")
         # find nodejs on debian and warn to install manually the node package from node.io!
         lib.printInfo(" - bower")
@@ -617,9 +631,6 @@ def main():
     if "build_frontend" in current_capabilities:
         lib.printSeparator()
         lib.printInfo("Compiling frontend website")
-        lib.run_nocheck(["bash", "-c", "export"])
-        lib.run_nocheck(["bash", "-c", "ls -la"])
-        lib.run_nocheck(["bash", "-c", "which npm"])
         if "http_proxy" in os.environ:
             lib.printNote("Behind a proxy: npm --proxy")
             lib.printNote("You may want to add the following lines in your ~/.gitconfig:")
