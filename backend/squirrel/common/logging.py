@@ -11,6 +11,7 @@ except:
 
 import logging
 import logging.config as logging_config
+import os
 import sys
 
 from StringIO import StringIO
@@ -127,7 +128,10 @@ def setupLogger():
             else:
                 return None
 
-    if Config().logging.use_split_formatter:
+    use_split_formatter = Config().logging.use_split_formatter
+    if os.environ.get("TRAVIS"):
+        use_split_formatter = False
+    if use_split_formatter:
         log.debug("Configuring magic split formatter")
 
         format_string = ("%(log_color)s%(levelname){align_level_width}s%(reset)s | %(message)s"
