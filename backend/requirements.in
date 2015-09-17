@@ -28,6 +28,7 @@ six
 sphinx
 sqlalchemy
 treq
+twistar
 twisted
 txrequests
 watchdog
