@@ -19,6 +19,7 @@ pep8
 pika
 pip-tools
 psutil
+psycopg2
 pycontracts
 pyflakes
 pylint
@@ -30,6 +31,8 @@ sqlalchemy
 treq
 twistar
 twisted
+txmongo
+txpostgres
 txrequests
 watchdog
 yapsy
