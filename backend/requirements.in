@@ -31,6 +31,8 @@ sqlalchemy
 treq
 twistar
 twisted
+txamqp
+txCelery
 txmongo
 txpostgres
 txrequests
