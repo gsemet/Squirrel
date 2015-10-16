@@ -432,26 +432,37 @@ def main():
         lib.printInfo(" - bower-update")
         lib.printInfo("...")
 
+        if "http_proxy" in os.environ:
+            lib.printNote("Behind a proxy: npm --proxy")
+            npm_base_cmd = ["npm", "--proxy", os.environ["http_proxy"]]
+        else:
+            npm_base_cmd = ["npm"]
+
         try:
-            lib.run(["npm", "install", "-g", "bower"])
+            lib.run(npm_base_cmd + ["install", "-g", "bower"])
         except:
-            lib.run(["sudo", "-E", "npm", "install", "-g", "bower"])
+            lib.printInfo("Install failed, trying with sudo")
+            lib.run(["sudo", "-E"] + npm_base_cmd + ["install", "-g", "bower"])
         try:
-            lib.run(["npm", "install", "-g", "gulp"])
+            lib.run(npm_base_cmd + ["install", "-g", "gulp"])
         except:
-            lib.run(["sudo", "-E", "npm", "install", "-g", "gulp"])
+            lib.printInfo("Install failed, trying with sudo")
+            lib.run(["sudo", "-E"] + npm_base_cmd + ["install", "-g", "gulp"])
         try:
-            lib.run(["npm", "install", "-g", "grunt"])
+            lib.run(npm_base_cmd + ["install", "-g", "grunt"])
         except:
-            lib.run(["sudo", "-E", "npm", "install", "-g", "grunt"])
+            lib.printInfo("Install failed, trying with sudo")
+            lib.run(["sudo", "-E"] + npm_base_cmd + ["install", "-g", "grunt"])
         try:
-            lib.run(["npm", "install", "-g", "npm-check-updates"])
+            lib.run(npm_base_cmd + ["install", "-g", "npm-check-updates"])
         except:
-            lib.run(["sudo", "-E", "npm", "install", "-g", "npm-check-updates"])
+            lib.printInfo("Install failed, trying with sudo")
+            lib.run(["sudo", "-E"] + npm_base_cmd + ["install", "-g", "npm-check-updates"])
         try:
-            lib.run(["npm", "install", "-g", "bower-update"])
+            lib.run(npm_base_cmd + ["install", "-g", "bower-update"])
         except:
-            lib.run(["sudo", "-E", "npm", "install", "-g", "bower-update"])
+            lib.printInfo("Install failed, trying with sudo")
+            lib.run(["sudo", "-E"] + npm_base_cmd + ["install", "-g", "bower-update"])
 
     if "update_node_list" in current_capabilities:
         lib.printSeparator()
