@@ -600,6 +600,7 @@ def main():
         lib.printInfo(" - pip")
         lib.printInfo(" - MongoDB")
         lib.printInfo(" - PostgreSQL")
+        # macos: homebrew/port
         lib.printInfo(" - node")
         # find nodejs on debian and warn to install manually the node package from node.io!
         lib.printInfo(" - bower")
