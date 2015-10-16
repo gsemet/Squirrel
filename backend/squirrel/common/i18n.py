@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+from __future__ import unicode_literals
 
 # Documentation:
 # http://www.wefearchange.org/2012/06/the-right-way-to-internationalize-your.html

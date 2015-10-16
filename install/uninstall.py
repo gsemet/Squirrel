@@ -2,6 +2,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+from __future__ import unicode_literals
 
 # Please remind that this script uses the system python install, so we are **not** in our well
 # controlled virtual env.
