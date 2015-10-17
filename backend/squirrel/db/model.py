@@ -12,10 +12,8 @@ from squirrel.db.tables.table_base import Base
 from squirrel.db.tables.currencies import TableCurrencies
 from squirrel.db.tables.plugin_importers import TablePluginImporters
 from squirrel.db.tables.portfolios import TablePortfolios
-from squirrel.db.tables.stocks import TableStocks
-from squirrel.db.tables.tickers import TableTickers
-from squirrel.db.tables.ticks import TableTicks
 from squirrel.db.tables.users import TableUsers
+
 
 log = logging.getLogger(__name__)
 
@@ -34,9 +32,6 @@ class Model(object):
         # Force consumption of the tables class name
         self.registerTable(TableCurrencies)
         self.registerTable(TablePortfolios)
-        self.registerTable(TableStocks)
-        self.registerTable(TableTickers)
-        self.registerTable(TableTicks)
         self.registerTable(TableUsers)
         self.registerTable(TablePluginImporters)
 

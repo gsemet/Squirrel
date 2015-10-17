@@ -10,9 +10,6 @@ from twisted.internet import defer
 from squirrel.db.model import Model
 from squirrel.db.tables.currencies import TableCurrencies
 from squirrel.db.tables.plugin_importers import TablePluginImporters
-from squirrel.db.tables.stocks import TableStocks
-from squirrel.db.tables.ticks import TableTicks
-from squirrel.model.ticker import Ticker
 from squirrel.services.config import Config
 from squirrel.services.plugin_loader import PluginRegistry
 
@@ -37,23 +34,10 @@ class Crawler(object):
                 number=number,
                 wantedPlaces=wantedPlaces)
             for stock in stocks:
-                currency = TableCurrencies(id=None,
-                                           name=stock.currency)
-                currency.ensureHasId(model)
-
-                stock = TableStocks(id=None,
-                                    symbol=stock.symbol,
-                                    exchange=stock.exchange,
-                                    importer_id=importer.id,
-                                    title=stock.title,
-                                    currency_id=currency.id)
-                stock.ensureHasId(model)
-                model.session.commit()
+                print("TODO: store in mongo")
 
     @defer.inlineCallbacks
     def refreshStockHistory(self, importerName, tickers):
-        for t in tickers:
-            assert isinstance(t, Ticker), "Crawler expect list of Ticker"
         with Model(Config().backend.db.full_url) as model:
             importer = TablePluginImporters(id=None,
                                             name=importerName)
@@ -66,23 +50,7 @@ class Crawler(object):
                 currency = TableCurrencies(id=None,
                                            name="dollar")
                 currency.ensureHasId(model)
-
-                stock = TableStocks(id=None,
-                                    symbol=ticker.symbol,
-                                    exchange=ticker.exchange,
-                                    importer_id=importer.id,
-                                    title="",
-                                    currency_id=currency.id)
-                stock.ensureHasId(model)
-                for tick in ticks:
-                    model.session.add(TableTicks(stock_id=stock.id,
-                                                 date=tick.date,
-                                                 open=tick.open,
-                                                 high=tick.high,
-                                                 low=tick.low,
-                                                 close=tick.close,
-                                                 volume=tick.volume))
-                model.session.commit()
+                print("TODO: store in mongo")
 
     @defer.inlineCallbacks
     def refreshAllStockList(self):
