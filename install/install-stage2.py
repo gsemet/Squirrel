@@ -366,6 +366,8 @@ def main():
 
     subcmd = sys.argv[3]
 
+    pip_exe = "pip3"
+
     lib.printSeparator("=")
     lib.printInfo("Squirrel Installer Stage 2")
     if subcmd not in cmd_capabilities.keys():
@@ -608,7 +610,7 @@ def main():
 
     if "pip_upgrade" in current_capabilities:
         if sys.platform.startswith("linux"):
-            pip_version_str = lib.run_output(["pip", "--version"])
+            pip_version_str = lib.run_output([pip_exe, "--version"])
             pip_version_str = pip_version_str.split(" ")[1]
             pip_version_str = pip_version_str.split("-")[0]
             pip_version_str = pip_version_str.split("_")[0]
@@ -636,33 +638,33 @@ def main():
 
         lib.printSeparator()
         lib.printInfo("Updating pip (try to always use latest version of pip)")
-        lib.run(["pip", "install", "--upgrade", "pip"])
+        lib.run([pip_exe, "install", "--upgrade", "pip"])
 
     if "build_install" in current_capabilities:
         lib.printSeparator()
         lib.printInfo("Installing backend requirements")
         lib.printCmd("cd backend")
-        lib.run(["pip", "install", "-r", os.path.join(install_path, "backend",
-                                                      "requirements.txt")])
+        lib.run([pip_exe, "install", "-r", os.path.join(install_path, "backend",
+                                                        "requirements.txt")])
 
         if sys.version_info < (3, 4):
             lib.printInfo("Python version {}.{} < 3.4, installing extra requirements"
                           .format(sys.version_info[0], sys.version_info[2]))
             lib.printCmd("cd backend")
-            lib.run(["pip", "install", "-r", os.path.join(install_path, "backend",
-                                                          "requirements-py_lt34.txt")])
+            lib.run([pip_exe, "install", "-r", os.path.join(install_path, "backend",
+                                                            "requirements-py_lt34.txt")])
 
         if lib.isWindows:
             lib.printSeparator()
             lib.printInfo("Installing Windows dependencies")
-            lib.run(["pip", "install", "-r", os.path.join(install_path, "backend",
-                                                          "requirements-win32.txt")])
+            lib.run([pip_exe, "install", "-r", os.path.join(install_path, "backend",
+                                                            "requirements-win32.txt")])
             lib.printInfo("Ensure you have win32api installed")
 
         lib.printSeparator()
         lib.printInfo("Installing backend")
         lib.printCmd("cd backend")
-        lib.run(["pip", "install", "-e", os.path.join(install_path, "backend")])
+        lib.run([pip_exe, "install", "-e", os.path.join(install_path, "backend")])
 
     if "build_frontend" in current_capabilities:
         lib.printSeparator()

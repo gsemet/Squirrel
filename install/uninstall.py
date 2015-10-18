@@ -75,6 +75,10 @@ paths_to_remove = [
     (homepage_node_modules_path, "homepage/node_modules"),
     (homepage_bower_components_path, "homepage/bower_components"),
 ]
+
+if lib.isMacOsX or lib.isLinux:
+    paths_to_remove.append((os.path.join(root_path, "activate"), "activate"))
+
 if remove_dist:
     paths_to_remove.append((os.path.join(root_path, "tosource"), "tosource"))
     paths_to_remove.append((workdir_path, "workdir"))
@@ -87,7 +91,7 @@ for path, name in paths_to_remove:
     if os.path.isdir(path):
         lib.printInfo("Removing {}...".format(name))
         shutil.rmtree(path)
-    elif os.path.isfile(path):
+    elif os.path.isfile(path) or os.path.islink(path):
         lib.printInfo("Removing {}...".format(name))
         os.unlink(path)
 

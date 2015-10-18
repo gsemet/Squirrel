@@ -27,7 +27,6 @@ cryptography==1.0.2       # via pyopenssl
 decorator==4.0.4          # via pycontracts
 dictns==1.4
 docutils==0.12            # via sphinx
-enum34==1.0.4
 first==2.0.1              # via pip-tools
 funcsigs==0.4             # via mock
 idna==2.0                 # via cryptography
