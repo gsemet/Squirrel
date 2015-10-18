@@ -5,6 +5,8 @@ from __future__ import unicode_literals
 
 import sqlalchemy as sa
 
+from sqlalchemy import Column
+from sqlalchemy import Integer
 from sqlalchemy.ext.declarative import AbstractConcreteBase
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.exc import NoResultFound
@@ -19,6 +21,10 @@ NAMING_CONVENTION = {
 }
 
 Base = declarative_base(metadata=sa.MetaData(naming_convention=NAMING_CONVENTION))
+
+
+def PrimaryKeyColumn():
+    return Column(Integer, primary_key=True)
 
 
 class TableBase(AbstractConcreteBase, Base):
@@ -42,5 +48,12 @@ class TableBase(AbstractConcreteBase, Base):
     def rowToMySelf(self):
         raise NotImplementedError
 
+    def rowsToListOfMySelf(self, rows):
+        return [self.rowToMySelf(r) for r in rows]
+
     def formatSelectUniqCondition(self):
         raise NotImplementedError
+
+
+class IdTableBase(AbstractConcreteBase, Base):
+    id = PrimaryKeyColumn()
