@@ -122,7 +122,10 @@ def run(cmd, cwd=None, shell=False, extraPath=None):
 
 
 def run_output(cmd, cwd=None, shell=False):
-    print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
+    if isinstance(cmd, basestring):
+        print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(cmd))
+    else:
+        print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(" ".join(cmd)))
     flush()
     s = subprocess.check_output(cmd, shell=shell, cwd=cwd)
     return str(s)

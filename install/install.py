@@ -179,8 +179,8 @@ def main():
             if not os.path.exists(os.path.join(workdir_path, "bin", pip_exe)):
                 lib.run([virtualenv_exe,
                          "--python={python_path}".format(
-                             python_path=lib.run_output("which {}".format(python_exe),
-                                                        shell=True).strip()),
+                             python_path=str(lib.run_output("which {}".format(python_exe),
+                                                            shell=True)).strip()),
                          workdir_path])
 
             if not os.path.exists(os.path.join(install_path, "activate")):
