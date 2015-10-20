@@ -612,6 +612,11 @@ def main():
         lib.printInfo("OK")
 
     if "pip_upgrade" in current_capabilities:
+        lib.printInfo("Updating pip (try to always use latest version of pip)")
+        lib.run([pip_exe, "install", "--upgrade", "pip"])
+
+        lib.printSeparator()
+
         if sys.platform.startswith("linux"):
             pip_version_str = lib.run_output([pip_exe, "--version"])
             pip_version_str = pip_version_str.split(" ")[1]
@@ -638,10 +643,6 @@ def main():
                     lib.run(["bash", "-c", "patch -p0 < {}".format(patch_path)])
                 else:
                     lib.printInfo("Already applied. Skipping patch")
-
-        lib.printSeparator()
-        lib.printInfo("Updating pip (try to always use latest version of pip)")
-        lib.run([pip_exe, "install", "--upgrade", "pip"])
 
     if "build_install" in current_capabilities:
         lib.printSeparator()
