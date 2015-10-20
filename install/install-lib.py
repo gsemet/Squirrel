@@ -127,7 +127,7 @@ def run_output(cmd, cwd=None, shell=False):
     else:
         print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " {}".format(cmd))
     flush()
-    s = subprocess.check_output(cmd, shell=shell, cwd=cwd)
+    s = subprocess.check_output(cmd, shell=shell, cwd=cwd, universal_newlines=True)
     return str(s)
 
 
