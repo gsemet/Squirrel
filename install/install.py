@@ -54,7 +54,8 @@ def usage():
 def main():
     python_exe = "python3"
     pip_exe = "pip3"
-    virtualenv_exe = "virtualenv-3.4"
+    virtualenv_exe = "virtualenv"
+
     if len(sys.argv) > 1:
         args = sys.argv[:]
         while args:
@@ -176,7 +177,10 @@ def main():
             activate = os.path.join(workdir_path, "bin", "activate")
 
             if not os.path.exists(os.path.join(workdir_path, "bin", pip_exe)):
-                lib.run([virtualenv_exe, workdir_path])
+                lib.run([virtualenv_exe,
+                         "--python={python_path}".format(
+                             python_path=lib.run_output("which {}".format(python_exe), shell=True)),
+                         workdir_path])
 
             if not os.path.exists(os.path.join(install_path, "activate")):
                 lib.printBoot("Creating symblink activate")

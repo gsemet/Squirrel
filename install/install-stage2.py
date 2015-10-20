@@ -366,7 +366,10 @@ def main():
 
     subcmd = sys.argv[3]
 
-    pip_exe = "pip3"
+    if not lib.isWindows:
+        pip_exe = "pip"
+    else:
+        pip_exe = "pip.exe"
 
     lib.printSeparator("=")
     lib.printInfo("Squirrel Installer Stage 2")
