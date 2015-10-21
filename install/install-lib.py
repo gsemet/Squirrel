@@ -115,7 +115,8 @@ def run(cmd, cwd=None, shell=False, extraPath=None):
         path_bkp = os.environ['PATH']
         os.environ['PATH'] = extraPath + ":" + os.environ['PATH']
         cmd = " ".join(cmd)
-        print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC + " PATH set to: {}".format(os.environ['PATH']))
+        print(bcolors.OKGREEN + "[CMD  ]" + bcolors.ENDC +
+              " PATH set to: {}".format(os.environ['PATH']))
     subprocess.check_call(cmd, shell=shell, cwd=cwd)
     if extraPath and path_bkp:
         os.environ['PATH'] = path_bkp
@@ -160,3 +161,35 @@ def mkdirs(path):
             pass
         else:
             raise
+
+
+def execute(cmdLine):
+    return run([cmdLine], shell=True)
+
+
+def addArgumentParser(description=None):
+    usage = "usage: %prog [options]\n\n{}".format(description)
+
+    from optparse import OptionParser
+    parser = OptionParser(usage=usage)
+    parser.add_option("-p", "--prefix",
+                      dest="prefix",
+                      help="install architecture-independent files in PREFIX",
+                      metavar="DIR",
+                      default="/usr/local")
+    parser.add_option("-q", "--quiet",
+                      action="store_false", dest="verbose", default=True,
+                      help="don't print status messages to stdout")
+    return parser
+
+
+def parse(parser):
+    (options, args) = parser.parse_args()
+    return (options, args)
+
+
+def makedirs(dirPath):
+    try:
+        os.makedirs(dirPath)
+    except:
+        pass

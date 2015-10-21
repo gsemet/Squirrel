@@ -158,7 +158,7 @@ def main():
             except:
                 lib.printError("Error during installation of virtualenv. Do you have virtual env "
                                "in your system? Install it with:")
-                lib.printError("  sudo {pip} install virtualenv".format(pip_exe))
+                lib.printError("  sudo {pip} install virtualenv".format(pip=pip_exe))
                 lib.printError("Reraising original exception:")
                 raise
 
