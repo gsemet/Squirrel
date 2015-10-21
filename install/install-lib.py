@@ -153,6 +153,11 @@ def run_background(cmd, cwd=None, shell=False):
     subprocess.Popen(cmd, cwd=cwd, shell=shell)
 
 
+def executableExists(executableName):
+    a = run_output("which {}".format(executableName), shell=True).strip()
+    return True if a else False
+
+
 def mkdirs(path):
     try:
         os.makedirs(path)

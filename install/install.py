@@ -179,14 +179,18 @@ def main():
             activate = os.path.join(workdir_path, "bin", "activate")
 
             if not os.path.exists(os.path.join(workdir_path, "bin", pip_exe)):
-                if lib.isLinux:
+                virtualenv_exe = "virtualenv-3.4"
+                if lib.executableExists(virtualenv_exe):
+                    lib.printInfo("Executing {}".format(virtualenv_exe))
+                    lib.run([virtualenv_exe, workdir_path])
+                else:
+                    virtualenv_exe = "virtualenv"
+                    lib.printInfo("Fallback to use virtual --python")
                     lib.run([virtualenv_exe,
                              "--python={python_path}".format(
                                  python_path=str(lib.run_output("which {}".format(python_exe),
                                                                 shell=True)).strip()),
                              workdir_path])
-                else:
-                    lib.run([virtualenv_exe, workdir_path])
 
             if not os.path.exists(os.path.join(install_path, "activate")):
                 lib.printBoot("Creating symblink activate")
