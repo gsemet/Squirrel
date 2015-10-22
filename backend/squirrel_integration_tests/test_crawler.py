@@ -41,6 +41,7 @@ class IntegrationTestCrawler(TestCase):
         log.debug("refreshing stock list")
         yield self.crawler.refreshStockList(importerName="GoogleFinance",
                                             number=60)
+    testRefreshStockList.skip = "TOFIX"
 
     @defer.inlineCallbacks
     def testRefreshStockHistory(self):
@@ -50,3 +51,4 @@ class IntegrationTestCrawler(TestCase):
                                                    Ticker("AAPL", "NASDAQ"),
                                                    Ticker("GOOG", "NASDAQ"),
                                                ])
+    testRefreshStockHistory.skip = "TOFIX"

@@ -53,7 +53,7 @@ def usage():
 
 def main():
     python_exe = "python3"
-    pip_exe = "pip3"
+    pip_exe = "pip"
     virtualenv_exe = "virtualenv"
     if lib.isMacOsX:
         virtualenv_exe = "virtualenv-3.4"
@@ -177,7 +177,7 @@ def main():
                 lib.printBoot("Note: Already in a virtualenv!")
 
             activate = os.path.join(workdir_path, "bin", "activate")
-
+            lib.printInfo("Do {} exists?".format(os.path.join(workdir_path, "bin", pip_exe)))
             if not os.path.exists(os.path.join(workdir_path, "bin", pip_exe)):
                 virtualenv_exe = "virtualenv-3.4"
                 if lib.executableExists(virtualenv_exe):

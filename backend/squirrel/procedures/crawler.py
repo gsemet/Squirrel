@@ -8,8 +8,8 @@ import logging
 from twisted.internet import defer
 
 from squirrel.db.model import Model
-from squirrel.db.tables.currencies import TableCurrencies
-from squirrel.db.tables.plugin_importers import TablePluginImporters
+from squirrel.db.tables.table_currencies import TableCurrencies
+from squirrel.db.tables.table_plugin_importers import TablePluginImporters
 from squirrel.services.config import Config
 from squirrel.services.plugin_loader import PluginRegistry
 
@@ -27,9 +27,8 @@ class Crawler(object):
             if number is None:
                 log.debug("Getting list of all stocks")
             else:
-                log.debug("Getting {} first stocks".format(number))
-            log.debug("Wanted places: {}".format(wantedPlaces
-                                                 if wantedPlaces is not None else "All"))
+                log.debug("Getting %s first stocks", number)
+            log.debug("Wanted places: %s", wantedPlaces if wantedPlaces is not None else "All")
             stocks = yield PluginRegistry().getByName(importer.name).getList(
                 number=number,
                 wantedPlaces=wantedPlaces)

@@ -14,3 +14,5 @@ class TableCurrencies(IdTableBase):
     __tablename__ = 'currencies'
 
     name = Column(String(50), index=True)
+    symbol = Column(String(2), index=True)
+    isoCode = Column(String(3), index=True)
