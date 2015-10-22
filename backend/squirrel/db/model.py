@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -17,15 +18,14 @@ log = logging.getLogger(__name__)
 
 class Model(object):
 
-    def __init__(self, dburl=None):
+    def __init__(self, dburl=None, verbose=False):
         if dburl is None:
             dburl = 'sqlite://'  # in memory DB
-        verbose = False
-        self._engine = sa.create_engine(dburl, echo=verbose,  pool_reset_on_return=None)
+        self._engine = sa.create_engine(dburl,
+                                        echo=verbose,
+                                        pool_reset_on_return=None)
         self.metadata = Base.metadata
-
         self.registeredTableClass = []
-        print("ALL_TABLES", ALL_TABLES)
 
         for table in ALL_TABLES:
             # Force consumption of the tables class name
