@@ -79,8 +79,8 @@ def main():
                       .format(default_cmd))
         subcmd = default_cmd
 
-    if (sys.version_info < (2, 7) or (sys.version_info >= (3, 0)
-                                      and sys.version_info <= (3, 3))):
+    if (sys.version_info < (2, 7) or (sys.version_info >= (3, 0) and
+                                      sys.version_info <= (3, 3))):
         raise Exception("You must use Python >= 2.7.x or Python >= 3.4 Current version is: {}."
                         .format(sys.version_info))
 
